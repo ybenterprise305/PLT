@@ -1,0 +1,8 @@
+{
+  "name": "Pro Locksmith Tech - 24/7 South Florida Locksmith",
+  "description": "Pro Locksmith Tech provides 24/7 emergency, residential, commercial, and automotive locksmith services across South Florida including Broward, Miami-Dade, and Palm Beach counties. Call +1 754-261-6528.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
