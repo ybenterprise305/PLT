@@ -1,0 +1,1838 @@
+# MASTER DEVELOPMENT COMMAND — PRO LOCKSMITH TECH
+## Complete Website Audit, Technical Repairs, SEO, AEO, GEO, VSEO, AIO, MEO, SXO, PPC Landing Pages & Conversion Optimization
+
+**PROJECT:** Pro Locksmith Tech  
+**LIVE WEBSITE:** https://prolocksmith-tech.com/  
+**WWW DOMAIN:** https://www.prolocksmith-tech.com/  
+**BUSINESS:** Pro Locksmith Tech  
+**PHONE:** (754) 261-6528  
+**PHONE LINK:** tel:+17542616528  
+**SERVICE REGION:** South Florida, USA  
+**BUSINESS TYPE:** 24/7/365 Mobile Locksmith Service  
+**WEBSITE TECHNOLOGY:** React, Vite, Tailwind CSS, Cloudflare Workers  
+**PRIMARY OBJECTIVES:** Organic search visibility, qualified phone calls, Google Ads conversion performance, local search visibility, AI search visibility, speed, usability, and technical reliability.
+
+---
+
+# SECTION 1 — YOUR ROLE AND MISSION
+
+You are now acting as the following professionals simultaneously:
+
+1. Senior Full-Stack React Developer
+2. Technical SEO Engineer
+3. Local SEO and Google Maps Optimization Specialist
+4. Google Ads PPC Landing Page Conversion Specialist
+5. Conversion Rate Optimization (CRO) Expert
+6. UI/UX and Mobile Experience Designer
+7. Core Web Vitals Performance Engineer
+8. Structured Data and Schema.org Specialist
+9. AI Search Optimization Specialist
+10. Answer Engine Optimization (AEO) Specialist
+11. Generative Engine Optimization (GEO) Specialist
+12. Video SEO (VSEO) Specialist
+13. Website Security and Accessibility Auditor
+14. Quality Assurance and Testing Engineer
+15. Cloudflare Workers Deployment Engineer
+
+Your mission is to inspect, repair, improve, expand, and optimize the existing Pro Locksmith Tech website.
+
+**IMPORTANT: I am authorizing you to make the necessary changes to the website project, including creating files, fixing code, redesigning sections, improving content, building pages, implementing structured data, and correcting technical problems.**
+
+I want actual implementation, not merely recommendations.
+
+Do not stop after producing an audit.
+
+Complete the authorized work within the existing project, run available validation checks, fix errors, and provide a full implementation report.
+
+If your environment cannot access external systems such as Google Search Console, Google Ads, Cloudflare, or GitHub, do not claim to have modified those systems. Complete all changes possible inside the project, and separately explain which external configuration steps remain.
+
+Do not invent analytics results, business facts, customer testimonials, rankings, licenses, certifications, or performance improvements.
+
+Do not delete or replace important existing functionality without reviewing its purpose.
+
+---
+
+# SECTION 2 — BUSINESS RULES AND NON-NEGOTIABLE REQUIREMENTS
+
+## 2.1 Business information
+
+Company name: Pro Locksmith Tech
+
+Primary phone number: (754) 261-6528
+
+Website: https://prolocksmith-tech.com/
+
+Business hours: 24 hours per day, 7 days per week, 365 days per year.
+
+Business model: Mobile locksmith service.
+
+Primary operating region: South Florida.
+
+The company does not operate a public walk-in storefront.
+
+Never suggest that customers can visit a storefront, office, or public showroom.
+
+The company travels to customers to provide locksmith services.
+
+## 2.2 CRITICAL GEOGRAPHIC WORDING CORRECTION
+
+The website currently uses language such as:
+
+"Serving Coral Springs and South Florida"
+
+This wording is unnecessarily repetitive because Coral Springs is already part of South Florida.
+
+**REMOVE THIS WORDING THROUGHOUT THE WEBSITE.**
+
+The primary region displayed in general marketing copy must be:
+
+**"Serving South Florida"**
+
+Other acceptable variations include:
+
+- "24/7 Mobile Locksmith Services Across South Florida"
+- "Professional Mobile Locksmith Service in South Florida"
+- "South Florida's Mobile Locksmith Service"
+- "We Come to You Throughout Our South Florida Service Area"
+
+Do not repeatedly combine an individual South Florida city with the entire South Florida region in the same broad service-area statement.
+
+However, preserve city-specific information when it serves an actual purpose.
+
+For example, a city page about Coral Springs may correctly say:
+
+"Mobile Locksmith Services in Coral Springs"
+
+This is different from unnecessarily saying "Coral Springs and South Florida."
+
+Use natural language, not robotic repetition of "South Florida" in every paragraph.
+
+Review and correct this everywhere, including:
+
+- Homepage
+- Header
+- Footer
+- Service descriptions
+- Hero banners
+- Service pages
+- Landing pages
+- SEO titles
+- Meta descriptions
+- Image alt text
+- Structured data
+- FAQs
+- Calls to action
+- Service-area sections
+- Blog posts
+- Navigation descriptions
+- Mobile layout
+- Social preview metadata
+
+## 2.3 EXISTING CITIES / SERVICE-AREA INDEX PAGE — DO NOT DUPLICATE
+
+**IMPORTANT: THE WEBSITE ALREADY HAS A PAGE SPECIFICALLY LISTING ALL THE CITIES WE SERVE.**
+
+You must find and inspect this existing page.
+
+Do not create a second competing cities-directory page.
+
+Do not delete the existing page.
+
+Preserve its intended functionality and URL where possible.
+
+Improve its:
+
+- Layout
+- Search engine optimization
+- Internal links
+- City organization
+- Mobile usability
+- Structured data
+- Readability
+- Calls to action
+- Heading hierarchy
+- Metadata
+- Performance
+- Accessibility
+
+If the existing city listing links to dedicated city pages, inspect every linked page.
+
+If some city links are broken, fix them.
+
+If cities are listed without individual pages, determine whether individual pages are genuinely useful.
+
+Do not automatically generate hundreds of repetitive pages.
+
+Do not create duplicate or near-identical city pages.
+
+Create a new city-specific page only when it offers substantial useful local information and corresponds to a legitimate service area.
+
+For the existing city directory, consider organizing cities by county or geographic region if that improves user experience.
+
+Use the actual service coverage represented by the existing website and confirmed business information.
+
+Do not invent additional service cities.
+
+## 2.4 Phone calls are the main conversion objective
+
+This website exists primarily to generate qualified inbound phone calls.
+
+The primary action should be:
+
+**CALL NOW — (754) 261-6528**
+
+All call buttons must use:
+
+tel:+17542616528
+
+Make sure phone calls work properly on supported mobile devices.
+
+Use the same phone number consistently across the site.
+
+Do not create a contact form.
+
+Do not introduce quote-request forms, lead forms, appointment forms, or email submission forms.
+
+Customers should be encouraged to call.
+
+Secondary content must support the primary objective without making the website feel untrustworthy, cluttered, or excessively promotional.
+
+## 2.5 Business claims and authenticity
+
+Never include:
+
+- "Licensed and Insured" unless explicitly verified and approved.
+- Fake certifications.
+- Fake reviews.
+- Invented star ratings.
+- Fake Google review counts.
+- Invented technician credentials.
+- Guaranteed arrival times that are not documented.
+- Unsupported claims such as "cheapest in Florida."
+- Artificial countdown timers.
+- Fake scarcity.
+- Fake dispatch activity.
+- Misleading service pricing.
+- Fabricated physical locations.
+- Fake customer testimonials.
+
+Do not automatically claim that every service or vehicle model is supported.
+
+Use accurate, useful, confidence-building language.
+
+For car keys and fobs, the company stocks different types of replacement keys and key fobs, and can cut or program compatible products based on the customer's vehicle requirements.
+
+Do not repeatedly encourage visitors to purchase their own key fobs before calling.
+
+Explain that customers can call with their vehicle's year, make, model, and key situation.
+
+---
+
+# SECTION 3 — COMPLETE EXISTING WEBSITE AUDIT
+
+Before changing code, thoroughly inspect the current project.
+
+Do not assume that a feature is missing simply because it was not mentioned in this command.
+
+Create a comprehensive inventory of:
+
+- All source files
+- React components
+- Page components
+- Routes
+- Navigation menus
+- Existing service pages
+- Existing cities directory
+- Existing city pages
+- Existing PPC landing pages
+- Blogs and articles
+- Image assets
+- Video assets
+- Icons
+- Fonts
+- Metadata
+- Structured data
+- API endpoints
+- Environment variables
+- Cloudflare configuration
+- Build scripts
+- Redirect configuration
+- Error handling
+- Existing tracking integrations
+- Existing Google Ads tags
+- Google Analytics tags
+- Cookie and privacy functionality
+
+For each existing page, inspect:
+
+1. Page purpose
+2. URL
+3. HTTP behavior
+4. Title tag
+5. Meta description
+6. Canonical URL
+7. H1 heading
+8. H2/H3 hierarchy
+9. Main page content
+10. Internal links
+11. Images and alt text
+12. CTA buttons
+13. Mobile layout
+14. Page loading behavior
+15. SEO indexing instructions
+16. Schema markup
+17. Accessibility
+18. Potential duplicate content
+19. Broken links
+20. Rendering or JavaScript errors
+
+Classify findings as:
+
+- Confirmed defect
+- Potential issue requiring verification
+- Improvement opportunity
+- Already implemented correctly
+
+Do not classify something as broken without supporting evidence.
+
+Create an internal audit report before implementing improvements.
+
+Then move directly into repairs and implementation.
+
+---
+
+# SECTION 4 — FIX ALL CONFIRMED TECHNICAL PROBLEMS
+
+## 4.1 React and routing
+
+Inspect the existing React/Vite architecture.
+
+Verify that all routes load correctly.
+
+Test direct navigation to deep URLs.
+
+Test browser refresh on service pages.
+
+Test the back button.
+
+Test navigation on desktop and mobile.
+
+Check for:
+
+- Blank pages
+- Runtime errors
+- Dead buttons
+- Broken routes
+- Console errors
+- Missing assets
+- Unhandled exceptions
+- Invalid imports
+- Unnecessary dependencies
+- Duplicate components
+- Memory leaks
+- Unhandled promises
+- Layout errors
+- Inaccessible controls
+- Unused large JavaScript packages
+
+Repair confirmed problems.
+
+Preserve working features.
+
+Do not rewrite the entire website merely because an alternative framework exists.
+
+## 4.2 Search-engine rendering
+
+Determine whether pages are fully client-side rendered.
+
+Inspect the actual initial HTML output.
+
+Check whether search crawlers can access meaningful text content without relying entirely on browser JavaScript.
+
+If needed, implement static prerendering, static site generation, or another compatible approach.
+
+Preserve React, Vite, and Cloudflare Workers where practical.
+
+Ensure important public pages contain crawlable HTML for:
+
+- Main headings
+- Primary content
+- Internal links
+- Page-specific metadata
+- Canonical URLs
+- Structured data
+
+Do not serve deceptive or materially different content to search crawlers.
+
+Use the same meaningful information for crawlers and users.
+
+## 4.3 Canonical URLs
+
+Use:
+
+https://prolocksmith-tech.com/
+
+as the preferred homepage URL.
+
+Ensure the www hostname redirects appropriately to the canonical hostname.
+
+Prevent duplicate indexing due to:
+
+- www vs non-www
+- HTTP vs HTTPS
+- Trailing slash variations
+- Duplicate route aliases
+- Unnecessary query parameters
+
+Use permanent redirects where appropriate.
+
+Every indexable page must have an accurate self-referencing or otherwise justified canonical URL.
+
+## 4.4 XML sitemap
+
+Check whether a functioning sitemap already exists.
+
+If it does, improve it rather than creating competing versions.
+
+If missing, create:
+
+/sitemap.xml
+
+The sitemap must:
+
+- Include canonical indexable pages
+- Include the homepage
+- Include service pages
+- Include the existing service-area directory
+- Include qualifying city pages
+- Include published blog pages
+- Exclude 404 pages
+- Exclude redirected pages
+- Exclude noindex pages
+- Exclude duplicate URLs
+- Exclude private routes
+- Exclude utility routes that should not be indexed
+
+Use accurate URLs and update dates.
+
+Do not fabricate last-modified dates.
+
+Automate sitemap generation as part of the build where practical.
+
+## 4.5 Robots.txt
+
+Check for an existing robots.txt file.
+
+Correct it if necessary.
+
+Ensure important public content is crawlable.
+
+Reference the canonical sitemap.
+
+Do not accidentally block CSS, JavaScript, service pages, or image assets necessary for rendering.
+
+Do not block pages in robots.txt when search engines need to crawl those pages to discover their noindex directives.
+
+## 4.6 HTTP status codes
+
+Verify:
+
+- Valid pages return 200.
+- Permanently moved pages return 301 or 308.
+- Missing pages return 404.
+- Server failures return appropriate 5xx statuses.
+
+Ensure React client-side routing does not silently return a successful homepage response for every nonexistent URL.
+
+Create a useful branded 404 page with navigation and a phone CTA.
+
+## 4.7 Technical metadata
+
+Implement a reusable metadata system.
+
+Each public page should support:
+
+- Unique title
+- Unique meta description
+- Canonical URL
+- Robots directive
+- Open Graph title
+- Open Graph description
+- Open Graph image
+- Twitter/X sharing metadata
+- Appropriate structured data
+- Correct heading hierarchy
+
+Do not give every page the same generic metadata.
+
+Use the page's actual subject and search intent.
+
+---
+
+# SECTION 5 — WEBSITE SPEED AND CORE WEB VITALS
+
+Optimize loading speed throughout the website.
+
+Target good real-user Core Web Vitals:
+
+- LCP: 2.5 seconds or less
+- INP: 200 milliseconds or less
+- CLS: 0.1 or less
+
+These are performance objectives, not measurements you may invent.
+
+Inspect and optimize:
+
+- JavaScript bundle size
+- Code splitting
+- Route loading
+- Image sizes
+- Image formats
+- Font loading
+- CSS delivery
+- Third-party scripts
+- Component rendering
+- Animation performance
+- Caching
+- Repeated network requests
+- Lazy loading
+- Responsive image delivery
+- Cloudflare caching behavior
+
+Convert eligible images to optimized WebP or AVIF formats where beneficial.
+
+Provide appropriate source sizes for mobile and desktop.
+
+Use lazy loading for below-the-fold images.
+
+Prioritize the actual hero image when necessary.
+
+Avoid lazy loading the primary above-the-fold LCP image.
+
+Reserve space for images to prevent layout shifts.
+
+Avoid autoplaying large videos that delay rendering or interfere with calls to action.
+
+Ensure phone buttons become usable as soon as possible.
+
+Run available Lighthouse or equivalent performance tests.
+
+Report actual test scores only when measured.
+
+Do not claim a score of 100 unless verified.
+
+---
+
+# SECTION 6 — COMPLETE SEO IMPROVEMENTS
+
+The main organic objective is to improve visibility for legitimate mobile locksmith searches throughout South Florida.
+
+Implement on-page and technical SEO without keyword stuffing.
+
+## 6.1 Homepage
+
+Optimize the homepage for the business's primary service category.
+
+Suggested H1:
+
+**24/7 Mobile Locksmith Services in South Florida**
+
+Suggested SEO title:
+
+**24/7 Mobile Locksmith in South Florida | Pro Locksmith Tech**
+
+Suggested meta description:
+
+**Locked out or need new keys? Pro Locksmith Tech provides 24/7 mobile locksmith services across South Florida. Car keys, lockouts, rekeying and more. Call now.**
+
+Improve the homepage structure with:
+
+1. Clear hero section
+2. Strong call-to-action
+3. Main service categories
+4. Brief explanation of mobile service
+5. Reasons to choose the company
+6. Service-area section linking to the existing cities directory
+7. Useful service information
+8. Verified reviews or trust evidence if available
+9. Relevant FAQs
+10. Internal service-page links
+11. Final phone CTA
+
+Do not make the homepage unnecessarily long or repetitive.
+
+## 6.2 Service architecture
+
+Audit the service pages already present.
+
+Preserve good existing URLs.
+
+Create missing service pages only when necessary.
+
+Recommended service categories:
+
+### Automotive
+
+- Car lockout
+- Car key replacement
+- Lost car keys
+- Car key cutting
+- Key fob programming
+- Transponder key programming
+- Ignition repair
+- Broken key extraction, if offered
+
+### Residential
+
+- House lockout
+- Lock rekeying
+- Lock replacement
+- Lock installation
+- Deadbolt installation
+- Smart lock installation, if offered
+
+### Commercial and specialty
+
+- Commercial locksmith
+- Commercial lock installation and replacement
+- Safe lockout
+- Safe lock services
+- Storage unit lockout
+
+Only publish pages for services the business actually provides.
+
+If services overlap significantly, avoid creating competing near-identical pages.
+
+Each primary service page should contain:
+
+- Specific H1
+- Clear introduction
+- Explanation of the service
+- Customer problems solved
+- Appropriate service situations
+- What the customer should expect
+- Relevant tools or compatibility information
+- Service pricing factors without fabricated prices
+- Questions and answers
+- Internal links
+- Service-area relevance
+- Multiple natural call opportunities
+
+Avoid generic filler.
+
+Avoid stuffing the city name into every heading.
+
+## 6.3 Internal linking
+
+Implement a sensible internal-linking system.
+
+Link:
+
+Homepage → primary services
+
+Service pages → closely related services
+
+Service pages → existing cities directory
+
+Cities directory → relevant service information
+
+Blog articles → relevant service pages
+
+Relevant pages → homepage where appropriate
+
+Avoid excessive footer links and repeated unnatural keyword-rich links.
+
+Use descriptive anchor text.
+
+## 6.4 Existing service-area index
+
+Inspect the current cities page.
+
+Retain it.
+
+Improve how visitors discover which cities are served.
+
+Consider:
+
+- Easy-to-scan city lists
+- Logical county groupings
+- Search or filtering if useful
+- Working city links
+- Clear mobile layout
+- Useful local information
+- Call CTA
+- Appropriate headings
+- Accurate metadata
+- Structured navigation
+
+Do not create another page that duplicates the existing city index.
+
+Do not invent individual business locations.
+
+Do not automatically create pages for cities outside our actual service area.
+
+## 6.5 Duplicate content
+
+Identify and reduce:
+
+- Duplicate titles
+- Duplicate descriptions
+- Near-identical service pages
+- Repetitive city pages
+- Conflicting keyword targeting
+- Multiple pages with effectively the same purpose
+
+Consolidate content with appropriate redirects when justified.
+
+Do not remove useful existing URLs without preserving relevant traffic paths.
+
+---
+
+# SECTION 7 — AEO, GEO, AIO AND AI SEARCH OPTIMIZATION
+
+Optimize the website so that search engines and AI assistants can understand:
+
+- Who Pro Locksmith Tech is
+- What services the company provides
+- Where it operates
+- How customers contact it
+- Whether services are mobile
+- When assistance is available
+- What distinguishes different locksmith services
+
+Use factual, readable, accessible content.
+
+## 7.1 Direct answers
+
+Add concise, accurate answers to appropriate pages.
+
+Examples:
+
+"Can a locksmith make a car key without the original?"
+
+"Can a locksmith program a key fob?"
+
+"Can a locksmith rekey a house without replacing the locks?"
+
+"What information do I need when calling for a replacement car key?"
+
+"Can a locksmith unlock a car without damaging the door?"
+
+"What's the difference between rekeying and changing a lock?"
+
+"Do mobile locksmiths come to your location?"
+
+Answer the actual question clearly in the first relevant paragraph.
+
+Then provide deeper explanation where appropriate.
+
+Do not guarantee outcomes that depend on vehicle models, equipment, lock types, or individual circumstances.
+
+## 7.2 Content clarity
+
+Use:
+
+- Descriptive headings
+- Short introductory answers
+- Plain English
+- Structured lists where helpful
+- Clear service definitions
+- Accurate terminology
+- Meaningful internal links
+- Relevant FAQs
+- Direct descriptions of the business
+
+Make content understandable without relying on marketing slogans.
+
+## 7.3 Business identity
+
+Use consistent company details:
+
+Name: Pro Locksmith Tech
+
+Website: https://prolocksmith-tech.com/
+
+Phone: (754) 261-6528
+
+Service region: South Florida
+
+Business type: Mobile locksmith service
+
+Hours: 24/7/365
+
+Do not create contradictory business information across pages.
+
+## 7.4 AI-readable structure
+
+Ensure primary content is present in accessible rendered HTML.
+
+Use proper semantic HTML.
+
+Avoid putting all useful text inside images.
+
+Use meaningful headings and structured navigation.
+
+Implement valid structured data where applicable.
+
+Do not implement speculative markup or unsupported directives under the assumption they guarantee AI citations.
+
+Do not promise rankings in ChatGPT, Google AI Overviews, Gemini, Perplexity, or other AI services.
+
+The objective is improved crawlability, clarity, factual consistency, and useful content.
+
+---
+
+# SECTION 8 — STRUCTURED DATA AND SCHEMA.ORG
+
+Inspect existing schema markup first.
+
+Remove invalid, contradictory, or duplicate structured data.
+
+Implement accurate JSON-LD markup where useful.
+
+Consider:
+
+- Organization
+- LocalBusiness / Locksmith where valid
+- Service
+- WebSite
+- WebPage
+- BreadcrumbList
+- VideoObject on qualifying video pages
+- Article / BlogPosting for legitimate articles
+- FAQPage only where appropriate and eligible
+
+Use the correct business name, URL, and phone number.
+
+Do not include an invented public address.
+
+Do not imply the company has multiple physical storefronts.
+
+Use accurate service-area information.
+
+Only include verifiable sameAs social profile URLs.
+
+Do not invent review ratings or customer review data.
+
+Do not insert aggregateRating markup for fake or unsupported reviews.
+
+FAQ content should primarily help visitors, rather than being created solely to pursue rich results.
+
+Validate schema with appropriate tools when available.
+
+Report validation errors and fix them.
+
+---
+
+# SECTION 9 — GOOGLE MAPS AND LOCAL SEO (MEO)
+
+Improve the website's relationship to our legitimate local business listings.
+
+Ensure the site communicates:
+
+- Mobile locksmith service
+- South Florida coverage
+- Correct phone number
+- Accurate business hours
+- Real supported services
+- Real service-area information
+
+If verified Google Business Profile, Apple Maps, Bing Places, Yelp, Nextdoor, or other business listing URLs are already available in the project, use them appropriately.
+
+Do not invent listing URLs.
+
+Do not create false physical locations.
+
+Do not generate fake Google Business Profiles.
+
+Do not add fake local reviews.
+
+Do not assume editing website code automatically changes Google Maps or third-party directory listings.
+
+Add helpful links to verified external profiles only when beneficial to the user.
+
+Maintain a consistent brand identity across the website.
+
+---
+
+# SECTION 10 — VSEO AND VIDEO CONTENT
+
+Improve video search readiness.
+
+If existing videos are present:
+
+- Inspect their relevance
+- Check loading impact
+- Ensure mobile compatibility
+- Add appropriate descriptions
+- Use accessible controls
+- Add captions or transcripts where available
+- Consider VideoObject schema when eligible
+
+Build a reusable video-content section for future business videos if useful.
+
+Examples of suitable video topics:
+
+- How a mobile locksmith cuts a replacement car key
+- What car key programming involves
+- How a professional rekeys a residential lock
+- Understanding key fob problems
+- When to replace or rekey door locks
+- What happens during a mobile car lockout service
+
+Do not fabricate videos or claim a demonstration documents a real customer job when it does not.
+
+Do not autoplay videos with sound.
+
+Do not let videos slow down call-focused pages.
+
+---
+
+# SECTION 11 — BLOG / KNOWLEDGE CENTER
+
+Inspect whether the website already has a blog.
+
+If yes, preserve and improve it.
+
+If no, create a lightweight, SEO-friendly knowledge center compatible with the current architecture.
+
+Create useful, well-written initial articles for relevant customer questions.
+
+Recommended topics:
+
+1. Can a Locksmith Make a Car Key Without the Original?
+2. Why Is My Key Fob Not Working?
+3. How Much Does Car Key Programming Cost?
+4. Rekeying vs. Changing Locks: What's the Difference?
+5. What to Do When You Are Locked Out of Your Car
+6. What to Do When You Are Locked Out of Your House
+7. Can a Locksmith Program a Push-to-Start Key?
+8. Should You Rekey Your Locks After Moving?
+9. Why Won't My Car Key Turn in the Ignition?
+10. What Information Should You Have Before Calling a Mobile Locksmith?
+
+Requirements:
+
+- Original useful writing
+- Factual technical explanations
+- Natural keyword use
+- No filler content
+- No copied articles
+- Proper headings
+- Related service links
+- Accurate metadata
+- Author/publisher identity when supported
+- Appropriate article schema
+- Clear calls to action
+
+Do not fabricate technical specifics.
+
+Do not publish unsafe lock-bypass instructions that could facilitate unauthorized entry.
+
+Where important facts cannot be verified, write conservatively or mark the content for review rather than inventing an answer.
+
+---
+
+# SECTION 12 — COMPLETE PPC LANDING PAGE SYSTEM
+
+**THIS SECTION IS EXTREMELY IMPORTANT.**
+
+Build high-converting pages specifically designed for Google Ads visitors.
+
+The primary conversion goal is qualified phone calls.
+
+The landing pages must not be generic copies of the homepage.
+
+They should reflect the exact service intent of the advertisements.
+
+## 12.1 Primary PPC landing pages
+
+Inspect the project for existing paid advertising landing pages.
+
+Improve and reuse existing pages where possible.
+
+Create these pages if missing:
+
+1. `/lp/car-lockout/`
+2. `/lp/car-key-replacement/`
+3. `/lp/house-lockout/`
+4. `/lp/lock-change/`
+5. `/lp/lock-rekeying/`
+6. `/lp/safe-lockout/`
+7. `/lp/storage-unit-lockout/`
+
+Use the site's actual routing conventions if necessary.
+
+Do not produce duplicate routes.
+
+## 12.2 Recommended additional landing-page opportunities
+
+After implementing the seven primary pages, determine whether separate landing pages would improve search-intent matching for:
+
+- Car key fob programming
+- Lost car keys
+- Emergency locksmith
+- Commercial locksmith
+- Ignition repair
+- Deadbolt installation
+- Smart lock installation
+
+Create additional pages only where the service and advertising intent are genuinely distinct.
+
+Avoid thin keyword variations.
+
+## 12.3 PPC landing-page design requirements
+
+Every primary landing page must contain:
+
+### Hero section
+
+Service-specific headline.
+
+Direct explanation of the service.
+
+South Florida geographic reassurance.
+
+A highly visible Call Now button.
+
+A clearly readable phone number.
+
+Relevant photo or visual.
+
+Example for the car lockout landing page:
+
+H1: "Locked Out of Your Car?"
+
+Supporting text:
+
+"Keys locked inside? Pro Locksmith Tech provides 24/7 mobile car lockout assistance across South Florida. Call now and tell us your location."
+
+CTA:
+
+**CALL NOW — (754) 261-6528**
+
+Do not include unrelated service pitches above the primary CTA.
+
+### Second section — How the service works
+
+Explain a simple process:
+
+1. Customer calls.
+2. Customer provides location and necessary service details.
+3. Availability and pricing are discussed.
+4. A technician travels to the customer when service is arranged.
+
+Do not promise exact dispatch times.
+
+### Third section — Service-specific problems
+
+Explain the circumstances where this service is useful.
+
+Examples for car lockouts:
+
+- Keys locked inside vehicle
+- Trunk lockout, where supported
+- Vehicle access problems requiring a locksmith
+- Emergency vehicle lockout assistance
+
+Avoid claiming unsupported techniques or capabilities.
+
+### Fourth section — Trust information
+
+Explain relevant business advantages.
+
+Use verified facts only.
+
+Potential elements:
+
+- Mobile service
+- 24/7 availability
+- Specific locksmith expertise
+- Direct phone assistance
+- Service process clarity
+- Real customer feedback if available
+- Authentic service photographs
+
+### Fifth section — Frequently asked questions
+
+Create service-specific FAQs.
+
+### Sixth section — Final CTA
+
+A large, visible call button.
+
+Repeat the phone number clearly.
+
+## 12.4 Mobile sticky call button
+
+Add a persistent mobile call CTA to PPC landing pages.
+
+It must:
+
+- Remain accessible while scrolling
+- Not cover essential text
+- Respect mobile safe areas
+- Work on iOS and Android
+- Use a proper tel link
+- Have sufficient tap size
+- Be keyboard accessible where relevant
+- Not produce layout shifts
+- Avoid intrusive popups
+
+Use:
+
+**CALL NOW — (754) 261-6528**
+
+Ensure the fixed CTA does not overlap cookie notices, accessibility controls, or the bottom of the page.
+
+## 12.5 Reduce unnecessary distractions
+
+On PPC pages:
+
+- Simplify navigation where appropriate
+- Keep the brand visible
+- Keep the phone number prominent
+- Use focused headlines
+- Remove unrelated promotional sections
+- Avoid competing CTAs
+- Eliminate unnecessary forms
+- Keep core business information accessible
+- Maintain clear privacy and policy links
+
+Do not make the pages misleading or hide essential business information.
+
+## 12.6 PPC indexing strategy
+
+Evaluate whether each landing page provides substantial unique value.
+
+If the PPC page largely duplicates a public service page, consider noindex,follow and exclude it from the XML sitemap.
+
+If a landing page is substantial, unique, and appropriate for organic search, it may remain indexable.
+
+Do not blindly noindex every PPC page.
+
+Do not block noindex pages from crawling using robots.txt.
+
+Do not cloak or show materially different content to Google Ads and search crawlers.
+
+Do not link paid-only landing pages unnecessarily in the main website navigation.
+
+## 12.7 PPC campaign message matching
+
+Optimize each page to match its advertisement.
+
+For example:
+
+Car lockout ads → car lockout landing page.
+
+Key replacement ads → key replacement landing page.
+
+House lockout ads → house lockout landing page.
+
+Rekeying ads → rekeying landing page.
+
+Ensure the first visible headline matches the customer's search intent.
+
+Avoid sending all campaigns to the homepage.
+
+---
+
+# SECTION 13 — CONVERSION RATE OPTIMIZATION (CRO)
+
+Improve the entire site for qualified phone conversions.
+
+## 13.1 Phone CTAs
+
+Inspect all current call buttons.
+
+Confirm that:
+
+- Every button uses the correct number.
+- All links function.
+- No CTA leads to the wrong service.
+- No CTA opens a nonexistent form.
+- No important mobile CTA is hidden.
+- Buttons have clear accessible names.
+- Buttons have strong visual contrast.
+
+Use natural CTA variations where context requires:
+
+- Call Now
+- Call for Car Key Replacement
+- Call for Lockout Assistance
+- Call for Lock Rekeying
+- Speak With a Locksmith
+
+Maintain one consistent phone number.
+
+## 13.2 Mobile optimization
+
+Prioritize mobile visitors.
+
+Test:
+
+- Small phones
+- Large phones
+- Tablets
+- Desktop browsers
+
+Ensure:
+
+- Readable fonts
+- Comfortable line spacing
+- Large tap targets
+- No horizontal scrolling
+- No broken layouts
+- Clear service headlines
+- Visible call CTAs
+- Fast page loads
+- Accessible navigation
+- Correct image scaling
+
+## 13.3 Trust and pricing transparency
+
+Create reassuring content explaining how locksmith pricing can depend on:
+
+- Service type
+- Lock or vehicle type
+- Parts
+- Programming requirements
+- Location
+- Time of service
+- Job complexity
+
+Do not publish fabricated prices.
+
+Where appropriate, encourage customers to call for an estimate and clarify the work before dispatch.
+
+Avoid misleading pricing tactics.
+
+## 13.4 Visual hierarchy
+
+Make the most important elements visually prominent:
+
+1. Service headline
+2. Relevant explanation
+3. Call button
+4. Business identity
+5. Trust information
+6. Service details
+7. FAQs
+
+Avoid unnecessary animation, intrusive banners, excessive icons, and confusing page sections.
+
+## 13.5 Conversion testing
+
+Prepare the site for future A/B testing.
+
+Potential experiments include:
+
+- Different service headlines
+- CTA text
+- Hero layouts
+- Authentic photo placement
+- FAQ positioning
+- Process explanation length
+
+Do not claim a variant is superior without evidence.
+
+---
+
+# SECTION 14 — CONVERSION TRACKING AND ANALYTICS
+
+Audit existing tracking code.
+
+Check for Google Analytics 4, Google Tag Manager, Google Ads conversion tracking, and other analytics integrations.
+
+Do not duplicate tracking scripts.
+
+Where measurement IDs or conversion configurations are missing, create a safe configurable integration and document what must be supplied.
+
+Do not invent IDs.
+
+Track important user events where technically appropriate:
+
+- Click-to-call interactions
+- Landing-page visits
+- Service-page visits
+- Navigation interactions
+- Page engagement
+- Relevant CTA interactions
+
+Use a clear event naming system.
+
+Example event:
+
+`phone_click`
+
+Suggested useful parameters:
+
+- Page path
+- Service category
+- CTA location
+- Landing-page type
+
+Avoid sending personal information through analytics events.
+
+## 14.1 Actual phone-call attribution
+
+A click on a phone link is not proof of a completed call.
+
+Do not treat all phone-button clicks as successfully connected calls.
+
+Design tracking so it can integrate with an appropriate real call-tracking system in the future.
+
+Support attribution for:
+
+- Google Ads
+- Organic search
+- Direct website visits
+- Relevant campaigns
+
+Do not silently replace the business phone number with an external tracking number.
+
+Dynamic number insertion may be used later only when properly configured, approved, and compatible with the company's phone operations.
+
+## 14.2 Google Ads conversion quality
+
+Prepare for measurement of:
+
+- Calls initiated
+- Connected calls where supported
+- Qualified leads
+- Booked jobs
+- Completed jobs
+
+If CRM integration is unavailable, document the integration required.
+
+Do not claim to have completed offline conversion tracking without the necessary Google Ads, phone-system, or CRM access.
+
+Avoid duplicate primary conversions.
+
+Keep analytics privacy-compliant and respect consent requirements.
+
+---
+
+# SECTION 15 — IMAGE OPTIMIZATION AND VISUAL QUALITY CONTROL
+
+Audit existing website images.
+
+Identify:
+
+- Broken images
+- Oversized files
+- Incorrect aspect ratios
+- Poorly cropped photos
+- Generic unrelated stock imagery
+- Duplicated images
+- Incorrect branding
+- Missing alt text
+- Poor compression
+- Images slowing down pages
+- Text hidden inside inaccessible graphics
+
+Optimize where possible.
+
+## 15.1 Brand consistency
+
+Maintain the Pro Locksmith Tech identity.
+
+Use the website's current logo and existing brand colors unless a specific change clearly improves usability and remains consistent with the established brand.
+
+Prefer a professional dark navy / blue visual identity with high-contrast accents where compatible with the existing design.
+
+Do not randomly redesign the logo.
+
+Do not replace recognizable business branding with an unrelated template.
+
+## 15.2 Realism
+
+Locksmith images should represent plausible professional work.
+
+Check for:
+
+- Realistic tools
+- Correct lock hardware placement
+- Physically plausible technician actions
+- Proper vehicle proportions
+- No duplicate or extra fingers/hands
+- Correct company clothing
+- Logical locksmith procedures
+- Consistent character appearance
+
+Do not publish misleading images presented as evidence of real jobs.
+
+Use actual company photos where available.
+
+Do not automatically create new AI-generated images merely to fill empty sections.
+
+Use appropriate existing assets and mark genuinely missing photography needs.
+
+## 15.3 Alt text
+
+Write short, meaningful alt text for informative images.
+
+Examples:
+
+"Mobile locksmith preparing to program a replacement car key."
+
+"Residential deadbolt installed on a front door."
+
+Do not keyword-stuff alt attributes.
+
+Use empty alt text for purely decorative images.
+
+---
+
+# SECTION 16 — ACCESSIBILITY, UX AND SECURITY
+
+Follow current accessibility best practices, targeting WCAG 2.2 AA where applicable.
+
+Check:
+
+- Color contrast
+- Semantic HTML
+- Keyboard navigation
+- Focus indicators
+- Button labels
+- Heading hierarchy
+- Alt text
+- Accessible menus
+- Screen-reader support
+- Reduced motion preferences
+- Forms if any are required for legitimate non-lead functionality
+- Responsive text
+- Touch accessibility
+
+For security, review:
+
+- Vulnerable dependencies
+- Environment variable handling
+- Exposed API keys
+- Client-side secrets
+- CSP configuration
+- Security headers
+- Safe external links
+- HTTPS enforcement
+- Error information exposure
+- Untrusted HTML rendering
+- Third-party scripts
+
+Do not expose secrets in frontend code.
+
+Do not print credentials, private environment values, or sensitive configuration into reports.
+
+Avoid breaking legitimate third-party integrations when hardening security.
+
+---
+
+# SECTION 17 — CLOUDFLARE WORKERS AND DEPLOYMENT SAFETY
+
+The website is deployed through Cloudflare Workers.
+
+Preserve the existing production architecture where practical.
+
+Review available:
+
+- Build scripts
+- Worker configuration
+- Static asset handling
+- Redirects
+- Cache policies
+- Routing behavior
+- Environment handling
+- Deployment scripts
+
+Do not delete or overwrite production configuration unnecessarily.
+
+Do not disconnect GitHub or Cloudflare integrations.
+
+Do not change DNS records.
+
+Do not remove the production domain.
+
+Do not modify unrelated repositories.
+
+Do not publish directly to production unless the deployment workflow is available, tests pass, and production deployment is explicitly approved.
+
+Create a build-ready implementation inside the current project.
+
+If automated deployment requires external authorization, explain the exact remaining steps.
+
+Ensure both the root and www domains remain correctly supported.
+
+---
+
+# SECTION 18 — SEO AND PPC PAGE DESIGN STANDARDS
+
+Use a consistent design system.
+
+Recommended characteristics:
+
+- Premium modern appearance
+- Professional locksmith branding
+- High-contrast readable typography
+- Clean white space
+- Navy/blue visual identity
+- Clear accent-color call buttons
+- Responsive grid layouts
+- Distinct section hierarchy
+- Optimized authentic photos
+- Clear business phone number
+- High-quality service-specific copy
+- Fast loading
+- Minimal distractions
+- Accessible navigation
+
+The website should look like a trustworthy professional service business, not a low-quality lead-generation template.
+
+Prioritize usability and clarity over decorative effects.
+
+Avoid making all pages look identical when their services and customer needs differ.
+
+Maintain consistent components without duplicating irrelevant content.
+
+---
+
+# SECTION 19 — AUTOMATED TESTS AND QUALITY ASSURANCE
+
+After implementing improvements, perform as many of the following tests as the environment supports.
+
+## 19.1 Build validation
+
+- Install dependencies using the existing package manager.
+- Run type checking if configured.
+- Run linting.
+- Run the production build.
+- Fix errors.
+- Run existing test suites.
+- Add focused tests for important new functionality.
+
+Do not claim tests passed unless they actually ran.
+
+## 19.2 Routing tests
+
+Test the homepage.
+
+Test every service route.
+
+Test the existing cities index.
+
+Test existing city pages.
+
+Test blog pages.
+
+Test the seven PPC pages.
+
+Test invalid URLs.
+
+Test page refresh on nested routes.
+
+Test redirects.
+
+## 19.3 CTA testing
+
+Verify the exact phone link:
+
+tel:+17542616528
+
+Inspect all instances.
+
+Verify no incorrect numbers remain.
+
+Verify CTA behavior for mobile.
+
+Check sticky CTA overlap.
+
+## 19.4 SEO tests
+
+Verify:
+
+- Title tags
+- Descriptions
+- Canonical tags
+- Sitemap
+- Robots.txt
+- Index directives
+- Heading structure
+- Internal links
+- Structured data
+- Rendered HTML
+- Redirects
+- HTTP statuses
+
+## 19.5 Performance tests
+
+Run available audits.
+
+Compare actual measured results where possible.
+
+Avoid inventing before-and-after scores.
+
+## 19.6 Visual tests
+
+Review desktop and mobile layouts.
+
+Look for:
+
+- Overlapping elements
+- Truncated text
+- Broken menus
+- Oversized buttons
+- Poor image cropping
+- Horizontal overflow
+- Footer problems
+- Sticky CTA interference
+- Inconsistent spacing
+
+## 19.7 Regression tests
+
+Ensure previously working features still function.
+
+Preserve existing service coverage information.
+
+Preserve the city index.
+
+Preserve existing legitimate content.
+
+Preserve the business number.
+
+Preserve hosting compatibility.
+
+---
+
+# SECTION 20 — IMPLEMENTATION PRIORITIES
+
+Complete the project in the following order.
+
+## Priority 1 — Critical technical fixes
+
+- Broken routes
+- Incorrect HTTP statuses
+- Search crawling problems
+- Rendering issues
+- Duplicate canonical URLs
+- Missing sitemap or robots configuration
+- Broken call buttons
+- Critical mobile layout failures
+
+## Priority 2 — Phone conversion optimization
+
+- Homepage hero
+- Global phone CTAs
+- Mobile sticky call buttons
+- Clear messaging
+- Trust information
+- Service-specific calls to action
+
+## Priority 3 — PPC landing pages
+
+Build and optimize all seven primary landing pages.
+
+Ensure every page is usable immediately for its intended advertisement campaign, subject to Google Ads review and external tracking configuration.
+
+## Priority 4 — Organic SEO architecture
+
+- Improve existing service pages
+- Create missing high-value pages
+- Improve internal linking
+- Optimize existing cities directory
+- Repair metadata
+- Implement structured data
+
+## Priority 5 — AEO, GEO, AIO, MEO and content
+
+- Factual FAQs
+- Direct-answer sections
+- Knowledge center
+- Business information consistency
+- Local SEO improvements
+- Video SEO foundations
+
+## Priority 6 — Performance and final QA
+
+- Optimize images
+- Optimize JavaScript
+- Test navigation
+- Test SEO output
+- Test mobile usability
+- Verify production build
+- Fix regressions
+
+---
+
+# SECTION 21 — SPECIFIC DELIVERABLES
+
+By the end of implementation, provide the following:
+
+### A. Website audit report
+
+Explain:
+
+- What existed originally
+- What was already correct
+- What was broken
+- What was missing
+- What you changed
+- What remains unresolved
+
+### B. Technical change log
+
+List significant files created and modified.
+
+Explain important architectural changes.
+
+### C. SEO improvement report
+
+List:
+
+- Updated metadata
+- Sitemap changes
+- Robots improvements
+- Canonical fixes
+- Structured data additions
+- Internal-link improvements
+- Service-page improvements
+- City directory improvements
+
+### D. PPC landing-page inventory
+
+For each landing page, provide:
+
+- Exact route
+- Service target
+- Main headline
+- Primary CTA
+- Indexing strategy
+- Conversion event implementation status
+
+### E. Content inventory
+
+Identify:
+
+- Newly created service pages
+- Updated service pages
+- Updated city directory
+- New articles
+- New FAQs
+- Added internal links
+
+### F. Test results
+
+Provide actual results for:
+
+- Production build
+- Linting / type checking where available
+- Routing tests
+- CTA checks
+- Metadata checks
+- Structured data validation
+- Mobile layout checks
+- Performance measurements where available
+
+Clearly label anything not tested.
+
+### G. External actions needed
+
+Identify tasks that cannot be completed within Google AI Studio, such as:
+
+- Google Search Console verification
+- Sitemap submission
+- Google Ads conversion setup
+- GA4 configuration
+- Google Business Profile changes
+- Cloudflare dashboard configuration
+- Live deployment approval
+
+Do not falsely state that these external actions were completed.
+
+---
+
+# SECTION 22 — IMPORTANT RESTRICTIONS
+
+Follow all of these requirements:
+
+1. Do not delete the website and start over.
+2. Do not unnecessarily replace the existing React/Vite architecture.
+3. Do not destroy working pages.
+4. Do not remove the current cities/service-area index.
+5. Do not create a duplicate cities-directory page.
+6. Do not use "Serving Coral Springs and South Florida" as general marketing wording.
+7. Use "Serving South Florida" where appropriate.
+8. Keep the business name Pro Locksmith Tech.
+9. Keep the phone number (754) 261-6528.
+10. Keep all call links functional.
+11. Do not add contact forms.
+12. Keep the 24/7/365 service message.
+13. Do not invent a storefront.
+14. Do not claim "Licensed and Insured" without verification.
+15. Do not fabricate reviews, ratings, certifications, prices, or response times.
+16. Do not fabricate local city locations.
+17. Do not generate hundreds of thin SEO pages.
+18. Do not duplicate existing PPC pages.
+19. Do not make unnecessary DNS changes.
+20. Do not disconnect existing integrations.
+21. Do not expose private keys or credentials.
+22. Do not make unverified SEO ranking guarantees.
+23. Do not create fake testimonials or misleading job evidence.
+24. Do not treat phone-button clicks as completed calls.
+25. Do not report tests as passed without executing them.
+26. Do not change the production hosting architecture unnecessarily.
+27. Do not deploy to production without authorization.
+28. Do not stop after explaining what should be done.
+29. Implement fixes and improvements in the actual project.
+30. Preserve functionality and verify important changes.
+
+---
+
+# SECTION 23 — FINAL EXECUTION INSTRUCTIONS
+
+You have authorization to inspect and improve the website project.
+
+Begin by examining the complete project structure, existing routes, service pages, existing city directory, landing pages, and technical configuration.
+
+Then:
+
+**STEP 1:** Complete the code and content audit.
+
+**STEP 2:** Identify confirmed technical defects and fix them.
+
+**STEP 3:** Correct geographic wording throughout the site, removing redundant "Coral Springs and South Florida" phrasing.
+
+**STEP 4:** Find and optimize the existing cities/service-area index instead of duplicating it.
+
+**STEP 5:** Improve the homepage for organic search and inbound phone calls.
+
+**STEP 6:** Improve existing service pages and create genuinely missing pages.
+
+**STEP 7:** Create or upgrade the seven primary Google Ads landing pages.
+
+**STEP 8:** Implement mobile-focused phone conversion features.
+
+**STEP 9:** Improve technical SEO, metadata, sitemap, robots, canonical URLs, and structured data.
+
+**STEP 10:** Improve AEO, GEO, AIO, MEO, VSEO, and user experience.
+
+**STEP 11:** Create useful knowledge-center content where missing.
+
+**STEP 12:** Optimize images, loading performance, accessibility, and security.
+
+**STEP 13:** Implement available analytics and phone-click measurement without inventing external credentials.
+
+**STEP 14:** Run production builds, tests, and visual checks.
+
+**STEP 15:** Fix issues discovered during testing.
+
+**STEP 16:** Deliver a complete implementation report and list any external tasks requiring my approval or credentials.
+
+If the task exceeds your available context or execution capacity, save an explicit implementation checklist and progress record in the project, continue from the next incomplete item, and never claim that unfinished work was completed.
+
+Do not repeatedly request confirmation for ordinary project-level changes already authorized above.
+
+Only request additional input when a real business fact, credential, external permission, irreversible action, or production deployment authorization is genuinely required.
+
+**FINAL OBJECTIVE:**
+
+Transform Pro Locksmith Tech into a fast, professional, technically reliable, mobile-first locksmith website that can attract organic search traffic, provide useful answers to customers, improve local and AI-search discoverability, and generate more qualified phone calls from future Google Ads campaigns.
+
+**DO THE ACTUAL DEVELOPMENT WORK. MAKE THE CHANGES IN THE EXISTING PROJECT. TEST YOUR WORK. PRESERVE WHAT ALREADY WORKS. PROVIDE A COMPLETE REPORT OF THE RESULTS.**

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Phone, MessageSquare } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { trackPhoneClick } from '../utils/analytics';
 
 export function MobileCallBar() {
   const { t, isSpanish } = useLanguage();
@@ -24,6 +25,7 @@ export function MobileCallBar() {
         {/* PRIMARY ULTRA-PROMINENT CALL BUTTON */}
         <a
           href="tel:+17542616528"
+          onClick={() => trackPhoneClick({ ctaLocation: 'mobile_sticky_bottom_bar', pagePath: window.location.pathname })}
           className="flex-1 flex items-center justify-center gap-2.5 py-3 px-4 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 active:from-amber-500 active:to-amber-700 text-slate-950 font-black rounded-xl shadow-lg shadow-amber-500/40 transition-transform active:scale-[0.98]"
           aria-label="Call Pro Locksmith Tech now at +1 754-261-6528"
         >

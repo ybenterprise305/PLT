@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-import { MapPin, Phone, ArrowRight, Navigation, MessageSquare } from 'lucide-react';
+import React, { useState, useMemo } from 'react';
+import { MapPin, Phone, ArrowRight, Navigation, MessageSquare, Search, CheckCircle2 } from 'lucide-react';
 import { COUNTIES_DATA, getAllCities } from '../data/locationsData';
 import { SEOHead } from '../components/SEOHead';
 import { SouthFloridaMap } from '../components/SouthFloridaMap';
 import { locksmithVanImg } from '../assets/images';
 import { useLanguage } from '../context/LanguageContext';
 import { SPANISH_COUNTIES } from '../data/spanishTranslations';
+import { trackPhoneClick } from '../utils/analytics';
 
 interface ServiceAreasPageProps {
   onNavigate: (path: string) => void;
@@ -14,11 +15,65 @@ interface ServiceAreasPageProps {
 export function ServiceAreasPage({ onNavigate }: ServiceAreasPageProps) {
   const { isSpanish } = useLanguage();
   const [selectedCountyFilter, setSelectedCountyFilter] = useState<string>('all');
-  const allCities = getAllCities();
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const allCities = useMemo(() => getAllCities(), []);
 
-  const filteredCities = selectedCountyFilter === 'all'
-    ? allCities
-    : allCities.filter(c => c.county.slug === selectedCountyFilter);
+  const filteredCities = useMemo(() => {
+    return allCities.filter(({ city, county }) => {
+      const matchesCounty = selectedCountyFilter === 'all' || county.slug === selectedCountyFilter;
+      if (!matchesCounty) return false;
+      if (!searchQuery.trim()) return true;
+
+      const query = searchQuery.toLowerCase().trim();
+      const nameMatch = city.name.toLowerCase().includes(query);
+      const countyMatch = county.name.toLowerCase().includes(query);
+      const zipMatch = city.zipCodes.some(zip => zip.includes(query));
+      const areaMatch = city.popularAreas.some(area => area.toLowerCase().includes(query));
+
+      return nameMatch || countyMatch || zipMatch || areaMatch;
+    });
+  }, [allCities, selectedCountyFilter, searchQuery]);
+
+  // Schema.org ItemList for Service Area Cities Index
+  const serviceAreasSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["Locksmith", "LocalBusiness", "AutomotiveBusiness"],
+        "@id": "https://prolocksmith-tech.com/service-areas#locksmith",
+        "name": "Pro Locksmith Tech - Mobile Locksmith Service Areas",
+        "url": "https://prolocksmith-tech.com/service-areas",
+        "telephone": "+1-754-261-6528",
+        "email": "prolocksmithtech@gmail.com",
+        "image": "https://prolocksmith-tech.com/icon-512.png",
+        "priceRange": "$$",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Coral Springs",
+          "addressRegion": "FL",
+          "postalCode": "33076",
+          "addressCountry": "US"
+        },
+        "description": "24/7 mobile locksmith dispatch covering 37 cities across Broward, Miami-Dade, and Palm Beach counties in South Florida.",
+        "areaServed": COUNTIES_DATA.map(county => ({
+          "@type": "AdministrativeArea",
+          "name": `${county.name}, Florida`
+        }))
+      },
+      {
+        "@type": "ItemList",
+        "@id": "https://prolocksmith-tech.com/service-areas#cities",
+        "name": "South Florida Mobile Locksmith Coverage Cities",
+        "numberOfItems": allCities.length,
+        "itemListElement": allCities.map(({ city }, index) => ({
+          "@type": "ListItem",
+          "position": index + 1,
+          "name": `Locksmith Services in ${city.name}, FL`,
+          "url": `https://prolocksmith-tech.com/service-areas/${city.slug}`
+        }))
+      }
+    ]
+  };
 
   return (
     <div className="min-h-screen bg-slate-900 text-slate-100 py-12">
@@ -27,10 +82,16 @@ export function ServiceAreasPage({ onNavigate }: ServiceAreasPageProps) {
           ? "Áreas de Servicio de Cerrajería Móvil | Sur de la Florida | Pro Locksmith Tech"
           : "Locksmith Service Areas | South Florida | Pro Locksmith Tech"}
         description={isSpanish
-          ? "Pro Locksmith Tech atiende el Sur de la Florida con cerrajería móvil 24/7 en los condados de Broward, Miami-Dade y Palm Beach. Mapa interactivo y directorio de ciudades. Llame al +1 754-261-6528."
-          : "Pro Locksmith Tech serves South Florida with 24/7 mobile locksmith solutions across Broward, Miami-Dade, and Palm Beach counties. Interactive map and cities directory. Call +1 754-261-6528."}
+          ? "Pro Locksmith Tech atiende el Sur de la Florida con cerrajería móvil 24/7 en los condados de Broward, Miami-Dade y Palm Beach. Directorio de 37 ciudades con despacho rápido. Llame al +1 754-261-6528."
+          : "Pro Locksmith Tech serves South Florida with 24/7 mobile locksmith solutions across Broward, Miami-Dade, and Palm Beach counties. Interactive map and 37-city directory. Call +1 754-261-6528."}
         canonicalPath="/service-areas"
         keywords="locksmith South Florida, cerrajero South Florida, mobile locksmith South Florida, locksmith Broward County, locksmith Miami, locksmith Palm Beach County, emergency locksmith service areas"
+      />
+
+      {/* Structured Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceAreasSchema) }}
       />
 
       {/* Hero Header */}
@@ -57,6 +118,7 @@ export function ServiceAreasPage({ onNavigate }: ServiceAreasPageProps) {
               <div className="flex flex-col sm:flex-row gap-3 pt-2">
                 <a
                   href="tel:+17542616528"
+                  onClick={() => trackPhoneClick({ ctaLocation: 'service_areas_hero_call', pagePath: '/service-areas' })}
                   className="inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm shadow-lg transition-transform hover:scale-[1.02]"
                 >
                   <Phone className="w-4 h-4 fill-current" />
@@ -159,6 +221,33 @@ export function ServiceAreasPage({ onNavigate }: ServiceAreasPageProps) {
             </div>
           </div>
 
+          {/* Real-time City Search Bar */}
+          <div className="mb-5">
+            <div className="relative max-w-md">
+              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder={isSpanish ? "Buscar por ciudad o código postal (ej. Fort Lauderdale, 33301)..." : "Search by city, zip code, or area (e.g., Boca Raton, 33076)..."}
+                className="w-full bg-slate-900 border border-slate-800 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-amber-400 transition-colors"
+              />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery('')}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-white cursor-pointer"
+                >
+                  ✕
+                </button>
+              )}
+            </div>
+            {searchQuery && (
+              <div className="text-[11px] text-slate-400 mt-2">
+                {isSpanish ? `Mostrando ${filteredCities.length} de ${allCities.length} ciudades` : `Showing ${filteredCities.length} of ${allCities.length} cities`}
+              </div>
+            )}
+          </div>
+
           {/* Instant City Click Buttons */}
           <div className="flex flex-wrap gap-2.5">
             {filteredCities.map(({ city, county }) => (
@@ -172,6 +261,11 @@ export function ServiceAreasPage({ onNavigate }: ServiceAreasPageProps) {
                 <span className="text-[10px] text-slate-400 group-hover:text-slate-900">({county.name.replace(' County', '')})</span>
               </button>
             ))}
+            {filteredCities.length === 0 && (
+              <div className="py-6 text-center w-full text-slate-400 text-xs">
+                {isSpanish ? 'No se encontraron ciudades que coincidan con la búsqueda.' : 'No cities matched your search query. Try another city name or zip code.'}
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -213,6 +307,7 @@ export function ServiceAreasPage({ onNavigate }: ServiceAreasPageProps) {
                   </button>
                   <a
                     href="tel:+17542616528"
+                    onClick={() => trackPhoneClick({ ctaLocation: `service_areas_county_${county.slug}`, pagePath: '/service-areas' })}
                     className="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs rounded-xl shadow transition-transform"
                   >
                     {isSpanish ? 'Llamar: (754) 261-6528' : 'Call (754) 261-6528'}

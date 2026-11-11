@@ -7,6 +7,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { LanguageToggle } from './LanguageToggle';
 import { SocialLinks } from './SocialLinks';
 import { SPANISH_SERVICES, SPANISH_COUNTIES } from '../data/spanishTranslations';
+import { trackPhoneClick } from '../utils/analytics';
 
 interface FooterProps {
   onNavigate: (path: string) => void;
@@ -32,8 +33,8 @@ export function Footer({ onNavigate }: FooterProps) {
 
             <p className="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-sm">
               {isSpanish 
-                ? 'Pro Locksmith Tech es un servicio de cerrajería 100% móvil con sede de despacho en Coral Springs, Florida. Atendemos emergencias automotrices, residenciales y comerciales en los condados de Broward, Miami-Dade y Palm Beach directamente en su ubicación.'
-                : 'Pro Locksmith Tech is a 100% mobile locksmith service provider based in Coral Springs, FL. We dispatch equipped mobile workshop vans directly to your stranded vehicle, home, or commercial facility across Broward, Miami-Dade, and Palm Beach counties.'}
+                ? 'Pro Locksmith Tech es un servicio de cerrajería 100% móvil en el Sur de la Florida. Atendemos emergencias automotrices, residenciales y comerciales en los condados de Broward, Miami-Dade y Palm Beach directamente en su ubicación.'
+                : 'Pro Locksmith Tech is a 100% mobile locksmith service provider in South Florida. We dispatch equipped mobile workshop vans directly to your stranded vehicle, home, or commercial facility across Broward, Miami-Dade, and Palm Beach counties.'}
             </p>
 
             {/* SAB Privacy & Operational Reassurance */}
@@ -44,8 +45,8 @@ export function Footer({ onNavigate }: FooterProps) {
               </div>
               <p className="text-[11px] text-slate-400 leading-normal">
                 {isSpanish
-                  ? 'No operamos una tienda física al público. Todos los servicios se realizan en su ubicación en Coral Springs, FL 33076 y todo el Sur de la Florida.'
-                  : 'We operate as a mobile service without a walk-in storefront. Technicians come directly to you in Coral Springs, FL 33076 and surrounding South Florida cities.'}
+                  ? 'Operamos como un servicio 100% móvil sin tienda de atención al público. Nuestros técnicos viajan directamente a su vehículo, residencia o empresa en todo el Sur de la Florida.'
+                  : 'We operate as a 100% mobile service without a walk-in storefront. Technicians travel directly to your vehicle, home, or business throughout our South Florida service area.'}
               </p>
             </div>
 
@@ -53,6 +54,7 @@ export function Footer({ onNavigate }: FooterProps) {
             <div className="pt-1 space-y-2">
               <a 
                 href="tel:+17542616528" 
+                onClick={() => trackPhoneClick({ ctaLocation: 'footer_call_link', pagePath: window.location.pathname })}
                 className="flex items-center gap-3 text-amber-400 hover:text-amber-300 font-bold text-base transition-colors group"
               >
                 <div className="w-9 h-9 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center group-hover:bg-amber-500/20 transition-colors">

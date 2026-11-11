@@ -10,6 +10,7 @@ import { Logo } from './Logo';
 import { useLanguage } from '../context/LanguageContext';
 import { LanguageToggle } from './LanguageToggle';
 import { SocialLinks } from './SocialLinks';
+import { trackPhoneClick } from '../utils/analytics';
 
 interface HeaderProps {
   currentPath: string;
@@ -51,7 +52,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
             </div>
             <div className="hidden md:flex items-center gap-1 text-slate-400 text-xs">
               <MapPin className="w-3.5 h-3.5 text-amber-400" />
-              <span>{isSpanish ? 'Coral Springs y Todo el Sur de la Florida' : 'Coral Springs & South Florida Region'}</span>
+              <span>{isSpanish ? 'Cerrajería Móvil en Todo el Sur de la Florida' : 'Serving All of South Florida'}</span>
             </div>
           </div>
 
@@ -70,6 +71,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
             {/* Fast Call Button */}
             <a
               href="tel:+17542616528"
+              onClick={() => trackPhoneClick({ ctaLocation: 'header_call_btn', pagePath: currentPath })}
               className="px-2.5 py-1 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-[11px] sm:text-xs rounded uppercase tracking-wider transition-colors shadow-sm flex items-center gap-1"
               title={isSpanish ? "Llamar a Cerrajería Móvil" : "Click to Call Mobile Dispatch"}
             >
@@ -80,6 +82,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
             {/* Direct Phone Number */}
             <a
               href="tel:+17542616528"
+              onClick={() => trackPhoneClick({ ctaLocation: 'header_phone_number', pagePath: currentPath })}
               className="text-amber-400 hover:text-amber-300 font-bold text-xs sm:text-sm tracking-tight transition-colors pl-0.5"
             >
               (754) 261-6528
@@ -155,6 +158,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
             <div className="hidden sm:flex items-center gap-3">
               <a
                 href="tel:+17542616528"
+                onClick={() => trackPhoneClick({ ctaLocation: 'header_main_btn', pagePath: currentPath })}
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 hover:from-amber-300 hover:to-amber-500 text-slate-950 font-black text-sm uppercase tracking-wider shadow-lg shadow-amber-500/25 transition-transform hover:scale-[1.02] active:scale-[0.98]"
               >
                 <Phone className="w-4 h-4 fill-current animate-pulse" />
@@ -167,6 +171,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
               <LanguageToggle variant="compact" />
               <a
                 href="tel:+17542616528"
+                onClick={() => trackPhoneClick({ ctaLocation: 'header_mobile_top_btn', pagePath: currentPath })}
                 className="px-3 py-2 rounded-lg bg-amber-500 text-slate-950 font-black shadow-md flex items-center gap-1.5 text-xs uppercase"
                 aria-label="Call Pro Locksmith Tech"
               >
@@ -255,6 +260,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
 
               <a
                 href="tel:+17542616528"
+                onClick={() => trackPhoneClick({ ctaLocation: 'header_drawer_call_btn', pagePath: currentPath })}
                 className="w-full py-3 px-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs uppercase rounded-xl flex items-center justify-center gap-1.5 shadow-lg shadow-amber-500/20"
               >
                 <Phone className="w-4 h-4 fill-current" />

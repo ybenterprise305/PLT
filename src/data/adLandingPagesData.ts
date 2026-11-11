@@ -20,7 +20,7 @@ export interface AdCampaignConfig {
 
 export const AD_CAMPAIGNS: AdCampaignConfig[] = [
   {
-    slug: 'car-lockouts',
+    slug: 'car-lockout',
     serviceId: 'automotive-locksmith',
     name: 'Emergency Car Lockouts',
     urgencyBadge: '15-20 Min Emergency Arrival · Non-Destructive',
@@ -108,7 +108,7 @@ export const AD_CAMPAIGNS: AdCampaignConfig[] = [
     ]
   },
   {
-    slug: 'house-lockouts',
+    slug: 'house-lockout',
     serviceId: 'emergency-lockout-service',
     name: 'Emergency House Lockouts',
     urgencyBadge: '24/7 Priority Dispatch · Non-Destructive Door Opening',
@@ -418,9 +418,233 @@ export const AD_CAMPAIGNS: AdCampaignConfig[] = [
         answer: 'Yes! That is called "fresh door preparation." We use precision clamp-on boring jigs to cut the exact 2-1/8 inch cross bore and 1 inch edge bore holes without chipping your door finish.'
       }
     ]
+  },
+  {
+    slug: 'lock-change',
+    serviceId: 'lock-replacement',
+    name: 'Lock Replacement & Installation',
+    urgencyBadge: 'Upgrade Security · New Hardware Installed On-Site',
+    headline: 'Need to Change Your Locks? Professional Mobile Lock Replacement',
+    subheadline: 'Damaged locks, worn cylinders, or moving into a new property? Pro Locksmith Tech travels directly to your home or business with fresh deadbolts, keypads, and handlesets ready for immediate installation across South Florida.',
+    targetKeywords: [
+      'lock change South Florida',
+      'change door locks Fort Lauderdale',
+      'replace deadbolt locks Boca Raton',
+      'lock replacement Miami',
+      'install new front door locks'
+    ],
+    recommendedAdCopy: {
+      headline: 'Change Your Locks Today | Mobile Lock Replacement | (754) 261-6528',
+      description: 'Upgrade your home or business security. We install brand-new deadbolts and handlesets on-site across South Florida. Call now!'
+    },
+    keyBenefits: [
+      'Top-tier Grade 1 & Grade 2 deadbolts and handlesets stocked inside our mobile vans',
+      'Precision door prep and mortising to ensure smooth, jam-free latching',
+      'Multiple keys provided with option to key all exterior doors to one single key',
+      'Upfront pricing communication before work begins with no hidden dispatch charges'
+    ],
+    vehicleOrHardwareSupported: [
+      'Schlage, Kwikset, Yale, Baldwin, Medeco, Mul-T-Lock',
+      'Heavy-duty residential deadbolts & decorative handlesets',
+      'Commercial storefront mortise cylinders & Adams Rite locks',
+      'Electronic keypads, smart deadbolts & keyless entry systems'
+    ],
+    faq: [
+      {
+        question: 'Should I change my locks or just rekey them?',
+        answer: 'If your existing lock hardware is physically damaged, tarnished by Florida coastal air, or mechanically loose, a full lock change provides fresh durability and enhanced security. If the hardware is in great shape, rekeying is a cost-effective alternative.'
+      },
+      {
+        question: 'Do you carry replacement locks in your mobile vans?',
+        answer: 'Yes. Our mobile workshop vans carry a wide inventory of residential and commercial deadbolts, entry knobs, and levers in satin nickel, matte black, and polished brass finishes.'
+      }
+    ]
+  },
+  {
+    slug: 'safe-lockout',
+    serviceId: 'commercial-locksmith',
+    name: 'Safe Lockouts & Opening',
+    urgencyBadge: 'Dial & Digital Keypad Access · Mobile Service',
+    headline: 'Locked Out of Your Safe? Mobile Safe Lockout Assistance in South Florida',
+    subheadline: 'Forgotten safe combination, dead electronic keypad, or malfunctioning boltwork? Pro Locksmith Tech provides professional safe opening assistance for home and commercial document and security safes.',
+    targetKeywords: [
+      'safe lockout South Florida',
+      'safe opening Fort Lauderdale',
+      'locked out of safe Miami',
+      'gun safe opening Broward',
+      'commercial safe locksmith'
+    ],
+    recommendedAdCopy: {
+      headline: 'Locked Out of Your Safe? | Mobile Safe Locksmith | (754) 261-6528',
+      description: 'Forgotten combination or malfunctioning digital keypad? We assist with residential & commercial safe lockouts across South Florida.'
+    },
+    keyBenefits: [
+      'Assistance for electronic digital keypads, mechanical dial locks, and key locks',
+      'Careful evaluation to determine the most effective, least-invasive opening technique',
+      'Mobile service performed on-site at your residence or commercial facility',
+      'Strict identity and ownership verification required for security compliance'
+    ],
+    vehicleOrHardwareSupported: [
+      'SentrySafe, Honeywell, First Alert home document safes',
+      'Liberty, Winchester, Cannon, Browning gun safes',
+      'Commercial drop safes, cash registers & office security cabinets',
+      'Electronic digital solenoid & mechanical combination dials'
+    ],
+    faq: [
+      {
+        question: 'What do I need to prepare before requesting a safe lockout service?',
+        answer: 'You will need to provide proof of ownership and valid government-issued photo ID. Having the safe manufacturer brand, approximate model number, and lock type (key, dial, or digital keypad) helps our technicians prepare the correct equipment.'
+      },
+      {
+        question: 'Can you open a safe with a dead electronic keypad battery?',
+        answer: 'Yes. Often digital safes have external battery jumper terminals or a hidden mechanical bypass lock behind the faceplate. If those fail, we use specialized safe diagnostic techniques.'
+      }
+    ]
+  },
+  {
+    slug: 'storage-unit-lockout',
+    serviceId: 'commercial-locksmith',
+    name: 'Storage Unit Lockouts',
+    urgencyBadge: 'Lost Storage Keys · Safe Padlock Removal On-Site',
+    headline: 'Locked Out of Your Storage Unit? Mobile Padlock Removal & Replacement',
+    subheadline: 'Lost your storage unit padlock key or has your combination dial seized? Pro Locksmith Tech travels directly to your self-storage facility to open your unit latch cleanly and supply a brand-new high-security padlock.',
+    targetKeywords: [
+      'storage unit lockout South Florida',
+      'storage lock removal Fort Lauderdale',
+      'cut storage padlock Miami',
+      'lost storage unit key Broward',
+      'Public Storage lock removal'
+    ],
+    recommendedAdCopy: {
+      headline: 'Locked Out of Your Storage Unit? | Mobile Locksmith | (754) 261-6528',
+      description: 'Lost keys or jammed disc padlock? We meet you at your storage facility across South Florida. Fast dispatch & new lock provided.'
+    },
+    keyBenefits: [
+      'Direct mobile dispatch to your self-storage facility anywhere in South Florida',
+      'Specialized removal of hardened steel disc padlocks and cylinder latches',
+      'Door latch and track protected from damage during lock removal',
+      'Fresh replacement disc padlock or cylinder lock supplied immediately on-site'
+    ],
+    vehicleOrHardwareSupported: [
+      'Stainless steel round disc padlocks (Master Lock, Abus, Chateau)',
+      'Storage facility internal cylinder slide latch locks',
+      'Heavy-duty brass padlocks, laminated padlocks & combination dials',
+      'Public Storage, Extra Space, CubeSmart & Life Storage facility units'
+    ],
+    faq: [
+      {
+        question: 'Will self-storage management permit a locksmith to open my unit?',
+        answer: 'Yes, provided you are the registered tenant on the lease agreement. Most storage facilities require you to check in at the front office with your government photo ID and storage contract before we access the unit.'
+      },
+      {
+        question: 'Do you carry replacement padlocks so I can lock my unit immediately?',
+        answer: 'Yes. Our technicians carry heavy-duty stainless steel disc padlocks and cylinder locks that meet all storage facility standards, complete with two fresh keys.'
+      }
+    ]
+  },
+  {
+    slug: 'car-key-fob-programming',
+    serviceId: 'automotive-locksmith',
+    name: 'Car Key Fob Programming',
+    urgencyBadge: 'OBD-II Diagnostic Pairing · Push-to-Start Smart Keys',
+    headline: 'Car Key Fob Not Working? Mobile Programming at Your Location',
+    subheadline: 'Unresponsive keyless remote, unprogrammed smart proximity fob, or replacement fob needing calibration? Pro Locksmith Tech brings dealer-level OBD diagnostic programmers directly to your vehicle across South Florida.',
+    targetKeywords: [
+      'car key fob programming South Florida',
+      'program push to start key Fort Lauderdale',
+      'mobile key fob programmer Miami',
+      'smart key programming Boca Raton',
+      'transponder chip pairing'
+    ],
+    recommendedAdCopy: {
+      headline: 'Car Key Fob Programming | Mobile Service at Your Car | (754) 261-6528',
+      description: 'Expert keyless remote & push-to-start smart fob programming right at your vehicle in South Florida. Skip the dealership wait!'
+    },
+    keyBenefits: [
+      'Direct connection via vehicle OBD-II diagnostic port for factory-exact pairing',
+      'Compatible with smart proximity remotes, remote head keys, and transponder chips',
+      'On-site key blade cutting included for emergency door access inserts',
+      'Clear upfront estimate based on your specific vehicle year, make, and model'
+    ],
+    vehicleOrHardwareSupported: [
+      'Smart push-button proximity fobs (PEPS)',
+      'Flip key remotes and integrated remote head keys',
+      'Transponder immobilizer chip keys',
+      'Domestic, Asian, and European passenger vehicles and light trucks'
+    ],
+    faq: [
+      {
+        question: 'What information should I have ready when calling about a key fob?',
+        answer: 'Please provide the exact year, make, and model of your vehicle, whether it starts with a physical turn-key or a push-button start, and whether you have any existing working fobs.'
+      },
+      {
+        question: 'Can you program a key fob I already purchased online?',
+        answer: 'We stock pre-tested, high-quality compatible fobs. If you purchased your own fob, we can attempt programming, but functionality depends on whether the internal circuit frequency and transponder chip match your vehicle specifications.'
+      }
+    ]
+  },
+  {
+    slug: 'lost-car-keys',
+    serviceId: 'key-replacement',
+    name: 'Lost Car Key Replacement',
+    urgencyBadge: 'No Spare Key Needed · Key Origination On-Site',
+    headline: 'Lost All Your Car Keys? We Generate Brand-New Keys from Scratch',
+    subheadline: 'Lost your only car key with zero spares? Do not pay hundreds for flatbed dealership towing. Pro Locksmith Tech decodes your vehicle locks and cuts/programs brand-new keys right at your stranded location in South Florida.',
+    targetKeywords: [
+      'lost all car keys South Florida',
+      'no spare car key Fort Lauderdale',
+      'make car key without original Miami',
+      'lost keys to car Boca Raton',
+      'mobile replacement car key maker'
+    ],
+    recommendedAdCopy: {
+      headline: 'Lost All Car Keys? | Brand-New Keys Made On-Site | (754) 261-6528',
+      description: 'No spare? No towing needed! We decode your lock and program new keys directly at your vehicle. 24/7 mobile service across South Florida.'
+    },
+    keyBenefits: [
+      'Key Origination: We create new functional keys even when all originals are missing',
+      'Precision mechanical lock decoding using specialized automotive diagnostic tools',
+      'Computerized laser key cutting and chip programming completed on-site',
+      'Eliminates expensive tow truck costs and days of dealership scheduling delays'
+    ],
+    vehicleOrHardwareSupported: [
+      'Laser-cut sidewinder high-security keys',
+      'Smart push-button start proximity key fobs',
+      'Transponder chip keys (domestic and foreign makes)',
+      'Commercial fleet vehicles, vans, and pickup trucks'
+    ],
+    faq: [
+      {
+        question: 'How does a locksmith make a car key without the original?',
+        answer: 'Our mobile technicians use specialized optical and mechanical decoders to read the depth of the lock tumblers inside your vehicle door or ignition. The key cuts are then calculated and cut to factory specifications on a computerized laser key cutter in our van.'
+      },
+      {
+        question: 'What documents are required when you replace lost car keys?',
+        answer: 'To protect vehicle owners, you must provide proof of vehicle ownership (title or registration) and a matching government-issued photo ID before work begins.'
+      }
+    ]
   }
 ];
 
 export function getAdCampaignBySlug(slug: string): AdCampaignConfig | undefined {
-  return AD_CAMPAIGNS.find(c => c.slug === slug || c.serviceId === slug);
+  if (!slug) return undefined;
+  const normalized = slug.toLowerCase().replace(/\/+$/, '').trim();
+  
+  // Exact match
+  const exact = AD_CAMPAIGNS.find(c => c.slug === normalized);
+  if (exact) return exact;
+
+  // Plural/singular normalization
+  const singular = normalized.endsWith('s') ? normalized.slice(0, -1) : normalized;
+  const plural = normalized.endsWith('s') ? normalized : normalized + 's';
+
+  const variant = AD_CAMPAIGNS.find(c => 
+    c.slug === singular || 
+    c.slug === plural ||
+    c.serviceId === normalized ||
+    c.serviceId === singular
+  );
+  if (variant) return variant;
+
+  return undefined;
 }

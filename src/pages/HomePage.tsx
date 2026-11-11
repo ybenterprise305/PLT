@@ -29,6 +29,7 @@ import {
 import { FAQ_DATA } from '../data/faqData';
 import { useLanguage } from '../context/LanguageContext';
 import { SPANISH_FAQS, SPANISH_REVIEWS } from '../data/spanishTranslations';
+import { trackPhoneClick } from '../utils/analytics';
 
 interface HomePageProps {
   onNavigate: (path: string) => void;
@@ -109,7 +110,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
         "priceRange": "$$",
         "paymentAccepted": "Cash, Credit Card, Debit Card, Mobile Pay, Apple Pay, Google Pay",
         "currenciesAccepted": "USD",
-        "description": "24/7 Mobile Locksmith Service in Coral Springs and South Florida. Direct on-site emergency dispatch for car lockouts, laser key replacement, transponder key fobs, house rekeying, and commercial master key systems across Broward, Miami-Dade, and Palm Beach counties.",
+        "description": "24/7 Mobile Locksmith Service in South Florida. Direct on-site emergency dispatch for car lockouts, laser key replacement, transponder key fobs, house rekeying, and commercial master key systems across Broward, Miami-Dade, and Palm Beach counties.",
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Coral Springs",
@@ -178,13 +179,13 @@ export function HomePage({ onNavigate }: HomePageProps) {
     <div className="min-h-screen bg-slate-900 text-slate-100 selection:bg-amber-500 selection:text-slate-950">
       <SEOHead
         title={isSpanish 
-          ? "Cerrajería Móvil 24/7 en Coral Springs y Sur de la Florida | Llegamos a Ti"
-          : "24/7 Mobile Locksmith in Coral Springs & South Florida | Fast 15-25 Min Arrival"}
+          ? "Cerrajería Móvil 24/7 en el Sur de la Florida | Pro Locksmith Tech"
+          : "24/7 Mobile Locksmith in South Florida | Pro Locksmith Tech"}
         description={isSpanish
-          ? "¿Se quedó afuera de su auto, casa o negocio? Pro Locksmith Tech despacha técnicos móviles en 15-25 minutos en Coral Springs y todo el Sur de la Florida. Llame al +1 754-261-6528."
-          : "Locked out of your car, home, or business? Fast 15–25 min mobile locksmith arrival in Coral Springs, Broward, Miami-Dade & Palm Beach. Call now: (754) 261-6528."}
+          ? "¿Se quedó afuera o necesita llaves nuevas? Pro Locksmith Tech brinda cerrajería móvil 24/7 en todo el Sur de la Florida. Car keys, lockouts, rekeying y más. Llame al (754) 261-6528."
+          : "Locked out or need new keys? Pro Locksmith Tech provides 24/7 mobile locksmith services across South Florida. Car keys, lockouts, rekeying and more. Call now."}
         canonicalPath="/"
-        keywords="locksmith Coral Springs, mobile locksmith South Florida, emergency locksmith, car lockout Coral Springs, house lockouts, commercial locksmith Fort Lauderdale, transponder key programming, lock rekeying"
+        keywords="locksmith South Florida, cerrajero South Florida, mobile locksmith South Florida, emergency locksmith, car lockout, house lockouts, commercial locksmith, transponder key programming, lock rekeying"
       />
 
       {/* Structured JSON-LD Schema */}
@@ -219,18 +220,18 @@ export function HomePage({ onNavigate }: HomePageProps) {
               {/* Bold Conversion Headline */}
               <h1 className="font-heading font-black text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.1]">
                 {isSpanish ? (
-                  <>¿Se Quedó Afuera? <span className="text-amber-400">Cerrajería Móvil 24/7</span> en Coral Springs y Sur de la Florida</>
+                  <>Cerrajería Móvil 24/7 <span className="text-amber-400">en el Sur de la Florida</span></>
                 ) : (
-                  <>Locked Out? <span className="text-amber-400">24/7 Mobile Locksmith</span> in Coral Springs &amp; South Florida</>
+                  <>24/7 Mobile Locksmith <span className="text-amber-400">Services in South Florida</span></>
                 )}
               </h1>
 
               {/* Persuasive, Fast-to-Digest Subtitle */}
               <p className="text-base sm:text-lg text-slate-200 max-w-2xl leading-relaxed mx-auto lg:mx-0">
                 {isSpanish ? (
-                  <>No pierda tiempo ni gaste en grúas. Despachamos camionetas taller totalmente equipadas directamente a su auto, casa o negocio con herramientas de corte láser y apertura sin daños.</>
+                  <>¿Se quedó afuera de su auto, casa o negocio? Pro Locksmith Tech brinda servicios profesionales de cerrajería móvil directamente en su ubicación en todo el Sur de la Florida.</>
                 ) : (
-                  <>Don't stress or pay expensive towing fees. Our mobile technicians arrive on-site in <strong className="text-white">15 to 25 minutes</strong> with computer laser cutters, transponder programmers, and damage-free bypass tools.</>
+                  <>Locked out of your car, home, or business? Pro Locksmith Tech provides professional mobile locksmith services directly at your location across South Florida.</>
                 )}
               </p>
 
@@ -309,7 +310,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
 
                 <img
                   src={locksmithVanImg}
-                  alt="Pro Locksmith Tech mobile locksmith van on patrol in Coral Springs South Florida"
+                  alt="Pro Locksmith Tech mobile locksmith van on patrol in South Florida"
                   className="w-full h-80 sm:h-96 lg:h-[460px] object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="eager"
                   fetchPriority="high"
@@ -325,7 +326,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                         {isSpanish ? 'Taller Móvil en Carretera' : 'Fully Equipped Mobile Workshop'}
                       </div>
                       <div className="text-xs text-amber-400">
-                        {isSpanish ? 'Coral Springs · Broward · Miami-Dade · Palm Beach' : 'Coral Springs · Broward · Miami-Dade · Palm Beach'}
+                        {isSpanish ? 'Servicio Móvil · Broward · Miami-Dade · Palm Beach' : '24/7 Mobile Service · Broward · Miami-Dade · Palm Beach'}
                       </div>
                     </div>
                     <span className="px-2.5 py-1 bg-amber-500 text-slate-950 font-black text-xs rounded uppercase tracking-wider">
@@ -912,12 +913,12 @@ export function HomePage({ onNavigate }: HomePageProps) {
               <span>{isSpanish ? 'Despacho Móvil en el Sur de la Florida' : 'Tri-County Mobile Dispatch Radius'}</span>
             </div>
             <h2 className="font-heading font-black text-2xl sm:text-4xl text-white">
-              {isSpanish ? 'Cobertura Móvil en Coral Springs y el Sur de la Florida' : 'Locksmith Service Areas in South Florida'}
+              {isSpanish ? 'Cobertura Móvil en Todo el Sur de la Florida' : '24/7 Mobile Locksmith Coverage Across South Florida'}
             </h2>
             <p className="text-xs sm:text-sm text-slate-300">
               {isSpanish 
                 ? 'Nuestras camionetas taller patrullan activamente Broward, Miami-Dade y Palm Beach para llegar rápido a donde esté.' 
-                : 'Centrally dispatched from Coral Springs to Fort Lauderdale, Boca Raton, Miami, and surrounding municipalities.'}
+                : 'Mobile dispatch across Broward, Miami-Dade, and Palm Beach counties. We come directly to your vehicle, home, or business.'}
             </p>
           </div>
 
@@ -1015,13 +1016,14 @@ export function HomePage({ onNavigate }: HomePageProps) {
 
           <p className="text-slate-950 font-bold text-base sm:text-xl max-w-2xl mx-auto leading-relaxed">
             {isSpanish 
-              ? 'Llame a Pro Locksmith Tech al (754) 261-6528. Llegada promedio de 15 a 25 minutos directamente a su ubicación.' 
-              : 'Call Pro Locksmith Tech at (754) 261-6528 for fast 15–25 min mobile dispatch across Coral Springs and South Florida.'}
+              ? 'Llame a Pro Locksmith Tech al (754) 261-6528. Llegada promedio de 15 a 25 minutos directamente a su ubicación en el Sur de la Florida.' 
+              : 'Call Pro Locksmith Tech at (754) 261-6528 for fast 15–25 min mobile dispatch across South Florida.'}
           </p>
 
           <div className="pt-3 flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
               href="tel:+17542616528"
+              onClick={() => trackPhoneClick({ ctaLocation: 'home_bottom_cta', pagePath: '/' })}
               className="w-full sm:w-auto px-10 py-5 bg-slate-950 hover:bg-slate-900 text-white font-black text-lg sm:text-xl rounded-2xl shadow-2xl flex items-center justify-center gap-3 transition-transform hover:scale-105 active:scale-95"
               aria-label="Call Pro Locksmith Tech now at 754-261-6528"
             >
@@ -1041,8 +1043,8 @@ export function HomePage({ onNavigate }: HomePageProps) {
 
           <p className="text-xs font-semibold text-slate-900/80 pt-1">
             {isSpanish 
-              ? 'Servicio 100% Móvil · Vamos a Donde Estés · Coral Springs, FL 33076 y Sur de la Florida' 
-              : '100% Mobile Service — We Come to You · Serving Coral Springs, FL 33076 & South Florida Region'}
+              ? 'Servicio 100% Móvil · Vamos a Donde Estés · En Todo el Sur de la Florida' 
+              : '100% Mobile Service — We Come to You Throughout Our South Florida Service Area'}
           </p>
         </div>
       </section>
