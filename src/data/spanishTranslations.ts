@@ -196,43 +196,48 @@ export const SPANISH_COUNTIES: Record<string, { name: string; overview: string }
 export const SPANISH_FAQS = [
   {
     id: 'es-faq-1',
-    question: '¿Ofrecen servicio de cerrajería móvil?',
-    answer: 'Sí, Pro Locksmith Tech es un servicio de cerrajería 100% móvil. No operamos una tienda física abierta al público: nos desplazamos directamente a su ubicación en cualquier punto del Sur de la Florida con unidades móviles completamente equipadas.'
+    question: '¿Ofrecen servicio de cerrajería móvil en el Sur de la Florida?',
+    answer: 'Sí. Pro Locksmith Tech es un servicio de cerrajería 100% móvil en el Sur de la Florida. Despachamos camionetas taller equipadas directo a su vehículo, casa o negocio en Coral Springs, Fort Lauderdale, Miami y Boca Raton. No requiere acudir a ninguna tienda física; resolvemos su problema en el lugar.'
   },
   {
     id: 'es-faq-2',
-    question: '¿Vienen directamente a mi ubicación?',
-    answer: 'Exactamente. Vamos hasta donde esté su vehículo, su casa, su negocio o el lugar donde ocurrió la emergencia en los condados de Broward, Miami-Dade y Palm Beach.'
+    question: '¿Qué tan rápido puede llegar un cerrajero móvil a mi ubicación?',
+    answer: 'Nuestros técnicos móviles promedian un tiempo de llegada de 15 a 25 minutos en los condados de Broward, Miami-Dade y Palm Beach. Como nuestras camionetas patrullan activamente las carreteras y avenidas principales del Sur de la Florida, despachamos la unidad más cercana a sus coordenadas al llamar al (754) 261-6528.'
   },
   {
     id: 'es-faq-3',
-    question: '¿Qué áreas atienden en el Sur de la Florida?',
-    answer: 'Cubrimos todo el Sur de la Florida, incluyendo las principales ciudades como Fort Lauderdale, Miami, Coral Springs, Boca Raton, Hollywood, Pembroke Pines, West Palm Beach, Doral, Hialeah, Pompano Beach y más de 37 municipios del corredor tri-condal.'
+    question: '¿Qué debo hacer si dejé las llaves adentro de mi auto?',
+    answer: 'Si se quedó afuera de su vehículo, llame a Pro Locksmith Tech al (754) 261-6528 para despacho inmediato. Evite alambres u objetos caseros que doblan marcos y dañan sellos de goma. Llegamos con cuñas de aire profesionales y herramientas de alcance largo para abrir su auto o maletero sin rayones.'
   },
   {
     id: 'es-faq-4',
-    question: '¿Tienen servicio de cerrajería de emergencia 24/7?',
-    answer: 'Sí, nuestro despacho móvil opera las 24 horas del día, los 7 días de la semana, los 365 días del año. Atendemos emergencias nocturnas, fines de semana y días festivos.'
+    question: '¿Pueden cortar llaves nuevas y programar controles (key fobs) en el lugar?',
+    answer: 'Sí. Nuestras unidades móviles cuentan con duplicadoras láser CNC computarizadas y escáneres diagnósticos OBD-II. Elaboramos llaves de auto nuevas, programamos chips transponder y configuramos llaves inteligentes de botón (Push-to-Start) en el acto para marcas americanas, asiáticas y europeas, incluso habiendo perdido todas las copias.'
   },
   {
     id: 'es-faq-5',
-    question: '¿Ofrecen servicios de cerrajería automotriz?',
-    answer: 'Sí. Abrimos vehículos cerrados sin rayones, cortamos llaves con tecnología láser computarizada, programamos controles remotos (key fobs) y chips transponder, reparamos cilindros de ignición y extraemos llaves rotas en el lugar.'
+    question: '¿Cuál es la diferencia entre rekeying (cambio de combinación) y cambio de cerraduras?',
+    answer: 'El rekeying cambia la configuración interna de pines de sus cerraduras actuales para que las llaves antiguas ya no funcionen, ahorrándole hasta un 70% frente a comprar cerraduras nuevas. El reemplazo instala cerraduras y cerrojos Grado 1 o 2 totalmente nuevos, ideal si sus cerraduras están desgastadas, dañadas o desactualizadas.'
   },
   {
     id: 'es-faq-6',
-    question: '¿Ofrecen servicios de cerrajería residencial?',
-    answer: 'Sí. Realizamos aperturas de emergencia de casas y apartamentos, cambio de combinación (rekeying), reemplazo e instalación de cerraduras de alta seguridad, cerraduras inteligentes con teclado y cerrojos para puertas principales y corredizas.'
+    question: '¿Ofrecen cerraduras comerciales y sistemas de llave maestra para negocios?',
+    answer: 'Sí. Pro Locksmith Tech provee cerrajería comercial para locales, oficinas y almacenes en el Sur de la Florida. Instalamos cerraduras de embutir Adams Rite, cerrojos comerciales ANSI Grado 1, cambio de combinación, barras antipánico y sistemas de llave maestra para controlar múltiples accesos con una sola llave.'
   },
   {
     id: 'es-faq-7',
-    question: '¿Ofrecen servicios de cerrajería comercial para negocios?',
-    answer: 'Sí. Atendemos tiendas y oficinas instalando cerraduras comerciales de embutir, barras antipánico de salida de emergencia, sistemas de llave maestra y control de acceso.'
+    question: '¿Qué áreas del Sur de la Florida atienden?',
+    answer: 'Atendemos todo el corredor tri-condal del Sur de la Florida con centro de despacho en Coral Springs, cubriendo el Condado de Broward (Fort Lauderdale, Pompano Beach, Hollywood, Pembroke Pines), Palm Beach (Boca Raton, Delray Beach, West Palm Beach) y Miami-Dade (Miami, Hialeah, Doral). Vamos a donde usted esté.'
   },
   {
     id: 'es-faq-8',
-    question: '¿Cómo puedo solicitar un cerrajero?',
-    answer: 'Solo llame directamente a nuestra línea de despacho al +1 754-261-6528 o envíe un mensaje de texto con su dirección. Un técnico calificado se pondrá en camino de inmediato.'
+    question: '¿El servicio de emergencia está disponible 24/7?',
+    answer: 'Sí. Pro Locksmith Tech opera las 24 horas del día, los 7 días de la semana, los 365 días del año—incluyendo madrugadas, fines de semana y días festivos. Si enfrenta un auto cerrado, llaves extraviadas o una cerradura dañada, nuestros cerrajeros móviles están de guardia para auxilio inmediato.'
+  },
+  {
+    id: 'es-faq-9',
+    question: '¿Cómo solicito un cerrajero móvil de emergencia?',
+    answer: 'Para solicitar auxilio móvil inmediato, llame directamente a nuestra línea 24/7 al +1 (754) 261-6528 o envíe un mensaje de texto con su dirección o ubicación GPS. Hablará directamente con un técnico en servicio sin grabaciones automáticas ni demoras.'
   }
 ];
 

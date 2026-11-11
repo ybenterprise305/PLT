@@ -10,7 +10,8 @@ import {
   ArrowRight, 
   MessageSquare,
   Sparkles,
-  MapPin
+  MapPin,
+  HelpCircle
 } from 'lucide-react';
 import { SERVICES_DATA } from '../data/servicesData';
 import { SEOHead } from '../components/SEOHead';
@@ -67,7 +68,7 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": ["Locksmith", "LocalBusiness"],
+        "@type": ["Locksmith", "LocalBusiness", "AutomotiveBusiness"],
         "@id": `https://prolocksmith-tech.com/services/${service.slug}#locksmith`,
         "name": `Pro Locksmith Tech - ${service.name}`,
         "legalName": "Pro Locksmith Tech",
@@ -81,6 +82,13 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
         "currenciesAccepted": "USD",
         "description": service.fullDescription,
         "serviceType": service.name,
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Coral Springs",
+          "addressRegion": "FL",
+          "postalCode": "33076",
+          "addressCountry": "US"
+        },
         "areaServed": [
           {
             "@type": "AdministrativeArea",
@@ -203,10 +211,10 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
         "mainEntity": [
           {
             "@type": "Question",
-            "name": `Does Pro Locksmith Tech provide mobile ${service.name} in South Florida?`,
+            "name": `Does Pro Locksmith Tech provide mobile ${service.name} at my location?`,
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": `Yes, Pro Locksmith Tech provides 24/7 mobile ${service.name} directly to your location across Broward, Miami-Dade, and Palm Beach counties. Technicians travel in fully equipped mobile workshops to resolve lock and key issues on-site.`
+              "text": `Yes. Pro Locksmith Tech provides 100% mobile ${service.name} directly at your location across Coral Springs, Broward, Miami-Dade, and Palm Beach counties. Our locksmith technicians arrive in fully equipped vans stocked with key blanks, laser cutting machinery, OBD-II programmers, and commercial-grade locksets to complete work on-site.`
             }
           },
           {
@@ -214,15 +222,15 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
             "name": `How quickly can a mobile locksmith arrive for ${service.name}?`,
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Our mobile dispatch typically arrives within 15 to 25 minutes depending on traffic and exact location in South Florida. Call +1 754-261-6528 for live dispatch."
+              "text": "Our mobile locksmith units are actively patrolling South Florida roadways. Typical emergency arrival times range from 15 to 25 minutes depending on current traffic and your specific city. For immediate priority dispatch to your vehicle, residence, or commercial property, call our 24/7 hotline directly at +1 (754) 261-6528."
             }
           },
           {
             "@type": "Question",
-            "name": `Do I need to visit a shop for ${service.name}?`,
+            "name": `Do I need to visit a storefront or shop for ${service.name}?`,
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No! Pro Locksmith Tech is 100% mobile. We bring laser key cutters, transponder programming computers, and lock hardware directly to your vehicle, residence, or commercial property."
+              "text": "No. Pro Locksmith Tech is exclusively a mobile service provider with no public walk-in storefront. We bring all specialized automotive key programming tools, residential lock rekeying pins, and commercial door hardware directly to your site, saving you the expense and hassle of towing your vehicle or removing locks yourself."
             }
           }
         ]
@@ -374,6 +382,82 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
             </ul>
           </div>
         </div>
+
+        {/* Frequently Asked Questions (AEO & AI Search Snippet Block) */}
+        <section className="bg-slate-950 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6">
+          <div className="flex items-center gap-3 border-b border-slate-800/80 pb-4">
+            <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center flex-shrink-0 text-amber-400">
+              <HelpCircle className="w-5 h-5" />
+            </div>
+            <div>
+              <h2 className="font-heading font-black text-xl sm:text-2xl text-white">
+                {isSpanish ? `Preguntas Frecuentes sobre ${serviceName}` : `Frequently Asked Questions: ${service.name}`}
+              </h2>
+              <p className="text-xs text-slate-400 mt-0.5">
+                {isSpanish 
+                  ? 'Respuestas rápidas y claras de nuestros técnicos móviles en el Sur de la Florida.' 
+                  : 'Direct answers regarding our 24/7 mobile locksmith dispatch in South Florida.'
+                }
+              </p>
+            </div>
+          </div>
+
+          <div className="space-y-5">
+            <article className="p-5 bg-slate-900/90 rounded-xl border border-slate-800/80 space-y-2">
+              <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-amber-400 flex-shrink-0"></span>
+                <span>
+                  {isSpanish 
+                    ? `¿Pro Locksmith Tech ofrece ${serviceName} a domicilio en mi zona?`
+                    : `Does Pro Locksmith Tech provide mobile ${service.name} at my location?`
+                  }
+                </span>
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed pl-4">
+                {isSpanish
+                  ? `Sí. Pro Locksmith Tech brinda servicio 100% móvil de ${serviceName} directamente en su ubicación en Coral Springs, Broward, Miami-Dade y Palm Beach. Nuestras unidades móviles disponen de maquinaria de corte láser computarizada, programadores de llaves y repuestos de alta seguridad para resolver el problema en el acto sin necesidad de traslados.`
+                  : `Yes. Pro Locksmith Tech provides 100% mobile ${service.name} directly at your location across Coral Springs, Broward, Miami-Dade, and Palm Beach counties. Our locksmith technicians arrive in fully equipped vans stocked with key blanks, laser cutting machinery, OBD-II programmers, and commercial-grade locksets to complete work on-site.`
+                }
+              </p>
+            </article>
+
+            <article className="p-5 bg-slate-900/90 rounded-xl border border-slate-800/80 space-y-2">
+              <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-amber-400 flex-shrink-0"></span>
+                <span>
+                  {isSpanish 
+                    ? `¿Cuánto tarda en llegar un cerrajero móvil para ${serviceName}?`
+                    : `How quickly can a mobile locksmith arrive for ${service.name}?`
+                  }
+                </span>
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed pl-4">
+                {isSpanish
+                  ? 'Nuestras unidades móviles patrullan activamente las principales autopistas del Sur de la Florida. El tiempo promedio de llegada es de 15 a 25 minutos según el tráfico y su ciudad. Para despacho prioritario a su vehículo, casa o negocio, llame de inmediato a nuestra línea directa 24/7 al +1 (754) 261-6528.'
+                  : 'Our mobile locksmith units are actively patrolling South Florida roadways. Typical emergency arrival times range from 15 to 25 minutes depending on current traffic and your specific city. For immediate priority dispatch to your vehicle, residence, or commercial property, call our 24/7 hotline directly at +1 (754) 261-6528.'
+                }
+              </p>
+            </article>
+
+            <article className="p-5 bg-slate-900/90 rounded-xl border border-slate-800/80 space-y-2">
+              <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-amber-400 flex-shrink-0"></span>
+                <span>
+                  {isSpanish 
+                    ? `¿Debo desplazarme a una tienda física para ${serviceName}?`
+                    : `Do I need to visit a storefront or shop for ${service.name}?`
+                  }
+                </span>
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed pl-4">
+                {isSpanish
+                  ? 'No. Pro Locksmith Tech opera 100% como servicio móvil a domicilio y no cuenta con tienda de atención al público. Llevamos todo el equipo computarizado de programación de llaves, pines de recodificación y herrajes comerciales hasta donde usted se encuentre, evitándole costosos remolques de autos o desmontar cerraduras por su cuenta.'
+                  : 'No. Pro Locksmith Tech is exclusively a mobile service provider with no public walk-in storefront. We bring all specialized automotive key programming tools, residential lock rekeying pins, and commercial door hardware directly to your site, saving you the expense and hassle of towing your vehicle or removing locks yourself.'
+                }
+              </p>
+            </article>
+          </div>
+        </section>
 
         {/* Immediate Call Banner */}
         <div className="bg-slate-950 border border-amber-500/30 rounded-2xl p-6 sm:p-8 text-center space-y-4">

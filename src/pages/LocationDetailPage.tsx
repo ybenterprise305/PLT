@@ -32,7 +32,7 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
       "@context": "https://schema.org",
       "@graph": [
         {
-          "@type": ["Locksmith", "LocalBusiness"],
+          "@type": ["Locksmith", "LocalBusiness", "AutomotiveBusiness"],
           "@id": `https://prolocksmith-tech.com/service-areas/${city.slug}#locksmith`,
           "name": `Pro Locksmith Tech - Mobile Locksmith in ${city.name}, FL`,
           "url": `https://prolocksmith-tech.com/service-areas/${city.slug}`,
@@ -42,6 +42,13 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
           "priceRange": "$$",
           "currenciesAccepted": "USD",
           "paymentAccepted": "Cash, Credit Card, Debit Card, Mobile Pay",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Coral Springs",
+            "addressRegion": "FL",
+            "postalCode": "33076",
+            "addressCountry": "US"
+          },
           "description": `24/7 mobile locksmith service in ${city.name}, ${county.name}, Florida. We come directly to your vehicle, home, or business for car lockouts, rekeying, lock replacement, and key programming.`,
           "openingHoursSpecification": [
             {
@@ -316,7 +323,7 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
       "@context": "https://schema.org",
       "@graph": [
         {
-          "@type": ["Locksmith", "LocalBusiness"],
+          "@type": ["Locksmith", "LocalBusiness", "AutomotiveBusiness"],
           "@id": `https://prolocksmith-tech.com/service-areas/${county.slug}#locksmith`,
           "name": `Pro Locksmith Tech - Mobile Locksmith in ${county.fullName}`,
           "url": `https://prolocksmith-tech.com/service-areas/${county.slug}`,
@@ -324,6 +331,13 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
           "email": "prolocksmithtech@gmail.com",
           "image": "https://prolocksmith-tech.com/icon-512.png",
           "priceRange": "$$",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Coral Springs",
+            "addressRegion": "FL",
+            "postalCode": "33076",
+            "addressCountry": "US"
+          },
           "description": `24/7 mobile locksmith dispatch across all cities in ${county.fullName}, Florida.`,
           "areaServed": [
             {
