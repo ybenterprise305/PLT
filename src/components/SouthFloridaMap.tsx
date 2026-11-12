@@ -11,9 +11,11 @@ import {
   Sparkles,
   ChevronRight,
   Compass,
-  CheckCircle2
+  CheckCircle2,
+  Search
 } from 'lucide-react';
 import { COUNTIES_DATA, getAllCities } from '../data/locationsData';
+import { trackPhoneClick } from '../utils/analytics';
 
 interface SouthFloridaMapProps {
   onSelectCity?: (slug: string) => void;
@@ -86,12 +88,18 @@ export function SouthFloridaMap({
 }: SouthFloridaMapProps) {
   const [selectedCounty, setSelectedCounty] = useState<'all' | 'broward-county' | 'miami-dade-county' | 'palm-beach-county'>('all');
   const [activeCityId, setActiveCityId] = useState<string>('coral-springs');
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
   const activeCity = SOUTH_FLORIDA_LOCATIONS.find(c => c.id === activeCityId) || SOUTH_FLORIDA_LOCATIONS[0];
 
-  const visibleCities = selectedCounty === 'all'
-    ? SOUTH_FLORIDA_LOCATIONS
-    : SOUTH_FLORIDA_LOCATIONS.filter(c => c.countySlug === selectedCounty);
+  const visibleCities = SOUTH_FLORIDA_LOCATIONS.filter(c => {
+    const matchesCounty = selectedCounty === 'all' || c.countySlug === selectedCounty;
+    const matchesSearch = searchQuery === '' || 
+      c.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      c.zip.includes(searchQuery) ||
+      c.corridor.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCounty && matchesSearch;
+  });
 
   const handleCitySelect = (city: MapLocationItem) => {
     setActiveCityId(city.id);
@@ -104,48 +112,48 @@ export function SouthFloridaMap({
   };
 
   return (
-    <div className="bg-slate-950 border border-slate-800 rounded-3xl p-5 sm:p-8 shadow-2xl relative overflow-hidden">
+    <div className="bg-slate-950 border border-slate-800 rounded-3xl p-4 sm:p-8 shadow-2xl relative overflow-hidden">
       
       {/* Top Header & Context */}
-      <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 border-b border-slate-800 pb-6 mb-6">
+      <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 border-b border-slate-800 pb-5 mb-5 sm:pb-6 sm:mb-6">
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold rounded-md uppercase tracking-wider mb-2">
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
             <span>Live Dispatch System · 37 Active Service Locations</span>
           </div>
-          <h2 className="font-heading font-black text-2xl sm:text-3xl text-white">
+          <h2 className="font-heading font-black text-xl sm:text-3xl text-white">
             {title}
           </h2>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1 max-w-2xl leading-relaxed">
-            {subtitle} Tap any location to view local response times, call dispatch directly, or open the detailed city guide.
+          <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl leading-relaxed">
+            {subtitle}
           </p>
         </div>
 
         {/* County Filter Tabs */}
-        <div className="flex flex-wrap items-center gap-1.5 bg-slate-900 p-1.5 rounded-2xl border border-slate-800">
+        <div className="flex flex-wrap items-center gap-1.5 bg-slate-900 p-1.5 rounded-2xl border border-slate-800 w-full lg:w-auto">
           <button
             onClick={() => setSelectedCounty('all')}
-            className={`px-3 py-2 text-xs font-bold rounded-xl transition-all cursor-pointer ${
+            className={`flex-1 sm:flex-none px-3 py-2 text-xs font-bold rounded-xl transition-all cursor-pointer text-center ${
               selectedCounty === 'all'
                 ? 'bg-amber-500 text-slate-950 shadow-md font-black'
                 : 'text-slate-300 hover:text-white hover:bg-slate-800'
             }`}
           >
-            All South Florida (37)
+            All Areas (37)
           </button>
           <button
             onClick={() => setSelectedCounty('broward-county')}
-            className={`px-3 py-2 text-xs font-bold rounded-xl transition-all cursor-pointer ${
+            className={`flex-1 sm:flex-none px-3 py-2 text-xs font-bold rounded-xl transition-all cursor-pointer text-center ${
               selectedCounty === 'broward-county'
                 ? 'bg-amber-500 text-slate-950 shadow-md font-black'
                 : 'text-slate-300 hover:text-white hover:bg-slate-800'
             }`}
           >
-            Broward Hub (14)
+            Broward (14)
           </button>
           <button
             onClick={() => setSelectedCounty('miami-dade-county')}
-            className={`px-3 py-2 text-xs font-bold rounded-xl transition-all cursor-pointer ${
+            className={`flex-1 sm:flex-none px-3 py-2 text-xs font-bold rounded-xl transition-all cursor-pointer text-center ${
               selectedCounty === 'miami-dade-county'
                 ? 'bg-amber-500 text-slate-950 shadow-md font-black'
                 : 'text-slate-300 hover:text-white hover:bg-slate-800'
@@ -155,7 +163,7 @@ export function SouthFloridaMap({
           </button>
           <button
             onClick={() => setSelectedCounty('palm-beach-county')}
-            className={`px-3 py-2 text-xs font-bold rounded-xl transition-all cursor-pointer ${
+            className={`flex-1 sm:flex-none px-3 py-2 text-xs font-bold rounded-xl transition-all cursor-pointer text-center ${
               selectedCounty === 'palm-beach-county'
                 ? 'bg-amber-500 text-slate-950 shadow-md font-black'
                 : 'text-slate-300 hover:text-white hover:bg-slate-800'
@@ -166,157 +174,41 @@ export function SouthFloridaMap({
         </div>
       </div>
 
-      {/* Main Grid: Interactive Region Radar & Detailed City Dispatch Card */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      {/* Mobile Quick City Search Box */}
+      <div className="relative mb-5 lg:hidden">
+        <Search className="w-4 h-4 text-amber-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="Type your city or zip code (e.g., Coral Springs, Fort Lauderdale, 33065)..."
+          className="w-full bg-slate-900 border border-slate-700 rounded-xl pl-10 pr-4 py-3 text-base sm:text-sm text-white placeholder-slate-400 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 shadow-inner min-h-[44px]"
+        />
+        {searchQuery && (
+          <button 
+            onClick={() => setSearchQuery('')}
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-white px-1.5 py-0.5 rounded bg-slate-800"
+          >
+            Clear
+          </button>
+        )}
+      </div>
+
+      {/* Main Grid: On mobile, the Active Location Live Dispatch Console is rendered FIRST so users see their arrival time and Call button immediately! */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 items-start">
         
-        {/* Left Side: 3-Zone Interactive Corridor Radar */}
-        <div className="lg:col-span-7 bg-slate-900/90 border border-slate-800 rounded-2xl p-5 sm:p-6 space-y-6">
+        {/* Active City Detail Card (order-1 on mobile, order-2 on desktop) */}
+        <div className="lg:col-span-5 order-1 lg:order-2 space-y-4">
           
-          {/* Corridor Legend & Live Status */}
-          <div className="flex items-center justify-between text-xs border-b border-slate-800 pb-3">
-            <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span className="text-white font-bold">Tri-County Mobile Fleet Active</span>
-            </div>
-            <span className="text-amber-400 font-bold text-[11px] uppercase tracking-wider">
-              100% Mobile · We Come To You
-            </span>
-          </div>
-
-          {/* 3 Regional Corridor Cards */}
-          <div className="space-y-4">
-            
-            {/* 1. Palm Beach County Zone */}
-            <div 
-              className={`p-4 rounded-2xl border transition-all ${
-                activeCity.countySlug === 'palm-beach-county'
-                  ? 'bg-slate-950 border-emerald-500/60 shadow-lg ring-1 ring-emerald-500/30'
-                  : 'bg-slate-950/70 border-slate-800 hover:border-slate-700'
-              }`}
-            >
-              <div className="flex items-center justify-between mb-2">
-                <div className="flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full bg-emerald-400"></span>
-                  <span className="text-xs font-black uppercase tracking-wider text-emerald-400">North Corridor · Palm Beach County</span>
-                </div>
-                <span className="text-[11px] text-slate-400 font-medium">11 Cities · I-95 & Turnpike</span>
-              </div>
-              <div className="flex flex-wrap gap-1.5">
-                {SOUTH_FLORIDA_LOCATIONS.filter(c => c.countySlug === 'palm-beach-county').map(city => {
-                  const isSelected = activeCity.id === city.id;
-                  return (
-                    <button
-                      key={city.id}
-                      onClick={() => handleCitySelect(city)}
-                      className={`px-2.5 py-1 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
-                        isSelected
-                          ? 'bg-emerald-500 text-slate-950 font-black shadow-md scale-105'
-                          : 'bg-slate-900 text-slate-300 hover:text-white hover:bg-slate-800 border border-slate-800'
-                      }`}
-                    >
-                      {city.name}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* 2. Broward County Zone (Primary Hub) */}
-            <div 
-              className={`p-4 rounded-2xl border transition-all ${
-                activeCity.countySlug === 'broward-county'
-                  ? 'bg-slate-950 border-amber-500/80 shadow-lg ring-1 ring-amber-500/40'
-                  : 'bg-slate-950/70 border-slate-800 hover:border-slate-700'
-              }`}
-            >
-              <div className="flex items-center justify-between mb-2">
-                <div className="flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full bg-amber-400 animate-pulse"></span>
-                  <span className="text-xs font-black uppercase tracking-wider text-amber-400">Central Hub · Broward County</span>
-                </div>
-                <span className="text-[11px] text-amber-300 font-bold">14 Cities · Fast Dispatch</span>
-              </div>
-              <div className="flex flex-wrap gap-1.5">
-                {SOUTH_FLORIDA_LOCATIONS.filter(c => c.countySlug === 'broward-county').map(city => {
-                  const isSelected = activeCity.id === city.id;
-                  return (
-                    <button
-                      key={city.id}
-                      onClick={() => handleCitySelect(city)}
-                      className={`px-2.5 py-1 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
-                        isSelected
-                          ? 'bg-amber-500 text-slate-950 font-black shadow-md scale-105'
-                          : 'bg-slate-900 text-slate-300 hover:text-white hover:bg-slate-800 border border-slate-800'
-                      }`}
-                    >
-                      {city.name}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* 3. Miami-Dade County Zone */}
-            <div 
-              className={`p-4 rounded-2xl border transition-all ${
-                activeCity.countySlug === 'miami-dade-county'
-                  ? 'bg-slate-950 border-sky-500/60 shadow-lg ring-1 ring-sky-500/30'
-                  : 'bg-slate-950/70 border-slate-800 hover:border-slate-700'
-              }`}
-            >
-              <div className="flex items-center justify-between mb-2">
-                <div className="flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full bg-sky-400"></span>
-                  <span className="text-xs font-black uppercase tracking-wider text-sky-400">South Corridor · Miami-Dade County</span>
-                </div>
-                <span className="text-[11px] text-slate-400 font-medium">12 Cities · Palmetto & US-1</span>
-              </div>
-              <div className="flex flex-wrap gap-1.5">
-                {SOUTH_FLORIDA_LOCATIONS.filter(c => c.countySlug === 'miami-dade-county').map(city => {
-                  const isSelected = activeCity.id === city.id;
-                  return (
-                    <button
-                      key={city.id}
-                      onClick={() => handleCitySelect(city)}
-                      className={`px-2.5 py-1 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
-                        isSelected
-                          ? 'bg-sky-500 text-slate-950 font-black shadow-md scale-105'
-                          : 'bg-slate-900 text-slate-300 hover:text-white hover:bg-slate-800 border border-slate-800'
-                      }`}
-                    >
-                      {city.name}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-          </div>
-
-          {/* Quick Info Box */}
-          <div className="p-3.5 bg-slate-950/90 rounded-xl border border-slate-800 flex items-center justify-between text-xs text-slate-300">
-            <span className="flex items-center gap-2">
-              <Compass className="w-4 h-4 text-amber-400" />
-              <span>Coverage includes all neighborhoods, expressways, shopping centers & condos</span>
-            </span>
-            <span className="text-amber-400 font-bold hidden sm:inline">24/7 Priority</span>
-          </div>
-
-        </div>
-
-        {/* Right Side: Active Location Live Dispatch Console */}
-        <div className="lg:col-span-5 space-y-5">
-          
-          {/* Active City Detail Card */}
-          <div className="bg-slate-900 border-2 border-amber-500/50 rounded-2xl p-6 shadow-2xl relative overflow-hidden">
+          <div className="bg-slate-900 border-2 border-amber-500/60 rounded-2xl p-5 sm:p-6 shadow-2xl relative overflow-hidden">
             <div className="absolute top-0 right-0 w-36 h-36 bg-amber-500/10 rounded-full blur-2xl pointer-events-none" />
 
             {/* Header info */}
-            <div className="flex items-start justify-between gap-4 border-b border-slate-800 pb-4 mb-4">
+            <div className="flex items-start justify-between gap-3 border-b border-slate-800 pb-4 mb-4">
               <div>
                 <div className="flex items-center gap-2 mb-1">
                   <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-500/20 text-amber-300 border border-amber-500/30">
-                    Live Mobile Zone
+                    Live Mobile Dispatch
                   </span>
                   <span className="text-xs text-slate-400 font-medium">{activeCity.county}</span>
                 </div>
@@ -328,104 +220,115 @@ export function SouthFloridaMap({
                 </p>
               </div>
 
-              <div className="w-12 h-12 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center font-black shadow-lg shrink-0">
-                <Truck className="w-6 h-6" />
+              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center font-black shadow-lg shrink-0">
+                <Truck className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
             </div>
 
-            {/* Metrics */}
-            <div className="grid grid-cols-2 gap-3 mb-4 text-xs">
-              <div className="p-3 bg-slate-950 rounded-xl border border-slate-800 flex items-center gap-2.5">
+            {/* Key Metrics on Smartphone */}
+            <div className="grid grid-cols-2 gap-2.5 mb-4 text-xs">
+              <div className="p-2.5 sm:p-3 bg-slate-950 rounded-xl border border-slate-800 flex items-center gap-2">
                 <Clock className="w-4 h-4 text-amber-400 shrink-0" />
                 <div>
-                  <div className="text-[10px] text-slate-400 uppercase font-bold">Estimated Arrival</div>
-                  <div className="text-white font-black">{activeCity.eta}</div>
+                  <div className="text-[10px] text-slate-400 uppercase font-bold">ETA</div>
+                  <div className="text-white font-black text-xs sm:text-sm">{activeCity.eta}</div>
                 </div>
               </div>
 
-              <div className="p-3 bg-slate-950 rounded-xl border border-slate-800 flex items-center gap-2.5">
+              <div className="p-2.5 sm:p-3 bg-slate-950 rounded-xl border border-slate-800 flex items-center gap-2">
                 <Truck className="w-4 h-4 text-emerald-400 shrink-0" />
                 <div>
                   <div className="text-[10px] text-slate-400 uppercase font-bold">Service Mode</div>
-                  <div className="text-emerald-400 font-black">100% Mobile (To You)</div>
+                  <div className="text-emerald-400 font-black text-xs sm:text-sm">We Come To You</div>
                 </div>
               </div>
             </div>
 
-            {/* Zip codes & Highlights */}
-            <div className="bg-slate-950/80 p-3.5 rounded-xl border border-slate-800/80 space-y-1.5 text-xs text-slate-300 mb-5">
+            {/* Details */}
+            <div className="bg-slate-950/80 p-3.5 rounded-xl border border-slate-800/80 space-y-1.5 text-xs text-slate-300 mb-4">
               <div>
-                <strong className="text-white font-semibold">Postal Zip Codes:</strong> {activeCity.zip}
+                <strong className="text-white font-semibold">Zip Codes Served:</strong> {activeCity.zip}
               </div>
-              <div>
-                <strong className="text-amber-400 font-semibold">Local Dispatch Highlights:</strong> {activeCity.highlights}. Mobile locksmith van carries key duplicating machines, computerized transponder scanners, and high-security deadbolts directly on-site.
+              <div className="line-clamp-2 sm:line-clamp-none">
+                <strong className="text-amber-400 font-semibold">Local Coverage:</strong> {activeCity.highlights}.
               </div>
             </div>
 
-            {/* Direct Call & Action Buttons */}
+            {/* Direct Call & Action Buttons (Finger-friendly min-h-[48px]) */}
             <div className="space-y-2.5">
-              <div className="grid grid-cols-2 gap-2.5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 <a
                   href="tel:+17542616528"
-                  className="py-3 px-4 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm rounded-xl shadow-lg flex items-center justify-center gap-2 transition-transform hover:scale-[1.02] cursor-pointer"
+                  onClick={() => trackPhoneClick({ ctaLocation: `map_active_city_call_${activeCity.id}`, pagePath: window.location.pathname })}
+                  className="py-3.5 px-4 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 text-slate-950 font-black text-sm rounded-xl shadow-lg flex items-center justify-center gap-2 cursor-pointer min-h-[48px]"
                 >
                   <Phone className="w-4 h-4 fill-current animate-pulse" />
-                  <span>Call Now</span>
+                  <span>Call {activeCity.name} Unit</span>
                 </a>
 
                 <a
                   href="sms:+17542616528"
-                  className="py-3 px-4 bg-slate-800 hover:bg-slate-750 text-slate-100 font-bold text-sm rounded-xl border border-slate-700 flex items-center justify-center gap-2 transition-colors cursor-pointer"
+                  className="py-3 px-4 bg-slate-800 text-slate-100 font-bold text-xs sm:text-sm rounded-xl border border-slate-700 flex items-center justify-center gap-2 min-h-[46px] cursor-pointer"
                 >
                   <MessageSquare className="w-4 h-4 text-amber-400" />
                   <span>Text Location</span>
                 </a>
               </div>
 
-              {/* View Full City Page Button */}
+              {/* View Full City Page */}
               <button
                 onClick={() => handleOpenCityPage(activeCity.slug)}
-                className="w-full py-3 px-4 bg-slate-950 hover:bg-amber-500/10 text-amber-400 hover:text-amber-300 border border-amber-500/30 rounded-xl font-bold text-xs flex items-center justify-center gap-2 transition-all cursor-pointer group"
+                className="w-full py-2.5 px-4 bg-slate-950 hover:bg-amber-500/10 text-amber-400 border border-amber-500/30 rounded-xl font-bold text-xs flex items-center justify-center gap-2 cursor-pointer group min-h-[42px]"
               >
-                <span>View Full {activeCity.name} Locksmith Page</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <span>View {activeCity.name} Locksmith Page</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
           </div>
 
-          {/* Quick-Tap City Directory Grid */}
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5">
-            <div className="flex items-center justify-between mb-3">
-              <h4 className="text-xs font-black text-slate-300 uppercase tracking-wider">
-                Select City in {selectedCounty === 'all' ? 'South Florida' : selectedCounty.replace('-county', '').toUpperCase()}
-              </h4>
-              <span className="text-[11px] text-amber-400 font-semibold">{visibleCities.length} Locations</span>
-            </div>
+        </div>
 
-            <div className="flex flex-wrap gap-1.5 max-h-[220px] overflow-y-auto pr-1">
-              {visibleCities.map((city) => {
-                const isSelected = activeCity.id === city.id;
-                return (
-                  <button
-                    key={city.id}
-                    onClick={() => handleCitySelect(city)}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
-                      isSelected
-                        ? 'bg-amber-500 text-slate-950 shadow-md scale-105'
-                        : 'bg-slate-950 text-slate-300 hover:text-white hover:bg-slate-800 border border-slate-800'
-                    }`}
-                  >
-                    <MapPin className={`w-3 h-3 ${isSelected ? 'text-slate-950 fill-current' : 'text-amber-400'}`} />
-                    <span>{city.name}</span>
-                  </button>
-                );
-              })}
+        {/* City Selector Corridor Radar (order-2 on mobile, order-1 on desktop) */}
+        <div className="lg:col-span-7 order-2 lg:order-1 bg-slate-900/90 border border-slate-800 rounded-2xl p-4 sm:p-6 space-y-4">
+          
+          <div className="flex items-center justify-between text-xs border-b border-slate-800 pb-3">
+            <div className="flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span className="text-white font-bold">Tap Your City to Select</span>
             </div>
+            <span className="text-amber-400 font-bold text-[11px] uppercase tracking-wider">
+              {visibleCities.length} Cities
+            </span>
           </div>
 
+          {/* Quick-Scroll City Chip Grid */}
+          <div className="flex flex-wrap gap-1.5 max-h-[300px] lg:max-h-none overflow-y-auto pr-1">
+            {visibleCities.map((city) => {
+              const isSelected = activeCity.id === city.id;
+              return (
+                <button
+                  key={city.id}
+                  onClick={() => handleCitySelect(city)}
+                  className={`px-3 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 min-h-[38px] ${
+                    isSelected
+                      ? 'bg-amber-500 text-slate-950 font-black shadow-md scale-[1.02] ring-2 ring-amber-400'
+                      : 'bg-slate-950 text-slate-300 hover:text-white hover:bg-slate-800 border border-slate-800'
+                  }`}
+                >
+                  <MapPin className={`w-3.5 h-3.5 ${isSelected ? 'text-slate-950 fill-current' : 'text-amber-400'}`} />
+                  <span>{city.name}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          <p className="text-[11px] text-slate-400 pt-1">
+            Don't see your specific neighborhood? We cover all 37 municipalities in Broward, Miami-Dade, and Palm Beach counties.
+          </p>
         </div>
 
       </div>
     </div>
   );
 }
+export default SouthFloridaMap;

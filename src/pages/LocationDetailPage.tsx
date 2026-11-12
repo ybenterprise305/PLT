@@ -13,6 +13,7 @@ import { SEOHead } from '../components/SEOHead';
 import { locksmithVanImg } from '../assets/images';
 import { useLanguage } from '../context/LanguageContext';
 import { SPANISH_COUNTIES } from '../data/spanishTranslations';
+import { trackPhoneClick } from '../utils/analytics';
 
 interface LocationDetailPageProps {
   slug: string;
@@ -213,7 +214,8 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
                 <div className="flex flex-col sm:flex-row gap-3 pt-3">
                   <a
                     href="tel:+17542616528"
-                    className="inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm shadow-lg transition-transform hover:scale-[1.02]"
+                    onClick={() => trackPhoneClick({ ctaLocation: 'city_hero_call', pagePath: `/service-areas/${city.slug}` })}
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-3.5 px-6 min-h-[48px] rounded-xl bg-amber-500 hover:bg-amber-400 active:bg-amber-400 text-slate-950 font-black text-sm shadow-lg transition-transform hover:scale-[1.02] cursor-pointer"
                   >
                     <Phone className="w-4 h-4 fill-current animate-pulse" />
                     <span>{isSpanish ? 'Llamar Ahora: (754) 261-6528' : 'Call Now: (754) 261-6528'}</span>
@@ -221,7 +223,7 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
 
                   <a
                     href="sms:+17542616528"
-                    className="inline-flex items-center justify-center gap-2 py-3.5 px-5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-100 font-bold text-sm border border-slate-700 transition-colors"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-3.5 px-5 min-h-[48px] rounded-xl bg-slate-800 hover:bg-slate-700 active:bg-slate-700 text-slate-100 font-bold text-sm border border-slate-700 transition-colors cursor-pointer"
                   >
                     <MessageSquare className="w-4 h-4 text-amber-400" />
                     <span>{isSpanish ? 'Enviar Mensaje de Texto' : 'Text For Dispatch'}</span>
@@ -281,9 +283,10 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
               <div className="pt-2">
                 <a
                   href="tel:+17542616528"
-                  className="w-full py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs rounded-xl flex items-center justify-center gap-2 transition-colors"
+                  onClick={() => trackPhoneClick({ ctaLocation: 'city_sidebar_call', pagePath: `/service-areas/${city.slug}` })}
+                  className="w-full py-3.5 min-h-[48px] bg-amber-500 hover:bg-amber-400 active:bg-amber-400 text-slate-950 font-black text-xs sm:text-sm rounded-xl flex items-center justify-center gap-2 transition-colors cursor-pointer"
                 >
-                  <Phone className="w-4 h-4 fill-current" />
+                  <Phone className="w-4 h-4 fill-current animate-pulse" />
                   <span>{isSpanish ? `Llamar a Técnico en ${city.name}: (754) 261-6528` : `Call ${city.name} Technician: +1 754-261-6528`}</span>
                 </a>
               </div>
@@ -413,15 +416,16 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
               <div className="pt-3 flex flex-col sm:flex-row gap-3">
                 <a
                   href="tel:+17542616528"
-                  className="inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm shadow-lg transition-transform hover:scale-[1.02]"
+                  onClick={() => trackPhoneClick({ ctaLocation: 'county_hero_call', pagePath: `/service-areas/${county.slug}` })}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-3.5 px-6 min-h-[48px] rounded-xl bg-amber-500 hover:bg-amber-400 active:bg-amber-400 text-slate-950 font-black text-sm shadow-lg transition-transform hover:scale-[1.02] cursor-pointer"
                 >
-                  <Phone className="w-4 h-4 fill-current" />
+                  <Phone className="w-4 h-4 fill-current animate-pulse" />
                   <span>{isSpanish ? `Llamar a Despacho de ${county.name}: (754) 261-6528` : `Call ${county.name} Dispatch: (754) 261-6528`}</span>
                 </a>
 
                 <a
                   href="sms:+17542616528"
-                  className="inline-flex items-center justify-center gap-2 py-3.5 px-5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-100 font-bold text-sm border border-slate-700 transition-colors"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-3.5 px-5 min-h-[48px] rounded-xl bg-slate-800 hover:bg-slate-700 active:bg-slate-700 text-slate-100 font-bold text-sm border border-slate-700 transition-colors cursor-pointer"
                 >
                   <MessageSquare className="w-4 h-4 text-amber-400" />
                   <span>{isSpanish ? 'Enviar Mensaje' : 'Text Us'}</span>

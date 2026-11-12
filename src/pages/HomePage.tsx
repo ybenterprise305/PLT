@@ -198,18 +198,18 @@ export function HomePage({ onNavigate }: HomePageProps) {
       {/* =========================================================================
           1. HERO SECTION — CRO FOCUS: High Urgency, 15-25 Min Arrival, Direct CTA
           ========================================================================= */}
-      <section className="relative bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 pt-6 pb-12 sm:pt-10 sm:pb-16 border-b border-slate-800 overflow-hidden">
+      <section className="relative bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 pt-4 pb-8 sm:pt-10 sm:pb-16 border-b border-slate-800 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(#334155_1px,transparent_1px)] [background-size:24px_24px] opacity-20 pointer-events-none" />
         <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div className="max-w-[1600px] mx-auto px-3 sm:px-6 lg:px-10 xl:px-12 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center">
             
             {/* Left Column: Immediate Value Prop & High-Contrast CTA */}
-            <div className="lg:col-span-7 space-y-5 text-center lg:text-left">
+            <div className="lg:col-span-7 space-y-3.5 sm:space-y-5 text-center lg:text-left">
               
               {/* Emergency Service Pill */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/90 border border-amber-500/40 text-amber-400 text-xs font-bold tracking-wide uppercase shadow-sm">
+              <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-slate-800/90 border border-amber-500/40 text-amber-400 text-[11px] sm:text-xs font-bold tracking-wide uppercase shadow-sm">
                 <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping" />
                 <span>
                   {isSpanish 
@@ -218,8 +218,8 @@ export function HomePage({ onNavigate }: HomePageProps) {
                 </span>
               </div>
 
-              {/* Bold Conversion Headline */}
-              <h1 className="font-heading font-black text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.1]">
+              {/* Bold Conversion Headline Fluid for Smartphone */}
+              <h1 className="font-heading font-black text-2xl xs:text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.15]">
                 {isSpanish ? (
                   <>Cerrajería Móvil 24/7 <span className="text-amber-400">en el Sur de la Florida</span></>
                 ) : (
@@ -228,7 +228,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
               </h1>
 
               {/* Persuasive, Fast-to-Digest Subtitle */}
-              <p className="text-base sm:text-lg text-slate-200 max-w-2xl leading-relaxed mx-auto lg:mx-0">
+              <p className="text-xs sm:text-base lg:text-lg text-slate-200 max-w-2xl leading-relaxed mx-auto lg:mx-0">
                 {isSpanish ? (
                   <>¿Se quedó afuera de su auto, casa o negocio? Pro Locksmith Tech brinda servicios profesionales de cerrajería móvil directamente en su ubicación en todo el Sur de la Florida.</>
                 ) : (
@@ -236,29 +236,29 @@ export function HomePage({ onNavigate }: HomePageProps) {
                 )}
               </p>
 
-              {/* Prominent Core USPs (Scannable Bold Bullet Grid) */}
-              <div className="grid grid-cols-2 gap-2.5 pt-1 text-xs sm:text-sm max-w-xl mx-auto lg:mx-0">
-                <div className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-950/90 border border-amber-500/30 text-slate-100">
-                  <Clock className="w-4 h-4 text-amber-400 shrink-0" />
-                  <span className="font-bold text-left">{isSpanish ? 'Llegada Rápida en 15–25 Min' : '15–25 Min Rapid Arrival'}</span>
+              {/* Prominent Core USPs (2x2 Grid on Mobile) */}
+              <div className="grid grid-cols-2 gap-2 sm:gap-2.5 pt-1 text-[11px] sm:text-sm max-w-xl mx-auto lg:mx-0">
+                <div className="flex items-center gap-1.5 sm:gap-2 p-2 sm:p-2.5 rounded-xl bg-slate-950/90 border border-amber-500/30 text-slate-100">
+                  <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400 shrink-0" />
+                  <span className="font-bold text-left">{isSpanish ? '15–25 Min Llegada' : '15–25 Min Arrival'}</span>
                 </div>
-                <div className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-950/90 border border-amber-500/30 text-amber-300">
-                  <Truck className="w-4 h-4 text-amber-400 shrink-0" />
-                  <span className="font-bold text-left">{isSpanish ? '100% Móvil — Vamos a Ti' : 'Mobile — We Come to You'}</span>
+                <div className="flex items-center gap-1.5 sm:gap-2 p-2 sm:p-2.5 rounded-xl bg-slate-950/90 border border-amber-500/30 text-amber-300">
+                  <Truck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400 shrink-0" />
+                  <span className="font-bold text-left">{isSpanish ? '100% Móvil (Vamos a Ti)' : 'We Come to You'}</span>
                 </div>
-                <div className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-950/90 border border-slate-800 text-slate-100">
-                  <Zap className="w-4 h-4 text-amber-400 shrink-0" />
-                  <span className="font-bold text-left">{isSpanish ? 'Respuesta Inmediata 24/7' : '24/7 Live Emergency Response'}</span>
+                <div className="flex items-center gap-1.5 sm:gap-2 p-2 sm:p-2.5 rounded-xl bg-slate-950/90 border border-slate-800 text-slate-100">
+                  <Zap className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400 shrink-0" />
+                  <span className="font-bold text-left">{isSpanish ? 'Atención 24/7' : '24/7 Emergency'}</span>
                 </div>
-                <div className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-950/90 border border-slate-800 text-slate-100">
-                  <ShieldCheck className="w-4 h-4 text-amber-400 shrink-0" />
-                  <span className="font-bold text-left">{isSpanish ? 'Apertura Sin Daños Garantizada' : 'Damage-Free Entry Focus'}</span>
+                <div className="flex items-center gap-1.5 sm:gap-2 p-2 sm:p-2.5 rounded-xl bg-slate-950/90 border border-slate-800 text-slate-100">
+                  <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400 shrink-0" />
+                  <span className="font-bold text-left">{isSpanish ? 'Sin Daños a Puertas' : 'Damage-Free Entry'}</span>
                 </div>
               </div>
 
               {/* High-Contrast Thumb-Friendly Call-To-Action Box */}
-              <div className="bg-slate-950 border-2 border-amber-500 rounded-2xl p-4 sm:p-5 max-w-2xl mx-auto lg:mx-0 shadow-2xl shadow-amber-500/10">
-                <div className="flex flex-col sm:flex-row items-center justify-between gap-1.5 pb-2.5 mb-3 border-b border-slate-800 text-xs text-slate-300">
+              <div className="bg-slate-950 border-2 border-amber-500 rounded-2xl p-3 sm:p-5 max-w-2xl mx-auto lg:mx-0 shadow-2xl shadow-amber-500/10">
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-1 pb-2 sm:pb-2.5 mb-2 sm:mb-3 border-b border-slate-800 text-[11px] sm:text-xs text-slate-300">
                   <span className="flex items-center gap-1.5 text-amber-400 font-bold uppercase tracking-wider">
                     <Zap className="w-3.5 h-3.5 fill-current" />
                     {isSpanish ? 'Línea de Despacho en Vivo' : 'Live Locksmith Dispatch'}
@@ -266,21 +266,22 @@ export function HomePage({ onNavigate }: HomePageProps) {
                   <span>{isSpanish ? 'Hable directamente con un técnico en servicio' : 'Direct line · No automated phone menus'}</span>
                 </div>
 
-                <div className="flex flex-col sm:flex-row items-center gap-3">
-                  {/* Primary Call Us Now Button */}
+                <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3">
+                  {/* Primary Call Us Now Button with 48px touch target */}
                   <a
                     href="tel:+17542616528"
-                    className="w-full sm:flex-1 py-4 px-6 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 hover:from-amber-300 hover:to-amber-500 text-slate-950 font-black text-base sm:text-lg uppercase tracking-wider shadow-lg shadow-amber-500/30 flex items-center justify-center gap-2.5 transition-transform hover:scale-[1.02] active:scale-[0.98]"
+                    onClick={() => trackPhoneClick({ ctaLocation: 'home_hero_call_now', pagePath: '/' })}
+                    className="w-full sm:flex-1 py-3.5 sm:py-4 px-4 sm:px-6 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 active:from-amber-500 active:to-amber-700 text-slate-950 font-black text-sm xs:text-base sm:text-lg uppercase tracking-wider shadow-lg shadow-amber-500/30 flex items-center justify-center gap-2 cursor-pointer min-h-[48px] transition-transform active:scale-[0.98]"
                     aria-label="Call Pro Locksmith Tech Now at 754-261-6528"
                   >
                     <Phone className="w-5 h-5 fill-current animate-bounce" />
-                    <span>{isSpanish ? 'LLAMAR AHORA: (754) 261-6528' : 'CALL US NOW: (754) 261-6528'}</span>
+                    <span>{isSpanish ? 'LLAMAR: (754) 261-6528' : 'CALL US: (754) 261-6528'}</span>
                   </a>
 
                   {/* Secondary Quick Text Option */}
                   <a
                     href="sms:+17542616528"
-                    className="w-full sm:w-auto py-4 px-6 rounded-xl bg-slate-800 hover:bg-slate-750 text-slate-100 hover:text-amber-400 font-bold text-sm border border-slate-700 flex items-center justify-center gap-2 transition-colors"
+                    className="w-full sm:w-auto py-3 sm:py-4 px-4 sm:px-6 rounded-xl bg-slate-800 active:bg-slate-750 text-slate-100 font-bold text-xs sm:text-sm border border-slate-700 flex items-center justify-center gap-2 min-h-[44px] cursor-pointer"
                     aria-label="Text Pro Locksmith Tech"
                   >
                     <MessageSquare className="w-4 h-4 text-amber-400" />
@@ -290,29 +291,29 @@ export function HomePage({ onNavigate }: HomePageProps) {
               </div>
 
               {/* Social Proof Star Bar */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-1 text-xs text-slate-400">
-                <div className="flex items-center gap-1 text-amber-400">
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-3 pt-1 text-[11px] sm:text-xs text-slate-400">
+                <div className="flex items-center gap-0.5 sm:gap-1 text-amber-400">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                    <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
                   ))}
                 </div>
                 <span className="font-semibold text-white">4.9 / 5.0 Rating</span>
                 <span>•</span>
-                <span>{isSpanish ? '240+ Servicios en el Sur de la Florida' : '240+ Verified Dispatches in South Florida'}</span>
+                <span>{isSpanish ? '240+ Servicios en el Sur de la Florida' : '240+ Dispatches in South Florida'}</span>
               </div>
             </div>
 
-            {/* Right Column: Clean Mobile Van Visual */}
+            {/* Right Column: Mobile-Friendly Van Visual */}
             <div className="lg:col-span-5 relative">
-              <div className="relative rounded-3xl overflow-hidden border border-slate-800 shadow-2xl group bg-slate-950">
-                <div className="absolute top-4 left-4 z-10 bg-slate-950/95 backdrop-blur-md py-1.5 px-3.5 rounded-full border border-amber-500/40 flex items-center shadow-lg">
+              <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-800 shadow-2xl group bg-slate-950">
+                <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-10 bg-slate-950/95 backdrop-blur-md py-1 px-2.5 sm:py-1.5 sm:px-3.5 rounded-full border border-amber-500/40 flex items-center shadow-lg">
                   <Logo size="xs" showText={true} textColor="light" />
                 </div>
 
                 <img
                   src={locksmithVanImg}
                   alt="Pro Locksmith Tech mobile locksmith van on patrol in South Florida"
-                  className="w-full h-80 sm:h-96 lg:h-[460px] object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-44 sm:h-64 lg:h-[460px] object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="eager"
                   fetchPriority="high"
                   decoding="async"
@@ -320,17 +321,17 @@ export function HomePage({ onNavigate }: HomePageProps) {
                 
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent pointer-events-none" />
 
-                <div className="absolute bottom-4 left-4 right-4 bg-slate-900/95 backdrop-blur-md p-4 rounded-xl border border-slate-800 shadow-xl">
+                <div className="absolute bottom-2.5 left-2.5 right-2.5 sm:bottom-4 sm:left-4 sm:right-4 bg-slate-900/95 backdrop-blur-md p-2.5 sm:p-4 rounded-xl border border-slate-800 shadow-xl">
                   <div className="flex items-center justify-between">
                     <div>
-                      <div className="text-white font-bold text-sm">
+                      <div className="text-white font-bold text-xs sm:text-sm">
                         {isSpanish ? 'Taller Móvil en Carretera' : 'Fully Equipped Mobile Workshop'}
                       </div>
-                      <div className="text-xs text-amber-400">
+                      <div className="text-[10px] sm:text-xs text-amber-400">
                         {isSpanish ? 'Servicio Móvil · Broward · Miami-Dade · Palm Beach' : '24/7 Mobile Service · Broward · Miami-Dade · Palm Beach'}
                       </div>
                     </div>
-                    <span className="px-2.5 py-1 bg-amber-500 text-slate-950 font-black text-xs rounded uppercase tracking-wider">
+                    <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 bg-amber-500 text-slate-950 font-black text-[10px] sm:text-xs rounded uppercase tracking-wider">
                       {isSpanish ? '15–25 Min' : '15–25 Min ETA'}
                     </span>
                   </div>
@@ -345,104 +346,108 @@ export function HomePage({ onNavigate }: HomePageProps) {
       {/* =========================================================================
           2. IMMEDIATE EMERGENCY ACTION SELECTOR (CRO Quick-Tap Grid)
           ========================================================================= */}
-      <section className="py-8 bg-slate-950 border-b border-slate-800">
-        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12">
-          <div className="text-center mb-6">
+      <section className="py-6 sm:py-8 bg-slate-950 border-b border-slate-800">
+        <div className="max-w-[1600px] mx-auto px-3 sm:px-6 lg:px-10 xl:px-12">
+          <div className="text-center mb-5 sm:mb-6">
             <h2 className="text-xs font-bold uppercase tracking-widest text-amber-400 mb-1">
               {isSpanish ? '¿Cuál Es Su Emergencia en Este Momento?' : 'Select Your Emergency Service For Immediate Dispatch'}
             </h2>
-            <p className="text-sm text-slate-300">
+            <p className="text-xs sm:text-sm text-slate-300">
               {isSpanish 
                 ? 'Toque para llamar directamente y conectar con un técnico en camino a su ubicación' 
                 : 'Tap to call directly and connect with an active technician dispatched to your location'}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             {/* Action 1: Car Lockout */}
-            <div className="bg-slate-900 border border-slate-800 hover:border-amber-500/50 rounded-2xl p-5 flex flex-col justify-between transition-colors shadow-sm">
-              <div className="space-y-2">
-                <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+            <div className="bg-slate-900 border border-slate-800 hover:border-amber-500/50 rounded-2xl p-4 sm:p-5 flex flex-col justify-between transition-colors shadow-sm">
+              <div className="space-y-1.5 sm:space-y-2">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
                   <Car className="w-5 h-5" />
                 </div>
-                <h3 className="font-heading font-bold text-lg text-white">
+                <h3 className="font-heading font-bold text-base sm:text-lg text-white">
                   {isSpanish ? 'Auto Cerrado / Llaves Adentro' : 'Car Lockout & Trunk'}
                 </h3>
-                <p className="text-xs text-slate-400">
+                <p className="text-xs text-slate-400 leading-relaxed">
                   {isSpanish ? 'Apertura rápida sin rayar marcos ni vidrios. Llegada promedio 15-20 min.' : 'Fast, damage-free entry for all makes. Keys locked in cab or trunk released safely.'}
                 </p>
               </div>
               <a
                 href="tel:+17542616528"
-                className="mt-4 w-full py-2.5 px-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs uppercase rounded-lg flex items-center justify-center gap-1.5 transition-colors"
+                onClick={() => trackPhoneClick({ ctaLocation: 'home_quick_car_lockout', pagePath: '/' })}
+                className="mt-3.5 sm:mt-4 w-full py-3 px-3 bg-amber-500 active:bg-amber-400 text-slate-950 font-black text-xs uppercase rounded-xl flex items-center justify-center gap-1.5 min-h-[46px] cursor-pointer transition-transform active:scale-[0.98]"
               >
-                <Phone className="w-3.5 h-3.5 fill-current" />
+                <Phone className="w-3.5 h-3.5 fill-current animate-pulse" />
                 <span>{isSpanish ? 'Llamar: Abrir Auto' : 'Call: Unlock Car Now'}</span>
               </a>
             </div>
 
             {/* Action 2: House Lockout */}
-            <div className="bg-slate-900 border border-slate-800 hover:border-amber-500/50 rounded-2xl p-5 flex flex-col justify-between transition-colors shadow-sm">
-              <div className="space-y-2">
-                <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+            <div className="bg-slate-900 border border-slate-800 hover:border-amber-500/50 rounded-2xl p-4 sm:p-5 flex flex-col justify-between transition-colors shadow-sm">
+              <div className="space-y-1.5 sm:space-y-2">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
                   <Home className="w-5 h-5" />
                 </div>
-                <h3 className="font-heading font-bold text-lg text-white">
+                <h3 className="font-heading font-bold text-base sm:text-lg text-white">
                   {isSpanish ? 'Casa o Apartamento Cerrado' : 'House & Condo Lockout'}
                 </h3>
-                <p className="text-xs text-slate-400">
+                <p className="text-xs text-slate-400 leading-relaxed">
                   {isSpanish ? 'Acceso rápido y seguro a puertas principales y de patio sin dañar la madera.' : 'Fast entry through front deadbolts, smart keypads, and sliding patio doors.'}
                 </p>
               </div>
               <a
                 href="tel:+17542616528"
-                className="mt-4 w-full py-2.5 px-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs uppercase rounded-lg flex items-center justify-center gap-1.5 transition-colors"
+                onClick={() => trackPhoneClick({ ctaLocation: 'home_quick_house_lockout', pagePath: '/' })}
+                className="mt-3.5 sm:mt-4 w-full py-3 px-3 bg-amber-500 active:bg-amber-400 text-slate-950 font-black text-xs uppercase rounded-xl flex items-center justify-center gap-1.5 min-h-[46px] cursor-pointer transition-transform active:scale-[0.98]"
               >
-                <Phone className="w-3.5 h-3.5 fill-current" />
+                <Phone className="w-3.5 h-3.5 fill-current animate-pulse" />
                 <span>{isSpanish ? 'Llamar: Abrir Casa' : 'Call: Unlock House'}</span>
               </a>
             </div>
 
             {/* Action 3: Key Fobs & Lost Keys */}
-            <div className="bg-slate-900 border border-slate-800 hover:border-amber-500/50 rounded-2xl p-5 flex flex-col justify-between transition-colors shadow-sm">
-              <div className="space-y-2">
-                <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+            <div className="bg-slate-900 border border-slate-800 hover:border-amber-500/50 rounded-2xl p-4 sm:p-5 flex flex-col justify-between transition-colors shadow-sm">
+              <div className="space-y-1.5 sm:space-y-2">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
                   <KeyRound className="w-5 h-5" />
                 </div>
-                <h3 className="font-heading font-bold text-lg text-white">
+                <h3 className="font-heading font-bold text-base sm:text-lg text-white">
                   {isSpanish ? 'Llaves de Auto y Controles' : 'Car Key Replacement & Fobs'}
                 </h3>
-                <p className="text-xs text-slate-400">
+                <p className="text-xs text-slate-400 leading-relaxed">
                   {isSpanish ? 'Corte láser y programación OBD de llaves inteligentes en el acto sin grúa.' : 'Laser cutting & push-to-start fob programming on-site when all keys are lost.'}
                 </p>
               </div>
               <a
                 href="tel:+17542616528"
-                className="mt-4 w-full py-2.5 px-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs uppercase rounded-lg flex items-center justify-center gap-1.5 transition-colors"
+                onClick={() => trackPhoneClick({ ctaLocation: 'home_quick_key_fob', pagePath: '/' })}
+                className="mt-3.5 sm:mt-4 w-full py-3 px-3 bg-amber-500 active:bg-amber-400 text-slate-950 font-black text-xs uppercase rounded-xl flex items-center justify-center gap-1.5 min-h-[46px] cursor-pointer transition-transform active:scale-[0.98]"
               >
-                <Phone className="w-3.5 h-3.5 fill-current" />
+                <Phone className="w-3.5 h-3.5 fill-current animate-pulse" />
                 <span>{isSpanish ? 'Llamar: Llave Nueva' : 'Call: Make New Key'}</span>
               </a>
             </div>
 
             {/* Action 4: Commercial & Rekeying */}
-            <div className="bg-slate-900 border border-slate-800 hover:border-amber-500/50 rounded-2xl p-5 flex flex-col justify-between transition-colors shadow-sm">
-              <div className="space-y-2">
-                <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+            <div className="bg-slate-900 border border-slate-800 hover:border-amber-500/50 rounded-2xl p-4 sm:p-5 flex flex-col justify-between transition-colors shadow-sm">
+              <div className="space-y-1.5 sm:space-y-2">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
                   <Building2 className="w-5 h-5" />
                 </div>
-                <h3 className="font-heading font-bold text-lg text-white">
+                <h3 className="font-heading font-bold text-base sm:text-lg text-white">
                   {isSpanish ? 'Cerrajería Comercial y Rekey' : 'Business Locks & Rekeying'}
                 </h3>
-                <p className="text-xs text-slate-400">
+                <p className="text-xs text-slate-400 leading-relaxed">
                   {isSpanish ? 'Cerraduras comerciales, barras antipánico y cambio de combinación inmediato.' : 'Storefront mortise locks, crash bars, master key systems, and commercial rekeys.'}
                 </p>
               </div>
               <a
                 href="tel:+17542616528"
-                className="mt-4 w-full py-2.5 px-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs uppercase rounded-lg flex items-center justify-center gap-1.5 transition-colors"
+                onClick={() => trackPhoneClick({ ctaLocation: 'home_quick_commercial', pagePath: '/' })}
+                className="mt-3.5 sm:mt-4 w-full py-3 px-3 bg-amber-500 active:bg-amber-400 text-slate-950 font-black text-xs uppercase rounded-xl flex items-center justify-center gap-1.5 min-h-[46px] cursor-pointer transition-transform active:scale-[0.98]"
               >
-                <Phone className="w-3.5 h-3.5 fill-current" />
+                <Phone className="w-3.5 h-3.5 fill-current animate-pulse" />
                 <span>{isSpanish ? 'Llamar: Comercial' : 'Call: Business Service'}</span>
               </a>
             </div>
@@ -610,14 +615,15 @@ export function HomePage({ onNavigate }: HomePageProps) {
               <div className="pt-5 flex items-center justify-between gap-3 border-t border-slate-800 mt-4">
                 <a
                   href="tel:+17542616528"
-                  className="py-2.5 px-4 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase rounded-lg flex items-center gap-1.5 transition-colors"
+                  onClick={() => trackPhoneClick({ ctaLocation: 'home_card_automotive', pagePath: '/' })}
+                  className="py-3 px-4 min-h-[44px] bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase rounded-xl flex items-center gap-1.5 transition-colors cursor-pointer"
                 >
                   <Phone className="w-3.5 h-3.5 fill-current" />
                   <span>{isSpanish ? 'Llamar Por Auto' : 'Call For Car Service'}</span>
                 </a>
                 <button
                   onClick={() => onNavigate('/services/automotive-locksmith')}
-                  className="text-xs text-amber-400 hover:text-amber-300 font-bold flex items-center gap-1 cursor-pointer"
+                  className="text-xs text-amber-400 hover:text-amber-300 font-bold flex items-center gap-1 cursor-pointer py-2 px-1 min-h-[44px]"
                 >
                   <span>Details</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -671,14 +677,15 @@ export function HomePage({ onNavigate }: HomePageProps) {
               <div className="pt-5 flex items-center justify-between gap-3 border-t border-slate-800 mt-4">
                 <a
                   href="tel:+17542616528"
-                  className="py-2.5 px-4 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase rounded-lg flex items-center gap-1.5 transition-colors"
+                  onClick={() => trackPhoneClick({ ctaLocation: 'home_card_residential', pagePath: '/' })}
+                  className="py-3 px-4 min-h-[44px] bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase rounded-xl flex items-center gap-1.5 transition-colors cursor-pointer"
                 >
                   <Phone className="w-3.5 h-3.5 fill-current" />
                   <span>{isSpanish ? 'Llamar Por Casa' : 'Call For Home Service'}</span>
                 </a>
                 <button
                   onClick={() => onNavigate('/services/residential-locksmith')}
-                  className="text-xs text-amber-400 hover:text-amber-300 font-bold flex items-center gap-1 cursor-pointer"
+                  className="text-xs text-amber-400 hover:text-amber-300 font-bold flex items-center gap-1 cursor-pointer py-2 px-1 min-h-[44px]"
                 >
                   <span>Details</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -732,14 +739,15 @@ export function HomePage({ onNavigate }: HomePageProps) {
               <div className="pt-5 flex items-center justify-between gap-3 border-t border-slate-800 mt-4">
                 <a
                   href="tel:+17542616528"
-                  className="py-2.5 px-4 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase rounded-lg flex items-center gap-1.5 transition-colors"
+                  onClick={() => trackPhoneClick({ ctaLocation: 'home_card_commercial', pagePath: '/' })}
+                  className="py-3 px-4 min-h-[44px] bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase rounded-xl flex items-center gap-1.5 transition-colors cursor-pointer"
                 >
                   <Phone className="w-3.5 h-3.5 fill-current" />
                   <span>{isSpanish ? 'Llamar Por Negocio' : 'Call For Business'}</span>
                 </a>
                 <button
                   onClick={() => onNavigate('/services/commercial-locksmith')}
-                  className="text-xs text-amber-400 hover:text-amber-300 font-bold flex items-center gap-1 cursor-pointer"
+                  className="text-xs text-amber-400 hover:text-amber-300 font-bold flex items-center gap-1 cursor-pointer py-2 px-1 min-h-[44px]"
                 >
                   <span>Details</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -793,14 +801,15 @@ export function HomePage({ onNavigate }: HomePageProps) {
               <div className="pt-5 flex items-center justify-between gap-3 border-t border-slate-800 mt-4">
                 <a
                   href="tel:+17542616528"
-                  className="py-2.5 px-4 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase rounded-lg flex items-center gap-1.5 transition-colors"
+                  onClick={() => trackPhoneClick({ ctaLocation: 'home_card_emergency', pagePath: '/' })}
+                  className="py-3 px-4 min-h-[44px] bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase rounded-xl flex items-center gap-1.5 transition-colors cursor-pointer"
                 >
                   <Phone className="w-3.5 h-3.5 fill-current" />
                   <span>{isSpanish ? 'Llamar a Emergencias' : 'Call 24/7 Emergency'}</span>
                 </a>
                 <button
                   onClick={() => onNavigate('/services/emergency-lockout-service')}
-                  className="text-xs text-amber-400 hover:text-amber-300 font-bold flex items-center gap-1 cursor-pointer"
+                  className="text-xs text-amber-400 hover:text-amber-300 font-bold flex items-center gap-1 cursor-pointer py-2 px-1 min-h-[44px]"
                 >
                   <span>Details</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -859,9 +868,10 @@ export function HomePage({ onNavigate }: HomePageProps) {
 
             <a
               href="tel:+17542616528"
-              className="px-6 py-3.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs sm:text-sm rounded-xl uppercase tracking-wider transition-all shadow-md flex items-center gap-2 shrink-0"
+              onClick={() => trackPhoneClick({ ctaLocation: 'home_review_banner_call', pagePath: '/' })}
+              className="w-full sm:w-auto px-6 py-3.5 min-h-[48px] justify-center bg-amber-500 hover:bg-amber-400 active:bg-amber-400 text-slate-950 font-black text-xs sm:text-sm rounded-xl uppercase tracking-wider transition-all shadow-md flex items-center gap-2 shrink-0 cursor-pointer"
             >
-              <Phone className="w-4 h-4 fill-current" />
+              <Phone className="w-4 h-4 fill-current animate-pulse" />
               <span>{isSpanish ? 'Llamar: (754) 261-6528' : 'Call (754) 261-6528'}</span>
             </a>
           </div>

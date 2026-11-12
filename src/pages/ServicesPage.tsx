@@ -13,6 +13,7 @@ import { SEOHead } from '../components/SEOHead';
 import { techRekeyingImg, carKeyProgImg, keyMachineImg, locksmithVanImg } from '../assets/images';
 import { useLanguage } from '../context/LanguageContext';
 import { SPANISH_SERVICES } from '../data/spanishTranslations';
+import { trackPhoneClick } from '../utils/analytics';
 
 interface ServicesPageProps {
   onNavigate: (path: string) => void;
@@ -78,7 +79,8 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
               <div className="pt-2 flex flex-col sm:flex-row gap-3.5">
                 <a
                   href="tel:+17542616528"
-                  className="inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm uppercase tracking-wider shadow-lg transition-transform hover:scale-[1.02]"
+                  onClick={() => trackPhoneClick({ ctaLocation: 'services_hero_call', pagePath: '/services' })}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-3.5 px-6 min-h-[48px] rounded-xl bg-amber-500 hover:bg-amber-400 active:bg-amber-400 text-slate-950 font-black text-sm uppercase tracking-wider shadow-lg transition-transform hover:scale-[1.02] cursor-pointer"
                 >
                   <Phone className="w-4 h-4 fill-current animate-pulse" />
                   <span>{isSpanish ? 'Llamar Ahora: (754) 261-6528' : 'Call Now: +1 754-261-6528'}</span>
@@ -86,7 +88,7 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
 
                 <a
                   href="sms:+17542616528"
-                  className="inline-flex items-center justify-center gap-2 py-3.5 px-5 rounded-xl bg-slate-800 hover:bg-slate-750 text-slate-100 font-bold text-sm border border-slate-700 transition-colors"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-3.5 px-5 min-h-[48px] rounded-xl bg-slate-800 hover:bg-slate-750 active:bg-slate-750 text-slate-100 font-bold text-sm border border-slate-700 transition-colors cursor-pointer"
                 >
                   <MessageSquare className="w-4 h-4 text-amber-400" />
                   <span>{isSpanish ? 'Enviar Mensaje' : 'Text Us'}</span>

@@ -18,6 +18,7 @@ import { SEOHead } from '../components/SEOHead';
 import { techRekeyingImg, carKeyProgImg, keyMachineImg } from '../assets/images';
 import { useLanguage } from '../context/LanguageContext';
 import { SPANISH_SERVICES } from '../data/spanishTranslations';
+import { trackPhoneClick } from '../utils/analytics';
 
 interface ServiceDetailPageProps {
   slug: string;
@@ -299,7 +300,8 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
               <div className="flex flex-col sm:flex-row gap-3 pt-3">
                 <a
                   href="tel:+17542616528"
-                  className="inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm uppercase tracking-wider shadow-lg transition-transform hover:scale-[1.02]"
+                  onClick={() => trackPhoneClick({ ctaLocation: 'service_detail_hero', pagePath: `/services/${service.slug}` })}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-3.5 px-6 min-h-[48px] rounded-xl bg-amber-500 hover:bg-amber-400 active:bg-amber-400 text-slate-950 font-black text-sm uppercase tracking-wider shadow-lg transition-transform hover:scale-[1.02] cursor-pointer"
                 >
                   <Phone className="w-4 h-4 fill-current animate-pulse" />
                   <span>{isSpanish ? 'Llamar Ahora: (754) 261-6528' : 'Call Now: +1 754-261-6528'}</span>
@@ -307,7 +309,7 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
 
                 <a
                   href="sms:+17542616528"
-                  className="inline-flex items-center justify-center gap-2 py-3.5 px-5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-100 font-bold text-sm border border-slate-700 transition-colors"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-3.5 px-5 min-h-[48px] rounded-xl bg-slate-800 hover:bg-slate-700 active:bg-slate-700 text-slate-100 font-bold text-sm border border-slate-700 transition-colors cursor-pointer"
                 >
                   <MessageSquare className="w-4 h-4 text-amber-400" />
                   <span>{isSpanish ? 'Enviar Mensaje' : 'Text Us'}</span>
@@ -479,15 +481,18 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
               href="tel:+17542616528"
-              className="px-8 py-3.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-base rounded-xl shadow-lg transition-transform hover:scale-105"
+              onClick={() => trackPhoneClick({ ctaLocation: 'service_detail_bottom', pagePath: `/services/${service.slug}` })}
+              className="w-full sm:w-auto px-8 py-3.5 min-h-[48px] justify-center bg-amber-500 hover:bg-amber-400 active:bg-amber-400 text-slate-950 font-black text-base rounded-xl shadow-lg transition-transform hover:scale-105 flex items-center gap-2 cursor-pointer"
             >
-              {isSpanish ? 'Llamar +1 754-261-6528' : 'Call +1 754-261-6528'}
+              <Phone className="w-4 h-4 fill-current animate-pulse" />
+              <span>{isSpanish ? 'Llamar +1 754-261-6528' : 'Call +1 754-261-6528'}</span>
             </a>
             <a
               href="sms:+17542616528"
-              className="px-6 py-3.5 bg-slate-800 hover:bg-slate-700 text-slate-100 font-bold text-sm rounded-xl border border-slate-700 transition-colors"
+              className="w-full sm:w-auto px-6 py-3.5 min-h-[48px] justify-center bg-slate-800 hover:bg-slate-700 active:bg-slate-700 text-slate-100 font-bold text-sm rounded-xl border border-slate-700 transition-colors flex items-center gap-2 cursor-pointer"
             >
-              {isSpanish ? 'Enviar Texto' : 'Text Us'}
+              <MessageSquare className="w-4 h-4 text-amber-400" />
+              <span>{isSpanish ? 'Enviar Texto' : 'Text Us'}</span>
             </a>
           </div>
         </div>
@@ -497,7 +502,7 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
           <h3 className="font-heading font-bold text-lg text-white mb-4">
             {isSpanish ? 'Explorar Otros Servicios de Cerrajería' : 'Explore Other Locksmith Services'}
           </h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+          <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-3">
             {SERVICES_DATA.filter(s => s.id !== service.id).slice(0, 8).map(other => {
               const otherDisplayName = isSpanish 
                 ? (SPANISH_SERVICES[other.slug]?.name || other.name)
@@ -507,10 +512,10 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
                 <button
                   key={other.id}
                   onClick={() => onNavigate(`/services/${other.slug}`)}
-                  className="p-3 bg-slate-950 hover:bg-slate-800 border border-slate-800 hover:border-amber-500/30 rounded-xl text-left text-xs font-semibold text-slate-300 hover:text-amber-400 transition-colors flex items-center justify-between cursor-pointer"
+                  className="p-3 min-h-[46px] bg-slate-950 hover:bg-slate-800 border border-slate-800 hover:border-amber-500/30 rounded-xl text-left text-xs font-semibold text-slate-300 hover:text-amber-400 transition-colors flex items-center justify-between cursor-pointer"
                 >
                   <span className="truncate mr-2">{otherDisplayName}</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-slate-500" />
+                  <ArrowRight className="w-3.5 h-3.5 text-slate-500 shrink-0" />
                 </button>
               );
             })}

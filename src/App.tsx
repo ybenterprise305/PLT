@@ -105,15 +105,15 @@ export default function App() {
 
   return (
     <LanguageProvider>
-      <div className="flex flex-col min-h-screen bg-slate-900 text-slate-100 font-sans selection:bg-amber-500 selection:text-slate-950">
+      <div className="flex flex-col min-h-screen bg-slate-900 text-slate-100 font-sans selection:bg-amber-500 selection:text-slate-950 overflow-x-hidden w-full">
         {/* Header with Call box, Text box, Language Toggle, and full phone number */}
         <Header
           currentPath={normalizedPath}
           onNavigate={navigate}
         />
 
-        {/* Main Page Area */}
-        <main className="flex-1 pb-16 lg:pb-0">
+        {/* Main Page Area with generous smartphone bottom clearance for the sticky call bar */}
+        <main className="flex-1 pb-24 sm:pb-28 lg:pb-0 w-full">
           {pageContent}
         </main>
 

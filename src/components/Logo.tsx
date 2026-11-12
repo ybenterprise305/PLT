@@ -17,39 +17,39 @@ export function Logo({
 }: LogoProps) {
   // Dimensions for the emblem badge
   const badgeDimensions = {
-    xs: 'w-7 h-7',
-    sm: 'w-9 h-9',
-    md: 'w-11 h-11',
-    lg: 'w-16 h-16',
-    xl: 'w-24 h-24',
+    xs: 'w-6 h-6 sm:w-7 sm:h-7',
+    sm: 'w-7 h-7 sm:w-9 sm:h-9',
+    md: 'w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11',
+    lg: 'w-12 h-12 sm:w-16 sm:h-16',
+    xl: 'w-16 h-16 sm:w-24 sm:h-24',
   }[size];
 
   // Font sizes for the text lockup
   const textSize = {
     xs: {
-      title: 'text-sm sm:text-base',
-      sub: 'text-[9px]',
+      title: 'text-xs sm:text-sm',
+      sub: 'text-[8px] sm:text-[9px]',
     },
     sm: {
-      title: 'text-base sm:text-lg',
-      sub: 'text-[10px]',
+      title: 'text-xs sm:text-base',
+      sub: 'text-[9px] sm:text-[10px]',
     },
     md: {
-      title: 'text-lg sm:text-xl md:text-2xl',
-      sub: 'text-[10px] sm:text-xs',
+      title: 'text-sm sm:text-lg md:text-xl',
+      sub: 'text-[9px] sm:text-[10px] md:text-xs',
     },
     lg: {
-      title: 'text-2xl sm:text-3xl',
+      title: 'text-xl sm:text-2xl md:text-3xl',
       sub: 'text-xs sm:text-sm',
     },
     xl: {
-      title: 'text-3xl sm:text-4xl',
-      sub: 'text-sm sm:text-base',
+      title: 'text-2xl sm:text-3xl md:text-4xl',
+      sub: 'text-xs sm:text-base',
     },
   }[size];
 
   return (
-    <div className={`inline-flex items-center gap-3 select-none ${className}`}>
+    <div className={`inline-flex items-center gap-2 sm:gap-3 select-none ${className}`}>
       {/* Precision Vector Emblem (Adjusted for Pro Locksmith Tech branding) */}
       <div 
         className={`${badgeDimensions} relative shrink-0 rounded-full flex items-center justify-center transition-transform group-hover:scale-105`}

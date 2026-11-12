@@ -230,7 +230,7 @@ export function ServiceAreasPage({ onNavigate }: ServiceAreasPageProps) {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder={isSpanish ? "Buscar por ciudad o código postal (ej. Fort Lauderdale, 33301)..." : "Search by city, zip code, or area (e.g., Boca Raton, 33076)..."}
-                className="w-full bg-slate-900 border border-slate-800 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-amber-400 transition-colors"
+                className="w-full bg-slate-900 border border-slate-800 rounded-xl pl-10 pr-4 py-3 sm:py-2.5 text-base sm:text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-amber-400 transition-colors min-h-[44px]"
               />
               {searchQuery && (
                 <button

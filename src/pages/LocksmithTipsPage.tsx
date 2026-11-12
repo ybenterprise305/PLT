@@ -154,7 +154,7 @@ export function LocksmithTipsPage({ onNavigate }: LocksmithTipsPageProps) {
               placeholder="Search tips, keys, locks..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-slate-900 border border-slate-700 rounded-xl pl-10 pr-4 py-2 text-xs sm:text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:border-amber-500 transition-colors"
+              className="w-full bg-slate-900 border border-slate-700 rounded-xl pl-10 pr-4 py-2.5 sm:py-2 text-base sm:text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:border-amber-500 transition-colors min-h-[44px]"
             />
           </div>
 
