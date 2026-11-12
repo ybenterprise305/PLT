@@ -24,6 +24,7 @@ import { SEOHead } from '../components/SEOHead';
 import { SERVICES_DATA } from '../data/servicesData';
 import { COUNTIES_DATA } from '../data/locationsData';
 import { AD_CAMPAIGNS, getAdCampaignBySlug } from '../data/adLandingPagesData';
+import { trackPhoneClick } from '../utils/analytics';
 
 interface AdLandingPageProps {
   slug: string;
@@ -42,13 +43,20 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
   // Structured Data Schema for LocalBusiness / Locksmith Ad Page
   const adSchema = {
     "@context": "https://schema.org",
-    "@type": "Locksmith",
+    "@type": ["Locksmith", "LocalBusiness", "AutomotiveBusiness"],
     "name": `Pro Locksmith Tech - ${campaign.name}`,
     "image": "https://prolocksmith-tech.com/icon-512.png",
-    "@id": `https://prolocksmith-tech.com/lp/${slug}`,
-    "url": `https://prolocksmith-tech.com/lp/${slug}`,
+    "@id": `https://prolocksmith-tech.com/lp/${campaign.slug}#ad`,
+    "url": `https://prolocksmith-tech.com/lp/${campaign.slug}`,
     "telephone": "+1-754-261-6528",
     "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Coral Springs",
+      "addressRegion": "FL",
+      "postalCode": "33076",
+      "addressCountry": "US"
+    },
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
@@ -69,6 +77,8 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
         title={`${campaign.name} South Florida | 24/7 Mobile Dispatch | Pro Locksmith Tech`}
         description={campaign.subheadline}
         keywords={campaign.targetKeywords.join(', ')}
+        canonicalPath={`/lp/${campaign.slug}`}
+        noIndex={true}
       />
 
       <script
@@ -112,6 +122,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
 
             <a
               href={phoneTel}
+              onClick={() => trackPhoneClick({ ctaLocation: 'ppc_header_call_btn', pagePath: `/lp/${campaign.slug}`, campaignSlug: campaign.slug })}
               className="py-2.5 px-4 sm:px-6 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs sm:text-sm rounded-xl shadow-lg flex items-center gap-2 transition-transform hover:scale-105 cursor-pointer ring-2 ring-amber-400/40"
             >
               <Phone className="w-4 h-4 fill-current animate-pulse" />
@@ -201,15 +212,15 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
                   </p>
                 </div>
 
-                {/* 3 Step Procedure */}
-                <div className="space-y-3.5 text-xs">
+                {/* 4 Step Procedure */}
+                <div className="space-y-3 text-xs">
                   <div className="flex items-start gap-3 p-3 bg-slate-950 rounded-xl border border-slate-800">
                     <span className="w-6 h-6 rounded-full bg-amber-500 text-slate-950 font-black flex items-center justify-center shrink-0 text-xs">
                       1
                     </span>
                     <div>
-                      <strong className="text-white block font-bold text-sm">Call Our 24/7 Hotline</strong>
-                      <span className="text-slate-400">Speak directly with our local dispatcher. No automated phone maze.</span>
+                      <strong className="text-white block font-bold text-sm">Call Our Direct Dispatch Line</strong>
+                      <span className="text-slate-400">Speak directly with our local South Florida technician. No call centers.</span>
                     </div>
                   </div>
 
@@ -218,8 +229,8 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
                       2
                     </span>
                     <div>
-                      <strong className="text-white block font-bold text-sm">Tell Us Your Location & Issue</strong>
-                      <span className="text-slate-400">Share your street, plaza or cross-streets, plus your vehicle or lock type.</span>
+                      <strong className="text-white block font-bold text-sm">Provide Location & Service Details</strong>
+                      <span className="text-slate-400">Tell us where you are and details about your vehicle, door lock, or key situation.</span>
                     </div>
                   </div>
 
@@ -228,8 +239,18 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
                       3
                     </span>
                     <div>
-                      <strong className="text-white block font-bold text-sm">Mobile Locksmith Comes to You</strong>
-                      <span className="text-slate-400">Fully equipped mobile workshop van arrives directly on-site to handle the job.</span>
+                      <strong className="text-white block font-bold text-sm">Availability & Pricing Discussed</strong>
+                      <span className="text-slate-400">We clearly review estimated arrival and pricing factors before dispatching.</span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3 p-3 bg-slate-950 rounded-xl border border-slate-800">
+                    <span className="w-6 h-6 rounded-full bg-amber-500 text-slate-950 font-black flex items-center justify-center shrink-0 text-xs">
+                      4
+                    </span>
+                    <div>
+                      <strong className="text-white block font-bold text-sm">Technician Travels to Your Location</strong>
+                      <span className="text-slate-400">A mobile workshop van arrives directly at your coordinates to complete the work.</span>
                     </div>
                   </div>
                 </div>
@@ -237,10 +258,11 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
                 {/* 1-Tap Tap To Call Button */}
                 <a
                   href={phoneTel}
+                  onClick={() => trackPhoneClick({ ctaLocation: 'ppc_procedure_box_call', pagePath: `/lp/${campaign.slug}`, campaignSlug: campaign.slug })}
                   className="w-full py-4 px-6 bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-slate-950 font-black text-base rounded-2xl shadow-xl flex items-center justify-center gap-3 transition-transform hover:scale-[1.02] cursor-pointer"
                 >
                   <Phone className="w-5 h-5 fill-current animate-pulse" />
-                  <span>TAP TO CALL: (754) 261-6528</span>
+                  <span>CALL NOW — (754) 261-6528</span>
                 </a>
 
                 <div className="text-center">
@@ -321,6 +343,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
 
           <a
             href={phoneTel}
+            onClick={() => trackPhoneClick({ ctaLocation: 'ppc_mid_banner_call', pagePath: `/lp/${campaign.slug}`, campaignSlug: campaign.slug })}
             className="py-4 px-8 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-base shadow-xl flex items-center gap-2 shrink-0 transition-transform hover:scale-105 cursor-pointer"
           >
             <Phone className="w-5 h-5 fill-current animate-pulse" />
@@ -371,7 +394,15 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
 
           <div className="mt-8 text-center">
             <p className="text-xs text-slate-400">
-              Need immediate confirmation in your area? Call <a href={phoneTel} className="text-amber-400 font-bold hover:underline">(754) 261-6528</a> to speak directly with our dispatcher.
+              Need immediate confirmation in your area? Call{' '}
+              <a 
+                href={phoneTel} 
+                onClick={() => trackPhoneClick({ ctaLocation: 'ppc_coverage_text_call', pagePath: `/lp/${campaign.slug}`, campaignSlug: campaign.slug })}
+                className="text-amber-400 font-bold hover:underline"
+              >
+                (754) 261-6528
+              </a>{' '}
+              to speak directly with our dispatcher.
             </p>
           </div>
         </div>
@@ -412,10 +443,11 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
           <div className="pt-2">
             <a
               href={phoneTel}
+              onClick={() => trackPhoneClick({ ctaLocation: 'ppc_bottom_final_call', pagePath: `/lp/${campaign.slug}`, campaignSlug: campaign.slug })}
               className="inline-flex items-center gap-3 py-4 px-8 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-base sm:text-lg rounded-2xl shadow-xl transition-transform hover:scale-105 cursor-pointer"
             >
               <Phone className="w-5 h-5 fill-current animate-pulse" />
-              <span>CALL (754) 261-6528</span>
+              <span>CALL NOW — (754) 261-6528</span>
             </a>
           </div>
         </div>
@@ -443,13 +475,14 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
       </footer>
 
       {/* Persistent Sticky Mobile Call Bar for Ads */}
-      <div className="sm:hidden fixed bottom-0 left-0 right-0 z-50 bg-slate-950/95 backdrop-blur-md border-t-2 border-amber-500 p-2.5 shadow-2xl flex items-center gap-2">
+      <div className="sm:hidden fixed bottom-0 left-0 right-0 z-50 bg-slate-950/95 backdrop-blur-md border-t-2 border-amber-500 p-2.5 pb-[calc(0.625rem+env(safe-area-inset-bottom,0px))] shadow-2xl flex items-center gap-2">
         <a
           href={phoneTel}
+          onClick={() => trackPhoneClick({ ctaLocation: 'ppc_mobile_sticky_call', pagePath: `/lp/${campaign.slug}`, campaignSlug: campaign.slug })}
           className="flex-1 py-3.5 px-4 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm rounded-xl shadow-lg flex items-center justify-center gap-2 cursor-pointer"
         >
           <Phone className="w-5 h-5 fill-current animate-pulse" />
-          <span>CALL NOW: (754) 261-6528</span>
+          <span>CALL NOW — (754) 261-6528</span>
         </a>
         <a
           href={smsTel}
@@ -459,7 +492,6 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
           <span>Text</span>
         </a>
       </div>
-
     </div>
   );
 }

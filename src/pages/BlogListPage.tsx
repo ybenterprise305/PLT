@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BookOpen, Clock, ArrowRight, Phone, MessageSquare, Tag, ShieldCheck, Truck } from 'lucide-react';
 import { SEOHead } from '../components/SEOHead';
 import { BLOG_POSTS, BlogPost } from '../data/blogData';
+import { trackPhoneClick } from '../utils/analytics';
 
 interface BlogListPageProps {
   onNavigate: (path: string) => void;
@@ -42,6 +43,7 @@ export function BlogListPage({ onNavigate }: BlogListPageProps) {
             <div className="pt-2 flex flex-wrap gap-3">
               <a
                 href="tel:+17542616528"
+                onClick={() => trackPhoneClick({ ctaLocation: 'blog_list_header_call', pagePath: '/blog' })}
                 className="inline-flex items-center gap-2 py-3 px-5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs sm:text-sm shadow-lg transition-transform hover:scale-[1.02] cursor-pointer"
               >
                 <Phone className="w-4 h-4 fill-current" />

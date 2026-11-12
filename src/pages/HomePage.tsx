@@ -30,6 +30,7 @@ import { FAQ_DATA } from '../data/faqData';
 import { useLanguage } from '../context/LanguageContext';
 import { SPANISH_FAQS, SPANISH_REVIEWS } from '../data/spanishTranslations';
 import { trackPhoneClick } from '../utils/analytics';
+import { VideoGuidesSection } from '../components/VideoGuidesSection';
 
 interface HomePageProps {
   onNavigate: (path: string) => void;
@@ -932,7 +933,12 @@ export function HomePage({ onNavigate }: HomePageProps) {
       </section>
 
       {/* =========================================================================
-          7. AEO-OPTIMIZED FAQ ACCORDION (Clear Answers for Search Engines & AI)
+          7. VIDEO SEO & TECHNICAL DEMONSTRATIONS (VSEO Readiness)
+          ========================================================================= */}
+      <VideoGuidesSection onNavigate={onNavigate} />
+
+      {/* =========================================================================
+          8. AEO-OPTIMIZED FAQ ACCORDION (Clear Answers for Search Engines & AI)
           ========================================================================= */}
       <section className="py-14 sm:py-16 bg-slate-900 border-b border-slate-800">
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-10 space-y-8">

@@ -170,25 +170,26 @@
   <url><loc>https://prolocksmith-tech.com/service-areas/greenacres</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://prolocksmith-tech.com/service-areas/riviera-beach</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
 
-  <!-- 6 Blog Articles -->
-  <url><loc>https://prolocksmith-tech.com/blog/car-lockout-what-to-do-south-florida</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
-  <url><loc>https://prolocksmith-tech.com/blog/rekeying-vs-replacing-locks-guide</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
-  <url><loc>https://prolocksmith-tech.com/blog/how-mobile-locksmiths-program-car-key-fobs</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
-  <url><loc>https://prolocksmith-tech.com/blog/why-avoid-diy-lock-picking-emergency</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
-  <url><loc>https://prolocksmith-tech.com/blog/commercial-master-key-systems-florida-business</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
-  <url><loc>https://prolocksmith-tech.com/blog/smart-locks-vs-traditional-deadbolts-florida-weather</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <!-- 10 Blog / Knowledge Center Articles -->
+  <url><loc>https://prolocksmith-tech.com/blog/can-locksmith-make-car-key-without-original</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://prolocksmith-tech.com/blog/why-is-my-key-fob-not-working</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://prolocksmith-tech.com/blog/how-much-does-car-key-programming-cost</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://prolocksmith-tech.com/blog/rekeying-vs-changing-locks-difference</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://prolocksmith-tech.com/blog/what-to-do-when-locked-out-of-car</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://prolocksmith-tech.com/blog/what-to-do-when-locked-out-of-house</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://prolocksmith-tech.com/blog/can-locksmith-program-push-to-start-key</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://prolocksmith-tech.com/blog/should-you-rekey-locks-after-moving</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://prolocksmith-tech.com/blog/why-wont-car-key-turn-in-ignition</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://prolocksmith-tech.com/blog/what-information-needed-before-calling-mobile-locksmith</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
-  <!-- 10 Advertising Landing Pages -->
-  <url><loc>https://prolocksmith-tech.com/lp/car-lockouts</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://prolocksmith-tech.com/lp/car-key-replacement</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://prolocksmith-tech.com/lp/house-lockouts</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://prolocksmith-tech.com/lp/lock-rekeying</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://prolocksmith-tech.com/lp/commercial-locksmith</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://prolocksmith-tech.com/lp/emergency-locksmith</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://prolocksmith-tech.com/lp/smart-lock-installation</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://prolocksmith-tech.com/lp/ignition-repair</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://prolocksmith-tech.com/lp/broken-key-extraction</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://prolocksmith-tech.com/lp/deadbolt-installation</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <!-- 7 Primary PPC Landing Pages (Campaign Slugs) -->
+  <url><loc>https://prolocksmith-tech.com/lp/car-lockout</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://prolocksmith-tech.com/lp/car-key-replacement</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://prolocksmith-tech.com/lp/house-lockout</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://prolocksmith-tech.com/lp/lock-change</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://prolocksmith-tech.com/lp/lock-rekeying</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://prolocksmith-tech.com/lp/safe-lockout</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://prolocksmith-tech.com/lp/storage-unit-lockout</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
 
   <!-- 8 Locksmith Tips, Tricks & Technical AEO Guides -->
   <url><loc>https://prolocksmith-tech.com/tips</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>

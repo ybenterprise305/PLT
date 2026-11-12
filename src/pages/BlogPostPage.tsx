@@ -11,10 +11,12 @@ import {
   CheckCircle2, 
   ShieldCheck, 
   Truck, 
-  MapPin 
+  MapPin,
+  Sparkles 
 } from 'lucide-react';
 import { SEOHead } from '../components/SEOHead';
 import { BLOG_POSTS, BlogPost } from '../data/blogData';
+import { trackPhoneClick } from '../utils/analytics';
 
 interface BlogPostPageProps {
   slug: string;
@@ -138,6 +140,7 @@ export function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
           <div className="flex flex-col sm:flex-row gap-2.5 w-full sm:w-auto shrink-0">
             <a
               href="tel:+17542616528"
+              onClick={() => trackPhoneClick({ ctaLocation: 'blog_post_urgent_call', pagePath: `/blog/${post.slug}` })}
               className="py-3 px-5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs sm:text-sm rounded-xl shadow-lg flex items-center justify-center gap-2 transition-transform hover:scale-105 cursor-pointer"
             >
               <Phone className="w-4 h-4 fill-current animate-pulse" />
@@ -152,6 +155,23 @@ export function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
             </a>
           </div>
         </div>
+
+        {/* Direct Answer Block (AEO / Google AI Overview Optimized) */}
+        {post.quickAnswer && (
+          <div className="bg-amber-500/10 border-2 border-amber-500/60 rounded-2xl p-6 mb-10 shadow-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="p-1 rounded-md bg-amber-500 text-slate-950">
+                <Sparkles className="w-3.5 h-3.5" />
+              </span>
+              <span className="text-xs font-black uppercase tracking-wider text-amber-400">
+                Direct Answer · Quick Overview
+              </span>
+            </div>
+            <p className="text-sm sm:text-base font-medium text-amber-100/90 leading-relaxed">
+              {post.quickAnswer}
+            </p>
+          </div>
+        )}
 
         {/* Article Body Content */}
         <div className="space-y-8 text-slate-200 leading-relaxed text-base sm:text-lg">
@@ -223,6 +243,7 @@ export function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
 
           <a
             href="tel:+17542616528"
+            onClick={() => trackPhoneClick({ ctaLocation: 'blog_post_bottom_call', pagePath: `/blog/${post.slug}` })}
             className="mt-4 sm:mt-0 inline-flex items-center justify-center gap-2 py-4 px-6 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm shadow-xl transition-transform hover:scale-105 cursor-pointer shrink-0"
           >
             <Phone className="w-4 h-4 fill-current animate-pulse" />
