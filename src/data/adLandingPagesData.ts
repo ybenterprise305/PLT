@@ -256,7 +256,7 @@ export const AD_CAMPAIGNS: AdCampaignConfig[] = [
       'True 24/7 emergency dispatch: 365 days a year, late nights & holidays',
       '15–20 minute average arrival time via major South Florida expressways',
       'Fully equipped mobile workshop vans with precision tools and parts',
-      'Direct contact with your local mobile technician—no call centers'
+      'Arrival time and price confirmed on the phone before we dispatch'
     ],
     vehicleOrHardwareSupported: [
       'All automobile makes and models (domestic, foreign & luxury)',

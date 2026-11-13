@@ -232,7 +232,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
                     </span>
                     <div>
                       <strong className="text-white block font-bold text-sm">Call Our Direct Dispatch Line</strong>
-                      <span className="text-slate-400">Speak directly with our local South Florida technician. No call centers.</span>
+                      <span className="text-slate-400">Tell us what happened and we start your dispatch.</span>
                     </div>
                   </div>
 
@@ -414,7 +414,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
               >
                 (754) 261-6528
               </a>{' '}
-              to speak directly with our dispatcher.
+              to confirm service in your area.
             </p>
           </div>
         </div>
@@ -450,7 +450,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
             Ready For A Mobile Locksmith?
           </h3>
           <p className="text-xs sm:text-sm text-slate-400 max-w-lg mx-auto">
-            Our dispatch line is open 24 hours a day, 7 days a week. Speak directly with a friendly technician now.
+            Our dispatch line is open 24 hours a day, 7 days a week. Call or text now and we confirm your arrival time.
           </p>
           <div className="pt-2">
             <a

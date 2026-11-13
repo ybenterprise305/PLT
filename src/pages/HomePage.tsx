@@ -202,7 +202,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                     <Zap className="w-3.5 h-3.5 fill-current" />
                     {isSpanish ? 'Línea de Despacho en Vivo' : 'Live Locksmith Dispatch'}
                   </span>
-                  <span>{isSpanish ? 'Hable directamente con un técnico en servicio' : 'Direct line · No automated phone menus'}</span>
+                  <span>{isSpanish ? 'Línea directa de despacho 24/7' : 'Direct line · No automated phone menus'}</span>
                 </div>
 
                 <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3">

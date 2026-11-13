@@ -146,7 +146,7 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
                 +1 754-261-6528
               </a>
               <p className="text-xs text-slate-400 mt-1">
-                {isSpanish ? 'La forma más rápida de hablar con un cerrajero.' : 'Fastest way to speak directly with an active locksmith.'}
+                {isSpanish ? 'La forma más rápida de comunicarse con despacho.' : 'The fastest way to reach dispatch.'}
               </p>
             </div>
             <div className="pt-2">
@@ -275,7 +275,7 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
                     <span className="text-xs text-slate-400">
                       {isSpanish ? 'Marque ' : 'Dial '}
                       <a href="tel:+17542616528" className="text-amber-400 underline font-bold">+1 754-261-6528</a>. 
-                      {isSpanish ? ' Hable directamente con nuestro equipo.' : ' Speak directly to our local team.'}
+                      {isSpanish ? ' Llame o envíe un texto para comenzar.' : ' Call or text to get started.'}
                     </span>
                   </div>
                 </div>
@@ -325,7 +325,7 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
                   {isSpanish ? 'Despacho de Emergencia Activo' : 'Active Emergency Dispatch'}
                 </span>
                 <h3 className="font-heading font-black text-2xl sm:text-3xl text-white">
-                  {isSpanish ? 'Hable Directamente con un Cerrajero' : 'Speak Directly With A Locksmith'}
+                  {isSpanish ? 'Llame o Envíe un Texto Ahora' : 'Call or Text Dispatch Now'}
                 </h3>
                 <p className="text-xs text-slate-400">
                   {isSpanish 
