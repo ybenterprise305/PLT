@@ -105,7 +105,7 @@ export default function App() {
 
   return (
     <LanguageProvider>
-      <div className="flex flex-col min-h-screen bg-slate-900 text-slate-100 font-sans selection:bg-amber-500 selection:text-slate-950 overflow-x-hidden w-full">
+      <div className="flex flex-col min-h-screen bg-slate-900 text-slate-100 font-sans selection:bg-amber-500 selection:text-slate-950 overflow-x-clip w-full">
         {/* Header with Call box, Text box, Language Toggle, and full phone number */}
         <Header
           currentPath={normalizedPath}

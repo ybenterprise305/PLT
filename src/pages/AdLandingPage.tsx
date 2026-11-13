@@ -21,6 +21,8 @@ import {
   Check
 } from 'lucide-react';
 import { SEOHead } from '../components/SEOHead';
+import { NotFoundPage } from './NotFoundPage';
+import { TextLocationButton } from '../components/TextLocationButton';
 import { SERVICES_DATA } from '../data/servicesData';
 import { COUNTIES_DATA } from '../data/locationsData';
 import { AD_CAMPAIGNS, getAdCampaignBySlug } from '../data/adLandingPagesData';
@@ -33,7 +35,10 @@ interface AdLandingPageProps {
 
 export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
   // Resolve campaign configuration or fallback
-  const campaign = getAdCampaignBySlug(slug) || AD_CAMPAIGNS[0];
+  const campaign = getAdCampaignBySlug(slug);
+  if (!campaign) {
+    return <NotFoundPage onNavigate={onNavigate} />;
+  }
   const service = SERVICES_DATA.find(s => s.slug === campaign.serviceId || s.id === campaign.serviceId) || SERVICES_DATA[0];
 
   const phoneNumber = '+1 754-261-6528';
@@ -72,7 +77,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950 pb-20 sm:pb-0">
+    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950 pb-20 lg:pb-0">
       <SEOHead
         title={`${campaign.name} South Florida | 24/7 Mobile Dispatch | Pro Locksmith Tech`}
         description={campaign.subheadline}
@@ -160,16 +165,6 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
                 {campaign.subheadline}
               </p>
 
-              {/* 4 Bullet Highlights */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 text-left max-w-xl mx-auto lg:mx-0">
-                {campaign.keyBenefits.map((benefit, bIdx) => (
-                  <div key={bIdx} className="flex items-start gap-2.5 p-3 bg-slate-900/95 rounded-xl border border-slate-800">
-                    <CheckCircle2 className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
-                    <span className="text-xs sm:text-sm font-bold text-white leading-snug">{benefit}</span>
-                  </div>
-                ))}
-              </div>
-
               {/* Primary Call to Action CTAs */}
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-3">
                 <a
@@ -180,18 +175,22 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
                   <span>CALL NOW: (754) 261-6528</span>
                 </a>
 
-                <a
-                  href={smsTel}
-                  className="w-full sm:w-auto py-4 px-6 bg-slate-900 hover:bg-slate-800 text-slate-100 font-bold text-sm sm:text-base rounded-2xl border border-slate-700 flex items-center justify-center gap-2.5 transition-colors cursor-pointer"
-                >
-                  <MessageSquare className="w-5 h-5 text-amber-400" />
-                  <span>Text Us Location</span>
-                </a>
+                <TextLocationButton ctaLocation="ppc_hero_text_location" campaignSlug={campaign.slug} />
               </div>
 
-              <div className="text-xs text-slate-400 flex items-center justify-center lg:justify-start gap-2 pt-1">
+              <div className="text-sm text-slate-300 flex items-center justify-center lg:justify-start gap-2 pt-1">
                 <Clock className="w-4 h-4 text-amber-400" />
                 <span>Typical on-site arrival: <strong>15–20 minutes</strong> across South Florida</span>
+              </div>
+
+              {/* 4 Bullet Highlights */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 text-left max-w-xl mx-auto lg:mx-0">
+                {campaign.keyBenefits.map((benefit, bIdx) => (
+                  <div key={bIdx} className="flex items-start gap-2.5 p-3 bg-slate-900/95 rounded-xl border border-slate-800">
+                    <CheckCircle2 className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
+                    <span className="text-sm sm:text-base font-bold text-white leading-snug">{benefit}</span>
+                  </div>
+                ))}
               </div>
 
             </div>
@@ -213,7 +212,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
                 </div>
 
                 {/* 4 Step Procedure */}
-                <div className="space-y-3 text-xs">
+                <div className="space-y-3 text-sm">
                   <div className="flex items-start gap-3 p-3 bg-slate-950 rounded-xl border border-slate-800">
                     <span className="w-6 h-6 rounded-full bg-amber-500 text-slate-950 font-black flex items-center justify-center shrink-0 text-xs">
                       1
@@ -378,7 +377,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
                     15–20 Min Dispatch
                   </span>
                 </div>
-                <div className="flex flex-wrap gap-1.5 max-h-44 overflow-y-auto">
+                <div className="flex flex-wrap gap-1.5">
                   {county.majorCities.map((city) => (
                     <span 
                       key={city.id}
@@ -425,7 +424,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
               <h4 className="font-heading font-bold text-base text-white">
                 {q.question}
               </h4>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
                 {q.answer}
               </p>
             </div>
@@ -475,7 +474,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
       </footer>
 
       {/* Persistent Sticky Mobile Call Bar for Ads */}
-      <div className="sm:hidden fixed bottom-0 left-0 right-0 z-50 bg-slate-950/95 backdrop-blur-md border-t-2 border-amber-500 p-2.5 pb-[calc(0.625rem+env(safe-area-inset-bottom,0px))] shadow-2xl flex items-center gap-2">
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-slate-950/95 backdrop-blur-md border-t-2 border-amber-500 p-2.5 pb-[calc(0.625rem+env(safe-area-inset-bottom,0px))] shadow-2xl flex items-center gap-2">
         <a
           href={phoneTel}
           onClick={() => trackPhoneClick({ ctaLocation: 'ppc_mobile_sticky_call', pagePath: `/lp/${campaign.slug}`, campaignSlug: campaign.slug })}

@@ -16,7 +16,6 @@ import {
   ChevronDown, 
   Zap, 
   HelpCircle, 
-  Star, 
   ShieldCheck 
 } from 'lucide-react';
 import { SEOHead } from '../components/SEOHead';
@@ -28,64 +27,12 @@ import {
 } from '../assets/images';
 import { FAQ_DATA } from '../data/faqData';
 import { useLanguage } from '../context/LanguageContext';
-import { SPANISH_FAQS, SPANISH_REVIEWS } from '../data/spanishTranslations';
+import { SPANISH_FAQS } from '../data/spanishTranslations';
 import { trackPhoneClick } from '../utils/analytics';
-import { VideoGuidesSection } from '../components/VideoGuidesSection';
 
 interface HomePageProps {
   onNavigate: (path: string) => void;
 }
-
-const ENGLISH_REVIEWS = [
-  {
-    id: 'rev-en-1',
-    author: 'Michael R.',
-    location: 'Fort Lauderdale, FL (Las Olas)',
-    serviceBadge: 'Verified Car Unlock',
-    dispatchType: 'Automotive Emergency',
-    quote: 'Locked my keys and phone in my car late on a Friday night near Las Olas. The mobile locksmith van arrived in 18 minutes. Used professional air wedge and reach tools to open the door in two minutes without scratching the window tint. Absolute lifesaver.'
-  },
-  {
-    id: 'rev-en-2',
-    author: 'Carlos & Elena M.',
-    location: 'Coral Springs, FL (Ramblewood)',
-    serviceBadge: 'Verified House Rekeying',
-    dispatchType: 'Residential Rekeying',
-    quote: 'We just moved into our home in Coral Springs and needed all exterior locks rekeyed immediately. The technician arrived on time with a complete key workshop in his van. Rekeyed all 6 Schlage deadbolts to one master key and cut extra copies on-site. Fast and upfront.'
-  },
-  {
-    id: 'rev-en-3',
-    author: 'David S.',
-    location: 'Boca Raton, FL (Mizner Park)',
-    serviceBadge: 'Commercial Storefront',
-    dispatchType: 'Commercial Hardware',
-    quote: "Our restaurant storefront door lock jammed on a busy Friday afternoon right before dinner service in Boca. Called the dispatch line, spoke to an active technician, and he was on-site in 22 minutes. Replaced the commercial mortise cylinder and aligned the strike plate perfectly."
-  },
-  {
-    id: 'rev-en-4',
-    author: 'Jessica T.',
-    location: 'Miami Beach, FL (South Beach)',
-    serviceBadge: 'Key Fob Programming',
-    dispatchType: 'Lost Car Key Replacement',
-    quote: 'Lost my proximity push-to-start fob on the beach. Dealership wanted hundreds for a tow and a 3-day wait. Pro Locksmith Tech drove straight to the parking garage, cut the laser emergency key, and programmed a brand-new smart key fob on the spot in 30 minutes.'
-  },
-  {
-    id: 'rev-en-5',
-    author: 'Robert K.',
-    location: 'West Palm Beach, FL',
-    serviceBadge: 'Trunk Lockout Bypass',
-    dispatchType: 'Trunk Lockout',
-    quote: "Slammed my trunk shut with my car keys inside while loading groceries in West Palm Beach. Roadside assistance gave up on the deadlock. Pro Locksmith Tech decoded the driver cylinder directly and released the latch in minutes with zero damage."
-  },
-  {
-    id: 'rev-en-6',
-    author: 'Amanda L.',
-    location: 'Pembroke Pines, FL',
-    serviceBadge: 'Smart Deadbolt Setup',
-    dispatchType: 'Residential Security',
-    quote: 'Tried installing an electronic keypad deadbolt myself, but our heavy Florida impact door kept jamming. The locksmith mortised the strike plate deeper, aligned the latch smoothly, and programmed the keypad. Highly recommended!'
-  }
-];
 
 export function HomePage({ onNavigate }: HomePageProps) {
   const { isSpanish } = useLanguage();
@@ -132,13 +79,6 @@ export function HomePage({ onNavigate }: HomePageProps) {
           { "@type": "AdministrativeArea", "name": "Miami-Dade County, FL" },
           { "@type": "AdministrativeArea", "name": "Palm Beach County, FL" }
         ],
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "reviewCount": "248",
-          "bestRating": "5",
-          "worstRating": "1"
-        },
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
           "name": "Mobile Locksmith Services",
@@ -174,7 +114,6 @@ export function HomePage({ onNavigate }: HomePageProps) {
   };
 
   const currentFaqs = isSpanish ? SPANISH_FAQS : FAQ_DATA;
-  const currentReviews = isSpanish ? SPANISH_REVIEWS : ENGLISH_REVIEWS;
 
   return (
     <div className="min-h-screen bg-slate-900 text-slate-100 selection:bg-amber-500 selection:text-slate-950">
@@ -290,16 +229,13 @@ export function HomePage({ onNavigate }: HomePageProps) {
                 </div>
               </div>
 
-              {/* Social Proof Star Bar */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-3 pt-1 text-[11px] sm:text-xs text-slate-400">
-                <div className="flex items-center gap-0.5 sm:gap-1 text-amber-400">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-                  ))}
-                </div>
-                <span className="font-semibold text-white">4.9 / 5.0 Rating</span>
+              {/* Service highlights (no unverified ratings or counts) */}
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-3 gap-y-1 pt-1 text-xs sm:text-sm text-slate-300">
+                <span className="font-semibold text-white">{isSpanish ? 'Abierto 24/7' : 'Open 24/7'}</span>
                 <span>•</span>
-                <span>{isSpanish ? '240+ Servicios en el Sur de la Florida' : '240+ Dispatches in South Florida'}</span>
+                <span>{isSpanish ? 'Broward, Miami-Dade y Palm Beach' : 'Broward, Miami-Dade & Palm Beach'}</span>
+                <span>•</span>
+                <span>{isSpanish ? 'Precio confirmado antes de salir' : 'Price confirmed before dispatch'}</span>
               </div>
             </div>
 
@@ -822,93 +758,40 @@ export function HomePage({ onNavigate }: HomePageProps) {
       </section>
 
       {/* =========================================================================
-          5. SOCIAL PROOF & TESTIMONIALS (Instant Trust Building)
+          5. QUICK CONTACT BAND
+          Reviews section removed until real, verifiable customer reviews are available.
           ========================================================================= */}
-      <section className="py-14 sm:py-16 bg-slate-900 border-b border-slate-800">
-        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 space-y-10">
-          
-          <div className="text-center max-w-3xl mx-auto space-y-2">
-            <div className="inline-flex items-center gap-1 text-amber-400 text-xs font-bold uppercase tracking-wider">
-              <Star className="w-3.5 h-3.5 fill-amber-400" />
-              <span>Verified Customer Feedback</span>
-            </div>
-            <h2 className="font-heading font-black text-2xl sm:text-4xl text-white">
-              {isSpanish ? 'Opiniones Reales de Clientes en el Sur de la Florida' : 'Real Reviews from South Florida Drivers & Homeowners'}
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-300">
-              {isSpanish 
-                ? 'Testimonios verificados de clientes en Coral Springs, Fort Lauderdale, Boca Raton y Miami.' 
-                : 'See why local residents rely on our fast mobile dispatch for lockouts, rekeying, and car keys.'}
-            </p>
-          </div>
-
-          {/* Aggregate Rating Banner */}
+      <section className="py-12 sm:py-14 bg-slate-900 border-b border-slate-800">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-10">
           <div className="bg-slate-950 border border-amber-500/30 rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
-            <div className="flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
-              <div className="bg-slate-900 border border-amber-500/30 rounded-xl px-6 py-3.5 flex flex-col items-center">
-                <span className="text-4xl font-heading font-black text-amber-400">4.9</span>
-                <div className="flex items-center gap-1 text-amber-400 mt-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                  ))}
-                </div>
-                <span className="text-[10px] text-slate-400 uppercase font-bold mt-1">240+ Dispatches</span>
-              </div>
-              <div className="space-y-1">
-                <h3 className="text-lg font-bold text-white font-heading">
-                  {isSpanish ? 'Flota de Cerrajería Móvil Más Confiable' : 'South Florida’s Trusted Mobile Locksmith Fleet'}
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-300 max-w-xl">
-                  {isSpanish 
-                    ? 'Técnicos calificados que llegan directamente a su ubicación con herramientas profesionales.' 
-                    : '15–25 min average mobile response. Damage-free vehicle entry and upfront pricing.'}
-                </p>
-              </div>
+            <div className="space-y-1 text-center md:text-left">
+              <h2 className="font-heading font-black text-xl sm:text-2xl text-white">
+                {isSpanish ? 'Cerrajería Móvil en el Sur de la Florida' : 'Mobile Locksmith Across South Florida'}
+              </h2>
+              <p className="text-sm sm:text-base text-slate-300 max-w-xl">
+                {isSpanish
+                  ? 'Llame o envíe un texto con su ubicación. Le confirmamos el tiempo de llegada y el precio antes de salir.'
+                  : 'Call or text your location. We confirm your arrival time and price before we dispatch.'}
+              </p>
             </div>
-
-            <a
-              href="tel:+17542616528"
-              onClick={() => trackPhoneClick({ ctaLocation: 'home_review_banner_call', pagePath: '/' })}
-              className="w-full sm:w-auto px-6 py-3.5 min-h-[48px] justify-center bg-amber-500 hover:bg-amber-400 active:bg-amber-400 text-slate-950 font-black text-xs sm:text-sm rounded-xl uppercase tracking-wider transition-all shadow-md flex items-center gap-2 shrink-0 cursor-pointer"
-            >
-              <Phone className="w-4 h-4 fill-current animate-pulse" />
-              <span>{isSpanish ? 'Llamar: (754) 261-6528' : 'Call (754) 261-6528'}</span>
-            </a>
-          </div>
-
-          {/* 6 Real Review Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {currentReviews.map((rev) => (
-              <div 
-                key={rev.id} 
-                className="bg-slate-950 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between space-y-3 hover:border-slate-700 transition-colors"
+            <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0">
+              <a
+                href="tel:+17542616528"
+                onClick={() => trackPhoneClick({ ctaLocation: 'home_contact_band_call', pagePath: '/' })}
+                className="px-6 py-3.5 min-h-[48px] justify-center bg-amber-500 hover:bg-amber-400 active:bg-amber-400 text-slate-950 font-black text-sm rounded-xl uppercase tracking-wider transition-colors shadow-md flex items-center gap-2 cursor-pointer"
               >
-                <div className="space-y-2.5">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-0.5 text-amber-400">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-                      ))}
-                    </div>
-                    <span className="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
-                      {rev.serviceBadge}
-                    </span>
-                  </div>
-                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed italic">
-                    "{rev.quote}"
-                  </p>
-                </div>
-                <div className="pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
-                  <div>
-                    <div className="font-bold text-white">{rev.author}</div>
-                    <div className="text-[11px] text-slate-400">{rev.location}</div>
-                  </div>
-                  <span className="text-[10px] text-slate-500">{rev.dispatchType}</span>
-                </div>
-              </div>
-            ))}
+                <Phone className="w-4 h-4 fill-current" />
+                <span>{isSpanish ? 'Llamar: (754) 261-6528' : 'Call (754) 261-6528'}</span>
+              </a>
+              <a
+                href="sms:+17542616528"
+                className="px-6 py-3.5 min-h-[48px] justify-center bg-slate-900 hover:bg-slate-800 text-slate-100 font-bold text-sm rounded-xl border border-slate-700 flex items-center gap-2 cursor-pointer"
+              >
+                <MessageSquare className="w-4 h-4 text-amber-400" />
+                <span>{isSpanish ? 'Enviar Texto' : 'Text Your Location'}</span>
+              </a>
+            </div>
           </div>
-
         </div>
       </section>
 
@@ -941,11 +824,6 @@ export function HomePage({ onNavigate }: HomePageProps) {
           />
         </div>
       </section>
-
-      {/* =========================================================================
-          7. VIDEO SEO & TECHNICAL DEMONSTRATIONS (VSEO Readiness)
-          ========================================================================= */}
-      <VideoGuidesSection onNavigate={onNavigate} />
 
       {/* =========================================================================
           8. AEO-OPTIMIZED FAQ ACCORDION (Clear Answers for Search Engines & AI)

@@ -1,0 +1,13 @@
+{
+  "name": "Pro Locksmith Tech",
+  "short_name": "Pro Locksmith",
+  "description": "24/7 mobile locksmith across Broward, Miami-Dade and Palm Beach. Call (754) 261-6528.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a1e38",
+  "theme_color": "#0a1e38",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

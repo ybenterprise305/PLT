@@ -35,6 +35,7 @@ export function AdLandingHubPage({ onNavigate }: AdLandingHubPageProps) {
         title="Advertising Landing Pages Hub | Pro Locksmith Tech"
         description="Directory of high-converting advertising landing pages for Google Ads and PPC campaigns. Optimized for mobile locksmith conversion in South Florida."
         keywords="Pro Locksmith Tech advertising, locksmith PPC landing pages, South Florida locksmith ads"
+        noIndex={true}
       />
 
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 space-y-10">

@@ -12,6 +12,7 @@ export function NotFoundPage({ onNavigate }: NotFoundPageProps) {
       <SEOHead
         title="404 Page Not Found | Pro Locksmith Tech"
         description="The page you requested could not be found. Contact Pro Locksmith Tech for 24/7 mobile locksmith service across South Florida at +1 754-261-6528."
+        noIndex={true}
       />
 
       <div className="max-w-lg w-full bg-slate-950 border border-slate-800 rounded-3xl p-8 sm:p-10 text-center space-y-6 shadow-2xl">
