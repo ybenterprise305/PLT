@@ -42,12 +42,11 @@ export function TipDetailPage({ slug, onNavigate }: TipDetailPageProps) {
           <p className="text-slate-400 text-sm">
             The requested locksmith technical guide could not be located.
           </p>
-          <button
-            onClick={() => onNavigate('/tips')}
-            className="px-6 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-lg text-sm"
+          <a href="/tips"
+            className="px-6 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-lg text-sm inline-block text-center"
           >
             &larr; Return to All Locksmith Tips
-          </button>
+          </a>
         </div>
       </div>
     );
@@ -144,30 +143,27 @@ export function TipDetailPage({ slug, onNavigate }: TipDetailPageProps) {
       <div className="bg-slate-950/80 border-b border-slate-800 py-3 px-4 sm:px-6 lg:px-10 xl:px-12 text-xs text-slate-400">
         <div className="max-w-[1200px] mx-auto flex items-center justify-between gap-4">
           <div className="flex items-center gap-2 overflow-x-auto whitespace-nowrap">
-            <button 
-              onClick={() => onNavigate('/')} 
-              className="hover:text-amber-400 transition-colors"
+            <a href="/" 
+              className="hover:text-amber-400 transition-colors inline-block text-center"
             >
               Home
-            </button>
+            </a>
             <span>/</span>
-            <button 
-              onClick={() => onNavigate('/tips')} 
-              className="hover:text-amber-400 transition-colors"
+            <a href="/tips" 
+              className="hover:text-amber-400 transition-colors inline-block text-center"
             >
               Locksmith Tips
-            </button>
+            </a>
             <span>/</span>
             <span className="text-slate-200 truncate max-w-[200px] sm:max-w-md">{tip.title}</span>
           </div>
 
-          <button
-            onClick={() => onNavigate('/tips')}
-            className="hidden sm:inline-flex items-center gap-1.5 text-amber-400 hover:text-amber-300 font-semibold"
+          <a href="/tips"
+            className="hidden sm:inline-flex items-center gap-1.5 text-amber-400 hover:text-amber-300 font-semibold text-center"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>All Tips &amp; Tricks</span>
-          </button>
+          </a>
         </div>
       </div>
 
@@ -416,10 +412,9 @@ export function TipDetailPage({ slug, onNavigate }: TipDetailPageProps) {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {relatedTips.map((rTip) => (
-                <button
+                <a href={`/tips/${rTip.slug}`}
                   key={rTip.id}
-                  onClick={() => onNavigate(`/tips/${rTip.slug}`)}
-                  className="bg-slate-950 border border-slate-800 hover:border-amber-500/40 p-4 rounded-xl text-left space-y-2 group transition-all"
+                  className="bg-slate-950 border border-slate-800 hover:border-amber-500/40 p-4 rounded-xl text-left space-y-2 group transition-all inline-block"
                 >
                   <div className="text-[10px] font-bold text-amber-400 uppercase tracking-wider">{rTip.category}</div>
                   <h3 className="font-bold text-xs text-white group-hover:text-amber-400 transition-colors line-clamp-2">
@@ -429,7 +424,7 @@ export function TipDetailPage({ slug, onNavigate }: TipDetailPageProps) {
                     <span>Read Guide</span>
                     <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                   </div>
-                </button>
+                </a>
               ))}
             </div>
           </section>

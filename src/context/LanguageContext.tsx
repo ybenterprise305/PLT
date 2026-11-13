@@ -158,8 +158,8 @@ export const TRANSLATIONS: Translations = {
   },
   'how.step1Title': { en: '1. CALL FOR IMMEDIATE DISPATCH', es: '1. LLAME PARA DESPACHO INMEDIATO' },
   'how.step1Desc': { 
-    en: 'Call our direct dispatch line at +1 754-261-6528 or send a text. Speak directly with our team with no complicated phone menus.', 
-    es: 'Llame a nuestra línea directa al +1 754-261-6528 o envíe un texto. Hablará directamente con nuestro equipo sin menús automáticos molestos.' 
+    en: 'Call our dispatch line at +1 754-261-6528 or send a text.', 
+    es: 'Llame a nuestra línea de despacho al +1 754-261-6528 o envíe un texto.' 
   },
   'how.step2Title': { en: '2. TELL US YOUR LOCATION & SERVICE NEEDED', es: '2. INDÍQUENOS SU UBICACIÓN Y SERVICIO' },
   'how.step2Desc': { 

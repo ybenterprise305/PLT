@@ -37,12 +37,11 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
           <h2 className="font-heading font-bold text-2xl text-white">
             {isSpanish ? 'Servicio No Encontrado' : 'Service Not Found'}
           </h2>
-          <button
-            onClick={() => onNavigate('/services')}
-            className="px-6 py-2.5 bg-amber-500 text-slate-950 font-bold rounded-lg text-xs cursor-pointer"
+          <a href="/services"
+            className="px-6 py-2.5 bg-amber-500 text-slate-950 font-bold rounded-lg text-xs cursor-pointer inline-block text-center"
           >
             {isSpanish ? 'Volver a Todos los Servicios' : 'Back to All Locksmith Services'}
-          </button>
+          </a>
         </div>
       </div>
     );
@@ -257,13 +256,13 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
         
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 text-xs text-slate-400">
-          <button onClick={() => onNavigate('/')} className="hover:text-amber-400 transition-colors cursor-pointer">
+          <a href="/" className="hover:text-amber-400 transition-colors cursor-pointer inline-block text-center">
             {t('nav.home')}
-          </button>
+          </a>
           <span>/</span>
-          <button onClick={() => onNavigate('/services')} className="hover:text-amber-400 transition-colors cursor-pointer">
+          <a href="/services" className="hover:text-amber-400 transition-colors cursor-pointer inline-block text-center">
             {t('nav.services')}
-          </button>
+          </a>
           <span>/</span>
           <span className="text-amber-400 font-semibold">{serviceName}</span>
         </div>
@@ -296,7 +295,7 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
                   onClick={() => trackPhoneClick({ ctaLocation: 'service_detail_hero', pagePath: `/services/${service.slug}` })}
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-3.5 px-6 min-h-[48px] rounded-xl bg-amber-500 hover:bg-amber-400 active:bg-amber-400 text-slate-950 font-black text-sm uppercase tracking-wider shadow-lg transition-transform hover:scale-[1.02] cursor-pointer"
                 >
-                  <Phone className="w-4 h-4 fill-current animate-pulse" />
+                  <Phone className="w-4 h-4 fill-current" />
                   <span>{isSpanish ? 'Llamar Ahora: (754) 261-6528' : 'Call Now: +1 754-261-6528'}</span>
                 </a>
 
@@ -477,7 +476,7 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
               onClick={() => trackPhoneClick({ ctaLocation: 'service_detail_bottom', pagePath: `/services/${service.slug}` })}
               className="w-full sm:w-auto px-8 py-3.5 min-h-[48px] justify-center bg-amber-500 hover:bg-amber-400 active:bg-amber-400 text-slate-950 font-black text-base rounded-xl shadow-lg transition-transform hover:scale-105 flex items-center gap-2 cursor-pointer"
             >
-              <Phone className="w-4 h-4 fill-current animate-pulse" />
+              <Phone className="w-4 h-4 fill-current" />
               <span>{isSpanish ? 'Llamar +1 754-261-6528' : 'Call +1 754-261-6528'}</span>
             </a>
             <a
@@ -502,14 +501,13 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
                 : other.name;
 
               return (
-                <button
+                <a href={`/services/${other.slug}`}
                   key={other.id}
-                  onClick={() => onNavigate(`/services/${other.slug}`)}
                   className="p-3 min-h-[46px] bg-slate-950 hover:bg-slate-800 border border-slate-800 hover:border-amber-500/30 rounded-xl text-left text-xs font-semibold text-slate-300 hover:text-amber-400 transition-colors flex items-center justify-between cursor-pointer"
                 >
                   <span className="truncate mr-2">{otherDisplayName}</span>
                   <ArrowRight className="w-3.5 h-3.5 text-slate-500 shrink-0" />
-                </button>
+                </a>
               );
             })}
           </div>

@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { MobileCallBar } from './components/MobileCallBar';
@@ -27,10 +27,27 @@ import { TipDetailPage } from './pages/TipDetailPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { LanguageProvider } from './context/LanguageContext';
 
-export default function App() {
+interface AppProps {
+  /** Path to render. Used when pre-rendering at build time; in the browser the address bar decides. */
+  initialPath?: string;
+}
+
+export default function App({ initialPath }: AppProps) {
   const [currentPath, setCurrentPath] = useState<string>(() => {
-    return window.location.pathname || '/';
+    if (initialPath) return initialPath;
+    return (typeof window !== 'undefined' && window.location.pathname) || '/';
   });
+
+  const navigate = useCallback((href: string) => {
+    const url = new URL(href, window.location.origin);
+    const next = url.pathname + url.search + url.hash;
+    const current = window.location.pathname + window.location.search + window.location.hash;
+    if (current !== next) {
+      window.history.pushState({}, '', next);
+    }
+    setCurrentPath(url.pathname);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   useEffect(() => {
     const handlePopState = () => {
@@ -40,13 +57,25 @@ export default function App() {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  const navigate = (path: string) => {
-    if (window.location.pathname !== path) {
-      window.history.pushState({}, '', path);
-      setCurrentPath(path);
-    }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  // Real <a href="/..."> links work without JavaScript (and for search engines); with
+  // JavaScript, this turns an ordinary click into a fast in-page navigation.
+  useEffect(() => {
+    const handleClick = (event: MouseEvent) => {
+      if (event.defaultPrevented || event.button !== 0) return;
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const target = event.target as Element | null;
+      const anchor = target && 'closest' in target ? (target.closest('a[href]') as HTMLAnchorElement | null) : null;
+      if (!anchor) return;
+      if (anchor.target && anchor.target !== '_self') return;
+      if (anchor.hasAttribute('download')) return;
+      const href = anchor.getAttribute('href') || '';
+      if (!href.startsWith('/') || href.startsWith('//')) return;
+      event.preventDefault();
+      navigate(href);
+    };
+    document.addEventListener('click', handleClick);
+    return () => document.removeEventListener('click', handleClick);
+  }, [navigate]);
 
   // Route matching
   const normalizedPath = currentPath.replace(/\/+$/, '') || '/';

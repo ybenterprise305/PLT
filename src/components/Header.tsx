@@ -65,8 +65,8 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
       {/* 1. TOP UTILITY BAR: Desktop gets full suite, mobile gets sleek single-line announcement */}
       <div className="bg-slate-950 text-slate-200 border-b border-slate-800/80">
         
-        {/* Mobile Single-Line Strip (< sm) */}
-        <div className="sm:hidden flex items-center justify-between px-3 py-1.5 text-[11px]">
+        {/* Phone and tablet single-line strip (< lg) */}
+        <div className="lg:hidden flex items-center justify-between px-3 sm:px-6 py-1.5 sm:py-2 text-[11px] sm:text-xs">
           <div className="flex items-center gap-1.5 text-amber-400 font-bold truncate">
             <span className="relative flex h-2 w-2 shrink-0">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
@@ -85,8 +85,8 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
           </a>
         </div>
 
-        {/* Desktop & Tablet Utility Bar (sm and up) */}
-        <div className="hidden sm:block max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 py-2 text-xs">
+        {/* Laptop and desktop utility bar (lg and up) */}
+        <div className="hidden lg:block max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 py-2 text-xs">
           <div className="flex items-center justify-between gap-3">
             
             {/* Left: Dispatch area indicator & SAB Positioning */}
@@ -146,59 +146,54 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
           <div className="flex items-center justify-between h-16 sm:h-20">
             
             {/* Logo: Scaled properly for smartphone screens */}
-            <button 
-              onClick={() => handleLinkClick('/')}
+            <a href="/"
               className="flex items-center text-left group focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 rounded-lg p-0.5 transition-opacity hover:opacity-95 shrink-0 cursor-pointer"
               aria-label="Pro Locksmith Tech Home"
-            >
+             onClick={() => setMobileMenuOpen(false)}>
               <Logo size="md" textColor="light" />
-            </button>
+            </a>
 
             {/* Desktop Navigation Links (ONLY 4 Main Links) */}
             <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
-              <button
-                onClick={() => handleLinkClick('/')}
+              <a href="/"
                 className={`px-4 py-2 text-sm font-semibold rounded-lg transition-colors cursor-pointer ${
                   currentPath === '/' 
                     ? 'text-amber-400 bg-slate-800/90' 
                     : 'text-slate-200 hover:text-white hover:bg-slate-800/50'
-                }`}
-              >
+                } inline-block text-center`}
+               onClick={() => setMobileMenuOpen(false)}>
                 {t('nav.home')}
-              </button>
+              </a>
 
-              <button
-                onClick={() => handleLinkClick('/services')}
+              <a href="/services"
                 className={`px-4 py-2 text-sm font-semibold rounded-lg transition-colors cursor-pointer ${
                   currentPath.startsWith('/services') 
                     ? 'text-amber-400 bg-slate-800/90' 
                     : 'text-slate-200 hover:text-white hover:bg-slate-800/50'
-                }`}
-              >
+                } inline-block text-center`}
+               onClick={() => setMobileMenuOpen(false)}>
                 {t('nav.services')}
-              </button>
+              </a>
 
-              <button
-                onClick={() => handleLinkClick('/service-areas')}
+              <a href="/service-areas"
                 className={`px-4 py-2 text-sm font-semibold rounded-lg transition-colors cursor-pointer ${
                   currentPath.startsWith('/service-areas') 
                     ? 'text-amber-400 bg-slate-800/90' 
                     : 'text-slate-200 hover:text-white hover:bg-slate-800/50'
-                }`}
-              >
+                } inline-block text-center`}
+               onClick={() => setMobileMenuOpen(false)}>
                 {t('nav.serviceAreas')}
-              </button>
+              </a>
 
-              <button
-                onClick={() => handleLinkClick('/contact')}
+              <a href="/contact"
                 className={`px-4 py-2 text-sm font-semibold rounded-lg transition-colors cursor-pointer ${
                   currentPath === '/contact' 
                     ? 'text-amber-400 bg-slate-800/90' 
                     : 'text-slate-200 hover:text-white hover:bg-slate-800/50'
-                }`}
-              >
+                } inline-block text-center`}
+               onClick={() => setMobileMenuOpen(false)}>
                 {t('nav.contact')}
-              </button>
+              </a>
             </nav>
 
             {/* Desktop Header CTA */}
@@ -208,7 +203,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
                 onClick={() => trackPhoneClick({ ctaLocation: 'header_main_btn', pagePath: currentPath })}
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 hover:from-amber-300 hover:to-amber-500 text-slate-950 font-black text-sm uppercase tracking-wider shadow-lg shadow-amber-500/25 transition-transform hover:scale-[1.02] active:scale-[0.98]"
               >
-                <Phone className="w-4 h-4 fill-current animate-pulse" />
+                <Phone className="w-4 h-4 fill-current" />
                 <span>{isSpanish ? 'Llamar: (754) 261-6528' : 'Call (754) 261-6528'}</span>
               </a>
             </div>
@@ -225,7 +220,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
                 className="px-2.5 py-2 rounded-xl bg-amber-500 active:bg-amber-400 text-slate-950 font-black shadow-md flex items-center gap-1 text-xs uppercase cursor-pointer min-h-[40px]"
                 aria-label="Call Pro Locksmith Tech"
               >
-                <Phone className="w-3.5 h-3.5 fill-current animate-pulse" />
+                <Phone className="w-3.5 h-3.5 fill-current" />
                 <span>{t('nav.call')}</span>
               </a>
 
@@ -257,65 +252,61 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
 
               {/* 4 Main Core Links with Large Finger-Friendly Touch Targets */}
               <nav className="grid gap-2">
-                <button
-                  onClick={() => handleLinkClick('/')}
+                <a href="/"
                   className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-bold transition-all cursor-pointer min-h-[50px] ${
                     currentPath === '/' 
                       ? 'text-slate-950 bg-amber-500 font-black shadow-lg shadow-amber-500/20' 
                       : 'text-slate-200 bg-slate-900 border border-slate-800 hover:bg-slate-850'
-                  }`}
-                >
+                  } text-center`}
+                 onClick={() => setMobileMenuOpen(false)}>
                   <span className="flex items-center gap-3">
                     <Home className="w-5 h-5" />
                     <span>{t('nav.home')}</span>
                   </span>
                   <ChevronRight className="w-4 h-4 opacity-70" />
-                </button>
+                </a>
                 
-                <button
-                  onClick={() => handleLinkClick('/services')}
+                <a href="/services"
                   className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-bold transition-all cursor-pointer min-h-[50px] ${
                     currentPath.startsWith('/services') 
                       ? 'text-slate-950 bg-amber-500 font-black shadow-lg shadow-amber-500/20' 
                       : 'text-slate-200 bg-slate-900 border border-slate-800 hover:bg-slate-850'
-                  }`}
-                >
+                  } text-center`}
+                 onClick={() => setMobileMenuOpen(false)}>
                   <span className="flex items-center gap-3">
                     <Wrench className="w-5 h-5" />
                     <span>{t('nav.services')}</span>
                   </span>
                   <ChevronRight className="w-4 h-4 opacity-70" />
-                </button>
+                </a>
 
-                <button
-                  onClick={() => handleLinkClick('/service-areas')}
+                <a href="/service-areas"
                   className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-bold transition-all cursor-pointer min-h-[50px] ${
                     currentPath.startsWith('/service-areas') 
                       ? 'text-slate-950 bg-amber-500 font-black shadow-lg shadow-amber-500/20' 
                       : 'text-slate-200 bg-slate-900 border border-slate-800 hover:bg-slate-850'
-                  }`}
-                >
+                  } text-center`}
+                 onClick={() => setMobileMenuOpen(false)}>
                   <span className="flex items-center gap-3">
                     <Navigation className="w-5 h-5" />
                     <span>{t('nav.serviceAreas')}</span>
                   </span>
                   <ChevronRight className="w-4 h-4 opacity-70" />
-                </button>
+                </a>
 
-                <button
-                  onClick={() => handleLinkClick('/contact')}
+                <a href="/contact"
                   className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-bold transition-all cursor-pointer min-h-[50px] ${
                     currentPath === '/contact' 
                       ? 'text-slate-950 bg-amber-500 font-black shadow-lg shadow-amber-500/20' 
                       : 'text-slate-200 bg-slate-900 border border-slate-800 hover:bg-slate-850'
-                  }`}
-                >
+                  } text-center`}
+                 onClick={() => setMobileMenuOpen(false)}>
                   <span className="flex items-center gap-3">
                     <Mail className="w-5 h-5" />
                     <span>{t('nav.contact')}</span>
                   </span>
                   <ChevronRight className="w-4 h-4 opacity-70" />
-                </button>
+                </a>
               </nav>
 
               {/* Service Status Badge */}
@@ -351,7 +342,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
                 onClick={() => trackPhoneClick({ ctaLocation: 'header_drawer_call_btn', pagePath: currentPath })}
                 className="w-full py-4 px-4 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 text-slate-950 font-black text-sm uppercase rounded-xl flex items-center justify-center gap-2 shadow-xl shadow-amber-500/30 min-h-[50px] cursor-pointer"
               >
-                <Phone className="w-5 h-5 fill-current animate-pulse" />
+                <Phone className="w-5 h-5 fill-current" />
                 <span>CALL NOW: (754) 261-6528</span>
               </a>
 

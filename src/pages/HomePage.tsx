@@ -202,7 +202,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                     <Zap className="w-3.5 h-3.5 fill-current" />
                     {isSpanish ? 'Línea de Despacho en Vivo' : 'Live Locksmith Dispatch'}
                   </span>
-                  <span>{isSpanish ? 'Hable directamente con un técnico en servicio' : 'Direct line · No automated phone menus'}</span>
+                  <span>{isSpanish ? 'Línea directa de despacho 24/7' : 'Direct line · No automated phone menus'}</span>
                 </div>
 
                 <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3">
@@ -314,7 +314,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                 onClick={() => trackPhoneClick({ ctaLocation: 'home_quick_car_lockout', pagePath: '/' })}
                 className="mt-3.5 sm:mt-4 w-full py-3 px-3 bg-amber-500 active:bg-amber-400 text-slate-950 font-black text-xs uppercase rounded-xl flex items-center justify-center gap-1.5 min-h-[46px] cursor-pointer transition-transform active:scale-[0.98]"
               >
-                <Phone className="w-3.5 h-3.5 fill-current animate-pulse" />
+                <Phone className="w-3.5 h-3.5 fill-current" />
                 <span>{isSpanish ? 'Llamar: Abrir Auto' : 'Call: Unlock Car Now'}</span>
               </a>
             </div>
@@ -337,7 +337,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                 onClick={() => trackPhoneClick({ ctaLocation: 'home_quick_house_lockout', pagePath: '/' })}
                 className="mt-3.5 sm:mt-4 w-full py-3 px-3 bg-amber-500 active:bg-amber-400 text-slate-950 font-black text-xs uppercase rounded-xl flex items-center justify-center gap-1.5 min-h-[46px] cursor-pointer transition-transform active:scale-[0.98]"
               >
-                <Phone className="w-3.5 h-3.5 fill-current animate-pulse" />
+                <Phone className="w-3.5 h-3.5 fill-current" />
                 <span>{isSpanish ? 'Llamar: Abrir Casa' : 'Call: Unlock House'}</span>
               </a>
             </div>
@@ -360,7 +360,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                 onClick={() => trackPhoneClick({ ctaLocation: 'home_quick_key_fob', pagePath: '/' })}
                 className="mt-3.5 sm:mt-4 w-full py-3 px-3 bg-amber-500 active:bg-amber-400 text-slate-950 font-black text-xs uppercase rounded-xl flex items-center justify-center gap-1.5 min-h-[46px] cursor-pointer transition-transform active:scale-[0.98]"
               >
-                <Phone className="w-3.5 h-3.5 fill-current animate-pulse" />
+                <Phone className="w-3.5 h-3.5 fill-current" />
                 <span>{isSpanish ? 'Llamar: Llave Nueva' : 'Call: Make New Key'}</span>
               </a>
             </div>
@@ -383,7 +383,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                 onClick={() => trackPhoneClick({ ctaLocation: 'home_quick_commercial', pagePath: '/' })}
                 className="mt-3.5 sm:mt-4 w-full py-3 px-3 bg-amber-500 active:bg-amber-400 text-slate-950 font-black text-xs uppercase rounded-xl flex items-center justify-center gap-1.5 min-h-[46px] cursor-pointer transition-transform active:scale-[0.98]"
               >
-                <Phone className="w-3.5 h-3.5 fill-current animate-pulse" />
+                <Phone className="w-3.5 h-3.5 fill-current" />
                 <span>{isSpanish ? 'Llamar: Comercial' : 'Call: Business Service'}</span>
               </a>
             </div>
@@ -557,13 +557,12 @@ export function HomePage({ onNavigate }: HomePageProps) {
                   <Phone className="w-3.5 h-3.5 fill-current" />
                   <span>{isSpanish ? 'Llamar Por Auto' : 'Call For Car Service'}</span>
                 </a>
-                <button
-                  onClick={() => onNavigate('/services/automotive-locksmith')}
-                  className="text-xs text-amber-400 hover:text-amber-300 font-bold flex items-center gap-1 cursor-pointer py-2 px-1 min-h-[44px]"
+                <a href="/services/automotive-locksmith"
+                  className="text-xs text-amber-400 hover:text-amber-300 font-bold flex items-center gap-1 cursor-pointer py-2 px-1 min-h-[44px] text-center"
                 >
                   <span>Details</span>
                   <ArrowRight className="w-3.5 h-3.5" />
-                </button>
+                </a>
               </div>
             </div>
 
@@ -619,13 +618,12 @@ export function HomePage({ onNavigate }: HomePageProps) {
                   <Phone className="w-3.5 h-3.5 fill-current" />
                   <span>{isSpanish ? 'Llamar Por Casa' : 'Call For Home Service'}</span>
                 </a>
-                <button
-                  onClick={() => onNavigate('/services/residential-locksmith')}
-                  className="text-xs text-amber-400 hover:text-amber-300 font-bold flex items-center gap-1 cursor-pointer py-2 px-1 min-h-[44px]"
+                <a href="/services/residential-locksmith"
+                  className="text-xs text-amber-400 hover:text-amber-300 font-bold flex items-center gap-1 cursor-pointer py-2 px-1 min-h-[44px] text-center"
                 >
                   <span>Details</span>
                   <ArrowRight className="w-3.5 h-3.5" />
-                </button>
+                </a>
               </div>
             </div>
 
@@ -681,13 +679,12 @@ export function HomePage({ onNavigate }: HomePageProps) {
                   <Phone className="w-3.5 h-3.5 fill-current" />
                   <span>{isSpanish ? 'Llamar Por Negocio' : 'Call For Business'}</span>
                 </a>
-                <button
-                  onClick={() => onNavigate('/services/commercial-locksmith')}
-                  className="text-xs text-amber-400 hover:text-amber-300 font-bold flex items-center gap-1 cursor-pointer py-2 px-1 min-h-[44px]"
+                <a href="/services/commercial-locksmith"
+                  className="text-xs text-amber-400 hover:text-amber-300 font-bold flex items-center gap-1 cursor-pointer py-2 px-1 min-h-[44px] text-center"
                 >
                   <span>Details</span>
                   <ArrowRight className="w-3.5 h-3.5" />
-                </button>
+                </a>
               </div>
             </div>
 
@@ -743,13 +740,12 @@ export function HomePage({ onNavigate }: HomePageProps) {
                   <Phone className="w-3.5 h-3.5 fill-current" />
                   <span>{isSpanish ? 'Llamar a Emergencias' : 'Call 24/7 Emergency'}</span>
                 </a>
-                <button
-                  onClick={() => onNavigate('/services/emergency-lockout-service')}
-                  className="text-xs text-amber-400 hover:text-amber-300 font-bold flex items-center gap-1 cursor-pointer py-2 px-1 min-h-[44px]"
+                <a href="/services/emergency-lockout-service"
+                  className="text-xs text-amber-400 hover:text-amber-300 font-bold flex items-center gap-1 cursor-pointer py-2 px-1 min-h-[44px] text-center"
                 >
                   <span>Details</span>
                   <ArrowRight className="w-3.5 h-3.5" />
-                </button>
+                </a>
               </div>
             </div>
 
@@ -881,13 +877,12 @@ export function HomePage({ onNavigate }: HomePageProps) {
           </div>
 
           <div className="text-center pt-2">
-            <button
-              onClick={() => onNavigate('/faq')}
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-400 hover:text-amber-300 uppercase tracking-wider cursor-pointer"
+            <a href="/faq"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-400 hover:text-amber-300 uppercase tracking-wider cursor-pointer text-center"
             >
               <span>{isSpanish ? 'Ver Todas las Preguntas' : 'View Full FAQ Center'}</span>
               <ArrowRight className="w-3.5 h-3.5" />
-            </button>
+            </a>
           </div>
 
         </div>

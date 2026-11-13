@@ -74,13 +74,12 @@ export function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
         
         {/* Breadcrumb & Back Link */}
         <div className="flex items-center justify-between gap-4 mb-8">
-          <button
-            onClick={() => onNavigate('/blog')}
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-amber-400 hover:text-amber-300 transition-colors cursor-pointer"
+          <a href="/blog"
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-amber-400 hover:text-amber-300 transition-colors cursor-pointer text-center"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to All Articles</span>
-          </button>
+          </a>
 
           <span className="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-slate-950 text-amber-400 border border-slate-800">
             {post.category}
@@ -143,7 +142,7 @@ export function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
               onClick={() => trackPhoneClick({ ctaLocation: 'blog_post_urgent_call', pagePath: `/blog/${post.slug}` })}
               className="py-3 px-5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs sm:text-sm rounded-xl shadow-lg flex items-center justify-center gap-2 transition-transform hover:scale-105 cursor-pointer"
             >
-              <Phone className="w-4 h-4 fill-current animate-pulse" />
+              <Phone className="w-4 h-4 fill-current" />
               <span>Call: (754) 261-6528</span>
             </a>
             <a
@@ -214,14 +213,13 @@ export function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
             </h3>
             <div className="flex flex-wrap gap-2.5">
               {post.relatedServices.map((service, sIdx) => (
-                <button
+                <a href={`/services/${service.slug}`}
                   key={sIdx}
-                  onClick={() => onNavigate(`/services/${service.slug}`)}
-                  className="px-4 py-2.5 bg-slate-950 hover:bg-amber-500 hover:text-slate-950 text-slate-200 border border-slate-800 hover:border-amber-400 rounded-xl transition-all font-semibold text-xs flex items-center gap-2 cursor-pointer group"
+                  className="px-4 py-2.5 bg-slate-950 hover:bg-amber-500 hover:text-slate-950 text-slate-200 border border-slate-800 hover:border-amber-400 rounded-xl transition-all font-semibold text-xs flex items-center gap-2 cursor-pointer group text-center"
                 >
                   <span>{service.name}</span>
                   <ArrowRight className="w-3.5 h-3.5 text-amber-400 group-hover:text-slate-950 group-hover:translate-x-0.5 transition-transform" />
-                </button>
+                </a>
               ))}
             </div>
           </div>
@@ -246,7 +244,7 @@ export function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
             onClick={() => trackPhoneClick({ ctaLocation: 'blog_post_bottom_call', pagePath: `/blog/${post.slug}` })}
             className="mt-4 sm:mt-0 inline-flex items-center justify-center gap-2 py-4 px-6 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm shadow-xl transition-transform hover:scale-105 cursor-pointer shrink-0"
           >
-            <Phone className="w-4 h-4 fill-current animate-pulse" />
+            <Phone className="w-4 h-4 fill-current" />
             <span>Call +1 754-261-6528</span>
           </a>
         </div>
@@ -257,21 +255,16 @@ export function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
             <h3 className="font-heading font-black text-xl text-white">
               More Locksmith Guides
             </h3>
-            <button
-              onClick={() => onNavigate('/blog')}
-              className="text-xs font-bold text-amber-400 hover:underline cursor-pointer"
+            <a href="/blog"
+              className="text-xs font-bold text-amber-400 hover:underline cursor-pointer inline-block text-center"
             >
               View All Articles
-            </button>
+            </a>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {relatedPosts.map((rel) => (
-              <div
-                key={rel.id}
-                onClick={() => onNavigate(`/blog/${rel.slug}`)}
-                className="bg-slate-950 border border-slate-800 hover:border-amber-500/50 p-4 rounded-xl transition-all cursor-pointer group"
-              >
+              <a key={rel.id} href={`/blog/${rel.slug}`} className="block bg-slate-950 border border-slate-800 hover:border-amber-500/50 p-4 rounded-xl transition-all cursor-pointer group">
                 <span className="text-[10px] font-black uppercase tracking-wider text-amber-400">
                   {rel.category}
                 </span>
@@ -281,7 +274,7 @@ export function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
                 <span className="text-[11px] text-slate-400 mt-2 block">
                   {rel.readTime}
                 </span>
-              </div>
+              </a>
             ))}
           </div>
         </div>

@@ -168,17 +168,17 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
           
           {/* Breadcrumbs */}
           <div className="flex items-center gap-2 text-xs text-slate-400">
-            <button onClick={() => onNavigate('/')} className="hover:text-amber-400 transition-colors cursor-pointer">
+            <a href="/" className="hover:text-amber-400 transition-colors cursor-pointer inline-block text-center">
               {isSpanish ? 'Inicio' : 'Home'}
-            </button>
+            </a>
             <span>/</span>
-            <button onClick={() => onNavigate('/service-areas')} className="hover:text-amber-400 transition-colors cursor-pointer">
+            <a href="/service-areas" className="hover:text-amber-400 transition-colors cursor-pointer inline-block text-center">
               {isSpanish ? 'Áreas de Servicio' : 'Service Areas'}
-            </button>
+            </a>
             <span>/</span>
-            <button onClick={() => onNavigate(`/service-areas/${county.slug}`)} className="hover:text-amber-400 transition-colors cursor-pointer">
+            <a href={`/service-areas/${county.slug}`} className="hover:text-amber-400 transition-colors cursor-pointer inline-block text-center">
               {county.name}
-            </button>
+            </a>
             <span>/</span>
             <span className="text-amber-400 font-semibold">{city.name}</span>
           </div>
@@ -210,7 +210,7 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
                     onClick={() => trackPhoneClick({ ctaLocation: 'city_hero_call', pagePath: `/service-areas/${city.slug}` })}
                     className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-3.5 px-6 min-h-[48px] rounded-xl bg-amber-500 hover:bg-amber-400 active:bg-amber-400 text-slate-950 font-black text-sm shadow-lg transition-transform hover:scale-[1.02] cursor-pointer"
                   >
-                    <Phone className="w-4 h-4 fill-current animate-pulse" />
+                    <Phone className="w-4 h-4 fill-current" />
                     <span>{isSpanish ? 'Llamar Ahora: (754) 261-6528' : 'Call Now: (754) 261-6528'}</span>
                   </a>
 
@@ -279,7 +279,7 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
                   onClick={() => trackPhoneClick({ ctaLocation: 'city_sidebar_call', pagePath: `/service-areas/${city.slug}` })}
                   className="w-full py-3.5 min-h-[48px] bg-amber-500 hover:bg-amber-400 active:bg-amber-400 text-slate-950 font-black text-xs sm:text-sm rounded-xl flex items-center justify-center gap-2 transition-colors cursor-pointer"
                 >
-                  <Phone className="w-4 h-4 fill-current animate-pulse" />
+                  <Phone className="w-4 h-4 fill-current" />
                   <span>{isSpanish ? `Llamar a Técnico en ${city.name}: (754) 261-6528` : `Call ${city.name} Technician: +1 754-261-6528`}</span>
                 </a>
               </div>
@@ -295,13 +295,12 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
               {county.majorCities
                 .filter(c => c.id !== city.id)
                 .map(neighbor => (
-                  <button
+                  <a href={`/service-areas/${neighbor.slug}`}
                     key={neighbor.id}
-                    onClick={() => onNavigate(`/service-areas/${neighbor.slug}`)}
-                    className="px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-amber-400 text-xs border border-slate-800 transition-colors cursor-pointer"
+                    className="px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-amber-400 text-xs border border-slate-800 transition-colors cursor-pointer inline-block text-center"
                   >
                     {neighbor.name}
-                  </button>
+                  </a>
                 ))}
             </div>
           </div>
@@ -374,13 +373,13 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
         <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 space-y-12">
           {/* Breadcrumbs */}
           <div className="flex items-center gap-2 text-xs text-slate-400">
-            <button onClick={() => onNavigate('/')} className="hover:text-amber-400 transition-colors cursor-pointer">
+            <a href="/" className="hover:text-amber-400 transition-colors cursor-pointer inline-block text-center">
               {isSpanish ? 'Inicio' : 'Home'}
-            </button>
+            </a>
             <span>/</span>
-            <button onClick={() => onNavigate('/service-areas')} className="hover:text-amber-400 transition-colors cursor-pointer">
+            <a href="/service-areas" className="hover:text-amber-400 transition-colors cursor-pointer inline-block text-center">
               {isSpanish ? 'Áreas de Servicio' : 'Service Areas'}
-            </button>
+            </a>
             <span>/</span>
             <span className="text-amber-400 font-semibold">{county.name}</span>
           </div>
@@ -407,7 +406,7 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
                   onClick={() => trackPhoneClick({ ctaLocation: 'county_hero_call', pagePath: `/service-areas/${county.slug}` })}
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-3.5 px-6 min-h-[48px] rounded-xl bg-amber-500 hover:bg-amber-400 active:bg-amber-400 text-slate-950 font-black text-sm shadow-lg transition-transform hover:scale-[1.02] cursor-pointer"
                 >
-                  <Phone className="w-4 h-4 fill-current animate-pulse" />
+                  <Phone className="w-4 h-4 fill-current" />
                   <span>{isSpanish ? `Llamar a Despacho de ${county.name}: (754) 261-6528` : `Call ${county.name} Dispatch: (754) 261-6528`}</span>
                 </a>
 
@@ -444,13 +443,12 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
                     </p>
                   </div>
 
-                  <button
-                    onClick={() => onNavigate(`/service-areas/${city.slug}`)}
-                    className="w-full py-2 px-3 bg-slate-900 hover:bg-amber-500 text-slate-300 hover:text-slate-950 rounded-lg text-xs font-bold border border-slate-800 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                  <a href={`/service-areas/${city.slug}`}
+                    className="w-full py-2 px-3 bg-slate-900 hover:bg-amber-500 text-slate-300 hover:text-slate-950 rounded-lg text-xs font-bold border border-slate-800 transition-colors flex items-center justify-center gap-1.5 cursor-pointer text-center"
                   >
                     <span>{isSpanish ? `Ver ${city.name}` : `View ${city.name}`}</span>
                     <ArrowRight className="w-3 h-3" />
-                  </button>
+                  </a>
                 </div>
               ))}
             </div>
@@ -466,12 +464,11 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
         <h2 className="font-heading font-bold text-2xl text-white">
           {isSpanish ? 'Ubicación No Encontrada' : 'Location Not Found'}
         </h2>
-        <button
-          onClick={() => onNavigate('/service-areas')}
-          className="px-6 py-2.5 bg-amber-500 text-slate-950 font-bold rounded-lg text-xs cursor-pointer"
+        <a href="/service-areas"
+          className="px-6 py-2.5 bg-amber-500 text-slate-950 font-bold rounded-lg text-xs cursor-pointer inline-block text-center"
         >
           {isSpanish ? 'Ver Todas las Áreas de Servicio' : 'View All South Florida Service Areas'}
-        </button>
+        </a>
       </div>
     </div>
   );

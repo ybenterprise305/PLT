@@ -122,13 +122,12 @@ export function FAQPage({ onNavigate }: FAQPageProps) {
               </p>
             </div>
           </div>
-          <button
-            onClick={() => onNavigate('/services')}
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-400 hover:text-amber-300 uppercase tracking-wider shrink-0 cursor-pointer"
+          <a href="/services"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-400 hover:text-amber-300 uppercase tracking-wider shrink-0 cursor-pointer text-center"
           >
             <span>{isSpanish ? 'Ver Servicios' : 'Explore Services'}</span>
             <ArrowRight className="w-4 h-4" />
-          </button>
+          </a>
         </div>
 
         {/* Category Filter Controls for English */}
@@ -268,12 +267,11 @@ export function FAQPage({ onNavigate }: FAQPageProps) {
             >
               <span>{isSpanish ? 'LLAMAR AHORA: +1 754-261-6528' : 'CALL NOW: +1 754-261-6528'}</span>
             </a>
-            <button
-              onClick={() => onNavigate('/contact')}
-              className="w-full sm:w-auto px-6 py-3.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-sm rounded-xl border border-slate-700 transition-colors cursor-pointer"
+            <a href="/contact"
+              className="w-full sm:w-auto px-6 py-3.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-sm rounded-xl border border-slate-700 transition-colors cursor-pointer inline-block text-center"
             >
               <span>{isSpanish ? 'Página de Contacto' : 'Contact Page'}</span>
-            </button>
+            </a>
           </div>
         </div>
 

@@ -251,15 +251,14 @@ export function ServiceAreasPage({ onNavigate }: ServiceAreasPageProps) {
           {/* Instant City Click Buttons */}
           <div className="flex flex-wrap gap-2.5">
             {filteredCities.map(({ city, county }) => (
-              <button
+              <a href={`/service-areas/${city.slug}`}
                 key={city.id}
-                onClick={() => onNavigate(`/service-areas/${city.slug}`)}
-                className="group px-3.5 py-2 bg-slate-900 hover:bg-amber-500 text-slate-200 hover:text-slate-950 border border-slate-800 hover:border-amber-400 rounded-xl transition-all font-semibold text-xs flex items-center gap-1.5 cursor-pointer shadow-sm hover:scale-[1.02]"
+                className="group px-3.5 py-2 bg-slate-900 hover:bg-amber-500 text-slate-200 hover:text-slate-950 border border-slate-800 hover:border-amber-400 rounded-xl transition-all font-semibold text-xs flex items-center gap-1.5 cursor-pointer shadow-sm hover:scale-[1.02] text-center"
               >
                 <MapPin className="w-3.5 h-3.5 text-amber-400 group-hover:text-slate-950 transition-colors" />
                 <span>{city.name}</span>
                 <span className="text-[10px] text-slate-400 group-hover:text-slate-900">({county.name.replace(' County', '')})</span>
-              </button>
+              </a>
             ))}
             {filteredCities.length === 0 && (
               <div className="py-6 text-center w-full text-slate-400 text-xs">
@@ -298,13 +297,12 @@ export function ServiceAreasPage({ onNavigate }: ServiceAreasPageProps) {
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <button
-                    onClick={() => onNavigate(`/service-areas/${county.slug}`)}
-                    className="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-amber-400 font-bold text-xs rounded-xl border border-slate-800 transition-colors flex items-center gap-1.5 cursor-pointer"
+                  <a href={`/service-areas/${county.slug}`}
+                    className="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-amber-400 font-bold text-xs rounded-xl border border-slate-800 transition-colors flex items-center gap-1.5 cursor-pointer text-center"
                   >
                     <span>{isSpanish ? `Ver ${county.name}` : `${county.name} Overview`}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
+                  </a>
                   <a
                     href="tel:+17542616528"
                     onClick={() => trackPhoneClick({ ctaLocation: `service_areas_county_${county.slug}`, pagePath: '/service-areas' })}
@@ -351,13 +349,12 @@ export function ServiceAreasPage({ onNavigate }: ServiceAreasPageProps) {
                         </div>
                       </div>
 
-                      <button
-                        onClick={() => onNavigate(`/service-areas/${city.slug}`)}
-                        className="w-full py-2 px-3 bg-slate-950 hover:bg-amber-500 text-slate-300 hover:text-slate-950 rounded-lg text-xs font-bold border border-slate-800 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                      <a href={`/service-areas/${city.slug}`}
+                        className="w-full py-2 px-3 bg-slate-950 hover:bg-amber-500 text-slate-300 hover:text-slate-950 rounded-lg text-xs font-bold border border-slate-800 transition-colors flex items-center justify-center gap-1.5 cursor-pointer text-center"
                       >
                         <span>{isSpanish ? `Ver ${city.name}` : `Explore ${city.name}`}</span>
                         <ArrowRight className="w-3.5 h-3.5" />
-                      </button>
+                      </a>
                     </div>
                   ))}
                 </div>

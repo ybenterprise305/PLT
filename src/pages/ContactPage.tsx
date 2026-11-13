@@ -67,7 +67,7 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
                   href="tel:+17542616528"
                   className="inline-flex items-center justify-center gap-2.5 py-4 px-8 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 hover:from-amber-300 hover:to-amber-500 text-slate-950 font-black text-base uppercase tracking-wider shadow-lg shadow-amber-500/25 transition-transform hover:scale-[1.02] active:scale-[0.98]"
                 >
-                  <Phone className="w-5 h-5 fill-current animate-pulse" />
+                  <Phone className="w-5 h-5 fill-current" />
                   <span>{isSpanish ? 'Llamar Ahora: +1 754-261-6528' : 'Call Now: +1 754-261-6528'}</span>
                 </a>
 
@@ -146,7 +146,7 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
                 +1 754-261-6528
               </a>
               <p className="text-xs text-slate-400 mt-1">
-                {isSpanish ? 'La forma más rápida de hablar con un cerrajero.' : 'Fastest way to speak directly with an active locksmith.'}
+                {isSpanish ? 'La forma más rápida de comunicarse con despacho.' : 'The fastest way to reach dispatch.'}
               </p>
             </div>
             <div className="pt-2">
@@ -275,7 +275,7 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
                     <span className="text-xs text-slate-400">
                       {isSpanish ? 'Marque ' : 'Dial '}
                       <a href="tel:+17542616528" className="text-amber-400 underline font-bold">+1 754-261-6528</a>. 
-                      {isSpanish ? ' Hable directamente con nuestro equipo.' : ' Speak directly to our local team.'}
+                      {isSpanish ? ' Llame o envíe un texto para comenzar.' : ' Call or text to get started.'}
                     </span>
                   </div>
                 </div>
@@ -325,7 +325,7 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
                   {isSpanish ? 'Despacho de Emergencia Activo' : 'Active Emergency Dispatch'}
                 </span>
                 <h3 className="font-heading font-black text-2xl sm:text-3xl text-white">
-                  {isSpanish ? 'Hable Directamente con un Cerrajero' : 'Speak Directly With A Locksmith'}
+                  {isSpanish ? 'Llame o Envíe un Texto Ahora' : 'Call or Text Dispatch Now'}
                 </h3>
                 <p className="text-xs text-slate-400">
                   {isSpanish 
@@ -387,19 +387,18 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
                 <strong className="text-white font-bold text-sm">
                   {isSpanish ? 'Condado de Broward' : 'Broward County'}
                 </strong>
-                <button onClick={() => onNavigate('/service-areas/broward-county')} className="text-amber-400 hover:underline font-semibold text-[11px] cursor-pointer">
+                <a href="/service-areas/broward-county" className="text-amber-400 hover:underline font-semibold text-[11px] cursor-pointer inline-block text-center">
                   {isSpanish ? 'Ver Condado →' : 'View County →'}
-                </button>
+                </a>
               </div>
               <div className="flex flex-wrap gap-1.5 pt-1">
                 {['Coral Springs', 'Fort Lauderdale', 'Hollywood', 'Pompano Beach', 'Pembroke Pines', 'Miramar', 'Davie', 'Plantation'].map(city => (
-                  <button
+                  <a href={`/service-areas/${city.toLowerCase().replace(/\s+/g, '-')}`}
                     key={city}
-                    onClick={() => onNavigate(`/service-areas/${city.toLowerCase().replace(/\s+/g, '-')}`)}
-                    className="px-2 py-1 bg-slate-950 hover:bg-slate-800 text-slate-300 hover:text-amber-300 rounded border border-slate-800 text-[11px] transition-colors cursor-pointer"
+                    className="px-2 py-1 bg-slate-950 hover:bg-slate-800 text-slate-300 hover:text-amber-300 rounded border border-slate-800 text-[11px] transition-colors cursor-pointer inline-block text-center"
                   >
                     {city}
-                  </button>
+                  </a>
                 ))}
               </div>
             </div>
@@ -409,19 +408,18 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
                 <strong className="text-white font-bold text-sm">
                   {isSpanish ? 'Condado de Miami-Dade' : 'Miami-Dade County'}
                 </strong>
-                <button onClick={() => onNavigate('/service-areas/miami-dade-county')} className="text-amber-400 hover:underline font-semibold text-[11px] cursor-pointer">
+                <a href="/service-areas/miami-dade-county" className="text-amber-400 hover:underline font-semibold text-[11px] cursor-pointer inline-block text-center">
                   {isSpanish ? 'Ver Condado →' : 'View County →'}
-                </button>
+                </a>
               </div>
               <div className="flex flex-wrap gap-1.5 pt-1">
                 {['Miami', 'Miami Beach', 'Hialeah', 'Coral Gables', 'Doral', 'Aventura', 'Kendall'].map(city => (
-                  <button
+                  <a href={`/service-areas/${city.toLowerCase().replace(/\s+/g, '-')}`}
                     key={city}
-                    onClick={() => onNavigate(`/service-areas/${city.toLowerCase().replace(/\s+/g, '-')}`)}
-                    className="px-2 py-1 bg-slate-950 hover:bg-slate-800 text-slate-300 hover:text-amber-300 rounded border border-slate-800 text-[11px] transition-colors cursor-pointer"
+                    className="px-2 py-1 bg-slate-950 hover:bg-slate-800 text-slate-300 hover:text-amber-300 rounded border border-slate-800 text-[11px] transition-colors cursor-pointer inline-block text-center"
                   >
                     {city}
-                  </button>
+                  </a>
                 ))}
               </div>
             </div>
@@ -431,19 +429,18 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
                 <strong className="text-white font-bold text-sm">
                   {isSpanish ? 'Condado de Palm Beach' : 'Palm Beach County'}
                 </strong>
-                <button onClick={() => onNavigate('/service-areas/palm-beach-county')} className="text-amber-400 hover:underline font-semibold text-[11px] cursor-pointer">
+                <a href="/service-areas/palm-beach-county" className="text-amber-400 hover:underline font-semibold text-[11px] cursor-pointer inline-block text-center">
                   {isSpanish ? 'Ver Condado →' : 'View County →'}
-                </button>
+                </a>
               </div>
               <div className="flex flex-wrap gap-1.5 pt-1">
                 {['West Palm Beach', 'Boca Raton', 'Delray Beach', 'Boynton Beach', 'Jupiter', 'Wellington', 'Palm Beach Gardens'].map(city => (
-                  <button
+                  <a href={`/service-areas/${city.toLowerCase().replace(/\s+/g, '-')}`}
                     key={city}
-                    onClick={() => onNavigate(`/service-areas/${city.toLowerCase().replace(/\s+/g, '-')}`)}
-                    className="px-2 py-1 bg-slate-950 hover:bg-slate-800 text-slate-300 hover:text-amber-300 rounded border border-slate-800 text-[11px] transition-colors cursor-pointer"
+                    className="px-2 py-1 bg-slate-950 hover:bg-slate-800 text-slate-300 hover:text-amber-300 rounded border border-slate-800 text-[11px] transition-colors cursor-pointer inline-block text-center"
                   >
                     {city}
-                  </button>
+                  </a>
                 ))}
               </div>
             </div>

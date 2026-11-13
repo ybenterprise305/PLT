@@ -205,12 +205,11 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
             >
               <span>{isSpanish ? 'Llamar: (754) 261-6528' : 'Call (754) 261-6528'}</span>
             </a>
-            <button
-              onClick={() => onNavigate('/contact')}
-              className="px-6 py-3.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-sm rounded-xl border border-slate-700 transition-colors cursor-pointer"
+            <a href="/contact"
+              className="px-6 py-3.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-sm rounded-xl border border-slate-700 transition-colors cursor-pointer inline-block text-center"
             >
               <span>{isSpanish ? 'Detalles de Contacto' : 'Contact Details'}</span>
-            </button>
+            </a>
           </div>
         </div>
       </div>

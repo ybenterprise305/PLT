@@ -24,7 +24,7 @@ import { SEOHead } from '../components/SEOHead';
 import { NotFoundPage } from './NotFoundPage';
 import { TextLocationButton } from '../components/TextLocationButton';
 import { SERVICES_DATA } from '../data/servicesData';
-import { COUNTIES_DATA } from '../data/locationsData';
+import { COUNTIES_DATA, getAllCities } from '../data/locationsData';
 import { AD_CAMPAIGNS, getAdCampaignBySlug } from '../data/adLandingPagesData';
 import { trackPhoneClick } from '../utils/analytics';
 
@@ -39,6 +39,13 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
   if (!campaign) {
     return <NotFoundPage onNavigate={onNavigate} />;
   }
+  // Optional city match from the ad URL, e.g. /lp/car-lockout?city=boca-raton
+  // Only city slugs from our own service-area list are accepted; anything else is ignored.
+  const cityParam = typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('city') : null;
+  const cityMatch = cityParam ? getAllCities().find((c) => c.city.slug === cityParam.toLowerCase()) : undefined;
+  const cityName = cityMatch?.city.name;
+  const countyName = cityMatch?.county.name;
+
   const service = SERVICES_DATA.find(s => s.slug === campaign.serviceId || s.id === campaign.serviceId) || SERVICES_DATA[0];
 
   const phoneNumber = '+1 754-261-6528';
@@ -79,7 +86,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950 pb-20 lg:pb-0">
       <SEOHead
-        title={`${campaign.name} South Florida | 24/7 Mobile Dispatch | Pro Locksmith Tech`}
+        title={`${campaign.name} ${cityName ? cityName + ', FL' : 'South Florida'} | 24/7 Mobile Dispatch | Pro Locksmith Tech`}
         description={campaign.subheadline}
         keywords={campaign.targetKeywords.join(', ')}
         canonicalPath={`/lp/${campaign.slug}`}
@@ -96,10 +103,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
         <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-10 py-3 flex items-center justify-between">
           
           {/* Logo / Brand Name */}
-          <div 
-            onClick={() => onNavigate('/')}
-            className="flex items-center gap-3 cursor-pointer group"
-          >
+          <a href="/" className="flex items-center gap-3 cursor-pointer group">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-slate-950 shadow-md">
               <KeyRound className="w-5 h-5" />
             </div>
@@ -111,7 +115,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
                 24/7 Mobile Locksmith · We Come To You
               </div>
             </div>
-          </div>
+          </a>
 
           {/* Quick Call Button in Header */}
           <div className="flex items-center gap-3">
@@ -130,7 +134,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
               onClick={() => trackPhoneClick({ ctaLocation: 'ppc_header_call_btn', pagePath: `/lp/${campaign.slug}`, campaignSlug: campaign.slug })}
               className="py-2.5 px-4 sm:px-6 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs sm:text-sm rounded-xl shadow-lg flex items-center gap-2 transition-transform hover:scale-105 cursor-pointer ring-2 ring-amber-400/40"
             >
-              <Phone className="w-4 h-4 fill-current animate-pulse" />
+              <Phone className="w-4 h-4 fill-current" />
               <span>CALL NOW</span>
             </a>
           </div>
@@ -160,6 +164,12 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
                 {campaign.headline}
               </h1>
 
+              {cityName && (
+                <p className="text-lg sm:text-xl font-bold text-amber-400">
+                  Mobile locksmith service in {cityName}, FL{countyName ? ` · ${countyName}` : ''}
+                </p>
+              )}
+
               {/* Supporting Ad Text */}
               <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto lg:mx-0">
                 {campaign.subheadline}
@@ -171,7 +181,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
                   href={phoneTel}
                   className="w-full sm:w-auto py-4 px-8 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-base sm:text-lg rounded-2xl shadow-2xl flex items-center justify-center gap-3 transition-transform hover:scale-105 cursor-pointer ring-4 ring-amber-500/25"
                 >
-                  <Phone className="w-6 h-6 fill-current animate-pulse" />
+                  <Phone className="w-6 h-6 fill-current" />
                   <span>CALL NOW: (754) 261-6528</span>
                 </a>
 
@@ -219,7 +229,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
                     </span>
                     <div>
                       <strong className="text-white block font-bold text-sm">Call Our Direct Dispatch Line</strong>
-                      <span className="text-slate-400">Speak directly with our local South Florida technician. No call centers.</span>
+                      <span className="text-slate-400">Tell us what happened and we start your dispatch.</span>
                     </div>
                   </div>
 
@@ -260,7 +270,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
                   onClick={() => trackPhoneClick({ ctaLocation: 'ppc_procedure_box_call', pagePath: `/lp/${campaign.slug}`, campaignSlug: campaign.slug })}
                   className="w-full py-4 px-6 bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-slate-950 font-black text-base rounded-2xl shadow-xl flex items-center justify-center gap-3 transition-transform hover:scale-[1.02] cursor-pointer"
                 >
-                  <Phone className="w-5 h-5 fill-current animate-pulse" />
+                  <Phone className="w-5 h-5 fill-current" />
                   <span>CALL NOW — (754) 261-6528</span>
                 </a>
 
@@ -345,7 +355,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
             onClick={() => trackPhoneClick({ ctaLocation: 'ppc_mid_banner_call', pagePath: `/lp/${campaign.slug}`, campaignSlug: campaign.slug })}
             className="py-4 px-8 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-base shadow-xl flex items-center gap-2 shrink-0 transition-transform hover:scale-105 cursor-pointer"
           >
-            <Phone className="w-5 h-5 fill-current animate-pulse" />
+            <Phone className="w-5 h-5 fill-current" />
             <span>CALL (754) 261-6528</span>
           </a>
         </div>
@@ -401,7 +411,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
               >
                 (754) 261-6528
               </a>{' '}
-              to speak directly with our dispatcher.
+              to confirm service in your area.
             </p>
           </div>
         </div>
@@ -437,7 +447,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
             Ready For A Mobile Locksmith?
           </h3>
           <p className="text-xs sm:text-sm text-slate-400 max-w-lg mx-auto">
-            Our dispatch line is open 24 hours a day, 7 days a week. Speak directly with a friendly technician now.
+            Our dispatch line is open 24 hours a day, 7 days a week. Call or text now and we confirm your arrival time.
           </p>
           <div className="pt-2">
             <a
@@ -445,7 +455,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
               onClick={() => trackPhoneClick({ ctaLocation: 'ppc_bottom_final_call', pagePath: `/lp/${campaign.slug}`, campaignSlug: campaign.slug })}
               className="inline-flex items-center gap-3 py-4 px-8 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-base sm:text-lg rounded-2xl shadow-xl transition-transform hover:scale-105 cursor-pointer"
             >
-              <Phone className="w-5 h-5 fill-current animate-pulse" />
+              <Phone className="w-5 h-5 fill-current" />
               <span>CALL NOW — (754) 261-6528</span>
             </a>
           </div>
@@ -462,10 +472,10 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
             Serving Broward County, Miami-Dade County, and Palm Beach County, FL. Direct Dispatch: +1 754-261-6528.
           </p>
           <div className="flex items-center justify-center gap-4 text-[11px] text-slate-400">
-            <button onClick={() => onNavigate('/')} className="hover:text-amber-400 underline cursor-pointer">Main Website</button>
-            <button onClick={() => onNavigate('/services')} className="hover:text-amber-400 underline cursor-pointer">All Services</button>
-            <button onClick={() => onNavigate('/service-areas')} className="hover:text-amber-400 underline cursor-pointer">Service Areas</button>
-            <button onClick={() => onNavigate('/faq')} className="hover:text-amber-400 underline cursor-pointer">FAQ</button>
+            <a href="/" className="hover:text-amber-400 underline cursor-pointer inline-block text-center">Main Website</a>
+            <a href="/services" className="hover:text-amber-400 underline cursor-pointer inline-block text-center">All Services</a>
+            <a href="/service-areas" className="hover:text-amber-400 underline cursor-pointer inline-block text-center">Service Areas</a>
+            <a href="/faq" className="hover:text-amber-400 underline cursor-pointer inline-block text-center">FAQ</a>
           </div>
           <p className="text-[10px] text-slate-400 pt-2">
             © {new Date().getFullYear()} Pro Locksmith Tech. All rights reserved. 100% Mobile Service — We Come to You.
@@ -480,7 +490,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
           onClick={() => trackPhoneClick({ ctaLocation: 'ppc_mobile_sticky_call', pagePath: `/lp/${campaign.slug}`, campaignSlug: campaign.slug })}
           className="flex-1 py-3.5 px-4 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm rounded-xl shadow-lg flex items-center justify-center gap-2 cursor-pointer"
         >
-          <Phone className="w-5 h-5 fill-current animate-pulse" />
+          <Phone className="w-5 h-5 fill-current" />
           <span>CALL NOW — (754) 261-6528</span>
         </a>
         <a

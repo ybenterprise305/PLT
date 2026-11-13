@@ -22,7 +22,7 @@ declare global {
 }
 
 const PHONE_E164 = '+17542616528';
-const ATTRIBUTION_KEYS = ['gclid', 'gbraid', 'wbraid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+const ATTRIBUTION_KEYS = ['gclid', 'gbraid', 'wbraid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'city'];
 const ATTRIBUTION_STORAGE_KEY = 'plt_attribution';
 const DEDUPE_WINDOW_MS = 1000;
 
@@ -66,6 +66,26 @@ function campaignFromPath(pathname: string): string {
   return match ? match[1] : '';
 }
 
+// Optional Google Ads conversion targets, copied from the Google tag event snippet as
+// send_to: 'AW-123456789/AbCdEfGhIjK'. Set as build variables in Cloudflare.
+const CALL_CONVERSION = import.meta.env.VITE_ADS_CALL_CONVERSION as string | undefined;
+const TEXT_CONVERSION = import.meta.env.VITE_ADS_TEXT_CONVERSION as string | undefined;
+
+function fireAdsConversion(eventName: string): void {
+  const target =
+    eventName === 'phone_click'
+      ? CALL_CONVERSION
+      : eventName === 'sms_click' || eventName === 'location_text_click'
+        ? TEXT_CONVERSION
+        : undefined;
+  if (!target || typeof window.gtag !== 'function') return;
+  try {
+    window.gtag('event', 'conversion', { send_to: target });
+  } catch {
+    // Silently fail if gtag is misconfigured
+  }
+}
+
 function send(eventName: string, params: Record<string, unknown>): void {
   if (typeof window === 'undefined') return;
 
@@ -76,6 +96,8 @@ function send(eventName: string, params: Record<string, unknown>): void {
       // Silently fail if gtag is misconfigured
     }
   }
+
+  fireAdsConversion(eventName);
 
   // Also feed Google Tag Manager style dataLayer consumers (skipped when gtag already pushed it)
   if (typeof window.gtag !== 'function' && Array.isArray(window.dataLayer)) {
