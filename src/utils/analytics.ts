@@ -22,7 +22,7 @@ declare global {
 }
 
 const PHONE_E164 = '+17542616528';
-const ATTRIBUTION_KEYS = ['gclid', 'gbraid', 'wbraid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+const ATTRIBUTION_KEYS = ['gclid', 'gbraid', 'wbraid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'city'];
 const ATTRIBUTION_STORAGE_KEY = 'plt_attribution';
 const DEDUPE_WINDOW_MS = 1000;
 

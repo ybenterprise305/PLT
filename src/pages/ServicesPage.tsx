@@ -82,7 +82,7 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
                   onClick={() => trackPhoneClick({ ctaLocation: 'services_hero_call', pagePath: '/services' })}
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-3.5 px-6 min-h-[48px] rounded-xl bg-amber-500 hover:bg-amber-400 active:bg-amber-400 text-slate-950 font-black text-sm uppercase tracking-wider shadow-lg transition-transform hover:scale-[1.02] cursor-pointer"
                 >
-                  <Phone className="w-4 h-4 fill-current animate-pulse" />
+                  <Phone className="w-4 h-4 fill-current" />
                   <span>{isSpanish ? 'Llamar Ahora: (754) 261-6528' : 'Call Now: +1 754-261-6528'}</span>
                 </a>
 

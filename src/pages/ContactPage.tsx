@@ -67,7 +67,7 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
                   href="tel:+17542616528"
                   className="inline-flex items-center justify-center gap-2.5 py-4 px-8 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 hover:from-amber-300 hover:to-amber-500 text-slate-950 font-black text-base uppercase tracking-wider shadow-lg shadow-amber-500/25 transition-transform hover:scale-[1.02] active:scale-[0.98]"
                 >
-                  <Phone className="w-5 h-5 fill-current animate-pulse" />
+                  <Phone className="w-5 h-5 fill-current" />
                   <span>{isSpanish ? 'Llamar Ahora: +1 754-261-6528' : 'Call Now: +1 754-261-6528'}</span>
                 </a>
 

@@ -314,7 +314,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                 onClick={() => trackPhoneClick({ ctaLocation: 'home_quick_car_lockout', pagePath: '/' })}
                 className="mt-3.5 sm:mt-4 w-full py-3 px-3 bg-amber-500 active:bg-amber-400 text-slate-950 font-black text-xs uppercase rounded-xl flex items-center justify-center gap-1.5 min-h-[46px] cursor-pointer transition-transform active:scale-[0.98]"
               >
-                <Phone className="w-3.5 h-3.5 fill-current animate-pulse" />
+                <Phone className="w-3.5 h-3.5 fill-current" />
                 <span>{isSpanish ? 'Llamar: Abrir Auto' : 'Call: Unlock Car Now'}</span>
               </a>
             </div>
@@ -337,7 +337,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                 onClick={() => trackPhoneClick({ ctaLocation: 'home_quick_house_lockout', pagePath: '/' })}
                 className="mt-3.5 sm:mt-4 w-full py-3 px-3 bg-amber-500 active:bg-amber-400 text-slate-950 font-black text-xs uppercase rounded-xl flex items-center justify-center gap-1.5 min-h-[46px] cursor-pointer transition-transform active:scale-[0.98]"
               >
-                <Phone className="w-3.5 h-3.5 fill-current animate-pulse" />
+                <Phone className="w-3.5 h-3.5 fill-current" />
                 <span>{isSpanish ? 'Llamar: Abrir Casa' : 'Call: Unlock House'}</span>
               </a>
             </div>
@@ -360,7 +360,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                 onClick={() => trackPhoneClick({ ctaLocation: 'home_quick_key_fob', pagePath: '/' })}
                 className="mt-3.5 sm:mt-4 w-full py-3 px-3 bg-amber-500 active:bg-amber-400 text-slate-950 font-black text-xs uppercase rounded-xl flex items-center justify-center gap-1.5 min-h-[46px] cursor-pointer transition-transform active:scale-[0.98]"
               >
-                <Phone className="w-3.5 h-3.5 fill-current animate-pulse" />
+                <Phone className="w-3.5 h-3.5 fill-current" />
                 <span>{isSpanish ? 'Llamar: Llave Nueva' : 'Call: Make New Key'}</span>
               </a>
             </div>
@@ -383,7 +383,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                 onClick={() => trackPhoneClick({ ctaLocation: 'home_quick_commercial', pagePath: '/' })}
                 className="mt-3.5 sm:mt-4 w-full py-3 px-3 bg-amber-500 active:bg-amber-400 text-slate-950 font-black text-xs uppercase rounded-xl flex items-center justify-center gap-1.5 min-h-[46px] cursor-pointer transition-transform active:scale-[0.98]"
               >
-                <Phone className="w-3.5 h-3.5 fill-current animate-pulse" />
+                <Phone className="w-3.5 h-3.5 fill-current" />
                 <span>{isSpanish ? 'Llamar: Comercial' : 'Call: Business Service'}</span>
               </a>
             </div>
