@@ -133,13 +133,6 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
             "closes": "23:59"
           }
         ],
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "reviewCount": "248",
-          "bestRating": "5",
-          "worstRating": "1"
-        },
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
           "name": `${service.name} Solutions Catalog`,

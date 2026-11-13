@@ -69,13 +69,6 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
               }
             }
           ],
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "248",
-            "bestRating": "5",
-            "worstRating": "1"
-          },
           "makesOffer": [
             {
               "@type": "Offer",
@@ -348,11 +341,6 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
               "name": `${county.name}, Florida`
             }
           ],
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "248"
-          }
         },
         {
           "@type": "BreadcrumbList",

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   Phone, 
   MapPin, 
@@ -27,6 +27,8 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
   const { t, isSpanish } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const navBarRef = useRef<HTMLDivElement>(null);
+  const [drawerTop, setDrawerTop] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,6 +46,10 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
 
   useEffect(() => {
     if (mobileMenuOpen) {
+      // Place the drawer flush under the main nav bar, whatever the top strip height is
+      if (navBarRef.current) {
+        setDrawerTop(Math.round(navBarRef.current.getBoundingClientRect().bottom));
+      }
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
@@ -54,7 +60,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
   }, [mobileMenuOpen]);
 
   return (
-    <header className="w-full relative z-40 select-none">
+    <header className="contents select-none">
       
       {/* 1. TOP UTILITY BAR: Desktop gets full suite, mobile gets sleek single-line announcement */}
       <div className="bg-slate-950 text-slate-200 border-b border-slate-800/80">
@@ -131,9 +137,9 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
       </div>
 
       {/* 2. MAIN HEADER NAVIGATION BAR (Home, Services, Service Areas, Contact ONLY) */}
-      <div className={`w-full transition-all duration-200 ${
+      <div ref={navBarRef} className={`w-full sticky top-0 z-40 select-none transition-shadow duration-200 ${
         isScrolled 
-          ? 'bg-slate-900/98 backdrop-blur-md shadow-xl border-b border-slate-800 sticky top-0' 
+          ? 'bg-slate-900/98 backdrop-blur-md shadow-xl border-b border-slate-800' 
           : 'bg-slate-900 border-b border-slate-800'
       }`}>
         <div className="max-w-[1600px] mx-auto px-3 sm:px-6 lg:px-10 xl:px-12">
@@ -238,7 +244,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
 
         {/* 3. MOBILE NAVIGATION DRAWER (Full-screen overlay for effortless smartphone navigation) */}
         {mobileMenuOpen && (
-          <div className="lg:hidden fixed inset-x-0 top-[calc(4rem+1px)] bottom-0 z-50 bg-slate-950/98 backdrop-blur-xl border-t border-slate-800 overflow-y-auto px-4 py-5 flex flex-col justify-between">
+          <div style={{ top: drawerTop }} className="lg:hidden fixed inset-x-0 bottom-0 z-50 bg-slate-950/98 backdrop-blur-xl border-t border-slate-800 overflow-y-auto px-4 py-5 flex flex-col justify-between">
             
             <div className="space-y-5">
               {/* Language Switcher Bar in Drawer */}

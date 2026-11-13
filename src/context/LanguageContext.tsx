@@ -172,19 +172,6 @@ export const TRANSLATIONS: Translations = {
     es: 'Una unidad móvil equipada llega directamente a su auto, casa o negocio para realizar el trabajo en el acto.' 
   },
 
-  // Reviews
-  'reviews.badge': { en: 'Verified Customer Feedback', es: 'Opiniones Verificadas de Clientes' },
-  'reviews.title': { en: 'Customer Reviews & Ratings', es: 'Opiniones y Calificaciones de Clientes' },
-  'reviews.subtitle': { 
-    en: 'Read authentic feedback from drivers, homeowners, and business owners across Broward, Miami-Dade, and Palm Beach counties who rely on our 24/7 mobile locksmith vans.', 
-    es: 'Lea testimonios auténticos de conductores, propietarios de viviendas y dueños de negocios en Broward, Miami-Dade y Palm Beach que confían en nuestras unidades móviles.' 
-  },
-  'reviews.score': { en: '4.9 / 5.0 Star Rated Mobile Locksmith', es: 'Cerrajero Móvil Calificado con 4.9 / 5.0 Estrellas' },
-  'reviews.dispatches': { en: '240+ Verified Dispatches', es: 'Más de 240 Servicios Verificados' },
-  'reviews.tag1': { en: '100% Mobile Service', es: 'Servicio 100% Móvil' },
-  'reviews.tag2': { en: 'Fast 15-25 Min Response', es: 'Llegada Rápida en 15-25 Min' },
-  'reviews.tag3': { en: 'Damage-Free Entry Focus', es: 'Aperturas Sin Daños' },
-
   // Service Areas
   'areas.badge': { en: 'Tri-County Mobile Dispatch', es: 'Despacho en 3 Condados' },
   'areas.title': { en: 'South Florida Service Areas', es: 'Áreas de Cobertura en el Sur de la Florida' },

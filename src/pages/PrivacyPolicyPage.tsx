@@ -74,7 +74,17 @@ export function PrivacyPolicyPage({ onNavigate }: PrivacyPolicyPageProps) {
           </section>
 
           <section className="space-y-3">
-            <h2 className="font-heading font-bold text-xl text-white">5. Direct Contact</h2>
+            <h2 className="font-heading font-bold text-xl text-white">5. Website Analytics, Advertising and Location Sharing</h2>
+            <p>
+              Our website may use Google Analytics and Google Ads tags to understand how visitors use the site and which ads lead to calls. These tools may collect your device and browser type, approximate location, pages viewed, the ad or campaign that brought you here, and whether you tapped a call or text button. We do not use these tools to collect your name or phone number from the site.
+            </p>
+            <p>
+              Some pages offer a &quot;Text My Location&quot; button. It asks your browser for permission to share your location. If you allow it, your coordinates are placed in a text message that you can review and choose to send to us. If you decline, you can type your address instead. We do not store your location on this website.
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="font-heading font-bold text-xl text-white">6. Direct Contact</h2>
             <p>
               If you have any questions regarding this Privacy Policy or wish to have your contact details updated, please reach out directly:
             </p>

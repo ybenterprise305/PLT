@@ -83,8 +83,6 @@ export function SEOHead({
       if (metaKw) metaKw.setAttribute('content', keywords);
     }
 
-    // Scroll to top on page transition
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [title, description, canonicalPath, keywords, ogType, noIndex]);
 
   return null;
