@@ -47,76 +47,66 @@ export function SitemapPage({ onNavigate }: SitemapPageProps) {
             <span>Primary Pages</span>
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
-            <button
-              onClick={() => onNavigate('/')}
+            <a href="/"
               className="p-3 bg-slate-900 hover:bg-slate-850 rounded-xl text-left font-semibold text-slate-200 hover:text-amber-400 border border-slate-800 flex items-center justify-between cursor-pointer"
             >
               <span>Homepage (/)</span>
               <ChevronRight className="w-4 h-4 text-slate-500" />
-            </button>
-            <button
-              onClick={() => onNavigate('/services')}
+            </a>
+            <a href="/services"
               className="p-3 bg-slate-900 hover:bg-slate-850 rounded-xl text-left font-semibold text-slate-200 hover:text-amber-400 border border-slate-800 flex items-center justify-between cursor-pointer"
             >
               <span>Services Directory (/services)</span>
               <ChevronRight className="w-4 h-4 text-slate-500" />
-            </button>
-            <button
-              onClick={() => onNavigate('/service-areas')}
+            </a>
+            <a href="/service-areas"
               className="p-3 bg-slate-900 hover:bg-slate-850 rounded-xl text-left font-semibold text-slate-200 hover:text-amber-400 border border-slate-800 flex items-center justify-between cursor-pointer"
             >
               <span>Service Areas (/service-areas)</span>
               <ChevronRight className="w-4 h-4 text-slate-500" />
-            </button>
-            <button
-              onClick={() => onNavigate('/blog')}
+            </a>
+            <a href="/blog"
               className="p-3 bg-slate-900 hover:bg-slate-850 rounded-xl text-left font-semibold text-slate-200 hover:text-amber-400 border border-slate-800 flex items-center justify-between cursor-pointer"
             >
               <span>Blog & Articles (/blog)</span>
               <ChevronRight className="w-4 h-4 text-slate-500" />
-            </button>
-            <button
-              onClick={() => onNavigate('/about')}
+            </a>
+            <a href="/about"
               className="p-3 bg-slate-900 hover:bg-slate-850 rounded-xl text-left font-semibold text-slate-200 hover:text-amber-400 border border-slate-800 flex items-center justify-between cursor-pointer"
             >
               <span>Why Choose Us (/about)</span>
               <ChevronRight className="w-4 h-4 text-slate-500" />
-            </button>
-            <button
-              onClick={() => onNavigate('/contact')}
+            </a>
+            <a href="/contact"
               className="p-3 bg-slate-900 hover:bg-slate-850 rounded-xl text-left font-semibold text-slate-200 hover:text-amber-400 border border-slate-800 flex items-center justify-between cursor-pointer"
             >
               <span>Contact & Dispatch (/contact)</span>
               <ChevronRight className="w-4 h-4 text-slate-500" />
-            </button>
-            <button
-              onClick={() => onNavigate('/faq')}
+            </a>
+            <a href="/faq"
               className="p-3 bg-slate-900 hover:bg-slate-850 rounded-xl text-left font-semibold text-slate-200 hover:text-amber-400 border border-slate-800 flex items-center justify-between cursor-pointer"
             >
               <span>FAQ Center (/faq)</span>
               <ChevronRight className="w-4 h-4 text-slate-500" />
-            </button>
-            <button
-              onClick={() => onNavigate('/privacy')}
+            </a>
+            <a href="/privacy"
               className="p-3 bg-slate-900 hover:bg-slate-850 rounded-xl text-left font-semibold text-slate-200 hover:text-amber-400 border border-slate-800 flex items-center justify-between cursor-pointer"
             >
               <span>Privacy Policy (/privacy)</span>
               <ChevronRight className="w-4 h-4 text-slate-500" />
-            </button>
-            <button
-              onClick={() => onNavigate('/tips')}
+            </a>
+            <a href="/tips"
               className="p-3 bg-slate-900 hover:bg-slate-850 rounded-xl text-left font-bold text-amber-400 hover:text-amber-300 border border-amber-500/30 flex items-center justify-between cursor-pointer"
             >
               <span>Locksmith Tips &amp; Tricks (/tips)</span>
               <ChevronRight className="w-4 h-4 text-amber-400" />
-            </button>
-            <button
-              onClick={() => onNavigate('/lp')}
+            </a>
+            <a href="/lp"
               className="p-3 bg-slate-900 hover:bg-slate-850 rounded-xl text-left font-semibold text-amber-400 hover:text-amber-300 border border-amber-500/30 flex items-center justify-between cursor-pointer"
             >
               <span>Advertising Landing Pages Hub (/lp)</span>
               <ChevronRight className="w-4 h-4 text-amber-400" />
-            </button>
+            </a>
           </div>
         </div>
 
@@ -127,18 +117,16 @@ export function SitemapPage({ onNavigate }: SitemapPageProps) {
               <Sparkles className="w-5 h-5 text-amber-400" />
               <span>Locksmith Tips &amp; Tricks (AEO / AIO Field Guides)</span>
             </h2>
-            <button
-              onClick={() => onNavigate('/tips')}
-              className="text-xs text-amber-400 hover:underline font-semibold"
+            <a href="/tips"
+              className="text-xs text-amber-400 hover:underline font-semibold inline-block text-center"
             >
               View Hub &rarr;
-            </button>
+            </a>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
             {LOCKSMITH_TIPS_DATA.map((tip) => (
-              <button
+              <a href={`/tips/${tip.slug}`}
                 key={tip.id}
-                onClick={() => onNavigate(`/tips/${tip.slug}`)}
                 className="p-3 bg-slate-900 hover:bg-slate-850 rounded-xl text-left text-slate-200 hover:text-amber-400 border border-slate-800 flex items-center justify-between cursor-pointer group"
               >
                 <div>
@@ -146,7 +134,7 @@ export function SitemapPage({ onNavigate }: SitemapPageProps) {
                   <div className="text-[10px] text-amber-500/80 uppercase">{tip.category} · {tip.readTime}</div>
                 </div>
                 <ChevronRight className="w-4 h-4 text-slate-500 shrink-0 ml-2 group-hover:text-amber-400" />
-              </button>
+              </a>
             ))}
           </div>
         </div>
@@ -159,9 +147,8 @@ export function SitemapPage({ onNavigate }: SitemapPageProps) {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
             {BLOG_POSTS.map((post) => (
-              <button
+              <a href={`/blog/${post.slug}`}
                 key={post.id}
-                onClick={() => onNavigate(`/blog/${post.slug}`)}
                 className="p-3 bg-slate-900 hover:bg-slate-850 rounded-xl text-left text-slate-200 hover:text-amber-400 border border-slate-800 flex items-center justify-between cursor-pointer"
               >
                 <div>
@@ -169,7 +156,7 @@ export function SitemapPage({ onNavigate }: SitemapPageProps) {
                   <div className="text-[10px] text-amber-400 uppercase">{post.category} · {post.readTime}</div>
                 </div>
                 <ChevronRight className="w-4 h-4 text-slate-500 shrink-0 ml-2" />
-              </button>
+              </a>
             ))}
           </div>
         </div>
@@ -182,9 +169,8 @@ export function SitemapPage({ onNavigate }: SitemapPageProps) {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
             {adPages.map((ad, idx) => (
-              <button
+              <a href={`/lp/${ad.slug}`}
                 key={idx}
-                onClick={() => onNavigate(`/lp/${ad.slug}`)}
                 className="p-3 bg-slate-900 hover:bg-slate-850 rounded-xl text-left text-slate-200 hover:text-amber-400 border border-slate-800 flex items-center justify-between cursor-pointer"
               >
                 <div>
@@ -192,7 +178,7 @@ export function SitemapPage({ onNavigate }: SitemapPageProps) {
                   <div className="text-[10px] text-slate-400 font-mono">/lp/{ad.slug}</div>
                 </div>
                 <ChevronRight className="w-4 h-4 text-slate-500 shrink-0 ml-2" />
-              </button>
+              </a>
             ))}
           </div>
         </div>
@@ -205,9 +191,8 @@ export function SitemapPage({ onNavigate }: SitemapPageProps) {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
             {SERVICES_DATA.map((srv) => (
-              <button
+              <a href={`/services/${srv.slug}`}
                 key={srv.id}
-                onClick={() => onNavigate(`/services/${srv.slug}`)}
                 className="p-3 bg-slate-900 hover:bg-slate-850 rounded-xl text-left text-slate-200 hover:text-amber-400 border border-slate-800 flex items-center justify-between cursor-pointer"
               >
                 <div>
@@ -215,7 +200,7 @@ export function SitemapPage({ onNavigate }: SitemapPageProps) {
                   <div className="text-[10px] text-slate-500 uppercase">{srv.category}</div>
                 </div>
                 <ChevronRight className="w-4 h-4 text-slate-500 shrink-0 ml-2" />
-              </button>
+              </a>
             ))}
           </div>
         </div>
@@ -231,25 +216,23 @@ export function SitemapPage({ onNavigate }: SitemapPageProps) {
             {COUNTIES_DATA.map((county) => (
               <div key={county.id} className="p-4 bg-slate-900 rounded-xl border border-slate-800 space-y-3">
                 <div className="flex items-center justify-between border-b border-slate-800 pb-2">
-                  <button
-                    onClick={() => onNavigate(`/service-areas/${county.slug}`)}
-                    className="font-heading font-bold text-base text-amber-400 hover:underline flex items-center gap-1.5 cursor-pointer"
+                  <a href={`/service-areas/${county.slug}`}
+                    className="font-heading font-bold text-base text-amber-400 hover:underline flex items-center gap-1.5 cursor-pointer text-center"
                   >
                     <span>{county.name} Overview (/service-areas/{county.slug})</span>
-                  </button>
+                  </a>
                   <span className="text-xs text-slate-400">{county.majorCities.length} Local City Pages</span>
                 </div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 text-xs">
                   {county.majorCities.map((city) => (
-                    <button
+                    <a href={`/service-areas/${city.slug}`}
                       key={city.id}
-                      onClick={() => onNavigate(`/service-areas/${city.slug}`)}
                       className="p-2 bg-slate-950 hover:bg-slate-800 text-slate-300 hover:text-amber-400 rounded-lg text-left border border-slate-800/80 flex items-center justify-between cursor-pointer"
                     >
                       <span className="truncate">{city.name}</span>
                       <ChevronRight className="w-3 h-3 text-slate-600" />
-                    </button>
+                    </a>
                   ))}
                 </div>
               </div>

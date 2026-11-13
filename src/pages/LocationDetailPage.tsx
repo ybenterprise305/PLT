@@ -168,17 +168,17 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
           
           {/* Breadcrumbs */}
           <div className="flex items-center gap-2 text-xs text-slate-400">
-            <button onClick={() => onNavigate('/')} className="hover:text-amber-400 transition-colors cursor-pointer">
+            <a href="/" className="hover:text-amber-400 transition-colors cursor-pointer inline-block text-center">
               {isSpanish ? 'Inicio' : 'Home'}
-            </button>
+            </a>
             <span>/</span>
-            <button onClick={() => onNavigate('/service-areas')} className="hover:text-amber-400 transition-colors cursor-pointer">
+            <a href="/service-areas" className="hover:text-amber-400 transition-colors cursor-pointer inline-block text-center">
               {isSpanish ? 'Áreas de Servicio' : 'Service Areas'}
-            </button>
+            </a>
             <span>/</span>
-            <button onClick={() => onNavigate(`/service-areas/${county.slug}`)} className="hover:text-amber-400 transition-colors cursor-pointer">
+            <a href={`/service-areas/${county.slug}`} className="hover:text-amber-400 transition-colors cursor-pointer inline-block text-center">
               {county.name}
-            </button>
+            </a>
             <span>/</span>
             <span className="text-amber-400 font-semibold">{city.name}</span>
           </div>
@@ -295,13 +295,12 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
               {county.majorCities
                 .filter(c => c.id !== city.id)
                 .map(neighbor => (
-                  <button
+                  <a href={`/service-areas/${neighbor.slug}`}
                     key={neighbor.id}
-                    onClick={() => onNavigate(`/service-areas/${neighbor.slug}`)}
-                    className="px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-amber-400 text-xs border border-slate-800 transition-colors cursor-pointer"
+                    className="px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-amber-400 text-xs border border-slate-800 transition-colors cursor-pointer inline-block text-center"
                   >
                     {neighbor.name}
-                  </button>
+                  </a>
                 ))}
             </div>
           </div>
@@ -374,13 +373,13 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
         <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 space-y-12">
           {/* Breadcrumbs */}
           <div className="flex items-center gap-2 text-xs text-slate-400">
-            <button onClick={() => onNavigate('/')} className="hover:text-amber-400 transition-colors cursor-pointer">
+            <a href="/" className="hover:text-amber-400 transition-colors cursor-pointer inline-block text-center">
               {isSpanish ? 'Inicio' : 'Home'}
-            </button>
+            </a>
             <span>/</span>
-            <button onClick={() => onNavigate('/service-areas')} className="hover:text-amber-400 transition-colors cursor-pointer">
+            <a href="/service-areas" className="hover:text-amber-400 transition-colors cursor-pointer inline-block text-center">
               {isSpanish ? 'Áreas de Servicio' : 'Service Areas'}
-            </button>
+            </a>
             <span>/</span>
             <span className="text-amber-400 font-semibold">{county.name}</span>
           </div>
@@ -444,13 +443,12 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
                     </p>
                   </div>
 
-                  <button
-                    onClick={() => onNavigate(`/service-areas/${city.slug}`)}
-                    className="w-full py-2 px-3 bg-slate-900 hover:bg-amber-500 text-slate-300 hover:text-slate-950 rounded-lg text-xs font-bold border border-slate-800 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                  <a href={`/service-areas/${city.slug}`}
+                    className="w-full py-2 px-3 bg-slate-900 hover:bg-amber-500 text-slate-300 hover:text-slate-950 rounded-lg text-xs font-bold border border-slate-800 transition-colors flex items-center justify-center gap-1.5 cursor-pointer text-center"
                   >
                     <span>{isSpanish ? `Ver ${city.name}` : `View ${city.name}`}</span>
                     <ArrowRight className="w-3 h-3" />
-                  </button>
+                  </a>
                 </div>
               ))}
             </div>
@@ -466,12 +464,11 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
         <h2 className="font-heading font-bold text-2xl text-white">
           {isSpanish ? 'Ubicación No Encontrada' : 'Location Not Found'}
         </h2>
-        <button
-          onClick={() => onNavigate('/service-areas')}
-          className="px-6 py-2.5 bg-amber-500 text-slate-950 font-bold rounded-lg text-xs cursor-pointer"
+        <a href="/service-areas"
+          className="px-6 py-2.5 bg-amber-500 text-slate-950 font-bold rounded-lg text-xs cursor-pointer inline-block text-center"
         >
           {isSpanish ? 'Ver Todas las Áreas de Servicio' : 'View All South Florida Service Areas'}
-        </button>
+        </a>
       </div>
     </div>
   );

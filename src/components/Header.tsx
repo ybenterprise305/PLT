@@ -146,59 +146,54 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
           <div className="flex items-center justify-between h-16 sm:h-20">
             
             {/* Logo: Scaled properly for smartphone screens */}
-            <button 
-              onClick={() => handleLinkClick('/')}
+            <a href="/"
               className="flex items-center text-left group focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 rounded-lg p-0.5 transition-opacity hover:opacity-95 shrink-0 cursor-pointer"
               aria-label="Pro Locksmith Tech Home"
-            >
+             onClick={() => setMobileMenuOpen(false)}>
               <Logo size="md" textColor="light" />
-            </button>
+            </a>
 
             {/* Desktop Navigation Links (ONLY 4 Main Links) */}
             <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
-              <button
-                onClick={() => handleLinkClick('/')}
+              <a href="/"
                 className={`px-4 py-2 text-sm font-semibold rounded-lg transition-colors cursor-pointer ${
                   currentPath === '/' 
                     ? 'text-amber-400 bg-slate-800/90' 
                     : 'text-slate-200 hover:text-white hover:bg-slate-800/50'
-                }`}
-              >
+                } inline-block text-center`}
+               onClick={() => setMobileMenuOpen(false)}>
                 {t('nav.home')}
-              </button>
+              </a>
 
-              <button
-                onClick={() => handleLinkClick('/services')}
+              <a href="/services"
                 className={`px-4 py-2 text-sm font-semibold rounded-lg transition-colors cursor-pointer ${
                   currentPath.startsWith('/services') 
                     ? 'text-amber-400 bg-slate-800/90' 
                     : 'text-slate-200 hover:text-white hover:bg-slate-800/50'
-                }`}
-              >
+                } inline-block text-center`}
+               onClick={() => setMobileMenuOpen(false)}>
                 {t('nav.services')}
-              </button>
+              </a>
 
-              <button
-                onClick={() => handleLinkClick('/service-areas')}
+              <a href="/service-areas"
                 className={`px-4 py-2 text-sm font-semibold rounded-lg transition-colors cursor-pointer ${
                   currentPath.startsWith('/service-areas') 
                     ? 'text-amber-400 bg-slate-800/90' 
                     : 'text-slate-200 hover:text-white hover:bg-slate-800/50'
-                }`}
-              >
+                } inline-block text-center`}
+               onClick={() => setMobileMenuOpen(false)}>
                 {t('nav.serviceAreas')}
-              </button>
+              </a>
 
-              <button
-                onClick={() => handleLinkClick('/contact')}
+              <a href="/contact"
                 className={`px-4 py-2 text-sm font-semibold rounded-lg transition-colors cursor-pointer ${
                   currentPath === '/contact' 
                     ? 'text-amber-400 bg-slate-800/90' 
                     : 'text-slate-200 hover:text-white hover:bg-slate-800/50'
-                }`}
-              >
+                } inline-block text-center`}
+               onClick={() => setMobileMenuOpen(false)}>
                 {t('nav.contact')}
-              </button>
+              </a>
             </nav>
 
             {/* Desktop Header CTA */}
@@ -257,65 +252,61 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
 
               {/* 4 Main Core Links with Large Finger-Friendly Touch Targets */}
               <nav className="grid gap-2">
-                <button
-                  onClick={() => handleLinkClick('/')}
+                <a href="/"
                   className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-bold transition-all cursor-pointer min-h-[50px] ${
                     currentPath === '/' 
                       ? 'text-slate-950 bg-amber-500 font-black shadow-lg shadow-amber-500/20' 
                       : 'text-slate-200 bg-slate-900 border border-slate-800 hover:bg-slate-850'
-                  }`}
-                >
+                  } text-center`}
+                 onClick={() => setMobileMenuOpen(false)}>
                   <span className="flex items-center gap-3">
                     <Home className="w-5 h-5" />
                     <span>{t('nav.home')}</span>
                   </span>
                   <ChevronRight className="w-4 h-4 opacity-70" />
-                </button>
+                </a>
                 
-                <button
-                  onClick={() => handleLinkClick('/services')}
+                <a href="/services"
                   className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-bold transition-all cursor-pointer min-h-[50px] ${
                     currentPath.startsWith('/services') 
                       ? 'text-slate-950 bg-amber-500 font-black shadow-lg shadow-amber-500/20' 
                       : 'text-slate-200 bg-slate-900 border border-slate-800 hover:bg-slate-850'
-                  }`}
-                >
+                  } text-center`}
+                 onClick={() => setMobileMenuOpen(false)}>
                   <span className="flex items-center gap-3">
                     <Wrench className="w-5 h-5" />
                     <span>{t('nav.services')}</span>
                   </span>
                   <ChevronRight className="w-4 h-4 opacity-70" />
-                </button>
+                </a>
 
-                <button
-                  onClick={() => handleLinkClick('/service-areas')}
+                <a href="/service-areas"
                   className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-bold transition-all cursor-pointer min-h-[50px] ${
                     currentPath.startsWith('/service-areas') 
                       ? 'text-slate-950 bg-amber-500 font-black shadow-lg shadow-amber-500/20' 
                       : 'text-slate-200 bg-slate-900 border border-slate-800 hover:bg-slate-850'
-                  }`}
-                >
+                  } text-center`}
+                 onClick={() => setMobileMenuOpen(false)}>
                   <span className="flex items-center gap-3">
                     <Navigation className="w-5 h-5" />
                     <span>{t('nav.serviceAreas')}</span>
                   </span>
                   <ChevronRight className="w-4 h-4 opacity-70" />
-                </button>
+                </a>
 
-                <button
-                  onClick={() => handleLinkClick('/contact')}
+                <a href="/contact"
                   className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-bold transition-all cursor-pointer min-h-[50px] ${
                     currentPath === '/contact' 
                       ? 'text-slate-950 bg-amber-500 font-black shadow-lg shadow-amber-500/20' 
                       : 'text-slate-200 bg-slate-900 border border-slate-800 hover:bg-slate-850'
-                  }`}
-                >
+                  } text-center`}
+                 onClick={() => setMobileMenuOpen(false)}>
                   <span className="flex items-center gap-3">
                     <Mail className="w-5 h-5" />
                     <span>{t('nav.contact')}</span>
                   </span>
                   <ChevronRight className="w-4 h-4 opacity-70" />
-                </button>
+                </a>
               </nav>
 
               {/* Service Status Badge */}

@@ -24,12 +24,11 @@ export function Footer({ onNavigate }: FooterProps) {
           
           {/* Column 1: Company Profile, SAB Privacy Notice, Socials & Direct Call */}
           <div className="lg:col-span-2 space-y-4">
-            <button 
-              onClick={() => onNavigate('/')} 
-              className="text-left group focus:outline-none cursor-pointer"
+            <a href="/" 
+              className="text-left group focus:outline-none cursor-pointer inline-block"
             >
               <Logo size="md" textColor="light" />
-            </button>
+            </a>
 
             <p className="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-sm">
               {isSpanish 
@@ -96,23 +95,21 @@ export function Footer({ onNavigate }: FooterProps) {
 
                 return (
                   <li key={srv.id}>
-                    <button
-                      onClick={() => onNavigate(`/services/${srv.slug}`)}
+                    <a href={`/services/${srv.slug}`}
                       className="hover:text-amber-400 transition-colors text-left flex items-center gap-1.5 py-0.5 cursor-pointer text-slate-300 hover:text-white"
                     >
                       <ChevronRight className="w-3 h-3 text-amber-500/60 shrink-0" />
                       <span className="truncate">{displayName}</span>
-                    </button>
+                    </a>
                   </li>
                 );
               })}
               <li>
-                <button
-                  onClick={() => onNavigate('/services')}
-                  className="text-amber-400 hover:underline font-bold pt-1 flex items-center gap-1 text-[11px] cursor-pointer"
+                <a href="/services"
+                  className="text-amber-400 hover:underline font-bold pt-1 flex items-center gap-1 text-[11px] cursor-pointer text-center"
                 >
                   <span>{isSpanish ? 'Ver los 12 Servicios' : 'View All 12 Services'} &rarr;</span>
-                </button>
+                </a>
               </li>
             </ul>
           </div>
@@ -130,34 +127,31 @@ export function Footer({ onNavigate }: FooterProps) {
 
                 return (
                   <div key={county.id} className="space-y-1">
-                    <button
-                      onClick={() => onNavigate(`/service-areas/${county.slug}`)}
-                      className="font-bold text-white hover:text-amber-400 transition-colors flex items-center gap-1 cursor-pointer"
+                    <a href={`/service-areas/${county.slug}`}
+                      className="font-bold text-white hover:text-amber-400 transition-colors flex items-center gap-1 cursor-pointer text-center"
                     >
                       <MapPin className="w-3 h-3 text-amber-400 shrink-0" />
                       <span>{countyName}</span>
-                    </button>
+                    </a>
                     <div className="flex flex-wrap gap-x-2 gap-y-1 text-slate-400 pl-4">
                       {county.majorCities.slice(0, 3).map((city) => (
-                        <button
+                        <a href={`/service-areas/${city.slug}`}
                           key={city.id}
-                          onClick={() => onNavigate(`/service-areas/${city.slug}`)}
-                          className="hover:text-amber-300 transition-colors cursor-pointer"
+                          className="hover:text-amber-300 transition-colors cursor-pointer inline-block text-center"
                         >
                           {city.name}
-                        </button>
+                        </a>
                       ))}
                     </div>
                   </div>
                 );
               })}
               <div className="pt-1">
-                <button
-                  onClick={() => onNavigate('/service-areas')}
-                  className="text-amber-400 hover:underline font-bold text-xs flex items-center gap-1 cursor-pointer"
+                <a href="/service-areas"
+                  className="text-amber-400 hover:underline font-bold text-xs flex items-center gap-1 cursor-pointer text-center"
                 >
                   <span>{isSpanish ? 'Mapa Interactivo (37 Ciudades)' : 'Interactive Map (37 Cities)'} &rarr;</span>
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -169,67 +163,60 @@ export function Footer({ onNavigate }: FooterProps) {
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <button
-                  onClick={() => onNavigate('/faq')}
+                <a href="/faq"
                   className="hover:text-amber-400 transition-colors text-left flex items-center gap-1.5 py-0.5 cursor-pointer text-slate-200"
                 >
                   <ChevronRight className="w-3 h-3 text-amber-400 shrink-0" />
                   <span className="font-semibold text-white">{isSpanish ? 'Preguntas Frecuentes (FAQ)' : 'Frequently Asked Questions (FAQ)'}</span>
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate('/about')}
+                <a href="/about"
                   className="hover:text-amber-400 transition-colors text-left flex items-center gap-1.5 py-0.5 cursor-pointer text-slate-200"
                 >
                   <ChevronRight className="w-3 h-3 text-amber-400 shrink-0" />
                   <span className="font-semibold text-white">{isSpanish ? '¿Por Qué Elegirnos?' : 'Why Choose Pro Locksmith Tech'}</span>
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate('/tips')}
+                <a href="/tips"
                   className="hover:text-amber-400 transition-colors text-left flex items-center gap-1.5 py-0.5 cursor-pointer text-amber-300"
                 >
                   <ChevronRight className="w-3 h-3 text-amber-400 shrink-0" />
                   <span className="font-bold">{isSpanish ? 'Consejos y Trucos de Cerrajería' : 'Locksmith Tips & Technical Guides'}</span>
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate('/blog')}
+                <a href="/blog"
                   className="hover:text-amber-400 transition-colors text-left flex items-center gap-1.5 py-0.5 cursor-pointer text-slate-300"
                 >
                   <ChevronRight className="w-3 h-3 text-amber-500/60 shrink-0" />
                   <span>{isSpanish ? 'Artículos de Seguridad y Blog' : 'Security Blog & Advice'}</span>
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate('/lp')}
+                <a href="/lp"
                   className="hover:text-amber-400 transition-colors text-left flex items-center gap-1.5 py-0.5 cursor-pointer text-slate-400 hover:text-white"
                 >
                   <ChevronRight className="w-3 h-3 text-amber-500/60 shrink-0" />
                   <span>{isSpanish ? 'Páginas Especializadas de Anuncios' : 'Specialized Ad Landing Hub'}</span>
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate('/privacy')}
+                <a href="/privacy"
                   className="hover:text-amber-400 transition-colors text-left flex items-center gap-1.5 py-0.5 cursor-pointer text-slate-400"
                 >
                   <ChevronRight className="w-3 h-3 text-amber-500/60 shrink-0" />
                   <span>{isSpanish ? 'Política de Privacidad' : 'Privacy Policy'}</span>
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate('/terms')}
+                <a href="/terms"
                   className="hover:text-amber-400 transition-colors text-left flex items-center gap-1.5 py-0.5 cursor-pointer text-slate-400"
                 >
                   <ChevronRight className="w-3 h-3 text-amber-500/60 shrink-0" />
                   <span>{isSpanish ? 'Términos de Servicio' : 'Terms of Service'}</span>
-                </button>
+                </a>
               </li>
             </ul>
           </div>
@@ -244,27 +231,27 @@ export function Footer({ onNavigate }: FooterProps) {
             <LanguageToggle variant="compact" />
           </div>
           <div className="flex items-center gap-4 sm:gap-5 flex-wrap justify-center sm:justify-end">
-            <button onClick={() => onNavigate('/')} className="hover:text-slate-300 transition-colors cursor-pointer">
+            <a href="/" className="hover:text-slate-300 transition-colors cursor-pointer inline-block text-center">
               {t('nav.home')}
-            </button>
-            <button onClick={() => onNavigate('/services')} className="hover:text-slate-300 transition-colors cursor-pointer">
+            </a>
+            <a href="/services" className="hover:text-slate-300 transition-colors cursor-pointer inline-block text-center">
               {t('nav.services')}
-            </button>
-            <button onClick={() => onNavigate('/service-areas')} className="hover:text-slate-300 transition-colors cursor-pointer">
+            </a>
+            <a href="/service-areas" className="hover:text-slate-300 transition-colors cursor-pointer inline-block text-center">
               {t('nav.serviceAreas')}
-            </button>
-            <button onClick={() => onNavigate('/faq')} className="hover:text-amber-400 transition-colors cursor-pointer">
+            </a>
+            <a href="/faq" className="hover:text-amber-400 transition-colors cursor-pointer inline-block text-center">
               {t('nav.faq')}
-            </button>
-            <button onClick={() => onNavigate('/contact')} className="hover:text-slate-300 transition-colors cursor-pointer">
+            </a>
+            <a href="/contact" className="hover:text-slate-300 transition-colors cursor-pointer inline-block text-center">
               {t('nav.contact')}
-            </button>
-            <button onClick={() => onNavigate('/privacy')} className="hover:text-slate-300 transition-colors cursor-pointer">
+            </a>
+            <a href="/privacy" className="hover:text-slate-300 transition-colors cursor-pointer inline-block text-center">
               {isSpanish ? 'Privacidad' : 'Privacy'}
-            </button>
-            <button onClick={() => onNavigate('/terms')} className="hover:text-slate-300 transition-colors cursor-pointer">
+            </a>
+            <a href="/terms" className="hover:text-slate-300 transition-colors cursor-pointer inline-block text-center">
               {isSpanish ? 'Términos' : 'Terms'}
-            </button>
+            </a>
           </div>
         </div>
       </div>

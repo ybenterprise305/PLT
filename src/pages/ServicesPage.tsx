@@ -158,10 +158,7 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
                 key={srv.id}
                 className="bg-slate-950 border border-slate-800 hover:border-amber-500/50 rounded-2xl overflow-hidden shadow-lg transition-all duration-200 hover:-translate-y-1 flex flex-col justify-between group"
               >
-                <div 
-                  onClick={() => onNavigate(`/services/${srv.slug}`)}
-                  className="h-40 relative overflow-hidden cursor-pointer"
-                >
+                <a href={`/services/${srv.slug}`} className="block h-40 relative overflow-hidden cursor-pointer">
                   <img
                     src={srvImg}
                     alt={name}
@@ -175,15 +172,12 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
                       {badge}
                     </span>
                   )}
-                </div>
+                </a>
 
                 <div className="p-6 flex-1 flex flex-col justify-between">
                   <div>
-                    <h3 
-                      onClick={() => onNavigate(`/services/${srv.slug}`)}
-                      className="font-heading font-bold text-xl text-white group-hover:text-amber-400 transition-colors cursor-pointer"
-                    >
-                      {name}
+                    <h3 className="font-heading font-bold text-xl text-white group-hover:text-amber-400 transition-colors cursor-pointer">
+                      <a href={`/services/${srv.slug}`}>{name}</a>
                     </h3>
 
                     <p className="text-xs sm:text-sm text-slate-400 mt-2 leading-relaxed">
@@ -201,13 +195,12 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
                   </div>
 
                   <div className="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between">
-                    <button
-                      onClick={() => onNavigate(`/services/${srv.slug}`)}
-                      className="text-xs font-bold text-amber-400 hover:text-amber-300 flex items-center gap-1.5 cursor-pointer"
+                    <a href={`/services/${srv.slug}`}
+                      className="text-xs font-bold text-amber-400 hover:text-amber-300 flex items-center gap-1.5 cursor-pointer text-center"
                     >
                       <span>{isSpanish ? 'Guía Detallada' : 'Detailed Guide'}</span>
                       <ArrowRight className="w-3.5 h-3.5" />
-                    </button>
+                    </a>
 
                     <a
                       href="tel:+17542616528"

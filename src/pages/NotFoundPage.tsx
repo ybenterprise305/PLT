@@ -55,21 +55,19 @@ export function NotFoundPage({ onNavigate }: NotFoundPageProps) {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-3 pt-2">
-          <button
-            onClick={() => onNavigate('/')}
-            className="flex-1 py-2.5 px-4 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold rounded-xl border border-slate-700 transition-colors flex items-center justify-center gap-2 cursor-pointer"
+          <a href="/"
+            className="flex-1 py-2.5 px-4 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold rounded-xl border border-slate-700 transition-colors flex items-center justify-center gap-2 cursor-pointer text-center"
           >
             <Home className="w-3.5 h-3.5 text-amber-400" />
             <span>Return to Homepage</span>
-          </button>
+          </a>
 
-          <button
-            onClick={() => onNavigate('/service-areas')}
-            className="flex-1 py-2.5 px-4 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold rounded-xl border border-slate-700 transition-colors flex items-center justify-center gap-2 cursor-pointer"
+          <a href="/service-areas"
+            className="flex-1 py-2.5 px-4 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold rounded-xl border border-slate-700 transition-colors flex items-center justify-center gap-2 cursor-pointer text-center"
           >
             <MapPin className="w-3.5 h-3.5 text-amber-400" />
             <span>View Service Areas</span>
-          </button>
+          </a>
         </div>
       </div>
     </div>

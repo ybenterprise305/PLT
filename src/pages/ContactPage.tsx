@@ -387,19 +387,18 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
                 <strong className="text-white font-bold text-sm">
                   {isSpanish ? 'Condado de Broward' : 'Broward County'}
                 </strong>
-                <button onClick={() => onNavigate('/service-areas/broward-county')} className="text-amber-400 hover:underline font-semibold text-[11px] cursor-pointer">
+                <a href="/service-areas/broward-county" className="text-amber-400 hover:underline font-semibold text-[11px] cursor-pointer inline-block text-center">
                   {isSpanish ? 'Ver Condado →' : 'View County →'}
-                </button>
+                </a>
               </div>
               <div className="flex flex-wrap gap-1.5 pt-1">
                 {['Coral Springs', 'Fort Lauderdale', 'Hollywood', 'Pompano Beach', 'Pembroke Pines', 'Miramar', 'Davie', 'Plantation'].map(city => (
-                  <button
+                  <a href={`/service-areas/${city.toLowerCase().replace(/\s+/g, '-')}`}
                     key={city}
-                    onClick={() => onNavigate(`/service-areas/${city.toLowerCase().replace(/\s+/g, '-')}`)}
-                    className="px-2 py-1 bg-slate-950 hover:bg-slate-800 text-slate-300 hover:text-amber-300 rounded border border-slate-800 text-[11px] transition-colors cursor-pointer"
+                    className="px-2 py-1 bg-slate-950 hover:bg-slate-800 text-slate-300 hover:text-amber-300 rounded border border-slate-800 text-[11px] transition-colors cursor-pointer inline-block text-center"
                   >
                     {city}
-                  </button>
+                  </a>
                 ))}
               </div>
             </div>
@@ -409,19 +408,18 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
                 <strong className="text-white font-bold text-sm">
                   {isSpanish ? 'Condado de Miami-Dade' : 'Miami-Dade County'}
                 </strong>
-                <button onClick={() => onNavigate('/service-areas/miami-dade-county')} className="text-amber-400 hover:underline font-semibold text-[11px] cursor-pointer">
+                <a href="/service-areas/miami-dade-county" className="text-amber-400 hover:underline font-semibold text-[11px] cursor-pointer inline-block text-center">
                   {isSpanish ? 'Ver Condado →' : 'View County →'}
-                </button>
+                </a>
               </div>
               <div className="flex flex-wrap gap-1.5 pt-1">
                 {['Miami', 'Miami Beach', 'Hialeah', 'Coral Gables', 'Doral', 'Aventura', 'Kendall'].map(city => (
-                  <button
+                  <a href={`/service-areas/${city.toLowerCase().replace(/\s+/g, '-')}`}
                     key={city}
-                    onClick={() => onNavigate(`/service-areas/${city.toLowerCase().replace(/\s+/g, '-')}`)}
-                    className="px-2 py-1 bg-slate-950 hover:bg-slate-800 text-slate-300 hover:text-amber-300 rounded border border-slate-800 text-[11px] transition-colors cursor-pointer"
+                    className="px-2 py-1 bg-slate-950 hover:bg-slate-800 text-slate-300 hover:text-amber-300 rounded border border-slate-800 text-[11px] transition-colors cursor-pointer inline-block text-center"
                   >
                     {city}
-                  </button>
+                  </a>
                 ))}
               </div>
             </div>
@@ -431,19 +429,18 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
                 <strong className="text-white font-bold text-sm">
                   {isSpanish ? 'Condado de Palm Beach' : 'Palm Beach County'}
                 </strong>
-                <button onClick={() => onNavigate('/service-areas/palm-beach-county')} className="text-amber-400 hover:underline font-semibold text-[11px] cursor-pointer">
+                <a href="/service-areas/palm-beach-county" className="text-amber-400 hover:underline font-semibold text-[11px] cursor-pointer inline-block text-center">
                   {isSpanish ? 'Ver Condado →' : 'View County →'}
-                </button>
+                </a>
               </div>
               <div className="flex flex-wrap gap-1.5 pt-1">
                 {['West Palm Beach', 'Boca Raton', 'Delray Beach', 'Boynton Beach', 'Jupiter', 'Wellington', 'Palm Beach Gardens'].map(city => (
-                  <button
+                  <a href={`/service-areas/${city.toLowerCase().replace(/\s+/g, '-')}`}
                     key={city}
-                    onClick={() => onNavigate(`/service-areas/${city.toLowerCase().replace(/\s+/g, '-')}`)}
-                    className="px-2 py-1 bg-slate-950 hover:bg-slate-800 text-slate-300 hover:text-amber-300 rounded border border-slate-800 text-[11px] transition-colors cursor-pointer"
+                    className="px-2 py-1 bg-slate-950 hover:bg-slate-800 text-slate-300 hover:text-amber-300 rounded border border-slate-800 text-[11px] transition-colors cursor-pointer inline-block text-center"
                   >
                     {city}
-                  </button>
+                  </a>
                 ))}
               </div>
             </div>

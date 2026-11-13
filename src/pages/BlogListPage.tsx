@@ -99,7 +99,7 @@ export function BlogListPage({ onNavigate }: BlogListPageProps) {
               onClick={() => onNavigate(`/blog/${post.slug}`)}
               className="bg-slate-950 border border-slate-800 hover:border-amber-500/50 rounded-2xl overflow-hidden shadow-lg transition-all hover:-translate-y-1 group cursor-pointer flex flex-col justify-between"
             >
-              <div>
+              <a href={`/blog/${post.slug}`} className="block">
                 {/* Article Image */}
                 <div className="relative aspect-video w-full overflow-hidden bg-slate-900">
                   <img
@@ -135,7 +135,7 @@ export function BlogListPage({ onNavigate }: BlogListPageProps) {
                     {post.excerpt}
                   </p>
                 </div>
-              </div>
+              </a>
 
               {/* Bottom Card Footer */}
               <div className="p-5 sm:p-6 pt-0 border-t border-slate-900 mt-4 flex items-center justify-between">

@@ -135,13 +135,12 @@ export function AdLandingHubPage({ onNavigate }: AdLandingHubPageProps) {
 
               {/* Action Buttons: Preview & Copy URL */}
               <div className="pt-4 border-t border-slate-800 flex flex-col sm:flex-row items-center gap-2.5">
-                <button
-                  onClick={() => onNavigate(`/lp/${campaign.slug}`)}
-                  className="w-full sm:flex-1 py-2.5 px-4 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl shadow-md flex items-center justify-center gap-2 transition-transform hover:scale-[1.02] cursor-pointer"
+                <a href={`/lp/${campaign.slug}`}
+                  className="w-full sm:flex-1 py-2.5 px-4 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl shadow-md flex items-center justify-center gap-2 transition-transform hover:scale-[1.02] cursor-pointer text-center"
                 >
                   <span>Preview Landing Page</span>
                   <ExternalLink className="w-3.5 h-3.5" />
-                </button>
+                </a>
 
                 <button
                   onClick={() => copyUrl(campaign.slug)}

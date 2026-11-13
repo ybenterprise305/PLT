@@ -198,12 +198,11 @@ export function LocksmithTipsPage({ onNavigate }: LocksmithTipsPageProps) {
 
                     {/* Title */}
                     <h2 className="font-heading font-black text-xl text-white group-hover:text-amber-400 transition-colors leading-snug">
-                      <button
-                        onClick={() => onNavigate(`/tips/${tip.slug}`)}
-                        className="text-left cursor-pointer"
+                      <a href={`/tips/${tip.slug}`}
+                        className="text-left cursor-pointer inline-block"
                       >
                         {tip.title}
-                      </button>
+                      </a>
                     </h2>
 
                     {/* Direct Answer Preview (AEO Optimized) */}
@@ -226,13 +225,12 @@ export function LocksmithTipsPage({ onNavigate }: LocksmithTipsPageProps) {
 
                   {/* Card Footer */}
                   <div className="pt-4 border-t border-slate-800 flex items-center justify-between">
-                    <button
-                      onClick={() => onNavigate(`/tips/${tip.slug}`)}
-                      className="text-xs font-bold text-amber-400 group-hover:text-amber-300 flex items-center gap-1 cursor-pointer"
+                    <a href={`/tips/${tip.slug}`}
+                      className="text-xs font-bold text-amber-400 group-hover:text-amber-300 flex items-center gap-1 cursor-pointer text-center"
                     >
                       <span>Read Complete Guide</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                    </button>
+                    </a>
 
                     <a
                       href="tel:+17542616528"
@@ -276,12 +274,11 @@ export function LocksmithTipsPage({ onNavigate }: LocksmithTipsPageProps) {
               <span>Call Now: (754) 261-6528</span>
             </a>
 
-            <button
-              onClick={() => onNavigate('/contact')}
-              className="px-8 py-3.5 bg-slate-800 hover:bg-slate-700 text-slate-100 font-bold text-sm rounded-xl uppercase tracking-wider border border-slate-700 transition-colors"
+            <a href="/contact"
+              className="px-8 py-3.5 bg-slate-800 hover:bg-slate-700 text-slate-100 font-bold text-sm rounded-xl uppercase tracking-wider border border-slate-700 transition-colors inline-block text-center"
             >
               <span>Contact Dispatch Info</span>
-            </button>
+            </a>
           </div>
         </div>
       </section>

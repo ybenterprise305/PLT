@@ -557,13 +557,12 @@ export function HomePage({ onNavigate }: HomePageProps) {
                   <Phone className="w-3.5 h-3.5 fill-current" />
                   <span>{isSpanish ? 'Llamar Por Auto' : 'Call For Car Service'}</span>
                 </a>
-                <button
-                  onClick={() => onNavigate('/services/automotive-locksmith')}
-                  className="text-xs text-amber-400 hover:text-amber-300 font-bold flex items-center gap-1 cursor-pointer py-2 px-1 min-h-[44px]"
+                <a href="/services/automotive-locksmith"
+                  className="text-xs text-amber-400 hover:text-amber-300 font-bold flex items-center gap-1 cursor-pointer py-2 px-1 min-h-[44px] text-center"
                 >
                   <span>Details</span>
                   <ArrowRight className="w-3.5 h-3.5" />
-                </button>
+                </a>
               </div>
             </div>
 
@@ -619,13 +618,12 @@ export function HomePage({ onNavigate }: HomePageProps) {
                   <Phone className="w-3.5 h-3.5 fill-current" />
                   <span>{isSpanish ? 'Llamar Por Casa' : 'Call For Home Service'}</span>
                 </a>
-                <button
-                  onClick={() => onNavigate('/services/residential-locksmith')}
-                  className="text-xs text-amber-400 hover:text-amber-300 font-bold flex items-center gap-1 cursor-pointer py-2 px-1 min-h-[44px]"
+                <a href="/services/residential-locksmith"
+                  className="text-xs text-amber-400 hover:text-amber-300 font-bold flex items-center gap-1 cursor-pointer py-2 px-1 min-h-[44px] text-center"
                 >
                   <span>Details</span>
                   <ArrowRight className="w-3.5 h-3.5" />
-                </button>
+                </a>
               </div>
             </div>
 
@@ -681,13 +679,12 @@ export function HomePage({ onNavigate }: HomePageProps) {
                   <Phone className="w-3.5 h-3.5 fill-current" />
                   <span>{isSpanish ? 'Llamar Por Negocio' : 'Call For Business'}</span>
                 </a>
-                <button
-                  onClick={() => onNavigate('/services/commercial-locksmith')}
-                  className="text-xs text-amber-400 hover:text-amber-300 font-bold flex items-center gap-1 cursor-pointer py-2 px-1 min-h-[44px]"
+                <a href="/services/commercial-locksmith"
+                  className="text-xs text-amber-400 hover:text-amber-300 font-bold flex items-center gap-1 cursor-pointer py-2 px-1 min-h-[44px] text-center"
                 >
                   <span>Details</span>
                   <ArrowRight className="w-3.5 h-3.5" />
-                </button>
+                </a>
               </div>
             </div>
 
@@ -743,13 +740,12 @@ export function HomePage({ onNavigate }: HomePageProps) {
                   <Phone className="w-3.5 h-3.5 fill-current" />
                   <span>{isSpanish ? 'Llamar a Emergencias' : 'Call 24/7 Emergency'}</span>
                 </a>
-                <button
-                  onClick={() => onNavigate('/services/emergency-lockout-service')}
-                  className="text-xs text-amber-400 hover:text-amber-300 font-bold flex items-center gap-1 cursor-pointer py-2 px-1 min-h-[44px]"
+                <a href="/services/emergency-lockout-service"
+                  className="text-xs text-amber-400 hover:text-amber-300 font-bold flex items-center gap-1 cursor-pointer py-2 px-1 min-h-[44px] text-center"
                 >
                   <span>Details</span>
                   <ArrowRight className="w-3.5 h-3.5" />
-                </button>
+                </a>
               </div>
             </div>
 
@@ -881,13 +877,12 @@ export function HomePage({ onNavigate }: HomePageProps) {
           </div>
 
           <div className="text-center pt-2">
-            <button
-              onClick={() => onNavigate('/faq')}
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-400 hover:text-amber-300 uppercase tracking-wider cursor-pointer"
+            <a href="/faq"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-400 hover:text-amber-300 uppercase tracking-wider cursor-pointer text-center"
             >
               <span>{isSpanish ? 'Ver Todas las Preguntas' : 'View Full FAQ Center'}</span>
               <ArrowRight className="w-3.5 h-3.5" />
-            </button>
+            </a>
           </div>
 
         </div>

@@ -103,10 +103,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
         <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-10 py-3 flex items-center justify-between">
           
           {/* Logo / Brand Name */}
-          <div 
-            onClick={() => onNavigate('/')}
-            className="flex items-center gap-3 cursor-pointer group"
-          >
+          <a href="/" className="flex items-center gap-3 cursor-pointer group">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-slate-950 shadow-md">
               <KeyRound className="w-5 h-5" />
             </div>
@@ -118,7 +115,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
                 24/7 Mobile Locksmith · We Come To You
               </div>
             </div>
-          </div>
+          </a>
 
           {/* Quick Call Button in Header */}
           <div className="flex items-center gap-3">
@@ -475,10 +472,10 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
             Serving Broward County, Miami-Dade County, and Palm Beach County, FL. Direct Dispatch: +1 754-261-6528.
           </p>
           <div className="flex items-center justify-center gap-4 text-[11px] text-slate-400">
-            <button onClick={() => onNavigate('/')} className="hover:text-amber-400 underline cursor-pointer">Main Website</button>
-            <button onClick={() => onNavigate('/services')} className="hover:text-amber-400 underline cursor-pointer">All Services</button>
-            <button onClick={() => onNavigate('/service-areas')} className="hover:text-amber-400 underline cursor-pointer">Service Areas</button>
-            <button onClick={() => onNavigate('/faq')} className="hover:text-amber-400 underline cursor-pointer">FAQ</button>
+            <a href="/" className="hover:text-amber-400 underline cursor-pointer inline-block text-center">Main Website</a>
+            <a href="/services" className="hover:text-amber-400 underline cursor-pointer inline-block text-center">All Services</a>
+            <a href="/service-areas" className="hover:text-amber-400 underline cursor-pointer inline-block text-center">Service Areas</a>
+            <a href="/faq" className="hover:text-amber-400 underline cursor-pointer inline-block text-center">FAQ</a>
           </div>
           <p className="text-[10px] text-slate-400 pt-2">
             © {new Date().getFullYear()} Pro Locksmith Tech. All rights reserved. 100% Mobile Service — We Come to You.
