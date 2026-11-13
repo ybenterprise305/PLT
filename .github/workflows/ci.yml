@@ -22,3 +22,18 @@ jobs:
         run: npm run lint
       - name: Build
         run: npm run build
+      - name: Check pre-rendered pages
+        run: |
+          test "$(find dist -name index.html | wc -l)" -ge 70
+          grep -q "<h1" dist/services/index.html
+          grep -q 'rel="canonical" href="https://prolocksmith-tech.com/services"' dist/services/index.html
+          grep -q 'noindex' dist/lp/car-lockout/index.html
+      - name: Install browser for site checks
+        run: |
+          npm install --no-save --no-audit --no-fund playwright
+          npx playwright install --with-deps chromium
+      - name: Browser checks (phone, tablet, laptop)
+        run: |
+          npx vite preview --port 4173 &
+          sleep 5
+          node scripts/check-site.mjs
