@@ -41,7 +41,7 @@ export function NotFoundPage({ onNavigate }: NotFoundPageProps) {
               href="tel:+17542616528"
               className="flex-1 py-3 px-4 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm rounded-xl flex items-center justify-center gap-2 shadow-lg transition-transform hover:scale-[1.02]"
             >
-              <Phone className="w-4 h-4 fill-current animate-pulse" />
+              <Phone className="w-4 h-4 fill-current" />
               <span>Call (754) 261-6528</span>
             </a>
             <a

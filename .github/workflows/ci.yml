@@ -1,0 +1,24 @@
+name: Build check
+
+# Runs on every pull request and on pushes to main so a broken edit is caught
+# before it reaches the live site.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: package.json
+      - run: npm install --no-audit --no-fund
+      - name: Type check
+        run: npm run lint
+      - name: Build
+        run: npm run build

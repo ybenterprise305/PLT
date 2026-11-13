@@ -32,7 +32,7 @@ export function MobileCallBar() {
           aria-label="Call Pro Locksmith Tech now at (754) 261-6528"
         >
           <div className="w-8 h-8 rounded-full bg-slate-950 text-amber-400 flex items-center justify-center shrink-0 shadow-inner">
-            <Phone className="w-4 h-4 fill-current animate-pulse" />
+            <Phone className="w-4 h-4 fill-current" />
           </div>
 
           <div className="flex flex-col text-left justify-center min-w-0">

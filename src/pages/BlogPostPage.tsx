@@ -143,7 +143,7 @@ export function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
               onClick={() => trackPhoneClick({ ctaLocation: 'blog_post_urgent_call', pagePath: `/blog/${post.slug}` })}
               className="py-3 px-5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs sm:text-sm rounded-xl shadow-lg flex items-center justify-center gap-2 transition-transform hover:scale-105 cursor-pointer"
             >
-              <Phone className="w-4 h-4 fill-current animate-pulse" />
+              <Phone className="w-4 h-4 fill-current" />
               <span>Call: (754) 261-6528</span>
             </a>
             <a
@@ -246,7 +246,7 @@ export function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
             onClick={() => trackPhoneClick({ ctaLocation: 'blog_post_bottom_call', pagePath: `/blog/${post.slug}` })}
             className="mt-4 sm:mt-0 inline-flex items-center justify-center gap-2 py-4 px-6 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm shadow-xl transition-transform hover:scale-105 cursor-pointer shrink-0"
           >
-            <Phone className="w-4 h-4 fill-current animate-pulse" />
+            <Phone className="w-4 h-4 fill-current" />
             <span>Call +1 754-261-6528</span>
           </a>
         </div>

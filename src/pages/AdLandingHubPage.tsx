@@ -177,7 +177,7 @@ export function AdLandingHubPage({ onNavigate }: AdLandingHubPageProps) {
               href="tel:+17542616528"
               className="inline-flex items-center gap-2 py-3.5 px-6 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm shadow-xl transition-transform hover:scale-105 cursor-pointer"
             >
-              <Phone className="w-4 h-4 fill-current animate-pulse" />
+              <Phone className="w-4 h-4 fill-current" />
               <span>CALL DIRECT: +1 754-261-6528</span>
             </a>
           </div>

@@ -262,7 +262,7 @@ export function SouthFloridaMap({
                   onClick={() => trackPhoneClick({ ctaLocation: `map_active_city_call_${activeCity.id}`, pagePath: window.location.pathname })}
                   className="py-3.5 px-4 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 text-slate-950 font-black text-sm rounded-xl shadow-lg flex items-center justify-center gap-2 cursor-pointer min-h-[48px]"
                 >
-                  <Phone className="w-4 h-4 fill-current animate-pulse" />
+                  <Phone className="w-4 h-4 fill-current" />
                   <span>Call {activeCity.name} Unit</span>
                 </a>
 

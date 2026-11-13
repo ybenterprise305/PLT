@@ -173,7 +173,7 @@ export function BlogListPage({ onNavigate }: BlogListPageProps) {
             href="tel:+17542616528"
             className="py-4 px-8 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-base shadow-xl flex items-center gap-2 shrink-0 transition-transform hover:scale-105 cursor-pointer"
           >
-            <Phone className="w-5 h-5 fill-current animate-pulse" />
+            <Phone className="w-5 h-5 fill-current" />
             <span>CALL (754) 261-6528</span>
           </a>
         </div>

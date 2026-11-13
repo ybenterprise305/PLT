@@ -296,7 +296,7 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
                   onClick={() => trackPhoneClick({ ctaLocation: 'service_detail_hero', pagePath: `/services/${service.slug}` })}
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-3.5 px-6 min-h-[48px] rounded-xl bg-amber-500 hover:bg-amber-400 active:bg-amber-400 text-slate-950 font-black text-sm uppercase tracking-wider shadow-lg transition-transform hover:scale-[1.02] cursor-pointer"
                 >
-                  <Phone className="w-4 h-4 fill-current animate-pulse" />
+                  <Phone className="w-4 h-4 fill-current" />
                   <span>{isSpanish ? 'Llamar Ahora: (754) 261-6528' : 'Call Now: +1 754-261-6528'}</span>
                 </a>
 
@@ -477,7 +477,7 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
               onClick={() => trackPhoneClick({ ctaLocation: 'service_detail_bottom', pagePath: `/services/${service.slug}` })}
               className="w-full sm:w-auto px-8 py-3.5 min-h-[48px] justify-center bg-amber-500 hover:bg-amber-400 active:bg-amber-400 text-slate-950 font-black text-base rounded-xl shadow-lg transition-transform hover:scale-105 flex items-center gap-2 cursor-pointer"
             >
-              <Phone className="w-4 h-4 fill-current animate-pulse" />
+              <Phone className="w-4 h-4 fill-current" />
               <span>{isSpanish ? 'Llamar +1 754-261-6528' : 'Call +1 754-261-6528'}</span>
             </a>
             <a

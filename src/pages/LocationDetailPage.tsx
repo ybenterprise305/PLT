@@ -210,7 +210,7 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
                     onClick={() => trackPhoneClick({ ctaLocation: 'city_hero_call', pagePath: `/service-areas/${city.slug}` })}
                     className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-3.5 px-6 min-h-[48px] rounded-xl bg-amber-500 hover:bg-amber-400 active:bg-amber-400 text-slate-950 font-black text-sm shadow-lg transition-transform hover:scale-[1.02] cursor-pointer"
                   >
-                    <Phone className="w-4 h-4 fill-current animate-pulse" />
+                    <Phone className="w-4 h-4 fill-current" />
                     <span>{isSpanish ? 'Llamar Ahora: (754) 261-6528' : 'Call Now: (754) 261-6528'}</span>
                   </a>
 
@@ -279,7 +279,7 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
                   onClick={() => trackPhoneClick({ ctaLocation: 'city_sidebar_call', pagePath: `/service-areas/${city.slug}` })}
                   className="w-full py-3.5 min-h-[48px] bg-amber-500 hover:bg-amber-400 active:bg-amber-400 text-slate-950 font-black text-xs sm:text-sm rounded-xl flex items-center justify-center gap-2 transition-colors cursor-pointer"
                 >
-                  <Phone className="w-4 h-4 fill-current animate-pulse" />
+                  <Phone className="w-4 h-4 fill-current" />
                   <span>{isSpanish ? `Llamar a Técnico en ${city.name}: (754) 261-6528` : `Call ${city.name} Technician: +1 754-261-6528`}</span>
                 </a>
               </div>
@@ -407,7 +407,7 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
                   onClick={() => trackPhoneClick({ ctaLocation: 'county_hero_call', pagePath: `/service-areas/${county.slug}` })}
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-3.5 px-6 min-h-[48px] rounded-xl bg-amber-500 hover:bg-amber-400 active:bg-amber-400 text-slate-950 font-black text-sm shadow-lg transition-transform hover:scale-[1.02] cursor-pointer"
                 >
-                  <Phone className="w-4 h-4 fill-current animate-pulse" />
+                  <Phone className="w-4 h-4 fill-current" />
                   <span>{isSpanish ? `Llamar a Despacho de ${county.name}: (754) 261-6528` : `Call ${county.name} Dispatch: (754) 261-6528`}</span>
                 </a>
 
