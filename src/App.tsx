@@ -101,7 +101,7 @@ export default function App({ initialPath }: AppProps) {
   )) {
     return (
       <LanguageProvider path={fullPath} onSwitch={switchLanguage}>
-        <div className="flex min-h-screen flex-col bg-slate-950 text-slate-100">
+        <div className="flex min-h-screen w-full flex-col overflow-x-clip bg-slate-950 text-slate-100">
           <Header currentPath={normalizedPath} onNavigate={navigate} />
           <main className="flex-1 pb-24 lg:pb-0"><SpanishContentPage path={normalizedPath} /></main>
           <Footer onNavigate={navigate} />
