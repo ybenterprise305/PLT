@@ -2,7 +2,7 @@
 import { chromium } from 'playwright';
 
 const BASE = process.env.BASE_URL || 'http://localhost:4173';
-const routes = ['/', '/services', '/services/emergency-lockout-service', '/service-areas', '/service-areas/boca-raton', '/contact', '/lp/car-lockout', '/blog', '/faq'];
+const routes = ['/', '/services', '/services/emergency-lockout-service', '/service-areas', '/service-areas/boca-raton', '/contact', '/lp/car-lockout', '/blog', '/faq', '/es', '/es/services', '/es/service-areas/boca-raton', '/es/contact'];
 const viewports = [
   { name: 'phone', width: 390, height: 844 },
   { name: 'tablet', width: 768, height: 1024 },
@@ -57,6 +57,24 @@ for (const vp of viewports) {
   } else {
     failures.push('home page has no /services link in main');
   }
+  await context.close();
+}
+
+// Language switch: English home -> Spanish home (URL changes, page language changes, links stay Spanish)
+{
+  const context = await browser.newContext({ viewport: { width: 1280, height: 800 } });
+  const page = await context.newPage();
+  await page.goto(BASE + '/', { waitUntil: 'networkidle' });
+  await page.locator('button[aria-label="Cambiar a Español"]:visible').first().click();
+  await page.waitForURL('**/es');
+  const lang = await page.evaluate(() => document.documentElement.lang);
+  if (lang !== 'es') failures.push(`language switch: <html lang> is "${lang}" after switching to Spanish`);
+  const spanishLinks = await page.locator('a[href="/es/services"]:visible').count();
+  if (spanishLinks < 1) failures.push('Spanish home page has no visible link to /es/services');
+  const englishLeak = await page.locator('main a[href="/services"]').count();
+  if (englishLeak > 0) failures.push(`Spanish home page still has ${englishLeak} links to the English /services page`);
+  await page.locator('button[aria-label="Switch to English"]:visible').first().click();
+  await page.waitForURL(BASE + '/');
   await context.close();
 }
 

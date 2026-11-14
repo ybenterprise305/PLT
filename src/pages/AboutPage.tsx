@@ -15,6 +15,7 @@ import {
 } from '../assets/images';
 import { useLanguage } from '../context/LanguageContext';
 
+import { LocalizedA } from '../components/LocalizedA';
 interface AboutPageProps {
   onNavigate: (path: string) => void;
 }
@@ -63,21 +64,21 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
               </p>
 
               <div className="pt-2 flex flex-col sm:flex-row gap-3">
-                <a
+                <LocalizedA
                   href="tel:+17542616528"
                   className="inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm uppercase tracking-wider shadow-lg transition-transform hover:scale-[1.02]"
                 >
                   <Phone className="w-4 h-4 fill-current" />
                   <span>{isSpanish ? 'Llamar: +1 754-261-6528' : 'Call +1 754-261-6528'}</span>
-                </a>
+                </LocalizedA>
 
-                <a
+                <LocalizedA
                   href="sms:+17542616528"
                   className="inline-flex items-center justify-center gap-2 py-3.5 px-5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-100 font-bold text-sm border border-slate-700 transition-colors"
                 >
                   <MessageSquare className="w-4 h-4 text-amber-400" />
                   <span>{isSpanish ? 'Enviar Texto' : 'Text Us'}</span>
-                </a>
+                </LocalizedA>
               </div>
             </div>
 
@@ -199,17 +200,17 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
               : 'Contact Pro Locksmith Tech today. Our mobile technicians are on call 24/7 across Broward, Miami-Dade, and Palm Beach.'}
           </p>
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
+            <LocalizedA
               href="tel:+17542616528"
               className="px-8 py-3.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm rounded-xl shadow-lg transition-transform hover:scale-105"
             >
               <span>{isSpanish ? 'Llamar: (754) 261-6528' : 'Call (754) 261-6528'}</span>
-            </a>
-            <a href="/contact"
+            </LocalizedA>
+            <LocalizedA href="/contact"
               className="px-6 py-3.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-sm rounded-xl border border-slate-700 transition-colors cursor-pointer inline-block text-center"
             >
               <span>{isSpanish ? 'Detalles de Contacto' : 'Contact Details'}</span>
-            </a>
+            </LocalizedA>
           </div>
         </div>
       </div>

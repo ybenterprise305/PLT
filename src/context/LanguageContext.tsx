@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useEffect, ReactNode } from 'react';
+import { isEsPath } from '../utils/locale';
 
 export type Language = 'en' | 'es';
 
@@ -221,38 +222,25 @@ interface LanguageContextType {
   toggleLanguage: () => void;
   t: (key: string, fallback?: string) => string;
   isSpanish: boolean;
+  /** Current address, e.g. /es/services */
+  path: string;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-const STORAGE_KEY = 'pro_locksmith_language_pref';
+interface LanguageProviderProps {
+  children: ReactNode;
+  /** Current address. The language comes from it: /es/... is Spanish, everything else English. */
+  path: string;
+  /** Called when the visitor picks the other language; the app moves to the matching address. */
+  onSwitch: (lang: Language) => void;
+}
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  // Always start in English so the pre-rendered HTML and the first browser render match.
-  // The visitor's saved or browser language is applied right after.
-  const [language, setLanguageState] = useState<Language>('en');
-
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved === 'es' || saved === 'en') {
-        setLanguageState(saved);
-      } else if (navigator.language && navigator.language.startsWith('es')) {
-        setLanguageState('es');
-      }
-    } catch {
-      // ignore storage errors
-    }
-  }, []);
+export function LanguageProvider({ children, path, onSwitch }: LanguageProviderProps) {
+  const language: Language = isEsPath(path) ? 'es' : 'en';
 
   const setLanguage = (lang: Language) => {
-    setLanguageState(lang);
-    try {
-      localStorage.setItem(STORAGE_KEY, lang);
-      document.documentElement.lang = lang;
-    } catch {
-      // ignore
-    }
+    if (lang !== language) onSwitch(lang);
   };
 
   const toggleLanguage = () => {
@@ -280,7 +268,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
         setLanguage,
         toggleLanguage,
         t,
-        isSpanish: language === 'es'
+        isSpanish: language === 'es',
+        path
       }}
     >
       {children}

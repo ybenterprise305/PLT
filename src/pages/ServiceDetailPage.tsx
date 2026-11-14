@@ -20,6 +20,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { SPANISH_SERVICES } from '../data/spanishTranslations';
 import { trackPhoneClick } from '../utils/analytics';
 
+import { LocalizedA } from '../components/LocalizedA';
 interface ServiceDetailPageProps {
   slug: string;
   onNavigate: (path: string) => void;
@@ -37,11 +38,11 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
           <h2 className="font-heading font-bold text-2xl text-white">
             {isSpanish ? 'Servicio No Encontrado' : 'Service Not Found'}
           </h2>
-          <a href="/services"
+          <LocalizedA href="/services"
             className="px-6 py-2.5 bg-amber-500 text-slate-950 font-bold rounded-lg text-xs cursor-pointer inline-block text-center"
           >
             {isSpanish ? 'Volver a Todos los Servicios' : 'Back to All Locksmith Services'}
-          </a>
+          </LocalizedA>
         </div>
       </div>
     );
@@ -256,13 +257,13 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
         
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 text-xs text-slate-400">
-          <a href="/" className="hover:text-amber-400 transition-colors cursor-pointer inline-block text-center">
+          <LocalizedA href="/" className="hover:text-amber-400 transition-colors cursor-pointer inline-block text-center">
             {t('nav.home')}
-          </a>
+          </LocalizedA>
           <span>/</span>
-          <a href="/services" className="hover:text-amber-400 transition-colors cursor-pointer inline-block text-center">
+          <LocalizedA href="/services" className="hover:text-amber-400 transition-colors cursor-pointer inline-block text-center">
             {t('nav.services')}
-          </a>
+          </LocalizedA>
           <span>/</span>
           <span className="text-amber-400 font-semibold">{serviceName}</span>
         </div>
@@ -290,22 +291,22 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
 
               {/* Direct Actions: Call Now & Text */}
               <div className="flex flex-col sm:flex-row gap-3 pt-3">
-                <a
+                <LocalizedA
                   href="tel:+17542616528"
                   onClick={() => trackPhoneClick({ ctaLocation: 'service_detail_hero', pagePath: `/services/${service.slug}` })}
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-3.5 px-6 min-h-[48px] rounded-xl bg-amber-500 hover:bg-amber-400 active:bg-amber-400 text-slate-950 font-black text-sm uppercase tracking-wider shadow-lg transition-transform hover:scale-[1.02] cursor-pointer"
                 >
                   <Phone className="w-4 h-4 fill-current" />
                   <span>{isSpanish ? 'Llamar Ahora: (754) 261-6528' : 'Call Now: +1 754-261-6528'}</span>
-                </a>
+                </LocalizedA>
 
-                <a
+                <LocalizedA
                   href="sms:+17542616528"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-3.5 px-5 min-h-[48px] rounded-xl bg-slate-800 hover:bg-slate-700 active:bg-slate-700 text-slate-100 font-bold text-sm border border-slate-700 transition-colors cursor-pointer"
                 >
                   <MessageSquare className="w-4 h-4 text-amber-400" />
                   <span>{isSpanish ? 'Enviar Mensaje' : 'Text Us'}</span>
-                </a>
+                </LocalizedA>
               </div>
             </div>
 
@@ -471,21 +472,21 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
             }
           </p>
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <a
+            <LocalizedA
               href="tel:+17542616528"
               onClick={() => trackPhoneClick({ ctaLocation: 'service_detail_bottom', pagePath: `/services/${service.slug}` })}
               className="w-full sm:w-auto px-8 py-3.5 min-h-[48px] justify-center bg-amber-500 hover:bg-amber-400 active:bg-amber-400 text-slate-950 font-black text-base rounded-xl shadow-lg transition-transform hover:scale-105 flex items-center gap-2 cursor-pointer"
             >
               <Phone className="w-4 h-4 fill-current" />
               <span>{isSpanish ? 'Llamar +1 754-261-6528' : 'Call +1 754-261-6528'}</span>
-            </a>
-            <a
+            </LocalizedA>
+            <LocalizedA
               href="sms:+17542616528"
               className="w-full sm:w-auto px-6 py-3.5 min-h-[48px] justify-center bg-slate-800 hover:bg-slate-700 active:bg-slate-700 text-slate-100 font-bold text-sm rounded-xl border border-slate-700 transition-colors flex items-center gap-2 cursor-pointer"
             >
               <MessageSquare className="w-4 h-4 text-amber-400" />
               <span>{isSpanish ? 'Enviar Texto' : 'Text Us'}</span>
-            </a>
+            </LocalizedA>
           </div>
         </div>
 
@@ -501,13 +502,13 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
                 : other.name;
 
               return (
-                <a href={`/services/${other.slug}`}
+                <LocalizedA href={`/services/${other.slug}`}
                   key={other.id}
                   className="p-3 min-h-[46px] bg-slate-950 hover:bg-slate-800 border border-slate-800 hover:border-amber-500/30 rounded-xl text-left text-xs font-semibold text-slate-300 hover:text-amber-400 transition-colors flex items-center justify-between cursor-pointer"
                 >
                   <span className="truncate mr-2">{otherDisplayName}</span>
                   <ArrowRight className="w-3.5 h-3.5 text-slate-500 shrink-0" />
-                </a>
+                </LocalizedA>
               );
             })}
           </div>

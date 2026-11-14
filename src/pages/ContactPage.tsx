@@ -14,6 +14,7 @@ import { SouthFloridaMap } from '../components/SouthFloridaMap';
 import { locksmithCrewImg } from '../assets/images';
 import { useLanguage } from '../context/LanguageContext';
 
+import { LocalizedA } from '../components/LocalizedA';
 interface ContactPageProps {
   onNavigate: (path: string) => void;
 }
@@ -63,21 +64,21 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
 
               {/* Direct Quick Action CTAs */}
               <div className="pt-2 flex flex-col sm:flex-row gap-3">
-                <a
+                <LocalizedA
                   href="tel:+17542616528"
                   className="inline-flex items-center justify-center gap-2.5 py-4 px-8 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 hover:from-amber-300 hover:to-amber-500 text-slate-950 font-black text-base uppercase tracking-wider shadow-lg shadow-amber-500/25 transition-transform hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <Phone className="w-5 h-5 fill-current" />
                   <span>{isSpanish ? 'Llamar Ahora: +1 754-261-6528' : 'Call Now: +1 754-261-6528'}</span>
-                </a>
+                </LocalizedA>
 
-                <a
+                <LocalizedA
                   href="sms:+17542616528"
                   className="inline-flex items-center justify-center gap-2 py-4 px-6 rounded-xl bg-slate-800 hover:bg-slate-750 text-slate-100 hover:text-amber-400 font-bold text-sm border border-slate-700 transition-colors"
                 >
                   <MessageSquare className="w-4 h-4 text-amber-400" />
                   <span>{isSpanish ? 'Enviar Texto: (754) 261-6528' : 'Text Us (754) 261-6528'}</span>
-                </a>
+                </LocalizedA>
               </div>
 
               <div className="pt-2 flex flex-wrap items-center gap-4 text-xs text-slate-400">
@@ -139,24 +140,24 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
               <div className="text-[11px] font-bold uppercase tracking-wider text-amber-400">
                 {isSpanish ? 'Línea Directa de Despacho' : 'Direct Dispatch Line'}
               </div>
-              <a
+              <LocalizedA
                 href="tel:+17542616528"
                 className="font-heading font-black text-xl text-white hover:text-amber-400 transition-colors block mt-1"
               >
                 +1 754-261-6528
-              </a>
+              </LocalizedA>
               <p className="text-xs text-slate-400 mt-1">
                 {isSpanish ? 'La forma más rápida de comunicarse con despacho.' : 'The fastest way to reach dispatch.'}
               </p>
             </div>
             <div className="pt-2">
-              <a
+              <LocalizedA
                 href="tel:+17542616528"
                 className="w-full py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase tracking-wider rounded-lg flex items-center justify-center gap-1.5 transition-colors"
               >
                 <Phone className="w-3.5 h-3.5 fill-current" />
                 <span>{isSpanish ? 'Llamar Ahora' : 'Call Now'}</span>
-              </a>
+              </LocalizedA>
             </div>
           </div>
 
@@ -169,24 +170,24 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
               <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
                 {isSpanish ? 'Mensaje de Texto SMS' : 'SMS Text Message'}
               </div>
-              <a
+              <LocalizedA
                 href="sms:+17542616528"
                 className="font-heading font-black text-xl text-white hover:text-amber-400 transition-colors block mt-1"
               >
                 +1 754-261-6528
-              </a>
+              </LocalizedA>
               <p className="text-xs text-slate-400 mt-1">
                 {isSpanish ? 'Envíe su dirección o fotos de su cerradura.' : 'Text your street address or photos of your lock/key.'}
               </p>
             </div>
             <div className="pt-2">
-              <a
+              <LocalizedA
                 href="sms:+17542616528"
                 className="w-full py-2.5 bg-slate-900 hover:bg-slate-850 text-slate-200 hover:text-amber-400 border border-slate-800 font-bold text-xs uppercase tracking-wider rounded-lg flex items-center justify-center gap-1.5 transition-colors"
               >
                 <MessageSquare className="w-3.5 h-3.5" />
                 <span>{isSpanish ? 'Enviar SMS' : 'Send SMS Text'}</span>
-              </a>
+              </LocalizedA>
             </div>
           </div>
 
@@ -199,24 +200,24 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
               <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
                 {isSpanish ? 'Correo Electrónico' : 'Email Inquiries'}
               </div>
-              <a
+              <LocalizedA
                 href="mailto:prolocksmithtech@gmail.com"
                 className="font-bold text-sm text-white hover:text-amber-400 transition-colors block mt-1 break-all"
               >
                 prolocksmithtech@gmail.com
-              </a>
+              </LocalizedA>
               <p className="text-xs text-slate-400 mt-1">
                 {isSpanish ? 'Para cotizaciones comerciales y consultas programadas.' : 'For commercial security bids and scheduled quotes.'}
               </p>
             </div>
             <div className="pt-2">
-              <a
+              <LocalizedA
                 href="mailto:prolocksmithtech@gmail.com"
                 className="w-full py-2.5 bg-slate-900 hover:bg-slate-850 text-slate-200 hover:text-amber-400 border border-slate-800 font-bold text-xs uppercase tracking-wider rounded-lg flex items-center justify-center gap-1.5 transition-colors"
               >
                 <Mail className="w-3.5 h-3.5" />
                 <span>{isSpanish ? 'Enviar Correo' : 'Send Email'}</span>
-              </a>
+              </LocalizedA>
             </div>
           </div>
 
@@ -274,7 +275,7 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
                     </strong>
                     <span className="text-xs text-slate-400">
                       {isSpanish ? 'Marque ' : 'Dial '}
-                      <a href="tel:+17542616528" className="text-amber-400 underline font-bold">+1 754-261-6528</a>. 
+                      <LocalizedA href="tel:+17542616528" className="text-amber-400 underline font-bold">+1 754-261-6528</LocalizedA>. 
                       {isSpanish ? ' Llame o envíe un texto para comenzar.' : ' Call or text to get started.'}
                     </span>
                   </div>
@@ -335,21 +336,21 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
               </div>
 
               <div className="space-y-3 pt-2">
-                <a
+                <LocalizedA
                   href="tel:+17542616528"
                   className="w-full py-4 px-6 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 hover:from-amber-300 hover:to-amber-500 text-slate-950 font-black text-lg uppercase tracking-wider rounded-xl shadow-xl flex items-center justify-center gap-2.5 transition-transform hover:scale-105 active:scale-95"
                 >
                   <Phone className="w-5 h-5 fill-current" />
                   <span>{isSpanish ? 'LLAMAR: +1 754-261-6528' : 'CALL: +1 754-261-6528'}</span>
-                </a>
+                </LocalizedA>
 
-                <a
+                <LocalizedA
                   href="sms:+17542616528"
                   className="w-full py-3.5 px-6 bg-slate-800 hover:bg-slate-750 text-slate-200 hover:text-white font-bold text-sm rounded-xl border border-slate-700 flex items-center justify-center gap-2 transition-colors"
                 >
                   <MessageSquare className="w-4 h-4 text-amber-400" />
                   <span>{isSpanish ? 'ENVIAR SU UBICACIÓN POR TEXTO' : 'TEXT US YOUR LOCATION'}</span>
-                </a>
+                </LocalizedA>
               </div>
 
               <div className="pt-2 text-[11px] text-slate-400 border-t border-slate-800">
@@ -387,18 +388,18 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
                 <strong className="text-white font-bold text-sm">
                   {isSpanish ? 'Condado de Broward' : 'Broward County'}
                 </strong>
-                <a href="/service-areas/broward-county" className="text-amber-400 hover:underline font-semibold text-[11px] cursor-pointer inline-block text-center">
+                <LocalizedA href="/service-areas/broward-county" className="text-amber-400 hover:underline font-semibold text-[11px] cursor-pointer inline-block text-center">
                   {isSpanish ? 'Ver Condado →' : 'View County →'}
-                </a>
+                </LocalizedA>
               </div>
               <div className="flex flex-wrap gap-1.5 pt-1">
                 {['Coral Springs', 'Fort Lauderdale', 'Hollywood', 'Pompano Beach', 'Pembroke Pines', 'Miramar', 'Davie', 'Plantation'].map(city => (
-                  <a href={`/service-areas/${city.toLowerCase().replace(/\s+/g, '-')}`}
+                  <LocalizedA href={`/service-areas/${city.toLowerCase().replace(/\s+/g, '-')}`}
                     key={city}
                     className="px-2 py-1 bg-slate-950 hover:bg-slate-800 text-slate-300 hover:text-amber-300 rounded border border-slate-800 text-[11px] transition-colors cursor-pointer inline-block text-center"
                   >
                     {city}
-                  </a>
+                  </LocalizedA>
                 ))}
               </div>
             </div>
@@ -408,18 +409,18 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
                 <strong className="text-white font-bold text-sm">
                   {isSpanish ? 'Condado de Miami-Dade' : 'Miami-Dade County'}
                 </strong>
-                <a href="/service-areas/miami-dade-county" className="text-amber-400 hover:underline font-semibold text-[11px] cursor-pointer inline-block text-center">
+                <LocalizedA href="/service-areas/miami-dade-county" className="text-amber-400 hover:underline font-semibold text-[11px] cursor-pointer inline-block text-center">
                   {isSpanish ? 'Ver Condado →' : 'View County →'}
-                </a>
+                </LocalizedA>
               </div>
               <div className="flex flex-wrap gap-1.5 pt-1">
                 {['Miami', 'Miami Beach', 'Hialeah', 'Coral Gables', 'Doral', 'Aventura', 'Kendall'].map(city => (
-                  <a href={`/service-areas/${city.toLowerCase().replace(/\s+/g, '-')}`}
+                  <LocalizedA href={`/service-areas/${city.toLowerCase().replace(/\s+/g, '-')}`}
                     key={city}
                     className="px-2 py-1 bg-slate-950 hover:bg-slate-800 text-slate-300 hover:text-amber-300 rounded border border-slate-800 text-[11px] transition-colors cursor-pointer inline-block text-center"
                   >
                     {city}
-                  </a>
+                  </LocalizedA>
                 ))}
               </div>
             </div>
@@ -429,18 +430,18 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
                 <strong className="text-white font-bold text-sm">
                   {isSpanish ? 'Condado de Palm Beach' : 'Palm Beach County'}
                 </strong>
-                <a href="/service-areas/palm-beach-county" className="text-amber-400 hover:underline font-semibold text-[11px] cursor-pointer inline-block text-center">
+                <LocalizedA href="/service-areas/palm-beach-county" className="text-amber-400 hover:underline font-semibold text-[11px] cursor-pointer inline-block text-center">
                   {isSpanish ? 'Ver Condado →' : 'View County →'}
-                </a>
+                </LocalizedA>
               </div>
               <div className="flex flex-wrap gap-1.5 pt-1">
                 {['West Palm Beach', 'Boca Raton', 'Delray Beach', 'Boynton Beach', 'Jupiter', 'Wellington', 'Palm Beach Gardens'].map(city => (
-                  <a href={`/service-areas/${city.toLowerCase().replace(/\s+/g, '-')}`}
+                  <LocalizedA href={`/service-areas/${city.toLowerCase().replace(/\s+/g, '-')}`}
                     key={city}
                     className="px-2 py-1 bg-slate-950 hover:bg-slate-800 text-slate-300 hover:text-amber-300 rounded border border-slate-800 text-[11px] transition-colors cursor-pointer inline-block text-center"
                   >
                     {city}
-                  </a>
+                  </LocalizedA>
                 ))}
               </div>
             </div>

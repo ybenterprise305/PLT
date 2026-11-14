@@ -9,6 +9,7 @@ import { AD_CAMPAIGNS } from '../data/adLandingPagesData';
 import { LOCKSMITH_TIPS_DATA } from '../data/locksmithTipsData';
 import { Wrench, Sparkles } from 'lucide-react';
 
+import { LocalizedA } from '../components/LocalizedA';
 interface SitemapPageProps {
   onNavigate: (path: string) => void;
 }
@@ -47,66 +48,66 @@ export function SitemapPage({ onNavigate }: SitemapPageProps) {
             <span>Primary Pages</span>
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
-            <a href="/"
+            <LocalizedA href="/"
               className="p-3 bg-slate-900 hover:bg-slate-850 rounded-xl text-left font-semibold text-slate-200 hover:text-amber-400 border border-slate-800 flex items-center justify-between cursor-pointer"
             >
               <span>Homepage (/)</span>
               <ChevronRight className="w-4 h-4 text-slate-500" />
-            </a>
-            <a href="/services"
+            </LocalizedA>
+            <LocalizedA href="/services"
               className="p-3 bg-slate-900 hover:bg-slate-850 rounded-xl text-left font-semibold text-slate-200 hover:text-amber-400 border border-slate-800 flex items-center justify-between cursor-pointer"
             >
               <span>Services Directory (/services)</span>
               <ChevronRight className="w-4 h-4 text-slate-500" />
-            </a>
-            <a href="/service-areas"
+            </LocalizedA>
+            <LocalizedA href="/service-areas"
               className="p-3 bg-slate-900 hover:bg-slate-850 rounded-xl text-left font-semibold text-slate-200 hover:text-amber-400 border border-slate-800 flex items-center justify-between cursor-pointer"
             >
               <span>Service Areas (/service-areas)</span>
               <ChevronRight className="w-4 h-4 text-slate-500" />
-            </a>
-            <a href="/blog"
+            </LocalizedA>
+            <LocalizedA href="/blog"
               className="p-3 bg-slate-900 hover:bg-slate-850 rounded-xl text-left font-semibold text-slate-200 hover:text-amber-400 border border-slate-800 flex items-center justify-between cursor-pointer"
             >
               <span>Blog & Articles (/blog)</span>
               <ChevronRight className="w-4 h-4 text-slate-500" />
-            </a>
-            <a href="/about"
+            </LocalizedA>
+            <LocalizedA href="/about"
               className="p-3 bg-slate-900 hover:bg-slate-850 rounded-xl text-left font-semibold text-slate-200 hover:text-amber-400 border border-slate-800 flex items-center justify-between cursor-pointer"
             >
               <span>Why Choose Us (/about)</span>
               <ChevronRight className="w-4 h-4 text-slate-500" />
-            </a>
-            <a href="/contact"
+            </LocalizedA>
+            <LocalizedA href="/contact"
               className="p-3 bg-slate-900 hover:bg-slate-850 rounded-xl text-left font-semibold text-slate-200 hover:text-amber-400 border border-slate-800 flex items-center justify-between cursor-pointer"
             >
               <span>Contact & Dispatch (/contact)</span>
               <ChevronRight className="w-4 h-4 text-slate-500" />
-            </a>
-            <a href="/faq"
+            </LocalizedA>
+            <LocalizedA href="/faq"
               className="p-3 bg-slate-900 hover:bg-slate-850 rounded-xl text-left font-semibold text-slate-200 hover:text-amber-400 border border-slate-800 flex items-center justify-between cursor-pointer"
             >
               <span>FAQ Center (/faq)</span>
               <ChevronRight className="w-4 h-4 text-slate-500" />
-            </a>
-            <a href="/privacy"
+            </LocalizedA>
+            <LocalizedA href="/privacy"
               className="p-3 bg-slate-900 hover:bg-slate-850 rounded-xl text-left font-semibold text-slate-200 hover:text-amber-400 border border-slate-800 flex items-center justify-between cursor-pointer"
             >
               <span>Privacy Policy (/privacy)</span>
               <ChevronRight className="w-4 h-4 text-slate-500" />
-            </a>
-            <a href="/tips"
+            </LocalizedA>
+            <LocalizedA href="/tips"
               className="p-3 bg-slate-900 hover:bg-slate-850 rounded-xl text-left font-bold text-amber-400 hover:text-amber-300 border border-amber-500/30 flex items-center justify-between cursor-pointer"
             >
               <span>Locksmith Tips &amp; Tricks (/tips)</span>
               <ChevronRight className="w-4 h-4 text-amber-400" />
-            </a>
-            <a href="/lp"
+            </LocalizedA>
+            <LocalizedA href="/lp"
               className="p-3 bg-slate-900 hover:bg-slate-850 rounded-xl text-left font-semibold text-amber-400 hover:text-amber-300 border border-amber-500/30 flex items-center justify-between cursor-pointer"
             >
               <span>Advertising Landing Pages Hub (/lp)</span>
               <ChevronRight className="w-4 h-4 text-amber-400" />
-            </a>
+            </LocalizedA>
           </div>
         </div>
 
@@ -117,15 +118,15 @@ export function SitemapPage({ onNavigate }: SitemapPageProps) {
               <Sparkles className="w-5 h-5 text-amber-400" />
               <span>Locksmith Tips &amp; Tricks (AEO / AIO Field Guides)</span>
             </h2>
-            <a href="/tips"
+            <LocalizedA href="/tips"
               className="text-xs text-amber-400 hover:underline font-semibold inline-block text-center"
             >
               View Hub &rarr;
-            </a>
+            </LocalizedA>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
             {LOCKSMITH_TIPS_DATA.map((tip) => (
-              <a href={`/tips/${tip.slug}`}
+              <LocalizedA href={`/tips/${tip.slug}`}
                 key={tip.id}
                 className="p-3 bg-slate-900 hover:bg-slate-850 rounded-xl text-left text-slate-200 hover:text-amber-400 border border-slate-800 flex items-center justify-between cursor-pointer group"
               >
@@ -134,7 +135,7 @@ export function SitemapPage({ onNavigate }: SitemapPageProps) {
                   <div className="text-[10px] text-amber-500/80 uppercase">{tip.category} · {tip.readTime}</div>
                 </div>
                 <ChevronRight className="w-4 h-4 text-slate-500 shrink-0 ml-2 group-hover:text-amber-400" />
-              </a>
+              </LocalizedA>
             ))}
           </div>
         </div>
@@ -147,7 +148,7 @@ export function SitemapPage({ onNavigate }: SitemapPageProps) {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
             {BLOG_POSTS.map((post) => (
-              <a href={`/blog/${post.slug}`}
+              <LocalizedA href={`/blog/${post.slug}`}
                 key={post.id}
                 className="p-3 bg-slate-900 hover:bg-slate-850 rounded-xl text-left text-slate-200 hover:text-amber-400 border border-slate-800 flex items-center justify-between cursor-pointer"
               >
@@ -156,7 +157,7 @@ export function SitemapPage({ onNavigate }: SitemapPageProps) {
                   <div className="text-[10px] text-amber-400 uppercase">{post.category} · {post.readTime}</div>
                 </div>
                 <ChevronRight className="w-4 h-4 text-slate-500 shrink-0 ml-2" />
-              </a>
+              </LocalizedA>
             ))}
           </div>
         </div>
@@ -169,7 +170,7 @@ export function SitemapPage({ onNavigate }: SitemapPageProps) {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
             {adPages.map((ad, idx) => (
-              <a href={`/lp/${ad.slug}`}
+              <LocalizedA href={`/lp/${ad.slug}`}
                 key={idx}
                 className="p-3 bg-slate-900 hover:bg-slate-850 rounded-xl text-left text-slate-200 hover:text-amber-400 border border-slate-800 flex items-center justify-between cursor-pointer"
               >
@@ -178,7 +179,7 @@ export function SitemapPage({ onNavigate }: SitemapPageProps) {
                   <div className="text-[10px] text-slate-400 font-mono">/lp/{ad.slug}</div>
                 </div>
                 <ChevronRight className="w-4 h-4 text-slate-500 shrink-0 ml-2" />
-              </a>
+              </LocalizedA>
             ))}
           </div>
         </div>
@@ -191,7 +192,7 @@ export function SitemapPage({ onNavigate }: SitemapPageProps) {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
             {SERVICES_DATA.map((srv) => (
-              <a href={`/services/${srv.slug}`}
+              <LocalizedA href={`/services/${srv.slug}`}
                 key={srv.id}
                 className="p-3 bg-slate-900 hover:bg-slate-850 rounded-xl text-left text-slate-200 hover:text-amber-400 border border-slate-800 flex items-center justify-between cursor-pointer"
               >
@@ -200,7 +201,7 @@ export function SitemapPage({ onNavigate }: SitemapPageProps) {
                   <div className="text-[10px] text-slate-500 uppercase">{srv.category}</div>
                 </div>
                 <ChevronRight className="w-4 h-4 text-slate-500 shrink-0 ml-2" />
-              </a>
+              </LocalizedA>
             ))}
           </div>
         </div>
@@ -216,23 +217,23 @@ export function SitemapPage({ onNavigate }: SitemapPageProps) {
             {COUNTIES_DATA.map((county) => (
               <div key={county.id} className="p-4 bg-slate-900 rounded-xl border border-slate-800 space-y-3">
                 <div className="flex items-center justify-between border-b border-slate-800 pb-2">
-                  <a href={`/service-areas/${county.slug}`}
+                  <LocalizedA href={`/service-areas/${county.slug}`}
                     className="font-heading font-bold text-base text-amber-400 hover:underline flex items-center gap-1.5 cursor-pointer text-center"
                   >
                     <span>{county.name} Overview (/service-areas/{county.slug})</span>
-                  </a>
+                  </LocalizedA>
                   <span className="text-xs text-slate-400">{county.majorCities.length} Local City Pages</span>
                 </div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 text-xs">
                   {county.majorCities.map((city) => (
-                    <a href={`/service-areas/${city.slug}`}
+                    <LocalizedA href={`/service-areas/${city.slug}`}
                       key={city.id}
                       className="p-2 bg-slate-950 hover:bg-slate-800 text-slate-300 hover:text-amber-400 rounded-lg text-left border border-slate-800/80 flex items-center justify-between cursor-pointer"
                     >
                       <span className="truncate">{city.name}</span>
                       <ChevronRight className="w-3 h-3 text-slate-600" />
-                    </a>
+                    </LocalizedA>
                   ))}
                 </div>
               </div>
@@ -243,9 +244,9 @@ export function SitemapPage({ onNavigate }: SitemapPageProps) {
         {/* Direct Call Footer */}
         <div className="text-center p-6 bg-slate-950 rounded-2xl border border-slate-800 text-xs text-slate-400">
           Need immediate service or have a question? Call Pro Locksmith Tech directly at{' '}
-          <a href="tel:+17542616528" className="text-amber-400 font-bold hover:underline">
+          <LocalizedA href="tel:+17542616528" className="text-amber-400 font-bold hover:underline">
             +1 754-261-6528
-          </a>
+          </LocalizedA>
         </div>
       </div>
     </div>

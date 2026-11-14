@@ -18,6 +18,7 @@ import {
 import { SEOHead } from '../components/SEOHead';
 import { LOCKSMITH_TIPS_DATA } from '../data/locksmithTipsData';
 
+import { LocalizedA } from '../components/LocalizedA';
 interface LocksmithTipsPageProps {
   onNavigate: (path: string) => void;
 }
@@ -104,21 +105,21 @@ export function LocksmithTipsPage({ onNavigate }: LocksmithTipsPageProps) {
 
             {/* Direct Mobile Assistance Callout */}
             <div className="pt-4 flex flex-wrap items-center gap-3">
-              <a
+              <LocalizedA
                 href="tel:+17542616528"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs sm:text-sm rounded-xl uppercase tracking-wider transition-all shadow-lg hover:scale-105"
               >
                 <Phone className="w-4 h-4 fill-current" />
                 <span>Call Mobile Dispatch: (754) 261-6528</span>
-              </a>
+              </LocalizedA>
 
-              <a
+              <LocalizedA
                 href="sms:+17542616528"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-slate-800 hover:bg-slate-700 text-slate-100 font-bold text-xs sm:text-sm rounded-xl uppercase tracking-wider border border-slate-700 transition-colors"
               >
                 <MessageSquare className="w-4 h-4 text-amber-400" />
                 <span>Text Technician</span>
-              </a>
+              </LocalizedA>
             </div>
           </div>
 
@@ -198,11 +199,11 @@ export function LocksmithTipsPage({ onNavigate }: LocksmithTipsPageProps) {
 
                     {/* Title */}
                     <h2 className="font-heading font-black text-xl text-white group-hover:text-amber-400 transition-colors leading-snug">
-                      <a href={`/tips/${tip.slug}`}
+                      <LocalizedA href={`/tips/${tip.slug}`}
                         className="text-left cursor-pointer inline-block"
                       >
                         {tip.title}
-                      </a>
+                      </LocalizedA>
                     </h2>
 
                     {/* Direct Answer Preview (AEO Optimized) */}
@@ -225,21 +226,21 @@ export function LocksmithTipsPage({ onNavigate }: LocksmithTipsPageProps) {
 
                   {/* Card Footer */}
                   <div className="pt-4 border-t border-slate-800 flex items-center justify-between">
-                    <a href={`/tips/${tip.slug}`}
+                    <LocalizedA href={`/tips/${tip.slug}`}
                       className="text-xs font-bold text-amber-400 group-hover:text-amber-300 flex items-center gap-1 cursor-pointer text-center"
                     >
                       <span>Read Complete Guide</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                    </a>
+                    </LocalizedA>
 
-                    <a
+                    <LocalizedA
                       href="tel:+17542616528"
                       className="text-[11px] text-slate-400 hover:text-white flex items-center gap-1"
                       title="Direct Locksmith Call"
                     >
                       <Phone className="w-3 h-3 text-amber-400 fill-current" />
                       <span>Dispatch</span>
-                    </a>
+                    </LocalizedA>
                   </div>
                 </article>
               ))}
@@ -266,19 +267,19 @@ export function LocksmithTipsPage({ onNavigate }: LocksmithTipsPageProps) {
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-            <a
+            <LocalizedA
               href="tel:+17542616528"
               className="px-8 py-3.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm rounded-xl uppercase tracking-wider transition-all shadow-lg hover:scale-105 flex items-center gap-2"
             >
               <Phone className="w-4 h-4 fill-current" />
               <span>Call Now: (754) 261-6528</span>
-            </a>
+            </LocalizedA>
 
-            <a href="/contact"
+            <LocalizedA href="/contact"
               className="px-8 py-3.5 bg-slate-800 hover:bg-slate-700 text-slate-100 font-bold text-sm rounded-xl uppercase tracking-wider border border-slate-700 transition-colors inline-block text-center"
             >
               <span>Contact Dispatch Info</span>
-            </a>
+            </LocalizedA>
           </div>
         </div>
       </section>

@@ -19,6 +19,7 @@ import { BLOG_POSTS, BlogPost } from '../data/blogData';
 import { trackPhoneClick } from '../utils/analytics';
 import { breadcrumbSchema } from '../utils/breadcrumbs';
 
+import { LocalizedA } from '../components/LocalizedA';
 interface BlogPostPageProps {
   slug: string;
   onNavigate: (path: string) => void;
@@ -81,12 +82,12 @@ export function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
         
         {/* Breadcrumb & Back Link */}
         <div className="flex items-center justify-between gap-4 mb-8">
-          <a href="/blog"
+          <LocalizedA href="/blog"
             className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-amber-400 hover:text-amber-300 transition-colors cursor-pointer text-center"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to All Articles</span>
-          </a>
+          </LocalizedA>
 
           <span className="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-slate-950 text-amber-400 border border-slate-800">
             {post.category}
@@ -144,21 +145,21 @@ export function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-2.5 w-full sm:w-auto shrink-0">
-            <a
+            <LocalizedA
               href="tel:+17542616528"
               onClick={() => trackPhoneClick({ ctaLocation: 'blog_post_urgent_call', pagePath: `/blog/${post.slug}` })}
               className="py-3 px-5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs sm:text-sm rounded-xl shadow-lg flex items-center justify-center gap-2 transition-transform hover:scale-105 cursor-pointer"
             >
               <Phone className="w-4 h-4 fill-current" />
               <span>Call: (754) 261-6528</span>
-            </a>
-            <a
+            </LocalizedA>
+            <LocalizedA
               href="sms:+17542616528"
               className="py-3 px-4 bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 font-bold text-xs sm:text-sm rounded-xl flex items-center justify-center gap-1.5 cursor-pointer"
             >
               <MessageSquare className="w-4 h-4 text-amber-400" />
               <span>Text</span>
-            </a>
+            </LocalizedA>
           </div>
         </div>
 
@@ -220,13 +221,13 @@ export function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
             </h3>
             <div className="flex flex-wrap gap-2.5">
               {post.relatedServices.map((service, sIdx) => (
-                <a href={`/services/${service.slug}`}
+                <LocalizedA href={`/services/${service.slug}`}
                   key={sIdx}
                   className="px-4 py-2.5 bg-slate-950 hover:bg-amber-500 hover:text-slate-950 text-slate-200 border border-slate-800 hover:border-amber-400 rounded-xl transition-all font-semibold text-xs flex items-center gap-2 cursor-pointer group text-center"
                 >
                   <span>{service.name}</span>
                   <ArrowRight className="w-3.5 h-3.5 text-amber-400 group-hover:text-slate-950 group-hover:translate-x-0.5 transition-transform" />
-                </a>
+                </LocalizedA>
               ))}
             </div>
           </div>
@@ -246,14 +247,14 @@ export function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
             </p>
           </div>
 
-          <a
+          <LocalizedA
             href="tel:+17542616528"
             onClick={() => trackPhoneClick({ ctaLocation: 'blog_post_bottom_call', pagePath: `/blog/${post.slug}` })}
             className="mt-4 sm:mt-0 inline-flex items-center justify-center gap-2 py-4 px-6 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm shadow-xl transition-transform hover:scale-105 cursor-pointer shrink-0"
           >
             <Phone className="w-4 h-4 fill-current" />
             <span>Call +1 754-261-6528</span>
-          </a>
+          </LocalizedA>
         </div>
 
         {/* More Articles Section */}
@@ -262,16 +263,16 @@ export function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
             <h3 className="font-heading font-black text-xl text-white">
               More Locksmith Guides
             </h3>
-            <a href="/blog"
+            <LocalizedA href="/blog"
               className="text-xs font-bold text-amber-400 hover:underline cursor-pointer inline-block text-center"
             >
               View All Articles
-            </a>
+            </LocalizedA>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {relatedPosts.map((rel) => (
-              <a key={rel.id} href={`/blog/${rel.slug}`} className="block bg-slate-950 border border-slate-800 hover:border-amber-500/50 p-4 rounded-xl transition-all cursor-pointer group">
+              <LocalizedA key={rel.id} href={`/blog/${rel.slug}`} className="block bg-slate-950 border border-slate-800 hover:border-amber-500/50 p-4 rounded-xl transition-all cursor-pointer group">
                 <span className="text-[10px] font-black uppercase tracking-wider text-amber-400">
                   {rel.category}
                 </span>
@@ -281,7 +282,7 @@ export function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
                 <span className="text-[11px] text-slate-400 mt-2 block">
                   {rel.readTime}
                 </span>
-              </a>
+              </LocalizedA>
             ))}
           </div>
         </div>

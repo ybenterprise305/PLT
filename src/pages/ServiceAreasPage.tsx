@@ -8,6 +8,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { SPANISH_COUNTIES } from '../data/spanishTranslations';
 import { trackPhoneClick } from '../utils/analytics';
 
+import { LocalizedA } from '../components/LocalizedA';
 interface ServiceAreasPageProps {
   onNavigate: (path: string) => void;
 }
@@ -116,22 +117,22 @@ export function ServiceAreasPage({ onNavigate }: ServiceAreasPageProps) {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 pt-2">
-                <a
+                <LocalizedA
                   href="tel:+17542616528"
                   onClick={() => trackPhoneClick({ ctaLocation: 'service_areas_hero_call', pagePath: '/service-areas' })}
                   className="inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm shadow-lg transition-transform hover:scale-[1.02]"
                 >
                   <Phone className="w-4 h-4 fill-current" />
                   <span>{isSpanish ? 'Llamar Ahora: (754) 261-6528' : 'Call Now: (754) 261-6528'}</span>
-                </a>
+                </LocalizedA>
 
-                <a
+                <LocalizedA
                   href="sms:+17542616528"
                   className="inline-flex items-center justify-center gap-2 py-3.5 px-5 rounded-xl bg-slate-800 hover:bg-slate-750 text-slate-100 font-bold text-sm border border-slate-700 transition-colors"
                 >
                   <MessageSquare className="w-4 h-4 text-amber-400" />
                   <span>{isSpanish ? 'Enviar Mensaje' : 'Text Us'}</span>
-                </a>
+                </LocalizedA>
               </div>
             </div>
 
@@ -251,14 +252,14 @@ export function ServiceAreasPage({ onNavigate }: ServiceAreasPageProps) {
           {/* Instant City Click Buttons */}
           <div className="flex flex-wrap gap-2.5">
             {filteredCities.map(({ city, county }) => (
-              <a href={`/service-areas/${city.slug}`}
+              <LocalizedA href={`/service-areas/${city.slug}`}
                 key={city.id}
                 className="group px-3.5 py-2 bg-slate-900 hover:bg-amber-500 text-slate-200 hover:text-slate-950 border border-slate-800 hover:border-amber-400 rounded-xl transition-all font-semibold text-xs flex items-center gap-1.5 cursor-pointer shadow-sm hover:scale-[1.02] text-center"
               >
                 <MapPin className="w-3.5 h-3.5 text-amber-400 group-hover:text-slate-950 transition-colors" />
                 <span>{city.name}</span>
                 <span className="text-[10px] text-slate-400 group-hover:text-slate-900">({county.name.replace(' County', '')})</span>
-              </a>
+              </LocalizedA>
             ))}
             {filteredCities.length === 0 && (
               <div className="py-6 text-center w-full text-slate-400 text-xs">
@@ -297,19 +298,19 @@ export function ServiceAreasPage({ onNavigate }: ServiceAreasPageProps) {
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <a href={`/service-areas/${county.slug}`}
+                  <LocalizedA href={`/service-areas/${county.slug}`}
                     className="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-amber-400 font-bold text-xs rounded-xl border border-slate-800 transition-colors flex items-center gap-1.5 cursor-pointer text-center"
                   >
                     <span>{isSpanish ? `Ver ${county.name}` : `${county.name} Overview`}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
-                  </a>
-                  <a
+                  </LocalizedA>
+                  <LocalizedA
                     href="tel:+17542616528"
                     onClick={() => trackPhoneClick({ ctaLocation: `service_areas_county_${county.slug}`, pagePath: '/service-areas' })}
                     className="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs rounded-xl shadow transition-transform"
                   >
                     {isSpanish ? 'Llamar: (754) 261-6528' : 'Call (754) 261-6528'}
-                  </a>
+                  </LocalizedA>
                 </div>
               </div>
 
@@ -349,12 +350,12 @@ export function ServiceAreasPage({ onNavigate }: ServiceAreasPageProps) {
                         </div>
                       </div>
 
-                      <a href={`/service-areas/${city.slug}`}
+                      <LocalizedA href={`/service-areas/${city.slug}`}
                         className="w-full py-2 px-3 bg-slate-950 hover:bg-amber-500 text-slate-300 hover:text-slate-950 rounded-lg text-xs font-bold border border-slate-800 transition-colors flex items-center justify-center gap-1.5 cursor-pointer text-center"
                       >
                         <span>{isSpanish ? `Ver ${city.name}` : `Explore ${city.name}`}</span>
                         <ArrowRight className="w-3.5 h-3.5" />
-                      </a>
+                      </LocalizedA>
                     </div>
                   ))}
                 </div>

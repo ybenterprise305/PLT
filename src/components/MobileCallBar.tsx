@@ -3,6 +3,7 @@ import { Phone, MessageSquare, ShieldCheck, Zap } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { trackPhoneClick } from '../utils/analytics';
 
+import { LocalizedA } from './LocalizedA';
 export function MobileCallBar() {
   const { t, isSpanish } = useLanguage();
 
@@ -13,7 +14,7 @@ export function MobileCallBar() {
     >
       <div className="flex items-center gap-2 max-w-md mx-auto w-full">
         {/* Secondary Action: Quick Text */}
-        <a
+        <LocalizedA
           href="sms:+17542616528"
           className="flex flex-col items-center justify-center min-h-[48px] px-3 bg-slate-900 active:bg-slate-800 text-slate-200 active:text-amber-400 rounded-xl border border-slate-700/80 shadow shrink-0 cursor-pointer select-none"
           aria-label="Text Pro Locksmith Tech at 754-261-6528"
@@ -22,10 +23,10 @@ export function MobileCallBar() {
           <span className="text-[10px] font-black uppercase tracking-wider leading-none">
             {isSpanish ? 'TEXTO' : 'TEXT'}
           </span>
-        </a>
+        </LocalizedA>
 
         {/* PRIMARY UNMISSABLE TAP-TO-CALL BUTTON */}
-        <a
+        <LocalizedA
           href="tel:+17542616528"
           onClick={() => trackPhoneClick({ ctaLocation: 'mobile_sticky_bottom_bar', pagePath: window.location.pathname })}
           className="flex-1 min-h-[48px] py-2 px-3 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 active:from-amber-500 active:to-amber-700 text-slate-950 font-black rounded-xl shadow-lg shadow-amber-500/30 flex items-center justify-center gap-2 cursor-pointer select-none transition-transform active:scale-[0.98]"
@@ -44,7 +45,7 @@ export function MobileCallBar() {
               {isSpanish ? 'LLAMAR: (754) 261-6528' : 'CALL: (754) 261-6528'}
             </span>
           </div>
-        </a>
+        </LocalizedA>
       </div>
     </aside>
   );

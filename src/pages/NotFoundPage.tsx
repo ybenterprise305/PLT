@@ -2,6 +2,7 @@ import React from 'react';
 import { KeyRound, Phone, Home, MapPin, MessageSquare } from 'lucide-react';
 import { SEOHead } from '../components/SEOHead';
 
+import { LocalizedA } from '../components/LocalizedA';
 interface NotFoundPageProps {
   onNavigate: (path: string) => void;
 }
@@ -37,37 +38,37 @@ export function NotFoundPage({ onNavigate }: NotFoundPageProps) {
             Need emergency lockout assistance?
           </div>
           <div className="flex flex-col sm:flex-row gap-2">
-            <a
+            <LocalizedA
               href="tel:+17542616528"
               className="flex-1 py-3 px-4 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm rounded-xl flex items-center justify-center gap-2 shadow-lg transition-transform hover:scale-[1.02]"
             >
               <Phone className="w-4 h-4 fill-current" />
               <span>Call (754) 261-6528</span>
-            </a>
-            <a
+            </LocalizedA>
+            <LocalizedA
               href="sms:+17542616528"
               className="py-3 px-4 bg-slate-800 hover:bg-slate-700 text-slate-100 font-bold text-xs rounded-xl border border-slate-700 flex items-center justify-center gap-1.5"
             >
               <MessageSquare className="w-4 h-4 text-amber-400" />
               <span>Text Us</span>
-            </a>
+            </LocalizedA>
           </div>
         </div>
 
         <div className="flex flex-col sm:flex-row gap-3 pt-2">
-          <a href="/"
+          <LocalizedA href="/"
             className="flex-1 py-2.5 px-4 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold rounded-xl border border-slate-700 transition-colors flex items-center justify-center gap-2 cursor-pointer text-center"
           >
             <Home className="w-3.5 h-3.5 text-amber-400" />
             <span>Return to Homepage</span>
-          </a>
+          </LocalizedA>
 
-          <a href="/service-areas"
+          <LocalizedA href="/service-areas"
             className="flex-1 py-2.5 px-4 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold rounded-xl border border-slate-700 transition-colors flex items-center justify-center gap-2 cursor-pointer text-center"
           >
             <MapPin className="w-3.5 h-3.5 text-amber-400" />
             <span>View Service Areas</span>
-          </a>
+          </LocalizedA>
         </div>
       </div>
     </div>
