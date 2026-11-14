@@ -12,12 +12,13 @@ function walk(dir) {
 const files = walk('dist').filter((f) => !f.includes(`${path.sep}assets${path.sep}`));
 const problems = [];
 const titles = new Map();
+const decode = (v) => v.replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&#39;/g, "'").replace(/&amp;/g, '&');
 
 for (const file of files) {
   const html = fs.readFileSync(file, 'utf8');
   const page = '/' + path.relative('dist', path.dirname(file)).split(path.sep).join('/');
-  const title = (html.match(/<title>([^<]*)<\/title>/) || [])[1] || '';
-  const desc = (html.match(/<meta name="description" content="([^"]*)"/) || [])[1] || '';
+  const title = decode((html.match(/<title>([^<]*)<\/title>/) || [])[1] || '');
+  const desc = decode((html.match(/<meta name="description" content="([^"]*)"/) || [])[1] || '');
   const canonicals = html.match(/<link rel="canonical"/g) || [];
   const h1s = html.match(/<h1[\s>]/g) || [];
 
