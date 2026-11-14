@@ -48,7 +48,7 @@ for (const vp of viewports) {
   if (top === undefined || Math.abs(top) > 2) failures.push(`phone /: header not pinned to top while scrolling (top=${top})`);
 
   await page.evaluate(() => { window.__plt_marker = 'same-page'; window.scrollTo(0, 0); });
-  const link = page.locator('main a[href="/services"]').first();
+  const link = page.locator('a[href="/services"]:visible').first();
   if (await link.count()) {
     await link.click();
     await page.waitForURL('**/services');

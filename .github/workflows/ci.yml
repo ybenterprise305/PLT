@@ -34,6 +34,6 @@ jobs:
           npx playwright install --with-deps chromium
       - name: Browser checks (phone, tablet, laptop)
         run: |
-          npx vite preview --port 4173 &
+          node scripts/serve-dist.mjs &
           sleep 5
           node scripts/check-site.mjs
