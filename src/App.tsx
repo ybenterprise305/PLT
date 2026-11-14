@@ -28,7 +28,7 @@ import { NotFoundPage } from './pages/NotFoundPage';
 import { LanguageProvider, type Language } from './context/LanguageContext';
 import { isEsPath, stripLocale, localizePath, switchPath } from './utils/locale';
 
-import { LocalizedA } from '../components/LocalizedA';
+import { LocalizedA } from './components/LocalizedA';
 interface AppProps {
   /** Path to render. Used when pre-rendering at build time; in the browser the address bar decides. */
   initialPath?: string;
