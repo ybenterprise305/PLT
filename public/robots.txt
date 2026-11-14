@@ -1,3 +1,11 @@
+# Public search-discovery crawlers can access the site.
+# Cloudflare bot/WAF rules must also permit these verified crawlers.
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: bingbot
+Allow: /
+
 User-agent: *
 Allow: /
 

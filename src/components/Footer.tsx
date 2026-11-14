@@ -70,7 +70,7 @@ export function Footer({ onNavigate }: FooterProps) {
 
               <div className="flex items-center gap-3 text-slate-400 text-xs">
                 <MapPin className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>Coral Springs, FL 33076 &amp; Tri-County Region</span>
+                <span>Serving South Florida — Mobile Service Only</span>
               </div>
             </div>
 
