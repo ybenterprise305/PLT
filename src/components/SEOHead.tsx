@@ -12,6 +12,32 @@ interface SEOHeadProps {
 /** Filled while pre-rendering at build time so the script can write each page's head tags. */
 export const headCollector: { current: SEOHeadProps | null } = { current: null };
 
+const TITLE_MAX = 60;
+const DESCRIPTION_MAX = 160;
+
+/** Keeps a title within ~60 characters by dropping the middle descriptor, then the brand suffix. */
+export function tidyTitle(title: string): string {
+  if (title.length <= TITLE_MAX) return title;
+  const parts = title.split(' | ');
+  if (parts.length >= 3) {
+    const shorter = [parts[0], parts[parts.length - 1]].join(' | ');
+    if (shorter.length <= TITLE_MAX) return shorter;
+  }
+  if (parts.length >= 2 && parts[0].length <= TITLE_MAX) return parts[0];
+  const cut = title.slice(0, TITLE_MAX - 1);
+  return cut.slice(0, cut.lastIndexOf(' ')) + '…';
+}
+
+/** Keeps a description within ~160 characters, ending on a sentence or word boundary. */
+export function tidyDescription(text: string): string {
+  if (text.length <= DESCRIPTION_MAX) return text;
+  const window = text.slice(0, DESCRIPTION_MAX);
+  const sentence = Math.max(window.lastIndexOf('. '), window.lastIndexOf('! '), window.lastIndexOf('? '));
+  if (sentence >= 100) return window.slice(0, sentence + 1);
+  const cut = text.slice(0, DESCRIPTION_MAX - 1);
+  return cut.slice(0, cut.lastIndexOf(' ')) + '…';
+}
+
 export function SEOHead({ 
   title, 
   description, 
@@ -20,6 +46,8 @@ export function SEOHead({
   ogType = 'website',
   noIndex = false 
 }: SEOHeadProps) {
+  title = tidyTitle(title);
+  description = tidyDescription(description);
   if (typeof window === 'undefined') {
     headCollector.current = { title, description, canonicalPath, keywords, ogType, noIndex };
   }

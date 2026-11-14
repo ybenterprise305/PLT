@@ -17,6 +17,7 @@ import {
 import { SEOHead } from '../components/SEOHead';
 import { BLOG_POSTS, BlogPost } from '../data/blogData';
 import { trackPhoneClick } from '../utils/analytics';
+import { breadcrumbSchema } from '../utils/breadcrumbs';
 
 interface BlogPostPageProps {
   slug: string;
@@ -67,6 +68,12 @@ export function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema([['Blog', '/blog'], [post.title, `/blog/${post.slug}`]])),
+        }}
       />
 
       {/* Main Container */}
