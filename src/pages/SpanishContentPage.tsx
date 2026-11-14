@@ -12,11 +12,28 @@ interface Props { path: string; }
 const PHONE = '(754) 261-6528';
 const TEL = 'tel:+17542616528';
 
+
+const serviceFallbacks: Record<string, {name:string; desc:string; features:string[]}> = {
+  'emergency-lockout-service': {name:'Aperturas de emergencia', desc:'Apertura de puertas de autos, viviendas y negocios cuando no puede entrar.',features:['Asistencia a domicilio','Aperturas de autos, viviendas y negocios']},
+  'residential-locksmith': {name:'Cerrajería residencial',desc:'Instalación y reparación de cerraduras para viviendas.',features:['Cerraduras para viviendas','Cerrojos y cambio de combinación']},
+  'commercial-locksmith': {name:'Cerrajería comercial',desc:'Servicio de cerraduras y herrajes para locales y oficinas.',features:['Cerraduras de comercios','Herrajes y mantenimiento']},
+  'automotive-locksmith': {name:'Cerrajería de autos',desc:'Apertura de vehículos, corte de llaves y programación de controles compatibles.',features:['Apertura de autos','Llaves y controles para vehículos']},
+  'lock-repair': {name:'Reparación de cerraduras',desc:'Asistencia con cerraduras que se atascan o funcionan mal.',features:['Diagnóstico de fallas','Reparación de cerraduras']},
+  'lock-replacement': {name:'Reemplazo de cerraduras',desc:'Cambio de cerraduras dañadas o antiguas en viviendas y negocios.',features:['Cambio de cerraduras','Instalación de herrajes']},
+  'lock-rekeying': {name:'Cambio de combinación de cerraduras',desc:'Modificamos cerraduras compatibles para que funcionen con nuevas llaves.',features:['Cambio de combinación','Control de acceso con llaves nuevas']},
+  'key-duplication': {name:'Duplicado de llaves',desc:'Copias de llaves compatibles para autos y cerraduras.',features:['Copias de llaves','Corte de llaves compatibles']},
+  'key-replacement': {name:'Reemplazo de llaves',desc:'Ayuda cuando pierde o rompe una llave y necesita un reemplazo.',features:['Llaves de reemplazo','Llaves para autos y cerraduras compatibles']},
+  'lock-installation': {name:'Instalación de cerraduras',desc:'Instalación de cerraduras y cerrojos en puertas residenciales y comerciales.',features:['Cerraduras nuevas','Cerrojos y herrajes']},
+  'security-hardware': {name:'Herrajes de seguridad',desc:'Instalación y mantenimiento de herrajes de seguridad para puertas.',features:['Herrajes para puertas','Soluciones de control de acceso']},
+  'emergency-locksmith-service': {name:'Cerrajero de emergencia 24 horas',desc:'Servicio móvil de cerrajería disponible a cualquier hora.',features:['Asistencia móvil las 24 horas','Aperturas y problemas de cerraduras']}
+};
+
 export function SpanishContentPage({ path }: Props) {
   const service = path.startsWith('/services/') ? SERVICES_DATA.find(s => s.slug === path.replace('/services/', '')) : undefined;
   const cityMatch = path.startsWith('/service-areas/') ? getCityBySlug(path.replace('/service-areas/', '')) : undefined;
   const county = path.startsWith('/service-areas/') ? getCountyBySlug(path.replace('/service-areas/', '')) : undefined;
   const details = service ? SPANISH_SERVICES[service.slug] : undefined;
+  const fallback = service ? serviceFallbacks[service.slug] : undefined;
   const call = (location: string) => trackPhoneClick({ ctaLocation: location, pagePath: '/es' + path });
   const cta = (location: string) => (
     <LocalizedA href={TEL} onClick={() => call(location)} className="inline-flex min-h-[54px] w-full items-center justify-center gap-2 rounded-xl bg-amber-400 px-5 py-3 text-base font-extrabold text-slate-950 hover:bg-amber-300 sm:w-auto">
@@ -31,8 +48,8 @@ export function SpanishContentPage({ path }: Props) {
     '/faq': {title:'Preguntas frecuentes sobre cerrajería',desc:'Respuestas claras a las preguntas más comunes sobre nuestros servicios móviles.'}
   };
   const info = sections[path];
-  const title = service ? (details?.name || 'Servicio de cerrajería') : cityMatch ? 'Cerrajero móvil en ' + cityMatch.city.name : county ? 'Cerrajería móvil en ' + county.name : info?.title || 'Cerrajería móvil';
-  const desc = service ? (details?.shortDescription || 'Servicio de cerrajería móvil las 24 horas en el sur de Florida.') : cityMatch ? 'Servicio móvil de aperturas, llaves y cerraduras en ' + cityMatch.city.name + ', Florida.' : county ? 'Cerrajería móvil para autos, casas y negocios en ' + county.name + ', Florida.' : info?.desc || '';
+  const title = service ? (details?.name || fallback?.name || 'Servicio de cerrajería') : cityMatch ? 'Cerrajero móvil en ' + cityMatch.city.name : county ? 'Cerrajería móvil en ' + county.name : info?.title || 'Cerrajería móvil';
+  const desc = service ? (details?.shortDescription || fallback?.desc || 'Servicio de cerrajería móvil las 24 horas en el sur de Florida.') : cityMatch ? 'Servicio móvil de aperturas, llaves y cerraduras en ' + cityMatch.city.name + ', Florida.' : county ? 'Cerrajería móvil para autos, casas y negocios en ' + county.name + ', Florida.' : info?.desc || '';
   const image = service?.category === 'automotive' ? carKeyProgImg : service ? techRekeyingImg : locksmithVanImg;
 
   return (
@@ -56,8 +73,8 @@ export function SpanishContentPage({ path }: Props) {
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {SERVICES_DATA.map(s => (
               <LocalizedA key={s.slug} href={'/services/' + s.slug} className="rounded-xl border border-slate-700 bg-slate-900 p-5 hover:border-amber-400">
-                <h3 className="mb-2 text-lg font-bold">{SPANISH_SERVICES[s.slug]?.name || 'Servicio de cerrajería'}</h3>
-                <p className="text-base leading-7 text-slate-300">{SPANISH_SERVICES[s.slug]?.shortDescription || 'Servicio móvil a domicilio.'}</p>
+                <h3 className="mb-2 text-lg font-bold">{SPANISH_SERVICES[s.slug]?.name || serviceFallbacks[s.slug]?.name || 'Servicio de cerrajería'}</h3>
+                <p className="text-base leading-7 text-slate-300">{SPANISH_SERVICES[s.slug]?.shortDescription || serviceFallbacks[s.slug]?.desc || 'Servicio móvil a domicilio.'}</p>
                 <span className="mt-3 inline-flex items-center gap-1 font-semibold text-amber-300">Ver detalles <ArrowRight className="h-4 w-4"/></span>
               </LocalizedA>
             ))}
@@ -70,7 +87,7 @@ export function SpanishContentPage({ path }: Props) {
           <h2 className="mb-5 font-heading text-2xl font-bold">¿Cómo podemos ayudarle?</h2>
           <p className="mb-6 max-w-3xl text-base leading-8 text-slate-300">{details?.fullDescription || desc}</p>
           <div className="grid gap-4 md:grid-cols-2">
-            {(details?.features || []).map((feature, i) => (
+            {(details?.features || fallback?.features || []).map((feature, i) => (
               <div key={i} className="flex gap-3 rounded-xl border border-slate-700 bg-slate-900 p-4 text-base"><ShieldCheck className="h-5 w-5 shrink-0 text-amber-400"/>{feature}</div>
             ))}
           </div>
