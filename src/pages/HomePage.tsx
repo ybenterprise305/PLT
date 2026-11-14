@@ -248,6 +248,8 @@ export function HomePage({ onNavigate }: HomePageProps) {
 
                 <img
                   src={locksmithVanImg}
+                  width={1200}
+                  height={670}
                   alt="Pro Locksmith Tech mobile locksmith van on patrol in South Florida"
                   className="w-full h-44 sm:h-64 lg:h-[460px] object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="eager"
@@ -471,6 +473,8 @@ export function HomePage({ onNavigate }: HomePageProps) {
                 <div className="rounded-2xl overflow-hidden border border-slate-800 shadow-xl relative group">
                   <img
                     src={locksmithCrewImg}
+                    width={1200}
+                    height={670}
                     alt="Pro Locksmith Tech mobile service team"
                     className="w-full h-72 sm:h-80 object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"

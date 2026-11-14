@@ -20,6 +20,7 @@ import {
   Building2,
   KeyRound
 } from 'lucide-react';
+import { breadcrumbSchema } from '../utils/breadcrumbs';
 import { SEOHead } from '../components/SEOHead';
 import { LOCKSMITH_TIPS_DATA, LocksmithTip } from '../data/locksmithTipsData';
 
@@ -137,6 +138,12 @@ export function TipDetailPage({ slug, onNavigate }: TipDetailPageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(tipSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema([['Locksmith Tips', '/tips'], [tip.title, `/tips/${tip.slug}`]])),
+        }}
       />
 
       {/* Breadcrumb & Navigation Bar */}

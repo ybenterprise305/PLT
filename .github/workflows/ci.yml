@@ -28,6 +28,8 @@ jobs:
           grep -q "<h1" dist/services/index.html
           grep -q 'rel="canonical" href="https://prolocksmith-tech.com/services"' dist/services/index.html
           grep -q 'noindex' dist/lp/car-lockout/index.html
+      - name: SEO checks (titles, descriptions, canonicals, headings, structured data)
+        run: node scripts/check-seo.mjs
       - name: Install browser for site checks
         run: |
           npm install --no-save --no-audit --no-fund playwright
