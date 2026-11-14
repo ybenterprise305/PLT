@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Phone, 
   MessageSquare, 
@@ -34,6 +34,13 @@ interface AdLandingPageProps {
 }
 
 export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
+  // The ?city= value only exists in the browser, so it is read after the first render
+  // (the pre-rendered page and the first browser render must match exactly).
+  const [cityParam, setCityParam] = useState<string | null>(null);
+  useEffect(() => {
+    setCityParam(new URLSearchParams(window.location.search).get('city'));
+  }, []);
+
   // Resolve campaign configuration or fallback
   const campaign = getAdCampaignBySlug(slug);
   if (!campaign) {
@@ -41,7 +48,6 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
   }
   // Optional city match from the ad URL, e.g. /lp/car-lockout?city=boca-raton
   // Only city slugs from our own service-area list are accepted; anything else is ignored.
-  const cityParam = typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('city') : null;
   const cityMatch = cityParam ? getAllCities().find((c) => c.city.slug === cityParam.toLowerCase()) : undefined;
   const cityName = cityMatch?.city.name;
   const countyName = cityMatch?.county.name;

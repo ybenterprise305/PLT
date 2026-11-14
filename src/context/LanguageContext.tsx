@@ -228,21 +228,22 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 const STORAGE_KEY = 'pro_locksmith_language_pref';
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>(() => {
+  // Always start in English so the pre-rendered HTML and the first browser render match.
+  // The visitor's saved or browser language is applied right after.
+  const [language, setLanguageState] = useState<Language>('en');
+
+  useEffect(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved === 'es' || saved === 'en') {
-        return saved;
-      }
-      // Check browser language
-      if (typeof navigator !== 'undefined' && navigator.language && navigator.language.startsWith('es')) {
-        return 'es';
+        setLanguageState(saved);
+      } else if (navigator.language && navigator.language.startsWith('es')) {
+        setLanguageState('es');
       }
     } catch {
       // ignore storage errors
     }
-    return 'en';
-  });
+  }, []);
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);

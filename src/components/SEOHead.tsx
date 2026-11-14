@@ -9,6 +9,9 @@ interface SEOHeadProps {
   noIndex?: boolean;
 }
 
+/** Filled while pre-rendering at build time so the script can write each page's head tags. */
+export const headCollector: { current: SEOHeadProps | null } = { current: null };
+
 export function SEOHead({ 
   title, 
   description, 
@@ -17,6 +20,10 @@ export function SEOHead({
   ogType = 'website',
   noIndex = false 
 }: SEOHeadProps) {
+  if (typeof window === 'undefined') {
+    headCollector.current = { title, description, canonicalPath, keywords, ogType, noIndex };
+  }
+
   useEffect(() => {
     // 1. Update Document Title
     document.title = title;
