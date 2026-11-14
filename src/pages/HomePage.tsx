@@ -30,6 +30,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { SPANISH_FAQS } from '../data/spanishTranslations';
 import { trackPhoneClick } from '../utils/analytics';
 
+import { LocalizedA } from '../components/LocalizedA';
 interface HomePageProps {
   onNavigate: (path: string) => void;
 }
@@ -207,7 +208,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
 
                 <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3">
                   {/* Primary Call Us Now Button with 48px touch target */}
-                  <a
+                  <LocalizedA
                     href="tel:+17542616528"
                     onClick={() => trackPhoneClick({ ctaLocation: 'home_hero_call_now', pagePath: '/' })}
                     className="w-full sm:flex-1 py-3.5 sm:py-4 px-4 sm:px-6 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 active:from-amber-500 active:to-amber-700 text-slate-950 font-black text-sm xs:text-base sm:text-lg uppercase tracking-wider shadow-lg shadow-amber-500/30 flex items-center justify-center gap-2 cursor-pointer min-h-[48px] transition-transform active:scale-[0.98]"
@@ -215,17 +216,17 @@ export function HomePage({ onNavigate }: HomePageProps) {
                   >
                     <Phone className="w-5 h-5 fill-current animate-bounce" />
                     <span>{isSpanish ? 'LLAMAR: (754) 261-6528' : 'CALL US: (754) 261-6528'}</span>
-                  </a>
+                  </LocalizedA>
 
                   {/* Secondary Quick Text Option */}
-                  <a
+                  <LocalizedA
                     href="sms:+17542616528"
                     className="w-full sm:w-auto py-3 sm:py-4 px-4 sm:px-6 rounded-xl bg-slate-800 active:bg-slate-750 text-slate-100 font-bold text-xs sm:text-sm border border-slate-700 flex items-center justify-center gap-2 min-h-[44px] cursor-pointer"
                     aria-label="Text Pro Locksmith Tech"
                   >
                     <MessageSquare className="w-4 h-4 text-amber-400" />
                     <span>{isSpanish ? 'Enviar Texto' : 'Text Location'}</span>
-                  </a>
+                  </LocalizedA>
                 </div>
               </div>
 
@@ -311,14 +312,14 @@ export function HomePage({ onNavigate }: HomePageProps) {
                   {isSpanish ? 'Apertura rápida sin rayar marcos ni vidrios. Llegada promedio 15-20 min.' : 'Fast, damage-free entry for all makes. Keys locked in cab or trunk released safely.'}
                 </p>
               </div>
-              <a
+              <LocalizedA
                 href="tel:+17542616528"
                 onClick={() => trackPhoneClick({ ctaLocation: 'home_quick_car_lockout', pagePath: '/' })}
                 className="mt-3.5 sm:mt-4 w-full py-3 px-3 bg-amber-500 active:bg-amber-400 text-slate-950 font-black text-xs uppercase rounded-xl flex items-center justify-center gap-1.5 min-h-[46px] cursor-pointer transition-transform active:scale-[0.98]"
               >
                 <Phone className="w-3.5 h-3.5 fill-current" />
                 <span>{isSpanish ? 'Llamar: Abrir Auto' : 'Call: Unlock Car Now'}</span>
-              </a>
+              </LocalizedA>
             </div>
 
             {/* Action 2: House Lockout */}
@@ -334,14 +335,14 @@ export function HomePage({ onNavigate }: HomePageProps) {
                   {isSpanish ? 'Acceso rápido y seguro a puertas principales y de patio sin dañar la madera.' : 'Fast entry through front deadbolts, smart keypads, and sliding patio doors.'}
                 </p>
               </div>
-              <a
+              <LocalizedA
                 href="tel:+17542616528"
                 onClick={() => trackPhoneClick({ ctaLocation: 'home_quick_house_lockout', pagePath: '/' })}
                 className="mt-3.5 sm:mt-4 w-full py-3 px-3 bg-amber-500 active:bg-amber-400 text-slate-950 font-black text-xs uppercase rounded-xl flex items-center justify-center gap-1.5 min-h-[46px] cursor-pointer transition-transform active:scale-[0.98]"
               >
                 <Phone className="w-3.5 h-3.5 fill-current" />
                 <span>{isSpanish ? 'Llamar: Abrir Casa' : 'Call: Unlock House'}</span>
-              </a>
+              </LocalizedA>
             </div>
 
             {/* Action 3: Key Fobs & Lost Keys */}
@@ -357,14 +358,14 @@ export function HomePage({ onNavigate }: HomePageProps) {
                   {isSpanish ? 'Corte láser y programación OBD de llaves inteligentes en el acto sin grúa.' : 'Laser cutting & push-to-start fob programming on-site when all keys are lost.'}
                 </p>
               </div>
-              <a
+              <LocalizedA
                 href="tel:+17542616528"
                 onClick={() => trackPhoneClick({ ctaLocation: 'home_quick_key_fob', pagePath: '/' })}
                 className="mt-3.5 sm:mt-4 w-full py-3 px-3 bg-amber-500 active:bg-amber-400 text-slate-950 font-black text-xs uppercase rounded-xl flex items-center justify-center gap-1.5 min-h-[46px] cursor-pointer transition-transform active:scale-[0.98]"
               >
                 <Phone className="w-3.5 h-3.5 fill-current" />
                 <span>{isSpanish ? 'Llamar: Llave Nueva' : 'Call: Make New Key'}</span>
-              </a>
+              </LocalizedA>
             </div>
 
             {/* Action 4: Commercial & Rekeying */}
@@ -380,14 +381,14 @@ export function HomePage({ onNavigate }: HomePageProps) {
                   {isSpanish ? 'Cerraduras comerciales, barras antipánico y cambio de combinación inmediato.' : 'Storefront mortise locks, crash bars, master key systems, and commercial rekeys.'}
                 </p>
               </div>
-              <a
+              <LocalizedA
                 href="tel:+17542616528"
                 onClick={() => trackPhoneClick({ ctaLocation: 'home_quick_commercial', pagePath: '/' })}
                 className="mt-3.5 sm:mt-4 w-full py-3 px-3 bg-amber-500 active:bg-amber-400 text-slate-950 font-black text-xs uppercase rounded-xl flex items-center justify-center gap-1.5 min-h-[46px] cursor-pointer transition-transform active:scale-[0.98]"
               >
                 <Phone className="w-3.5 h-3.5 fill-current" />
                 <span>{isSpanish ? 'Llamar: Comercial' : 'Call: Business Service'}</span>
-              </a>
+              </LocalizedA>
             </div>
           </div>
         </div>
@@ -458,13 +459,13 @@ export function HomePage({ onNavigate }: HomePageProps) {
 
                 {/* Direct Call Button */}
                 <div className="pt-2">
-                  <a
+                  <LocalizedA
                     href="tel:+17542616528"
                     className="inline-flex items-center gap-2 py-3 px-6 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm uppercase tracking-wider shadow-lg transition-transform hover:scale-[1.02]"
                   >
                     <Phone className="w-4 h-4 fill-current" />
                     <span>{isSpanish ? 'Solicitar Técnico Móvil: (754) 261-6528' : 'Dispatch Mobile Locksmith: (754) 261-6528'}</span>
-                  </a>
+                  </LocalizedA>
                 </div>
               </div>
 
@@ -553,20 +554,20 @@ export function HomePage({ onNavigate }: HomePageProps) {
               </div>
 
               <div className="pt-5 flex items-center justify-between gap-3 border-t border-slate-800 mt-4">
-                <a
+                <LocalizedA
                   href="tel:+17542616528"
                   onClick={() => trackPhoneClick({ ctaLocation: 'home_card_automotive', pagePath: '/' })}
                   className="py-3 px-4 min-h-[44px] bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase rounded-xl flex items-center gap-1.5 transition-colors cursor-pointer"
                 >
                   <Phone className="w-3.5 h-3.5 fill-current" />
                   <span>{isSpanish ? 'Llamar Por Auto' : 'Call For Car Service'}</span>
-                </a>
-                <a href="/services/automotive-locksmith"
+                </LocalizedA>
+                <LocalizedA href="/services/automotive-locksmith"
                   className="text-xs text-amber-400 hover:text-amber-300 font-bold flex items-center gap-1 cursor-pointer py-2 px-1 min-h-[44px] text-center"
                 >
                   <span>Details</span>
                   <ArrowRight className="w-3.5 h-3.5" />
-                </a>
+                </LocalizedA>
               </div>
             </div>
 
@@ -614,20 +615,20 @@ export function HomePage({ onNavigate }: HomePageProps) {
               </div>
 
               <div className="pt-5 flex items-center justify-between gap-3 border-t border-slate-800 mt-4">
-                <a
+                <LocalizedA
                   href="tel:+17542616528"
                   onClick={() => trackPhoneClick({ ctaLocation: 'home_card_residential', pagePath: '/' })}
                   className="py-3 px-4 min-h-[44px] bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase rounded-xl flex items-center gap-1.5 transition-colors cursor-pointer"
                 >
                   <Phone className="w-3.5 h-3.5 fill-current" />
                   <span>{isSpanish ? 'Llamar Por Casa' : 'Call For Home Service'}</span>
-                </a>
-                <a href="/services/residential-locksmith"
+                </LocalizedA>
+                <LocalizedA href="/services/residential-locksmith"
                   className="text-xs text-amber-400 hover:text-amber-300 font-bold flex items-center gap-1 cursor-pointer py-2 px-1 min-h-[44px] text-center"
                 >
                   <span>Details</span>
                   <ArrowRight className="w-3.5 h-3.5" />
-                </a>
+                </LocalizedA>
               </div>
             </div>
 
@@ -675,20 +676,20 @@ export function HomePage({ onNavigate }: HomePageProps) {
               </div>
 
               <div className="pt-5 flex items-center justify-between gap-3 border-t border-slate-800 mt-4">
-                <a
+                <LocalizedA
                   href="tel:+17542616528"
                   onClick={() => trackPhoneClick({ ctaLocation: 'home_card_commercial', pagePath: '/' })}
                   className="py-3 px-4 min-h-[44px] bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase rounded-xl flex items-center gap-1.5 transition-colors cursor-pointer"
                 >
                   <Phone className="w-3.5 h-3.5 fill-current" />
                   <span>{isSpanish ? 'Llamar Por Negocio' : 'Call For Business'}</span>
-                </a>
-                <a href="/services/commercial-locksmith"
+                </LocalizedA>
+                <LocalizedA href="/services/commercial-locksmith"
                   className="text-xs text-amber-400 hover:text-amber-300 font-bold flex items-center gap-1 cursor-pointer py-2 px-1 min-h-[44px] text-center"
                 >
                   <span>Details</span>
                   <ArrowRight className="w-3.5 h-3.5" />
-                </a>
+                </LocalizedA>
               </div>
             </div>
 
@@ -736,20 +737,20 @@ export function HomePage({ onNavigate }: HomePageProps) {
               </div>
 
               <div className="pt-5 flex items-center justify-between gap-3 border-t border-slate-800 mt-4">
-                <a
+                <LocalizedA
                   href="tel:+17542616528"
                   onClick={() => trackPhoneClick({ ctaLocation: 'home_card_emergency', pagePath: '/' })}
                   className="py-3 px-4 min-h-[44px] bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase rounded-xl flex items-center gap-1.5 transition-colors cursor-pointer"
                 >
                   <Phone className="w-3.5 h-3.5 fill-current" />
                   <span>{isSpanish ? 'Llamar a Emergencias' : 'Call 24/7 Emergency'}</span>
-                </a>
-                <a href="/services/emergency-lockout-service"
+                </LocalizedA>
+                <LocalizedA href="/services/emergency-lockout-service"
                   className="text-xs text-amber-400 hover:text-amber-300 font-bold flex items-center gap-1 cursor-pointer py-2 px-1 min-h-[44px] text-center"
                 >
                   <span>Details</span>
                   <ArrowRight className="w-3.5 h-3.5" />
-                </a>
+                </LocalizedA>
               </div>
             </div>
 
@@ -775,21 +776,21 @@ export function HomePage({ onNavigate }: HomePageProps) {
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0">
-              <a
+              <LocalizedA
                 href="tel:+17542616528"
                 onClick={() => trackPhoneClick({ ctaLocation: 'home_contact_band_call', pagePath: '/' })}
                 className="px-6 py-3.5 min-h-[48px] justify-center bg-amber-500 hover:bg-amber-400 active:bg-amber-400 text-slate-950 font-black text-sm rounded-xl uppercase tracking-wider transition-colors shadow-md flex items-center gap-2 cursor-pointer"
               >
                 <Phone className="w-4 h-4 fill-current" />
                 <span>{isSpanish ? 'Llamar: (754) 261-6528' : 'Call (754) 261-6528'}</span>
-              </a>
-              <a
+              </LocalizedA>
+              <LocalizedA
                 href="sms:+17542616528"
                 className="px-6 py-3.5 min-h-[48px] justify-center bg-slate-900 hover:bg-slate-800 text-slate-100 font-bold text-sm rounded-xl border border-slate-700 flex items-center gap-2 cursor-pointer"
               >
                 <MessageSquare className="w-4 h-4 text-amber-400" />
                 <span>{isSpanish ? 'Enviar Texto' : 'Text Your Location'}</span>
-              </a>
+              </LocalizedA>
             </div>
           </div>
         </div>
@@ -881,12 +882,12 @@ export function HomePage({ onNavigate }: HomePageProps) {
           </div>
 
           <div className="text-center pt-2">
-            <a href="/faq"
+            <LocalizedA href="/faq"
               className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-400 hover:text-amber-300 uppercase tracking-wider cursor-pointer text-center"
             >
               <span>{isSpanish ? 'Ver Todas las Preguntas' : 'View Full FAQ Center'}</span>
               <ArrowRight className="w-3.5 h-3.5" />
-            </a>
+            </LocalizedA>
           </div>
 
         </div>
@@ -914,7 +915,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
           </p>
 
           <div className="pt-3 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <a
+            <LocalizedA
               href="tel:+17542616528"
               onClick={() => trackPhoneClick({ ctaLocation: 'home_bottom_cta', pagePath: '/' })}
               className="w-full sm:w-auto px-10 py-5 bg-slate-950 hover:bg-slate-900 text-white font-black text-lg sm:text-xl rounded-2xl shadow-2xl flex items-center justify-center gap-3 transition-transform hover:scale-105 active:scale-95"
@@ -922,16 +923,16 @@ export function HomePage({ onNavigate }: HomePageProps) {
             >
               <Phone className="w-6 h-6 text-amber-400 fill-current animate-bounce" />
               <span>CALL NOW: (754) 261-6528</span>
-            </a>
+            </LocalizedA>
 
-            <a
+            <LocalizedA
               href="sms:+17542616528"
               className="w-full sm:w-auto px-8 py-5 bg-white/30 hover:bg-white/40 text-slate-950 font-extrabold text-base sm:text-lg rounded-2xl transition-colors flex items-center justify-center gap-2"
               aria-label="Text Pro Locksmith Tech"
             >
               <MessageSquare className="w-5 h-5" />
               <span>TEXT (754) 261-6528</span>
-            </a>
+            </LocalizedA>
           </div>
 
           <p className="text-xs font-semibold text-slate-900/80 pt-1">

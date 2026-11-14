@@ -25,8 +25,10 @@ import { TermsPage } from './pages/TermsPage';
 import { LocksmithTipsPage } from './pages/LocksmithTipsPage';
 import { TipDetailPage } from './pages/TipDetailPage';
 import { NotFoundPage } from './pages/NotFoundPage';
-import { LanguageProvider } from './context/LanguageContext';
+import { LanguageProvider, type Language } from './context/LanguageContext';
+import { isEsPath, stripLocale, localizePath, switchPath } from './utils/locale';
 
+import { LocalizedA } from '../components/LocalizedA';
 interface AppProps {
   /** Path to render. Used when pre-rendering at build time; in the browser the address bar decides. */
   initialPath?: string;
@@ -39,7 +41,9 @@ export default function App({ initialPath }: AppProps) {
   });
 
   const navigate = useCallback((href: string) => {
-    const url = new URL(href, window.location.origin);
+    // Spanish visitors stay on the Spanish version of pages that have one
+    const lang = isEsPath(window.location.pathname) ? 'es' : 'en';
+    const url = new URL(localizePath(href, lang), window.location.origin);
     const next = url.pathname + url.search + url.hash;
     const current = window.location.pathname + window.location.search + window.location.hash;
     if (current !== next) {
@@ -47,6 +51,13 @@ export default function App({ initialPath }: AppProps) {
     }
     setCurrentPath(url.pathname);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
+  const switchLanguage = useCallback((lang: Language) => {
+    const here = window.location.pathname + window.location.search + window.location.hash;
+    const next = switchPath(here, lang);
+    window.history.pushState({}, '', next);
+    setCurrentPath(new URL(next, window.location.origin).pathname);
   }, []);
 
   useEffect(() => {
@@ -57,7 +68,7 @@ export default function App({ initialPath }: AppProps) {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  // Real <a href="/..."> links work without JavaScript (and for search engines); with
+  // Real <LocalizedA href="/..."> links work without JavaScript (and for search engines); with
   // JavaScript, this turns an ordinary click into a fast in-page navigation.
   useEffect(() => {
     const handleClick = (event: MouseEvent) => {
@@ -78,13 +89,14 @@ export default function App({ initialPath }: AppProps) {
   }, [navigate]);
 
   // Route matching
-  const normalizedPath = currentPath.replace(/\/+$/, '') || '/';
+  const fullPath = currentPath.replace(/\/+$/, '') || '/';
+  const normalizedPath = stripLocale(fullPath); // '/es/services' is matched as '/services'
 
   // Check for dedicated standalone Ad Landing Pages (/lp/:slug or /landing/:slug or /ad/:slug)
   if (normalizedPath.startsWith('/lp/') || normalizedPath.startsWith('/landing/') || normalizedPath.startsWith('/ad/')) {
     const slug = normalizedPath.replace(/^\/(lp|landing|ad)\//, '');
     return (
-      <LanguageProvider>
+      <LanguageProvider path={fullPath} onSwitch={switchLanguage}>
         <AdLandingPage slug={slug} onNavigate={navigate} />
       </LanguageProvider>
     );
@@ -133,7 +145,7 @@ export default function App({ initialPath }: AppProps) {
   }
 
   return (
-    <LanguageProvider>
+    <LanguageProvider path={fullPath} onSwitch={switchLanguage}>
       <div className="flex flex-col min-h-screen bg-slate-900 text-slate-100 font-sans selection:bg-amber-500 selection:text-slate-950 overflow-x-clip w-full">
         {/* Header with Call box, Text box, Language Toggle, and full phone number */}
         <Header

@@ -4,6 +4,7 @@ import { SEOHead } from '../components/SEOHead';
 import { BLOG_POSTS, BlogPost } from '../data/blogData';
 import { trackPhoneClick } from '../utils/analytics';
 
+import { LocalizedA } from '../components/LocalizedA';
 interface BlogListPageProps {
   onNavigate: (path: string) => void;
 }
@@ -41,22 +42,22 @@ export function BlogListPage({ onNavigate }: BlogListPageProps) {
             </p>
 
             <div className="pt-2 flex flex-wrap gap-3">
-              <a
+              <LocalizedA
                 href="tel:+17542616528"
                 onClick={() => trackPhoneClick({ ctaLocation: 'blog_list_header_call', pagePath: '/blog' })}
                 className="inline-flex items-center gap-2 py-3 px-5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs sm:text-sm shadow-lg transition-transform hover:scale-[1.02] cursor-pointer"
               >
                 <Phone className="w-4 h-4 fill-current" />
                 <span>Call Dispatch: +1 754-261-6528</span>
-              </a>
+              </LocalizedA>
 
-              <a
+              <LocalizedA
                 href="sms:+17542616528"
                 className="inline-flex items-center gap-2 py-3 px-5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 font-bold text-xs sm:text-sm transition-colors cursor-pointer"
               >
                 <MessageSquare className="w-4 h-4 text-amber-400" />
                 <span>Text For Dispatch</span>
-              </a>
+              </LocalizedA>
             </div>
           </div>
         </div>
@@ -99,7 +100,7 @@ export function BlogListPage({ onNavigate }: BlogListPageProps) {
               onClick={() => onNavigate(`/blog/${post.slug}`)}
               className="bg-slate-950 border border-slate-800 hover:border-amber-500/50 rounded-2xl overflow-hidden shadow-lg transition-all hover:-translate-y-1 group cursor-pointer flex flex-col justify-between"
             >
-              <a href={`/blog/${post.slug}`} className="block">
+              <LocalizedA href={`/blog/${post.slug}`} className="block">
                 {/* Article Image */}
                 <div className="relative aspect-video w-full overflow-hidden bg-slate-900">
                   <img
@@ -135,7 +136,7 @@ export function BlogListPage({ onNavigate }: BlogListPageProps) {
                     {post.excerpt}
                   </p>
                 </div>
-              </a>
+              </LocalizedA>
 
               {/* Bottom Card Footer */}
               <div className="p-5 sm:p-6 pt-0 border-t border-slate-900 mt-4 flex items-center justify-between">
@@ -169,13 +170,13 @@ export function BlogListPage({ onNavigate }: BlogListPageProps) {
             </p>
           </div>
 
-          <a
+          <LocalizedA
             href="tel:+17542616528"
             className="py-4 px-8 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-base shadow-xl flex items-center gap-2 shrink-0 transition-transform hover:scale-105 cursor-pointer"
           >
             <Phone className="w-5 h-5 fill-current" />
             <span>CALL (754) 261-6528</span>
-          </a>
+          </LocalizedA>
         </div>
       </section>
     </div>

@@ -17,6 +17,7 @@ import {
 import { COUNTIES_DATA, getAllCities } from '../data/locationsData';
 import { trackPhoneClick } from '../utils/analytics';
 
+import { LocalizedA } from './LocalizedA';
 interface SouthFloridaMapProps {
   onSelectCity?: (slug: string) => void;
   title?: string;
@@ -257,22 +258,22 @@ export function SouthFloridaMap({
             {/* Direct Call & Action Buttons (Finger-friendly min-h-[48px]) */}
             <div className="space-y-2.5">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                <a
+                <LocalizedA
                   href="tel:+17542616528"
                   onClick={() => trackPhoneClick({ ctaLocation: `map_active_city_call_${activeCity.id}`, pagePath: window.location.pathname })}
                   className="py-3.5 px-4 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 text-slate-950 font-black text-sm rounded-xl shadow-lg flex items-center justify-center gap-2 cursor-pointer min-h-[48px]"
                 >
                   <Phone className="w-4 h-4 fill-current" />
                   <span>Call {activeCity.name} Unit</span>
-                </a>
+                </LocalizedA>
 
-                <a
+                <LocalizedA
                   href="sms:+17542616528"
                   className="py-3 px-4 bg-slate-800 text-slate-100 font-bold text-xs sm:text-sm rounded-xl border border-slate-700 flex items-center justify-center gap-2 min-h-[46px] cursor-pointer"
                 >
                   <MessageSquare className="w-4 h-4 text-amber-400" />
                   <span>Text Location</span>
-                </a>
+                </LocalizedA>
               </div>
 
               {/* View Full City Page */}

@@ -1,4 +1,8 @@
 import { useEffect } from 'react';
+import { useLanguage } from '../context/LanguageContext';
+import { hasSpanishVersion, localizePath, stripLocale } from '../utils/locale';
+
+const SITE = 'https://prolocksmith-tech.com';
 
 interface SEOHeadProps {
   title: string;
@@ -38,87 +42,80 @@ export function tidyDescription(text: string): string {
   return cut.slice(0, cut.lastIndexOf(' ')) + '…';
 }
 
-export function SEOHead({ 
-  title, 
-  description, 
-  canonicalPath, 
-  keywords, 
+export function SEOHead({
+  title,
+  description,
+  canonicalPath,
+  keywords,
   ogType = 'website',
-  noIndex = false 
+  noIndex = false,
 }: SEOHeadProps) {
+  const { language, path } = useLanguage();
   title = tidyTitle(title);
   description = tidyDescription(description);
+
+  // Which page this is (ignoring the language prefix) and where its canonical address is.
+  const basePath =
+    (canonicalPath ? (canonicalPath.startsWith('/') ? canonicalPath : '/' + canonicalPath) : stripLocale(path)).replace(/\/+$/, '') || '/';
+  const spanishVersionExists = hasSpanishVersion(basePath);
+  // Spanish pages are indexable only where the Spanish content is real; elsewhere they point at the English page.
+  const finalNoIndex = noIndex || (language === 'es' && !spanishVersionExists);
+  const finalCanonicalPath = language === 'es' && spanishVersionExists ? localizePath(basePath, 'es') : basePath;
+
   if (typeof window === 'undefined') {
-    headCollector.current = { title, description, canonicalPath, keywords, ogType, noIndex };
+    headCollector.current = { title, description, canonicalPath: finalCanonicalPath, keywords, ogType, noIndex: finalNoIndex };
   }
 
   useEffect(() => {
-    // 1. Update Document Title
+    const setTag = (selector: string, create: () => HTMLElement, attr: string, value: string) => {
+      let el = document.head.querySelector(selector) as HTMLElement | null;
+      if (!el) {
+        el = create();
+        document.head.appendChild(el);
+      }
+      el.setAttribute(attr, value);
+    };
+    const meta = (key: 'name' | 'property', name: string) => () => {
+      const m = document.createElement('meta');
+      m.setAttribute(key, name);
+      return m;
+    };
+
+    const canonical = SITE + finalCanonicalPath;
+
     document.title = title;
+    setTag('meta[name="description"]', meta('name', 'description'), 'content', description);
+    setTag('meta[name="robots"]', meta('name', 'robots'), 'content', finalNoIndex ? 'noindex, follow' : 'index, follow, max-image-preview:large');
+    setTag('link[rel="canonical"]', () => {
+      const l = document.createElement('link');
+      l.setAttribute('rel', 'canonical');
+      return l;
+    }, 'href', canonical);
+    setTag('meta[property="og:title"]', meta('property', 'og:title'), 'content', title);
+    setTag('meta[property="og:description"]', meta('property', 'og:description'), 'content', description);
+    setTag('meta[property="og:url"]', meta('property', 'og:url'), 'content', canonical);
+    setTag('meta[property="og:type"]', meta('property', 'og:type'), 'content', ogType);
+    setTag('meta[name="twitter:title"]', meta('name', 'twitter:title'), 'content', title);
+    setTag('meta[name="twitter:description"]', meta('name', 'twitter:description'), 'content', description);
+    if (keywords) setTag('meta[name="keywords"]', meta('name', 'keywords'), 'content', keywords);
 
-    // 2. Update Meta Description
-    let metaDesc = document.querySelector('meta[name="description"]');
-    if (!metaDesc) {
-      metaDesc = document.createElement('meta');
-      metaDesc.setAttribute('name', 'description');
-      document.head.appendChild(metaDesc);
+    // Tell search engines which address is the English and which the Spanish version of this page.
+    document.head.querySelectorAll('link[rel="alternate"][hreflang]').forEach((el) => el.remove());
+    if (spanishVersionExists) {
+      const alternates: [string, string][] = [
+        ['en', SITE + basePath],
+        ['es', SITE + localizePath(basePath, 'es')],
+        ['x-default', SITE + basePath],
+      ];
+      alternates.forEach(([lang, href]) => {
+        const l = document.createElement('link');
+        l.setAttribute('rel', 'alternate');
+        l.setAttribute('hreflang', lang);
+        l.setAttribute('href', href);
+        document.head.appendChild(l);
+      });
     }
-    metaDesc.setAttribute('content', description);
-
-    // 3. Update Robots Directives (e.g. noindex, follow for paid ad landing pages)
-    let metaRobots = document.querySelector('meta[name="robots"]');
-    if (!metaRobots) {
-      metaRobots = document.createElement('meta');
-      metaRobots.setAttribute('name', 'robots');
-      document.head.appendChild(metaRobots);
-    }
-    metaRobots.setAttribute('content', noIndex ? 'noindex, follow' : 'index, follow, max-image-preview:large');
-
-    // 4. Update Canonical Tag
-    const resolvedCanonical = canonicalPath
-      ? `https://prolocksmith-tech.com${canonicalPath.startsWith('/') ? canonicalPath : '/' + canonicalPath}`
-      : 'https://prolocksmith-tech.com' + (window.location.pathname.replace(/\/+$/, '') || '/');
-      
-    let linkCanonical = document.querySelector('link[rel="canonical"]');
-    if (!linkCanonical) {
-      linkCanonical = document.createElement('link');
-      linkCanonical.setAttribute('rel', 'canonical');
-      document.head.appendChild(linkCanonical);
-    }
-    linkCanonical.setAttribute('href', resolvedCanonical);
-
-    // 5. Update OG Tags
-    let ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) ogTitle.setAttribute('content', title);
-
-    let ogDesc = document.querySelector('meta[property="og:description"]');
-    if (ogDesc) ogDesc.setAttribute('content', description);
-
-    let ogUrl = document.querySelector('meta[property="og:url"]');
-    if (!ogUrl) {
-      ogUrl = document.createElement('meta');
-      ogUrl.setAttribute('property', 'og:url');
-      document.head.appendChild(ogUrl);
-    }
-    ogUrl.setAttribute('content', resolvedCanonical);
-
-    let ogTypeMeta = document.querySelector('meta[property="og:type"]');
-    if (ogTypeMeta) ogTypeMeta.setAttribute('content', ogType);
-
-    // 6. Update Twitter Meta
-    let twTitle = document.querySelector('meta[name="twitter:title"]');
-    if (twTitle) twTitle.setAttribute('content', title);
-
-    let twDesc = document.querySelector('meta[name="twitter:description"]');
-    if (twDesc) twDesc.setAttribute('content', description);
-
-    // 7. Update Keywords if present
-    if (keywords) {
-      let metaKw = document.querySelector('meta[name="keywords"]');
-      if (metaKw) metaKw.setAttribute('content', keywords);
-    }
-
-  }, [title, description, canonicalPath, keywords, ogType, noIndex]);
+  }, [title, description, finalCanonicalPath, finalNoIndex, keywords, ogType, basePath, spanishVersionExists]);
 
   return null;
 }

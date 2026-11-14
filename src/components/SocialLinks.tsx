@@ -1,6 +1,7 @@
 import React from 'react';
 import { Facebook, Instagram } from 'lucide-react';
 
+import { LocalizedA } from './LocalizedA';
 interface SocialLinksProps {
   variant?: 'header' | 'footer' | 'drawer';
   className?: string;
@@ -36,7 +37,7 @@ export function SocialLinks({ variant = 'header', className = '' }: SocialLinksP
     return (
       <div className={`flex items-center gap-3 ${className}`}>
         {socialChannels.map((item) => (
-          <a
+          <LocalizedA
             key={item.name}
             href={item.url}
             target="_blank"
@@ -46,7 +47,7 @@ export function SocialLinks({ variant = 'header', className = '' }: SocialLinksP
             title={`Follow Pro Locksmith Tech on ${item.name}`}
           >
             {item.icon}
-          </a>
+          </LocalizedA>
         ))}
       </div>
     );
@@ -56,7 +57,7 @@ export function SocialLinks({ variant = 'header', className = '' }: SocialLinksP
     return (
       <div className={`flex items-center gap-3 ${className}`}>
         {socialChannels.map((item) => (
-          <a
+          <LocalizedA
             key={item.name}
             href={item.url}
             target="_blank"
@@ -66,7 +67,7 @@ export function SocialLinks({ variant = 'header', className = '' }: SocialLinksP
           >
             {item.icon}
             <span className="text-[11px]">{item.name}</span>
-          </a>
+          </LocalizedA>
         ))}
       </div>
     );
@@ -76,7 +77,7 @@ export function SocialLinks({ variant = 'header', className = '' }: SocialLinksP
   return (
     <div className={`flex items-center gap-2 ${className}`}>
       {socialChannels.map((item) => (
-        <a
+        <LocalizedA
           key={item.name}
           href={item.url}
           target="_blank"
@@ -86,7 +87,7 @@ export function SocialLinks({ variant = 'header', className = '' }: SocialLinksP
           title={item.name}
         >
           {item.icon}
-        </a>
+        </LocalizedA>
       ))}
     </div>
   );

@@ -18,6 +18,7 @@ import { LanguageToggle } from './LanguageToggle';
 import { SocialLinks } from './SocialLinks';
 import { trackPhoneClick } from '../utils/analytics';
 
+import { LocalizedA } from './LocalizedA';
 interface HeaderProps {
   currentPath: string;
   onNavigate: (path: string) => void;
@@ -75,14 +76,14 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
             <span className="truncate">{isSpanish ? 'Cerrajería Móvil 24/7' : '24/7 Mobile Service · We Come To You'}</span>
           </div>
 
-          <a
+          <LocalizedA
             href="tel:+17542616528"
             onClick={() => trackPhoneClick({ ctaLocation: 'mobile_top_strip_call', pagePath: currentPath })}
             className="flex items-center gap-1 text-amber-400 hover:text-amber-300 font-black text-xs shrink-0 pl-2"
           >
             <Phone className="w-3 h-3 fill-current" />
             <span>(754) 261-6528</span>
-          </a>
+          </LocalizedA>
         </div>
 
         {/* Laptop and desktop utility bar (lg and up) */}
@@ -114,7 +115,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
 
               <LanguageToggle variant="compact" />
 
-              <a
+              <LocalizedA
                 href="tel:+17542616528"
                 onClick={() => trackPhoneClick({ ctaLocation: 'header_call_btn', pagePath: currentPath })}
                 className="px-2.5 py-1 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs rounded uppercase tracking-wider transition-colors shadow-sm flex items-center gap-1"
@@ -122,15 +123,15 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
               >
                 <Phone className="w-3 h-3 fill-current" />
                 <span>{t('nav.call')}</span>
-              </a>
+              </LocalizedA>
 
-              <a
+              <LocalizedA
                 href="tel:+17542616528"
                 onClick={() => trackPhoneClick({ ctaLocation: 'header_phone_number', pagePath: currentPath })}
                 className="text-amber-400 hover:text-amber-300 font-bold text-xs sm:text-sm tracking-tight transition-colors pl-0.5"
               >
                 (754) 261-6528
-              </a>
+              </LocalizedA>
             </div>
           </div>
         </div>
@@ -146,16 +147,16 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
           <div className="flex items-center justify-between h-16 sm:h-20">
             
             {/* Logo: Scaled properly for smartphone screens */}
-            <a href="/"
+            <LocalizedA href="/"
               className="flex items-center text-left group focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 rounded-lg p-0.5 transition-opacity hover:opacity-95 shrink-0 cursor-pointer"
               aria-label="Pro Locksmith Tech Home"
              onClick={() => setMobileMenuOpen(false)}>
               <Logo size="md" textColor="light" />
-            </a>
+            </LocalizedA>
 
             {/* Desktop Navigation Links (ONLY 4 Main Links) */}
             <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
-              <a href="/"
+              <LocalizedA href="/"
                 className={`px-4 py-2 text-sm font-semibold rounded-lg transition-colors cursor-pointer ${
                   currentPath === '/' 
                     ? 'text-amber-400 bg-slate-800/90' 
@@ -163,9 +164,9 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
                 } inline-block text-center`}
                onClick={() => setMobileMenuOpen(false)}>
                 {t('nav.home')}
-              </a>
+              </LocalizedA>
 
-              <a href="/services"
+              <LocalizedA href="/services"
                 className={`px-4 py-2 text-sm font-semibold rounded-lg transition-colors cursor-pointer ${
                   currentPath.startsWith('/services') 
                     ? 'text-amber-400 bg-slate-800/90' 
@@ -173,9 +174,9 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
                 } inline-block text-center`}
                onClick={() => setMobileMenuOpen(false)}>
                 {t('nav.services')}
-              </a>
+              </LocalizedA>
 
-              <a href="/service-areas"
+              <LocalizedA href="/service-areas"
                 className={`px-4 py-2 text-sm font-semibold rounded-lg transition-colors cursor-pointer ${
                   currentPath.startsWith('/service-areas') 
                     ? 'text-amber-400 bg-slate-800/90' 
@@ -183,9 +184,9 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
                 } inline-block text-center`}
                onClick={() => setMobileMenuOpen(false)}>
                 {t('nav.serviceAreas')}
-              </a>
+              </LocalizedA>
 
-              <a href="/contact"
+              <LocalizedA href="/contact"
                 className={`px-4 py-2 text-sm font-semibold rounded-lg transition-colors cursor-pointer ${
                   currentPath === '/contact' 
                     ? 'text-amber-400 bg-slate-800/90' 
@@ -193,19 +194,19 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
                 } inline-block text-center`}
                onClick={() => setMobileMenuOpen(false)}>
                 {t('nav.contact')}
-              </a>
+              </LocalizedA>
             </nav>
 
             {/* Desktop Header CTA */}
             <div className="hidden sm:flex items-center gap-3">
-              <a
+              <LocalizedA
                 href="tel:+17542616528"
                 onClick={() => trackPhoneClick({ ctaLocation: 'header_main_btn', pagePath: currentPath })}
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 hover:from-amber-300 hover:to-amber-500 text-slate-950 font-black text-sm uppercase tracking-wider shadow-lg shadow-amber-500/25 transition-transform hover:scale-[1.02] active:scale-[0.98]"
               >
                 <Phone className="w-4 h-4 fill-current" />
                 <span>{isSpanish ? 'Llamar: (754) 261-6528' : 'Call (754) 261-6528'}</span>
-              </a>
+              </LocalizedA>
             </div>
 
             {/* Mobile Actions: Clean, Non-Crowded Layout */}
@@ -214,7 +215,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
               <LanguageToggle variant="compact" />
 
               {/* Instant Call Button for Mobile */}
-              <a
+              <LocalizedA
                 href="tel:+17542616528"
                 onClick={() => trackPhoneClick({ ctaLocation: 'header_mobile_top_btn', pagePath: currentPath })}
                 className="px-2.5 py-2 rounded-xl bg-amber-500 active:bg-amber-400 text-slate-950 font-black shadow-md flex items-center gap-1 text-xs uppercase cursor-pointer min-h-[40px]"
@@ -222,7 +223,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
               >
                 <Phone className="w-3.5 h-3.5 fill-current" />
                 <span>{t('nav.call')}</span>
-              </a>
+              </LocalizedA>
 
               {/* Hamburger Button with Accessible Touch Area */}
               <button
@@ -252,7 +253,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
 
               {/* 4 Main Core Links with Large Finger-Friendly Touch Targets */}
               <nav className="grid gap-2">
-                <a href="/"
+                <LocalizedA href="/"
                   className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-bold transition-all cursor-pointer min-h-[50px] ${
                     currentPath === '/' 
                       ? 'text-slate-950 bg-amber-500 font-black shadow-lg shadow-amber-500/20' 
@@ -264,9 +265,9 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
                     <span>{t('nav.home')}</span>
                   </span>
                   <ChevronRight className="w-4 h-4 opacity-70" />
-                </a>
+                </LocalizedA>
                 
-                <a href="/services"
+                <LocalizedA href="/services"
                   className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-bold transition-all cursor-pointer min-h-[50px] ${
                     currentPath.startsWith('/services') 
                       ? 'text-slate-950 bg-amber-500 font-black shadow-lg shadow-amber-500/20' 
@@ -278,9 +279,9 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
                     <span>{t('nav.services')}</span>
                   </span>
                   <ChevronRight className="w-4 h-4 opacity-70" />
-                </a>
+                </LocalizedA>
 
-                <a href="/service-areas"
+                <LocalizedA href="/service-areas"
                   className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-bold transition-all cursor-pointer min-h-[50px] ${
                     currentPath.startsWith('/service-areas') 
                       ? 'text-slate-950 bg-amber-500 font-black shadow-lg shadow-amber-500/20' 
@@ -292,9 +293,9 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
                     <span>{t('nav.serviceAreas')}</span>
                   </span>
                   <ChevronRight className="w-4 h-4 opacity-70" />
-                </a>
+                </LocalizedA>
 
-                <a href="/contact"
+                <LocalizedA href="/contact"
                   className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-bold transition-all cursor-pointer min-h-[50px] ${
                     currentPath === '/contact' 
                       ? 'text-slate-950 bg-amber-500 font-black shadow-lg shadow-amber-500/20' 
@@ -306,7 +307,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
                     <span>{t('nav.contact')}</span>
                   </span>
                   <ChevronRight className="w-4 h-4 opacity-70" />
-                </a>
+                </LocalizedA>
               </nav>
 
               {/* Service Status Badge */}
@@ -337,22 +338,22 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
 
             {/* Bottom Large Action Buttons in Drawer */}
             <div className="pt-4 pb-6 space-y-2.5 border-t border-slate-800">
-              <a
+              <LocalizedA
                 href="tel:+17542616528"
                 onClick={() => trackPhoneClick({ ctaLocation: 'header_drawer_call_btn', pagePath: currentPath })}
                 className="w-full py-4 px-4 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 text-slate-950 font-black text-sm uppercase rounded-xl flex items-center justify-center gap-2 shadow-xl shadow-amber-500/30 min-h-[50px] cursor-pointer"
               >
                 <Phone className="w-5 h-5 fill-current" />
                 <span>CALL NOW: (754) 261-6528</span>
-              </a>
+              </LocalizedA>
 
-              <a
+              <LocalizedA
                 href="sms:+17542616528"
                 className="w-full py-3.5 px-4 bg-slate-900 text-slate-200 font-bold text-xs uppercase rounded-xl border border-slate-700 flex items-center justify-center gap-2 min-h-[46px] cursor-pointer"
               >
                 <MessageSquare className="w-4 h-4 text-amber-400" />
                 <span>{isSpanish ? 'Enviar Mensaje de Texto' : 'Text Location For Dispatch'}</span>
-              </a>
+              </LocalizedA>
             </div>
 
           </div>

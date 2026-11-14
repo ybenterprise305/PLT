@@ -15,6 +15,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { SPANISH_SERVICES } from '../data/spanishTranslations';
 import { trackPhoneClick } from '../utils/analytics';
 
+import { LocalizedA } from '../components/LocalizedA';
 interface ServicesPageProps {
   onNavigate: (path: string) => void;
 }
@@ -77,22 +78,22 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
               </p>
 
               <div className="pt-2 flex flex-col sm:flex-row gap-3.5">
-                <a
+                <LocalizedA
                   href="tel:+17542616528"
                   onClick={() => trackPhoneClick({ ctaLocation: 'services_hero_call', pagePath: '/services' })}
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-3.5 px-6 min-h-[48px] rounded-xl bg-amber-500 hover:bg-amber-400 active:bg-amber-400 text-slate-950 font-black text-sm uppercase tracking-wider shadow-lg transition-transform hover:scale-[1.02] cursor-pointer"
                 >
                   <Phone className="w-4 h-4 fill-current" />
                   <span>{isSpanish ? 'Llamar Ahora: (754) 261-6528' : 'Call Now: +1 754-261-6528'}</span>
-                </a>
+                </LocalizedA>
 
-                <a
+                <LocalizedA
                   href="sms:+17542616528"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-3.5 px-5 min-h-[48px] rounded-xl bg-slate-800 hover:bg-slate-750 active:bg-slate-750 text-slate-100 font-bold text-sm border border-slate-700 transition-colors cursor-pointer"
                 >
                   <MessageSquare className="w-4 h-4 text-amber-400" />
                   <span>{isSpanish ? 'Enviar Mensaje' : 'Text Us'}</span>
-                </a>
+                </LocalizedA>
               </div>
             </div>
 
@@ -158,7 +159,7 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
                 key={srv.id}
                 className="bg-slate-950 border border-slate-800 hover:border-amber-500/50 rounded-2xl overflow-hidden shadow-lg transition-all duration-200 hover:-translate-y-1 flex flex-col justify-between group"
               >
-                <a href={`/services/${srv.slug}`} className="block h-40 relative overflow-hidden cursor-pointer">
+                <LocalizedA href={`/services/${srv.slug}`} className="block h-40 relative overflow-hidden cursor-pointer">
                   <img
                     src={srvImg}
                     alt={name}
@@ -172,12 +173,12 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
                       {badge}
                     </span>
                   )}
-                </a>
+                </LocalizedA>
 
                 <div className="p-6 flex-1 flex flex-col justify-between">
                   <div>
                     <h3 className="font-heading font-bold text-xl text-white group-hover:text-amber-400 transition-colors cursor-pointer">
-                      <a href={`/services/${srv.slug}`}>{name}</a>
+                      <LocalizedA href={`/services/${srv.slug}`}>{name}</LocalizedA>
                     </h3>
 
                     <p className="text-xs sm:text-sm text-slate-400 mt-2 leading-relaxed">
@@ -195,20 +196,20 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
                   </div>
 
                   <div className="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between">
-                    <a href={`/services/${srv.slug}`}
+                    <LocalizedA href={`/services/${srv.slug}`}
                       className="text-xs font-bold text-amber-400 hover:text-amber-300 flex items-center gap-1.5 cursor-pointer text-center"
                     >
                       <span>{isSpanish ? 'Guía Detallada' : 'Detailed Guide'}</span>
                       <ArrowRight className="w-3.5 h-3.5" />
-                    </a>
+                    </LocalizedA>
 
-                    <a
+                    <LocalizedA
                       href="tel:+17542616528"
                       className="text-xs font-semibold text-slate-300 hover:text-white flex items-center gap-1"
                     >
                       <Phone className="w-3 h-3 text-amber-400" />
                       <span>(754) 261-6528</span>
-                    </a>
+                    </LocalizedA>
                   </div>
                 </div>
               </div>
@@ -231,20 +232,20 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
               : 'Our mobile locksmith vans are ready to assist you throughout South Florida.'}
           </p>
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <a
+            <LocalizedA
               href="tel:+17542616528"
               className="inline-flex items-center gap-2 px-8 py-3.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-base rounded-xl shadow-lg transition-transform hover:scale-105"
             >
               <Phone className="w-4 h-4 fill-current" />
               <span>{isSpanish ? 'Llamar +1 754-261-6528' : 'Call +1 754-261-6528'}</span>
-            </a>
-            <a
+            </LocalizedA>
+            <LocalizedA
               href="sms:+17542616528"
               className="inline-flex items-center gap-2 px-6 py-3.5 bg-slate-800 hover:bg-slate-750 text-slate-100 font-bold text-sm rounded-xl border border-slate-700 transition-colors"
             >
               <MessageSquare className="w-4 h-4 text-amber-400" />
               <span>{isSpanish ? 'Enviar Mensaje' : 'Text Us'}</span>
-            </a>
+            </LocalizedA>
           </div>
         </div>
       </div>

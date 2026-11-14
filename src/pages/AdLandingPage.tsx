@@ -28,6 +28,7 @@ import { COUNTIES_DATA, getAllCities } from '../data/locationsData';
 import { AD_CAMPAIGNS, getAdCampaignBySlug } from '../data/adLandingPagesData';
 import { trackPhoneClick } from '../utils/analytics';
 
+import { LocalizedA } from '../components/LocalizedA';
 interface AdLandingPageProps {
   slug: string;
   onNavigate: (path: string) => void;
@@ -109,7 +110,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
         <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-10 py-3 flex items-center justify-between">
           
           {/* Logo / Brand Name */}
-          <a href="/" className="flex items-center gap-3 cursor-pointer group">
+          <LocalizedA href="/" className="flex items-center gap-3 cursor-pointer group">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-slate-950 shadow-md">
               <KeyRound className="w-5 h-5" />
             </div>
@@ -121,7 +122,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
                 24/7 Mobile Locksmith · We Come To You
               </div>
             </div>
-          </a>
+          </LocalizedA>
 
           {/* Quick Call Button in Header */}
           <div className="flex items-center gap-3">
@@ -130,19 +131,19 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                 <span>Live Mobile Dispatch</span>
               </span>
-              <a href={phoneTel} className="font-heading font-black text-white hover:text-amber-400 text-base">
+              <LocalizedA href={phoneTel} className="font-heading font-black text-white hover:text-amber-400 text-base">
                 {phoneNumber}
-              </a>
+              </LocalizedA>
             </div>
 
-            <a
+            <LocalizedA
               href={phoneTel}
               onClick={() => trackPhoneClick({ ctaLocation: 'ppc_header_call_btn', pagePath: `/lp/${campaign.slug}`, campaignSlug: campaign.slug })}
               className="py-2.5 px-4 sm:px-6 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs sm:text-sm rounded-xl shadow-lg flex items-center gap-2 transition-transform hover:scale-105 cursor-pointer ring-2 ring-amber-400/40"
             >
               <Phone className="w-4 h-4 fill-current" />
               <span>CALL NOW</span>
-            </a>
+            </LocalizedA>
           </div>
 
         </div>
@@ -183,13 +184,13 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
 
               {/* Primary Call to Action CTAs */}
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-3">
-                <a
+                <LocalizedA
                   href={phoneTel}
                   className="w-full sm:w-auto py-4 px-8 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-base sm:text-lg rounded-2xl shadow-2xl flex items-center justify-center gap-3 transition-transform hover:scale-105 cursor-pointer ring-4 ring-amber-500/25"
                 >
                   <Phone className="w-6 h-6 fill-current" />
                   <span>CALL NOW: (754) 261-6528</span>
-                </a>
+                </LocalizedA>
 
                 <TextLocationButton ctaLocation="ppc_hero_text_location" campaignSlug={campaign.slug} />
               </div>
@@ -271,19 +272,19 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
                 </div>
 
                 {/* 1-Tap Tap To Call Button */}
-                <a
+                <LocalizedA
                   href={phoneTel}
                   onClick={() => trackPhoneClick({ ctaLocation: 'ppc_procedure_box_call', pagePath: `/lp/${campaign.slug}`, campaignSlug: campaign.slug })}
                   className="w-full py-4 px-6 bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-slate-950 font-black text-base rounded-2xl shadow-xl flex items-center justify-center gap-3 transition-transform hover:scale-[1.02] cursor-pointer"
                 >
                   <Phone className="w-5 h-5 fill-current" />
                   <span>CALL NOW — (754) 261-6528</span>
-                </a>
+                </LocalizedA>
 
                 <div className="text-center">
-                  <a href={smsTel} className="text-xs text-amber-400 font-semibold hover:underline">
+                  <LocalizedA href={smsTel} className="text-xs text-amber-400 font-semibold hover:underline">
                     Prefer SMS? Tap to text your address or coordinates
-                  </a>
+                  </LocalizedA>
                 </div>
               </div>
             </div>
@@ -356,14 +357,14 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
             </p>
           </div>
 
-          <a
+          <LocalizedA
             href={phoneTel}
             onClick={() => trackPhoneClick({ ctaLocation: 'ppc_mid_banner_call', pagePath: `/lp/${campaign.slug}`, campaignSlug: campaign.slug })}
             className="py-4 px-8 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-base shadow-xl flex items-center gap-2 shrink-0 transition-transform hover:scale-105 cursor-pointer"
           >
             <Phone className="w-5 h-5 fill-current" />
             <span>CALL (754) 261-6528</span>
-          </a>
+          </LocalizedA>
         </div>
       </section>
 
@@ -410,13 +411,13 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
           <div className="mt-8 text-center">
             <p className="text-xs text-slate-400">
               Need immediate confirmation in your area? Call{' '}
-              <a 
+              <LocalizedA 
                 href={phoneTel} 
                 onClick={() => trackPhoneClick({ ctaLocation: 'ppc_coverage_text_call', pagePath: `/lp/${campaign.slug}`, campaignSlug: campaign.slug })}
                 className="text-amber-400 font-bold hover:underline"
               >
                 (754) 261-6528
-              </a>{' '}
+              </LocalizedA>{' '}
               to confirm service in your area.
             </p>
           </div>
@@ -456,14 +457,14 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
             Our dispatch line is open 24 hours a day, 7 days a week. Call or text now and we confirm your arrival time.
           </p>
           <div className="pt-2">
-            <a
+            <LocalizedA
               href={phoneTel}
               onClick={() => trackPhoneClick({ ctaLocation: 'ppc_bottom_final_call', pagePath: `/lp/${campaign.slug}`, campaignSlug: campaign.slug })}
               className="inline-flex items-center gap-3 py-4 px-8 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-base sm:text-lg rounded-2xl shadow-xl transition-transform hover:scale-105 cursor-pointer"
             >
               <Phone className="w-5 h-5 fill-current" />
               <span>CALL NOW — (754) 261-6528</span>
-            </a>
+            </LocalizedA>
           </div>
         </div>
       </section>
@@ -478,10 +479,10 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
             Serving Broward County, Miami-Dade County, and Palm Beach County, FL. Direct Dispatch: +1 754-261-6528.
           </p>
           <div className="flex items-center justify-center gap-4 text-[11px] text-slate-400">
-            <a href="/" className="hover:text-amber-400 underline cursor-pointer inline-block text-center">Main Website</a>
-            <a href="/services" className="hover:text-amber-400 underline cursor-pointer inline-block text-center">All Services</a>
-            <a href="/service-areas" className="hover:text-amber-400 underline cursor-pointer inline-block text-center">Service Areas</a>
-            <a href="/faq" className="hover:text-amber-400 underline cursor-pointer inline-block text-center">FAQ</a>
+            <LocalizedA href="/" className="hover:text-amber-400 underline cursor-pointer inline-block text-center">Main Website</LocalizedA>
+            <LocalizedA href="/services" className="hover:text-amber-400 underline cursor-pointer inline-block text-center">All Services</LocalizedA>
+            <LocalizedA href="/service-areas" className="hover:text-amber-400 underline cursor-pointer inline-block text-center">Service Areas</LocalizedA>
+            <LocalizedA href="/faq" className="hover:text-amber-400 underline cursor-pointer inline-block text-center">FAQ</LocalizedA>
           </div>
           <p className="text-[10px] text-slate-400 pt-2">
             © {new Date().getFullYear()} Pro Locksmith Tech. All rights reserved. 100% Mobile Service — We Come to You.
@@ -491,21 +492,21 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
 
       {/* Persistent Sticky Mobile Call Bar for Ads */}
       <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-slate-950/95 backdrop-blur-md border-t-2 border-amber-500 p-2.5 pb-[calc(0.625rem+env(safe-area-inset-bottom,0px))] shadow-2xl flex items-center gap-2">
-        <a
+        <LocalizedA
           href={phoneTel}
           onClick={() => trackPhoneClick({ ctaLocation: 'ppc_mobile_sticky_call', pagePath: `/lp/${campaign.slug}`, campaignSlug: campaign.slug })}
           className="flex-1 py-3.5 px-4 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm rounded-xl shadow-lg flex items-center justify-center gap-2 cursor-pointer"
         >
           <Phone className="w-5 h-5 fill-current" />
           <span>CALL NOW — (754) 261-6528</span>
-        </a>
-        <a
+        </LocalizedA>
+        <LocalizedA
           href={smsTel}
           className="py-3.5 px-4 bg-slate-800 text-slate-200 border border-slate-700 font-bold text-xs rounded-xl flex items-center justify-center gap-1 cursor-pointer"
         >
           <MessageSquare className="w-4 h-4 text-amber-400" />
           <span>Text</span>
-        </a>
+        </LocalizedA>
       </div>
     </div>
   );

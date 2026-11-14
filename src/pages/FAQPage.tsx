@@ -14,6 +14,7 @@ import { FAQ_DATA } from '../data/faqData';
 import { useLanguage } from '../context/LanguageContext';
 import { SPANISH_FAQS } from '../data/spanishTranslations';
 
+import { LocalizedA } from '../components/LocalizedA';
 interface FAQPageProps {
   onNavigate: (path: string) => void;
 }
@@ -86,21 +87,21 @@ export function FAQPage({ onNavigate }: FAQPageProps) {
             </p>
 
             <div className="pt-2 flex flex-wrap gap-3">
-              <a
+              <LocalizedA
                 href="tel:+17542616528"
                 className="inline-flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm uppercase tracking-wider shadow-lg transition-transform hover:scale-[1.02]"
               >
                 <Phone className="w-4 h-4 fill-current" />
                 <span>{isSpanish ? 'Llamar: +1 754-261-6528' : 'Call +1 754-261-6528'}</span>
-              </a>
+              </LocalizedA>
 
-              <a
+              <LocalizedA
                 href="sms:+17542616528"
                 className="inline-flex items-center justify-center gap-2 py-3 px-5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-100 font-bold text-sm border border-slate-700 transition-colors"
               >
                 <MessageSquare className="w-4 h-4 text-amber-400" />
                 <span>{isSpanish ? 'Enviar Texto: (754) 261-6528' : 'Text Us (754) 261-6528'}</span>
-              </a>
+              </LocalizedA>
             </div>
           </div>
         </div>
@@ -122,12 +123,12 @@ export function FAQPage({ onNavigate }: FAQPageProps) {
               </p>
             </div>
           </div>
-          <a href="/services"
+          <LocalizedA href="/services"
             className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-400 hover:text-amber-300 uppercase tracking-wider shrink-0 cursor-pointer text-center"
           >
             <span>{isSpanish ? 'Ver Servicios' : 'Explore Services'}</span>
             <ArrowRight className="w-4 h-4" />
-          </a>
+          </LocalizedA>
         </div>
 
         {/* Category Filter Controls for English */}
@@ -206,20 +207,20 @@ export function FAQPage({ onNavigate }: FAQPageProps) {
                         <div>
                           <p>{faq.answer}</p>
                           <div className="pt-4 flex items-center gap-4 text-xs">
-                            <a
+                            <LocalizedA
                               href="tel:+17542616528"
                               className="text-amber-400 hover:underline font-bold inline-flex items-center gap-1"
                             >
                               <Phone className="w-3.5 h-3.5" />
                               <span>{isSpanish ? 'Llamar Para Este Servicio' : 'Call For This Service'}</span>
-                            </a>
-                            <a
+                            </LocalizedA>
+                            <LocalizedA
                               href="sms:+17542616528"
                               className="text-slate-400 hover:text-white font-medium inline-flex items-center gap-1"
                             >
                               <MessageSquare className="w-3.5 h-3.5" />
                               <span>{isSpanish ? 'Preguntar por Texto' : 'Text Question'}</span>
-                            </a>
+                            </LocalizedA>
                           </div>
                         </div>
                       </div>
@@ -239,13 +240,13 @@ export function FAQPage({ onNavigate }: FAQPageProps) {
                   ? '¿Tiene una pregunta específica sobre su cerradura o ubicación? Llame directamente a nuestra línea 24/7.' 
                   : 'Have a specific question about your lock, car key, or location? Give our direct dispatch line a call anytime 24/7.'}
               </p>
-              <a
+              <LocalizedA
                 href="tel:+17542616528"
                 className="inline-flex items-center gap-2 py-2.5 px-5 bg-amber-500 text-slate-950 font-bold text-xs uppercase tracking-wider rounded-lg"
               >
                 <Phone className="w-4 h-4 fill-current" />
                 <span>{isSpanish ? 'Llamar: +1 754-261-6528' : 'Call +1 754-261-6528'}</span>
-              </a>
+              </LocalizedA>
             </div>
           )}
         </div>
@@ -261,17 +262,17 @@ export function FAQPage({ onNavigate }: FAQPageProps) {
               : 'Our mobile technicians are on the road 24/7 throughout Broward, Miami-Dade, and Palm Beach counties. We come directly to you.'}
           </p>
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
+            <LocalizedA
               href="tel:+17542616528"
               className="w-full sm:w-auto px-8 py-3.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm uppercase tracking-wider rounded-xl shadow-lg transition-transform hover:scale-105"
             >
               <span>{isSpanish ? 'LLAMAR AHORA: +1 754-261-6528' : 'CALL NOW: +1 754-261-6528'}</span>
-            </a>
-            <a href="/contact"
+            </LocalizedA>
+            <LocalizedA href="/contact"
               className="w-full sm:w-auto px-6 py-3.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-sm rounded-xl border border-slate-700 transition-colors cursor-pointer inline-block text-center"
             >
               <span>{isSpanish ? 'Página de Contacto' : 'Contact Page'}</span>
-            </a>
+            </LocalizedA>
           </div>
         </div>
 

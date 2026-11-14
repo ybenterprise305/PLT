@@ -2,6 +2,7 @@ import React from 'react';
 import { Shield, Phone, Mail, Clock, MapPin } from 'lucide-react';
 import { SEOHead } from '../components/SEOHead';
 
+import { LocalizedA } from '../components/LocalizedA';
 interface PrivacyPolicyPageProps {
   onNavigate: (path: string) => void;
 }
@@ -91,11 +92,11 @@ export function PrivacyPolicyPage({ onNavigate }: PrivacyPolicyPageProps) {
             <div className="pt-2 space-y-1.5 text-xs sm:text-sm">
               <p className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-amber-400" />
-                <a href="tel:+17542616528" className="text-amber-400 hover:underline font-bold">+1 754-261-6528</a>
+                <LocalizedA href="tel:+17542616528" className="text-amber-400 hover:underline font-bold">+1 754-261-6528</LocalizedA>
               </p>
               <p className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-amber-400" />
-                <a href="mailto:prolocksmithtech@gmail.com" className="text-amber-400 hover:underline">prolocksmithtech@gmail.com</a>
+                <LocalizedA href="mailto:prolocksmithtech@gmail.com" className="text-amber-400 hover:underline">prolocksmithtech@gmail.com</LocalizedA>
               </p>
               <p className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-amber-400" />

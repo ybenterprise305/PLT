@@ -24,6 +24,7 @@ import { breadcrumbSchema } from '../utils/breadcrumbs';
 import { SEOHead } from '../components/SEOHead';
 import { LOCKSMITH_TIPS_DATA, LocksmithTip } from '../data/locksmithTipsData';
 
+import { LocalizedA } from '../components/LocalizedA';
 interface TipDetailPageProps {
   slug: string;
   onNavigate: (path: string) => void;
@@ -43,11 +44,11 @@ export function TipDetailPage({ slug, onNavigate }: TipDetailPageProps) {
           <p className="text-slate-400 text-sm">
             The requested locksmith technical guide could not be located.
           </p>
-          <a href="/tips"
+          <LocalizedA href="/tips"
             className="px-6 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-lg text-sm inline-block text-center"
           >
             &larr; Return to All Locksmith Tips
-          </a>
+          </LocalizedA>
         </div>
       </div>
     );
@@ -150,27 +151,27 @@ export function TipDetailPage({ slug, onNavigate }: TipDetailPageProps) {
       <div className="bg-slate-950/80 border-b border-slate-800 py-3 px-4 sm:px-6 lg:px-10 xl:px-12 text-xs text-slate-400">
         <div className="max-w-[1200px] mx-auto flex items-center justify-between gap-4">
           <div className="flex items-center gap-2 overflow-x-auto whitespace-nowrap">
-            <a href="/" 
+            <LocalizedA href="/" 
               className="hover:text-amber-400 transition-colors inline-block text-center"
             >
               Home
-            </a>
+            </LocalizedA>
             <span>/</span>
-            <a href="/tips" 
+            <LocalizedA href="/tips" 
               className="hover:text-amber-400 transition-colors inline-block text-center"
             >
               Locksmith Tips
-            </a>
+            </LocalizedA>
             <span>/</span>
             <span className="text-slate-200 truncate max-w-[200px] sm:max-w-md">{tip.title}</span>
           </div>
 
-          <a href="/tips"
+          <LocalizedA href="/tips"
             className="hidden sm:inline-flex items-center gap-1.5 text-amber-400 hover:text-amber-300 font-semibold text-center"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>All Tips &amp; Tricks</span>
-          </a>
+          </LocalizedA>
         </div>
       </div>
 
@@ -215,13 +216,13 @@ export function TipDetailPage({ slug, onNavigate }: TipDetailPageProps) {
           </p>
           <div className="pt-2 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400 border-t border-slate-800/80">
             <span>Verified by Pro Locksmith Tech Field Technicians</span>
-            <a
+            <LocalizedA
               href="tel:+17542616528"
               className="text-amber-400 hover:underline font-bold flex items-center gap-1"
             >
               <Phone className="w-3 h-3 fill-current" />
               <span>Mobile Dispatch Hotline: (754) 261-6528</span>
-            </a>
+            </LocalizedA>
           </div>
         </section>
 
@@ -357,20 +358,20 @@ export function TipDetailPage({ slug, onNavigate }: TipDetailPageProps) {
               <div className="text-xs text-slate-400">We travel directly to your location across South Florida.</div>
             </div>
             <div className="flex items-center gap-3">
-              <a
+              <LocalizedA
                 href="tel:+17542616528"
                 className="px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs rounded-lg uppercase tracking-wider flex items-center gap-1.5 shadow-md"
               >
                 <Phone className="w-3.5 h-3.5 fill-current" />
                 <span>Call: (754) 261-6528</span>
-              </a>
-              <a
+              </LocalizedA>
+              <LocalizedA
                 href="sms:+17542616528"
                 className="px-4 py-2.5 bg-slate-800 hover:bg-slate-750 text-slate-200 font-bold text-xs rounded-lg border border-slate-700 flex items-center gap-1.5"
               >
                 <MessageSquare className="w-3.5 h-3.5 text-amber-400" />
                 <span>Text Us</span>
-              </a>
+              </LocalizedA>
             </div>
           </div>
         </section>
@@ -419,7 +420,7 @@ export function TipDetailPage({ slug, onNavigate }: TipDetailPageProps) {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {relatedTips.map((rTip) => (
-                <a href={`/tips/${rTip.slug}`}
+                <LocalizedA href={`/tips/${rTip.slug}`}
                   key={rTip.id}
                   className="bg-slate-950 border border-slate-800 hover:border-amber-500/40 p-4 rounded-xl text-left space-y-2 group transition-all inline-block"
                 >
@@ -431,7 +432,7 @@ export function TipDetailPage({ slug, onNavigate }: TipDetailPageProps) {
                     <span>Read Guide</span>
                     <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                   </div>
-                </a>
+                </LocalizedA>
               ))}
             </div>
           </section>

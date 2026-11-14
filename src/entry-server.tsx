@@ -6,9 +6,12 @@ import { COUNTIES_DATA, getAllCities } from './data/locationsData';
 import { BLOG_POSTS } from './data/blogData';
 import { LOCKSMITH_TIPS_DATA } from './data/locksmithTipsData';
 import { AD_CAMPAIGNS } from './data/adLandingPagesData';
+import { hasSpanishVersion, localizePath, isEsPath, stripLocale } from './utils/locale';
+
+export { hasSpanishVersion, localizePath, isEsPath, stripLocale };
 
 export function getRoutes(): string[] {
-  return [
+  const english = [
     '/',
     '/services',
     '/service-areas',
@@ -28,6 +31,9 @@ export function getRoutes(): string[] {
     ...LOCKSMITH_TIPS_DATA.map((t) => `/tips/${t.slug}`),
     ...AD_CAMPAIGNS.map((a) => `/lp/${a.slug}`),
   ];
+  // Spanish versions exist only for pages with real Spanish content
+  const spanish = english.filter(hasSpanishVersion).map((r) => localizePath(r, 'es'));
+  return [...english, ...spanish];
 }
 
 export function render(path: string) {
