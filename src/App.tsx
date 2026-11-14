@@ -19,6 +19,7 @@ import { FAQPage } from './pages/FAQPage';
 import { BlogListPage } from './pages/BlogListPage';
 import { BlogPostPage } from './pages/BlogPostPage';
 import { AdLandingPage } from './pages/AdLandingPage';
+import { SpanishContentPage } from './pages/SpanishContentPage';
 import { AdLandingHubPage } from './pages/AdLandingHubPage';
 import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { TermsPage } from './pages/TermsPage';
@@ -91,6 +92,25 @@ export default function App({ initialPath }: AppProps) {
   // Route matching
   const fullPath = currentPath.replace(/\/+$/, '') || '/';
   const normalizedPath = stripLocale(fullPath); // '/es/services' is matched as '/services'
+
+  // Render full Spanish copy on every indexable /es page, not mixed English templates.
+  // Keep the bilingual homepage separate and let the shared layout translate its navigation.
+  if (isEsPath(fullPath) && normalizedPath !== '/' && (
+    ['/services', '/service-areas', '/about', '/contact', '/faq'].includes(normalizedPath) ||
+    normalizedPath.startsWith('/services/') || normalizedPath.startsWith('/service-areas/')
+  )) {
+    return (
+      <LanguageProvider path={fullPath} onSwitch={switchLanguage}>
+        <div className="flex min-h-screen flex-col bg-slate-950 text-slate-100">
+          <Header currentPath={normalizedPath} onNavigate={navigate} />
+          <main className="flex-1 pb-24 lg:pb-0"><SpanishContentPage path={normalizedPath} /></main>
+          <Footer onNavigate={navigate} />
+          <MobileCallBar />
+        </div>
+      </LanguageProvider>
+    );
+  }
+
 
   // Check for dedicated standalone Ad Landing Pages (/lp/:slug or /landing/:slug or /ad/:slug)
   if (normalizedPath.startsWith('/lp/') || normalizedPath.startsWith('/landing/') || normalizedPath.startsWith('/ad/')) {
