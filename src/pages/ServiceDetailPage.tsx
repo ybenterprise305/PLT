@@ -70,10 +70,10 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
     "@graph": [
       {
         "@type": ["Locksmith", "LocalBusiness", "AutomotiveBusiness"],
-        "@id": `https://prolocksmith-tech.com/services/${service.slug}#locksmith`,
-        "name": `Pro Locksmith Tech - ${service.name}`,
+        "@id": "https://prolocksmith-tech.com/#locksmith",
+        "name": "Pro Locksmith Tech",
         "legalName": "Pro Locksmith Tech",
-        "url": `https://prolocksmith-tech.com/services/${service.slug}`,
+        "url": "https://prolocksmith-tech.com/",
         "logo": "https://prolocksmith-tech.com/icon-512.png",
         "image": "https://prolocksmith-tech.com/icon-512.png",
         "telephone": "+1-754-261-6528",
