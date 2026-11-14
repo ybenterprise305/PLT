@@ -63,10 +63,10 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
   const adSchema = {
     "@context": "https://schema.org",
     "@type": ["Locksmith", "LocalBusiness", "AutomotiveBusiness"],
-    "name": `Pro Locksmith Tech - ${campaign.name}`,
+    "name": "Pro Locksmith Tech",
     "image": "https://prolocksmith-tech.com/icon-512.png",
-    "@id": `https://prolocksmith-tech.com/lp/${campaign.slug}#ad`,
-    "url": `https://prolocksmith-tech.com/lp/${campaign.slug}`,
+    "@id": "https://prolocksmith-tech.com/#locksmith",
+    "url": "https://prolocksmith-tech.com/",
     "telephone": "+1-754-261-6528",
     "priceRange": "$$",
     "address": {
