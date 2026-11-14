@@ -287,6 +287,29 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
             </div>
           </div>
 
+          {/* Clear links from each city page to the most useful real service pages. */}
+          <section className="bg-slate-950 border border-slate-800 rounded-2xl p-6" aria-label="Mobile locksmith services">
+            <h3 className="font-heading font-bold text-lg text-white mb-3">
+              {isSpanish ? `Servicios de cerrajería en ${city.name}` : `Mobile Locksmith Services in ${city.name}`}
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {[
+                { slug: 'automotive-locksmith', en: 'Automotive Locksmith', es: 'Cerrajería de Autos' },
+                { slug: 'emergency-lockout-service', en: 'Emergency Lockouts', es: 'Apertura de Emergencia' },
+                { slug: 'lock-rekeying', en: 'Lock Rekeying', es: 'Cambio de Combinación' },
+                { slug: 'lock-replacement', en: 'Lock Replacement', es: 'Reemplazo de Cerraduras' },
+              ].map((service) => (
+                <LocalizedA
+                  key={service.slug}
+                  href={`/services/${service.slug}`}
+                  className="inline-flex rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-xs text-amber-300 hover:bg-slate-800 hover:text-white"
+                >
+                  {isSpanish ? service.es : service.en}
+                </LocalizedA>
+              ))}
+            </div>
+          </section>
+
           {/* Neighboring Cities in County */}
           <div className="bg-slate-950 border border-slate-800 rounded-2xl p-6">
             <h4 className="font-heading font-bold text-sm text-white mb-3 uppercase tracking-wider text-amber-400">
@@ -320,7 +343,7 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
       "@graph": [
         {
           "@type": ["Locksmith", "LocalBusiness", "AutomotiveBusiness"],
-          "@id": `https://prolocksmith-tech.com/service-areas/${county.slug}#locksmith`,
+          "@id": "https://prolocksmith-tech.com/#locksmith",
           "name": `Pro Locksmith Tech - Mobile Locksmith in ${county.fullName}`,
           "url": `https://prolocksmith-tech.com/service-areas/${county.slug}`,
           "telephone": "+1-754-261-6528",
