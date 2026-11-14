@@ -55,11 +55,11 @@ export const SPANISH_SERVICES: Record<string, SpanishServiceTranslation> = {
     badge: 'Autos y Llaves',
     categoryName: 'Automotriz',
     shortDescription: 'Apertura de autos, corte de llaves láser en el lugar y programación de controles y chips transponder.',
-    fullDescription: 'Ahorre cientos de dólares en costos de grúa y largas esperas en los concesionarios. Pro Locksmith Tech es un taller de cerrajería automotriz sobre ruedas que llega directamente a su automóvil en cualquier estacionamiento, carretera o domicilio del Sur de la Florida. Cortamos llaves con corte láser y programamos llaves inteligentes de botón (push-to-start) en el acto mediante escáneres diagnósticos OBD-II.',
+    fullDescription: 'Ahorre cientos de dólares en costos de grúa y largas esperas en los concesionarios. Pro Locksmith Tech es un taller de cerrajería automotriz sobre ruedas que llega directamente a su automóvil en cualquier estacionamiento, carretera o domicilio del Sur de la Florida. Cortamos llaves con corte láser y programamos llaves inteligentes de botón de arranque por botón en el acto mediante escáneres diagnósticos OBD-II.',
     features: [
       'Apertura urgente de autos sin rasguños',
       'Corte de llaves automotrices con maquinaria CNC láser',
-      'Programación de transponders y controles remotos (key fobs)',
+      'Programación de transpondedores y controles remotos ',
       'Reparación y reconstrucción de cilindros de ignición trabados',
       'Duplicación de llaves con chip para todas las marcas'
     ]
@@ -93,7 +93,7 @@ export const SPANISH_SERVICES: Record<string, SpanishServiceTranslation> = {
     ]
   },
   'lock-cambio de combinación-service': {
-    name: 'Cambio de Combinación (Rekeying)',
+    name: 'Cambio de Combinación ',
     badge: 'Ahorro Inteligente',
     categoryName: 'Residencial',
     shortDescription: 'Cambie las llaves de su casa o negocio manteniendo sus cerraduras actuales y ahorrando hasta un 70%.',
@@ -135,13 +135,13 @@ export const SPANISH_SERVICES: Record<string, SpanishServiceTranslation> = {
     ]
   },
   'key-fob-programming': {
-    name: 'Programación de Controles (Key Fobs)',
+    name: 'Programación de Controles ',
     badge: 'Tecnología OBD',
     categoryName: 'Automotriz',
-    shortDescription: 'Programación de controles remotos y llaves de proximidad con botón de arranque (Push-to-Start).',
-    fullDescription: 'Programamos controles remotos, mandos de alarma y llaves de presencia (smart keys) para una amplia variedad de modelos. Conectamos equipos diagnósticos certificados al puerto OBD-II de su vehículo para sincronizar el sistema inmovilizador de manera segura.',
+    shortDescription: 'Programación de controles remotos y llaves de proximidad con botón de arranque de arranque por botón.',
+    fullDescription: 'Programamos controles remotos, mandos de alarma y llaves de presencia  para una amplia variedad de modelos. Conectamos equipos diagnósticos certificados al puerto OBD-II de su vehículo para sincronizar el sistema inmovilizador de manera segura.',
     features: [
-      'Sincronización de sistemas Push-to-Start',
+      'Sincronización de sistemas arranque por botón',
       'Borrado de llaves extraviadas de la memoria del auto',
       'Controles OEM de alta durabilidad',
       'Baterías nuevas incluidas y verificadas',
@@ -259,8 +259,8 @@ export const SPANISH_FAQS = [
   },
   {
     id: 'es-faq-4',
-    question: '¿Pueden cortar llaves nuevas y programar controles (key fobs) en el lugar?',
-    answer: 'Sí. Nuestras unidades móviles cuentan con duplicadoras láser CNC computarizadas y escáneres diagnósticos OBD-II. Elaboramos llaves de auto nuevas, programamos chips transponder y configuramos llaves inteligentes de botón (Push-to-Start) en el acto para marcas americanas, asiáticas y europeas, incluso habiendo perdido todas las copias.'
+    question: '¿Pueden cortar llaves nuevas y programar controles  en el lugar?',
+    answer: 'Sí. Nuestras unidades móviles cuentan con duplicadoras láser CNC computarizadas y escáneres diagnósticos OBD-II. Elaboramos llaves de auto nuevas, programamos chips transponder y configuramos llaves inteligentes de botón de arranque por botón en el acto para marcas americanas, asiáticas y europeas, incluso habiendo perdido todas las copias.'
   },
   {
     id: 'es-faq-5',
