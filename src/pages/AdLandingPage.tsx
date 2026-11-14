@@ -74,7 +74,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
               <h1 className="font-heading text-4xl font-extrabold leading-[1.12] tracking-tight sm:text-5xl">{headline}</h1>
               <p className="max-w-xl text-lg leading-8 text-slate-200">{short}</p>
               {callButton('ppc_hero_call')}
-              <p className="text-sm font-medium text-slate-300">{isSpanish ? 'Servicio móvil en el sur de Florida' : 'We come to you throughout South Florida'}</p>
+              <p className="text-sm font-medium text-slate-300">{isSpanish ? 'Llegada habitual en 15–20 minutos · Servicio móvil' : 'Typical 15–20 minute arrival · Mobile service'}</p>
             </div>
             <div className="overflow-hidden rounded-2xl border border-slate-700">
               <img src={item.image} alt={isSpanish ? item.imageAltEs : item.imageAltEn}
@@ -85,12 +85,12 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
 
         <section className="border-y border-slate-800 bg-slate-900/65 py-10 sm:py-14">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <h2 className="mb-6 text-center font-heading text-2xl font-bold sm:text-3xl">{isSpanish ? 'Ayuda fácil, en una llamada' : 'One Call. Simple Service.'}</h2>
+            <h2 className="mb-6 text-center font-heading text-2xl font-bold sm:text-3xl">{isSpanish ? 'Por qué llamarnos' : 'Why Call Us?'}</h2>
             <div className="grid gap-4 md:grid-cols-3">
               {[
-                {en: 'Call our team', es: 'Llámenos', enText: 'Tell us what you need.', esText: 'Cuéntenos qué necesita.'},
-                {en: 'We arrange service', es: 'Coordinamos el servicio', enText: 'Our team helps with availability.', esText: 'Nuestro equipo le ayudará con la disponibilidad.'},
-                {en: 'We come to you', es: 'Vamos hasta usted', enText: 'Mobile locksmith assistance at your location.', esText: 'Cerrajería móvil en su ubicación.'}
+                {en: 'Available 24/7', es: 'Disponibles 24/7', enText: 'Call day or night.', esText: 'Llámenos a cualquier hora.'},
+                {en: 'Mobile Service', es: 'Servicio a domicilio', enText: 'We come to your location.', esText: 'Vamos hasta su ubicación.'},
+                {en: 'Locksmith Equipment', es: 'Equipo de cerrajería', enText: 'Tools and parts for many locksmith needs.', esText: 'Herramientas y piezas para distintos servicios.'}
               ].map((step, i) => (
                 <div className="rounded-2xl border border-slate-700 bg-slate-950 p-5" key={i}>
                   <span className="mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-amber-400 text-base font-extrabold text-slate-950">{i + 1}</span>
