@@ -7,7 +7,26 @@ import { pathToFileURL } from 'node:url';
 const root = process.cwd();
 const dist = path.join(root, 'dist');
 const template = fs.readFileSync(path.join(dist, 'index.html'), 'utf8');
-const { render, getRoutes } = await import(pathToFileURL(path.join(root, 'dist-server', 'entry-server.js')).href);
+// Vite 8 may emit the SSR entry in assets/ with a content hash. Resolve the
+// actual generated entry instead of assuming a fixed file name.
+const serverDir = path.join(root, 'dist-server');
+const candidates = [
+  path.join(serverDir, 'entry-server.js'),
+  ...(
+    fs.existsSync(path.join(serverDir, 'assets'))
+      ? fs.readdirSync(path.join(serverDir, 'assets'))
+          .filter((name) => /^entry-server(?:-[A-Za-z0-9_-]+)?\.js$/.test(name))
+          .map((name) => path.join(serverDir, 'assets', name))
+      : []
+  ),
+].filter((file) => fs.existsSync(file));
+
+if (candidates.length !== 1) {
+  throw new Error(
+    `Expected exactly one built SSR entry in dist-server, found ${candidates.length}: ${candidates.join(', ')}`
+  );
+}
+const { render, getRoutes } = await import(pathToFileURL(candidates[0]).href);
 
 const SITE = 'https://prolocksmith-tech.com';
 const esc = (v) => String(v).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
