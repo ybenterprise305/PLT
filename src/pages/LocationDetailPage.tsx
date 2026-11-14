@@ -344,8 +344,8 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
         {
           "@type": ["Locksmith", "LocalBusiness", "AutomotiveBusiness"],
           "@id": "https://prolocksmith-tech.com/#locksmith",
-          "name": `Pro Locksmith Tech - Mobile Locksmith in ${county.fullName}`,
-          "url": `https://prolocksmith-tech.com/service-areas/${county.slug}`,
+          "name": "Pro Locksmith Tech",
+          "url": "https://prolocksmith-tech.com/",
           "telephone": "+1-754-261-6528",
           "email": "prolocksmithtech@gmail.com",
           "image": "https://prolocksmith-tech.com/icon-512.png",
