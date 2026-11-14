@@ -86,11 +86,12 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
         <section className="border-y border-slate-800 bg-slate-900/65 py-10 sm:py-14">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <h2 className="mb-6 text-center font-heading text-2xl font-bold sm:text-3xl">{isSpanish ? 'Por qué llamarnos' : 'Why Call Us?'}</h2>
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {[
                 {en: 'Available 24/7', es: 'Disponibles 24/7', enText: 'Call day or night.', esText: 'Llámenos a cualquier hora.'},
                 {en: 'Mobile Service', es: 'Servicio a domicilio', enText: 'We come to your location.', esText: 'Vamos hasta su ubicación.'},
-                {en: 'Locksmith Equipment', es: 'Equipo de cerrajería', enText: 'Tools and parts for many locksmith needs.', esText: 'Herramientas y piezas para distintos servicios.'}
+                {en: 'Quick Arrival', es: 'Llegada rápida', enText: 'Typical 15–20 minute arrival.', esText: 'Llegada habitual en 15–20 minutos.'},
+                {en: 'Locksmith Equipment', es: 'Equipo de cerrajería', enText: 'Tools and parts for all locksmith needs.', esText: 'Herramientas y piezas para todas las necesidades de cerrajería.'}
               ].map((step, i) => (
                 <div className="rounded-2xl border border-slate-700 bg-slate-950 p-5" key={i}>
                   <span className="mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-amber-400 text-base font-extrabold text-slate-950">{i + 1}</span>

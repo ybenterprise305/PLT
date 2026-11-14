@@ -128,23 +128,6 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-5 py-10 sm:py-12">
-        <div className="max-w-3xl">
-          <h2 className="mb-3 font-heading text-2xl font-bold sm:text-3xl">{isSpanish ? 'Experiencias compartidas por clientes' : 'Customer-Reported Service Examples'}</h2>
-          <p className="mb-5 text-base leading-7 text-slate-300">{isSpanish ? 'Algunos ejemplos anónimos basados en comentarios de clientes; no se muestran direcciones ni datos personales.' : 'Anonymous examples based on customer feedback, without customer names or addresses.'}</p>
-        </div>
-        <div className="grid gap-4 md:grid-cols-2">
-          <article className="rounded-2xl border border-slate-700 bg-slate-900 p-5">
-            <h3 className="mb-2 text-lg font-bold">{isSpanish ? 'Apertura de vivienda' : 'Home Lockout'}</h3>
-            <p className="text-base leading-7 text-slate-300">{isSpanish ? 'Una persona compartió que nuestro técnico llegó pronto y ayudó a abrir la puerta de su casa en pocos minutos.' : 'A customer reported that our technician arrived quickly and helped open their house within minutes.'}</p>
-          </article>
-          <article className="rounded-2xl border border-slate-700 bg-slate-900 p-5">
-            <h3 className="mb-2 text-lg font-bold">{isSpanish ? 'Asistencia para abrir una cerradura' : 'Lockout Assistance'}</h3>
-            <p className="text-base leading-7 text-slate-300">{isSpanish ? 'Otra persona destacó la buena comunicación y el trato profesional al recibir ayuda para abrir una cerradura.' : 'Another customer praised the clear communication and professional service they received during an unlocking job.'}</p>
-          </article>
-        </div>
-      </section>
-
       <section className="mx-auto max-w-4xl px-5 py-12 text-center sm:py-16">
         <KeyRound className="mx-auto mb-4 h-9 w-9 text-amber-400" aria-hidden="true" />
         <h2 className="mb-3 font-heading text-2xl font-bold sm:text-4xl">{isSpanish ? '¿Necesita ayuda con una cerradura o una llave?' : 'Need Help With a Lock or Key?'}</h2>
