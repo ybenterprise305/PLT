@@ -26,11 +26,11 @@ export const SPANISH_SERVICES: Record<string, SpanishServiceTranslation> = {
     name: 'Cerrajería Residencial',
     badge: 'Seguridad del Hogar',
     categoryName: 'Residencial',
-    shortDescription: 'Servicios integrales para el hogar: cambio de combinación (rekey), cerrojos de alta seguridad y cerraduras inteligentes.',
-    fullDescription: 'La seguridad de su familia es nuestra máxima prioridad. Pro Locksmith Tech brinda servicios dedicados de cerrajería residencial para casas, townhomes, condominios y apartamentos en el Sur de la Florida. Desde cambiar la combinación de sus cerraduras al mudarse hasta instalar cerrojos de uso pesado y teclados electrónicos, nuestras camionetas móviles cuentan con hardware resistente al clima húmedo y al salitre de la costa de Florida.',
+    shortDescription: 'Servicios integrales para el hogar: cambio de combinación (cambio de combinación), cerrojos de alta seguridad y cerraduras inteligentes.',
+    fullDescription: 'La seguridad de su familia es nuestra máxima prioridad. Pro Locksmith Tech brinda servicios dedicados de cerrajería residencial para casas, casas adosadas, condominios y apartamentos en el Sur de la Florida. Desde cambiar la combinación de sus cerraduras al mudarse hasta instalar cerrojos de uso pesado y teclados electrónicos, nuestras camionetas móviles cuentan con herrajes resistente al clima húmedo y al salitre de la costa de Florida.',
     features: [
       'Instalación de cerrojos y manijas de seguridad',
-      'Cambio de combinación (rekeying) de toda la casa',
+      'Cambio de combinación (cambio de combinación) de toda la casa',
       'Cerraduras inteligentes y teclados digitales',
       'Seguros para puertas corredizas de patio y ventanas',
       'Reemplazo de cerraduras de buzón y copias de llaves'
@@ -41,7 +41,7 @@ export const SPANISH_SERVICES: Record<string, SpanishServiceTranslation> = {
     badge: 'Seguridad Empresarial',
     categoryName: 'Comercial',
     shortDescription: 'Cerraduras comerciales, barras antipánico para salidas de emergencia y sistemas de llave maestra para empresas.',
-    fullDescription: 'Asegure su local comercial, almacén u oficina corporativa con soluciones móviles profesionales. Pro Locksmith Tech repara e instala cerraduras comerciales de embutir (mortise locks Adams Rite), barras de empuje antipánico que cumplen con el código de incendios de Florida (NFPA 101) y diseña sistemas de llave maestra para que los administradores controlen el acceso sin cargar pesados manojos de llaves.',
+    fullDescription: 'Asegure su local comercial, almacén u oficina corporativa con soluciones móviles profesionales. Pro Locksmith Tech repara e instala cerraduras comerciales de embutir (cerraduras de embutir Adams Rite), barras de empuje antipánico que cumplen con el código de incendios de Florida (NFPA 101) y diseña sistemas de llave maestra para que los administradores controlen el acceso sin cargar pesados manojos de llaves.',
     features: [
       'Sistemas de llave maestra para edificios y oficinas',
       'Instalación y reparación de barras antipánico de salida',
@@ -92,12 +92,12 @@ export const SPANISH_SERVICES: Record<string, SpanishServiceTranslation> = {
       'Disponibilidad los 365 días del año'
     ]
   },
-  'lock-rekeying-service': {
+  'lock-cambio de combinación-service': {
     name: 'Cambio de Combinación (Rekeying)',
     badge: 'Ahorro Inteligente',
     categoryName: 'Residencial',
     shortDescription: 'Cambie las llaves de su casa o negocio manteniendo sus cerraduras actuales y ahorrando hasta un 70%.',
-    fullDescription: 'El rekeying consiste en reemplazar los pines internos del cilindro para que las llaves antiguas dejen de funcionar y solo una llave nueva pueda abrirlo. Es la opción ideal al mudarse a una nueva casa, terminar contratos de alquiler o tras la salida de empleados.',
+    fullDescription: 'El cambio de combinación consiste en reemplazar los pines internos del cilindro para que las llaves antiguas dejen de funcionar y solo una llave nueva pueda abrirlo. Es la opción ideal al mudarse a una nueva casa, terminar contratos de alquiler o tras la salida de empleados.',
     features: [
       'Las llaves anteriores quedan totalmente inútiles',
       'Ahorra hasta un 70% en comparación con comprar chapas nuevas',
@@ -194,7 +194,7 @@ export const SPANISH_SERVICES: Record<string, SpanishServiceTranslation> = {
     fullDescription: 'Instalamos cerraduras de reemplazo para renovar el acceso a su vivienda o negocio. Podemos ayudarle a elegir herrajes compatibles con su puerta.',
     features: ['Cambio de cerraduras', 'Instalación de cerraduras nuevas', 'Reemplazo de herrajes', 'Servicio móvil']
   },
-  'lock-rekeying': {
+  'lock-cambio de combinación': {
     name: 'Cambio de Combinación de Cerraduras', badge: 'Llaves Nuevas', categoryName: 'Residencial',
     shortDescription: 'Modificamos cerraduras compatibles para que funcionen con nuevas llaves.',
     fullDescription: 'El cambio de combinación permite conservar una cerradura compatible y cambiar las llaves que la abren. Es una opción útil después de mudarse o cuando necesita recuperar el control de acceso.',
@@ -218,7 +218,7 @@ export const SPANISH_SERVICES: Record<string, SpanishServiceTranslation> = {
     fullDescription: 'Instalamos cerraduras y cerrojos compatibles para puertas residenciales y comerciales. Nuestro servicio es móvil y se realiza en la ubicación del cliente.',
     features: ['Instalación de cerraduras', 'Instalación de cerrojos', 'Herrajes para puertas', 'Servicio móvil']
   },
-  'security-hardware': {
+  'security-herrajes': {
     name: 'Herrajes de Seguridad', badge: 'Seguridad de Puertas', categoryName: 'Comercial',
     shortDescription: 'Instalación y mantenimiento de herrajes de seguridad para puertas.',
     fullDescription: 'Ayudamos a mejorar el funcionamiento de puertas y cerraduras mediante herrajes de seguridad compatibles. Llámenos para consultar qué tipo de instalación o reparación necesita.',
@@ -264,8 +264,8 @@ export const SPANISH_FAQS = [
   },
   {
     id: 'es-faq-5',
-    question: '¿Cuál es la diferencia entre rekeying (cambio de combinación) y cambio de cerraduras?',
-    answer: 'El rekeying cambia la configuración interna de pines de sus cerraduras actuales para que las llaves antiguas ya no funcionen, ahorrándole hasta un 70% frente a comprar cerraduras nuevas. El reemplazo instala cerraduras y cerrojos Grado 1 o 2 totalmente nuevos, ideal si sus cerraduras están desgastadas, dañadas o desactualizadas.'
+    question: '¿Cuál es la diferencia entre cambio de combinación (cambio de combinación) y cambio de cerraduras?',
+    answer: 'El cambio de combinación cambia la configuración interna de pines de sus cerraduras actuales para que las llaves antiguas ya no funcionen, ahorrándole hasta un 70% frente a comprar cerraduras nuevas. El reemplazo instala cerraduras y cerrojos Grado 1 o 2 totalmente nuevos, ideal si sus cerraduras están desgastadas, dañadas o desactualizadas.'
   },
   {
     id: 'es-faq-6',
