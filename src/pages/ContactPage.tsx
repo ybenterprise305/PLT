@@ -83,10 +83,9 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
 
               <div className="pt-2 flex flex-wrap items-center gap-4 text-xs text-slate-400">
                 <span className="flex items-center gap-1.5 text-amber-400 font-semibold">
-                  <Zap className="w-4 h-4 fill-current" /> {isSpanish ? 'Atención Inmediata en Vivo' : 'Immediate Live Answer'}
+                  <Zap className="w-4 h-4 fill-current" /> {isSpanish ? 'Servicio Móvil 24/7' : '24/7 Mobile Service'}
                 </span>
-                <span>•</span>
-                <span>{isSpanish ? 'Sin menús automáticos' : 'No automated menus'}</span>
+
                 <span>•</span>
                 <span>{isSpanish ? 'Servicio 100% Móvil — Vamos a Ti' : '100% Mobile Service — We Come to You'}</span>
               </div>
@@ -254,7 +253,7 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
               </div>
 
               <h2 className="font-heading font-black text-2xl sm:text-4xl text-white tracking-tight">
-                {isSpanish ? 'Sin Esperas. Sin Formularios que Llenar.' : 'No Waiting. No Forms to Fill Out.'}
+                {isSpanish ? 'Llame a Nuestro Equipo de Cerrajería Móvil.' : 'Call Our Mobile Locksmith Team.'}
               </h2>
 
               <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
