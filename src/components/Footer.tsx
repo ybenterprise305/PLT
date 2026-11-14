@@ -184,7 +184,7 @@ export function Footer({ onNavigate }: FooterProps) {
                   className="hover:text-amber-400 transition-colors text-left flex items-center gap-1.5 py-0.5 cursor-pointer text-amber-300"
                 >
                   <ChevronRight className="w-3 h-3 text-amber-400 shrink-0" />
-                  <span className="font-bold">{isSpanish ? 'Consejos y Trucos de Cerrajería' : 'Locksmith Tips & Technical Guides'}</span>
+                  <span className="font-bold">{isSpanish ? 'Consejos (en inglés)' : 'Locksmith Tips & Technical Guides'}</span>
                 </LocalizedA>
               </li>
               <li>
@@ -192,7 +192,7 @@ export function Footer({ onNavigate }: FooterProps) {
                   className="hover:text-amber-400 transition-colors text-left flex items-center gap-1.5 py-0.5 cursor-pointer text-slate-300"
                 >
                   <ChevronRight className="w-3 h-3 text-amber-500/60 shrink-0" />
-                  <span>{isSpanish ? 'Artículos de Seguridad y Blog' : 'Security Blog & Advice'}</span>
+                  <span>{isSpanish ? 'Artículos (en inglés)' : 'Security Blog & Advice'}</span>
                 </LocalizedA>
               </li>
               <li>

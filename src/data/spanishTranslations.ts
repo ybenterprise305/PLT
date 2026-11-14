@@ -26,11 +26,11 @@ export const SPANISH_SERVICES: Record<string, SpanishServiceTranslation> = {
     name: 'Cerrajería Residencial',
     badge: 'Seguridad del Hogar',
     categoryName: 'Residencial',
-    shortDescription: 'Servicios integrales para el hogar: cambio de combinación (rekey), cerrojos de alta seguridad y cerraduras inteligentes.',
-    fullDescription: 'La seguridad de su familia es nuestra máxima prioridad. Pro Locksmith Tech brinda servicios dedicados de cerrajería residencial para casas, townhomes, condominios y apartamentos en el Sur de la Florida. Desde cambiar la combinación de sus cerraduras al mudarse hasta instalar cerrojos de uso pesado y teclados electrónicos, nuestras camionetas móviles cuentan con hardware resistente al clima húmedo y al salitre de la costa de Florida.',
+    shortDescription: 'Servicios integrales para el hogar: cambio de combinación (cambio de combinación), cerrojos de alta seguridad y cerraduras inteligentes.',
+    fullDescription: 'La seguridad de su familia es nuestra máxima prioridad. Pro Locksmith Tech brinda servicios dedicados de cerrajería residencial para casas, casas adosadas, condominios y apartamentos en el Sur de la Florida. Desde cambiar la combinación de sus cerraduras al mudarse hasta instalar cerrojos de uso pesado y teclados electrónicos, nuestras camionetas móviles cuentan con herrajes resistente al clima húmedo y al salitre de la costa de Florida.',
     features: [
       'Instalación de cerrojos y manijas de seguridad',
-      'Cambio de combinación (rekeying) de toda la casa',
+      'Cambio de combinación (cambio de combinación) de toda la casa',
       'Cerraduras inteligentes y teclados digitales',
       'Seguros para puertas corredizas de patio y ventanas',
       'Reemplazo de cerraduras de buzón y copias de llaves'
@@ -41,7 +41,7 @@ export const SPANISH_SERVICES: Record<string, SpanishServiceTranslation> = {
     badge: 'Seguridad Empresarial',
     categoryName: 'Comercial',
     shortDescription: 'Cerraduras comerciales, barras antipánico para salidas de emergencia y sistemas de llave maestra para empresas.',
-    fullDescription: 'Asegure su local comercial, almacén u oficina corporativa con soluciones móviles profesionales. Pro Locksmith Tech repara e instala cerraduras comerciales de embutir (mortise locks Adams Rite), barras de empuje antipánico que cumplen con el código de incendios de Florida (NFPA 101) y diseña sistemas de llave maestra para que los administradores controlen el acceso sin cargar pesados manojos de llaves.',
+    fullDescription: 'Asegure su local comercial, almacén u oficina corporativa con soluciones móviles profesionales. Pro Locksmith Tech repara e instala cerraduras comerciales de embutir (cerraduras de embutir Adams Rite), barras de empuje antipánico que cumplen con el código de incendios de Florida (NFPA 101) y diseña sistemas de llave maestra para que los administradores controlen el acceso sin cargar pesados manojos de llaves.',
     features: [
       'Sistemas de llave maestra para edificios y oficinas',
       'Instalación y reparación de barras antipánico de salida',
@@ -55,11 +55,11 @@ export const SPANISH_SERVICES: Record<string, SpanishServiceTranslation> = {
     badge: 'Autos y Llaves',
     categoryName: 'Automotriz',
     shortDescription: 'Apertura de autos, corte de llaves láser en el lugar y programación de controles y chips transponder.',
-    fullDescription: 'Ahorre cientos de dólares en costos de grúa y largas esperas en los concesionarios. Pro Locksmith Tech es un taller de cerrajería automotriz sobre ruedas que llega directamente a su automóvil en cualquier estacionamiento, carretera o domicilio del Sur de la Florida. Cortamos llaves con corte láser y programamos llaves inteligentes de botón (push-to-start) en el acto mediante escáneres diagnósticos OBD-II.',
+    fullDescription: 'Ahorre cientos de dólares en costos de grúa y largas esperas en los concesionarios. Pro Locksmith Tech es un taller de cerrajería automotriz sobre ruedas que llega directamente a su automóvil en cualquier estacionamiento, carretera o domicilio del Sur de la Florida. Cortamos llaves con corte láser y programamos llaves inteligentes de botón de arranque por botón en el acto mediante escáneres diagnósticos OBD-II.',
     features: [
       'Apertura urgente de autos sin rasguños',
       'Corte de llaves automotrices con maquinaria CNC láser',
-      'Programación de transponders y controles remotos (key fobs)',
+      'Programación de transpondedores y controles remotos ',
       'Reparación y reconstrucción de cilindros de ignición trabados',
       'Duplicación de llaves con chip para todas las marcas'
     ]
@@ -92,12 +92,12 @@ export const SPANISH_SERVICES: Record<string, SpanishServiceTranslation> = {
       'Disponibilidad los 365 días del año'
     ]
   },
-  'lock-rekeying-service': {
-    name: 'Cambio de Combinación (Rekeying)',
+  'lock-cambio de combinación-service': {
+    name: 'Cambio de Combinación ',
     badge: 'Ahorro Inteligente',
     categoryName: 'Residencial',
     shortDescription: 'Cambie las llaves de su casa o negocio manteniendo sus cerraduras actuales y ahorrando hasta un 70%.',
-    fullDescription: 'El rekeying consiste en reemplazar los pines internos del cilindro para que las llaves antiguas dejen de funcionar y solo una llave nueva pueda abrirlo. Es la opción ideal al mudarse a una nueva casa, terminar contratos de alquiler o tras la salida de empleados.',
+    fullDescription: 'El cambio de combinación consiste en reemplazar los pines internos del cilindro para que las llaves antiguas dejen de funcionar y solo una llave nueva pueda abrirlo. Es la opción ideal al mudarse a una nueva casa, terminar contratos de alquiler o tras la salida de empleados.',
     features: [
       'Las llaves anteriores quedan totalmente inútiles',
       'Ahorra hasta un 70% en comparación con comprar chapas nuevas',
@@ -135,13 +135,13 @@ export const SPANISH_SERVICES: Record<string, SpanishServiceTranslation> = {
     ]
   },
   'key-fob-programming': {
-    name: 'Programación de Controles (Key Fobs)',
+    name: 'Programación de Controles ',
     badge: 'Tecnología OBD',
     categoryName: 'Automotriz',
-    shortDescription: 'Programación de controles remotos y llaves de proximidad con botón de arranque (Push-to-Start).',
-    fullDescription: 'Programamos controles remotos, mandos de alarma y llaves de presencia (smart keys) para una amplia variedad de modelos. Conectamos equipos diagnósticos certificados al puerto OBD-II de su vehículo para sincronizar el sistema inmovilizador de manera segura.',
+    shortDescription: 'Programación de controles remotos y llaves de proximidad con botón de arranque de arranque por botón.',
+    fullDescription: 'Programamos controles remotos, mandos de alarma y llaves de presencia  para una amplia variedad de modelos. Conectamos equipos diagnósticos certificados al puerto OBD-II de su vehículo para sincronizar el sistema inmovilizador de manera segura.',
     features: [
-      'Sincronización de sistemas Push-to-Start',
+      'Sincronización de sistemas arranque por botón',
       'Borrado de llaves extraviadas de la memoria del auto',
       'Controles OEM de alta durabilidad',
       'Baterías nuevas incluidas y verificadas',
@@ -175,7 +175,55 @@ export const SPANISH_SERVICES: Record<string, SpanishServiceTranslation> = {
       'Cerraduras con respaldo de llave física para emergencias',
       'Asesoramiento completo sobre uso y mantenimiento'
     ]
-  }
+  },
+  'emergency-locksmith-service': {
+    name: 'Cerrajero de Emergencia 24 Horas', badge: 'Disponible 24/7', categoryName: 'Emergencia',
+    shortDescription: 'Asistencia móvil de cerrajería para emergencias en autos, viviendas y negocios.',
+    fullDescription: '¿Necesita ayuda urgente con una cerradura o una llave? Pro Locksmith Tech ofrece servicio móvil de cerrajería las 24 horas en el sur de Florida. Llámenos para solicitar asistencia en su ubicación.',
+    features: ['Aperturas de emergencia', 'Asistencia con llaves', 'Servicio a domicilio', 'Atención las 24 horas']
+  },
+  'lock-repair': {
+    name: 'Reparación de Cerraduras', badge: 'Reparación de Puertas', categoryName: 'Residencial',
+    shortDescription: 'Reparación de cerraduras que se atascan, no giran o funcionan mal.',
+    fullDescription: 'Revisamos y reparamos cerraduras compatibles para viviendas y comercios. Si su llave no gira, el pestillo no cierra o la cerradura se atasca, llámenos para solicitar servicio móvil.',
+    features: ['Reparación de cerraduras', 'Ajuste de pestillos', 'Diagnóstico de fallas', 'Servicio a domicilio']
+  },
+  'lock-replacement': {
+    name: 'Reemplazo de Cerraduras', badge: 'Cerraduras Nuevas', categoryName: 'Residencial',
+    shortDescription: 'Cambio de cerraduras dañadas o antiguas en viviendas y negocios.',
+    fullDescription: 'Instalamos cerraduras de reemplazo para renovar el acceso a su vivienda o negocio. Podemos ayudarle a elegir herrajes compatibles con su puerta.',
+    features: ['Cambio de cerraduras', 'Instalación de cerraduras nuevas', 'Reemplazo de herrajes', 'Servicio móvil']
+  },
+  'lock-cambio de combinación': {
+    name: 'Cambio de Combinación de Cerraduras', badge: 'Llaves Nuevas', categoryName: 'Residencial',
+    shortDescription: 'Modificamos cerraduras compatibles para que funcionen con nuevas llaves.',
+    fullDescription: 'El cambio de combinación permite conservar una cerradura compatible y cambiar las llaves que la abren. Es una opción útil después de mudarse o cuando necesita recuperar el control de acceso.',
+    features: ['Cambio de combinación', 'Nuevas llaves para cerraduras compatibles', 'Servicio residencial', 'Servicio comercial']
+  },
+  'key-duplication': {
+    name: 'Duplicado de Llaves', badge: 'Copias de Llaves', categoryName: 'Automotriz',
+    shortDescription: 'Copias de llaves compatibles para autos, puertas y otras cerraduras.',
+    fullDescription: 'Realizamos copias de llaves compatibles con diferentes tipos de cerraduras y vehículos. Llámenos para consultar la disponibilidad del tipo de llave que necesita.',
+    features: ['Copias de llaves', 'Corte de llaves compatibles', 'Llaves para vehículos', 'Asistencia móvil']
+  },
+  'key-replacement': {
+    name: 'Reemplazo de Llaves', badge: 'Llaves de Reemplazo', categoryName: 'Automotriz',
+    shortDescription: 'Ayuda cuando pierde, rompe o necesita reemplazar una llave.',
+    fullDescription: 'Si perdió una llave o necesita una nueva, ofrecemos soluciones de reemplazo para llaves compatibles de vehículos y cerraduras. Llámenos para confirmar las opciones disponibles.',
+    features: ['Llaves de reemplazo', 'Corte de llaves', 'Llaves de autos compatibles', 'Servicio en su ubicación']
+  },
+  'lock-installation': {
+    name: 'Instalación de Cerraduras', badge: 'Instalación Profesional', categoryName: 'Residencial',
+    shortDescription: 'Instalación de cerraduras, cerrojos y herrajes en puertas.',
+    fullDescription: 'Instalamos cerraduras y cerrojos compatibles para puertas residenciales y comerciales. Nuestro servicio es móvil y se realiza en la ubicación del cliente.',
+    features: ['Instalación de cerraduras', 'Instalación de cerrojos', 'Herrajes para puertas', 'Servicio móvil']
+  },
+  'security-herrajes': {
+    name: 'Herrajes de Seguridad', badge: 'Seguridad de Puertas', categoryName: 'Comercial',
+    shortDescription: 'Instalación y mantenimiento de herrajes de seguridad para puertas.',
+    fullDescription: 'Ayudamos a mejorar el funcionamiento de puertas y cerraduras mediante herrajes de seguridad compatibles. Llámenos para consultar qué tipo de instalación o reparación necesita.',
+    features: ['Herrajes para puertas', 'Instalación de piezas compatibles', 'Reparación de mecanismos', 'Servicio a domicilio']
+  },
 };
 
 export const SPANISH_COUNTIES: Record<string, { name: string; overview: string }> = {
@@ -211,13 +259,13 @@ export const SPANISH_FAQS = [
   },
   {
     id: 'es-faq-4',
-    question: '¿Pueden cortar llaves nuevas y programar controles (key fobs) en el lugar?',
-    answer: 'Sí. Nuestras unidades móviles cuentan con duplicadoras láser CNC computarizadas y escáneres diagnósticos OBD-II. Elaboramos llaves de auto nuevas, programamos chips transponder y configuramos llaves inteligentes de botón (Push-to-Start) en el acto para marcas americanas, asiáticas y europeas, incluso habiendo perdido todas las copias.'
+    question: '¿Pueden cortar llaves nuevas y programar controles  en el lugar?',
+    answer: 'Sí. Nuestras unidades móviles cuentan con duplicadoras láser CNC computarizadas y escáneres diagnósticos OBD-II. Elaboramos llaves de auto nuevas, programamos chips transponder y configuramos llaves inteligentes de botón de arranque por botón en el acto para marcas americanas, asiáticas y europeas, incluso habiendo perdido todas las copias.'
   },
   {
     id: 'es-faq-5',
-    question: '¿Cuál es la diferencia entre rekeying (cambio de combinación) y cambio de cerraduras?',
-    answer: 'El rekeying cambia la configuración interna de pines de sus cerraduras actuales para que las llaves antiguas ya no funcionen, ahorrándole hasta un 70% frente a comprar cerraduras nuevas. El reemplazo instala cerraduras y cerrojos Grado 1 o 2 totalmente nuevos, ideal si sus cerraduras están desgastadas, dañadas o desactualizadas.'
+    question: '¿Cuál es la diferencia entre cambio de combinación (cambio de combinación) y cambio de cerraduras?',
+    answer: 'El cambio de combinación cambia la configuración interna de pines de sus cerraduras actuales para que las llaves antiguas ya no funcionen, ahorrándole hasta un 70% frente a comprar cerraduras nuevas. El reemplazo instala cerraduras y cerrojos Grado 1 o 2 totalmente nuevos, ideal si sus cerraduras están desgastadas, dañadas o desactualizadas.'
   },
   {
     id: 'es-faq-6',

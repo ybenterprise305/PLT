@@ -35,6 +35,6 @@ export function switchPath(fullPath: string, to: Lang): string {
   const pathPart = cut === -1 ? fullPath : fullPath.slice(0, cut);
   const rest = cut === -1 ? '' : fullPath.slice(cut);
   const base = stripLocale(pathPart);
-  if (to === 'en') return base + rest;
+  if (to === 'en' || !hasSpanishVersion(base)) return base + rest;
   return (base === '/' ? '/es' : '/es' + base) + rest;
 }
