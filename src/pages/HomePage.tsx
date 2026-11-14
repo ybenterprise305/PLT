@@ -36,8 +36,8 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
               {isSpanish ? 'Servicio móvil 24/7 · Vamos hasta usted' : '24/7 Mobile Service · We Come to You'}
             </p>
             <h1 className="max-w-2xl font-heading text-4xl font-extrabold leading-[1.12] tracking-tight sm:text-5xl lg:text-6xl">
-              {isSpanish ? '¿Necesita un cerrajero?' : 'Need a Locksmith?'}
-              <span className="mt-2 block text-amber-400">{isSpanish ? 'Estamos a una llamada.' : 'We’re One Call Away.'}</span>
+              {isSpanish ? '¿Necesita un cerrajero en el sur de Florida?' : 'Need a Locksmith in South Florida?'}
+              <span className="mt-2 block text-amber-400">{isSpanish ? 'Llámenos ahora.' : 'We’re One Call Away.'}</span>
             </h1>
             <p className="max-w-xl text-base leading-7 text-slate-200 sm:text-lg">
               {isSpanish
