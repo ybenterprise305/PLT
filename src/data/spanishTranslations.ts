@@ -175,7 +175,55 @@ export const SPANISH_SERVICES: Record<string, SpanishServiceTranslation> = {
       'Cerraduras con respaldo de llave física para emergencias',
       'Asesoramiento completo sobre uso y mantenimiento'
     ]
-  }
+  },
+  'emergency-locksmith-service': {
+    name: 'Cerrajero de Emergencia 24 Horas', badge: 'Disponible 24/7', categoryName: 'Emergencia',
+    shortDescription: 'Asistencia móvil de cerrajería para emergencias en autos, viviendas y negocios.',
+    fullDescription: '¿Necesita ayuda urgente con una cerradura o una llave? Pro Locksmith Tech ofrece servicio móvil de cerrajería las 24 horas en el sur de Florida. Llámenos para solicitar asistencia en su ubicación.',
+    features: ['Aperturas de emergencia', 'Asistencia con llaves', 'Servicio a domicilio', 'Atención las 24 horas']
+  },
+  'lock-repair': {
+    name: 'Reparación de Cerraduras', badge: 'Reparación de Puertas', categoryName: 'Residencial',
+    shortDescription: 'Reparación de cerraduras que se atascan, no giran o funcionan mal.',
+    fullDescription: 'Revisamos y reparamos cerraduras compatibles para viviendas y comercios. Si su llave no gira, el pestillo no cierra o la cerradura se atasca, llámenos para solicitar servicio móvil.',
+    features: ['Reparación de cerraduras', 'Ajuste de pestillos', 'Diagnóstico de fallas', 'Servicio a domicilio']
+  },
+  'lock-replacement': {
+    name: 'Reemplazo de Cerraduras', badge: 'Cerraduras Nuevas', categoryName: 'Residencial',
+    shortDescription: 'Cambio de cerraduras dañadas o antiguas en viviendas y negocios.',
+    fullDescription: 'Instalamos cerraduras de reemplazo para renovar el acceso a su vivienda o negocio. Podemos ayudarle a elegir herrajes compatibles con su puerta.',
+    features: ['Cambio de cerraduras', 'Instalación de cerraduras nuevas', 'Reemplazo de herrajes', 'Servicio móvil']
+  },
+  'lock-rekeying': {
+    name: 'Cambio de Combinación de Cerraduras', badge: 'Llaves Nuevas', categoryName: 'Residencial',
+    shortDescription: 'Modificamos cerraduras compatibles para que funcionen con nuevas llaves.',
+    fullDescription: 'El cambio de combinación permite conservar una cerradura compatible y cambiar las llaves que la abren. Es una opción útil después de mudarse o cuando necesita recuperar el control de acceso.',
+    features: ['Cambio de combinación', 'Nuevas llaves para cerraduras compatibles', 'Servicio residencial', 'Servicio comercial']
+  },
+  'key-duplication': {
+    name: 'Duplicado de Llaves', badge: 'Copias de Llaves', categoryName: 'Automotriz',
+    shortDescription: 'Copias de llaves compatibles para autos, puertas y otras cerraduras.',
+    fullDescription: 'Realizamos copias de llaves compatibles con diferentes tipos de cerraduras y vehículos. Llámenos para consultar la disponibilidad del tipo de llave que necesita.',
+    features: ['Copias de llaves', 'Corte de llaves compatibles', 'Llaves para vehículos', 'Asistencia móvil']
+  },
+  'key-replacement': {
+    name: 'Reemplazo de Llaves', badge: 'Llaves de Reemplazo', categoryName: 'Automotriz',
+    shortDescription: 'Ayuda cuando pierde, rompe o necesita reemplazar una llave.',
+    fullDescription: 'Si perdió una llave o necesita una nueva, ofrecemos soluciones de reemplazo para llaves compatibles de vehículos y cerraduras. Llámenos para confirmar las opciones disponibles.',
+    features: ['Llaves de reemplazo', 'Corte de llaves', 'Llaves de autos compatibles', 'Servicio en su ubicación']
+  },
+  'lock-installation': {
+    name: 'Instalación de Cerraduras', badge: 'Instalación Profesional', categoryName: 'Residencial',
+    shortDescription: 'Instalación de cerraduras, cerrojos y herrajes en puertas.',
+    fullDescription: 'Instalamos cerraduras y cerrojos compatibles para puertas residenciales y comerciales. Nuestro servicio es móvil y se realiza en la ubicación del cliente.',
+    features: ['Instalación de cerraduras', 'Instalación de cerrojos', 'Herrajes para puertas', 'Servicio móvil']
+  },
+  'security-hardware': {
+    name: 'Herrajes de Seguridad', badge: 'Seguridad de Puertas', categoryName: 'Comercial',
+    shortDescription: 'Instalación y mantenimiento de herrajes de seguridad para puertas.',
+    fullDescription: 'Ayudamos a mejorar el funcionamiento de puertas y cerraduras mediante herrajes de seguridad compatibles. Llámenos para consultar qué tipo de instalación o reparación necesita.',
+    features: ['Herrajes para puertas', 'Instalación de piezas compatibles', 'Reparación de mecanismos', 'Servicio a domicilio']
+  },
 };
 
 export const SPANISH_COUNTIES: Record<string, { name: string; overview: string }> = {
