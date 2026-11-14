@@ -2,7 +2,7 @@
 import { chromium } from 'playwright';
 
 const BASE = process.env.BASE_URL || 'http://localhost:4173';
-const routes = ['/', '/services', '/services/car-lockout', '/service-areas', '/service-areas/boca-raton', '/contact', '/lp/car-lockout', '/blog', '/faq'];
+const routes = ['/', '/services', '/services/emergency-lockout-service', '/service-areas', '/service-areas/boca-raton', '/contact', '/lp/car-lockout', '/blog', '/faq'];
 const viewports = [
   { name: 'phone', width: 390, height: 844 },
   { name: 'tablet', width: 768, height: 1024 },
