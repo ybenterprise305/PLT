@@ -68,7 +68,7 @@ export function Footer({ onNavigate }: FooterProps) {
 
               <div className="flex items-center gap-3 text-slate-400 text-xs">
                 <Clock className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>{isSpanish ? 'Despacho de Emergencia 24/7 · Todos los Días' : '24/7 Emergency Dispatch · 365 Days a Year'}</span>
+                <span>{isSpanish ? 'Despacho de Emergencia 24/7' : '24/7 Emergency Dispatch'}</span>
               </div>
 
               <div className="flex items-center gap-3 text-slate-400 text-xs">
