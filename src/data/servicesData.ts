@@ -9,7 +9,7 @@ export const SERVICES_DATA: LocksmithService[] = [
     badge: '24/7 Priority',
     iconName: 'KeyRound',
     shortDescription: 'Immediate assistance for vehicle, residential, and commercial lockouts throughout South Florida.',
-    fullDescription: 'Locked out of your home, car, or office? Pro Locksmith Tech deploys mobile technicians equipped with non-destructive entry tools to safely regain access to your property. We handle locked keys in cars, jammed house deadbolts, malfunctioning digital commercial locks, and broken keys in locks with precision and care to prevent damage to your door frames, weatherstripping, or lock cylinders.',
+    fullDescription: 'Locked out of your home, car, or office? Pro Locksmith Tech deploys mobile technicians equipped with non-destructive entry tools to safely regain access to your property. We handle locked keys in cars, jammed house deadbolts, malfunctioning digital commercial locks, and broken keys in locks with careful techniques intended to reduce unnecessary damage to door frames, weatherstripping, and lock cylinders where circumstances permit.',
     features: [
       'Automotive door & trunk unlocks',
       'Residential deadbolt & knob entry',
@@ -95,7 +95,7 @@ export const SERVICES_DATA: LocksmithService[] = [
     shortDescription: 'Mobile car lockout, car key replacement, transponder chip programming, and ignition repair.',
     fullDescription: 'When vehicle key issues leave you stranded in a parking lot, driveway, or highway rest stop, Pro Locksmith Tech brings the shop directly to your car. We service domestic, foreign, and commercial vehicles. Our mobile units carry high-precision computerized key cutting machines and onboard diagnostic (OBD) key programming tablets for transponder chips, remote key fobs, and push-to-start smart proximity keys.',
     features: [
-      'Emergency car door and trunk opening without scratch or damage',
+      'Emergency car door and trunk opening using non-destructive methods when feasible; no damage-free result is guaranteed',
       'Transponder key cutting and chip programming',
       'Key fob replacement and smart push-to-start remotes',
       'Laser-cut high security "sidewinder" car keys',
