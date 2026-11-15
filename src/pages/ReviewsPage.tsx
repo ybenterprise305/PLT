@@ -4,6 +4,7 @@ import { SEOHead } from '../components/SEOHead';
 import { LocalizedA } from '../components/LocalizedA';
 import { useLanguage } from '../context/LanguageContext';
 import { trackPhoneClick } from '../utils/analytics';
+import { ReviewCarousel } from '../components/ReviewCarousel';
 import { techRekeyingImg, carKeyProgImg } from '../assets/images';
 
 // Verbatim reviews verified through the connected Pro Locksmith Tech GBP on Nov 14, 2026.
@@ -27,9 +28,10 @@ export function ReviewsPage() {
       description={isSpanish ? 'Lea opiniones reales de clientes de Pro Locksmith Tech. Cerrajería móvil las 24 horas en el sur de Florida.' : 'Read real customer reviews about Pro Locksmith Tech mobile locksmith services across South Florida. See our verified Google Maps listing.'}
       canonicalPath="/reviews"
     />
+    <ReviewCarousel />
     <section className="mx-auto max-w-6xl px-5 py-12 sm:py-16">
       <div className="max-w-3xl space-y-4">
-        <span className="inline-flex items-center gap-2 rounded-lg border border-amber-400/30 bg-amber-400/10 px-3 py-2 text-sm font-semibold text-amber-300"><Star className="h-4 w-4" />{isSpanish ? 'Opiniones publicadas en Google' : 'Customer feedback from Google'}</span>
+        <span className="inline-flex items-center gap-2 rounded-lg border border-amber-400/30 bg-amber-400/10 px-3 py-2 text-sm font-semibold text-amber-300"><Star className="h-4 w-4" />{isSpanish ? 'Valoración de 5 estrellas en Google' : '5-Star Rating on Google'}</span>
         <h1 className="font-heading text-3xl font-extrabold sm:text-5xl">{isSpanish ? 'Opiniones de clientes' : 'What Our Customers Say'}</h1>
         <p className="text-base leading-7 text-slate-300 sm:text-lg">{isSpanish ? 'Estos comentarios se publicaron en nuestro perfil de Google. Puede consultar el perfil original para obtener información actualizada.' : 'These are real reviews left on our Google Business Profile. Visit our Maps listing for current reviews and ratings.'}</p>
         <a href={MAPS} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[48px] items-center gap-2 font-semibold text-amber-300 underline underline-offset-4">
