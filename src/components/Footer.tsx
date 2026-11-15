@@ -229,6 +229,8 @@ export function Footer({ onNavigate }: FooterProps) {
           </div>
         </div>
 
+        <p className="mb-5 max-w-4xl text-xs leading-5 text-slate-400">*{isSpanish ? 'Los tiempos de llegada anunciados son solo estimaciones, no garantías. Pueden variar según el tráfico, la ubicación, el clima y la disponibilidad de técnicos.' : 'Advertised arrival times are estimates only, not guarantees. Actual arrival varies with traffic, location, weather and technician availability.'} <LocalizedA href="/terms" className="underline underline-offset-2 hover:text-slate-200">{isSpanish ? 'Consulte los términos' : 'See Terms of Service'}</LocalizedA>.</p>
+
         {/* Bottom Bar: Copyright, Language Switcher & Quick Navigation */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <div className="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
