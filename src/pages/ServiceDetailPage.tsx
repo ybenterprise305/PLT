@@ -71,17 +71,16 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": ["Locksmith", "LocalBusiness", "AutomotiveBusiness"],
+        "@type": ["Locksmith", "LocalBusiness"],
         "@id": "https://prolocksmith-tech.com/#locksmith",
         "name": "Pro Locksmith Tech",
-        "legalName": "Pro Locksmith Tech",
+        "legalName": "Pro Locksmith Tech LLC",
         "url": "https://prolocksmith-tech.com/",
         "logo": "https://prolocksmith-tech.com/icon-512.png",
         "image": "https://prolocksmith-tech.com/icon-512.png",
         "telephone": "+1-754-261-6528",
         "email": "prolocksmithtech@gmail.com",
-        "priceRange": "$$",
-        "paymentAccepted": "Cash, Credit Card, Debit Card, Mobile Pay",
+                "paymentAccepted": "Cash, Credit Card, Debit Card, Mobile Pay",
         "currenciesAccepted": "USD",
         "description": service.fullDescription,
         "serviceType": service.name,
@@ -134,24 +133,7 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
             "opens": "00:00",
             "closes": "23:59"
           }
-        ],
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": `${service.name} Solutions Catalog`,
-          "itemListElement": service.features.map(f => ({
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": f,
-              "serviceType": service.name,
-              "provider": {
-                "@type": "Locksmith",
-                "name": "Pro Locksmith Tech",
-                "telephone": "+1-754-261-6528"
-              }
-            }
-          }))
-        }
+        ]
       },
       {
         "@type": "Service",
@@ -169,14 +151,8 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
           { "@type": "AdministrativeArea", "name": "Broward County, FL" },
           { "@type": "AdministrativeArea", "name": "Miami-Dade County, FL" },
           { "@type": "AdministrativeArea", "name": "Palm Beach County, FL" }
-        ],
-        "offers": {
-          "@type": "Offer",
-          "priceCurrency": "USD",
-          "priceRange": "$$",
-          "availability": "https://schema.org/InStock",
-          "url": `https://prolocksmith-tech.com/services/${service.slug}`
-        }
+        ]
+
       },
       {
         "@type": "BreadcrumbList",
