@@ -269,6 +269,10 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
               <div className="rounded-2xl overflow-hidden border border-slate-800 shadow-xl relative group">
                 <img
                   src={serviceImage.src}
+                  srcSet={serviceImage.srcSet}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  width={960}
+                  height={640}
                   alt={isSpanish ? serviceImage.esAlt : serviceImage.enAlt}
                   className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="eager"
