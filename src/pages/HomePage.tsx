@@ -34,7 +34,7 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
           <div className="space-y-5">
             <p className="inline-flex items-center gap-2 rounded-full border border-amber-400/40 bg-amber-400/10 px-3 py-2 text-sm font-semibold text-amber-300">
               <Clock className="h-4 w-4" aria-hidden="true" />
-              {isSpanish ? 'Servicio móvil 24/7 · Vamos hasta usted' : '24/7 Mobile Service · We Come to You'}
+              {isSpanish ? 'Servicio móvil 24/7, día y noche · Vamos hasta usted' : '24/7 day and night · We Come to You'}
             </p>
             <h1 className="max-w-2xl font-heading text-4xl font-extrabold leading-[1.12] tracking-tight sm:text-5xl lg:text-6xl">
               {isSpanish ? '¿Necesita un cerrajero en el sur de Florida?' : 'Need a Locksmith in South Florida?'}
@@ -53,7 +53,7 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
             <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-slate-300">
               <span className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-amber-400" />{isSpanish ? 'Servicio móvil' : 'Mobile service'}</span>
               <span className="flex items-center gap-2"><MapPin className="h-4 w-4 text-amber-400" />{isSpanish ? 'Sur de Florida' : 'South Florida'}</span>
-              <span className="flex items-center gap-2"><Clock className="h-4 w-4 text-amber-400" />24/7</span>
+              <span className="flex items-center gap-2"><Clock className="h-4 w-4 text-amber-400" />{isSpanish ? '24/7 día y noche' : '24/7 day and night'}</span>
             </div>
           </div>
           <div className="overflow-hidden rounded-3xl border border-slate-700 bg-slate-900 shadow-xl">

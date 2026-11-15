@@ -354,9 +354,10 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
 
               <div className="pt-2 text-[11px] text-slate-400 border-t border-slate-800">
                 {isSpanish 
-                  ? 'Operando 24/7 en el Sur de la Florida · Llegada promedio 15–25 mins' 
-                  : 'Operating 24/7 across South Florida · Average mobile arrival 15–25 mins'}
+                  ? 'Operando 24/7 en el Sur de la Florida · Llegada estimada 15–25 min*' 
+                  : 'Operating 24/7 across South Florida · Estimated mobile arrival 15–25 min*'}
               </div>
+              <p className="mt-2 text-xs leading-5 text-slate-400">*{isSpanish ? 'Los tiempos de llegada son estimaciones, no garantías. Pueden variar según el tráfico, la ubicación y la disponibilidad.' : 'Arrival times are estimates, not guarantees. Traffic, location and availability may affect arrival.'} <LocalizedA href="/terms" className="underline">{isSpanish ? 'Condiciones' : 'Terms'}</LocalizedA></p>
             </div>
           </div>
         </div>

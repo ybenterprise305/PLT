@@ -74,7 +74,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
               <h1 className="font-heading text-4xl font-extrabold leading-[1.12] tracking-tight sm:text-5xl">{headline}</h1>
               <p className="max-w-xl text-lg leading-8 text-slate-200">{short}</p>
               {callButton('ppc_hero_call')}
-              <p className="text-sm font-medium text-slate-300">{isSpanish ? 'Llegada habitual en 15–20 minutos · Servicio móvil' : 'Typical 15–20 minute arrival · Mobile service'}</p>
+              <p className="text-sm font-medium text-slate-300">{isSpanish ? 'Llegada estimada en 15–20 minutos* · Servicio móvil' : 'Estimated 15–20 minute arrival* · Mobile service'}</p>
             </div>
             <div className="overflow-hidden rounded-2xl border border-slate-700">
               <img src={item.image} alt={isSpanish ? item.imageAltEs : item.imageAltEn}
@@ -90,7 +90,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
               {[
                 {en: 'Available 24/7', es: 'Disponibles 24/7', enText: 'Call day or night.', esText: 'Llámenos a cualquier hora.'},
                 {en: 'Mobile Service', es: 'Servicio a domicilio', enText: 'We come to your location.', esText: 'Vamos hasta su ubicación.'},
-                {en: 'Quick Arrival', es: 'Llegada rápida', enText: 'Typical 15–20 minute arrival.', esText: 'Llegada habitual en 15–20 minutos.'},
+                {en: 'Quick Arrival', es: 'Llegada rápida', enText: 'Estimated 15–20 minute arrival*.', esText: 'Llegada estimada en 15–20 minutos*.'},
                 {en: 'Locksmith Equipment', es: 'Equipo de cerrajería', enText: 'Tools and parts for all locksmith needs.', esText: 'Herramientas y piezas para todas las necesidades de cerrajería.'}
               ].map((step, i) => (
                 <div className="rounded-2xl border border-slate-700 bg-slate-950 p-5" key={i}>
@@ -103,6 +103,8 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
             <div className="mx-auto mt-8 max-w-lg">{callButton('ppc_process_call', true)}</div>
           </div>
         </section>
+
+        <div className="mx-auto max-w-6xl px-4 pb-4 sm:px-6"><p className="text-xs leading-5 text-slate-400">*{isSpanish ? 'Los tiempos de llegada son solo estimaciones; varían según la ubicación, el tráfico y la disponibilidad. No se garantiza un tiempo de llegada.' : 'Arrival times are estimates only and vary with location, traffic and technician availability. No arrival time is guaranteed.'} <LocalizedA href="/terms" className="underline underline-offset-2">{isSpanish ? 'Ver condiciones' : 'See terms'}</LocalizedA></p></div>
 
         <section className="mx-auto max-w-4xl space-y-5 px-4 py-12 text-center sm:px-6 sm:py-16">
           <CheckCircle2 className="mx-auto h-10 w-10 text-amber-400" aria-hidden="true" />

@@ -68,7 +68,7 @@ export function Footer({ onNavigate }: FooterProps) {
 
               <div className="flex items-center gap-3 text-slate-400 text-xs">
                 <Clock className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>{isSpanish ? 'Despacho de Emergencia 24/7 · Todos los Días' : '24/7 Emergency Dispatch · 365 Days a Year'}</span>
+                <span>{isSpanish ? 'Despacho de Emergencia 24/7' : '24/7 Emergency Dispatch'}</span>
               </div>
 
               <div className="flex items-center gap-3 text-slate-400 text-xs">
@@ -228,6 +228,8 @@ export function Footer({ onNavigate }: FooterProps) {
             </ul>
           </div>
         </div>
+
+        <p className="mb-5 max-w-4xl text-xs leading-5 text-slate-400">*{isSpanish ? 'Los tiempos de llegada anunciados son solo estimaciones, no garantías. Pueden variar según el tráfico, la ubicación, el clima y la disponibilidad de técnicos.' : 'Advertised arrival times are estimates only, not guarantees. Actual arrival varies with traffic, location, weather and technician availability.'} <LocalizedA href="/terms" className="underline underline-offset-2 hover:text-slate-200">{isSpanish ? 'Consulte los términos' : 'See Terms of Service'}</LocalizedA>.</p>
 
         {/* Bottom Bar: Copyright, Language Switcher & Quick Navigation */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
