@@ -71,7 +71,7 @@ export const SPANISH_SERVICES: Record<string, SpanishServiceTranslation> = {
     shortDescription: 'Apertura rápida y segura de vehículos sin rayar la pintura, los vidrios ni dañar las gomas.',
     fullDescription: 'Dejar las llaves adentro del carro puede ocurrirle a cualquiera. Pro Locksmith Tech utiliza cuñas de aire profesionales y herramientas de alcance largo especializadas que ingresan suavemente por el marco de la puerta para accionar el seguro sin doblar el metal ni romper empaques.',
     features: [
-      'Llegada móvil promedio en 15-25 minutos',
+      'Llegada móvil estimada en 15–25 minutos*',
       'Protocolo estricto de apertura sin daños',
       'Apertura de maleteros bloqueados',
       'Compatible con marcas americanas, asiáticas y europeas',
@@ -250,7 +250,7 @@ export const SPANISH_FAQS = [
   {
     id: 'es-faq-2',
     question: '¿Qué tan rápido puede llegar un cerrajero móvil a mi ubicación?',
-    answer: 'Nuestros técnicos móviles promedian un tiempo de llegada de 15 a 25 minutos en los condados de Broward, Miami-Dade y Palm Beach. Como nuestras camionetas patrullan activamente las carreteras y avenidas principales del Sur de la Florida, despachamos la unidad más cercana a sus coordenadas al llamar al (754) 261-6528.'
+    answer: 'El tiempo de llegada estimado puede ser de 15 a 25 minutos, pero no está garantizado y varía según la ubicación, el tráfico y la disponibilidad de técnicos. Como nuestras camionetas patrullan activamente las carreteras y avenidas principales del Sur de la Florida, despachamos la unidad más cercana a sus coordenadas al llamar al (754) 261-6528.'
   },
   {
     id: 'es-faq-3',
