@@ -6,6 +6,7 @@ import { LocalizedA } from '../components/LocalizedA';
 import { useLanguage } from '../context/LanguageContext';
 import { locksmithVanImg, carKeyProgImg, techRekeyingImg, locksmithCrewImg } from '../assets/images';
 import { trackPhoneClick } from '../utils/analytics';
+import { ReviewCarousel } from '../components/ReviewCarousel';
 
 interface HomePageProps { onNavigate: (path: string) => void; }
 const TEL = 'tel:+17542616528';
@@ -96,6 +97,8 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
           </div>
         </div>
       </section>
+
+      <ReviewCarousel compact />
 
       <section className="mx-auto max-w-7xl px-5 py-12 sm:py-16">
         <div className="grid items-center gap-8 md:grid-cols-2">
