@@ -16,7 +16,7 @@ import {
 import { SERVICES_DATA } from '../data/servicesData';
 import { getServiceFaqs } from '../data/serviceFaqs';
 import { SEOHead } from '../components/SEOHead';
-import { techRekeyingImg, carKeyProgImg, keyMachineImg } from '../assets/images';
+import { getServiceImage } from '../assets/images/serviceImages';
 import { useLanguage } from '../context/LanguageContext';
 import { SPANISH_SERVICES } from '../data/spanishTranslations';
 import { trackPhoneClick } from '../utils/analytics';
@@ -57,12 +57,7 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
   const serviceFullDesc = isSpanish && esData ? esData.fullDescription : service.fullDescription;
   const serviceFeatures = isSpanish && esData ? esData.features : service.features;
 
-  // Choose appropriate image based on category
-  const serviceImage = service.category === 'automotive' 
-    ? carKeyProgImg 
-    : service.category === 'commercial' 
-      ? keyMachineImg 
-      : techRekeyingImg;
+  const serviceImage = getServiceImage(service.slug);
 
   // =========================================================================
   // COMPREHENSIVE JSON-LD LocalBusiness & Service Schema Markup for AEO & SEO
@@ -246,6 +241,8 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
                 {serviceShortDesc}
               </p>
 
+              {service.slug === 'emergency-lockout-service' && <p className="text-base leading-7 text-amber-200">{isSpanish ? 'Cuando corresponde, nuestros técnicos pueden utilizar métodos de apertura no destructivos para ayudar a evitar daños innecesarios en la puerta o la cerradura.' : 'When appropriate, our technicians can use non-destructive entry methods to help unlock doors without unnecessary damage to the lock or surrounding hardware.'}</p>}
+
               {/* Direct Actions: Call Now & Text */}
               <div className="flex flex-col sm:flex-row gap-3 pt-3">
                 <LocalizedA
@@ -271,10 +268,11 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
             <div className="lg:col-span-5">
               <div className="rounded-2xl overflow-hidden border border-slate-800 shadow-xl relative group">
                 <img
-                  src={serviceImage}
-                  alt={serviceName}
+                  src={serviceImage.src}
+                  alt={isSpanish ? serviceImage.esAlt : serviceImage.enAlt}
                   className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
+                  loading="eager"
+                  fetchPriority="high"
                   decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent pointer-events-none" />

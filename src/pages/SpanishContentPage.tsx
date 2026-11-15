@@ -5,7 +5,8 @@ import { LocalizedA } from '../components/LocalizedA';
 import { SERVICES_DATA } from '../data/servicesData';
 import { COUNTIES_DATA, getAllCities, getCityBySlug, getCountyBySlug } from '../data/locationsData';
 import { SPANISH_SERVICES, SPANISH_FAQS } from '../data/spanishTranslations';
-import { carKeyProgImg, techRekeyingImg, locksmithVanImg } from '../assets/images';
+import { locksmithVanImg } from '../assets/images';
+import { getServiceImage } from '../assets/images/serviceImages';
 import { trackPhoneClick } from '../utils/analytics';
 
 interface Props { path: string; }
@@ -50,7 +51,7 @@ export function SpanishContentPage({ path }: Props) {
   const info = sections[path];
   const title = service ? (details?.name || fallback?.name || 'Servicio de cerrajería') : cityMatch ? 'Cerrajero móvil en ' + cityMatch.city.name : county ? 'Cerrajería móvil en ' + county.name : info?.title || 'Cerrajería móvil';
   const desc = service ? (details?.shortDescription || fallback?.desc || 'Servicio de cerrajería móvil las 24 horas en el sur de Florida.') : cityMatch ? 'Servicio móvil de aperturas, llaves y cerraduras en ' + cityMatch.city.name + ', Florida.' : county ? 'Cerrajería móvil para autos, casas y negocios en ' + county.name + ', Florida.' : info?.desc || '';
-  const image = service?.category === 'automotive' ? carKeyProgImg : service ? techRekeyingImg : locksmithVanImg;
+  const image = service ? getServiceImage(service.slug).src : locksmithVanImg;
 
   return (
     <div className="min-h-screen bg-slate-950 pb-12 text-white">
@@ -63,7 +64,7 @@ export function SpanishContentPage({ path }: Props) {
             <p className="text-lg leading-8 text-slate-200">{desc}</p>
             {cta('spanish_page_hero_call')}
           </div>
-          <img src={image} alt={service ? 'Equipo de servicio de cerrajería' : 'Camioneta de cerrajería móvil'} className="aspect-[4/3] w-full rounded-2xl object-cover" />
+          <img src={image} alt={service ? getServiceImage(service.slug).esAlt : 'Camioneta de cerrajería móvil'} className="aspect-[4/3] w-full rounded-2xl object-cover" loading="eager" fetchPriority="high" />
         </div>
       </section>
 
@@ -81,6 +82,8 @@ export function SpanishContentPage({ path }: Props) {
           </div>
         </section>
       )}
+
+      {service?.slug === 'emergency-lockout-service' && <p className="mx-auto max-w-6xl px-5 text-base leading-7 text-amber-200">Cuando corresponde, nuestros técnicos pueden utilizar métodos de apertura no destructivos para ayudar a evitar daños innecesarios.</p>}
 
       {service && (
         <section className="mx-auto max-w-6xl px-5 py-7">

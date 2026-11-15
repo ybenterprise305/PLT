@@ -70,3 +70,12 @@ button, a {
     animation: none !important;
   }
 }
+
+/* Gentle transition between verified customer reviews. */
+@keyframes reviewFade {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  [class*="reviewFade"] { animation: none !important; }
+}
