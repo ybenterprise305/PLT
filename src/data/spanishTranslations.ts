@@ -250,7 +250,7 @@ export const SPANISH_FAQS = [
   {
     id: 'es-faq-2',
     question: '¿Qué tan rápido puede llegar un cerrajero móvil a mi ubicación?',
-    answer: 'El tiempo de llegada estimado puede ser de 15 a 25 minutos, pero no está garantizado y varía según la ubicación, el tráfico y la disponibilidad de técnicos. Como nuestras camionetas patrullan activamente las carreteras y avenidas principales del Sur de la Florida, despachamos la unidad más cercana a sus coordenadas al llamar al (754) 261-6528.'
+    answer: 'El tiempo de llegada estimado puede ser de 15 a 25 minutos*, pero no está garantizado y varía según la ubicación, el tráfico y la disponibilidad de técnicos. Como nuestras camionetas patrullan activamente las carreteras y avenidas principales del Sur de la Florida, despachamos la unidad más cercana a sus coordenadas al llamar al (754) 261-6528.'
   },
   {
     id: 'es-faq-3',
