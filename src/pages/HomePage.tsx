@@ -1,7 +1,6 @@
 import React from 'react';
 import { Phone, Car, Home, Building2, KeyRound, ArrowRight, Clock, MapPin, ShieldCheck } from 'lucide-react';
 import { SEOHead } from '../components/SEOHead';
-import { ReviewCarousel } from '../components/ReviewCarousel';
 import { LocalizedA } from '../components/LocalizedA';
 import { useLanguage } from '../context/LanguageContext';
 import { locksmithVanImg, carKeyProgImg, techRekeyingImg, locksmithCrewImg } from '../assets/images';
