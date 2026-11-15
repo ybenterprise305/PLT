@@ -115,36 +115,6 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
             { "@type": "ListItem", "position": 4, "name": city.name, "item": `https://prolocksmith-tech.com/service-areas/${city.slug}` }
           ]
         },
-        {
-          "@type": "FAQPage",
-          "@id": `https://prolocksmith-tech.com/service-areas/${city.slug}#faq`,
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": `Do you have a physical locksmith store in ${city.name}?`,
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": `No. Pro Locksmith Tech is 100% mobile. We do not have a customer storefront. Our technicians arrive directly at your location in ${city.name} with fully equipped mobile workshop vans.`
-              }
-            },
-            {
-              "@type": "Question",
-              "name": `How fast can a mobile locksmith arrive in ${city.name}?`,
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": `Our mobile technicians actively patrol ${city.name} and ${county.name}. Typical emergency response time is 15-25 minutes depending on traffic. Call +1 (754) 261-6528 for real-time dispatch.`
-              }
-            },
-            {
-              "@type": "Question",
-              "name": `Can you make replacement car keys on-site in ${city.name}?`,
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": `Yes. Our vans carry computer-controlled laser key cutters and OBD-II transponder programmers capable of creating replacement keys and fobs for most vehicle makes and models right in ${city.name}.`
-              }
-            }
-          ]
-        }
       ]
     };
 

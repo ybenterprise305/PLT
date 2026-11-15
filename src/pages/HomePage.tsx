@@ -82,6 +82,12 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
               </LocalizedA>
             ))}
           </div>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-3 text-sm text-slate-300">
+            <span className="font-semibold">{isSpanish ? 'Opiniones reales publicadas en Google' : 'Real Google customer reviews'}</span>
+            <LocalizedA href="/reviews" className="font-semibold text-amber-300 underline underline-offset-4 hover:text-amber-200">
+              {isSpanish ? 'Ver opiniones' : 'Read reviews'}
+            </LocalizedA>
+          </div>
           <div className="mt-7 text-center">
             <LocalizedA href="/services" className="inline-flex min-h-[48px] items-center gap-2 rounded-xl border border-slate-600 px-5 py-3 text-base font-semibold text-white hover:border-amber-400">
               {isSpanish ? 'Ver todos los servicios' : 'Explore all services'} <ArrowRight className="h-4 w-4" />

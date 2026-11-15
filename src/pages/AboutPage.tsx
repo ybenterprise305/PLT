@@ -101,6 +101,20 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
           </div>
         </div>
 
+        {/* Authentic public review, not a fabricated testimonial or aggregate rating. */}
+        <section className="grid gap-6 rounded-2xl border border-amber-400/25 bg-slate-950 p-6 sm:p-8 lg:grid-cols-2 lg:items-center" aria-label="Customer feedback">
+          <div className="space-y-3">
+            <p className="text-sm font-bold uppercase tracking-wide text-amber-300">{isSpanish ? 'Opinión de un cliente en Google' : 'From a real Google customer review'}</p>
+            <blockquote className="text-base leading-8 text-slate-100">“Really happy with the service. Shawn made a new key for my 2022 Honda Accord and was very knowledgeable. The whole process was smooth and communication was excellent.”</blockquote>
+            <p className="text-sm font-semibold text-slate-300">Roger Celler · Google review · November 13, 2026</p>
+          </div>
+          <div className="space-y-4">
+            <h2 className="font-heading text-xl font-bold text-white">{isSpanish ? 'Conozca nuestras opiniones públicas' : 'See What Customers Have Shared'}</h2>
+            <p className="text-base leading-7 text-slate-300">{isSpanish ? 'Comentarios originales de clientes publicados en Google. Consulte las opiniones y nuestro perfil público.' : 'Customer feedback from our actual Google Business Profile, with a direct link to the original listing.'}</p>
+            <LocalizedA href="/reviews" className="inline-flex min-h-[48px] items-center rounded-xl border border-amber-400/50 px-5 py-3 font-bold text-amber-300 hover:bg-slate-900">{isSpanish ? 'Leer opiniones de clientes' : 'Read Customer Reviews'}</LocalizedA>
+          </div>
+        </section>
+
         {/* Core Pillars */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="bg-slate-950 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-4">

@@ -14,6 +14,7 @@ import {
   HelpCircle
 } from 'lucide-react';
 import { SERVICES_DATA } from '../data/servicesData';
+import { getServiceFaqs } from '../data/serviceFaqs';
 import { SEOHead } from '../components/SEOHead';
 import { techRekeyingImg, carKeyProgImg, keyMachineImg } from '../assets/images';
 import { useLanguage } from '../context/LanguageContext';
@@ -29,6 +30,7 @@ interface ServiceDetailPageProps {
 export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) {
   const { t, isSpanish } = useLanguage();
   const service = SERVICES_DATA.find(s => s.slug === slug);
+  const serviceFaqs = getServiceFaqs(slug);
 
   if (!service) {
     return (
@@ -69,17 +71,16 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": ["Locksmith", "LocalBusiness", "AutomotiveBusiness"],
+        "@type": ["Locksmith", "LocalBusiness"],
         "@id": "https://prolocksmith-tech.com/#locksmith",
         "name": "Pro Locksmith Tech",
-        "legalName": "Pro Locksmith Tech",
+        "legalName": "Pro Locksmith Tech LLC",
         "url": "https://prolocksmith-tech.com/",
         "logo": "https://prolocksmith-tech.com/icon-512.png",
         "image": "https://prolocksmith-tech.com/icon-512.png",
         "telephone": "+1-754-261-6528",
         "email": "prolocksmithtech@gmail.com",
-        "priceRange": "$$",
-        "paymentAccepted": "Cash, Credit Card, Debit Card, Mobile Pay",
+                "paymentAccepted": "Cash, Credit Card, Debit Card, Mobile Pay",
         "currenciesAccepted": "USD",
         "description": service.fullDescription,
         "serviceType": service.name,
@@ -132,24 +133,7 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
             "opens": "00:00",
             "closes": "23:59"
           }
-        ],
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": `${service.name} Solutions Catalog`,
-          "itemListElement": service.features.map(f => ({
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": f,
-              "serviceType": service.name,
-              "provider": {
-                "@type": "Locksmith",
-                "name": "Pro Locksmith Tech",
-                "telephone": "+1-754-261-6528"
-              }
-            }
-          }))
-        }
+        ]
       },
       {
         "@type": "Service",
@@ -167,14 +151,8 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
           { "@type": "AdministrativeArea", "name": "Broward County, FL" },
           { "@type": "AdministrativeArea", "name": "Miami-Dade County, FL" },
           { "@type": "AdministrativeArea", "name": "Palm Beach County, FL" }
-        ],
-        "offers": {
-          "@type": "Offer",
-          "priceCurrency": "USD",
-          "priceRange": "$$",
-          "availability": "https://schema.org/InStock",
-          "url": `https://prolocksmith-tech.com/services/${service.slug}`
-        }
+        ]
+
       },
       {
         "@type": "BreadcrumbList",
@@ -202,32 +180,11 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
       {
         "@type": "FAQPage",
         "@id": `https://prolocksmith-tech.com/services/${service.slug}#faq`,
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": `Does Pro Locksmith Tech provide mobile ${service.name} at my location?`,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": `Yes. Pro Locksmith Tech provides 100% mobile ${service.name} directly at your location across Coral Springs, Broward, Miami-Dade, and Palm Beach counties. Our locksmith technicians arrive in fully equipped vans stocked with key blanks, laser cutting machinery, OBD-II programmers, and commercial-grade locksets to complete work on-site.`
-            }
-          },
-          {
-            "@type": "Question",
-            "name": `How quickly can a mobile locksmith arrive for ${service.name}?`,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Our mobile locksmith units are actively patrolling South Florida roadways. Typical emergency arrival times range from 15 to 25 minutes depending on current traffic and your specific city. For immediate priority dispatch to your vehicle, residence, or commercial property, call our 24/7 hotline directly at +1 (754) 261-6528."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": `Do I need to visit a storefront or shop for ${service.name}?`,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "No. Pro Locksmith Tech is exclusively a mobile service provider with no public walk-in storefront. We bring all specialized automotive key programming tools, residential lock rekeying pins, and commercial door hardware directly to your site, saving you the expense and hassle of towing your vehicle or removing locks yourself."
-            }
-          }
-        ]
+        "mainEntity": serviceFaqs.map(item => ({
+          "@type": "Question",
+          "name": item.question,
+          "acceptedAnswer": { "@type": "Answer", "text": item.answer }
+        }))
       }
     ]
   };
@@ -276,7 +233,7 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
                 <span className="px-3 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold rounded-md uppercase tracking-wider">
                   {serviceBadge}
                 </span>
-                <span className="text-xs text-slate-400">
+                <span className="text-sm text-slate-400 leading-6">
                   {isSpanish ? 'Despacho Móvil en el Sur de la Florida' : 'Mobile Dispatch Across South Florida'}
                 </span>
               </div>
@@ -285,8 +242,8 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
                 {serviceName}
               </h1>
 
-              <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-                {serviceFullDesc}
+              <p className="text-base sm:text-lg text-slate-200 leading-7">
+                {serviceShortDesc}
               </p>
 
               {/* Direct Actions: Call Now & Text */}
@@ -329,6 +286,17 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
           </div>
         </div>
 
+        <section className="max-w-4xl mx-auto rounded-2xl border border-slate-800 bg-slate-950 p-6 sm:p-8">
+          <h2 className="font-heading text-xl sm:text-2xl font-bold text-white mb-3">About This Locksmith Service</h2>
+          <p className="text-base leading-8 text-slate-300">{serviceFullDesc}</p>
+          <div className="mt-5 flex flex-wrap items-center gap-3 text-sm font-semibold text-amber-300">
+            <span className="inline-flex items-center gap-1.5"><Clock className="h-4 w-4" />24/7 availability</span>
+            <span className="inline-flex items-center gap-1.5"><MapPin className="h-4 w-4" />South Florida service area</span>
+            <span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-4 w-4" />Mobile service — we come to you</span>
+            <LocalizedA href="/reviews" className="underline underline-offset-4">Real Google customer reviews</LocalizedA>
+          </div>
+        </section>
+
         {/* Detailed Sections: Features & Key Benefits */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Key Capabilities / Features */}
@@ -340,10 +308,10 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
             <p className="text-xs text-slate-400">
               {isSpanish 
                 ? 'Nuestros técnicos móviles realizan los siguientes trabajos directamente en su vehículo, domicilio o empresa:'
-                : `Comprehensive tasks performed directly at your vehicle, home, or business for ${service.name}:`
+                : `Services may include the following options, depending on your equipment and needs:`
               }
             </p>
-            <ul className="space-y-3 text-xs sm:text-sm text-slate-300">
+            <ul className="space-y-3 text-base text-slate-300">
               {serviceFeatures.map((feat, i) => (
                 <li key={i} className="p-3 bg-slate-900 rounded-xl border border-slate-800/80 flex items-start gap-3">
                   <CheckCircle2 className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
@@ -362,7 +330,7 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
             <p className="text-xs text-slate-400">
               {isSpanish
                 ? 'Nuestras unidades móviles cuentan con instrumental de alta tecnología para garantizar aperturas e instalaciones limpias:'
-                : 'Our mobile workshops carry high-grade field equipment to complete the work with zero damage:'
+                : 'Our mobile locksmiths use appropriate equipment for each service. Methods depend on the lock, key or vehicle:'
               }
             </p>
             <ul className="space-y-3 text-xs sm:text-sm text-slate-300">
@@ -378,79 +346,15 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
           </div>
         </div>
 
-        {/* Frequently Asked Questions (AEO & AI Search Snippet Block) */}
-        <section className="bg-slate-950 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6">
-          <div className="flex items-center gap-3 border-b border-slate-800/80 pb-4">
-            <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center flex-shrink-0 text-amber-400">
-              <HelpCircle className="w-5 h-5" />
-            </div>
-            <div>
-              <h2 className="font-heading font-black text-xl sm:text-2xl text-white">
-                {isSpanish ? `Preguntas Frecuentes sobre ${serviceName}` : `Frequently Asked Questions: ${service.name}`}
-              </h2>
-              <p className="text-xs text-slate-400 mt-0.5">
-                {isSpanish 
-                  ? 'Respuestas rápidas y claras de nuestros técnicos móviles en el Sur de la Florida.' 
-                  : 'Direct answers regarding our 24/7 mobile locksmith dispatch in South Florida.'
-                }
-              </p>
-            </div>
-          </div>
-
-          <div className="space-y-5">
-            <article className="p-5 bg-slate-900/90 rounded-xl border border-slate-800/80 space-y-2">
-              <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-amber-400 flex-shrink-0"></span>
-                <span>
-                  {isSpanish 
-                    ? `¿Pro Locksmith Tech ofrece ${serviceName} a domicilio en mi zona?`
-                    : `Does Pro Locksmith Tech provide mobile ${service.name} at my location?`
-                  }
-                </span>
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed pl-4">
-                {isSpanish
-                  ? `Sí. Pro Locksmith Tech brinda servicio 100% móvil de ${serviceName} directamente en su ubicación en Coral Springs, Broward, Miami-Dade y Palm Beach. Nuestras unidades móviles disponen de maquinaria de corte láser computarizada, programadores de llaves y repuestos de alta seguridad para resolver el problema en el acto sin necesidad de traslados.`
-                  : `Yes. Pro Locksmith Tech provides 100% mobile ${service.name} directly at your location across Coral Springs, Broward, Miami-Dade, and Palm Beach counties. Our locksmith technicians arrive in fully equipped vans stocked with key blanks, laser cutting machinery, OBD-II programmers, and commercial-grade locksets to complete work on-site.`
-                }
-              </p>
-            </article>
-
-            <article className="p-5 bg-slate-900/90 rounded-xl border border-slate-800/80 space-y-2">
-              <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-amber-400 flex-shrink-0"></span>
-                <span>
-                  {isSpanish 
-                    ? `¿Cuánto tarda en llegar un cerrajero móvil para ${serviceName}?`
-                    : `How quickly can a mobile locksmith arrive for ${service.name}?`
-                  }
-                </span>
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed pl-4">
-                {isSpanish
-                  ? 'Nuestras unidades móviles patrullan activamente las principales autopistas del Sur de la Florida. El tiempo promedio de llegada es de 15 a 25 minutos según el tráfico y su ciudad. Para despacho prioritario a su vehículo, casa o negocio, llame de inmediato a nuestra línea directa 24/7 al +1 (754) 261-6528.'
-                  : 'Our mobile locksmith units are actively patrolling South Florida roadways. Typical emergency arrival times range from 15 to 25 minutes depending on current traffic and your specific city. For immediate priority dispatch to your vehicle, residence, or commercial property, call our 24/7 hotline directly at +1 (754) 261-6528.'
-                }
-              </p>
-            </article>
-
-            <article className="p-5 bg-slate-900/90 rounded-xl border border-slate-800/80 space-y-2">
-              <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-amber-400 flex-shrink-0"></span>
-                <span>
-                  {isSpanish 
-                    ? `¿Debo desplazarme a una tienda física para ${serviceName}?`
-                    : `Do I need to visit a storefront or shop for ${service.name}?`
-                  }
-                </span>
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed pl-4">
-                {isSpanish
-                  ? 'No. Pro Locksmith Tech opera 100% como servicio móvil a domicilio y no cuenta con tienda de atención al público. Llevamos todo el equipo computarizado de programación de llaves, pines de recodificación y herrajes comerciales hasta donde usted se encuentre, evitándole costosos remolques de autos o desmontar cerraduras por su cuenta.'
-                  : 'No. Pro Locksmith Tech is exclusively a mobile service provider with no public walk-in storefront. We bring all specialized automotive key programming tools, residential lock rekeying pins, and commercial door hardware directly to your site, saving you the expense and hassle of towing your vehicle or removing locks yourself.'
-                }
-              </p>
-            </article>
+        {/* Relevant question-and-answer content; exactly matches FAQ structured data. */}
+        <section className="rounded-2xl border border-slate-800 bg-slate-950 p-6 sm:p-8">
+          <h2 className="font-heading text-2xl font-bold text-white mb-2">Frequently Asked Questions About {service.name}</h2>
+          <p className="mb-6 text-base leading-7 text-slate-300">Clear answers to common questions about {service.name.toLowerCase()} in South Florida.</p>
+          <div className="space-y-4">
+            {serviceFaqs.map((item, i) => <article className="rounded-xl border border-slate-800 bg-slate-900 p-5" key={i}>
+              <h3 className="mb-2 text-lg font-bold text-white">{item.question}</h3>
+              <p className="text-base leading-7 text-slate-300">{item.answer}</p>
+            </article>)}
           </div>
         </section>
 

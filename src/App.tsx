@@ -13,6 +13,7 @@ import { ServiceDetailPage } from './pages/ServiceDetailPage';
 import { ServiceAreasPage } from './pages/ServiceAreasPage';
 import { LocationDetailPage } from './pages/LocationDetailPage';
 import { AboutPage } from './pages/AboutPage';
+import { ReviewsPage } from './pages/ReviewsPage';
 import { ContactPage } from './pages/ContactPage';
 import { SitemapPage } from './pages/SitemapPage';
 import { FAQPage } from './pages/FAQPage';
@@ -20,7 +21,6 @@ import { BlogListPage } from './pages/BlogListPage';
 import { BlogPostPage } from './pages/BlogPostPage';
 import { AdLandingPage } from './pages/AdLandingPage';
 import { SpanishContentPage } from './pages/SpanishContentPage';
-import { AdLandingHubPage } from './pages/AdLandingHubPage';
 import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { TermsPage } from './pages/TermsPage';
 import { LocksmithTipsPage } from './pages/LocksmithTipsPage';
@@ -143,6 +143,8 @@ export default function App({ initialPath }: AppProps) {
     pageContent = <BlogPostPage slug={slug} onNavigate={navigate} />;
   } else if (normalizedPath === '/about') {
     pageContent = <AboutPage onNavigate={navigate} />;
+  } else if (normalizedPath === '/reviews') {
+    pageContent = <ReviewsPage />;
   } else if (normalizedPath === '/contact') {
     pageContent = <ContactPage onNavigate={navigate} />;
   } else if (normalizedPath === '/faq') {
@@ -156,8 +158,6 @@ export default function App({ initialPath }: AppProps) {
     pageContent = <PrivacyPolicyPage onNavigate={navigate} />;
   } else if (normalizedPath === '/terms') {
     pageContent = <TermsPage onNavigate={navigate} />;
-  } else if (normalizedPath === '/lp' || normalizedPath === '/advertising') {
-    pageContent = <AdLandingHubPage onNavigate={navigate} />;
   } else if (normalizedPath === '/sitemap') {
     pageContent = <SitemapPage onNavigate={navigate} />;
   } else {

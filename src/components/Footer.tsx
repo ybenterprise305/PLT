@@ -80,6 +80,10 @@ export function Footer({ onNavigate }: FooterProps) {
                 {isSpanish ? 'Canales Oficiales' : 'Official Channels'}
               </div>
               <SocialLinks variant="footer" />
+              <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+                <a href="https://maps.google.com/maps?cid=16992150185739281311" target="_blank" rel="noopener noreferrer" className="text-amber-300 hover:underline">{isSpanish ? 'Opiniones en Google Maps' : 'Google Maps & Reviews'}</a>
+                <a href="https://nextdoor.com/pages/pro-locksmith-tech-coral-springs-fl/" target="_blank" rel="noopener noreferrer" className="text-amber-300 hover:underline">Nextdoor</a>
+              </div>
             </div>
           </div>
 
@@ -196,11 +200,9 @@ export function Footer({ onNavigate }: FooterProps) {
                 </LocalizedA>
               </li>
               <li>
-                <LocalizedA href="/lp"
-                  className="hover:text-amber-400 transition-colors text-left flex items-center gap-1.5 py-0.5 cursor-pointer text-slate-400 hover:text-white"
-                >
+                <LocalizedA href="/reviews" className="hover:text-amber-400 transition-colors text-left flex items-center gap-1.5 py-0.5 cursor-pointer text-slate-300">
                   <ChevronRight className="w-3 h-3 text-amber-500/60 shrink-0" />
-                  <span>{isSpanish ? 'Páginas Especializadas de Anuncios' : 'Specialized Ad Landing Hub'}</span>
+                  <span>{isSpanish ? 'Opiniones de clientes (en inglés)' : 'Google Customer Reviews'}</span>
                 </LocalizedA>
               </li>
               <li>
