@@ -55,9 +55,9 @@ if (!fs.existsSync(reviewsPage)) problems.push('reviews page was not pre-rendere
 else if (!fs.readFileSync(reviewsPage, 'utf8').includes('Roger Celler')) problems.push('reviews page is missing the verified review content');
 if (fs.existsSync(path.join('dist', 'lp', 'index.html'))) problems.push('public campaign hub is still pre-rendered');
 if (!sitemap.includes('https://prolocksmith-tech.com/reviews')) problems.push('reviews page is missing from sitemap');
-for (const match of sitemap.matchAll(/<loc>([^<]+)<\\/loc>/g)) {
+for (const match of sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)) {
   const loc = new URL(match[1]);
-  const route = loc.pathname.replace(/\\/$/, '') || '/';
+  const route = loc.pathname.replace(/\/$/, '') || '/';
   const file = route === '/' ? path.join('dist', 'index.html') : path.join('dist', route, 'index.html');
   if (!fs.existsSync(file)) problems.push(`sitemap includes missing page: ${route}`);
   else if (/<meta name="robots" content="noindex/.test(fs.readFileSync(file,'utf8'))) problems.push(`sitemap includes noindex page: ${route}`);
