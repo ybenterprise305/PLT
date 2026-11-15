@@ -11,7 +11,7 @@ let template = fs.readFileSync(path.join(dist, 'index.html'), 'utf8');
 const yelpPublicUrl = (process.env.VITE_YELP_PUBLIC_URL || '').trim();
 if (/^https:\/\/(?:www\.)?yelp\.com\/biz\/[a-z0-9-]+(?:[/?#].*)?$/i.test(yelpPublicUrl)) {
   const nextdoor = '"https://nextdoor.com/pages/pro-locksmith-tech-coral-springs-fl/"';
-  if (template.includes(nextdoor)) template = template.replace(nextdoor, nextdoor + ',\\n        ' + JSON.stringify(yelpPublicUrl));
+  if (template.includes(nextdoor)) template = template.replace(nextdoor, nextdoor + ', ' + JSON.stringify(yelpPublicUrl));
 }
 
 // Vite 8 may emit the SSR entry in assets/ with a content hash. Resolve the
