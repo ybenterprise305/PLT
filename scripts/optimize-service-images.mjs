@@ -7,7 +7,7 @@ import { readdir, mkdir, stat } from 'node:fs/promises';
 import path from 'node:path';
 
 const inputDir = path.resolve('src/assets/images/services');
-const outputDir = path.resolve('src/assets/images/service-optimized');
+const outputDir = path.resolve('public/service-images');
 await mkdir(outputDir,{recursive:true});
 const names=(await readdir(inputDir)).filter(n=>n.endsWith('.png'));
 if(names.length !== 12) throw new Error('Expected 12 dedicated PNG service images, found '+names.length);
