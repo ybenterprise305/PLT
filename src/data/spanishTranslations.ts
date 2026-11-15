@@ -15,7 +15,7 @@ export const SPANISH_SERVICES: Record<string, SpanishServiceTranslation> = {
     shortDescription: 'Asistencia inmediata para aperturas de autos, viviendas y comercios en todo el Sur de la Florida.',
     fullDescription: '¿Se quedó afuera de su casa, vehículo u oficina? Pro Locksmith Tech despacha cerrajeros móviles equipados con herramientas de apertura no destructivas para recuperar el acceso a su propiedad de manera segura. Atendemos llaves encerradas en autos, cerrojos trabados, cerraduras digitales desconfiguradas y llaves partidas con la máxima precisión, protegiendo marcos, burletes y cilindros.',
     features: [
-      'Apertura de puertas y maleteros de autos sin daños',
+      'Apertura de puertas y maleteros con métodos no destructivos cuando sea posible; sin garantía de ausencia de daños',
       'Apertura de cerrojos y pomos residenciales',
       'Apertura de cerraduras comerciales y oficinas',
       'Técnicas avanzadas de ganzuado no invasivo',
@@ -72,7 +72,7 @@ export const SPANISH_SERVICES: Record<string, SpanishServiceTranslation> = {
     fullDescription: 'Dejar las llaves adentro del carro puede ocurrirle a cualquiera. Pro Locksmith Tech utiliza cuñas de aire profesionales y herramientas de alcance largo especializadas que ingresan suavemente por el marco de la puerta para accionar el seguro sin doblar el metal ni romper empaques.',
     features: [
       'Llegada móvil estimada en 15–25 minutos*',
-      'Protocolo estricto de apertura sin daños',
+      'Se priorizan técnicas no destructivas cuando sea posible; no se garantiza la ausencia de daños',
       'Apertura de maleteros bloqueados',
       'Compatible con marcas americanas, asiáticas y europeas',
       'Servicio disponible 24 horas al día'
