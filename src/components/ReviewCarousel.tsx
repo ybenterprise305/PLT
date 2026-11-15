@@ -41,7 +41,7 @@ export function ReviewCarousel({ compact=false }: { compact?: boolean }) {
     <div className="mx-auto max-w-6xl px-5">
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
         <div>
-          <p className="flex items-center gap-2 text-sm font-semibold text-amber-300"><Star className="h-4 w-4 fill-current"/>{isSpanish?'Valoración de 5 estrellas en Google':'5-Star Rating on Google'}</p>
+          <p className="flex items-center gap-2 text-sm font-semibold text-amber-300"><Star className="h-4 w-4 fill-current"/>{isSpanish?'Calificación 5.0 ★★★★★ en Google':'Rated 5.0 ★★★★★ on Google'}</p>
           <h2 className="mt-2 font-heading text-2xl font-bold sm:text-3xl">{isSpanish?'Lo que dicen nuestros clientes':'What Customers Are Saying'}</h2>
         </div>
         <a href={MAPS} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-amber-300 underline underline-offset-4">
