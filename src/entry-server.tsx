@@ -16,6 +16,7 @@ export function getRoutes(): string[] {
     '/services',
     '/service-areas',
     '/about',
+    '/reviews',
     '/contact',
     '/faq',
     '/blog',
