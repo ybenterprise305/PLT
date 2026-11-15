@@ -24,7 +24,6 @@ export function getRoutes(): string[] {
     '/sitemap',
     '/privacy',
     '/terms',
-    '/lp',
     ...SERVICES_DATA.map((s) => `/services/${s.slug}`),
     ...COUNTIES_DATA.map((c) => `/service-areas/${c.slug}`),
     ...getAllCities().map((c) => `/service-areas/${c.city.slug}`),
