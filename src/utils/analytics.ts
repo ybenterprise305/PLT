@@ -53,8 +53,23 @@ function captureAttribution(): void {
       const value = params.get(key);
       if (value) found[key] = value.slice(0, 200);
     });
+    // Yelp still receives referral credit when its profile URL has not yet been updated
+    // with UTMs. Never overwrite an explicit campaign or Google Ads click identifier.
+    const previous = readAttribution();
+    if (!found.utm_source && !found.gclid && !found.gbraid && !found.wbraid &&
+        !previous.utm_source && !previous.gclid && !previous.gbraid && !previous.wbraid &&
+        document.referrer) {
+      try {
+        const hostname = new URL(document.referrer).hostname.toLowerCase();
+        if (hostname === 'yelp.com' || hostname.endsWith('.yelp.com')) {
+          found.utm_source = 'yelp';
+          found.utm_medium = 'referral';
+          found.utm_campaign = 'business_profile';
+        }
+      } catch { /* Ignore invalid or unavailable referrer */ }
+    }
     if (Object.keys(found).length > 0) {
-      sessionStorage.setItem(ATTRIBUTION_STORAGE_KEY, JSON.stringify({ ...readAttribution(), ...found }));
+      sessionStorage.setItem(ATTRIBUTION_STORAGE_KEY, JSON.stringify({ ...previous, ...found }));
     }
   } catch {
     // Storage can be blocked (private mode); tracking still works without it.
