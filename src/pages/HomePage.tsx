@@ -1,6 +1,7 @@
 import React from 'react';
 import { Phone, Car, Home, Building2, KeyRound, ArrowRight, Clock, MapPin, ShieldCheck } from 'lucide-react';
 import { SEOHead } from '../components/SEOHead';
+import { ReviewCarousel } from '../components/ReviewCarousel';
 import { LocalizedA } from '../components/LocalizedA';
 import { useLanguage } from '../context/LanguageContext';
 import { locksmithVanImg, carKeyProgImg, techRekeyingImg, locksmithCrewImg } from '../assets/images';
@@ -133,6 +134,8 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
           </div>
         </div>
       </section>
+
+      <ReviewCarousel compact />
 
       <section className="mx-auto max-w-4xl px-5 py-12 text-center sm:py-16">
         <KeyRound className="mx-auto mb-4 h-9 w-9 text-amber-400" aria-hidden="true" />
