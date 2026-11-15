@@ -10,7 +10,8 @@ import {
 } from 'lucide-react';
 import { SERVICES_DATA } from '../data/servicesData';
 import { SEOHead } from '../components/SEOHead';
-import { techRekeyingImg, carKeyProgImg, keyMachineImg, locksmithVanImg } from '../assets/images';
+import { locksmithVanImg } from '../assets/images';
+import { getServiceImage } from '../assets/images/serviceImages';
 import { useLanguage } from '../context/LanguageContext';
 import { SPANISH_SERVICES } from '../data/spanishTranslations';
 import { trackPhoneClick } from '../utils/analytics';
@@ -27,12 +28,6 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
   const filtered = activeCategory === 'all'
     ? SERVICES_DATA
     : SERVICES_DATA.filter(s => s.category === activeCategory);
-
-  const getServiceImage = (category: string, id: string) => {
-    if (category === 'automotive' || id.includes('car')) return carKeyProgImg;
-    if (category === 'commercial' || id.includes('hardware') || id.includes('duplication')) return keyMachineImg;
-    return techRekeyingImg;
-  };
 
   const categories = [
     { id: 'all', label: isSpanish ? 'Todos los Servicios (12)' : 'All Services (12)' },
@@ -147,7 +142,7 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
         {/* Services List Grid with Photo Banners */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map((srv) => {
-            const srvImg = getServiceImage(srv.category, srv.id);
+            const srvImage = getServiceImage(srv.slug);
             const esTrans = SPANISH_SERVICES[srv.slug];
             const name = (isSpanish && esTrans) ? esTrans.name : srv.name;
             const badge = (isSpanish && esTrans) ? esTrans.badge : srv.badge;
@@ -159,10 +154,10 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
                 key={srv.id}
                 className="bg-slate-950 border border-slate-800 hover:border-amber-500/50 rounded-2xl overflow-hidden shadow-lg transition-all duration-200 hover:-translate-y-1 flex flex-col justify-between group"
               >
-                <LocalizedA href={`/services/${srv.slug}`} className="block h-40 relative overflow-hidden cursor-pointer">
+                <LocalizedA href={`/services/${srv.slug}`} className="block h-48 relative overflow-hidden cursor-pointer">
                   <img
-                    src={srvImg}
-                    alt={name}
+                    src={srvImage.src}
+                    alt={isSpanish ? srvImage.esAlt : srvImage.enAlt}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                     decoding="async"
@@ -181,9 +176,10 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
                       <LocalizedA href={`/services/${srv.slug}`}>{name}</LocalizedA>
                     </h3>
 
-                    <p className="text-xs sm:text-sm text-slate-400 mt-2 leading-relaxed">
+                    <p className="text-sm sm:text-base text-slate-300 mt-2 leading-7">
                       {shortDesc}
                     </p>
+                    {srv.slug === 'emergency-lockout-service' && <p className="mt-3 text-sm leading-6 text-amber-200">{isSpanish ? 'Cuando corresponde, nuestros técnicos pueden utilizar métodos de apertura no destructivos para evitar daños innecesarios.' : 'When appropriate, our technicians can use non-destructive entry methods to help avoid unnecessary damage.'}</p>}
 
                     <div className="mt-4 pt-4 border-t border-slate-800/80 space-y-1.5">
                       {features.slice(0, 3).map((f, i) => (
