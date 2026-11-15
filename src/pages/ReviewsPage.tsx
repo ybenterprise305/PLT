@@ -31,7 +31,7 @@ export function ReviewsPage() {
     <ReviewCarousel />
     <section className="mx-auto max-w-6xl px-5 py-12 sm:py-16">
       <div className="max-w-3xl space-y-4">
-        <span className="inline-flex items-center gap-2 rounded-lg border border-amber-400/30 bg-amber-400/10 px-3 py-2 text-sm font-semibold text-amber-300"><Star className="h-4 w-4" />{isSpanish ? 'Valoración de 5 estrellas en Google' : '5-Star Rating on Google'}</span>
+        <span className="inline-flex items-center gap-2 rounded-lg border border-amber-400/30 bg-amber-400/10 px-3 py-2 text-sm font-semibold text-amber-300"><Star className="h-4 w-4" />{isSpanish ? 'Calificación 5.0 ★★★★★ en Google' : 'Rated 5.0 ★★★★★ on Google'}</span>
         <h1 className="font-heading text-3xl font-extrabold sm:text-5xl">{isSpanish ? 'Opiniones de clientes' : 'What Our Customers Say'}</h1>
         <p className="text-base leading-7 text-slate-300 sm:text-lg">{isSpanish ? 'Estos comentarios se publicaron en nuestro perfil de Google. Puede consultar el perfil original para obtener información actualizada.' : 'These are real reviews left on our Google Business Profile. Visit our Maps listing for current reviews and ratings.'}</p>
         <a href={MAPS} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[48px] items-center gap-2 font-semibold text-amber-300 underline underline-offset-4">
@@ -53,7 +53,7 @@ export function ReviewsPage() {
           <h2 className="font-heading text-2xl font-bold">{isSpanish ? 'Cerrajería móvil en el sur de Florida' : 'Mobile Locksmith Service Across South Florida'}</h2>
           <p className="text-base leading-7 text-slate-300">{isSpanish ? 'Estamos disponibles 24 horas al día y vamos directamente a su vehículo, casa o negocio. Sin tienda física.' : 'We provide 24/7 mobile locksmith service at your vehicle, home or business. No walk-in storefront.'}</p>
           <div className="flex flex-wrap gap-3 text-sm text-amber-300">
-            <span className="inline-flex gap-1"><Clock className="h-4 w-4"/>24/7/365</span>
+            <span className="inline-flex gap-1"><Clock className="h-4 w-4"/>24/7</span>
             <span className="inline-flex gap-1"><Truck className="h-4 w-4"/>{isSpanish ? 'Servicio móvil' : 'Mobile service'}</span>
             <span className="inline-flex gap-1"><ShieldCheck className="h-4 w-4"/>{isSpanish ? 'Perfil verificable' : 'Public Google profile'}</span>
           </div>
