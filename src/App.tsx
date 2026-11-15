@@ -21,7 +21,6 @@ import { BlogListPage } from './pages/BlogListPage';
 import { BlogPostPage } from './pages/BlogPostPage';
 import { AdLandingPage } from './pages/AdLandingPage';
 import { SpanishContentPage } from './pages/SpanishContentPage';
-import { AdLandingHubPage } from './pages/AdLandingHubPage';
 import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { TermsPage } from './pages/TermsPage';
 import { LocksmithTipsPage } from './pages/LocksmithTipsPage';
@@ -159,8 +158,6 @@ export default function App({ initialPath }: AppProps) {
     pageContent = <PrivacyPolicyPage onNavigate={navigate} />;
   } else if (normalizedPath === '/terms') {
     pageContent = <TermsPage onNavigate={navigate} />;
-  } else if (normalizedPath === '/lp' || normalizedPath === '/advertising') {
-    pageContent = <AdLandingHubPage onNavigate={navigate} />;
   } else if (normalizedPath === '/sitemap') {
     pageContent = <SitemapPage onNavigate={navigate} />;
   } else {
