@@ -53,7 +53,7 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
             <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-slate-300">
               <span className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-amber-400" />{isSpanish ? 'Servicio móvil' : 'Mobile service'}</span>
               <span className="flex items-center gap-2"><MapPin className="h-4 w-4 text-amber-400" />{isSpanish ? 'Sur de Florida' : 'South Florida'}</span>
-              <span className="flex items-center gap-2"><Clock className="h-4 w-4 text-amber-400" />24/7</span>
+              <span className="flex items-center gap-2"><Clock className="h-4 w-4 text-amber-400" />{isSpanish ? '24/7 día y noche' : '24/7 day and night'}</span>
             </div>
           </div>
           <div className="overflow-hidden rounded-3xl border border-slate-700 bg-slate-900 shadow-xl">
