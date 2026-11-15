@@ -13,6 +13,7 @@ import { ServiceDetailPage } from './pages/ServiceDetailPage';
 import { ServiceAreasPage } from './pages/ServiceAreasPage';
 import { LocationDetailPage } from './pages/LocationDetailPage';
 import { AboutPage } from './pages/AboutPage';
+import { ReviewsPage } from './pages/ReviewsPage';
 import { ContactPage } from './pages/ContactPage';
 import { SitemapPage } from './pages/SitemapPage';
 import { FAQPage } from './pages/FAQPage';
@@ -143,6 +144,8 @@ export default function App({ initialPath }: AppProps) {
     pageContent = <BlogPostPage slug={slug} onNavigate={navigate} />;
   } else if (normalizedPath === '/about') {
     pageContent = <AboutPage onNavigate={navigate} />;
+  } else if (normalizedPath === '/reviews') {
+    pageContent = <ReviewsPage />;
   } else if (normalizedPath === '/contact') {
     pageContent = <ContactPage onNavigate={navigate} />;
   } else if (normalizedPath === '/faq') {
