@@ -16,6 +16,9 @@ interface FooterProps {
 
 export function Footer({ onNavigate }: FooterProps) {
   const { t, isSpanish } = useLanguage();
+  // Configure only with the public /biz/ URL, never the biz.yelp.com owner dashboard.
+  const configuredYelpUrl = (import.meta.env.VITE_YELP_PUBLIC_URL || '').trim();
+  const yelpUrl = /^https:\/\/(?:www\.)?yelp\.com\/biz\/[a-z0-9-]+(?:[/?#].*)?$/i.test(configuredYelpUrl) ? configuredYelpUrl : null;
 
   return (
     <footer className="bg-slate-950 text-slate-300 pt-16 pb-24 lg:pb-12 border-t border-slate-800">
@@ -83,6 +86,7 @@ export function Footer({ onNavigate }: FooterProps) {
               <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-sm">
                 <a href="https://maps.google.com/maps?cid=16992150185739281311" target="_blank" rel="noopener noreferrer" className="text-amber-300 hover:underline">{isSpanish ? 'Opiniones en Google Maps' : 'Google Maps & Reviews'}</a>
                 <a href="https://nextdoor.com/pages/pro-locksmith-tech-coral-springs-fl/" target="_blank" rel="noopener noreferrer" className="text-amber-300 hover:underline">Nextdoor</a>
+                {yelpUrl && <a href={yelpUrl} target="_blank" rel="noopener noreferrer" className="text-amber-300 hover:underline">Yelp</a>}
               </div>
             </div>
           </div>

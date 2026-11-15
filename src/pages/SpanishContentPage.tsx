@@ -64,7 +64,7 @@ export function SpanishContentPage({ path }: Props) {
             <p className="text-lg leading-8 text-slate-200">{desc}</p>
             {cta('spanish_page_hero_call')}
           </div>
-          <img src={image} alt={service ? getServiceImage(service.slug).esAlt : 'Camioneta de cerrajería móvil'} className="aspect-[4/3] w-full rounded-2xl object-cover" loading="eager" fetchPriority="high" />
+          <img src={image} srcSet={service ? getServiceImage(service.slug).srcSet : undefined} sizes="(max-width: 1024px) 100vw, 50vw" width={960} height={640} alt={service ? getServiceImage(service.slug).esAlt : 'Camioneta de cerrajería móvil'} className="aspect-[4/3] w-full rounded-2xl object-cover" loading="eager" fetchPriority="high" />
         </div>
       </section>
 

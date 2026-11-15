@@ -157,6 +157,10 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
                 <LocalizedA href={`/services/${srv.slug}`} className="block h-48 relative overflow-hidden cursor-pointer">
                   <img
                     src={srvImage.src}
+                    srcSet={srvImage.srcSet}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    width={960}
+                    height={640}
                     alt={isSpanish ? srvImage.esAlt : srvImage.enAlt}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
