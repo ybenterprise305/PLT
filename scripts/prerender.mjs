@@ -6,7 +6,14 @@ import { pathToFileURL } from 'node:url';
 
 const root = process.cwd();
 const dist = path.join(root, 'dist');
-const template = fs.readFileSync(path.join(dist, 'index.html'), 'utf8');
+let template = fs.readFileSync(path.join(dist, 'index.html'), 'utf8');
+// Add Yelp to the canonical business identity only after the public-facing listing is verified.
+const yelpPublicUrl = (process.env.VITE_YELP_PUBLIC_URL || '').trim();
+if (/^https:\/\/(?:www\.)?yelp\.com\/biz\/[a-z0-9-]+(?:[/?#].*)?$/i.test(yelpPublicUrl)) {
+  const nextdoor = '"https://nextdoor.com/pages/pro-locksmith-tech-coral-springs-fl/"';
+  if (template.includes(nextdoor)) template = template.replace(nextdoor, nextdoor + ',\\n        ' + JSON.stringify(yelpPublicUrl));
+}
+
 // Vite 8 may emit the SSR entry in assets/ with a content hash. Resolve the
 // actual generated entry instead of assuming a fixed file name.
 const serverDir = path.join(root, 'dist-server');
