@@ -137,8 +137,6 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      <ReviewCarousel compact />
-
       <section className="mx-auto max-w-4xl px-5 py-12 text-center sm:py-16">
         <KeyRound className="mx-auto mb-4 h-9 w-9 text-amber-400" aria-hidden="true" />
         <h2 className="mb-3 font-heading text-2xl font-bold sm:text-4xl">{isSpanish ? '¿Necesita ayuda con una cerradura o una llave?' : 'Need Help With a Lock or Key?'}</h2>
