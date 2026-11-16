@@ -1,5 +1,5 @@
 import React from 'react';
-import { KeyRound, Phone, Home, MapPin, MessageSquare } from 'lucide-react';
+import { KeyRound, Phone, Home, MapPin } from 'lucide-react';
 import { SEOHead } from '../components/SEOHead';
 
 import { LocalizedA } from '../components/LocalizedA';
@@ -45,13 +45,7 @@ export function NotFoundPage({ onNavigate }: NotFoundPageProps) {
               <Phone className="w-4 h-4 fill-current" />
               <span>Call (754) 261-6528</span>
             </LocalizedA>
-            <LocalizedA
-              href="sms:+17542616528"
-              className="py-3 px-4 bg-slate-800 hover:bg-slate-700 text-slate-100 font-bold text-xs rounded-xl border border-slate-700 flex items-center justify-center gap-1.5"
-            >
-              <MessageSquare className="w-4 h-4 text-amber-400" />
-              <span>Text Us</span>
-            </LocalizedA>
+            
           </div>
         </div>
 
