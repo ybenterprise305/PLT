@@ -13,7 +13,6 @@ import {
   ChevronDown, 
   ChevronUp, 
   Share2, 
-  MessageSquare,
   ShieldAlert,
   Car,
   Home,
@@ -365,13 +364,7 @@ export function TipDetailPage({ slug, onNavigate }: TipDetailPageProps) {
                 <Phone className="w-3.5 h-3.5 fill-current" />
                 <span>Call: (754) 261-6528</span>
               </LocalizedA>
-              <LocalizedA
-                href="sms:+17542616528"
-                className="px-4 py-2.5 bg-slate-800 hover:bg-slate-750 text-slate-200 font-bold text-xs rounded-lg border border-slate-700 flex items-center gap-1.5"
-              >
-                <MessageSquare className="w-3.5 h-3.5 text-amber-400" />
-                <span>Text Us</span>
-              </LocalizedA>
+              
             </div>
           </div>
         </section>
