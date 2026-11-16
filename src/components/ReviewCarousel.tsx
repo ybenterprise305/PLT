@@ -59,7 +59,7 @@ export function ReviewCarousel({ compact=false }: { compact?: boolean }) {
             <blockquote className="text-base leading-8 text-white sm:text-lg">“{review.quote}”</blockquote>
             <figcaption className="text-sm text-slate-300"><span className="font-bold text-white">{review.name}</span><span className="mx-2" aria-hidden="true">·</span>{review.date} · Google</figcaption>
           </figure>
-          {review.image && <div className="md:w-40"><img src={review.image} alt={isSpanish?'Foto adjunta por el cliente a su opinión en Google':'Photo provided by customer in Google review'} loading="lazy" referrerPolicy="no-referrer" className="max-h-48 w-full rounded-xl border border-slate-700 object-cover" onError={e=>{e.currentTarget.style.display='none'}}/><p className="mt-2 text-xs text-slate-400">{isSpanish?'Foto aportada por el cliente':'Customer-provided photo'}</p></div>}
+          {review.image && <div className="md:w-40"><img src={review.image} alt={isSpanish?'Foto adjunta por el cliente a su opinión en Google':'Photo provided by customer in Google review'} width={640} height={480} loading="lazy" decoding="async" referrerPolicy="no-referrer" className="aspect-[4/3] max-h-48 w-full rounded-xl border border-slate-700 object-cover" onError={e=>{e.currentTarget.style.display='none'}}/><p className="mt-2 text-xs text-slate-400">{isSpanish?'Foto aportada por el cliente':'Customer-provided photo'}</p></div>}
         </div>
         <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-slate-700 pt-4">
           <div className="flex gap-1.5" aria-label={isSpanish?'Seleccionar opinión':'Select review'}>
