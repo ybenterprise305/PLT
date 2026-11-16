@@ -5,7 +5,7 @@ import {
   MapPin, 
   Menu, 
   X, 
-  MessageSquare,
+  
   Home,
   Wrench,
   Navigation,
@@ -359,13 +359,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
                 <span>CALL NOW: (754) 261-6528</span>
               </LocalizedA>
 
-              <LocalizedA
-                href="sms:+17542616528"
-                className="w-full py-3.5 px-4 bg-slate-900 text-slate-200 font-bold text-xs uppercase rounded-xl border border-slate-700 flex items-center justify-center gap-2 min-h-[46px] cursor-pointer"
-              >
-                <MessageSquare className="w-4 h-4 text-amber-400" />
-                <span>{isSpanish ? 'Enviar Mensaje de Texto' : 'Text Location For Dispatch'}</span>
-              </LocalizedA>
+              
             </div>
 
           </div>
