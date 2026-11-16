@@ -1,11 +1,11 @@
 import React from 'react';
-import { Phone, MessageSquare, ShieldCheck, Zap } from 'lucide-react';
+import { Phone } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { trackPhoneClick } from '../utils/analytics';
 
 import { LocalizedA } from './LocalizedA';
 export function MobileCallBar() {
-  const { t, isSpanish } = useLanguage();
+  const { isSpanish } = useLanguage();
 
   return (
     <aside 
@@ -14,16 +14,7 @@ export function MobileCallBar() {
     >
       <div className="flex items-center gap-2 max-w-md mx-auto w-full">
         {/* Secondary Action: Quick Text */}
-        <LocalizedA
-          href="sms:+17542616528"
-          className="flex flex-col items-center justify-center min-h-[48px] px-3 bg-slate-900 active:bg-slate-800 text-slate-200 active:text-amber-400 rounded-xl border border-slate-700/80 shadow shrink-0 cursor-pointer select-none"
-          aria-label="Text Pro Locksmith Tech at 754-261-6528"
-        >
-          <MessageSquare className="w-4 h-4 text-amber-400 mb-0.5" />
-          <span className="text-[10px] font-black uppercase tracking-wider leading-none">
-            {isSpanish ? 'TEXTO' : 'TEXT'}
-          </span>
-        </LocalizedA>
+        
 
         {/* PRIMARY UNMISSABLE TAP-TO-CALL BUTTON */}
         <LocalizedA
