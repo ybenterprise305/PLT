@@ -331,7 +331,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
                   <div className="font-bold text-white">
                     {isSpanish ? 'Cerrajería Móvil 24/7' : '24/7 Mobile Locksmith Service'}
                   </div>
-                  <div className="text-slate-400 text-[11px]">
+                  <div className="text-slate-300 text-xs">
                     {isSpanish ? 'Vamos a su auto, casa o negocio' : 'We travel directly to your location'}
                   </div>
                 </div>
@@ -339,7 +339,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
 
               {/* Social Channels in Drawer */}
               <div className="pt-2">
-                <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2 text-center">
+                <div className="text-xs font-bold text-slate-300 uppercase tracking-wider mb-2 text-center">
                   {isSpanish ? 'Canales Oficiales' : 'Official Social Channels'}
                 </div>
                 <div className="flex justify-center">
