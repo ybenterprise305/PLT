@@ -22,6 +22,8 @@ for (const file of files) {
   const canonicals = html.match(/<link rel="canonical"/g) || [];
   const h1s = html.match(/<h1[\s>]/g) || [];
 
+  // Call-only policy: no server-rendered customer SMS actions on any route.
+  if (/href=[\"']sms:/i.test(html)) problems.push(`${page}: SMS/text contact link found (call-only site)`);
   if (!title) problems.push(`${page}: missing title`);
   if (title.length > 60) problems.push(`${page}: title is ${title.length} characters (max 60): ${title}`);
   if (!desc) problems.push(`${page}: missing description`);
