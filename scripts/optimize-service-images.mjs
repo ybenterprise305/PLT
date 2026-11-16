@@ -65,6 +65,8 @@ console.log('Generated ' + ppcSlugs.length + ' distinct PPC photographic scenes,
 const hero=path.resolve('src/assets/images/locksmith_van_clean_1790360598992.webp');
 const heroDir=path.resolve('public/home-images');
 await mkdir(heroDir,{recursive:true});
-for (const [width,quality] of [[480,65],[960,70]]) {
- await sharp(hero).resize({width,withoutEnlargement:true}).webp({quality,effort:5}).toFile(path.join(heroDir,'mobile-van-'+width+'.webp'));
+for (const [width,quality] of [[360,56],[480,58],[720,61],[960,64]]) {
+ const file=path.join(heroDir,'mobile-van-'+width+'.webp');
+ await sharp(hero).rotate().resize({width,withoutEnlargement:true}).webp({quality,effort:6}).toFile(file);
+ console.log('Hero '+width+'px: '+((await stat(file)).size/1024).toFixed(1)+' KiB');
 }

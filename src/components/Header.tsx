@@ -87,7 +87,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
           <LocalizedA
             href="tel:+17542616528"
             onClick={() => trackPhoneClick({ ctaLocation: 'mobile_top_strip_call', pagePath: currentPath })}
-            className="flex items-center gap-1 text-amber-400 hover:text-amber-300 font-black text-xs shrink-0 pl-2"
+            className="flex min-h-[44px] items-center gap-1 rounded-lg px-2 text-amber-300 hover:text-amber-200 font-black text-xs shrink-0"
           >
             <Phone className="w-3 h-3 fill-current" />
             <span>(754) 261-6528</span>
@@ -331,7 +331,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
                   <div className="font-bold text-white">
                     {isSpanish ? 'Cerrajería Móvil 24/7' : '24/7 Mobile Locksmith Service'}
                   </div>
-                  <div className="text-slate-400 text-[11px]">
+                  <div className="text-slate-300 text-xs">
                     {isSpanish ? 'Vamos a su auto, casa o negocio' : 'We travel directly to your location'}
                   </div>
                 </div>
@@ -339,7 +339,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
 
               {/* Social Channels in Drawer */}
               <div className="pt-2">
-                <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2 text-center">
+                <div className="text-xs font-bold text-slate-300 uppercase tracking-wider mb-2 text-center">
                   {isSpanish ? 'Canales Oficiales' : 'Official Social Channels'}
                 </div>
                 <div className="flex justify-center">

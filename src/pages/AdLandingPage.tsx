@@ -12,7 +12,7 @@ const PHONE = '(754) 261-6528';
 const TEL = 'tel:+17542616528';
 
 const copy: Record<string, {en: string; es: string; enText: string; esText: string; image: string; imageAltEn: string; imageAltEs: string}> = {
-  'car-lockout': {en: 'Locked Out of Your Car?', es: '¿Dejó las llaves dentro del auto?', enText: 'Mobile car unlocking across South Florida. Call our 24/7 team and we’ll come to you.', esText: 'Apertura de autos a domicilio en el sur de Florida. Llámenos a cualquier hora.', image: '/ppc-images/car-lockout-960.webp', imageAltEn: 'Automotive locksmith service', imageAltEs: 'Servicio de cerrajería para autos'},
+  'car-lockout': {en: 'Locked Out of Your Car?', es: '¿Dejó las llaves dentro del auto?', enText: 'Mobile car unlocking across South Florida. Call our 24/7 team and we’ll come to you.', esText: 'Apertura de autos a domicilio en el sur de Florida. Llámenos a cualquier hora.', image: '/ppc-images/car-lockout-lishi.webp', imageAltEn: 'Illustrative automotive locksmith using a Lishi tool in a car door key cylinder', imageAltEs: 'Imagen ilustrativa de un cerrajero utilizando una herramienta Lishi en la cerradura de un auto'},
   'car-key-replacement': {en: 'Lost Your Car Keys?', es: '¿Perdió las llaves de su auto?', enText: 'Replacement car keys, cutting and programming at your location.', esText: 'Reemplazo, corte y programación de llaves de auto en su ubicación.', image: '/ppc-images/car-key-replacement-960.webp', imageAltEn: 'Car key equipment', imageAltEs: 'Equipos para llaves de auto'},
   'house-lockout': {en: 'Locked Out of Your House?', es: '¿No puede entrar a su casa?', enText: 'Get mobile help with your home lockout. Call us any time.', esText: 'Le ayudamos a recuperar el acceso a su vivienda. Llámenos a cualquier hora.', image: '/ppc-images/house-lockout-960.webp', imageAltEn: 'Residential locksmith tools', imageAltEs: 'Herramientas de cerrajería residencial'},
   'lock-rekeying': {en: 'Need Your Locks Rekeyed?', es: '¿Necesita cambiar la combinación de sus cerraduras?', enText: 'Change which keys work in your existing locks with mobile rekeying service.', esText: 'Cambie las llaves que abren sus cerraduras actuales con servicio a domicilio.', image: '/ppc-images/lock-rekeying-960.webp', imageAltEn: 'Door lock service', imageAltEs: 'Servicio de cerraduras'},
@@ -37,7 +37,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
   const headline = isSpanish ? item.es : item.en;
   const short = isSpanish ? item.esText : item.enText;
   const pagePath = '/lp/' + slug;
-  const photoSrcSet = `/ppc-images/${slug}-480.webp 480w, /ppc-images/${slug}-960.webp 960w`;
+  const photoSrcSet = slug === 'car-lockout' ? '/ppc-images/car-lockout-lishi.webp 640w' : `/ppc-images/${slug}-480.webp 480w, /ppc-images/${slug}-960.webp 960w`;
   const isLockout = ['car-lockout','house-lockout','safe-lockout','storage-unit-lockout','emergency-locksmith'].includes(slug);
   const review = slug === 'house-lockout' ? { name: 'isaac', text: 'Shawn came quick and opened my house within minutes so grateful.' } : ['car-lockout','car-key-replacement','car-key-fob-programming','lost-car-keys','ignition-repair'].includes(slug) ? { name: 'Roger Celler', text: 'Really happy with the service. Shawn made a new key for my 2022 Honda Accord and was very knowledgeable. The whole process was smooth and communication was excellent.' } : { name: 'Nick Manning', text: 'Shawn did a Great job. Quick service and very friendly. Some locksmiths get bad reps for ripping people off. Shawn will try and fix the problem the cheapest and most efficient way possible.' };
   const call = (location: string) => trackPhoneClick({ ctaLocation: location, pagePath, campaignSlug: slug });
@@ -81,7 +81,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
               <p className="text-sm font-medium text-slate-300">{isSpanish ? 'Llegada estimada en 15–20 minutos* · Servicio móvil' : 'Estimated 15–20 minute arrival* · Mobile service'}</p>
             </div>
             <div className="overflow-hidden rounded-2xl border border-slate-700">
-              <img src={item.image} srcSet={photoSrcSet} sizes="(max-width: 1023px) 100vw, 50vw" width={960} height={660} alt={isSpanish ? item.imageAltEs : item.imageAltEn}
+              <img src={item.image} srcSet={photoSrcSet} sizes="(max-width: 1023px) 100vw, 50vw" width={slug === 'car-lockout' ? 640 : 960} height={slug === 'car-lockout' ? 427 : 660} alt={isSpanish ? item.imageAltEs : item.imageAltEn}
                 className="aspect-[16/11] w-full object-cover" fetchPriority="high" loading="eager" decoding="async" />
             </div>
           </div>

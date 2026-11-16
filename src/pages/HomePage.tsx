@@ -57,7 +57,7 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
             </div>
           </div>
           <div className="overflow-hidden rounded-3xl border border-slate-700 bg-slate-900 shadow-xl">
-            <img src="/home-images/mobile-van-960.webp" srcSet="/home-images/mobile-van-480.webp 480w, /home-images/mobile-van-960.webp 960w" sizes="(max-width: 1023px) 100vw, 50vw" width={960} height={720} alt={isSpanish ? 'Camioneta de servicio móvil con equipos de cerrajería' : 'Illustrative mobile locksmith service van with equipment'} className="aspect-[4/3] w-full object-cover" fetchPriority="high" loading="eager" decoding="async" />
+            <img src="/home-images/mobile-van-720.webp" srcSet="/home-images/mobile-van-360.webp 360w, /home-images/mobile-van-480.webp 480w, /home-images/mobile-van-720.webp 720w, /home-images/mobile-van-960.webp 960w" sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1023px) calc(100vw - 40px), 50vw" width={960} height={720} alt={isSpanish ? 'Camioneta de servicio móvil con equipos de cerrajería' : 'Illustrative mobile locksmith service van with equipment'} className="aspect-[4/3] w-full object-cover" fetchPriority="high" loading="eager" decoding="async" />
           </div>
         </div>
       </section>
