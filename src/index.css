@@ -83,3 +83,9 @@ button, a {
 /* Keyboard and touchscreen usability: ensure focus remains clear over navy surfaces. */
 :where(a, button, select, input, textarea):focus-visible { outline: 3px solid #f3cd58; outline-offset: 3px; }
 :where(a, button) { -webkit-tap-highlight-color: rgba(243,205,88,.18); }
+
+/* Skip painting expensive off-screen home sections until users scroll near them.
+   HTML remains in the DOM for indexing, links, screen readers and navigation. */
+@supports (content-visibility: auto) {
+  .below-fold-section { content-visibility: auto; contain-intrinsic-size: auto 620px; }
+}
