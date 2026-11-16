@@ -29,6 +29,12 @@ for (const vp of viewports) {
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
     if (overflow > 1) failures.push(`${tag}: page scrolls sideways by ${overflow}px`);
 
+    // Every public page (English, Spanish, organic or PPC) must offer phone calls only.
+    const smsLinks = await page.locator('a[href^="sms:"]').count();
+    if (smsLinks) failures.push(`${tag}: found ${smsLinks} forbidden SMS/text buttons`);
+    const liveCallLinks = await page.locator('a[href="tel:+17542616528"]').count();
+    if (!liveCallLinks) failures.push(`${tag}: missing call-to-phone action`);
+
     const h1 = await page.locator('h1').count();
     if (h1 < 1) failures.push(`${tag}: no <h1>`);
 
