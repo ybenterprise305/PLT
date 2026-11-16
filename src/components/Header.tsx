@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { 
   Phone, 
   MapPin, 
@@ -46,22 +47,29 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
   };
 
   useEffect(() => {
-    if (mobileMenuOpen) {
-      // Place the drawer flush under the main nav bar, whatever the top strip height is
-      if (navBarRef.current) {
-        setDrawerTop(Math.round(navBarRef.current.getBoundingClientRect().bottom));
-      }
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
+    if (!mobileMenuOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    const update = () => setDrawerTop(Math.max(0, Math.round(navBarRef.current?.getBoundingClientRect().bottom ?? 80)));
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setMobileMenuOpen(false);
+    };
+    update();
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('resize', update, { passive: true });
+    window.addEventListener('orientationchange', update);
+    document.addEventListener('keydown', onKeyDown);
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('resize', update);
+      window.removeEventListener('orientationchange', update);
+      document.removeEventListener('keydown', onKeyDown);
     };
   }, [mobileMenuOpen]);
 
+  useEffect(() => { setMobileMenuOpen(false); }, [currentPath]);
+
   return (
-    <header className="contents select-none">
+    <header className="sticky top-0 z-[70] select-none bg-slate-950">
       
       {/* 1. TOP UTILITY BAR: Desktop gets full suite, mobile gets sleek single-line announcement */}
       <div className="bg-slate-950 text-slate-200 border-b border-slate-800/80">
@@ -138,7 +146,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
       </div>
 
       {/* 2. MAIN HEADER NAVIGATION BAR (Home, Services, Service Areas, Contact ONLY) */}
-      <div ref={navBarRef} className={`w-full sticky top-0 z-40 select-none transition-shadow duration-200 ${
+      <div ref={navBarRef} className={`w-full relative z-40 select-none transition-shadow duration-200 ${
         isScrolled 
           ? 'bg-slate-900/98 backdrop-blur-md shadow-xl border-b border-slate-800' 
           : 'bg-slate-900 border-b border-slate-800'
@@ -228,9 +236,10 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
               {/* Hamburger Button with Accessible Touch Area */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="w-10 h-10 rounded-xl bg-slate-800 active:bg-slate-700 text-slate-200 hover:text-white flex items-center justify-center transition-colors focus:outline-none cursor-pointer"
-                aria-label="Toggle navigation menu"
+                className="w-11 h-11 rounded-xl bg-slate-800 active:bg-slate-700 text-slate-200 hover:text-white flex items-center justify-center transition-colors focus:outline-none cursor-pointer"
+                aria-label={mobileMenuOpen ? (isSpanish ? 'Cerrar menú' : 'Close menu') : (isSpanish ? 'Abrir menú' : 'Open menu')}
                 aria-expanded={mobileMenuOpen}
+                aria-controls="mobile-site-navigation"
               >
                 {mobileMenuOpen ? <X className="w-5 h-5 text-amber-400" /> : <Menu className="w-5 h-5" />}
               </button>
@@ -239,8 +248,11 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
         </div>
 
         {/* 3. MOBILE NAVIGATION DRAWER (Full-screen overlay for effortless smartphone navigation) */}
-        {mobileMenuOpen && (
-          <div style={{ top: drawerTop }} className="lg:hidden fixed inset-x-0 bottom-0 z-50 bg-slate-950/98 backdrop-blur-xl border-t border-slate-800 overflow-y-auto px-4 py-5 flex flex-col justify-between">
+        {mobileMenuOpen && typeof document !== 'undefined' && createPortal(
+          <> 
+            <button type="button" aria-label={isSpanish ? 'Cerrar menú' : 'Close navigation'} onClick={() => setMobileMenuOpen(false)} className="fixed inset-x-0 bottom-0 z-[79] bg-black/65 lg:hidden" style={{ top: drawerTop }} />
+            
+          <div id="mobile-site-navigation" role="dialog" aria-modal="true" aria-label={isSpanish ? "Menú del sitio" : "Site navigation"} style={{ top: drawerTop }} className="lg:hidden fixed inset-x-0 bottom-0 z-[80] bg-slate-950/98 backdrop-blur-xl border-t border-slate-800 overflow-y-auto px-4 py-5 flex flex-col justify-between">
             
             <div className="space-y-5">
               {/* Language Switcher Bar in Drawer */}
@@ -357,7 +369,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
             </div>
 
           </div>
-        )}
+        </>, document.body)}
       </div>
     </header>
   );
