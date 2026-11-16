@@ -12,7 +12,7 @@ export function MobileCallBar() {
       aria-label="Emergency Mobile Call Bar"
       className="fixed bottom-0 left-0 right-0 z-50 lg:hidden bg-slate-950/98 backdrop-blur-xl border-t-2 border-amber-500/80 px-2.5 py-2 shadow-[0_-10px_35px_rgba(0,0,0,0.9)] pb-[calc(0.5rem+env(safe-area-inset-bottom,0px))] transition-transform"
     >
-      <div className="flex items-center gap-2 max-w-md mx-auto w-full">
+      <div className="flex items-center gap-2 max-w-lg mx-auto w-full">
         {/* PRIMARY UNMISSABLE TAP-TO-CALL BUTTON */}
         <LocalizedA
           href="tel:+17542616528"
