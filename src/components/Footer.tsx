@@ -46,7 +46,7 @@ export function Footer({ onNavigate }: FooterProps) {
                 <Truck className="w-3.5 h-3.5" />
                 <span>{isSpanish ? 'Servicio Móvil a Domicilio — Sin Tienda Física' : '100% Mobile Service Area Business (SAB)'}</span>
               </div>
-              <p className="text-[11px] text-slate-400 leading-normal">
+              <p className="text-xs text-slate-300 leading-normal">
                 {isSpanish
                   ? 'Operamos como un servicio 100% móvil sin tienda de atención al público. Nuestros técnicos viajan directamente a su vehículo, residencia o empresa en todo el Sur de la Florida.'
                   : 'We operate as a 100% mobile service without a walk-in storefront. Technicians travel directly to your vehicle, home, or business throughout our South Florida service area.'}
@@ -142,7 +142,7 @@ export function Footer({ onNavigate }: FooterProps) {
                       <MapPin className="w-3 h-3 text-amber-400 shrink-0" />
                       <span>{countyName}</span>
                     </LocalizedA>
-                    <div className="flex flex-wrap gap-x-2 gap-y-1 text-slate-400 pl-4">
+                    <div className="flex flex-wrap gap-x-2 gap-y-1 text-slate-300 pl-4">
                       {county.majorCities.slice(0, 3).map((city) => (
                         <LocalizedA href={`/service-areas/${city.slug}`}
                           key={city.id}
