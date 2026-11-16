@@ -75,6 +75,9 @@ for (const route of routes) {
   let page = template.replace('<div id="root"></div>', () => `<div id="root">${html}</div>`);
   if (page === template) throw new Error('Could not find <div id="root"></div> in dist/index.html');
   page = withHead(page, route, head);
+  if (route === '/' || route === '/es') {
+    page = page.replace('</head>', '  <link rel="preload" as="image" href="/home-images/mobile-van-480.webp" imagesrcset="/home-images/mobile-van-480.webp 480w, /home-images/mobile-van-960.webp 960w" imagesizes="(max-width: 1023px) 100vw, 50vw" fetchpriority="high" />\\n  </head>');
+  }
   if (isEsPath(route)) page = page.replace('<html lang="en">', '<html lang="es">');
   const out = route === '/' ? path.join(dist, 'index.html') : path.join(dist, route, 'index.html');
   fs.mkdirSync(path.dirname(out), { recursive: true });
