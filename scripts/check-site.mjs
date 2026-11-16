@@ -90,6 +90,7 @@ for (const vp of viewports) {
     const img=page.locator('main img[src*="/ppc-images/"]').first();
     if (!await img.count()) {failures.push(slug+': missing dedicated hero image');continue;}
     const src=await img.getAttribute('src');
+    if (slug === 'car-lockout' && src !== '/ppc-images/car-lockout-lishi.webp') failures.push('car-lockout: expected professional Lishi tool photo');
     if (seenImages.has(src)) failures.push(slug+': identical PPC image path shared with another campaign');
     seenImages.add(src);
     const imageStatus=await page.request.get(BASE+src);
