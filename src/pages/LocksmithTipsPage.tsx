@@ -12,8 +12,7 @@ import {
   Sparkles, 
   Search,
   CheckCircle2,
-  HelpCircle,
-  MessageSquare
+  HelpCircle
 } from 'lucide-react';
 import { SEOHead } from '../components/SEOHead';
 import { LOCKSMITH_TIPS_DATA } from '../data/locksmithTipsData';
@@ -113,13 +112,7 @@ export function LocksmithTipsPage({ onNavigate }: LocksmithTipsPageProps) {
                 <span>Call Mobile Dispatch: (754) 261-6528</span>
               </LocalizedA>
 
-              <LocalizedA
-                href="sms:+17542616528"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-slate-800 hover:bg-slate-700 text-slate-100 font-bold text-xs sm:text-sm rounded-xl uppercase tracking-wider border border-slate-700 transition-colors"
-              >
-                <MessageSquare className="w-4 h-4 text-amber-400" />
-                <span>Text Technician</span>
-              </LocalizedA>
+              
             </div>
           </div>
 
