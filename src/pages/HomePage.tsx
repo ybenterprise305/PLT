@@ -3,7 +3,7 @@ import { Phone, Car, Home, Building2, KeyRound, ArrowRight, Clock, MapPin, Shiel
 import { SEOHead } from '../components/SEOHead';
 import { LocalizedA } from '../components/LocalizedA';
 import { useLanguage } from '../context/LanguageContext';
-import { locksmithVanImg, carKeyProgImg, techRekeyingImg, locksmithCrewImg } from '../assets/images';
+import { getServiceImage } from '../assets/images/serviceImages';
 import { trackPhoneClick } from '../utils/analytics';
 import { ReviewCarousel } from '../components/ReviewCarousel';
 
@@ -12,9 +12,9 @@ const TEL = 'tel:+17542616528';
 const PHONE = '(754) 261-6528';
 
 const services = [
-  { slug: 'automotive-locksmith', en: 'Car Lockouts & Keys', es: 'Apertura y llaves de autos', enDesc: 'Locked out or lost your keys? We come to your vehicle.', esDesc: '¿Quedó fuera de su auto o perdió sus llaves? Vamos hasta usted.', img: carKeyProgImg, icon: Car },
-  { slug: 'residential-locksmith', en: 'Home Locksmith', es: 'Cerrajería residencial', enDesc: 'House lockouts, rekeying and new door locks.', esDesc: 'Aperturas de viviendas, cambios de combinación e instalación de cerraduras.', img: techRekeyingImg, icon: Home },
-  { slug: 'commercial-locksmith', en: 'Business Locksmith', es: 'Cerrajería comercial', enDesc: 'Lock service for offices, shops and businesses.', esDesc: 'Servicios de cerraduras para oficinas, tiendas y negocios.', img: locksmithCrewImg, icon: Building2 },
+  { slug: 'automotive-locksmith', en: 'Car Lockouts & Keys', es: 'Apertura y llaves de autos', enDesc: 'Locked out or lost your keys? We come to your vehicle.', esDesc: '¿Quedó fuera de su auto o perdió sus llaves? Vamos hasta usted.', img: getServiceImage('automotive-locksmith').src, srcSet: getServiceImage('automotive-locksmith').srcSet, icon: Car },
+  { slug: 'residential-locksmith', en: 'Home Locksmith', es: 'Cerrajería residencial', enDesc: 'House lockouts, rekeying and new door locks.', esDesc: 'Aperturas de viviendas, cambios de combinación e instalación de cerraduras.', img: getServiceImage('residential-locksmith').src, srcSet: getServiceImage('residential-locksmith').srcSet, icon: Home },
+  { slug: 'commercial-locksmith', en: 'Business Locksmith', es: 'Cerrajería comercial', enDesc: 'Lock service for offices, shops and businesses.', esDesc: 'Servicios de cerraduras para oficinas, tiendas y negocios.', img: getServiceImage('commercial-locksmith').src, srcSet: getServiceImage('commercial-locksmith').srcSet, icon: Building2 },
 ];
 
 export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
@@ -57,7 +57,7 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
             </div>
           </div>
           <div className="overflow-hidden rounded-3xl border border-slate-700 bg-slate-900 shadow-xl">
-            <img src={locksmithVanImg} alt={isSpanish ? 'Camioneta de servicio móvil con equipos de cerrajería' : 'Mobile locksmith service van with professional equipment'} className="aspect-[4/3] w-full object-cover" fetchPriority="high" />
+            <img src="/home-images/mobile-van-960.webp" srcSet="/home-images/mobile-van-480.webp 480w, /home-images/mobile-van-960.webp 960w" sizes="(max-width: 1023px) 100vw, 50vw" width={960} height={720} alt={isSpanish ? 'Camioneta de servicio móvil con equipos de cerrajería' : 'Illustrative mobile locksmith service van with equipment'} className="aspect-[4/3] w-full object-cover" fetchPriority="high" loading="eager" decoding="async" />
           </div>
         </div>
       </section>
@@ -72,7 +72,7 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
             {services.map((service) => (
               <LocalizedA href={'/services/' + service.slug} key={service.slug}
                 className="group overflow-hidden rounded-2xl border border-slate-700 bg-slate-950 transition-colors hover:border-amber-400">
-                <img src={service.img} alt={isSpanish ? service.es : service.en} loading="lazy" className="aspect-[16/9] w-full object-cover" />
+                <img src={service.img} srcSet={service.srcSet} sizes="(max-width: 767px) 100vw, 33vw" width={960} height={540} alt={isSpanish ? service.es : service.en} loading="lazy" decoding="async" className="aspect-[16/9] w-full object-cover" />
                 <div className="space-y-2 p-5">
                   <h3 className="text-xl font-bold">{isSpanish ? service.es : service.en}</h3>
                   <p className="min-h-[56px] text-base leading-6 text-slate-300">{isSpanish ? service.esDesc : service.enDesc}</p>
@@ -101,7 +101,7 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
 
       <section className="mx-auto max-w-7xl px-5 py-12 sm:py-16">
         <div className="grid items-center gap-8 md:grid-cols-2">
-          <img src={techRekeyingImg} alt={isSpanish ? 'Instalación de cerradura residencial' : 'Residential lock service'} loading="lazy" className="aspect-[4/3] w-full rounded-2xl object-cover" />
+          <img src={getServiceImage('lock-rekeying').src} srcSet={getServiceImage('lock-rekeying').srcSet} sizes="(max-width: 767px) 100vw, 50vw" width={960} height={720} alt={isSpanish ? 'Instalación de cerradura residencial' : 'Residential lock service'} loading="lazy" className="aspect-[4/3] w-full rounded-2xl object-cover" />
           <div className="space-y-4">
             <h2 className="font-heading text-2xl font-bold sm:text-4xl">{isSpanish ? 'Llámenos. Nosotros vamos.' : 'Call Us. We Come to You.'}</h2>
             <p className="text-base leading-7 text-slate-300">
@@ -132,7 +132,7 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
                 {isSpanish ? 'Ver ciudades atendidas' : 'View service areas'} <ArrowRight className="h-4 w-4" />
               </LocalizedA>
             </div>
-            <img src={locksmithCrewImg} alt={isSpanish ? 'Equipo de servicio móvil de cerrajería' : 'Mobile locksmith team'} loading="lazy" className="aspect-[4/3] w-full rounded-2xl object-cover" />
+            <img src={getServiceImage('commercial-locksmith').src} srcSet={getServiceImage('commercial-locksmith').srcSet} sizes="(max-width: 767px) 100vw, 50vw" width={960} height={720} alt={isSpanish ? 'Equipo de servicio móvil de cerrajería' : 'Mobile locksmith team'} loading="lazy" className="aspect-[4/3] w-full rounded-2xl object-cover" />
           </div>
         </div>
       </section>

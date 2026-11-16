@@ -93,9 +93,9 @@ export function Footer({ onNavigate }: FooterProps) {
 
           {/* Column 2: Specialized Locksmith Services */}
           <div className="space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-amber-400 font-heading">
+            <h2 className="text-xs font-bold uppercase tracking-wider text-amber-400 font-heading">
               {isSpanish ? 'Servicios Móviles' : 'Mobile Services'}
-            </h4>
+            </h2>
             <ul className="space-y-1.5 text-xs">
               {SERVICES_DATA.slice(0, 8).map((srv) => {
                 const displayName = isSpanish 
@@ -125,9 +125,9 @@ export function Footer({ onNavigate }: FooterProps) {
 
           {/* Column 3: Service Areas Directory */}
           <div className="space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-amber-400 font-heading">
+            <h2 className="text-xs font-bold uppercase tracking-wider text-amber-400 font-heading">
               {isSpanish ? 'Áreas de Servicio' : 'Service Areas'}
-            </h4>
+            </h2>
             <div className="space-y-3 text-xs">
               {COUNTIES_DATA.map((county) => {
                 const countyName = isSpanish
@@ -167,9 +167,9 @@ export function Footer({ onNavigate }: FooterProps) {
 
           {/* Column 4: Relocated Pages (FAQ, Tips, Blog, Landing Hub, Legal) */}
           <div className="space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-amber-400 font-heading">
+            <h2 className="text-xs font-bold uppercase tracking-wider text-amber-400 font-heading">
               {isSpanish ? 'Ayuda, Guías y Legal' : 'Help, Guides & Legal'}
-            </h4>
+            </h2>
             <ul className="space-y-2 text-xs">
               <li>
                 <LocalizedA href="/faq"
