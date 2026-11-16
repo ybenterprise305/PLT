@@ -4,7 +4,7 @@ import {
   Mail, 
   MapPin, 
   Clock, 
-  MessageSquare, 
+   
   Truck, 
   Zap
 } from 'lucide-react';
@@ -29,8 +29,8 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
           ? "Contacto Pro Locksmith Tech | Despacho Móvil 24/7 Sur de la Florida"
           : "Contact Pro Locksmith Tech | 24/7 Mobile Dispatch South Florida"}
         description={isSpanish
-          ? "Llame o envíe un texto al +1 754-261-6528 para despacho de cerrajería móvil 24/7 en Broward, Miami-Dade y Palm Beach. Vamos directamente a donde esté. Sin esperas ni formularios."
-          : "Call or text +1 754-261-6528 for 24/7 mobile locksmith dispatch across Broward, Miami-Dade, and Palm Beach counties. We come directly to you. No waiting, no forms."}
+          ? "Llame al +1 754-261-6528 para despacho de cerrajería móvil 24/7 en Broward, Miami-Dade y Palm Beach. Vamos directamente a donde esté. Sin esperas ni formularios."
+          : "Call +1 754-261-6528 for 24/7 mobile locksmith dispatch across Broward, Miami-Dade, and Palm Beach counties. We come directly to you. No waiting, no forms."}
         canonicalPath="/contact"
         keywords="contact locksmith South Florida, contacto cerrajero Sur de la Florida, emergency locksmith phone number, mobile locksmith dispatch, locksmith Fort Lauderdale phone, locksmith Miami contact"
       />
@@ -72,13 +72,7 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
                   <span>{isSpanish ? 'Llamar Ahora: +1 754-261-6528' : 'Call Now: +1 754-261-6528'}</span>
                 </LocalizedA>
 
-                <LocalizedA
-                  href="sms:+17542616528"
-                  className="inline-flex items-center justify-center gap-2 py-4 px-6 rounded-xl bg-slate-800 hover:bg-slate-750 text-slate-100 hover:text-amber-400 font-bold text-sm border border-slate-700 transition-colors"
-                >
-                  <MessageSquare className="w-4 h-4 text-amber-400" />
-                  <span>{isSpanish ? 'Enviar Texto: (754) 261-6528' : 'Text Us (754) 261-6528'}</span>
-                </LocalizedA>
+                
               </div>
 
               <div className="pt-2 flex flex-wrap items-center gap-4 text-xs text-slate-400">
@@ -156,36 +150,6 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
               >
                 <Phone className="w-3.5 h-3.5 fill-current" />
                 <span>{isSpanish ? 'Llamar Ahora' : 'Call Now'}</span>
-              </LocalizedA>
-            </div>
-          </div>
-
-          {/* Card 2: Text / SMS */}
-          <div className="bg-slate-950 border border-slate-800 rounded-2xl p-6 space-y-3 shadow-lg flex flex-col justify-between">
-            <div>
-              <div className="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-amber-400 mb-3">
-                <MessageSquare className="w-6 h-6" />
-              </div>
-              <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
-                {isSpanish ? 'Mensaje de Texto SMS' : 'SMS Text Message'}
-              </div>
-              <LocalizedA
-                href="sms:+17542616528"
-                className="font-heading font-black text-xl text-white hover:text-amber-400 transition-colors block mt-1"
-              >
-                +1 754-261-6528
-              </LocalizedA>
-              <p className="text-xs text-slate-400 mt-1">
-                {isSpanish ? 'Envíe su dirección o fotos de su cerradura.' : 'Text your street address or photos of your lock/key.'}
-              </p>
-            </div>
-            <div className="pt-2">
-              <LocalizedA
-                href="sms:+17542616528"
-                className="w-full py-2.5 bg-slate-900 hover:bg-slate-850 text-slate-200 hover:text-amber-400 border border-slate-800 font-bold text-xs uppercase tracking-wider rounded-lg flex items-center justify-center gap-1.5 transition-colors"
-              >
-                <MessageSquare className="w-3.5 h-3.5" />
-                <span>{isSpanish ? 'Enviar SMS' : 'Send SMS Text'}</span>
               </LocalizedA>
             </div>
           </div>
@@ -325,7 +289,7 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
                   {isSpanish ? 'Despacho de Emergencia Activo' : 'Active Emergency Dispatch'}
                 </span>
                 <h3 className="font-heading font-black text-2xl sm:text-3xl text-white">
-                  {isSpanish ? 'Llame o Envíe un Texto Ahora' : 'Call or Text Dispatch Now'}
+                  {isSpanish ? 'Llame Ahora' : 'Call Dispatch Now'}
                 </h3>
                 <p className="text-xs text-slate-400">
                   {isSpanish 
@@ -343,13 +307,7 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
                   <span>{isSpanish ? 'LLAMAR: +1 754-261-6528' : 'CALL: +1 754-261-6528'}</span>
                 </LocalizedA>
 
-                <LocalizedA
-                  href="sms:+17542616528"
-                  className="w-full py-3.5 px-6 bg-slate-800 hover:bg-slate-750 text-slate-200 hover:text-white font-bold text-sm rounded-xl border border-slate-700 flex items-center justify-center gap-2 transition-colors"
-                >
-                  <MessageSquare className="w-4 h-4 text-amber-400" />
-                  <span>{isSpanish ? 'ENVIAR SU UBICACIÓN POR TEXTO' : 'TEXT US YOUR LOCATION'}</span>
-                </LocalizedA>
+                
               </div>
 
               <div className="pt-2 text-[11px] text-slate-400 border-t border-slate-800">
