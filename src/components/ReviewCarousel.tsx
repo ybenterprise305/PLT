@@ -55,7 +55,7 @@ export function ReviewCarousel({ compact=false }: { compact?: boolean }) {
         onFocusCapture={()=>setInteracting(true)} onBlurCapture={e=>{if(!e.currentTarget.contains(e.relatedTarget as Node))setInteracting(false)}}>
         <div aria-live={paused?'polite':'off'} className="grid min-h-[240px] items-center gap-6 md:grid-cols-[minmax(0,1fr)_auto]">
           <figure key={index} className="space-y-4 motion-safe:animate-[reviewFade_650ms_ease-in-out]">
-            <div className="flex gap-1 text-amber-400" aria-label="5 stars">{Array.from({length:5},(_,i)=><Star key={i} className="h-4 w-4 fill-current"/>)}</div>
+            <div className="flex gap-1 text-amber-400" role="img" aria-label="5 out of 5 stars">{Array.from({length:5},(_,i)=><Star key={i} className="h-4 w-4 fill-current"/>)}</div>
             <blockquote className="text-base leading-8 text-white sm:text-lg">“{review.quote}”</blockquote>
             <figcaption className="text-sm text-slate-300"><span className="font-bold text-white">{review.name}</span><span className="mx-2" aria-hidden="true">·</span>{review.date} · Google</figcaption>
           </figure>
@@ -63,7 +63,7 @@ export function ReviewCarousel({ compact=false }: { compact?: boolean }) {
         </div>
         <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-slate-700 pt-4">
           <div className="flex gap-1.5" aria-label={isSpanish?'Seleccionar opinión':'Select review'}>
-            {reviews.map((r,i)=><button key={r.name} type="button" onClick={()=>setIndex(i)} aria-label={isSpanish?`Opinión ${i+1}`:`Review ${i+1}`} aria-current={i===index?'true':undefined} className={'h-3 rounded-full transition-all '+(i===index?'w-7 bg-amber-400':'w-3 bg-slate-600 hover:bg-slate-400')}/>)}
+            {reviews.map((r,i)=><button key={r.name} type="button" onClick={()=>setIndex(i)} aria-label={isSpanish?`Opinión ${i+1}`:`Review ${i+1}`} aria-pressed={i===index} className={'h-3 rounded-full transition-all '+(i===index?'w-7 bg-amber-400':'w-3 bg-slate-600 hover:bg-slate-400')}/>)}
           </div>
           <div className="flex items-center gap-2">
             <button type="button" onClick={()=>setPaused(v=>!v)} aria-label={paused?(isSpanish?'Reanudar opiniones':'Resume reviews'):(isSpanish?'Pausar opiniones':'Pause reviews')} className="flex h-11 w-11 items-center justify-center rounded-lg border border-slate-600 text-white hover:bg-slate-800">{paused?<Play className="h-5 w-5"/>:<Pause className="h-5 w-5"/>}</button>
