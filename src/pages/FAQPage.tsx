@@ -4,7 +4,7 @@ import {
   Phone, 
   ChevronDown, 
   Truck, 
-  MessageSquare,
+  
   ShieldAlert,
   ArrowRight,
   CheckCircle2
@@ -95,13 +95,7 @@ export function FAQPage({ onNavigate }: FAQPageProps) {
                 <span>{isSpanish ? 'Llamar: +1 754-261-6528' : 'Call +1 754-261-6528'}</span>
               </LocalizedA>
 
-              <LocalizedA
-                href="sms:+17542616528"
-                className="inline-flex items-center justify-center gap-2 py-3 px-5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-100 font-bold text-sm border border-slate-700 transition-colors"
-              >
-                <MessageSquare className="w-4 h-4 text-amber-400" />
-                <span>{isSpanish ? 'Enviar Texto: (754) 261-6528' : 'Text Us (754) 261-6528'}</span>
-              </LocalizedA>
+              
             </div>
           </div>
         </div>
@@ -214,13 +208,7 @@ export function FAQPage({ onNavigate }: FAQPageProps) {
                               <Phone className="w-3.5 h-3.5" />
                               <span>{isSpanish ? 'Llamar Para Este Servicio' : 'Call For This Service'}</span>
                             </LocalizedA>
-                            <LocalizedA
-                              href="sms:+17542616528"
-                              className="text-slate-400 hover:text-white font-medium inline-flex items-center gap-1"
-                            >
-                              <MessageSquare className="w-3.5 h-3.5" />
-                              <span>{isSpanish ? 'Preguntar por Texto' : 'Text Question'}</span>
-                            </LocalizedA>
+                            
                           </div>
                         </div>
                       </div>
