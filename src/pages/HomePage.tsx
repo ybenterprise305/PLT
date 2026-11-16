@@ -57,12 +57,12 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
             </div>
           </div>
           <div className="overflow-hidden rounded-3xl border border-slate-700 bg-slate-900 shadow-xl">
-            <img src="/home-images/mobile-van-720.webp" srcSet="/home-images/mobile-van-360.webp 360w, /home-images/mobile-van-480.webp 480w, /home-images/mobile-van-720.webp 720w, /home-images/mobile-van-960.webp 960w" sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1023px) calc(100vw - 40px), 50vw" width={960} height={720} alt={isSpanish ? 'Camioneta de servicio móvil con equipos de cerrajería' : 'Illustrative mobile locksmith service van with equipment'} className="aspect-[4/3] w-full object-cover" fetchPriority="high" loading="eager" decoding="async" />
+            <img src="/home-images/mobile-van-720.webp" srcSet="/home-images/mobile-van-360.webp 360w, /home-images/mobile-van-480.webp 480w, /home-images/mobile-van-720.webp 720w, /home-images/mobile-van-960.webp 960w" sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1023px) calc(100vw - 40px), 50vw" width={960} height={720} alt={isSpanish ? 'Camioneta de servicio móvil con equipos de cerrajería' : 'Illustrative mobile locksmith service van with equipment'} className="aspect-[4/3] w-full object-cover" fetchPriority="high" loading="eager" decoding="sync" />
           </div>
         </div>
       </section>
 
-      <section className="border-t border-slate-800 bg-slate-900/60 py-12 sm:py-16">
+      <section className="below-fold-section border-t border-slate-800 bg-slate-900/60 py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-5">
           <div className="mb-7 max-w-2xl">
             <p className="mb-2 text-sm font-bold uppercase tracking-wide text-amber-400">{isSpanish ? 'Nuestros servicios' : 'Our services'}</p>
@@ -99,7 +99,7 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
 
       <ReviewCarousel compact />
 
-      <section className="mx-auto max-w-7xl px-5 py-12 sm:py-16">
+      <section className="below-fold-section mx-auto max-w-7xl px-5 py-12 sm:py-16">
         <div className="grid items-center gap-8 md:grid-cols-2">
           <img src={getServiceImage('lock-rekeying').src} srcSet={getServiceImage('lock-rekeying').srcSet} sizes="(max-width: 767px) 100vw, 50vw" width={960} height={720} alt={isSpanish ? 'Instalación de cerradura residencial' : 'Residential lock service'} loading="lazy" className="aspect-[4/3] w-full rounded-2xl object-cover" />
           <div className="space-y-4">
@@ -118,7 +118,7 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      <section className="border-y border-slate-800 bg-slate-900/60 py-12 sm:py-16">
+      <section className="below-fold-section border-y border-slate-800 bg-slate-900/60 py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-5">
           <div className="grid items-center gap-8 md:grid-cols-2">
             <div className="space-y-4">
