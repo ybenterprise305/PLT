@@ -16,7 +16,7 @@ export function LanguageToggle({ variant = 'standard', className = '' }: Languag
         <button
           type="button"
           onClick={() => setLanguage('en')}
-          className={`px-2 py-0.5 rounded transition-colors ${
+          className={`min-h-[36px] min-w-[34px] px-2 py-1 rounded transition-colors ${
             language === 'en'
               ? 'bg-amber-500 text-slate-950 font-black shadow-xs'
               : 'text-slate-300 hover:text-white'
@@ -30,7 +30,7 @@ export function LanguageToggle({ variant = 'standard', className = '' }: Languag
         <button
           type="button"
           onClick={() => setLanguage('es')}
-          className={`px-2 py-0.5 rounded transition-colors ${
+          className={`min-h-[36px] min-w-[34px] px-2 py-1 rounded transition-colors ${
             language === 'es'
               ? 'bg-amber-500 text-slate-950 font-black shadow-xs'
               : 'text-slate-300 hover:text-white'
@@ -64,7 +64,7 @@ export function LanguageToggle({ variant = 'standard', className = '' }: Languag
       <button
         type="button"
         onClick={() => setLanguage('en')}
-        className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-md transition-all ${
+        className={`inline-flex min-h-[44px] items-center gap-1 px-2.5 py-1 rounded-md transition-all ${
           language === 'en'
             ? 'bg-amber-500 text-slate-950 font-black shadow-sm'
             : 'text-slate-400 hover:text-slate-200'
@@ -77,7 +77,7 @@ export function LanguageToggle({ variant = 'standard', className = '' }: Languag
       <button
         type="button"
         onClick={() => setLanguage('es')}
-        className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-md transition-all ${
+        className={`inline-flex min-h-[44px] items-center gap-1 px-2.5 py-1 rounded-md transition-all ${
           language === 'es'
             ? 'bg-amber-500 text-slate-950 font-black shadow-sm'
             : 'text-slate-400 hover:text-slate-200'
