@@ -101,7 +101,7 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
 
       <section className="mx-auto max-w-7xl px-5 py-12 sm:py-16">
         <div className="grid items-center gap-8 md:grid-cols-2">
-          <img src={techRekeyingImg} alt={isSpanish ? 'Instalación de cerradura residencial' : 'Residential lock service'} loading="lazy" className="aspect-[4/3] w-full rounded-2xl object-cover" />
+          <img src={getServiceImage('lock-rekeying').src} srcSet={getServiceImage('lock-rekeying').srcSet} sizes="(max-width: 767px) 100vw, 50vw" width={960} height={720} alt={isSpanish ? 'Instalación de cerradura residencial' : 'Residential lock service'} loading="lazy" className="aspect-[4/3] w-full rounded-2xl object-cover" />
           <div className="space-y-4">
             <h2 className="font-heading text-2xl font-bold sm:text-4xl">{isSpanish ? 'Llámenos. Nosotros vamos.' : 'Call Us. We Come to You.'}</h2>
             <p className="text-base leading-7 text-slate-300">
@@ -132,7 +132,7 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
                 {isSpanish ? 'Ver ciudades atendidas' : 'View service areas'} <ArrowRight className="h-4 w-4" />
               </LocalizedA>
             </div>
-            <img src={locksmithCrewImg} alt={isSpanish ? 'Equipo de servicio móvil de cerrajería' : 'Mobile locksmith team'} loading="lazy" className="aspect-[4/3] w-full rounded-2xl object-cover" />
+            <img src={getServiceImage('commercial-locksmith').src} srcSet={getServiceImage('commercial-locksmith').srcSet} sizes="(max-width: 767px) 100vw, 50vw" width={960} height={720} alt={isSpanish ? 'Equipo de servicio móvil de cerrajería' : 'Mobile locksmith team'} loading="lazy" className="aspect-[4/3] w-full rounded-2xl object-cover" />
           </div>
         </div>
       </section>
