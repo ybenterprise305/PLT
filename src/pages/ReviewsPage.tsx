@@ -40,7 +40,7 @@ export function ReviewsPage() {
       </div>
       <div className="mt-9 grid gap-5 md:grid-cols-2">
         {REVIEWS.map(review=><figure key={review.author} className="flex flex-col rounded-2xl border border-slate-700 bg-slate-900 p-6">
-          <div className="mb-3 flex gap-1 text-amber-400" aria-label="5 out of 5 stars">{Array.from({length:5},(_,i)=><Star key={i} className="h-4 w-4 fill-current" />)}</div>
+          <div className="mb-3 flex gap-1 text-amber-400" role="img" aria-label="5 out of 5 stars">{Array.from({length:5},(_,i)=><Star key={i} className="h-4 w-4 fill-current" />)}</div>
           <blockquote className="flex-1 text-base leading-7 text-slate-100">“{review.text}”</blockquote>
           <figcaption className="mt-4 border-t border-slate-700 pt-4">
             <span className="block font-bold">{review.author}</span>
