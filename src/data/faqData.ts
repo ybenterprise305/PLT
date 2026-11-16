@@ -58,6 +58,6 @@ export const FAQ_DATA: FAQItem[] = [
     id: 'how-to-request',
     category: 'general',
     question: 'How do I request an immediate mobile locksmith?',
-    answer: 'To request immediate mobile service, call our direct 24/7 dispatch phone line at +1 (754) 261-6528 or send an SMS text message with your street address or GPS location. We confirm your arrival time and price on the call before we dispatch.'
+    answer: 'To request immediate mobile service, call our direct 24/7 dispatch phone line at +1 (754) 261-6528 and tell our dispatcher your location and what service you need. Our team can discuss availability and service details during your call.'
   }
 ];
