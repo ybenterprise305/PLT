@@ -4,7 +4,6 @@ import {
   Truck, 
   Clock, 
   Phone, 
-  MessageSquare
 } from 'lucide-react';
 import { SEOHead } from '../components/SEOHead';
 import { Logo } from '../components/Logo';
@@ -72,13 +71,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
                   <span>{isSpanish ? 'Llamar: +1 754-261-6528' : 'Call +1 754-261-6528'}</span>
                 </LocalizedA>
 
-                <LocalizedA
-                  href="sms:+17542616528"
-                  className="inline-flex items-center justify-center gap-2 py-3.5 px-5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-100 font-bold text-sm border border-slate-700 transition-colors"
-                >
-                  <MessageSquare className="w-4 h-4 text-amber-400" />
-                  <span>{isSpanish ? 'Enviar Texto' : 'Text Us'}</span>
-                </LocalizedA>
+                
               </div>
             </div>
 
