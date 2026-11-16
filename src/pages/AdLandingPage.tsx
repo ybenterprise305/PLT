@@ -75,7 +75,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
               </p>
               <h1 className="font-heading text-4xl font-extrabold leading-[1.12] tracking-tight sm:text-5xl">{headline}</h1>
               <p className="max-w-xl text-lg leading-8 text-slate-200">{short}</p>
-              {isLockout && <p className="max-w-xl text-base leading-7 text-slate-300">{isSpanish ? 'Usamos métodos de apertura no destructivos cuando son adecuados para la cerradura. No se garantiza la ausencia de daños.' : 'When suitable, our technicians use non-destructive entry methods to help avoid unnecessary damage. Damage-free entry is not guaranteed.'}</p>}
+
               {callButton('ppc_hero_call')}
               <a href="https://maps.google.com/maps?cid=16992150185739281311" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[44px] items-center gap-2 text-sm font-bold text-amber-300 underline underline-offset-4"><Star className="h-4 w-4 fill-current" aria-hidden="true" />{isSpanish ? 'Calificación 5.0 ★★★★★ en Google' : 'Rated 5.0 ★★★★★ on Google'}</a>
               <p className="text-sm font-medium text-slate-300">{isSpanish ? 'Llegada estimada en 15–20 minutos* · Servicio móvil' : 'Estimated 15–20 minute arrival* · Mobile service'}</p>
