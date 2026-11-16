@@ -68,5 +68,7 @@ await mkdir(heroDir,{recursive:true});
 for (const [width,quality] of [[360,54],[480,55],[720,58],[960,62]]) {
  const file=path.join(heroDir,'mobile-van-'+width+'.webp');
  await sharp(hero).rotate().resize({width,withoutEnlargement:true}).webp({quality,effort:6}).toFile(file);
- console.log('Hero '+width+'px: '+((await stat(file)).size/1024).toFixed(1)+' KiB');
+ const avifFile=path.join(heroDir,'mobile-van-'+width+'.avif');
+ await sharp(hero).rotate().resize({width,withoutEnlargement:true}).avif({quality:Math.max(36,quality-9),effort:5}).toFile(avifFile);
+ console.log('Hero '+width+'px: WebP '+((await stat(file)).size/1024).toFixed(1)+' KiB, AVIF '+((await stat(avifFile)).size/1024).toFixed(1)+' KiB');
 }
