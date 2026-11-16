@@ -1,3 +1,16 @@
 {
-  "entries": []
+  "entries": [
+    {
+      "identifier": "urn:air:prolocksmith-tech.com:document:business-information",
+      "displayName": "Pro Locksmith Tech — Official Business Information",
+      "type": "text/markdown",
+      "url": "https://prolocksmith-tech.com/llms.txt",
+      "description": "Public business service information and links for a mobile locksmith serving South Florida. This is a read-only resource, not an online booking agent.",
+      "representativeQueries": [
+        "What is the official phone number and website for Pro Locksmith Tech?",
+        "Does Pro Locksmith Tech provide 24/7 mobile locksmith services in South Florida?",
+        "Where can I find Pro Locksmith Tech services and customer reviews?"
+      ]
+    }
+  ]
 }
