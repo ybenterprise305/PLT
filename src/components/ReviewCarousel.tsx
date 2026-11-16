@@ -63,7 +63,7 @@ export function ReviewCarousel({ compact=false }: { compact?: boolean }) {
         </div>
         <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-slate-700 pt-4">
           <div className="flex gap-1.5" aria-label={isSpanish?'Seleccionar opinión':'Select review'}>
-            {reviews.map((r,i)=><button key={r.name} type="button" onClick={()=>setIndex(i)} aria-label={isSpanish?`Opinión ${i+1}`:`Review ${i+1}`} aria-pressed={i===index} className={'h-3 rounded-full transition-all '+(i===index?'w-7 bg-amber-400':'w-3 bg-slate-600 hover:bg-slate-400')}/>)}
+            {reviews.map((r,i)=><button key={r.name} type="button" onClick={()=>setIndex(i)} aria-label={isSpanish?`Opinión ${i+1}`:`Review ${i+1}`} aria-pressed={i===index} className="flex h-11 w-11 items-center justify-center rounded-lg hover:bg-slate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber-400"><span aria-hidden="true" className={'block h-3 rounded-full transition-all '+(i===index?'w-7 bg-amber-400':'w-3 bg-slate-600')}/></button>)}
           </div>
           <div className="flex items-center gap-2">
             <button type="button" onClick={()=>setPaused(v=>!v)} aria-label={paused?(isSpanish?'Reanudar opiniones':'Resume reviews'):(isSpanish?'Pausar opiniones':'Pause reviews')} className="flex h-11 w-11 items-center justify-center rounded-lg border border-slate-600 text-white hover:bg-slate-800">{paused?<Play className="h-5 w-5"/>:<Pause className="h-5 w-5"/>}</button>
