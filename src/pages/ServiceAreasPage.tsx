@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { MapPin, Phone, ArrowRight, Navigation, MessageSquare, Search, CheckCircle2 } from 'lucide-react';
+import { MapPin, Phone, ArrowRight, Navigation,  Search, CheckCircle2 } from 'lucide-react';
 import { COUNTIES_DATA, getAllCities } from '../data/locationsData';
 import { SEOHead } from '../components/SEOHead';
 import { SouthFloridaMap } from '../components/SouthFloridaMap';
@@ -126,13 +126,7 @@ export function ServiceAreasPage({ onNavigate }: ServiceAreasPageProps) {
                   <span>{isSpanish ? 'Llamar Ahora: (754) 261-6528' : 'Call Now: (754) 261-6528'}</span>
                 </LocalizedA>
 
-                <LocalizedA
-                  href="sms:+17542616528"
-                  className="inline-flex items-center justify-center gap-2 py-3.5 px-5 rounded-xl bg-slate-800 hover:bg-slate-750 text-slate-100 font-bold text-sm border border-slate-700 transition-colors"
-                >
-                  <MessageSquare className="w-4 h-4 text-amber-400" />
-                  <span>{isSpanish ? 'Enviar Mensaje' : 'Text Us'}</span>
-                </LocalizedA>
+                
               </div>
             </div>
 

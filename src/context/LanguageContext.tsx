@@ -22,8 +22,6 @@ export const TRANSLATIONS: Translations = {
   'nav.tips': { en: 'Locksmith Tips & Tricks', es: 'Consejos (en inglés)' },
   'nav.callNow': { en: 'Call Now', es: 'Llamar Ahora' },
   'nav.call': { en: 'Call', es: 'Llamar' },
-  'nav.text': { en: 'Text', es: 'Texto' },
-  'nav.textUs': { en: 'Text Us', es: 'Enviar Mensaje' },
   'header.topBanner': { 
     en: '24/7 Mobile Dispatch South Florida', 
     es: 'Despacho Móvil 24/7 en el Sur de la Florida' 
@@ -159,8 +157,8 @@ export const TRANSLATIONS: Translations = {
   },
   'how.step1Title': { en: '1. CALL FOR IMMEDIATE DISPATCH', es: '1. LLAME PARA DESPACHO INMEDIATO' },
   'how.step1Desc': { 
-    en: 'Call our dispatch line at +1 754-261-6528 or send a text.', 
-    es: 'Llame a nuestra línea de despacho al +1 754-261-6528 o envíe un texto.' 
+    en: 'Call our dispatch line at +1 754-261-6528.', 
+    es: 'Llame a nuestra línea de despacho al +1 754-261-6528.' 
   },
   'how.step2Title': { en: '2. TELL US YOUR LOCATION & SERVICE NEEDED', es: '2. INDÍQUENOS SU UBICACIÓN Y SERVICIO' },
   'how.step2Desc': { 

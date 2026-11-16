@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { 
   MapPin, 
   Phone, 
-  MessageSquare, 
+   
   ArrowRight, 
   Truck, 
   Clock, 
@@ -267,13 +267,7 @@ export function SouthFloridaMap({
                   <span>Call {activeCity.name} Unit</span>
                 </LocalizedA>
 
-                <LocalizedA
-                  href="sms:+17542616528"
-                  className="py-3 px-4 bg-slate-800 text-slate-100 font-bold text-xs sm:text-sm rounded-xl border border-slate-700 flex items-center justify-center gap-2 min-h-[46px] cursor-pointer"
-                >
-                  <MessageSquare className="w-4 h-4 text-amber-400" />
-                  <span>Text Location</span>
-                </LocalizedA>
+                
               </div>
 
               {/* View Full City Page */}

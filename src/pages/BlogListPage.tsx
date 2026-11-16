@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BookOpen, Clock, ArrowRight, Phone, MessageSquare, Tag, ShieldCheck, Truck } from 'lucide-react';
+import { BookOpen, Clock, ArrowRight, Phone, Tag, ShieldCheck, Truck } from 'lucide-react';
 import { SEOHead } from '../components/SEOHead';
 import { BLOG_POSTS, BlogPost } from '../data/blogData';
 import { trackPhoneClick } from '../utils/analytics';
@@ -51,13 +51,7 @@ export function BlogListPage({ onNavigate }: BlogListPageProps) {
                 <span>Call Dispatch: +1 754-261-6528</span>
               </LocalizedA>
 
-              <LocalizedA
-                href="sms:+17542616528"
-                className="inline-flex items-center gap-2 py-3 px-5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 font-bold text-xs sm:text-sm transition-colors cursor-pointer"
-              >
-                <MessageSquare className="w-4 h-4 text-amber-400" />
-                <span>Text For Dispatch</span>
-              </LocalizedA>
+              
             </div>
           </div>
         </div>

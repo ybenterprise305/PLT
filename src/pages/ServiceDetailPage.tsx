@@ -8,7 +8,7 @@ import {
   Wrench, 
   AlertTriangle, 
   ArrowRight, 
-  MessageSquare,
+  
   Sparkles,
   MapPin,
   HelpCircle
@@ -254,13 +254,7 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
                   <span>{isSpanish ? 'Llamar Ahora: (754) 261-6528' : 'Call Now: +1 754-261-6528'}</span>
                 </LocalizedA>
 
-                <LocalizedA
-                  href="sms:+17542616528"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-3.5 px-5 min-h-[48px] rounded-xl bg-slate-800 hover:bg-slate-700 active:bg-slate-700 text-slate-100 font-bold text-sm border border-slate-700 transition-colors cursor-pointer"
-                >
-                  <MessageSquare className="w-4 h-4 text-amber-400" />
-                  <span>{isSpanish ? 'Enviar Mensaje' : 'Text Us'}</span>
-                </LocalizedA>
+                
               </div>
             </div>
 
@@ -386,13 +380,7 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
               <Phone className="w-4 h-4 fill-current" />
               <span>{isSpanish ? 'Llamar +1 754-261-6528' : 'Call +1 754-261-6528'}</span>
             </LocalizedA>
-            <LocalizedA
-              href="sms:+17542616528"
-              className="w-full sm:w-auto px-6 py-3.5 min-h-[48px] justify-center bg-slate-800 hover:bg-slate-700 active:bg-slate-700 text-slate-100 font-bold text-sm rounded-xl border border-slate-700 transition-colors flex items-center gap-2 cursor-pointer"
-            >
-              <MessageSquare className="w-4 h-4 text-amber-400" />
-              <span>{isSpanish ? 'Enviar Texto' : 'Text Us'}</span>
-            </LocalizedA>
+            
           </div>
         </div>
 

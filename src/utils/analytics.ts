@@ -6,7 +6,7 @@
  *     VITE_GA_MEASUREMENT_ID   e.g. G-XXXXXXXXXX
  *     VITE_GOOGLE_ADS_ID       e.g. AW-XXXXXXXXXX
  *   Without them nothing is loaded and tracking calls are safe no-ops.
- * - Tracks every tel: and sms: link automatically through one document-level listener,
+ * - Tracks every tel: link automatically through one document-level listener,
  *   so new buttons are covered without extra code.
  * - Remembers the ad click id (gclid) and UTM values for the session and attaches them to events.
  *
@@ -84,15 +84,9 @@ function campaignFromPath(pathname: string): string {
 // Optional Google Ads conversion targets, copied from the Google tag event snippet as
 // send_to: 'AW-123456789/AbCdEfGhIjK'. Set as build variables in Cloudflare.
 const CALL_CONVERSION = import.meta.env.VITE_ADS_CALL_CONVERSION as string | undefined;
-const TEXT_CONVERSION = import.meta.env.VITE_ADS_TEXT_CONVERSION as string | undefined;
 
 function fireAdsConversion(eventName: string): void {
-  const target =
-    eventName === 'phone_click'
-      ? CALL_CONVERSION
-      : eventName === 'sms_click' || eventName === 'location_text_click'
-        ? TEXT_CONVERSION
-        : undefined;
+  const target = eventName === 'phone_click' ? CALL_CONVERSION : undefined;
   if (!target || typeof window.gtag !== 'function') return;
   try {
     window.gtag('event', 'conversion', { send_to: target });
@@ -152,7 +146,7 @@ export function trackEvent(eventName: string, params: Record<string, any> = {}):
 
 function handleDocumentClick(event: MouseEvent): void {
   const target = event.target as Element | null;
-  const link = target && 'closest' in target ? (target.closest('a[href^="tel:"], a[href^="sms:"]') as HTMLAnchorElement | null) : null;
+  const link = target && 'closest' in target ? (target.closest('a[href^="tel:"]') as HTMLAnchorElement | null) : null;
   if (!link) return;
 
   const href = link.getAttribute('href') || '';
@@ -163,14 +157,6 @@ function handleDocumentClick(event: MouseEvent): void {
     // Skip when a component-level handler has just reported this same click
     if (Date.now() - lastPhoneClickAt < DEDUPE_WINDOW_MS) return;
     trackPhoneClick({ ctaLocation: `auto:${ctaLabel || 'tel_link'}`, pagePath });
-  } else if (href.startsWith('sms:')) {
-    trackEvent('sms_click', {
-      event_category: 'Conversion',
-      event_label: ctaLabel || 'sms_link',
-      phone_number: PHONE_E164,
-      page_path: pagePath,
-      campaign_slug: campaignFromPath(pagePath),
-    });
   }
 }
 
