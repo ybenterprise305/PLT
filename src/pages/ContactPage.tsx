@@ -1,7 +1,6 @@
 import React from 'react';
 import { 
   Phone, 
-  Mail, 
   MapPin, 
   Clock, 
    
@@ -123,7 +122,7 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
         </div>
 
         {/* Contact Info Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
           {/* Card 1: Phone */}
           <div className="bg-slate-950 border border-amber-500/40 rounded-2xl p-6 space-y-3 shadow-lg flex flex-col justify-between">
             <div>
@@ -150,36 +149,6 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
               >
                 <Phone className="w-3.5 h-3.5 fill-current" />
                 <span>{isSpanish ? 'Llamar Ahora' : 'Call Now'}</span>
-              </LocalizedA>
-            </div>
-          </div>
-
-          {/* Card 3: Email */}
-          <div className="bg-slate-950 border border-slate-800 rounded-2xl p-6 space-y-3 shadow-lg flex flex-col justify-between">
-            <div>
-              <div className="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-amber-400 mb-3">
-                <Mail className="w-6 h-6" />
-              </div>
-              <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
-                {isSpanish ? 'Correo Electrónico' : 'Email Inquiries'}
-              </div>
-              <LocalizedA
-                href="mailto:prolocksmithtech@gmail.com"
-                className="font-bold text-sm text-white hover:text-amber-400 transition-colors block mt-1 break-all"
-              >
-                prolocksmithtech@gmail.com
-              </LocalizedA>
-              <p className="text-xs text-slate-400 mt-1">
-                {isSpanish ? 'Para cotizaciones comerciales y consultas programadas.' : 'For commercial security bids and scheduled quotes.'}
-              </p>
-            </div>
-            <div className="pt-2">
-              <LocalizedA
-                href="mailto:prolocksmithtech@gmail.com"
-                className="w-full py-2.5 bg-slate-900 hover:bg-slate-850 text-slate-200 hover:text-amber-400 border border-slate-800 font-bold text-xs uppercase tracking-wider rounded-lg flex items-center justify-center gap-1.5 transition-colors"
-              >
-                <Mail className="w-3.5 h-3.5" />
-                <span>{isSpanish ? 'Enviar Correo' : 'Send Email'}</span>
               </LocalizedA>
             </div>
           </div>
@@ -234,12 +203,12 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
                   </div>
                   <div>
                     <strong className="text-white text-sm block">
-                      {isSpanish ? 'Llame o Envíe un Texto a Nuestra Línea' : 'Call or Text Our Dispatch Line'}
+                      {isSpanish ? 'Llame a Nuestra Línea' : 'Call Our Dispatch Line'}
                     </strong>
                     <span className="text-xs text-slate-400">
                       {isSpanish ? 'Marque ' : 'Dial '}
                       <LocalizedA href="tel:+17542616528" className="text-amber-400 underline font-bold">+1 754-261-6528</LocalizedA>. 
-                      {isSpanish ? ' Llame o envíe un texto para comenzar.' : ' Call or text to get started.'}
+                      {isSpanish ? ' Llame para solicitar servicio.' : ' Call to request service.'}
                     </span>
                   </div>
                 </div>
