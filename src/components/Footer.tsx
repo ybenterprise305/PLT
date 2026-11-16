@@ -105,7 +105,7 @@ export function Footer({ onNavigate }: FooterProps) {
                 return (
                   <li key={srv.id}>
                     <LocalizedA href={`/services/${srv.slug}`}
-                      className="hover:text-amber-400 transition-colors text-left flex items-center gap-1.5 py-0.5 cursor-pointer text-slate-300 hover:text-white"
+                      className="hover:text-amber-400 transition-colors text-left flex items-center gap-1.5 min-h-[28px] py-1 cursor-pointer text-slate-300 hover:text-white"
                     >
                       <ChevronRight className="w-3 h-3 text-amber-500/60 shrink-0" />
                       <span className="truncate">{displayName}</span>
@@ -137,7 +137,7 @@ export function Footer({ onNavigate }: FooterProps) {
                 return (
                   <div key={county.id} className="space-y-1">
                     <LocalizedA href={`/service-areas/${county.slug}`}
-                      className="font-bold text-white hover:text-amber-400 transition-colors flex items-center gap-1 cursor-pointer text-center"
+                      className="font-bold text-white hover:text-amber-400 transition-colors flex min-h-[28px] items-center gap-1 cursor-pointer text-center"
                     >
                       <MapPin className="w-3 h-3 text-amber-400 shrink-0" />
                       <span>{countyName}</span>
@@ -146,7 +146,7 @@ export function Footer({ onNavigate }: FooterProps) {
                       {county.majorCities.slice(0, 3).map((city) => (
                         <LocalizedA href={`/service-areas/${city.slug}`}
                           key={city.id}
-                          className="hover:text-amber-300 transition-colors cursor-pointer inline-block text-center"
+                          className="hover:text-amber-300 transition-colors cursor-pointer inline-flex min-h-[28px] items-center text-center"
                         >
                           {city.name}
                         </LocalizedA>
@@ -157,7 +157,7 @@ export function Footer({ onNavigate }: FooterProps) {
               })}
               <div className="pt-1">
                 <LocalizedA href="/service-areas"
-                  className="text-amber-400 hover:underline font-bold text-xs flex items-center gap-1 cursor-pointer text-center"
+                  className="text-amber-400 hover:underline font-bold text-xs flex min-h-[28px] items-center gap-1 cursor-pointer text-center"
                 >
                   <span>{isSpanish ? 'Mapa Interactivo (37 Ciudades)' : 'Interactive Map (37 Cities)'} &rarr;</span>
                 </LocalizedA>
@@ -173,7 +173,7 @@ export function Footer({ onNavigate }: FooterProps) {
             <ul className="space-y-2 text-xs">
               <li>
                 <LocalizedA href="/faq"
-                  className="hover:text-amber-400 transition-colors text-left flex items-center gap-1.5 py-0.5 cursor-pointer text-slate-200"
+                  className="hover:text-amber-400 transition-colors text-left flex items-center gap-1.5 min-h-[28px] py-1 cursor-pointer text-slate-200"
                 >
                   <ChevronRight className="w-3 h-3 text-amber-400 shrink-0" />
                   <span className="font-semibold text-white">{isSpanish ? 'Preguntas Frecuentes (FAQ)' : 'Frequently Asked Questions (FAQ)'}</span>
@@ -181,7 +181,7 @@ export function Footer({ onNavigate }: FooterProps) {
               </li>
               <li>
                 <LocalizedA href="/about"
-                  className="hover:text-amber-400 transition-colors text-left flex items-center gap-1.5 py-0.5 cursor-pointer text-slate-200"
+                  className="hover:text-amber-400 transition-colors text-left flex items-center gap-1.5 min-h-[28px] py-1 cursor-pointer text-slate-200"
                 >
                   <ChevronRight className="w-3 h-3 text-amber-400 shrink-0" />
                   <span className="font-semibold text-white">{isSpanish ? '¿Por Qué Elegirnos?' : 'Why Choose Pro Locksmith Tech'}</span>
@@ -189,7 +189,7 @@ export function Footer({ onNavigate }: FooterProps) {
               </li>
               <li>
                 <LocalizedA href="/tips"
-                  className="hover:text-amber-400 transition-colors text-left flex items-center gap-1.5 py-0.5 cursor-pointer text-amber-300"
+                  className="hover:text-amber-400 transition-colors text-left flex items-center gap-1.5 min-h-[28px] py-1 cursor-pointer text-amber-300"
                 >
                   <ChevronRight className="w-3 h-3 text-amber-400 shrink-0" />
                   <span className="font-bold">{isSpanish ? 'Consejos (en inglés)' : 'Locksmith Tips & Technical Guides'}</span>
@@ -197,21 +197,21 @@ export function Footer({ onNavigate }: FooterProps) {
               </li>
               <li>
                 <LocalizedA href="/blog"
-                  className="hover:text-amber-400 transition-colors text-left flex items-center gap-1.5 py-0.5 cursor-pointer text-slate-300"
+                  className="hover:text-amber-400 transition-colors text-left flex items-center gap-1.5 min-h-[28px] py-1 cursor-pointer text-slate-300"
                 >
                   <ChevronRight className="w-3 h-3 text-amber-500/60 shrink-0" />
                   <span>{isSpanish ? 'Artículos (en inglés)' : 'Security Blog & Advice'}</span>
                 </LocalizedA>
               </li>
               <li>
-                <LocalizedA href="/reviews" className="hover:text-amber-400 transition-colors text-left flex items-center gap-1.5 py-0.5 cursor-pointer text-slate-300">
+                <LocalizedA href="/reviews" className="hover:text-amber-400 transition-colors text-left flex items-center gap-1.5 min-h-[28px] py-1 cursor-pointer text-slate-300">
                   <ChevronRight className="w-3 h-3 text-amber-500/60 shrink-0" />
                   <span>{isSpanish ? 'Opiniones de clientes (en inglés)' : 'Google Customer Reviews'}</span>
                 </LocalizedA>
               </li>
               <li>
                 <LocalizedA href="/privacy"
-                  className="hover:text-amber-400 transition-colors text-left flex items-center gap-1.5 py-0.5 cursor-pointer text-slate-400"
+                  className="hover:text-amber-400 transition-colors text-left flex items-center gap-1.5 min-h-[28px] py-1 cursor-pointer text-slate-400"
                 >
                   <ChevronRight className="w-3 h-3 text-amber-500/60 shrink-0" />
                   <span>{isSpanish ? 'Política de Privacidad' : 'Privacy Policy'}</span>
@@ -219,7 +219,7 @@ export function Footer({ onNavigate }: FooterProps) {
               </li>
               <li>
                 <LocalizedA href="/terms"
-                  className="hover:text-amber-400 transition-colors text-left flex items-center gap-1.5 py-0.5 cursor-pointer text-slate-400"
+                  className="hover:text-amber-400 transition-colors text-left flex items-center gap-1.5 min-h-[28px] py-1 cursor-pointer text-slate-400"
                 >
                   <ChevronRight className="w-3 h-3 text-amber-500/60 shrink-0" />
                   <span>{isSpanish ? 'Términos de Servicio' : 'Terms of Service'}</span>
