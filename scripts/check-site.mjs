@@ -47,6 +47,25 @@ for (const vp of viewports) {
   const top = await page.evaluate(() => document.querySelector('header')?.getBoundingClientRect().top);
   if (top === undefined || Math.abs(top) > 2) failures.push(`phone /: header not pinned to top while scrolling (top=${top})`);
 
+  // This used to break after scrolling: verify drawer remains tappable below a sticky header.
+  const toggle = page.locator('button[aria-controls="mobile-site-navigation"]');
+  try {
+    await toggle.click({timeout:5000});
+    const drawer = page.locator('#mobile-site-navigation');
+    await drawer.waitFor({state:'visible',timeout:5000});
+    const rect = await drawer.boundingBox();
+    if (!rect || rect.y < 40 || rect.y >= 180) failures.push('phone /: mobile drawer is not positioned beneath visible header after scrolling');
+    const aria = await toggle.getAttribute('aria-expanded');
+    if (aria !== 'true') failures.push('phone /: menu button aria-expanded is not true after opening');
+    await page.keyboard.press('Escape');
+    await drawer.waitFor({state:'detached',timeout:5000});
+    await toggle.click({timeout:5000});
+    await page.locator('#mobile-site-navigation a[href="/services"]').click({timeout:5000});
+    await page.waitForURL('**/services',{timeout:5000});
+    if (await page.locator('#mobile-site-navigation').count()) failures.push('phone /: drawer remained open after route navigation');
+    await page.goto(BASE + '/', { waitUntil: 'networkidle' });
+  } catch (error) { failures.push('phone /: menu cannot be opened after scrolling: '+String(error).slice(0,200)); }
+
   await page.evaluate(() => { window.__plt_marker = 'same-page'; window.scrollTo(0, 0); });
   const link = page.locator('a[href="/services"]:visible').first();
   if (await link.count()) {
@@ -58,6 +77,28 @@ for (const vp of viewports) {
     failures.push('home page has no /services link in main');
   }
   await context.close();
+}
+
+// Every campaign must have its own image URL and a working mobile call action.
+{
+  const page=await browser.newPage({viewport:{width:390,height:844}});
+  const campaignSlugs=['car-lockout','car-key-replacement','house-lockout','lock-rekeying','commercial-locksmith','emergency-locksmith','smart-lock-installation','ignition-repair','broken-key-extraction','deadbolt-installation','lock-change','safe-lockout','storage-unit-lockout','car-key-fob-programming','lost-car-keys'];
+  const seenImages=new Set();
+  for (const slug of campaignSlugs) {
+    const res=await page.goto(BASE+'/lp/'+slug,{waitUntil:'domcontentloaded'});
+    if (!res || res.status() >= 400) {failures.push(slug+': PPC page unavailable');continue;}
+    const img=page.locator('main img[src*="/ppc-images/"]').first();
+    if (!await img.count()) {failures.push(slug+': missing dedicated hero image');continue;}
+    const src=await img.getAttribute('src');
+    if (seenImages.has(src)) failures.push(slug+': identical PPC image path shared with another campaign');
+    seenImages.add(src);
+    const imageStatus=await page.request.get(BASE+src);
+    if (!imageStatus.ok()) failures.push(slug+': PPC image URL failed with HTTP '+imageStatus.status());
+    if (await page.locator('a[href="tel:+17542616528"]').count() < 3) failures.push(slug+': missing repeated call links');
+    if (await page.locator('a[href^="sms:"]').count()) failures.push(slug+': SMS option must not appear on PPC page');
+    if (!await page.locator('main').textContent().then(x=>x?.includes('Google'))) failures.push(slug+': missing authentic Google review reference');
+  }
+  await page.close();
 }
 
 // Language switch: English home -> Spanish home (URL changes, page language changes, links stay Spanish)
