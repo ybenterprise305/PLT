@@ -5,7 +5,6 @@ import {
   Calendar, 
   User, 
   Phone, 
-  MessageSquare, 
   Share2, 
   ArrowRight, 
   CheckCircle2, 
@@ -153,13 +152,7 @@ export function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
               <Phone className="w-4 h-4 fill-current" />
               <span>Call: (754) 261-6528</span>
             </LocalizedA>
-            <LocalizedA
-              href="sms:+17542616528"
-              className="py-3 px-4 bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 font-bold text-xs sm:text-sm rounded-xl flex items-center justify-center gap-1.5 cursor-pointer"
-            >
-              <MessageSquare className="w-4 h-4 text-amber-400" />
-              <span>Text</span>
-            </LocalizedA>
+            
           </div>
         </div>
 
