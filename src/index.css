@@ -79,3 +79,7 @@ button, a {
 @media (prefers-reduced-motion: reduce) {
   [class*="reviewFade"] { animation: none !important; }
 }
+
+/* Keyboard and touchscreen usability: ensure focus remains clear over navy surfaces. */
+:where(a, button, select, input, textarea):focus-visible { outline: 3px solid #f3cd58; outline-offset: 3px; }
+:where(a, button) { -webkit-tap-highlight-color: rgba(243,205,88,.18); }
