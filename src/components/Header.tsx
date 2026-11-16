@@ -87,7 +87,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
           <LocalizedA
             href="tel:+17542616528"
             onClick={() => trackPhoneClick({ ctaLocation: 'mobile_top_strip_call', pagePath: currentPath })}
-            className="flex items-center gap-1 text-amber-400 hover:text-amber-300 font-black text-xs shrink-0 pl-2"
+            className="flex min-h-[44px] items-center gap-1 rounded-lg px-2 text-amber-300 hover:text-amber-200 font-black text-xs shrink-0"
           >
             <Phone className="w-3 h-3 fill-current" />
             <span>(754) 261-6528</span>
