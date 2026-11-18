@@ -16,9 +16,7 @@ interface FooterProps {
 
 export function Footer({ onNavigate }: FooterProps) {
   const { t, isSpanish } = useLanguage();
-  // Configure only with the public /biz/ URL, never the biz.yelp.com owner dashboard.
-  const configuredYelpUrl = (import.meta.env.VITE_YELP_PUBLIC_URL || '').trim();
-  const yelpUrl = /^https:\/\/(?:www\.)?yelp\.com\/biz\/[a-z0-9-]+(?:[/?#].*)?$/i.test(configuredYelpUrl) ? configuredYelpUrl : null;
+  const yelpUrl = 'https://www.yelp.com/biz/pro-locksmith-tech-pompano-beach-2';
 
   return (
     <footer className="bg-slate-950 text-slate-300 pt-16 pb-24 lg:pb-12 border-t border-slate-800">
