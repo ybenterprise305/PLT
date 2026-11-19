@@ -79,9 +79,9 @@ export const BLOG_POSTS: BlogPost[] = [
       }
     ],
     relatedServices: [
-      { name: 'Car Key Replacement', slug: 'car-key-replacement' },
-      { name: 'Key Fob Services', slug: 'key-fob-services' },
-      { name: 'Transponder Key Programming', slug: 'transponder-programming' }
+      { name: 'Car Key Replacement', slug: 'key-replacement' },
+      { name: 'Key Fob Services', slug: 'automotive-locksmith' },
+      { name: 'Transponder Key Programming', slug: 'automotive-locksmith' }
     ]
   },
   {
@@ -132,9 +132,9 @@ export const BLOG_POSTS: BlogPost[] = [
       }
     ],
     relatedServices: [
-      { name: 'Key Fob Services', slug: 'key-fob-services' },
-      { name: 'Transponder Programming', slug: 'transponder-programming' },
-      { name: 'Car Lockouts', slug: 'car-lockouts' }
+      { name: 'Key Fob Services', slug: 'automotive-locksmith' },
+      { name: 'Transponder Programming', slug: 'automotive-locksmith' },
+      { name: 'Car Lockouts', slug: 'emergency-lockout-service' }
     ]
   },
   {
@@ -177,9 +177,9 @@ export const BLOG_POSTS: BlogPost[] = [
       }
     ],
     relatedServices: [
-      { name: 'Car Key Replacement', slug: 'car-key-replacement' },
-      { name: 'Key Fob Services', slug: 'key-fob-services' },
-      { name: 'Transponder Programming', slug: 'transponder-programming' }
+      { name: 'Car Key Replacement', slug: 'key-replacement' },
+      { name: 'Key Fob Services', slug: 'automotive-locksmith' },
+      { name: 'Transponder Programming', slug: 'automotive-locksmith' }
     ]
   },
   {
@@ -223,7 +223,7 @@ export const BLOG_POSTS: BlogPost[] = [
       }
     ],
     relatedServices: [
-      { name: 'Lock Rekeying', slug: 'rekeying' },
+      { name: 'Lock Rekeying', slug: 'lock-rekeying' },
       { name: 'Lock Replacement', slug: 'lock-replacement' },
       { name: 'Lock Installation', slug: 'lock-installation' }
     ]
@@ -269,9 +269,9 @@ export const BLOG_POSTS: BlogPost[] = [
       }
     ],
     relatedServices: [
-      { name: 'Car Lockouts', slug: 'car-lockouts' },
-      { name: 'Emergency Lockouts', slug: 'emergency-lockouts' },
-      { name: 'Broken Car Key Extraction', slug: 'broken-car-key-extraction' }
+      { name: 'Car Lockouts', slug: 'emergency-lockout-service' },
+      { name: 'Emergency Lockouts', slug: 'emergency-lockout-service' },
+      { name: 'Broken Car Key Extraction', slug: 'automotive-locksmith' }
     ]
   },
   {
@@ -314,8 +314,8 @@ export const BLOG_POSTS: BlogPost[] = [
       }
     ],
     relatedServices: [
-      { name: 'Home Lockouts', slug: 'home-lockouts' },
-      { name: 'Lock Rekeying', slug: 'rekeying' },
+      { name: 'Home Lockouts', slug: 'emergency-lockout-service' },
+      { name: 'Lock Rekeying', slug: 'lock-rekeying' },
       { name: 'Lock Replacement', slug: 'lock-replacement' }
     ]
   },
@@ -359,9 +359,9 @@ export const BLOG_POSTS: BlogPost[] = [
       }
     ],
     relatedServices: [
-      { name: 'Key Fob Services', slug: 'key-fob-services' },
-      { name: 'Car Key Replacement', slug: 'car-key-replacement' },
-      { name: 'Transponder Programming', slug: 'transponder-programming' }
+      { name: 'Key Fob Services', slug: 'automotive-locksmith' },
+      { name: 'Car Key Replacement', slug: 'key-replacement' },
+      { name: 'Transponder Programming', slug: 'automotive-locksmith' }
     ]
   },
   {
@@ -404,9 +404,9 @@ export const BLOG_POSTS: BlogPost[] = [
       }
     ],
     relatedServices: [
-      { name: 'Lock Rekeying', slug: 'rekeying' },
+      { name: 'Lock Rekeying', slug: 'lock-rekeying' },
       { name: 'Lock Installation', slug: 'lock-installation' },
-      { name: 'Smart Lock Services', slug: 'smart-lock-services' }
+      { name: 'Smart Lock Services', slug: 'security-hardware' }
     ]
   },
   {
@@ -450,9 +450,9 @@ export const BLOG_POSTS: BlogPost[] = [
       }
     ],
     relatedServices: [
-      { name: 'Ignition-Related Services', slug: 'ignition-related-services' },
-      { name: 'Car Key Replacement', slug: 'car-key-replacement' },
-      { name: 'Broken Car Key Extraction', slug: 'broken-car-key-extraction' }
+      { name: 'Ignition-Related Services', slug: 'automotive-locksmith' },
+      { name: 'Car Key Replacement', slug: 'key-replacement' },
+      { name: 'Broken Car Key Extraction', slug: 'automotive-locksmith' }
     ]
   },
   {
@@ -495,9 +495,9 @@ export const BLOG_POSTS: BlogPost[] = [
       }
     ],
     relatedServices: [
-      { name: 'Emergency Lockouts', slug: 'emergency-lockouts' },
-      { name: 'Car Lockouts', slug: 'car-lockouts' },
-      { name: 'Home Lockouts', slug: 'home-lockouts' }
+      { name: 'Emergency Lockouts', slug: 'emergency-lockout-service' },
+      { name: 'Car Lockouts', slug: 'emergency-lockout-service' },
+      { name: 'Home Lockouts', slug: 'emergency-lockout-service' }
     ]
   }
 ];
