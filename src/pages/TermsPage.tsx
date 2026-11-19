@@ -31,7 +31,7 @@ const sections: Array<{heading:string; paragraphs:string[]; bullets?:string[]}> 
     heading: '4. Authorization, Identity and Lawful Access',
     paragraphs: [
       'You must have legal authority to request work on the vehicle, building, lock, safe, storage unit or other property. You agree to provide accurate information about your identity, the property, your authority to access it and relevant safety conditions.',
-      'A technician may request identification and proof of ownership, occupancy or permission before unlocking, making keys, changing access or performing similar work. The technician may refuse or stop service if authorization cannot reasonably be established or if completing the request could be unsafe or unlawful.',
+      'Work may be declined or stopped when a requested service would be unsafe or unlawful.',
       'You are responsible for false statements or unauthorized instructions you provide, subject to applicable law.'
     ]
   },
