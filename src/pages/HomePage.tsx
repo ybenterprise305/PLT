@@ -100,6 +100,61 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
         </div>
       </section>
 
+      {/* High-intent service discovery for visitors and search crawlers. */}
+      <section className="border-y border-slate-800 bg-slate-950 py-12 sm:py-16" aria-labelledby="popular-locksmith-requests">
+        <div className="mx-auto max-w-7xl px-5">
+          <h2 id="popular-locksmith-requests" className="font-heading text-2xl font-bold sm:text-3xl">{isSpanish ? 'Servicios de cerrajería más solicitados' : 'Popular Locksmith Requests'}</h2>
+          <p className="mt-3 max-w-3xl text-base leading-7 text-slate-300">{isSpanish ? 'Servicio móvil disponible las 24 horas. Llame para confirmar cobertura, disponibilidad y precio para su trabajo.' : 'Our mobile locksmith team takes calls 24/7. Call to confirm service coverage, availability and an estimate for your specific job.'}</p>
+          <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { href: '/services/automotive-locksmith', en: 'Car Lockouts & Replacement Keys', es: 'Apertura y llaves de auto' },
+              { href: '/services/key-replacement', en: 'Car Key Replacement', es: 'Reemplazo de llaves' },
+              { href: '/services/residential-locksmith', en: 'House Lockouts', es: 'Apertura de viviendas' },
+              { href: '/services/lock-rekeying', en: 'Rekeying & Lock Changes', es: 'Cambio de combinación y cerraduras' },
+            ].map(item => (
+              <LocalizedA key={item.href} href={item.href} className="flex min-h-[64px] items-center justify-between gap-2 rounded-xl border border-slate-700 bg-slate-900 p-4 font-semibold text-white hover:border-amber-400">
+                <span>{isSpanish ? item.es : item.en}</span><ArrowRight className="h-5 w-5 shrink-0 text-amber-400" aria-hidden="true" />
+              </LocalizedA>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Concise, visible answers are useful to callers and machine-readable search systems. */}
+      <section className="mx-auto max-w-5xl px-5 py-12 sm:py-16" aria-labelledby="locksmith-quick-answers">
+        <h2 id="locksmith-quick-answers" className="font-heading text-2xl font-bold sm:text-3xl">{isSpanish ? 'Preguntas antes de llamar' : 'Quick Answers Before You Call'}</h2>
+        <div className="mt-6 grid gap-4 md:grid-cols-2">
+          {[
+            {
+              question: isSpanish ? '¿Atienden las 24 horas?' : 'Are you available 24/7?',
+              answer: isSpanish ? 'Sí. Pro Locksmith Tech recibe llamadas las 24 horas, los 7 días de la semana. La disponibilidad para su ubicación se confirma por teléfono.' : 'Yes. Pro Locksmith Tech accepts calls 24 hours a day, seven days a week. Call to confirm a technician is available for your location.'
+            },
+            {
+              question: isSpanish ? '¿Tienen una tienda abierta al público?' : 'Do you have a walk-in shop?',
+              answer: isSpanish ? 'No. Somos un servicio móvil y vamos hasta su vehículo, hogar o negocio.' : 'No. We are a mobile service-area business. We travel to your vehicle, home or business rather than operating a public storefront.'
+            },
+            {
+              question: isSpanish ? '¿Qué información debo tener lista?' : 'What should I have ready when I call?',
+              answer: isSpanish ? 'Indique su ciudad y ubicación, el tipo de cerradura o vehículo, y el servicio que necesita. Puede ser necesario verificar la autorización.' : 'Have your city and location, lock or vehicle details, and the problem you need solved. Proof of authorization may be required before service.'
+            },
+            {
+              question: isSpanish ? '¿Cuánto cuesta un cerrajero móvil?' : 'How much does mobile locksmith service cost?',
+              answer: isSpanish ? 'El costo depende del trabajo, las piezas y la ubicación. Llame para solicitar un presupuesto y confirmar los cargos antes de autorizar el trabajo.' : 'Pricing depends on the service, parts and location. Call for an estimate and confirm applicable charges before authorizing work.'
+            }
+          ].map(item => (
+            <article key={item.question} className="rounded-xl border border-slate-700 bg-slate-900 p-5">
+              <h3 className="text-lg font-bold text-white">{item.question}</h3>
+              <p className="mt-2 text-base leading-7 text-slate-300">{item.answer}</p>
+            </article>
+          ))}
+        </div>
+        <div className="mt-7 text-center">
+          <LocalizedA href={TEL} onClick={() => call('homepage_faq_call')} className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-amber-400 px-6 py-3 font-extrabold text-slate-950 hover:bg-amber-300">
+            <Phone className="h-5 w-5" aria-hidden="true" />{isSpanish ? 'Llamar ahora' : 'Call for Locksmith Help'} · {PHONE}
+          </LocalizedA>
+        </div>
+      </section>
+
       <ReviewCarousel compact />
 
       <section className="below-fold-section mx-auto max-w-7xl px-5 py-12 sm:py-16">

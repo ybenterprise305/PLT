@@ -108,3 +108,37 @@ if (fs.existsSync(sitemapPath)) {
   fs.writeFileSync(sitemapPath, xml);
   console.log(`Sitemap: added ${extraEntries.length} Spanish pages`);
 }
+
+
+// Guard against accidentally telling Google to exclude important organic pages.
+// Paid campaign landing pages deliberately use noindex and must stay out of the sitemap.
+const finalSitemap = path.join(dist, 'sitemap.xml');
+if (fs.existsSync(finalSitemap)) {
+  const xml = fs.readFileSync(finalSitemap, 'utf8');
+  const listedUrls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+  const issues = [];
+  for (const url of listedUrls) {
+    const pathname = new URL(url).pathname;
+    const output = pathname === '/' ? path.join(dist, 'index.html') : path.join(dist, pathname, 'index.html');
+    if (!fs.existsSync(output)) {
+      // Report missing prerendered pages without crashing a legitimate custom-route build.
+      console.warn('Sitemap URL has no prerendered HTML:', url);
+      continue;
+    }
+    const pageHtml = fs.readFileSync(output, 'utf8');
+    if (/<meta\s+name="robots"\s+content="[^"]*noindex/i.test(pageHtml)) {
+      issues.push(url);
+    }
+  }
+  if (issues.length) throw new Error('Indexable sitemap URL(s) have noindex: ' + issues.join(', '));
+  const paidRoutes = routes.filter((route) => route.startsWith('/lp/'));
+  for (const paidRoute of paidRoutes) {
+    const output = path.join(dist, paidRoute, 'index.html');
+    if (!fs.existsSync(output)) throw new Error('Missing paid landing page: ' + paidRoute);
+    const html = fs.readFileSync(output, 'utf8');
+    if (!/<meta\s+name="robots"\s+content="[^"]*noindex/i.test(html)) {
+      throw new Error('Paid landing page is missing intentional noindex: ' + paidRoute);
+    }
+  }
+  console.log('Indexing guard passed: sitemap pages are indexable; PPC pages remain noindex.');
+}
