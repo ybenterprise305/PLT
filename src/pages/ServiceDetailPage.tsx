@@ -351,16 +351,16 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
             <p className="mt-3 max-w-3xl text-base leading-7 text-slate-300">
               {['automotive-locksmith', 'key-replacement', 'key-duplication'].includes(service.slug)
                 ? (isSpanish
-                  ? 'Para consultar sobre llaves de auto o programación, tenga a mano la marca, modelo y año del vehículo. Indique si conserva alguna llave que funcione. Puede requerirse prueba de propiedad o autorización.'
-                  : 'For car key replacement, cutting or programming, have the vehicle make, model and year ready. Tell us whether any working key remains. Proof of ownership or authorization may be required.')
+                  ? 'Para consultar sobre llaves de auto o programación, tenga a mano la marca, modelo y año del vehículo. Indique si conserva alguna llave que funcione. '
+                  : 'For car key replacement, cutting or programming, have the vehicle make, model and year ready. Tell us whether any working key remains.')
                 : (isSpanish
-                  ? 'Indique su ciudad, tipo de puerta o cerradura y si el problema es una llave perdida, una cerradura dañada o una puerta cerrada. Puede requerirse prueba de residencia o autorización.'
-                  : 'Tell us your city, door or lock type, and whether you have a lost key, damaged lock or lockout. Proof of residence or authorization may be required.')}
+                  ? 'Indique su ciudad, tipo de puerta o cerradura y si el problema es una llave perdida, una cerradura dañada o una puerta cerrada. '
+                  : 'Tell us your city, door or lock type, and whether you have a lost key, damaged lock or lockout.')}
             </p>
             <p className="mt-3 text-sm leading-6 text-slate-300">
               {isSpanish
-                ? 'Pro Locksmith Tech presta servicio móvil las 24 horas. Llame para confirmar disponibilidad, tiempo estimado de llegada y cargos antes de autorizar el trabajo.'
-                : 'Pro Locksmith Tech accepts mobile service requests 24/7. Call to confirm availability, an estimated arrival time and applicable charges before authorizing work.'}
+                ? 'Pro Locksmith Tech presta servicio móvil las 24 horas. Llame para confirmar disponibilidad y tiempo estimado de llegada.'
+                : 'Pro Locksmith Tech accepts mobile service requests 24/7. Call to confirm availability and an estimated arrival time.'}
             </p>
             {!isSpanish && ['automotive-locksmith', 'key-replacement', 'key-duplication'].includes(service.slug) && (
               <div className="mt-5 flex flex-wrap gap-3 text-sm font-semibold">
