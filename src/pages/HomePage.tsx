@@ -136,6 +136,10 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
             {
               question: isSpanish ? '¿Qué información debo tener lista?' : 'What should I have ready when I call?',
               answer: isSpanish ? 'Indique su ciudad y ubicación, el tipo de cerradura o vehículo y el servicio que necesita cuando llame.' : 'Have your city and location, lock or vehicle details, and the problem you need solved ready when you call.'
+            },
+            {
+              question: isSpanish ? '¿Pueden abrir autos y cerraduras sin causar daños?' : 'Can you unlock cars and doors without causing damage?',
+              answer: isSpanish ? 'Sí. Nuestros técnicos cuentan con herramientas profesionales y capacitación en técnicas de apertura no destructivas para ayudar a abrir vehículos y cerraduras sin causar daños innecesarios siempre que sea posible. El método adecuado depende del tipo y estado de la cerradura.' : 'Yes. Our trained locksmith technicians use professional tools and non-destructive entry techniques to help unlock cars and doors without unnecessary damage whenever possible. The appropriate method depends on the lock type and its condition.'
             }
           ].map(item => (
             <article key={item.question} className="rounded-xl border border-slate-700 bg-slate-900 p-5">
