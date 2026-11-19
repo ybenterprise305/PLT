@@ -377,6 +377,24 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
           </section>
         )}
 
+        {service.slug === 'lock-rekeying' && (
+          <section className="rounded-2xl border border-slate-800 bg-slate-950 p-6 sm:p-8">
+            <h2 className="text-xl font-bold text-white">
+              {isSpanish ? '¿Cambiar la combinación o instalar cerraduras nuevas?' : 'Should You Rekey or Replace Your Locks?'}
+            </h2>
+            <p className="mt-3 text-base leading-7 text-slate-300">
+              {isSpanish
+                ? 'Conozca las diferencias entre cambiar la combinación de una cerradura y reemplazar sus componentes.'
+                : 'Learn the difference between changing which key operates a lock and replacing the lock hardware entirely.'}
+            </p>
+            <LocalizedA href="/blog/rekeying-vs-changing-locks-difference"
+              className="mt-4 inline-flex min-h-[44px] items-center gap-2 font-semibold text-amber-300 underline underline-offset-4 hover:text-amber-200">
+              {isSpanish ? 'Leer la guía sobre cerraduras' : 'Read our rekeying vs. lock replacement guide'}
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </LocalizedA>
+          </section>
+        )}
+
         {/* Relevant question-and-answer content; exactly matches FAQ structured data. */}
         <section className="rounded-2xl border border-slate-800 bg-slate-950 p-6 sm:p-8">
           <h2 className="font-heading text-2xl font-bold text-white mb-2">Frequently Asked Questions About {service.name}</h2>
