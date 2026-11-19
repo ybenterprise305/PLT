@@ -483,8 +483,7 @@ export const BLOG_POSTS: BlogPost[] = [
         ],
         tips: [
           'Have your 17-digit VIN and vehicle year, make, and model ready for automotive key calls.',
-          'For residential and commercial calls, note the lock brand (Schlage, Kwikset, Yale, Medeco, Corbin Russwin) if stamped on the deadbolt face.',
-          'Legitimate mobile locksmiths must verify government ID and proof of property/vehicle ownership prior to performing unlocks or cutting keys.'
+          'For residential and commercial calls, note the lock brand (Schlage, Kwikset, Yale, Medeco, Corbin Russwin) if stamped on the deadbolt face.'
         ]
       },
       {
