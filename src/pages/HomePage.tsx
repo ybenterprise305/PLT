@@ -136,7 +136,7 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
             {
               question: isSpanish ? '¿Qué información debo tener lista?' : 'What should I have ready when I call?',
               answer: isSpanish ? 'Indique su ciudad y ubicación, el tipo de cerradura o vehículo y el servicio que necesita cuando llame.' : 'Have your city and location, lock or vehicle details, and the problem you need solved ready when you call.'
-
+            }
           ].map(item => (
             <article key={item.question} className="rounded-xl border border-slate-700 bg-slate-900 p-5">
               <h3 className="text-lg font-bold text-white">{item.question}</h3>
