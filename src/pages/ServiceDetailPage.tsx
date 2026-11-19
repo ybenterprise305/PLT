@@ -342,6 +342,41 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
           </div>
         </div>
 
+        {/* Give high-intent visitors actionable preparation details, not fabricated prices or guarantees. */}
+        {['automotive-locksmith', 'key-replacement', 'key-duplication', 'emergency-lockout-service', 'residential-locksmith', 'lock-rekeying'].includes(service.slug) && (
+          <section className="rounded-2xl border border-slate-800 bg-slate-950 p-6 sm:p-8" aria-labelledby="before-calling-locksmith">
+            <h2 id="before-calling-locksmith" className="font-heading text-2xl font-bold text-white">
+              {isSpanish ? 'Información útil antes de llamar' : 'What to Know Before Calling'}
+            </h2>
+            <p className="mt-3 max-w-3xl text-base leading-7 text-slate-300">
+              {['automotive-locksmith', 'key-replacement', 'key-duplication'].includes(service.slug)
+                ? (isSpanish
+                  ? 'Para consultar sobre llaves de auto o programación, tenga a mano la marca, modelo y año del vehículo. Indique si conserva alguna llave que funcione. Puede requerirse prueba de propiedad o autorización.'
+                  : 'For car key replacement, cutting or programming, have the vehicle make, model and year ready. Tell us whether any working key remains. Proof of ownership or authorization may be required.')
+                : (isSpanish
+                  ? 'Indique su ciudad, tipo de puerta o cerradura y si el problema es una llave perdida, una cerradura dañada o una puerta cerrada. Puede requerirse prueba de residencia o autorización.'
+                  : 'Tell us your city, door or lock type, and whether you have a lost key, damaged lock or lockout. Proof of residence or authorization may be required.')}
+            </p>
+            <p className="mt-3 text-sm leading-6 text-slate-300">
+              {isSpanish
+                ? 'Pro Locksmith Tech presta servicio móvil las 24 horas. Llame para confirmar disponibilidad, tiempo estimado de llegada y cargos antes de autorizar el trabajo.'
+                : 'Pro Locksmith Tech accepts mobile service requests 24/7. Call to confirm availability, an estimated arrival time and applicable charges before authorizing work.'}
+            </p>
+            {!isSpanish && ['automotive-locksmith', 'key-replacement', 'key-duplication'].includes(service.slug) && (
+              <div className="mt-5 flex flex-wrap gap-3 text-sm font-semibold">
+                <LocalizedA href="/blog/can-locksmith-make-car-key-without-original" className="rounded-lg border border-slate-700 px-4 py-3 text-amber-300 underline underline-offset-4 hover:border-amber-400">Can a locksmith make a car key without the original?</LocalizedA>
+                <LocalizedA href="/blog/can-locksmith-program-push-to-start-key" className="rounded-lg border border-slate-700 px-4 py-3 text-amber-300 underline underline-offset-4 hover:border-amber-400">Can a locksmith program a push-to-start key?</LocalizedA>
+              </div>
+            )}
+            <LocalizedA href="tel:+17542616528"
+              onClick={() => trackPhoneClick({ ctaLocation: 'service_preparation_call', pagePath: `/services/${service.slug}` })}
+              className="mt-6 inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-amber-400 px-5 py-3 font-bold text-slate-950 hover:bg-amber-300 sm:w-auto">
+              <Phone className="h-5 w-5" aria-hidden="true" />
+              {isSpanish ? 'Llamar al (754) 261-6528' : 'Call (754) 261-6528'}
+            </LocalizedA>
+          </section>
+        )}
+
         {/* Relevant question-and-answer content; exactly matches FAQ structured data. */}
         <section className="rounded-2xl border border-slate-800 bg-slate-950 p-6 sm:p-8">
           <h2 className="font-heading text-2xl font-bold text-white mb-2">Frequently Asked Questions About {service.name}</h2>

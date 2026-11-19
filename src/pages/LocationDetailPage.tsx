@@ -273,6 +273,55 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
             </div>
           </section>
 
+          {/* Useful customer instructions on the primary nearby service-area pages. */}
+          {['coral-springs', 'margate', 'coconut-creek', 'tamarac', 'pompano-beach'].includes(city.slug) && (
+            <section className="rounded-2xl border border-slate-800 bg-slate-950 p-6 sm:p-8" aria-labelledby="local-locksmith-next-steps">
+              <h2 id="local-locksmith-next-steps" className="font-heading text-2xl font-bold text-white">
+                {isSpanish ? `Cómo solicitar un cerrajero móvil en ${city.name}` : `How to Request a Mobile Locksmith in ${city.name}`}
+              </h2>
+              <p className="mt-3 text-base leading-7 text-slate-300">
+                {isSpanish
+                  ? `¿Necesita asistencia para un auto, vivienda o negocio en ${city.name}? Llame a Pro Locksmith Tech y describa el problema. Somos un servicio móvil; no hay una tienda de atención al público.`
+                  : `Need locksmith help at a vehicle, home or business in ${city.name}? Call Pro Locksmith Tech and describe the problem. We dispatch mobile service; there is no public walk-in storefront.`}
+              </p>
+              <ol className="mt-5 grid gap-3 sm:grid-cols-3">
+                {[
+                  {
+                    enTitle: 'Tell us your location',
+                    esTitle: 'Indique su ubicación',
+                    enBody: `Provide your location in ${city.name} and tell us whether you need car, residential or commercial locksmith service.`,
+                    esBody: `Indique su ubicación en ${city.name} y si necesita ayuda con un auto, vivienda o negocio.`
+                  },
+                  {
+                    enTitle: 'Describe the lock or key',
+                    esTitle: 'Describa la cerradura o llave',
+                    enBody: 'Share the vehicle year, make and model, or describe the door, lock or key problem so we can discuss suitable service.',
+                    esBody: 'Indique año, marca y modelo del auto, o explique el problema de la puerta, cerradura o llave.'
+                  },
+                  {
+                    enTitle: 'Confirm service details',
+                    esTitle: 'Confirme los detalles',
+                    enBody: 'Ask about technician availability, an arrival estimate and applicable charges before approving work. Proof of authorization may be needed.',
+                    esBody: 'Confirme la disponibilidad, una estimación de llegada y los cargos antes de autorizar el trabajo. Puede necesitar prueba de autorización.'
+                  },
+                ].map((step, index) => (
+                  <li key={index} className="rounded-xl border border-slate-700 bg-slate-900 p-4">
+                    <span className="mb-2 inline-flex h-7 w-7 items-center justify-center rounded-full bg-amber-400 text-sm font-bold text-slate-950">{index + 1}</span>
+                    <h3 className="font-bold text-white">{isSpanish ? step.esTitle : step.enTitle}</h3>
+                    <p className="mt-2 text-sm leading-6 text-slate-300">{isSpanish ? step.esBody : step.enBody}</p>
+                  </li>
+                ))}
+              </ol>
+              <LocalizedA
+                href="tel:+17542616528"
+                onClick={() => trackPhoneClick({ ctaLocation: 'city_steps_call', pagePath: `/service-areas/${city.slug}` })}
+                className="mt-6 inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-amber-400 px-6 py-3 text-base font-bold text-slate-950 hover:bg-amber-300 sm:w-auto">
+                <Phone className="h-5 w-5" aria-hidden="true" />
+                {isSpanish ? 'Llame al (754) 261-6528' : 'Call (754) 261-6528'}
+              </LocalizedA>
+            </section>
+          )}
+
           {/* Neighboring Cities in County */}
           <div className="bg-slate-950 border border-slate-800 rounded-2xl p-6">
             <h4 className="font-heading font-bold text-sm text-white mb-3 uppercase tracking-wider text-amber-400">

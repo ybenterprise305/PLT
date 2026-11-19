@@ -155,6 +155,33 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
         </div>
       </section>
 
+      {/* Focus internal linking on nearby cities before expanding into farther markets. */}
+      <section className="border-t border-slate-800 bg-slate-900/60 py-12 sm:py-16" aria-labelledby="nearby-locksmith-areas">
+        <div className="mx-auto max-w-7xl px-5">
+          <h2 id="nearby-locksmith-areas" className="font-heading text-2xl font-bold sm:text-3xl">
+            {isSpanish ? 'Cerrajería móvil cerca de Coral Springs' : 'Mobile Locksmith Service Near Coral Springs'}
+          </h2>
+          <p className="mt-3 max-w-3xl text-base leading-7 text-slate-300">
+            {isSpanish
+              ? 'Pro Locksmith Tech es una empresa de servicio móvil, no una tienda abierta al público. Consulte la disponibilidad en su ciudad y llame para recibir asistencia.'
+              : 'Pro Locksmith Tech is a mobile locksmith service, not a walk-in storefront. Explore nearby service areas, then call to confirm technician availability at your location.'}
+          </p>
+          <nav aria-label={isSpanish ? 'Áreas cercanas' : 'Nearby locksmith service areas'} className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+            {[
+              { slug: 'coral-springs', name: 'Coral Springs' },
+              { slug: 'margate', name: 'Margate' },
+              { slug: 'coconut-creek', name: 'Coconut Creek' },
+              { slug: 'tamarac', name: 'Tamarac' },
+              { slug: 'pompano-beach', name: 'Pompano Beach' },
+            ].map(city => (
+              <LocalizedA key={city.slug} href={'/service-areas/' + city.slug} className="flex min-h-[56px] items-center justify-between gap-2 rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 font-semibold text-white hover:border-amber-400">
+                <span>{city.name}, FL</span><ArrowRight className="h-4 w-4 shrink-0 text-amber-400" aria-hidden="true" />
+              </LocalizedA>
+            ))}
+          </nav>
+        </div>
+      </section>
+
       <ReviewCarousel compact />
 
       <section className="below-fold-section mx-auto max-w-7xl px-5 py-12 sm:py-16">
