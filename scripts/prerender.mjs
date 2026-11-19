@@ -142,3 +142,15 @@ if (fs.existsSync(finalSitemap)) {
   }
   console.log('Indexing guard passed: sitemap pages are indexable; PPC pages remain noindex.');
 }
+
+
+// Prevent blog-related service links from pointing to nonexistent service routes.
+const serviceSource = fs.readFileSync(path.join(root, 'src/data/servicesData.ts'), 'utf8');
+const blogSource = fs.readFileSync(path.join(root, 'src/data/blogData.ts'), 'utf8');
+const validServiceSlugs = new Set([...serviceSource.matchAll(/\bslug:\s*'([^']+)'/g)].map((m) => m[1]));
+const blogServiceSlugs = [...blogSource.matchAll(/\{\s*name:\s*'[^']+',\s*slug:\s*'([^']+)'\s*\}/g)].map((m) => m[1]);
+const invalidServiceSlugs = [...new Set(blogServiceSlugs.filter((slug) => !validServiceSlugs.has(slug)))];
+if (invalidServiceSlugs.length) {
+  throw new Error('Blog posts contain links to missing service URLs: ' + invalidServiceSlugs.join(', '));
+}
+console.log('Related service link check passed: all blog service links resolve to existing routes.');
