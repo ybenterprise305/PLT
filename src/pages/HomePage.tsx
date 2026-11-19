@@ -135,12 +135,8 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
             },
             {
               question: isSpanish ? '¿Qué información debo tener lista?' : 'What should I have ready when I call?',
-              answer: isSpanish ? 'Indique su ciudad y ubicación, el tipo de cerradura o vehículo, y el servicio que necesita. Puede ser necesario verificar la autorización.' : 'Have your city and location, lock or vehicle details, and the problem you need solved. Proof of authorization may be required before service.'
-            },
-            {
-              question: isSpanish ? '¿Cuánto cuesta un cerrajero móvil?' : 'How much does mobile locksmith service cost?',
-              answer: isSpanish ? 'El costo depende del trabajo, las piezas y la ubicación. Llame para solicitar un presupuesto y confirmar los cargos antes de autorizar el trabajo.' : 'Pricing depends on the service, parts and location. Call for an estimate and confirm applicable charges before authorizing work.'
-            }
+              answer: isSpanish ? 'Indique su ciudad y ubicación, el tipo de cerradura o vehículo y el servicio que necesita cuando llame.' : 'Have your city and location, lock or vehicle details, and the problem you need solved ready when you call.'
+
           ].map(item => (
             <article key={item.question} className="rounded-xl border border-slate-700 bg-slate-900 p-5">
               <h3 className="text-lg font-bold text-white">{item.question}</h3>
@@ -155,30 +151,81 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      {/* Focus internal linking on nearby cities before expanding into farther markets. */}
-      <section className="border-t border-slate-800 bg-slate-900/60 py-12 sm:py-16" aria-labelledby="nearby-locksmith-areas">
+      {/* All main South Florida cities served, organized by county and linking to full location pages. */}
+      <section className="border-t border-slate-800 bg-slate-900/60 py-12 sm:py-16" aria-labelledby="south-florida-locksmith-areas">
         <div className="mx-auto max-w-7xl px-5">
-          <h2 id="nearby-locksmith-areas" className="font-heading text-2xl font-bold sm:text-3xl">
-            {isSpanish ? 'Cerrajería móvil cerca de Coral Springs' : 'Mobile Locksmith Service Near Coral Springs'}
+          <h2 id="south-florida-locksmith-areas" className="font-heading text-2xl font-bold sm:text-3xl">
+            {isSpanish ? 'Servicio de cerrajería móvil en todo el sur de Florida' : 'Mobile Locksmith Service Throughout South Florida'}
           </h2>
-          <p className="mt-3 max-w-3xl text-base leading-7 text-slate-300">
+          <p className="mt-3 max-w-4xl text-base leading-7 text-slate-300">
             {isSpanish
-              ? 'Pro Locksmith Tech es una empresa de servicio móvil, no una tienda abierta al público. Consulte la disponibilidad en su ciudad y llame para recibir asistencia.'
-              : 'Pro Locksmith Tech is a mobile locksmith service, not a walk-in storefront. Explore nearby service areas, then call to confirm technician availability at your location.'}
+              ? 'Pro Locksmith Tech ofrece servicio móvil de cerrajería las 24 horas en todo el sur de Florida, incluidas ciudades de los condados de Broward, Miami-Dade y Palm Beach. Vamos a su ubicación para ayudarle con llaves y cerraduras.'
+              : 'Pro Locksmith Tech offers 24/7 mobile locksmith service throughout South Florida, including cities across Broward, Miami-Dade and Palm Beach counties. We come to your location for lockouts, car keys, key fobs, rekeying and other locksmith services.'}
           </p>
-          <nav aria-label={isSpanish ? 'Áreas cercanas' : 'Nearby locksmith service areas'} className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="mt-7 grid gap-7 md:grid-cols-3">
             {[
-              { slug: 'coral-springs', name: 'Coral Springs' },
-              { slug: 'margate', name: 'Margate' },
-              { slug: 'coconut-creek', name: 'Coconut Creek' },
-              { slug: 'tamarac', name: 'Tamarac' },
-              { slug: 'pompano-beach', name: 'Pompano Beach' },
-            ].map(city => (
-              <LocalizedA key={city.slug} href={'/service-areas/' + city.slug} className="flex min-h-[56px] items-center justify-between gap-2 rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 font-semibold text-white hover:border-amber-400">
-                <span>{city.name}, FL</span><ArrowRight className="h-4 w-4 shrink-0 text-amber-400" aria-hidden="true" />
-              </LocalizedA>
+              {
+                en: 'Broward County', es: 'Condado de Broward',
+                cities: [
+                  ['fort-lauderdale','Fort Lauderdale'], ['hollywood','Hollywood'], ['pembroke-pines','Pembroke Pines'],
+                  ['coral-springs','Coral Springs'], ['pompano-beach','Pompano Beach'], ['miramar','Miramar'],
+                  ['davie','Davie'], ['plantation','Plantation'], ['sunrise','Sunrise'],
+                  ['deerfield-beach','Deerfield Beach'], ['tamarac','Tamarac'], ['coconut-creek','Coconut Creek'],
+                  ['margate','Margate'], ['weston','Weston']
+                ]
+              },
+              {
+                en: 'Miami-Dade County', es: 'Condado de Miami-Dade',
+                cities: [
+                  ['miami','Miami'], ['miami-beach','Miami Beach'], ['hialeah','Hialeah'],
+                  ['coral-gables','Coral Gables'], ['doral','Doral'], ['aventura','Aventura'],
+                  ['kendall','Kendall'], ['north-miami','North Miami'], ['sunny-isles-beach','Sunny Isles Beach'],
+                  ['south-miami','South Miami'], ['pinecrest','Pinecrest'], ['miami-gardens','Miami Gardens']
+                ]
+              },
+              {
+                en: 'Palm Beach County', es: 'Condado de Palm Beach',
+                cities: [
+                  ['west-palm-beach','West Palm Beach'], ['boca-raton','Boca Raton'], ['boynton-beach','Boynton Beach'],
+                  ['delray-beach','Delray Beach'], ['jupiter','Jupiter'], ['wellington','Wellington'],
+                  ['palm-beach-gardens','Palm Beach Gardens'], ['lake-worth','Lake Worth'],
+                  ['royal-palm-beach','Royal Palm Beach'], ['greenacres','Greenacres'], ['riviera-beach','Riviera Beach']
+                ]
+              },
+            ].map(county => (
+              <div key={county.en} className="rounded-2xl border border-slate-700 bg-slate-950 p-5">
+                <h3 className="mb-4 text-lg font-bold text-white">{isSpanish ? county.es : county.en}</h3>
+                <ul className="flex flex-wrap gap-2">
+                  {county.cities.map(([slug, name]) => (
+                    <li key={slug}>
+                      <LocalizedA href={'/service-areas/' + slug}
+                        className="inline-flex min-h-[40px] items-center rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm font-medium text-amber-200 hover:border-amber-400 hover:text-white">
+                        {name}
+                      </LocalizedA>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
-          </nav>
+          </div>
+          <div className="mt-7 flex flex-col items-start gap-4 rounded-2xl border border-amber-400/30 bg-slate-950 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+            <div>
+              <h3 className="text-lg font-bold text-white">{isSpanish ? '¿No está seguro si atendemos su ciudad?' : 'Not sure if we serve your area?'}</h3>
+              <p className="mt-1 text-sm leading-6 text-slate-300">
+                {isSpanish ? 'Explore todas nuestras ciudades y áreas de servicio, o llámenos para confirmar la disponibilidad en su ubicación.' : 'See our complete list of cities and service areas, or give us a call to confirm availability at your location.'}
+              </p>
+            </div>
+            <div className="flex w-full shrink-0 flex-col gap-3 sm:w-auto">
+              <LocalizedA href="/service-areas"
+                className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl border border-amber-400 px-5 py-3 text-center font-semibold text-amber-300 hover:bg-slate-800">
+                {isSpanish ? 'Ver todas las áreas de servicio' : 'See All Cities & Service Areas'} <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </LocalizedA>
+              <LocalizedA href={TEL} onClick={() => call('homepage_south_florida_coverage_call')}
+                className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-amber-400 px-5 py-3 text-center font-extrabold text-slate-950 hover:bg-amber-300">
+                <Phone className="h-4 w-4" aria-hidden="true" />{isSpanish ? 'Llamar para confirmar disponibilidad' : 'Call to Confirm Availability'} · {PHONE}
+              </LocalizedA>
+            </div>
+          </div>
         </div>
       </section>
 
