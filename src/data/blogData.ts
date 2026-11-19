@@ -42,7 +42,7 @@ export const BLOG_POSTS: BlogPost[] = [
     author: 'Pro Locksmith Tech Dispatch Team',
     image: keyMachineImg,
     metaDescription: 'Can a locksmith make a car key without the original? Yes. Mobile locksmiths decode door or ignition lock cylinders on-site using your VIN and cut fresh transponder keys.',
-    quickAnswer: 'Yes, a licensed mobile locksmith can make a car key without the original. By using your Vehicle Identification Number (VIN) and proof of ownership, a locksmith accesses manufacturer key codes or physically decodes the door or ignition lock cylinder with precision tools (such as Lishi decoders), cuts a new mechanical blade, and programs the electronic transponder chip via the OBD-II diagnostic port right at your vehicle.',
+    quickAnswer: 'Yes, a licensed mobile locksmith can make a car key without the original. By using your Vehicle Identification Number (VIN) a locksmith accesses manufacturer key codes or physically decodes the door or ignition lock cylinder with precision tools (such as Lishi decoders), cuts a new mechanical blade, and programs the electronic transponder chip via the OBD-II diagnostic port right at your vehicle.',
     keywords: [
       'make car key without original',
       'lost only car key',
@@ -465,8 +465,8 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: '4 min read',
     author: 'Pro Locksmith Tech Dispatch Team',
     image: locksmithCrewImg,
-    metaDescription: 'What details to prepare before calling a mobile locksmith: exact address, vehicle year/make/model, lock brand, and ownership verification for rapid South Florida dispatch.',
-    quickAnswer: 'Before calling a mobile locksmith, prepare four key details: 1) Your exact location (cross streets, landmark, or GPS coordinates in South Florida); 2) The exact issue and hardware involved (vehicle year, make, model or residential lock brand); 3) Proof of ownership or residency; and 4) Clear access to the vehicle or doorway.',
+    metaDescription: 'What details to prepare before calling a mobile locksmith: exact address, vehicle year/make/model, lock brand, for rapid South Florida dispatch.',
+    quickAnswer: 'Before calling a mobile locksmith, prepare four key details: 1) Your exact location (cross streets, landmark, or GPS coordinates in South Florida); 2) The exact issue and hardware involved (vehicle year, make, model or residential lock brand); 3) Access instructions or relevant property details; and 4) Clear access to the vehicle or doorway.',
     keywords: [
       'what information needed before calling locksmith',
       'calling mobile locksmith South Florida',
@@ -483,8 +483,7 @@ export const BLOG_POSTS: BlogPost[] = [
         ],
         tips: [
           'Have your 17-digit VIN and vehicle year, make, and model ready for automotive key calls.',
-          'For residential and commercial calls, note the lock brand (Schlage, Kwikset, Yale, Medeco, Corbin Russwin) if stamped on the deadbolt face.',
-          'Legitimate mobile locksmiths must verify government ID and proof of property/vehicle ownership prior to performing unlocks or cutting keys.'
+          'For residential and commercial calls, note the lock brand (Schlage, Kwikset, Yale, Medeco, Corbin Russwin) if stamped on the deadbolt face.'
         ]
       },
       {

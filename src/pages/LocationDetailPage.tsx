@@ -282,7 +282,7 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
               <p className="mt-3 text-base leading-7 text-slate-300">
                 {isSpanish
                   ? `¿Necesita asistencia para un auto, vivienda o negocio en ${city.name}? Llame a Pro Locksmith Tech y describa el problema. Somos un servicio móvil; no hay una tienda de atención al público.`
-                  : `Need locksmith help at a vehicle, home or business in ${city.name}? Call Pro Locksmith Tech and describe the problem. We dispatch mobile service; there is no public walk-in storefront.`}
+                  : `Need locksmith help at a vehicle, home or business in ${city.name}? Call Pro Locksmith Tech and describe the problem. We offer mobile locksmith service across South Florida and come directly to your location.`}
               </p>
               <ol className="mt-5 grid gap-3 sm:grid-cols-3">
                 {[
@@ -301,8 +301,8 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
                   {
                     enTitle: 'Confirm service details',
                     esTitle: 'Confirme los detalles',
-                    enBody: 'Ask about technician availability, an arrival estimate and applicable charges before approving work. Proof of authorization may be needed.',
-                    esBody: 'Confirme la disponibilidad, una estimación de llegada y los cargos antes de autorizar el trabajo. Puede necesitar prueba de autorización.'
+                    enBody: 'Call to confirm technician availability and an estimated arrival time for your location.',
+                    esBody: 'Llame para confirmar la disponibilidad y el tiempo estimado de llegada a su ubicación.'
                   },
                 ].map((step, index) => (
                   <li key={index} className="rounded-xl border border-slate-700 bg-slate-900 p-4">
