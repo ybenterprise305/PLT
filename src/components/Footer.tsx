@@ -85,6 +85,7 @@ export function Footer({ onNavigate }: FooterProps) {
                 <a href="https://maps.google.com/maps?cid=16992150185739281311" target="_blank" rel="noopener noreferrer" className="text-amber-300 hover:underline">{isSpanish ? 'Opiniones en Google Maps' : 'Google Maps & Reviews'}</a>
                 <a href="https://nextdoor.com/pages/pro-locksmith-tech-coral-springs-fl/" target="_blank" rel="noopener noreferrer" className="text-amber-300 hover:underline">Nextdoor</a>
                 {yelpUrl && <a href={yelpUrl} target="_blank" rel="noopener noreferrer" className="text-amber-300 hover:underline">Yelp</a>}
+                <a href="https://www.trustpilot.com/review/prolocksmith-tech.com" target="_blank" rel="noopener noreferrer" className="text-amber-300 hover:underline">Trustpilot</a>
               </div>
             </div>
           </div>
