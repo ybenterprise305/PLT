@@ -22,6 +22,9 @@ declare global {
 }
 
 const PHONE_E164 = '+17542616528';
+const SEARCH_ADS_TAG = 'AW-18475105079';
+const SEARCH_WEBSITE_CALL_ACTION = SEARCH_ADS_TAG + '/qiWsCNj2jsAdELf2zulE';
+const SEARCH_PHONE_DISPLAY = '(754) 261-6528';
 const ATTRIBUTION_KEYS = ['gclid', 'gbraid', 'wbraid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'city'];
 const ATTRIBUTION_STORAGE_KEY = 'plt_attribution';
 const DEDUPE_WINDOW_MS = 1000;
@@ -160,27 +163,64 @@ function handleDocumentClick(event: MouseEvent): void {
   }
 }
 
+const configuredGoogleTags = new Set<string>();
+
+function configureGoogleTag(id: string): void {
+  if (!window.gtag) {
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function gtag() {
+      // gtag.js expects the arguments object itself on the dataLayer.
+      window.dataLayer!.push(arguments);
+    };
+
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(id)}`;
+    document.head.appendChild(script);
+    window.gtag('js', new Date());
+  }
+
+  if (!configuredGoogleTags.has(id)) {
+    window.gtag('config', id);
+    configuredGoogleTags.add(id);
+  }
+}
+
+interface ForwardingNumber {
+  display: string;
+  tel: string;
+}
+
+let forwardingNumber: ForwardingNumber | undefined;
+let websiteCallsConfigured = false;
+const forwardNumberListeners = new Set<(number: ForwardingNumber) => void>();
+
+export function watchSearchWebsiteCallNumber(listener: (number: ForwardingNumber) => void): () => void {
+  forwardNumberListeners.add(listener);
+  if (forwardingNumber) listener(forwardingNumber);
+  if (!websiteCallsConfigured) {
+    configureGoogleTag(SEARCH_ADS_TAG);
+    window.gtag?.('config', SEARCH_WEBSITE_CALL_ACTION, {
+      phone_conversion_number: SEARCH_PHONE_DISPLAY,
+      phone_conversion_callback: (display: string, mobile: string) => {
+        if (typeof display !== 'string' || !display.trim() || typeof mobile !== 'string') return;
+        const usNumber = /^\+?1?(\d{10})$/.exec(mobile);
+        if (!usNumber) return;
+        const number = { display, tel: 'tel:+1' + usNumber[1] };
+        forwardingNumber = number;
+        forwardNumberListeners.forEach(onNumber => onNumber(number));
+      },
+    });
+    websiteCallsConfigured = true;
+  }
+  return () => { forwardNumberListeners.delete(listener); };
+}
+
 function loadGoogleTag(): void {
   const gaId = import.meta.env.VITE_GA_MEASUREMENT_ID as string | undefined;
   const adsId = import.meta.env.VITE_GOOGLE_ADS_ID as string | undefined;
-  const primaryId = gaId || adsId;
-  if (!primaryId) return;
-
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = function gtag() {
-    // gtag.js expects the arguments object itself on the dataLayer
-    // eslint-disable-next-line prefer-rest-params
-    window.dataLayer!.push(arguments);
-  };
-
-  const script = document.createElement('script');
-  script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(primaryId)}`;
-  document.head.appendChild(script);
-
-  window.gtag('js', new Date());
-  if (gaId) window.gtag('config', gaId);
-  if (adsId) window.gtag('config', adsId);
+  if (gaId) configureGoogleTag(gaId);
+  if (adsId) configureGoogleTag(adsId);
 }
 
 /**
