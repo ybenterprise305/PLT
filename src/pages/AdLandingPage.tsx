@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ArrowRight, Check, Clock, KeyRound, MapPin, Phone, Star } from 'lucide-react';
 import { SEOHead } from '../components/SEOHead';
 import { NotFoundPage } from './NotFoundPage';
 import { LocalizedA } from '../components/LocalizedA';
 import { useLanguage } from '../context/LanguageContext';
 import { getAdCampaignBySlug } from '../data/adLandingPagesData';
-import { trackPhoneClick } from '../utils/analytics';
+import { trackPhoneClick, watchSearchWebsiteCallNumber } from '../utils/analytics';
 
 interface AdLandingPageProps {
   slug: string;
@@ -464,8 +464,17 @@ const reviews = {
 
 const emergency = new Set(['car-lockout', 'house-lockout', 'emergency-locksmith', 'lost-car-keys', 'broken-key-extraction', 'safe-lockout', 'storage-unit-lockout']);
 
+const trackedSearchPages = new Set(['car-lockout', 'house-lockout', 'car-key-replacement']);
+
 export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
   const { isSpanish } = useLanguage();
+  const [forwardingNumber, setForwardingNumber] = useState<{ display: string; tel: string }>();
+  const trackWebsiteCalls = trackedSearchPages.has(slug);
+  useEffect(() => {
+    if (trackWebsiteCalls) return watchSearchWebsiteCallNumber(setForwardingNumber);
+  }, [trackWebsiteCalls]);
+  const displayNumber = trackWebsiteCalls && forwardingNumber ? forwardingNumber.display : PHONE;
+  const phoneLink = trackWebsiteCalls && forwardingNumber ? forwardingNumber.tel : TEL;
   const campaign = getAdCampaignBySlug(slug);
   const item = copy[slug];
   if (!campaign || !item) return <NotFoundPage onNavigate={onNavigate} />;
@@ -487,12 +496,12 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
     serviceCategory: campaign.serviceId,
   });
   const callButton = (location: string, wide = false) => (
-    <a href={TEL} onClick={() => trackCall(location)}
+    <a href={phoneLink} onClick={() => trackCall(location)}
       className={'inline-flex min-h-[56px] items-center justify-center gap-3 rounded-xl bg-amber-400 px-4 py-3 text-left font-bold text-slate-950 shadow-lg transition-colors hover:bg-amber-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-300 ' + (wide ? 'w-full' : 'w-full sm:w-auto sm:px-6')}>
       <Phone className="h-5 w-5 shrink-0" aria-hidden="true" />
       <span className="leading-tight">
         <span className="block text-base">{callLabel}</span>
-        <span className="block text-sm tabular-nums">{PHONE}</span>
+        <span className="block text-sm tabular-nums">{displayNumber}</span>
       </span>
       <ArrowRight className="ml-2 h-5 w-5 shrink-0" aria-hidden="true" />
     </a>
@@ -507,10 +516,10 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
             <KeyRound className="h-6 w-6 shrink-0 text-amber-400" aria-hidden="true" />
             <span>Pro Locksmith Tech</span>
           </div>
-          <a href={TEL} onClick={() => trackCall('ppc_header_call')} aria-label={callLabel + ' ' + PHONE}
+          <a href={phoneLink} onClick={() => trackCall('ppc_header_call')} aria-label={callLabel + ' ' + displayNumber}
             className="inline-flex min-h-[44px] shrink-0 items-center gap-2 rounded-lg px-2 text-sm font-bold text-amber-300 hover:underline focus-visible:outline-2 focus-visible:outline-amber-300">
             <Phone className="h-4 w-4" aria-hidden="true" />
-            <span>{PHONE}</span>
+            <span>{displayNumber}</span>
           </a>
         </div>
       </header>
