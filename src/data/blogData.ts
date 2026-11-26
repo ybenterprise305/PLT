@@ -1,3 +1,4 @@
+import { NEW_BLOG_POSTS } from './newBlogPosts';
 import { 
   carKeyProgImg, 
   techRekeyingImg, 
@@ -24,6 +25,7 @@ export interface BlogPost {
     paragraphs: string[];
     tips?: string[];
   }[];
+  relatedAreas?: { name: string; path: string }[];
   relatedServices: {
     name: string;
     slug: string;
@@ -31,6 +33,7 @@ export interface BlogPost {
 }
 
 export const BLOG_POSTS: BlogPost[] = [
+  ...NEW_BLOG_POSTS,
   {
     id: '1',
     slug: 'can-locksmith-make-car-key-without-original',
@@ -42,7 +45,7 @@ export const BLOG_POSTS: BlogPost[] = [
     author: 'Pro Locksmith Tech Dispatch Team',
     image: keyMachineImg,
     metaDescription: 'Can a locksmith make a car key without the original? Yes. Mobile locksmiths decode door or ignition lock cylinders on-site using your VIN and cut fresh transponder keys.',
-    quickAnswer: 'Yes, a licensed mobile locksmith can make a car key without the original. By using your Vehicle Identification Number (VIN) a locksmith accesses manufacturer key codes or physically decodes the door or ignition lock cylinder with precision tools (such as Lishi decoders), cuts a new mechanical blade, and programs the electronic transponder chip via the OBD-II diagnostic port right at your vehicle.',
+    quickAnswer: 'A mobile locksmith can make a replacement car key without the original on some vehicles. Whether it can be done on site depends on the vehicle year, model and key system. Have the vehicle details and proof that you are authorized to access it ready when you call.',
     keywords: [
       'make car key without original',
       'lost only car key',

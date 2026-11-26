@@ -16,6 +16,7 @@ export function stripLocale(path: string): string {
 /** Pages that have real Spanish content, and therefore a /es/ version that search engines can index. */
 export function hasSpanishVersion(basePath: string): boolean {
   const p = basePath.replace(/\/+$/, '') || '/';
+  if (/^\/service-areas\/[^/]+\//.test(p)) return false;
   return SPANISH_EXACT.includes(p) || SPANISH_PREFIXES.some((prefix) => p.startsWith(prefix));
 }
 
