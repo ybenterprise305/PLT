@@ -14,8 +14,9 @@ import {
   Sparkles 
 } from 'lucide-react';
 import { SEOHead } from '../components/SEOHead';
-import { BLOG_POSTS, BlogPost } from '../data/blogData';
+import { BLOG_POSTS } from '../data/blogData';
 import { trackPhoneClick } from '../utils/analytics';
+import { NotFoundPage } from './NotFoundPage';
 import { breadcrumbSchema } from '../utils/breadcrumbs';
 
 import { LocalizedA } from '../components/LocalizedA';
@@ -25,9 +26,14 @@ interface BlogPostPageProps {
 }
 
 export function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
-  const post = BLOG_POSTS.find(p => p.slug === slug) || BLOG_POSTS[0];
+  const post = BLOG_POSTS.find(p => p.slug === slug);
+  if (!post) return <NotFoundPage onNavigate={onNavigate} />;
 
-  const relatedPosts = BLOG_POSTS.filter(p => p.slug !== post.slug).slice(0, 3);
+  const otherPosts = BLOG_POSTS.filter(p => p.slug !== post.slug);
+  const relatedPosts = [
+    ...otherPosts.filter(p => p.category === post.category),
+    ...otherPosts.filter(p => p.category !== post.category),
+  ].slice(0, 3);
 
   // Schema.org BlogPosting Structured Data
   const blogPostingSchema = {
@@ -36,7 +42,7 @@ export function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
     "headline": post.title,
     "description": post.metaDescription,
     "image": post.image,
-    "datePublished": "2025-01-15T08:00:00+08:00",
+    "datePublished": new Date(post.date + " UTC").toISOString().slice(0, 10),
     "author": {
       "@type": "Organization",
       "name": "Pro Locksmith Tech",
@@ -118,6 +124,15 @@ export function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
             </span>
           </div>
         </header>
+
+        {post.relatedAreas && (
+          <nav aria-label="Related service areas" className="mb-6 flex flex-wrap items-center gap-3 text-sm">
+            <span className="text-slate-300">Related service areas</span>
+            {post.relatedAreas.map((area) => (
+              <LocalizedA className="text-amber-300 underline" href={area.path} key={area.path}>{area.name}</LocalizedA>
+            ))}
+          </nav>
+        )}
 
         {/* Featured Image */}
         <div className="rounded-3xl overflow-hidden mb-10 border border-slate-800 aspect-[16/9] shadow-2xl bg-slate-950">

@@ -12,6 +12,9 @@ import { ServicesPage } from './pages/ServicesPage';
 import { ServiceDetailPage } from './pages/ServiceDetailPage';
 import { ServiceAreasPage } from './pages/ServiceAreasPage';
 import { LocationDetailPage } from './pages/LocationDetailPage';
+import { NeighborhoodPage } from './pages/NeighborhoodPage';
+import { getCityBySlug } from './data/locationsData';
+import { getNeighborhoods } from './data/neighborhoods';
 import { AboutPage } from './pages/AboutPage';
 import { ReviewsPage } from './pages/ReviewsPage';
 import { ContactPage } from './pages/ContactPage';
@@ -97,7 +100,7 @@ export default function App({ initialPath }: AppProps) {
   // Keep the bilingual homepage separate and let the shared layout translate its navigation.
   if (isEsPath(fullPath) && normalizedPath !== '/' && (
     ['/services', '/service-areas', '/about', '/contact', '/faq'].includes(normalizedPath) ||
-    normalizedPath.startsWith('/services/') || normalizedPath.startsWith('/service-areas/')
+    normalizedPath.startsWith('/services/') || /^\/service-areas\/[^/]+$/.test(normalizedPath)
   )) {
     return (
       <LanguageProvider path={fullPath} onSwitch={switchLanguage}>
@@ -135,7 +138,16 @@ export default function App({ initialPath }: AppProps) {
     pageContent = <ServiceAreasPage onNavigate={navigate} />;
   } else if (normalizedPath.startsWith('/service-areas/')) {
     const slug = normalizedPath.replace('/service-areas/', '');
-    pageContent = <LocationDetailPage slug={slug} onNavigate={navigate} />;
+    const [citySlug, neighborhoodSlug, ...remaining] = slug.split('/');
+    if (neighborhoodSlug && remaining.length === 0) {
+      const city = getCityBySlug(citySlug)?.city;
+      const area = getNeighborhoods(citySlug).find((entry) => entry.slug === neighborhoodSlug);
+      pageContent = city && area && !isEsPath(fullPath)
+        ? <NeighborhoodPage city={city} area={area} />
+        : <NotFoundPage onNavigate={navigate} />;
+    } else {
+      pageContent = <LocationDetailPage slug={slug} onNavigate={navigate} />;
+    }
   } else if (normalizedPath === '/blog') {
     pageContent = <BlogListPage onNavigate={navigate} />;
   } else if (normalizedPath.startsWith('/blog/')) {

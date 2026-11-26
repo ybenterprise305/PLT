@@ -8,6 +8,7 @@ import {
   ArrowRight,
 } from 'lucide-react';
 import { getCityBySlug, getCountyBySlug } from '../data/locationsData';
+import { CityLocalInformation } from '../components/CityLocalInformation';
 import { SEOHead } from '../components/SEOHead';
 import { locksmithVanImg } from '../assets/images';
 import { useLanguage } from '../context/LanguageContext';
@@ -40,7 +41,6 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
           "telephone": "+1-754-261-6528",
           "email": "prolocksmithtech@gmail.com",
           "image": "https://prolocksmith-tech.com/icon-512.png",
-          "priceRange": "$$",
           "currenciesAccepted": "USD",
           "paymentAccepted": "Cash, Credit Card, Debit Card, Mobile Pay",
           "address": {
@@ -61,7 +61,7 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
           ],
           "areaServed": [
             {
-              "@type": "City",
+              "@type": city.slug === 'kendall' ? "Place" : "City",
               "name": city.name,
               "containedInPlace": {
                 "@type": "AdministrativeArea",
@@ -272,6 +272,8 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
               ))}
             </div>
           </section>
+
+          <CityLocalInformation city={city.name} slug={city.slug} spanish={isSpanish} />
 
           {/* Useful customer instructions on the primary nearby service-area pages. */}
           {['coral-springs', 'margate', 'coconut-creek', 'tamarac', 'pompano-beach'].includes(city.slug) && (

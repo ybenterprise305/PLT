@@ -1,5 +1,6 @@
 import React from 'react';
 import { Phone, MapPin, ArrowRight, Clock, Car, Home, ShieldCheck } from 'lucide-react';
+import { CityLocalInformation } from '../components/CityLocalInformation';
 import { SEOHead } from '../components/SEOHead';
 import { LocalizedA } from '../components/LocalizedA';
 import { SERVICES_DATA } from '../data/servicesData';
@@ -140,6 +141,12 @@ export function SpanishContentPage({ path }: Props) {
           {county && <div className="mt-8"><h2 className="mb-3 text-xl font-bold">Ciudades atendidas</h2><div className="flex flex-wrap gap-2">{county.majorCities.map(city=><LocalizedA key={city.slug} href={'/service-areas/'+city.slug} className="rounded-lg border border-slate-700 px-3 py-2 text-sm">{city.name}</LocalizedA>)}</div></div>}
           {cityMatch && <p className="mt-8 text-base text-slate-300">Consulte más ciudades en <LocalizedA className="font-semibold text-amber-300 underline" href="/service-areas">nuestro directorio de cobertura</LocalizedA>.</p>}
         </section>
+      )}
+
+      {cityMatch && (
+        <div className="mx-auto max-w-6xl px-5 py-5">
+          <CityLocalInformation city={cityMatch.city.name} slug={cityMatch.city.slug} spanish />
+        </div>
       )}
 
       {path === '/faq' && (

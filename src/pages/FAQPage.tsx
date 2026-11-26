@@ -178,6 +178,7 @@ export function FAQPage({ onNavigate }: FAQPageProps) {
                     onClick={() => toggleExpand(faq.id)}
                     className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 cursor-pointer focus:outline-none"
                     aria-expanded={isOpen}
+                    aria-controls={`answer-${faq.id}`}
                   >
                     <div className="flex items-center gap-3">
                       <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 text-xs font-bold ${
@@ -194,8 +195,7 @@ export function FAQPage({ onNavigate }: FAQPageProps) {
                     }`} />
                   </button>
 
-                  {isOpen && (
-                    <div className="px-5 sm:px-6 pb-6 pt-1 text-slate-300 text-sm sm:text-base leading-relaxed border-t border-slate-900">
+                  <div hidden={!isOpen} id={`answer-${faq.id}`} className="px-5 sm:px-6 pb-6 pt-1 text-slate-300 text-sm sm:text-base leading-relaxed border-t border-slate-900">
                       <div className="flex items-start gap-3">
                         <CheckCircle2 className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
                         <div>
@@ -212,8 +212,7 @@ export function FAQPage({ onNavigate }: FAQPageProps) {
                           </div>
                         </div>
                       </div>
-                    </div>
-                  )}
+                  </div>
                 </div>
               );
             })

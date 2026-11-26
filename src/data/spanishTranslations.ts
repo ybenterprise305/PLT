@@ -1,3 +1,5 @@
+import { ADDITIONAL_SPANISH_FAQS } from './newFaqs';
+
 export interface SpanishServiceTranslation {
   name: string;
   badge: string;
@@ -265,7 +267,7 @@ export const SPANISH_FAQS = [
   {
     id: 'es-faq-5',
     question: '¿Cuál es la diferencia entre cambio de combinación (cambio de combinación) y cambio de cerraduras?',
-    answer: 'El cambio de combinación cambia la configuración interna de pines de sus cerraduras actuales para que las llaves antiguas ya no funcionen, ahorrándole hasta un 70% frente a comprar cerraduras nuevas. El reemplazo instala cerraduras y cerrojos Grado 1 o 2 totalmente nuevos, ideal si sus cerraduras están desgastadas, dañadas o desactualizadas.'
+    answer: 'El cambio de combinación ajusta una cerradura compatible para que funcione con una llave nueva. Si la cerradura está dañada, desgastada o no es adecuada para la puerta, puede ser mejor reemplazar los herrajes.'
   },
   {
     id: 'es-faq-6',
@@ -286,7 +288,8 @@ export const SPANISH_FAQS = [
     id: 'es-faq-9',
     question: '¿Cómo solicito un cerrajero móvil de emergencia?',
     answer: 'Para solicitar auxilio móvil inmediato, llame directamente a nuestra línea 24/7 al +1 (754) 261-6528 o envíe un mensaje de texto con su dirección o ubicación GPS. Hablará directamente con un técnico en servicio sin grabaciones automáticas ni demoras.'
-  }
+  },
+  ...ADDITIONAL_SPANISH_FAQS,
 ];
 
 

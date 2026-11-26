@@ -1,3 +1,5 @@
+import { ADDITIONAL_FAQS } from './newFaqs';
+
 export interface FAQItem {
   id: string;
   question: string;
@@ -16,25 +18,25 @@ export const FAQ_DATA: FAQItem[] = [
     id: 'how-fast-arrival',
     category: 'emergency',
     question: 'How fast can a mobile locksmith arrive at my location?',
-    answer: 'Our mobile locksmith technicians maintain an average on-site arrival time of 15 to 25 minutes across Broward County, Miami-Dade County, and Palm Beach County. Because our fleet actively patrols South Florida highways and municipal corridors daily, we dispatch the nearest active mobile unit directly to your coordinates when you call +1 (754) 261-6528.'
+    answer: 'Arrival depends on your exact location, traffic and technician availability. Call (754) 261-6528 with your address and the service you need so we can discuss availability and an estimated arrival.'
   },
   {
     id: 'car-lockout-help',
     category: 'automotive',
     question: 'What should I do if I am locked out of my car in South Florida?',
-    answer: 'If you are locked out of your vehicle, call Pro Locksmith Tech at (754) 261-6528 for immediate mobile dispatch. Avoid coat hangers or wedges that bend window frames. Our mobile technicians arrive on-site with professional automotive bypass tools and air wedges to unlock your doors or trunk rapidly without cosmetic damage.'
+    answer: 'Call (754) 261-6528 with the vehicle location and its year, make and model. Say whether the key is inside the vehicle or missing. We can discuss service availability and what you need to have ready.'
   },
   {
     id: 'car-key-programming',
     category: 'automotive',
     question: 'Can you make replacement car keys and program key fobs on-site?',
-    answer: 'Yes. Our mobile workshop vans are outfitted with computerized CNC laser key cutting machinery and advanced OBD-II diagnostic tablets. We originate replacement car keys, program transponder chips, and sync proximity push-to-start smart key fobs on-site for domestic, Asian, and European vehicles—even when all original keys are completely lost.'
+    answer: 'We can cut and program compatible car keys and fobs at the vehicle. Tell us the year, make, model, and whether you have a working key so we can confirm the service for your vehicle.'
   },
   {
     id: 'rekeying-vs-replacement',
     category: 'residential',
     question: 'What is the difference between lock rekeying and lock replacement?',
-    answer: 'Lock rekeying alters the internal brass pin configuration inside your existing deadbolt cylinder so old keys no longer work, saving homeowners up to 70% compared to purchasing new hardware. Lock replacement installs entirely new Grade 1 or Grade 2 deadbolts, recommended if your existing lock is physically worn, compromised, or outdated.'
+    answer: 'Rekeying changes a compatible existing lock to work with a new key. Replacement changes the lock hardware itself and may be the right option if the lock is damaged, worn or unsuitable for the door.'
   },
   {
     id: 'commercial-master-keys',
@@ -46,18 +48,19 @@ export const FAQ_DATA: FAQItem[] = [
     id: 'areas-served',
     category: 'general',
     question: 'What areas in South Florida do you serve?',
-    answer: 'We serve the entire South Florida tri-county region, with rapid dispatch hubs centered in Coral Springs and covering Broward County (Fort Lauderdale, Pompano Beach, Hollywood, Pembroke Pines), Palm Beach County (Boca Raton, Delray Beach, West Palm Beach), and Miami-Dade County (Miami, Hialeah, Doral, Miami Beach). Our technicians travel directly to you.'
+    answer: 'We provide mobile service in parts of Broward County (Fort Lauderdale, Pompano Beach, Hollywood, Pembroke Pines), Palm Beach County (Boca Raton, Delray Beach, West Palm Beach), and Miami-Dade County (Miami, Hialeah, Doral, Miami Beach). Our technicians travel directly to you.'
   },
   {
     id: 'service-24-7',
     category: 'emergency',
     question: 'Is emergency mobile locksmith service available 24/7?',
-    answer: 'Yes. Pro Locksmith Tech operates 24 hours a day, 7 days a week, 365 days a year—including late nights, weekends, and federal holidays. If you experience an emergency car lockout, lost house keys, or broken storefront deadbolt, our mobile locksmiths are on call for immediate live dispatch.'
+    answer: 'Yes. Pro Locksmith Tech accepts calls 24 hours a day. Call to confirm a technician is available for your location and the type of help you need.'
   },
   {
     id: 'how-to-request',
     category: 'general',
     question: 'How do I request an immediate mobile locksmith?',
     answer: 'To request immediate mobile service, call our direct 24/7 dispatch phone line at +1 (754) 261-6528 and tell our dispatcher your location and what service you need. Our team can discuss availability and service details during your call.'
-  }
+  },
+  ...ADDITIONAL_FAQS,
 ];

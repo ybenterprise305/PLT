@@ -104,7 +104,11 @@ if (fs.existsSync(sitemapPath)) {
     extraEntries.push(`  <url>\n    <loc>${es}</loc>${lastmod}${links}</url>`);
     return block.replace('</url>', links + '</url>');
   });
-  xml = xml.replace('</urlset>', extraEntries.join('\n') + '\n</urlset>');
+  const present = new Set([...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => new URL(match[1]).pathname.replace(/\/+$/, '')));
+  const newEnglishGuides = routes
+    .filter((route) => /^\/(?:blog\/[^/]+|service-areas\/[^/]+\/[^/]+)$/.test(route) && !present.has(route))
+    .map((route) => `  <url>\n    <loc>${SITE}${route}</loc>\n  </url>`);
+  xml = xml.replace('</urlset>', [...extraEntries, ...newEnglishGuides].join('\n') + '\n</urlset>');
   fs.writeFileSync(sitemapPath, xml);
   console.log(`Sitemap: added ${extraEntries.length} Spanish pages`);
 }
