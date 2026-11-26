@@ -7,9 +7,9 @@ import { getNeighborhoods, neighborhoodPath } from './data/neighborhoods';
 import { BLOG_POSTS } from './data/blogData';
 import { LOCKSMITH_TIPS_DATA } from './data/locksmithTipsData';
 import { AD_CAMPAIGNS } from './data/adLandingPagesData';
-import { hasSpanishVersion, localizePath, isEsPath, stripLocale } from './utils/locale';
+import { canonicalSitePath, hasSpanishVersion, localizePath, isEsPath, stripLocale } from './utils/locale';
 
-export { hasSpanishVersion, localizePath, isEsPath, stripLocale };
+export { canonicalSitePath, hasSpanishVersion, localizePath, isEsPath, stripLocale };
 
 export function getRoutes(): string[] {
   const english = [

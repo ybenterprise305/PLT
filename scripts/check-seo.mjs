@@ -62,7 +62,12 @@ for (const match of sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)) {
   const route = loc.pathname.replace(/\/$/, '') || '/';
   const file = route === '/' ? path.join('dist', 'index.html') : path.join('dist', route, 'index.html');
   if (!fs.existsSync(file)) problems.push(`sitemap includes missing page: ${route}`);
-  else if (/<meta name="robots" content="noindex/.test(fs.readFileSync(file,'utf8'))) problems.push(`sitemap includes noindex page: ${route}`);
+  else {
+    const html = fs.readFileSync(file, 'utf8');
+    if (/<meta name="robots" content="noindex/.test(html)) problems.push(`sitemap includes noindex page: ${route}`);
+    if (!loc.pathname.endsWith('/')) problems.push(`sitemap URL misses its trailing slash: ${route}`);
+    if (!html.includes(`rel="canonical" href="${loc.href}"`)) problems.push(`sitemap and canonical disagree: ${route}`);
+  }
 }
 
 console.log(`Checked ${files.length} pre-rendered pages (${spanishCount} Spanish)`);

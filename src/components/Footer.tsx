@@ -16,7 +16,7 @@ interface FooterProps {
 
 export function Footer({ onNavigate }: FooterProps) {
   const { t, isSpanish } = useLanguage();
-  const yelpUrl = 'https://www.yelp.com/biz/pro-locksmith-tech-pompano-beach-2';
+  const yelpUrl = 'https://www.yelp.com/biz/pro-locksmith-tech-coral-springs-2';
 
   return (
     <footer className="bg-slate-950 text-slate-300 pt-16 pb-24 lg:pb-12 border-t border-slate-800">
@@ -85,7 +85,9 @@ export function Footer({ onNavigate }: FooterProps) {
                 <a href="https://maps.google.com/maps?cid=16992150185739281311" target="_blank" rel="noopener noreferrer" className="text-amber-300 hover:underline">{isSpanish ? 'Opiniones en Google Maps' : 'Google Maps & Reviews'}</a>
                 <a href="https://nextdoor.com/pages/pro-locksmith-tech-coral-springs-fl/" target="_blank" rel="noopener noreferrer" className="text-amber-300 hover:underline">Nextdoor</a>
                 {yelpUrl && <a href={yelpUrl} target="_blank" rel="noopener noreferrer" className="text-amber-300 hover:underline">Yelp</a>}
+                <a href="https://www.pinterest.com/prolocksmithtech/" target="_blank" rel="noopener noreferrer" className="text-amber-300 hover:underline">Pinterest</a>
                 <a href="https://www.trustpilot.com/review/prolocksmith-tech.com" target="_blank" rel="noopener noreferrer" className="text-amber-300 hover:underline">Trustpilot</a>
+                <a href="https://ezlocal.com/fl/coral-springs/mobile-locksmith/0919941311" target="_blank" rel="noopener noreferrer" className="text-amber-300 hover:underline">EZlocal</a>
               </div>
             </div>
           </div>

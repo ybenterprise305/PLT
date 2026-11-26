@@ -1,3 +1,9 @@
+// Cloudflare serves pre-rendered directory pages at URLs ending in a slash.
+export function canonicalSitePath(path: string): string {
+  const rooted = path.startsWith('/') ? path : '/' + path;
+  return rooted.replace(/\/+$/, '') + '/';
+}
+
 export type Lang = 'en' | 'es';
 
 const SPANISH_EXACT = ['/', '/services', '/service-areas', '/about', '/contact', '/faq'];
