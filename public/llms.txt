@@ -32,5 +32,6 @@ Official business facts:
 - [Nextdoor](https://nextdoor.com/pages/pro-locksmith-tech-coral-springs-fl/)
 - [Yelp](https://www.yelp.com/biz/pro-locksmith-tech-coral-springs-2)
 - [Trustpilot](https://www.trustpilot.com/review/prolocksmith-tech.com)
+- [EZlocal](https://ezlocal.com/fl/coral-springs/mobile-locksmith/0919941311)
 
 This is an optional informational guide. It does not override robots.txt or grant special training permissions.

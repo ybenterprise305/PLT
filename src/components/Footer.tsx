@@ -87,6 +87,7 @@ export function Footer({ onNavigate }: FooterProps) {
                 {yelpUrl && <a href={yelpUrl} target="_blank" rel="noopener noreferrer" className="text-amber-300 hover:underline">Yelp</a>}
                 <a href="https://www.pinterest.com/prolocksmithtech/" target="_blank" rel="noopener noreferrer" className="text-amber-300 hover:underline">Pinterest</a>
                 <a href="https://www.trustpilot.com/review/prolocksmith-tech.com" target="_blank" rel="noopener noreferrer" className="text-amber-300 hover:underline">Trustpilot</a>
+                <a href="https://ezlocal.com/fl/coral-springs/mobile-locksmith/0919941311" target="_blank" rel="noopener noreferrer" className="text-amber-300 hover:underline">EZlocal</a>
               </div>
             </div>
           </div>
