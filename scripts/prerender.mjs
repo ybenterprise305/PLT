@@ -6,13 +6,7 @@ import { pathToFileURL } from 'node:url';
 
 const root = process.cwd();
 const dist = path.join(root, 'dist');
-let template = fs.readFileSync(path.join(dist, 'index.html'), 'utf8');
-// Add Yelp to the canonical business identity only after the public-facing listing is verified.
-const yelpPublicUrl = (process.env.VITE_YELP_PUBLIC_URL || '').trim();
-if (/^https:\/\/(?:www\.)?yelp\.com\/biz\/[a-z0-9-]+(?:[/?#].*)?$/i.test(yelpPublicUrl)) {
-  const nextdoor = '"https://nextdoor.com/pages/pro-locksmith-tech-coral-springs-fl/"';
-  if (template.includes(nextdoor)) template = template.replace(nextdoor, nextdoor + ', ' + JSON.stringify(yelpPublicUrl));
-}
+const template = fs.readFileSync(path.join(dist, 'index.html'), 'utf8');
 
 // Vite 8 may emit the SSR entry in assets/ with a content hash. Resolve the
 // actual generated entry instead of assuming a fixed file name.
@@ -33,7 +27,7 @@ if (candidates.length !== 1) {
     `Expected exactly one built SSR entry in dist-server, found ${candidates.length}: ${candidates.join(', ')}`
   );
 }
-const { render, getRoutes, hasSpanishVersion, localizePath, isEsPath, stripLocale } = await import(pathToFileURL(candidates[0]).href);
+const { render, getRoutes, canonicalSitePath, hasSpanishVersion, localizePath, isEsPath, stripLocale } = await import(pathToFileURL(candidates[0]).href);
 
 const SITE = 'https://prolocksmith-tech.com';
 const esc = (v) => String(v).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
@@ -46,7 +40,7 @@ function setMeta(html, attr, name, value) {
 
 function withHead(html, route, head) {
   if (!head) return html;
-  const canonical = SITE + (head.canonicalPath ? (head.canonicalPath.startsWith('/') ? head.canonicalPath : '/' + head.canonicalPath) : route === '/' ? '/' : route);
+  const canonical = SITE + canonicalSitePath(head.canonicalPath || route);
   html = html.replace(/<title>[^<]*<\/title>/, `<title>${esc(head.title)}</title>`);
   html = setMeta(html, 'name', 'description', head.description);
   html = setMeta(html, 'name', 'robots', head.noIndex ? 'noindex, follow' : 'index, follow, max-image-preview:large');
@@ -61,9 +55,9 @@ function withHead(html, route, head) {
   let extra = `  <link rel="canonical" href="${esc(canonical)}" />\n`;
   const base = stripLocale(route);
   if (hasSpanishVersion(base)) {
-    extra += `  <link rel="alternate" hreflang="en" href="${SITE + base}" />\n`;
-    extra += `  <link rel="alternate" hreflang="es" href="${SITE + localizePath(base, 'es')}" />\n`;
-    extra += `  <link rel="alternate" hreflang="x-default" href="${SITE + base}" />\n`;
+    extra += `  <link rel="alternate" hreflang="en" href="${SITE + canonicalSitePath(base)}" />\n`;
+    extra += `  <link rel="alternate" hreflang="es" href="${SITE + canonicalSitePath(localizePath(base, 'es'))}" />\n`;
+    extra += `  <link rel="alternate" hreflang="x-default" href="${SITE + canonicalSitePath(base)}" />\n`;
   }
   return html.replace('</head>', extra + '  </head>');
 }
@@ -96,9 +90,10 @@ if (fs.existsSync(sitemapPath)) {
     const loc = (block.match(/<loc>([^<]*)<\/loc>/) || [])[1];
     if (!loc) return block;
     const base = new URL(loc).pathname.replace(/\/+$/, '') || '/';
+    const en = SITE + canonicalSitePath(base);
+    block = block.replace(`<loc>${loc}</loc>`, `<loc>${en}</loc>`);
     if (!hasSpanishVersion(base)) return block;
-    const en = SITE + (base === '/' ? '/' : base);
-    const es = SITE + localizePath(base, 'es');
+    const es = SITE + canonicalSitePath(localizePath(base, 'es'));
     const links = `\n    <xhtml:link rel="alternate" hreflang="en" href="${en}" />\n    <xhtml:link rel="alternate" hreflang="es" href="${es}" />\n    <xhtml:link rel="alternate" hreflang="x-default" href="${en}" />\n  `;
     const lastmod = (block.match(/<lastmod>[^<]*<\/lastmod>/) || [''])[0];
     extraEntries.push(`  <url>\n    <loc>${es}</loc>${lastmod}${links}</url>`);
@@ -107,7 +102,7 @@ if (fs.existsSync(sitemapPath)) {
   const present = new Set([...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => new URL(match[1]).pathname.replace(/\/+$/, '')));
   const newEnglishGuides = routes
     .filter((route) => /^\/(?:blog\/[^/]+|service-areas\/[^/]+\/[^/]+)$/.test(route) && !present.has(route))
-    .map((route) => `  <url>\n    <loc>${SITE}${route}</loc>\n  </url>`);
+    .map((route) => `  <url>\n    <loc>${SITE}${canonicalSitePath(route)}</loc>\n  </url>`);
   xml = xml.replace('</urlset>', [...extraEntries, ...newEnglishGuides].join('\n') + '\n</urlset>');
   fs.writeFileSync(sitemapPath, xml);
   console.log(`Sitemap: added ${extraEntries.length} Spanish pages`);

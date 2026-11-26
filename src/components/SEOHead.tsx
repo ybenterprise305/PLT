@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { hasSpanishVersion, localizePath, stripLocale } from '../utils/locale';
+import { canonicalSitePath, hasSpanishVersion, localizePath, stripLocale } from '../utils/locale';
 
 const SITE = 'https://prolocksmith-tech.com';
 
@@ -60,7 +60,7 @@ export function SEOHead({
   const spanishVersionExists = hasSpanishVersion(basePath);
   // Spanish pages are indexable only where the Spanish content is real; elsewhere they point at the English page.
   const finalNoIndex = noIndex || (language === 'es' && !spanishVersionExists);
-  const finalCanonicalPath = language === 'es' && spanishVersionExists ? localizePath(basePath, 'es') : basePath;
+  const finalCanonicalPath = canonicalSitePath(language === 'es' && spanishVersionExists ? localizePath(basePath, 'es') : basePath);
 
   if (typeof window === 'undefined') {
     headCollector.current = { title, description, canonicalPath: finalCanonicalPath, keywords, ogType, noIndex: finalNoIndex };
@@ -103,9 +103,9 @@ export function SEOHead({
     document.head.querySelectorAll('link[rel="alternate"][hreflang]').forEach((el) => el.remove());
     if (spanishVersionExists) {
       const alternates: [string, string][] = [
-        ['en', SITE + basePath],
-        ['es', SITE + localizePath(basePath, 'es')],
-        ['x-default', SITE + basePath],
+        ['en', SITE + canonicalSitePath(basePath)],
+        ['es', SITE + canonicalSitePath(localizePath(basePath, 'es'))],
+        ['x-default', SITE + canonicalSitePath(basePath)],
       ];
       alternates.forEach(([lang, href]) => {
         const l = document.createElement('link');
