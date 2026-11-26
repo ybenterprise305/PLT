@@ -12,7 +12,7 @@ interface AdLandingPageProps {
   onNavigate: (path: string) => void;
 }
 
-type ServiceCopy = [headline: string, summary: string, services: string[], callDetails: string, question: string, answer: string];
+type ServiceCopy = [headline: string, summary: string, services: string[], question: string, answer: string];
 
 const PHONE = '(754) 261-6528';
 const TEL = 'tel:+17542616528';
@@ -28,9 +28,8 @@ const copy: Record<string, { en: ServiceCopy; es: ServiceCopy; image: string; al
         "Mobile service at your home, work, or roadside",
         "Damage-free unlocking for car doors"
       ],
-      "Tell us your exact location, vehicle year, make and model, and where the keys are.",
       "What if I lost my car keys?",
-      "Tell dispatch. Our vans carry key-cutting and programming equipment, so we can make a replacement at your vehicle."
+      "Our equipped vans can cut and program a replacement right at your vehicle, even when every key is lost."
     ],
     "es": [
       "¿Se quedó fuera de su auto?",
@@ -40,9 +39,8 @@ const copy: Record<string, { en: ServiceCopy; es: ServiceCopy; image: string; al
         "Servicio móvil en casa, el trabajo o la carretera",
         "Apertura de puertas sin daños"
       ],
-      "Indíquenos su ubicación exacta, el año, la marca y el modelo del auto, y dónde están las llaves.",
       "¿Y si perdí las llaves?",
-      "Avise al operador. Nuestras camionetas llevan equipos de corte y programación para hacerle una llave donde está su auto."
+      "Nuestras camionetas están equipadas para cortar y programar una llave junto a su auto, incluso si perdió todas las llaves."
     ],
     "image": "/ppc-images/car-lockout-lishi.webp",
     "alt": [
@@ -59,9 +57,8 @@ const copy: Record<string, { en: ServiceCopy; es: ServiceCopy; image: string; al
         "Transponder keys, remotes, and push-to-start fobs",
         "On-site cutting and programming"
       ],
-      "Tell us the vehicle year, make and model, whether it uses a push button, and whether you have a working key.",
       "Can you make a key if I have no original?",
-      "Yes. Tell us you lost every key so our technician can arrive ready to cut and program a replacement from scratch."
+      "Yes. We cut and program new car keys from scratch at your vehicle. Our vans carry keys, fobs, and the equipment to do the job on site."
     ],
     "es": [
       "¿Necesita una llave nueva para su auto?",
@@ -71,9 +68,8 @@ const copy: Record<string, { en: ServiceCopy; es: ServiceCopy; image: string; al
         "Llaves con chip y controles para arranque por botón",
         "Corte y programación en el lugar"
       ],
-      "Indíquenos el año, la marca y el modelo, si tiene arranque por botón y si conserva una llave que funciona.",
       "¿Pueden hacer una llave sin la original?",
-      "Sí. Díganos que perdió todas las llaves para que el técnico vaya preparado para cortar y programar una nueva desde cero."
+      "Sí. Cortamos y programamos llaves nuevas desde cero junto a su auto. Llevamos llaves, controles y equipos para hacer el trabajo en el lugar."
     ],
     "image": "/ppc-images/car-key-replacement-960.webp",
     "alt": [
@@ -90,9 +86,8 @@ const copy: Record<string, { en: ServiceCopy; es: ServiceCopy; image: string; al
         "Damage-free entry for doors and locks",
         "On-site rekeying if your keys went missing"
       ],
-      "Give us your address and tell us what kind of lock is on the door. Have proof that you’re authorized to enter ready.",
       "Can you help if my keys were lost or stolen?",
-      "Yes. Ask about rekeying after we get you inside so the old keys no longer open your lock."
+      "Yes. We can get you inside and rekey compatible locks so the old keys no longer work."
     ],
     "es": [
       "¿Se quedó fuera de su casa?",
@@ -102,9 +97,8 @@ const copy: Record<string, { en: ServiceCopy; es: ServiceCopy; image: string; al
         "Apertura de puertas y cerraduras sin daños",
         "Cambio de combinación si perdió las llaves"
       ],
-      "Díganos la dirección y el tipo de cerradura. Tenga a mano un comprobante de que está autorizado a entrar.",
       "¿Pueden ayudar si perdí las llaves o me las robaron?",
-      "Sí. Después de abrir la puerta, podemos cambiar la combinación para que las llaves anteriores ya no funcionen."
+      "Sí. Podemos abrir la puerta y cambiar la combinación de cerraduras compatibles para que las llaves anteriores ya no funcionen."
     ],
     "image": "/ppc-images/house-lockout-960.webp",
     "alt": [
@@ -121,9 +115,8 @@ const copy: Record<string, { en: ServiceCopy; es: ServiceCopy; image: string; al
         "Rekey after a key is lost or stolen",
         "Key compatible doors alike"
       ],
-      "Tell us how many locks you need rekeyed and whether you have a working key.",
       "When should I replace the lock?",
-      "Rekeying is for hardware that still works. Ask about replacing locks that are damaged, worn, or unsuitable for your door."
+      "Rekeying works well when existing hardware is in good shape. We also replace damaged or worn locks and install upgrades."
     ],
     "es": [
       "Cambio de combinación a domicilio",
@@ -133,9 +126,8 @@ const copy: Record<string, { en: ServiceCopy; es: ServiceCopy; image: string; al
         "Cambio de combinación tras pérdida o robo",
         "Una llave para varias cerraduras compatibles"
       ],
-      "Díganos cuántas cerraduras necesita cambiar y si tiene una llave que funciona.",
       "¿Cuándo conviene cambiar la cerradura?",
-      "El cambio de combinación sirve para cerraduras en buen estado. Consulte por el reemplazo si están dañadas o desgastadas."
+      "El cambio de combinación funciona bien si el herraje está en buen estado. También reemplazamos cerraduras dañadas o desgastadas e instalamos mejoras."
     ],
     "image": "/ppc-images/lock-rekeying-960.webp",
     "alt": [
@@ -152,9 +144,8 @@ const copy: Record<string, { en: ServiceCopy; es: ServiceCopy; image: string; al
         "Commercial rekeying and lock replacement",
         "Door hardware and access needs"
       ],
-      "Tell us the business location, door type, and whether the situation is an active lockout. Have authorization from management ready.",
       "Can you change access after a staffing change?",
-      "Call with the number of doors and tell us which employees should have access. We can discuss rekeying and hardware options."
+      "Yes. We can rekey compatible business locks so you control who has working keys again."
     ],
     "es": [
       "Cerrajería móvil para su negocio",
@@ -164,9 +155,8 @@ const copy: Record<string, { en: ServiceCopy; es: ServiceCopy; image: string; al
         "Cambio de combinación y cerraduras comerciales",
         "Herrajes para puertas y acceso"
       ],
-      "Díganos la ubicación, el tipo de puerta y si necesita acceso urgente. Tenga la autorización de la administración a mano.",
       "¿Pueden cambiar el acceso tras un cambio de personal?",
-      "Indique cuántas puertas hay y quién necesita acceso. Podemos explicarle las opciones de combinación y herrajes."
+      "Sí. Podemos cambiar la combinación de cerraduras comerciales compatibles para que usted controle quién tiene acceso."
     ],
     "image": "/ppc-images/commercial-locksmith-960.webp",
     "alt": [
@@ -183,9 +173,8 @@ const copy: Record<string, { en: ServiceCopy; es: ServiceCopy; image: string; al
         "Lost car keys cut and programmed on site",
         "Broken keys and urgent lock problems"
       ],
-      "Tell us where you are, what is locked, and whether you still have the key. If anyone is in immediate danger, call 911 first.",
       "Who comes to my location?",
-      "We dispatch a trained locksmith in a van equipped for the job you describe. Ask dispatch for your estimated arrival time."
+      "A professionally trained locksmith near you comes in a fully equipped van, ready to work at your location."
     ],
     "es": [
       "¿Necesita un cerrajero ahora?",
@@ -195,9 +184,8 @@ const copy: Record<string, { en: ServiceCopy; es: ServiceCopy; image: string; al
         "Corte y programación de llaves de auto perdidas",
         "Llaves rotas y problemas urgentes de cerraduras"
       ],
-      "Díganos dónde está, qué necesita abrir y si conserva la llave. Si alguien corre peligro inmediato, llame primero al 911.",
       "¿Quién viene a mi ubicación?",
-      "Enviamos a un cerrajero capacitado con una camioneta equipada para el trabajo. Pregunte por el tiempo estimado de llegada."
+      "Un cerrajero capacitado cerca de usted llega en una camioneta equipada para trabajar en el lugar."
     ],
     "image": "/ppc-images/emergency-locksmith-960.webp",
     "alt": [
@@ -214,9 +202,8 @@ const copy: Record<string, { en: ServiceCopy; es: ServiceCopy; image: string; al
         "Help assessing door fit and alignment",
         "Test the lock and review access setup"
       ],
-      "Have the lock brand and model ready, or describe the door and existing lock if you haven’t chosen hardware.",
       "Can I supply my own smart lock?",
-      "Yes. Give us the model and door type so we can discuss fit before the visit."
+      "Yes. We can install compatible customer-supplied smart locks and test them at your door."
     ],
     "es": [
       "Instalación de cerraduras inteligentes",
@@ -226,9 +213,8 @@ const copy: Record<string, { en: ServiceCopy; es: ServiceCopy; image: string; al
         "Revisión de ajuste y alineación",
         "Prueba de la cerradura y de la configuración de acceso"
       ],
-      "Tenga a mano la marca y el modelo, o describa la puerta y la cerradura actual si aún no ha elegido un equipo.",
       "¿Puedo comprar mi propia cerradura?",
-      "Sí. Indíquenos el modelo y el tipo de puerta para revisar el ajuste antes de la visita."
+      "Sí. Podemos instalar cerraduras inteligentes compatibles que usted compre y probarlas en su puerta."
     ],
     "image": "/ppc-images/smart-lock-installation-960.webp",
     "alt": [
@@ -245,9 +231,8 @@ const copy: Record<string, { en: ServiceCopy; es: ServiceCopy; image: string; al
         "Ignition cylinder assessment, repair, or replacement",
         "Key cutting and programming when needed"
       ],
-      "Tell us the year, make, and model, whether the key turns, and what happens when you try to start the car.",
-      "Should I keep turning the key?",
-      "Stop if it binds or feels stuck. Tell dispatch what happened so the technician can assess the key and ignition."
+      "Can you fix the ignition at my vehicle?",
+      "Our mobile locksmiths diagnose ignition and key problems at your vehicle and can handle cylinder repair and key replacement on site."
     ],
     "es": [
       "¿La llave no gira en el encendido?",
@@ -257,9 +242,8 @@ const copy: Record<string, { en: ServiceCopy; es: ServiceCopy; image: string; al
         "Revisión, reparación o cambio del cilindro de encendido",
         "Corte y programación cuando haga falta"
       ],
-      "Indíquenos el año, la marca y el modelo, si gira la llave y qué ocurre al intentar encender el auto.",
-      "¿Debo seguir intentando girar la llave?",
-      "Deténgase si se traba o está atascada. Díganos qué ocurrió para que el técnico pueda revisar la llave y el encendido."
+      "¿Pueden reparar el encendido donde está mi auto?",
+      "Nuestros cerrajeros móviles diagnostican problemas de encendido y llaves junto a su auto y pueden reparar el cilindro o hacer una llave en el lugar."
     ],
     "image": "/ppc-images/ignition-repair-960.webp",
     "alt": [
@@ -276,9 +260,8 @@ const copy: Record<string, { en: ServiceCopy; es: ServiceCopy; image: string; al
         "Broken keys in car doors and ignitions",
         "Replacement keys or lock repair when needed"
       ],
-      "Tell us what the key broke in and whether you have a spare or the other piece of the key.",
       "Can you make another key after extraction?",
-      "Ask us to bring the right key stock. Tell us the vehicle or lock type and whether you have a working spare."
+      "Yes. Our technicians can remove a broken key and make a replacement on site, with the tools and key stock already in the van."
     ],
     "es": [
       "¿Se rompió la llave en la cerradura?",
@@ -288,9 +271,8 @@ const copy: Record<string, { en: ServiceCopy; es: ServiceCopy; image: string; al
         "Llaves rotas en puertas y encendidos de autos",
         "Llaves nuevas o reparación cuando haga falta"
       ],
-      "Díganos dónde se rompió la llave y si tiene un repuesto o la otra parte de la llave.",
       "¿Pueden hacer otra llave después de la extracción?",
-      "Indíquenos el tipo de vehículo o cerradura y si tiene una llave de repuesto para llevar el material adecuado."
+      "Sí. Nuestros técnicos pueden extraer la llave rota y hacer otra en el lugar con el equipo y los materiales que llevan en la camioneta."
     ],
     "image": "/ppc-images/broken-key-extraction-960.webp",
     "alt": [
@@ -307,9 +289,8 @@ const copy: Record<string, { en: ServiceCopy; es: ServiceCopy; image: string; al
         "Replace a loose, worn, or damaged bolt",
         "Fit, alignment, and operation checked on site"
       ],
-      "Describe the door material, current hardware, and whether there’s an existing deadbolt opening.",
       "Can I use one key for more than one door?",
-      "Ask about keying compatible locks alike when you call. Bring up any existing keys you want to keep using."
+      "Yes. Compatible locks can be keyed alike so you use one key for multiple doors."
     ],
     "es": [
       "Instalación de cerrojos de alta seguridad",
@@ -319,9 +300,8 @@ const copy: Record<string, { en: ServiceCopy; es: ServiceCopy; image: string; al
         "Cambio de cerrojos flojos, desgastados o dañados",
         "Revisión del ajuste y funcionamiento"
       ],
-      "Describa el material de la puerta, el herraje actual y si ya tiene un orificio para el cerrojo.",
       "¿Puedo usar la misma llave en varias puertas?",
-      "Pregunte si sus cerraduras son compatibles e indique si desea seguir usando sus llaves actuales."
+      "Sí. Podemos ajustar cerraduras compatibles para que use una sola llave en varias puertas."
     ],
     "image": "/ppc-images/deadbolt-installation-960.webp",
     "alt": [
@@ -338,9 +318,8 @@ const copy: Record<string, { en: ServiceCopy; es: ServiceCopy; image: string; al
         "Install new locks and deadbolts",
         "Discuss rekeying if you only need different keys"
       ],
-      "Tell us how many doors there are, what kind of locks they use, and whether any door won’t close or secure.",
       "Do I need a lock change after moving?",
-      "If the existing lock is in good condition, you can ask about rekeying. If it’s damaged or you want different hardware, ask about replacement."
+      "Rekeying is an option when existing locks are in good shape. Replacement is ideal for worn hardware or a security upgrade."
     ],
     "es": [
       "Cambio e instalación de cerraduras",
@@ -350,9 +329,8 @@ const copy: Record<string, { en: ServiceCopy; es: ServiceCopy; image: string; al
         "Instalación de cerraduras y cerrojos",
         "Cambio de combinación si solo necesita otras llaves"
       ],
-      "Díganos cuántas puertas hay, qué cerraduras tienen y si alguna no cierra bien o no queda asegurada.",
       "¿Debo cambiar la cerradura después de mudarme?",
-      "Si está en buen estado, consulte por un cambio de combinación. Si está dañada o quiere otro herraje, pregunte por el reemplazo."
+      "El cambio de combinación es una opción si las cerraduras están en buen estado. El reemplazo es ideal si están desgastadas o quiere mejorar la seguridad."
     ],
     "image": "/ppc-images/lock-change-960.webp",
     "alt": [
@@ -369,7 +347,6 @@ const copy: Record<string, { en: ServiceCopy; es: ServiceCopy; image: string; al
         "Mechanical and electronic safe locks",
         "Stuck bolts, keypads, and access problems"
       ],
-      "Have the safe brand and model, lock type, and proof of ownership or authorization ready.",
       "Can the safe be opened without damage?",
       "We assess the safe and prioritize non-destructive methods. The options depend on the lock and the condition of the safe."
     ],
@@ -381,7 +358,6 @@ const copy: Record<string, { en: ServiceCopy; es: ServiceCopy; image: string; al
         "Cerraduras mecánicas y electrónicas",
         "Pestillos atascados y problemas de teclado o acceso"
       ],
-      "Tenga a mano la marca, el modelo, el tipo de cerradura y un comprobante de propiedad o autorización.",
       "¿Se puede abrir la caja sin daños?",
       "Revisamos la caja y damos prioridad a los métodos sin daños. Las opciones dependen de la cerradura y del estado de la caja."
     ],
@@ -400,9 +376,8 @@ const copy: Record<string, { en: ServiceCopy; es: ServiceCopy; image: string; al
         "Assistance at your storage facility",
         "Replacement lock options after opening"
       ],
-      "Tell us the facility address and lock type. Have proof that you rent the unit and check the facility’s access rules.",
-      "What if the facility installed the lock?",
-      "Contact facility staff first if the lock belongs to the facility or the unit has been overlocked. Staff can confirm who may authorize access."
+      "Can you replace the lock during the visit?",
+      "We help authorized renters regain access and can replace a damaged lock during the same visit."
     ],
     "es": [
       "¿No puede abrir su unidad de almacenamiento?",
@@ -412,9 +387,8 @@ const copy: Record<string, { en: ServiceCopy; es: ServiceCopy; image: string; al
         "Asistencia en el centro de almacenamiento",
         "Opciones de candado nuevo después de la apertura"
       ],
-      "Indíquenos la dirección y el tipo de candado. Tenga a mano el contrato de alquiler y consulte las reglas del centro.",
-      "¿Y si el centro colocó el candado?",
-      "Contacte primero al personal si el candado pertenece al centro o si el personal bloqueó la unidad. Ellos pueden autorizar el acceso."
+      "¿Pueden reemplazar el candado en la misma visita?",
+      "Ayudamos a los arrendatarios autorizados a recuperar el acceso y podemos reemplazar un candado dañado en la misma visita."
     ],
     "image": "/ppc-images/storage-unit-lockout-960.webp",
     "alt": [
@@ -431,9 +405,8 @@ const copy: Record<string, { en: ServiceCopy; es: ServiceCopy; image: string; al
         "New and spare fobs programmed at your vehicle",
         "Cut a matching emergency blade when needed"
       ],
-      "Give us the vehicle year, make and model, and whether you have a working fob or a replacement you already bought.",
       "Can you program a fob I bought?",
-      "Have the part number ready so we can discuss compatibility with your vehicle. We can also supply a replacement fob."
+      "We can program compatible fobs or supply a replacement from our mobile stock and program it right at the vehicle."
     ],
     "es": [
       "¿Necesita programar un control de auto?",
@@ -443,9 +416,8 @@ const copy: Record<string, { en: ServiceCopy; es: ServiceCopy; image: string; al
         "Programación de controles nuevos y de repuesto",
         "Corte de llave de emergencia cuando haga falta"
       ],
-      "Indique el año, la marca y el modelo, y si tiene un control que funciona o uno que ya compró.",
       "¿Pueden programar un control que compré?",
-      "Tenga el número de pieza a mano para revisar la compatibilidad. También podemos suministrarle un control."
+      "Podemos programar controles compatibles o suministrar un reemplazo y programarlo directamente junto al vehículo."
     ],
     "image": "/ppc-images/car-key-fob-programming-960.webp",
     "alt": [
@@ -462,9 +434,8 @@ const copy: Record<string, { en: ServiceCopy; es: ServiceCopy; image: string; al
         "Transponder, remote, and push-to-start key options",
         "On-site cutting and programming"
       ],
-      "Tell us your vehicle’s year, make and model, exact location, and whether it’s locked. Have proof of ownership or authorization ready.",
       "Do I need a tow to get a replacement key?",
-      "Our technicians come to your vehicle to cut and program the new key on site. Tell dispatch if your car is also locked."
+      "We come to your vehicle and cut and program the new key on site so you can get back on the road."
     ],
     "es": [
       "¿Perdió todas las llaves del auto?",
@@ -474,9 +445,8 @@ const copy: Record<string, { en: ServiceCopy; es: ServiceCopy; image: string; al
         "Llaves con chip, controles y arranque por botón",
         "Corte y programación en el lugar"
       ],
-      "Indíquenos el año, la marca y el modelo, dónde está el auto y si está cerrado. Tenga a mano un comprobante de propiedad o autorización.",
       "¿Necesito una grúa para hacer una llave nueva?",
-      "Nuestros técnicos van al vehículo para cortar y programar la llave. Díganos si también está cerrado."
+      "Vamos hasta su auto, cortamos y programamos la llave en el lugar para que pueda seguir su camino."
     ],
     "image": "/ppc-images/lost-car-keys-960.webp",
     "alt": [
@@ -500,7 +470,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
   const item = copy[slug];
   if (!campaign || !item) return <NotFoundPage onNavigate={onNavigate} />;
 
-  const [headline, summary, services, callDetails, question, answer] = isSpanish ? item.es : item.en;
+  const [headline, summary, services, question, answer] = isSpanish ? item.es : item.en;
   const pagePath = '/lp/' + slug;
   const isCarLockout = slug === 'car-lockout';
   const isUrgent = emergency.has(slug);
@@ -556,10 +526,20 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
               <h1 className="max-w-xl font-heading text-[clamp(2rem,6vw,3.75rem)] leading-[1.07] font-extrabold tracking-tight">{headline}</h1>
               <p className="mt-3 max-w-xl text-base leading-6 text-slate-200 sm:mt-4 sm:text-lg sm:leading-7">{summary}</p>
               <div className="mt-5">{callButton('ppc_hero_call')}</div>
-              <p className="mt-3 flex items-center gap-2 text-sm text-slate-300">
-                <MapPin className="h-4 w-4 shrink-0 text-amber-300" aria-hidden="true" />
-                {isSpanish ? 'Servicio móvil en el sur de Florida' : 'Mobile service across South Florida'}
-              </p>
+              <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold text-slate-100">
+                <li className="flex items-center gap-2">
+                  <MapPin className="h-4 w-4 shrink-0 text-amber-300" aria-hidden="true" />
+                  {isSpanish ? 'Técnicos cerca de usted, listos para salir' : 'Nearby technicians ready to go'}
+                </li>
+                <li className="flex items-center gap-2">
+                  <Clock className="h-4 w-4 shrink-0 text-amber-300" aria-hidden="true" />
+                  {isSpanish ? 'Llegada promedio de 10–15 minutos' : '10–15 min average arrival'}
+                </li>
+                <li className="flex items-center gap-2">
+                  <Star className="h-4 w-4 shrink-0 fill-current text-amber-300" aria-hidden="true" />
+                  {isSpanish ? 'Calificación de 5 estrellas en Google' : '5-star Google rating'}
+                </li>
+              </ul>
             </div>
             <div className="overflow-hidden rounded-2xl border border-slate-700">
               <img src={item.image}
@@ -570,9 +550,6 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
                 fetchPriority="high" decoding="async" />
             </div>
           </div>
-          {isCarLockout && <p className="mt-5 text-sm text-slate-300">
-            {isSpanish ? 'Si hay una persona o mascota en peligro dentro del auto, llame primero al 911.' : 'If a person or pet is in immediate danger inside the vehicle, call 911 first.'}
-          </p>}
         </section>
 
         <section className="border-y border-slate-800 bg-slate-900/60">
@@ -585,32 +562,23 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
                 </li>)}
               </ul>
             </div>
-            <div className="rounded-2xl border border-slate-700 bg-slate-950 p-5 sm:p-6">
-              <h2 className="font-heading text-2xl font-extrabold">{isSpanish ? 'Qué decirnos al llamar' : 'What to tell dispatch'}</h2>
-              <p className="mt-3 leading-7 text-slate-200">{callDetails}</p>
-              <p className="mt-2 leading-7 text-slate-300">
-                {isSpanish ? 'Pregunte por el precio estimado y el tiempo de llegada para su ubicación.' : 'Ask for an estimate and the current arrival time for your location.'}
+            <figure className="rounded-2xl border border-slate-700 bg-slate-950 p-5 sm:p-6">
+              <p className="flex items-center gap-2 text-sm font-bold text-amber-300">
+                <Star className="h-4 w-4 fill-current" aria-hidden="true" /> {isSpanish ? 'Reseña de Google' : 'Google customer review'}
               </p>
-            </div>
+              <blockquote lang="en" className="mt-3 leading-7 text-slate-100">“{review.text}”</blockquote>
+              <figcaption className="mt-2 text-sm text-slate-300">{review.name}</figcaption>
+              <a href={REVIEWS} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex min-h-11 items-center text-sm font-semibold text-amber-300 underline underline-offset-4">
+                {isSpanish ? 'Ver reseñas de clientes' : 'Read customer reviews'}
+              </a>
+            </figure>
           </div>
         </section>
 
-        <section className="mx-auto grid max-w-6xl gap-6 px-4 py-8 sm:px-6 lg:grid-cols-2 lg:gap-12 lg:py-12">
-          <figure className="rounded-2xl border border-slate-700 bg-slate-900 p-5 sm:p-6">
-            <p className="flex items-center gap-2 text-sm font-bold text-amber-300">
-              <Star className="h-4 w-4 fill-current" aria-hidden="true" /> {isSpanish ? 'Reseña de Google · 5 estrellas' : 'Google customer review · 5 stars'}
-            </p>
-            <blockquote lang="en" className="mt-3 leading-7 text-slate-100">“{review.text}”</blockquote>
-            <figcaption className="mt-2 text-sm text-slate-300">{review.name}</figcaption>
-            <a href={REVIEWS} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex min-h-11 items-center text-sm font-semibold text-amber-300 underline underline-offset-4">
-              {isSpanish ? 'Ver reseñas de clientes' : 'Read customer reviews'}
-            </a>
-          </figure>
-          <div>
-            <h2 className="font-heading text-2xl font-extrabold">{question}</h2>
-            <p className="mt-3 leading-7 text-slate-200">{answer}</p>
-            <div className="mt-5">{callButton('ppc_final_call')}</div>
-          </div>
+        <section className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:py-12">
+          <h2 className="font-heading text-2xl font-extrabold">{question}</h2>
+          <p className="mt-3 max-w-2xl leading-7 text-slate-200">{answer}</p>
+          <div className="mt-5">{callButton('ppc_final_call')}</div>
         </section>
       </main>
 
