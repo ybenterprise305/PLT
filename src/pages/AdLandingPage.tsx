@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ArrowRight, Check, Clock, KeyRound, MapPin, Phone, Star } from 'lucide-react';
+import { ArrowRight, Check, ChevronDown, Clock, KeyRound, MapPin, Phone, Star } from 'lucide-react';
 import { SEOHead } from '../components/SEOHead';
 import { NotFoundPage } from './NotFoundPage';
 import { LocalizedA } from '../components/LocalizedA';
@@ -464,7 +464,44 @@ const reviews = {
 
 const emergency = new Set(['car-lockout', 'house-lockout', 'emergency-locksmith', 'lost-car-keys', 'broken-key-extraction', 'safe-lockout', 'storage-unit-lockout']);
 
-const trackedSearchPages = new Set(['car-lockout', 'house-lockout', 'car-key-replacement']);
+// Include each destination used by the Search ads or their sitelinks.
+const trackedSearchPages = new Set([
+  'car-lockout', 'house-lockout', 'car-key-replacement',
+  'lost-car-keys', 'car-key-fob-programming', 'emergency-locksmith',
+]);
+
+const serviceDetails: Record<string, { en: [string, string][]; es: [string, string][] }> = {
+  'car-lockout': {
+    en: [
+      ['Can you unlock a car with keys in the trunk?', 'Yes. Our mobile locksmiths handle car door and trunk lockouts. The approach depends on the vehicle and where the keys are.'],
+      ['What affects the price of a car lockout?', 'The vehicle, the type of lockout, and whether a replacement key is needed affect the price.'],
+    ],
+    es: [
+      ['¿Pueden abrir el auto si dejé las llaves en la cajuela?', 'Sí. Atendemos bloqueos de puertas y cajuelas. El método depende del vehículo y de dónde estén las llaves.'],
+      ['¿Qué influye en el precio de la apertura?', 'El precio depende del vehículo, del tipo de bloqueo y de si necesita una llave nueva.'],
+    ],
+  },
+  'house-lockout': {
+    en: [
+      ['Do you unlock apartments and condos?', 'Yes. We make mobile service calls for houses, apartments, condos, and townhomes.'],
+      ['What affects the price of unlocking my door?', 'The door hardware and type of lockout affect the price. Rekeying a lock or replacing damaged hardware is a separate service.'],
+    ],
+    es: [
+      ['¿Abren puertas de apartamentos y condominios?', 'Sí. Vamos a casas, apartamentos, condominios y casas adosadas.'],
+      ['¿Qué influye en el precio de la apertura?', 'El tipo de cerradura y el problema afectan el precio. El cambio de combinación o el reemplazo de herrajes dañados son servicios distintos.'],
+    ],
+  },
+  'car-key-replacement': {
+    en: [
+      ['Can I get a new fob and an emergency blade?', 'Yes. We can supply and program compatible fobs and cut the emergency blade when the fob uses one.'],
+      ['What affects the price of a replacement car key?', 'The year, make, model, key type, and whether any working keys remain determine the parts and programming needed.'],
+    ],
+    es: [
+      ['¿Pueden hacer un control remoto y una llave de emergencia?', 'Sí. Suministramos y programamos controles compatibles y cortamos la llave de emergencia cuando el control la usa.'],
+      ['¿Qué influye en el precio de una llave nueva?', 'El año, la marca, el modelo, el tipo de llave y si aún queda una llave funcional determinan las piezas y la programación necesarias.'],
+    ],
+  },
+};
 
 export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
   const { isSpanish } = useLanguage();
@@ -480,6 +517,8 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
   if (!campaign || !item) return <NotFoundPage onNavigate={onNavigate} />;
 
   const [headline, summary, services, question, answer] = isSpanish ? item.es : item.en;
+  const details = serviceDetails[slug];
+  const questions: [string, string][] = [[question, answer], ...(details ? (isSpanish ? details.es : details.en) : [])];
   const pagePath = '/lp/' + slug;
   const isCarLockout = slug === 'car-lockout';
   const isUrgent = emergency.has(slug);
@@ -497,7 +536,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
   });
   const callButton = (location: string, wide = false) => (
     <a href={phoneLink} onClick={() => trackCall(location)}
-      className={'inline-flex min-h-[56px] items-center justify-center gap-3 rounded-xl bg-amber-400 px-4 py-3 text-left font-bold text-slate-950 shadow-lg transition-colors hover:bg-amber-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-300 ' + (wide ? 'w-full' : 'w-full sm:w-auto sm:px-6')}>
+      className={'inline-flex min-h-[56px] items-center justify-center gap-3 rounded-xl bg-amber-400 px-4 py-3 text-left font-bold text-slate-950 shadow-[0_5px_22px_#fbbf2426] transition-colors hover:bg-amber-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-300 ' + (wide ? 'w-full' : 'w-full sm:w-auto sm:px-6')}>
       <Phone className="h-5 w-5 shrink-0" aria-hidden="true" />
       <span className="leading-tight">
         <span className="block text-base">{callLabel}</span>
@@ -510,7 +549,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
   return (
     <div className="min-h-screen bg-slate-950 pb-24 text-white lg:pb-0">
       <SEOHead title={headline + ' | Pro Locksmith Tech'} description={summary} canonicalPath={pagePath} noIndex={true} />
-      <header className="border-b border-slate-800">
+      <header className="border-b border-slate-800 border-t-2 border-t-amber-400">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
           <div className="flex items-center gap-2 font-heading text-base font-extrabold sm:text-lg">
             <KeyRound className="h-6 w-6 shrink-0 text-amber-400" aria-hidden="true" />
@@ -525,17 +564,17 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
       </header>
 
       <main>
-        <section className="mx-auto max-w-6xl px-4 py-6 sm:px-6 sm:py-12 lg:py-16">
-          <div className="grid items-center gap-6 lg:grid-cols-2 lg:gap-12">
+        <section className="border-b border-slate-800 bg-[radial-gradient(ellipse_at_top_right,#3b2b16_0%,transparent_65%)]">
+          <div className="mx-auto grid max-w-6xl items-center gap-6 px-4 py-6 sm:px-6 sm:py-12 lg:grid-cols-[1fr_1.05fr] lg:gap-12 lg:py-16">
             <div>
               <p className="mb-3 inline-flex items-center gap-2 text-sm font-bold text-amber-300">
                 <Clock className="h-4 w-4" aria-hidden="true" />
-                {isSpanish ? 'Atendemos su llamada 24/7' : 'Live dispatch 24/7'}
+                {isSpanish ? 'Cerrajería móvil 24/7 en el sur de Florida' : '24/7 mobile locksmith in South Florida'}
               </p>
               <h1 className="max-w-xl font-heading text-[clamp(2rem,6vw,3.75rem)] leading-[1.07] font-extrabold tracking-tight">{headline}</h1>
               <p className="mt-3 max-w-xl text-base leading-6 text-slate-200 sm:mt-4 sm:text-lg sm:leading-7">{summary}</p>
               <div className="mt-5">{callButton('ppc_hero_call')}</div>
-              <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold text-slate-100">
+              <ul className="mt-4 grid gap-x-4 gap-y-2 text-sm font-semibold text-slate-100 sm:flex sm:flex-wrap">
                 <li className="flex items-center gap-2">
                   <MapPin className="h-4 w-4 shrink-0 text-amber-300" aria-hidden="true" />
                   {isSpanish ? 'Técnicos cerca de usted, listos para salir' : 'Nearby technicians ready to go'}
@@ -550,7 +589,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
                 </li>
               </ul>
             </div>
-            <div className="overflow-hidden rounded-2xl border border-slate-700">
+            <div className="overflow-hidden rounded-3xl border border-slate-700 shadow-2xl shadow-black/25">
               <img src={item.image}
                 srcSet={isCarLockout ? undefined : `/ppc-images/${slug}-480.webp 480w, /ppc-images/${slug}-960.webp 960w`}
                 sizes="(max-width: 1023px) 100vw, 50vw"
@@ -561,33 +600,52 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
           </div>
         </section>
 
-        <section className="border-y border-slate-800 bg-slate-900/60">
-          <div className="mx-auto grid max-w-6xl gap-6 px-4 py-8 sm:px-6 lg:grid-cols-2 lg:gap-12 lg:py-12">
-            <div>
-              <h2 className="font-heading text-2xl font-extrabold">{isSpanish ? 'Cómo podemos ayudarle' : 'How we can help'}</h2>
-              <ul className="mt-4 space-y-3">
-                {services.map(service => <li key={service} className="flex items-start gap-3 text-slate-200">
-                  <Check className="mt-0.5 h-5 w-5 shrink-0 text-amber-300" aria-hidden="true" />{service}
-                </li>)}
-              </ul>
-            </div>
-            <figure className="rounded-2xl border border-slate-700 bg-slate-950 p-5 sm:p-6">
-              <p className="flex items-center gap-2 text-sm font-bold text-amber-300">
-                <Star className="h-4 w-4 fill-current" aria-hidden="true" /> {isSpanish ? 'Reseña de Google' : 'Google customer review'}
-              </p>
-              <blockquote lang="en" className="mt-3 leading-7 text-slate-100">“{review.text}”</blockquote>
-              <figcaption className="mt-2 text-sm text-slate-300">{review.name}</figcaption>
-              <a href={REVIEWS} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex min-h-11 items-center text-sm font-semibold text-amber-300 underline underline-offset-4">
-                {isSpanish ? 'Ver reseñas de clientes' : 'Read customer reviews'}
-              </a>
-            </figure>
+        <section className="mx-auto grid max-w-6xl gap-7 px-4 py-9 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-12 lg:py-14">
+          <div>
+            <h2 className="font-heading text-2xl font-extrabold sm:text-3xl">{isSpanish ? 'Cómo podemos ayudarle' : 'What we can help with'}</h2>
+            <ul className="mt-4 grid gap-2.5">
+              {services.map(service => <li key={service} className="flex items-center gap-3 rounded-xl border border-slate-800 bg-slate-900/70 px-3 py-3 text-slate-100">
+                <span className="grid size-7 shrink-0 place-items-center rounded-full bg-amber-400/10 text-amber-300"><Check className="size-4" aria-hidden="true" /></span>
+                {service}
+              </li>)}
+            </ul>
           </div>
+          <figure className="flex flex-col justify-center rounded-3xl border border-amber-300/20 bg-slate-900 px-5 py-6 sm:px-7 lg:p-8">
+            <p className="flex items-center gap-2 text-sm font-bold text-amber-300">
+              <span className="flex gap-0.5" aria-hidden="true">{Array.from({ length: 5 }, (_, i) =>
+                <Star key={i} className="size-3.5 fill-current" />)}</span>
+              {isSpanish ? 'Reseña de Google' : 'Google customer review'}
+            </p>
+            <blockquote lang="en" className="mt-3 text-lg font-medium leading-7 text-white">“{review.text}”</blockquote>
+            <figcaption className="mt-3 text-sm font-semibold text-slate-300">{review.name}</figcaption>
+            <a href={REVIEWS} target="_blank" rel="noopener noreferrer" className="mt-1 inline-flex min-h-11 w-fit items-center text-sm font-semibold text-amber-300 underline underline-offset-4">
+              {isSpanish ? 'Ver reseñas de clientes' : 'Read customer reviews'}
+            </a>
+          </figure>
         </section>
 
-        <section className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:py-12">
-          <h2 className="font-heading text-2xl font-extrabold">{question}</h2>
-          <p className="mt-3 max-w-2xl leading-7 text-slate-200">{answer}</p>
-          <div className="mt-5">{callButton('ppc_final_call')}</div>
+        <section className="border-y border-slate-800 bg-slate-900/60">
+          <div className="mx-auto grid max-w-6xl gap-7 px-4 py-9 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-12 lg:py-14">
+            <div>
+              <h2 className="font-heading text-2xl font-extrabold sm:text-3xl">{isSpanish ? 'Preguntas frecuentes' : 'Frequently asked questions'}</h2>
+              <div className="mt-4 divide-y divide-slate-700 border-y border-slate-700">
+                {questions.map(([title, text], index) => (
+                  <details key={title} open={index === 0} className="group">
+                    <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 py-3 font-semibold text-white marker:hidden [&::-webkit-details-marker]:hidden">
+                      {title}
+                      <ChevronDown className="size-4 shrink-0 text-amber-300 transition-transform group-open:rotate-180" aria-hidden="true" />
+                    </summary>
+                    <p className="pb-4 leading-7 text-slate-200">{text}</p>
+                  </details>
+                ))}
+              </div>
+            </div>
+            <div className="self-center rounded-3xl border border-slate-700 bg-slate-950 px-5 py-6 sm:p-7">
+              <h2 className="font-heading text-2xl font-extrabold">{isSpanish ? 'Un cerrajero cerca de usted' : 'Get a locksmith on the way'}</h2>
+              <p className="mt-2 leading-7 text-slate-200">{isSpanish ? 'Servicio en Broward, Palm Beach y otras zonas del sur de Florida.' : 'Mobile service in Broward, Palm Beach, and across South Florida.'}</p>
+              <div className="mt-4">{callButton('ppc_final_call', true)}</div>
+            </div>
+          </div>
         </section>
       </main>
 
