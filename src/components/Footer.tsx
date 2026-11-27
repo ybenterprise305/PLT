@@ -34,20 +34,20 @@ export function Footer({ onNavigate }: FooterProps) {
 
             <p className="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-sm">
               {isSpanish 
-                ? 'Pro Locksmith Tech es un servicio de cerrajería 100% móvil en el Sur de la Florida. Atendemos emergencias automotrices, residenciales y comerciales en los condados de Broward, Miami-Dade y Palm Beach directamente en su ubicación.'
-                : 'Pro Locksmith Tech is a 100% mobile locksmith service provider in South Florida. We dispatch equipped mobile workshop vans directly to your stranded vehicle, home, or commercial facility across Broward, Miami-Dade, and Palm Beach counties.'}
+                ? 'Desde el año 2000, Pro Locksmith Tech ofrece cerrajería automotriz, residencial y comercial las 24 horas en Miami-Dade, Broward y Palm Beach.'
+                : 'Serving South Florida since 2000, Pro Locksmith Tech provides 24/7 automotive, residential and commercial locksmith services across Miami-Dade, Broward and Palm Beach counties.'}
             </p>
 
             {/* SAB Privacy & Operational Reassurance */}
             <div className="p-3 bg-slate-900/80 border border-slate-800 rounded-xl space-y-1.5 text-xs text-slate-300">
               <div className="flex items-center gap-2 text-amber-400 font-bold text-[11px] uppercase tracking-wider">
                 <Truck className="w-3.5 h-3.5" />
-                <span>{isSpanish ? 'Servicio Móvil a Domicilio — Sin Tienda Física' : '100% Mobile Service Area Business (SAB)'}</span>
+                <span>{isSpanish ? 'Servicio el mismo día y de emergencia' : 'Same-Day & Emergency Locksmith Service'}</span>
               </div>
               <p className="text-xs text-slate-300 leading-normal">
                 {isSpanish
-                  ? 'Operamos como un servicio 100% móvil sin tienda de atención al público. Nuestros técnicos viajan directamente a su vehículo, residencia o empresa en todo el Sur de la Florida.'
-                  : 'We operate as a 100% mobile service without a walk-in storefront. Technicians travel directly to your vehicle, home, or business throughout our South Florida service area.'}
+                  ? 'Nuestros cerrajeros acuden a su vehículo, hogar o negocio con servicio el mismo día y de emergencia.'
+                  : 'Our equipped locksmiths come to your vehicle, home or business, with same-day and emergency service available.'}
               </p>
             </div>
 
@@ -71,7 +71,7 @@ export function Footer({ onNavigate }: FooterProps) {
 
               <div className="flex items-center gap-3 text-slate-400 text-xs">
                 <MapPin className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>Serving South Florida — Mobile Service Only</span>
+                <span>Same-Day & Emergency Locksmith Service</span>
               </div>
             </div>
 
