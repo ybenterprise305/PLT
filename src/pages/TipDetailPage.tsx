@@ -25,11 +25,11 @@ export function TipDetailPage({ slug, onNavigate }: RouteProps) {
   const [serviceTitle, servicePath] = text.service;
 
   return (
-    <article className="mx-auto max-w-4xl space-y-9 px-5 py-10 sm:px-8">
+    <article className="plt-editorial mx-auto max-w-4xl space-y-9 px-5 py-10 sm:px-8">
       <SEOHead title={title} description={summary} canonicalPath={path} ogType="article" />
       <StructuredData data={articleData({ type: 'Article', path, language, headline: title, description: summary })} />
       <Breadcrumbs trail={[[es ? 'Guías de cerrajería' : 'Locksmith guides', '/tips'], [title, path]]} />
-      <header className="space-y-4 border-b border-slate-700 pb-7">
+      <header className="plt-editorial-lead space-y-4">
         <h1 className="font-heading text-3xl font-extrabold leading-tight text-white sm:text-5xl">{title}</h1>
         <p className="text-lg leading-8 text-slate-200">{summary}</p>
         <p className="text-sm text-slate-300">{es ? 'Publicado por' : 'Published by'} {BUSINESS_NAME}</p>

@@ -50,11 +50,11 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
         keywords="emergency lockout service, residential locksmith, commercial locksmith, automotive locksmith, lock rekeying, lock repair, key duplication, locksmith South Florida, cerrajero South Florida"
       />
 
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 space-y-12">
+      <div className="plt-wrap space-y-10">
         
         <div className="mb-4"><Breadcrumbs trail={[['Services', '/services']]} /></div>
         {/* Header Hero */}
-        <div className="bg-slate-950 border border-slate-800 rounded-3xl p-8 sm:p-12 relative overflow-hidden">
+        <div className="plt-page-lead">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             <div className="lg:col-span-7 space-y-4">

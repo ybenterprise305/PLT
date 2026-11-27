@@ -28,6 +28,7 @@ export function LanguageToggle({ variant = 'standard', className = '' }: Languag
               ? 'bg-amber-500 text-slate-950 font-black shadow-xs'
               : 'text-slate-300 hover:text-white'
           }`}
+          aria-current={language === 'en' ? 'true' : undefined}
           aria-label="English (EN)"
           title="English"
         >
@@ -42,6 +43,7 @@ export function LanguageToggle({ variant = 'standard', className = '' }: Languag
               ? 'bg-amber-500 text-slate-950 font-black shadow-xs'
               : 'text-slate-300 hover:text-white'
           }`}
+          aria-current={language === 'es' ? 'true' : undefined}
           aria-label="Español (ES)"
           title="Español"
         >
