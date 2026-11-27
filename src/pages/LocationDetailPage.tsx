@@ -283,7 +283,7 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
               </h2>
               <p className="mt-3 text-base leading-7 text-slate-300">
                 {isSpanish
-                  ? `¿Necesita asistencia para un auto, vivienda o negocio en ${city.name}? Llame a Pro Locksmith Tech y describa el problema. Somos un servicio móvil; no hay una tienda de atención al público.`
+                  ? `¿Necesita asistencia para un auto, vivienda o negocio en ${city.name}? Llame a Pro Locksmith Tech y describa el problema. Ofrecemos servicio en su ubicación el mismo día y atención de emergencias las 24 horas.`
                   : `Need locksmith help at a vehicle, home or business in ${city.name}? Call Pro Locksmith Tech and describe the problem. We offer mobile locksmith service across South Florida and come directly to your location.`}
               </p>
               <ol className="mt-5 grid gap-3 sm:grid-cols-3">
@@ -297,8 +297,8 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
                   {
                     enTitle: 'Describe the lock or key',
                     esTitle: 'Describa la cerradura o llave',
-                    enBody: 'Share the vehicle year, make and model, or describe the door, lock or key problem so we can discuss suitable service.',
-                    esBody: 'Indique año, marca y modelo del auto, o explique el problema de la puerta, cerradura o llave.'
+                    enBody: 'Tell us what locksmith service you need and we will help arrange a technician at your location.',
+                    esBody: 'Cuéntenos qué servicio necesita y coordinaremos la visita de un cerrajero.'
                   },
                   {
                     enTitle: 'Confirm service details',
