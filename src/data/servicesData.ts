@@ -93,7 +93,7 @@ export const SERVICES_DATA: LocksmithService[] = [
     badge: 'Mobile Car Key Care',
     iconName: 'Car',
     shortDescription: 'Mobile car lockout, car key replacement, transponder chip programming, and ignition repair.',
-    fullDescription: 'When vehicle key issues leave you stranded in a parking lot, driveway, or highway rest stop, Pro Locksmith Tech brings the shop directly to your car. We service domestic, foreign, and commercial vehicles. Our mobile units carry high-precision computerized key cutting machines and onboard diagnostic (OBD) key programming tablets for transponder chips, remote key fobs, and push-to-start smart proximity keys.',
+    fullDescription: 'When vehicle key issues leave you stranded in a parking lot, driveway, or highway rest stop, Pro Locksmith Tech brings the shop directly to your car. We service domestic, foreign, and commercial vehicles. Our mobile units carry a wide selection of car keys, transponder keys, remotes, key fobs and push-to-start smart keys, along with professional cutting and programming equipment. Get your replacement key cut and programmed on-site the same day.',
     features: [
       'Emergency car door and trunk opening using non-destructive methods when feasible; no damage-free result is guaranteed',
       'Transponder key cutting and chip programming',
