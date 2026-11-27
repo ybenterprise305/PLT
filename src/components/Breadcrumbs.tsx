@@ -1,11 +1,14 @@
+import { StructuredData } from './StructuredData';
+import { breadcrumbData } from '../utils/structuredData';
 import { LocalizedA } from './LocalizedA';
 import { useLanguage } from '../context/LanguageContext';
 
 export function Breadcrumbs({ trail }: { trail: [string, string][] }) {
-  const { isSpanish, t } = useLanguage();
+  const { isSpanish, language, t } = useLanguage();
   const items: [string, string][] = [[t('nav.home'), '/'], ...trail];
   return (
     <nav aria-label={isSpanish ? 'Ruta de navegación' : 'Breadcrumb'}>
+      <StructuredData data={breadcrumbData(items, language)} />
       <ol className="flex flex-wrap items-center gap-2 text-xs text-slate-400">
         {items.map(([name, href], index) => (
           <li key={href} className="flex items-center gap-2">

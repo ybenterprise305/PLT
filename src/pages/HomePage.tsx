@@ -1,3 +1,5 @@
+import { StructuredData } from '../components/StructuredData';
+import { siteIdentity } from '../utils/structuredData';
 import { homeVan } from '../assets/images/vanImages';
 import { PHONE, TEL } from '../config/business';
 import React from 'react';
@@ -29,6 +31,7 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
           : '24/7 mobile locksmith in South Florida. Car lockouts, replacement car keys, key fob programming, home lockouts and rekeying. Call (754) 261-6528.'}
         canonicalPath="/"
       />
+      {!isSpanish && <StructuredData data={siteIdentity} />}
       <section className="mx-auto max-w-7xl px-5 pt-8 pb-12 sm:pt-14 sm:pb-20">
         <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
           <div className="space-y-5">

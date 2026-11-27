@@ -53,18 +53,29 @@ try {
   }
   assert.deepEqual(runtimeErrors, []);
   await client.goto(origin + '/', { waitUntil: 'networkidle' });
+  const homeSchema = (await client.evaluate(snapshot)).schema;
+  assert.deepEqual(homeSchema.flatMap(block => block['@graph'].map(node => node['@type'])), ['Organization', 'WebSite']);
   const serviceLink = client.locator('main a[href="/services/"]:visible').first();
   await serviceLink.click();
   await client.waitForURL('**/services/');
   await client.waitForFunction(() => document.querySelector('link[rel="canonical"]')?.href.endsWith('/services/'));
+  await client.waitForFunction(() => [...document.querySelectorAll('script[type="application/ld+json"]')]
+    .map(node => JSON.parse(node.textContent)['@type']).join(',') === 'BreadcrumbList');
+  const englishSchema = (await client.evaluate(snapshot)).schema;
   const spanish = client.locator('a[aria-label="Español (ES)"]:visible').first();
   await spanish.click();
   await client.waitForURL('**/es/services/');
   await client.waitForFunction(() => document.documentElement.lang === 'es' && document.querySelector('link[rel="canonical"]')?.href.endsWith('/es/services/'));
   assert.equal(await client.locator('link[hreflang]').count(), 3);
   assert.equal(await client.locator('link[rel="canonical"]').count(), 1);
+  await client.waitForFunction(() => document.querySelector('script[type="application/ld+json"]')?.textContent.includes('/es/services/#breadcrumb'));
+  assert.equal((await client.evaluate(snapshot)).schema.length, 1);
   await client.goBack();
   await client.waitForFunction(() => document.documentElement.lang === 'en' && document.querySelector('link[rel="canonical"]')?.href === 'https://prolocksmith-tech.com/services/');
+  assert.deepEqual((await client.evaluate(snapshot)).schema, englishSchema);
+  await client.goBack();
+  await client.waitForFunction(() => document.querySelector('script[type="application/ld+json"]')?.textContent.includes('/#website'));
+  assert.deepEqual((await client.evaluate(snapshot)).schema, homeSchema);
   await staticContext.close();
   await clientContext.close();
   console.log(`Static and hydrated metadata, JSON-LD and phone links matched for ${chosen.size} representative routes. History and Spanish language switching passed.`);

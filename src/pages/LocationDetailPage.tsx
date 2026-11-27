@@ -1,5 +1,4 @@
 import { Breadcrumbs } from '../components/Breadcrumbs';
-import { breadcrumbSchema } from '../utils/breadcrumbs';
 import React from 'react';
 import { 
   MapPin, 
@@ -31,85 +30,7 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
   if (cityMatch) {
     const { city, county } = cityMatch;
 
-    // Comprehensive JSON-LD LocalBusiness + Breadcrumbs + FAQ Schema for AEO
     const trail: [string, string][] = [['Service Areas', '/service-areas'], [county.name, '/service-areas/' + county.slug], [city.name, '/service-areas/' + city.slug]];
-    const citySchema = {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": ["Locksmith", "LocalBusiness", "AutomotiveBusiness"],
-          "@id": "https://prolocksmith-tech.com/#locksmith",
-          "name": "Pro Locksmith Tech",
-          "url": "https://prolocksmith-tech.com/",
-          "telephone": "+1-754-261-6528",
-          "email": "prolocksmithtech@gmail.com",
-          "image": "https://prolocksmith-tech.com/icon-512.png",
-          "currenciesAccepted": "USD",
-          "paymentAccepted": "Cash, Credit Card, Debit Card, Mobile Pay",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Coral Springs",
-            "addressRegion": "FL",
-            "postalCode": "33076",
-            "addressCountry": "US"
-          },
-          "description": `24/7 mobile locksmith service in ${city.name}, ${county.name}, Florida. We come directly to your vehicle, home, or business for car lockouts, rekeying, lock replacement, and key programming.`,
-          "openingHoursSpecification": [
-            {
-              "@type": "OpeningHoursSpecification",
-              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-              "opens": "00:00",
-              "closes": "23:59"
-            }
-          ],
-          "areaServed": [
-            {
-              "@type": city.slug === 'kendall' ? "Place" : "City",
-              "name": city.name,
-              "containedInPlace": {
-                "@type": "AdministrativeArea",
-                "name": `${county.name}, Florida`
-              }
-            }
-          ],
-          "makesOffer": [
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": `Emergency Car & Home Lockout Service in ${city.name}`,
-                "description": `Fast 24/7 non-destructive door unlock dispatch for vehicles, houses, and offices in ${city.name}, FL.`
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": `Car Key Replacement & Key Fob Programming in ${city.name}`,
-                "description": `Mobile automotive key cutting, transponder programming, and push-to-start fob duplication on-site in ${city.name}.`
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": `Residential Lock Rekeying & Deadbolts in ${city.name}`,
-                "description": `Whole-house lock changes, cylinder rekeying, and high-security deadbolts installed at your ${city.name} residence.`
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": `Commercial Storefront Locks & Master Key Systems in ${city.name}`,
-                "description": `Commercial door hardware, Adams Rite mortise locks, crash bars, and master rekeying for businesses in ${city.name}.`
-              }
-            }
-          ]
-        },
-        { ...breadcrumbSchema(trail), '@id': `https://prolocksmith-tech.com/service-areas/${city.slug}/#breadcrumb` },
-      ]
-    };
 
     return (
       <div className="min-h-screen bg-slate-900 text-slate-100 py-10">
@@ -120,12 +41,6 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
             : city.metaDescription}
           canonicalPath={`/service-areas/${city.slug}`}
           keywords={`locksmith ${city.name}, cerrajero ${city.name}, emergency locksmith ${city.name}, mobile locksmith ${city.name}, locksmith ${county.name}, locksmith South Florida`}
-        />
-
-        {/* JSON-LD Schema */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(citySchema) }}
         />
 
         <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 space-y-12">
@@ -330,38 +245,7 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
     const county = countyMatch;
     const spanishCounty = SPANISH_COUNTIES[county.slug];
 
-    // County Schema for AEO
     const trail: [string, string][] = [['Service Areas', '/service-areas'], [county.name, '/service-areas/' + county.slug]];
-    const countySchema = {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": ["Locksmith", "LocalBusiness", "AutomotiveBusiness"],
-          "@id": "https://prolocksmith-tech.com/#locksmith",
-          "name": "Pro Locksmith Tech",
-          "url": "https://prolocksmith-tech.com/",
-          "telephone": "+1-754-261-6528",
-          "email": "prolocksmithtech@gmail.com",
-          "image": "https://prolocksmith-tech.com/icon-512.png",
-          "priceRange": "$$",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Coral Springs",
-            "addressRegion": "FL",
-            "postalCode": "33076",
-            "addressCountry": "US"
-          },
-          "description": `24/7 mobile locksmith dispatch across all cities in ${county.fullName}, Florida.`,
-          "areaServed": [
-            {
-              "@type": "AdministrativeArea",
-              "name": `${county.name}, Florida`
-            }
-          ],
-        },
-        { ...breadcrumbSchema(trail), '@id': `https://prolocksmith-tech.com/service-areas/${county.slug}/#breadcrumb` }
-      ]
-    };
 
     return (
       <div className="min-h-screen bg-slate-900 text-slate-100 py-10">
@@ -372,12 +256,6 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
             : county.metaDescription}
           canonicalPath={`/service-areas/${county.slug}`}
           keywords={`locksmith ${county.name}, cerrajero ${county.name}, emergency locksmith ${county.name}, mobile locksmith ${county.name}, locksmith South Florida`}
-        />
-
-        {/* JSON-LD Schema */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(countySchema) }}
         />
 
         <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 space-y-12">

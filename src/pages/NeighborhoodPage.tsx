@@ -16,17 +16,18 @@ const serviceLabels = {
 
 interface Props {
   city: { name: string; slug: string };
+  county: { name: string; slug: string };
   area: Neighborhood;
 }
 
 export function NeighborhoodPage({ slug, onNavigate }: RouteProps) {
   const [citySlug, areaSlug] = slug.split('/');
-  const city = getCityBySlug(citySlug)?.city;
+  const location = getCityBySlug(citySlug);
   const area = getNeighborhoods(citySlug).find(entry => entry.slug === areaSlug);
-  return city && area ? <NeighborhoodContent city={city} area={area} /> : <NotFoundPage onNavigate={onNavigate} />;
+  return location && area ? <NeighborhoodContent city={location.city} county={location.county} area={area} /> : <NotFoundPage onNavigate={onNavigate} />;
 }
 
-function NeighborhoodContent({ city, area }: Props) {
+function NeighborhoodContent({ city, county, area }: Props) {
   const path = neighborhoodPath(city.slug, area.slug);
 
   return (
@@ -36,7 +37,7 @@ function NeighborhoodContent({ city, area }: Props) {
         description={`${area.name} in ${city.name}, FL. Local service information and what to have ready before you call Pro Locksmith Tech for mobile locksmith help.`}
         canonicalPath={path}
       />
-      <Breadcrumbs trail={[['Service areas', '/service-areas'], [city.name, `/service-areas/${city.slug}`], [area.name, path]]} />
+      <Breadcrumbs trail={[['Service areas', '/service-areas'], [county.name, `/service-areas/${county.slug}`], [city.name, `/service-areas/${city.slug}`], [area.name, path]]} />
       <div className="rounded-2xl border border-slate-800 bg-slate-950 p-6 sm:p-8">
         <h1 className="font-heading text-3xl font-bold text-white sm:text-4xl">Mobile locksmith service in {area.name}</h1>
         <p className="mt-4 text-lg leading-8 text-slate-300">{area.localContext}</p>
