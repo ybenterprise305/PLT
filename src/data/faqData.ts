@@ -12,7 +12,7 @@ export const FAQ_DATA: FAQItem[] = [
     id: 'mobile-locksmith-service',
     category: 'mobile',
     question: 'Do you provide mobile locksmith service in South Florida?',
-    answer: 'Yes. Pro Locksmith Tech is an exclusive 100% mobile locksmith service provider in South Florida. We dispatch fully equipped workshop vans directly to your vehicle curb, residence, or commercial property throughout Coral Springs, Fort Lauderdale, Miami, and Boca Raton. There is no storefront visit required; our technicians arrive on-site with all necessary tools.'
+    answer: 'Yes. Pro Locksmith Tech provides on-site automotive, residential and commercial locksmith service throughout Miami-Dade, Broward and Palm Beach counties. Our equipped technicians offer same-day and emergency service.'
   },
   {
     id: 'how-fast-arrival',
@@ -24,13 +24,13 @@ export const FAQ_DATA: FAQItem[] = [
     id: 'car-lockout-help',
     category: 'automotive',
     question: 'What should I do if I am locked out of my car in South Florida?',
-    answer: 'Call (754) 261-6528 with the vehicle location and its year, make and model. Say whether the key is inside the vehicle or missing. We can discuss service availability and what you need to have ready.'
+    answer: 'Call (754) 261-6528 to request a car locksmith at your location. We offer 24/7 emergency lockout assistance and same-day car key replacement.'
   },
   {
     id: 'car-key-programming',
     category: 'automotive',
     question: 'Can you make replacement car keys and program key fobs on-site?',
-    answer: 'We can cut and program compatible car keys and fobs at the vehicle. Tell us the year, make, model, and whether you have a working key so we can confirm the service for your vehicle.'
+    answer: 'Yes. We carry a wide selection of car keys, transponder keys, remotes, smart keys and key fobs for same-day cutting and programming at your vehicle. Call to request service.'
   },
   {
     id: 'rekeying-vs-replacement',
