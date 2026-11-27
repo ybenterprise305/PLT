@@ -1,10 +1,9 @@
-import { CompletedWorkLink } from '../components/CompletedWorkLink';
+import { completedJobs, completedJobImage } from '../data/completedWork';
 import { StructuredData } from '../components/StructuredData';
 import { siteIdentity } from '../utils/structuredData';
-import { homeVan } from '../assets/images/vanImages';
 import { PHONE, TEL } from '../config/business';
 import React from 'react';
-import { Phone, Car, Home, Building2, KeyRound, ArrowRight, Clock, MapPin, ShieldCheck } from 'lucide-react';
+import { Phone, Car, Home, Building2, KeyRound, ArrowRight, Clock } from 'lucide-react';
 import { SEOHead } from '../components/SEOHead';
 import { LocalizedA } from '../components/LocalizedA';
 import { useLanguage } from '../context/LanguageContext';
@@ -15,16 +14,19 @@ import { ReviewCarousel } from '../components/ReviewCarousel';
 interface HomePageProps { onNavigate: (path: string) => void; }
 
 const services = [
-  { slug: 'automotive-locksmith', en: 'Car Lockouts & Keys', es: 'Apertura y llaves de autos', enDesc: 'Locked out or lost your keys? We come to your vehicle.', esDesc: '¿Quedó fuera de su auto o perdió sus llaves? Vamos hasta usted.', img: getServiceImage('automotive-locksmith').src, srcSet: getServiceImage('automotive-locksmith').srcSet, icon: Car },
-  { slug: 'residential-locksmith', en: 'Home Locksmith', es: 'Cerrajería residencial', enDesc: 'House lockouts, rekeying and new door locks.', esDesc: 'Aperturas de viviendas, cambios de combinación e instalación de cerraduras.', img: getServiceImage('residential-locksmith').src, srcSet: getServiceImage('residential-locksmith').srcSet, icon: Home },
-  { slug: 'commercial-locksmith', en: 'Business Locksmith', es: 'Cerrajería comercial', enDesc: 'Lock service for offices, shops and businesses.', esDesc: 'Servicios de cerraduras para oficinas, tiendas y negocios.', img: getServiceImage('commercial-locksmith').src, srcSet: getServiceImage('commercial-locksmith').srcSet, icon: Building2 },
+  { slug: 'automotive-locksmith', en: 'Car Lockouts & Keys', es: 'Apertura y llaves de autos', enDesc: 'Locked out or lost your keys? We come to your vehicle.', esDesc: '¿Quedó fuera de su auto o perdió sus llaves? Vamos hasta usted.', icon: Car },
+  { slug: 'residential-locksmith', en: 'Home Locksmith', es: 'Cerrajería residencial', enDesc: 'House lockouts, rekeying and new door locks.', esDesc: 'Aperturas de viviendas, cambios de combinación e instalación de cerraduras.', icon: Home },
+  { slug: 'commercial-locksmith', en: 'Business Locksmith', es: 'Cerrajería comercial', enDesc: 'Lock service for offices, shops and businesses.', esDesc: 'Servicios de cerraduras para oficinas, tiendas y negocios.', icon: Building2 },
+  { slug: 'emergency-lockout-service', en: 'Emergency Lockouts', es: 'Aperturas de emergencia', enDesc: '24/7 help for vehicle, home and business lockouts.', esDesc: 'Ayuda las 24 horas para autos, viviendas y negocios.', icon: Clock },
 ];
+const heroJob = completedJobs.find(job => job.id === 'dodge-key-fob')!;
+const heroImage = completedJobImage(heroJob);
 
 export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
   const { isSpanish } = useLanguage();
   const call = (where: string) => trackPhoneClick({ ctaLocation: where, pagePath: isSpanish ? '/es' : '/' });
   return (
-    <div className="bg-slate-950 text-white">
+    <div className="plt-home">
       <SEOHead
         title={isSpanish ? 'Cerrajero móvil 24/7 en el sur de Florida | Pro Locksmith Tech' : '24/7 Mobile Locksmith South Florida | Pro Locksmith Tech'}
         description={isSpanish
@@ -33,74 +35,51 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
         canonicalPath="/"
       />
       {!isSpanish && <StructuredData data={siteIdentity} />}
-      <section className="mx-auto max-w-7xl px-5 pt-8 pb-12 sm:pt-14 sm:pb-20">
-        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
-          <div className="space-y-5">
-            <p className="inline-flex items-center gap-2 rounded-full border border-amber-400/40 bg-amber-400/10 px-3 py-2 text-sm font-semibold text-amber-300">
-              <Clock className="h-4 w-4" aria-hidden="true" />
-              {isSpanish ? 'Servicio móvil 24/7, día y noche · Vamos hasta usted' : '24/7 day and night · We Come to You'}
-            </p>
-            <h1 className="max-w-2xl font-heading text-4xl font-extrabold leading-[1.12] tracking-tight sm:text-5xl lg:text-6xl">
-              {isSpanish ? '¿Necesita un cerrajero en el sur de Florida?' : 'Need a Locksmith in South Florida?'}
-              <span className="mt-2 block text-amber-400">{isSpanish ? 'Llámenos ahora.' : 'We’re One Call Away.'}</span>
-            </h1>
-            <p className="max-w-xl text-base leading-7 text-slate-200 sm:text-lg">
-              {isSpanish
-                ? 'Aperturas de autos y casas, llaves de auto, programación de controles y cambio de cerraduras. Servicio móvil en el sur de Florida, todos los días.'
-                : 'Serving South Florida since 2000. Get same-day car key replacement, on-site key fob programming, car and home lockouts, lock changes and more across Miami-Dade, Broward and Palm Beach counties.'}
-            </p>
-            <LocalizedA href={TEL} onClick={() => call('homepage_hero_call')}
-              className="inline-flex min-h-[58px] w-full items-center justify-center gap-3 rounded-xl bg-amber-400 px-6 py-4 text-lg font-extrabold text-slate-950 shadow-lg hover:bg-amber-300 sm:w-auto">
-              <Phone className="h-6 w-6" aria-hidden="true" />
-              {isSpanish ? 'LLAME AHORA' : 'CALL NOW'} · {PHONE}
+      <section className="plt-wrap plt-home-hero" aria-labelledby="home-hero-title">
+        <div>
+          <p className="plt-label">{isSpanish ? 'Cerrajería móvil 24/7' : '24/7 mobile locksmith'}</p>
+          <h1 id="home-hero-title">
+            {isSpanish ? 'Su cerrajero en ' : 'Your locksmith in '}
+            <span>{isSpanish ? 'el sur de Florida' : 'South Florida'}</span>
+          </h1>
+          <p className="plt-home-hero-copy">{isSpanish
+            ? 'Vamos a su auto, vivienda o negocio. Hacemos llaves, programamos controles compatibles y atendemos aperturas y cerraduras. En el sur de Florida desde 2000.'
+            : 'We come to your car, home or business for replacement keys, compatible fobs, lockouts and lock changes. Serving South Florida since 2000.'}</p>
+          <div className="plt-home-actions">
+            <LocalizedA href={TEL} className="plt-cta" onClick={() => call('homepage_hero_call')}>
+              <Phone size={18} aria-hidden="true" /> {isSpanish ? 'Llamar al' : 'Call'} {PHONE}
             </LocalizedA>
-            <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-slate-300">
-              <span className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-amber-400" />{isSpanish ? 'Servicio móvil' : 'Mobile service'}</span>
-              <span className="flex items-center gap-2"><MapPin className="h-4 w-4 text-amber-400" />{isSpanish ? 'Sur de Florida' : 'South Florida'}</span>
-              <span className="flex items-center gap-2"><Clock className="h-4 w-4 text-amber-400" />{isSpanish ? '24/7 día y noche' : '24/7 day and night'}</span>
-            </div>
-          </div>
-          <div className="overflow-hidden rounded-3xl border border-slate-700 bg-slate-900 shadow-xl">
-            <picture>
-              <source type="image/avif" srcSet={homeVan.srcSet('avif')} sizes={homeVan.sizes} />
-              <img src={homeVan.src} srcSet={homeVan.srcSet('webp')} sizes={homeVan.sizes} width={960} height={720} alt={isSpanish ? 'Camioneta de servicio móvil con equipos de cerrajería' : 'Illustrative mobile locksmith service van with equipment'} className="aspect-[4/3] w-full object-cover" fetchPriority="high" loading="eager" decoding="sync" />
-            </picture>
+            <LocalizedA href="/service-areas" className="plt-text-link">{isSpanish ? 'Ver cobertura' : 'Check coverage'}</LocalizedA>
           </div>
         </div>
+        <figure className="plt-home-photo">
+          <img {...heroImage} sizes="(min-width: 1024px) 530px, calc(100vw - 40px)"
+            alt={heroJob[isSpanish ? 'es' : 'en'].alt} loading="eager" fetchPriority="high" decoding="async" />
+          <figcaption>
+            <span>{heroJob[isSpanish ? 'es' : 'en'].caption}</span>
+            <LocalizedA href="/completed-work#dodge-key-fob">{isSpanish ? 'Ver trabajo' : 'See completed work'}</LocalizedA>
+          </figcaption>
+        </figure>
       </section>
 
-      <section className="below-fold-section border-t border-slate-800 bg-slate-900/60 py-12 sm:py-16">
-        <div className="mx-auto max-w-7xl px-5">
-          <div className="mb-7 max-w-2xl">
-            <p className="mb-2 text-sm font-bold uppercase tracking-wide text-amber-400">{isSpanish ? 'Nuestros servicios' : 'Our services'}</p>
-            <h2 className="font-heading text-2xl font-bold sm:text-4xl">{isSpanish ? '¿En qué podemos ayudarle?' : 'How Can We Help?'}</h2>
+      <section className="plt-services-band plt-section" aria-labelledby="home-services-title">
+        <div className="plt-wrap">
+          <div className="plt-services-head">
+            <h2 id="home-services-title">{isSpanish ? '¿En qué podemos ayudarle?' : 'Find the service you need'}</h2>
+            <LocalizedA href="/services" className="plt-text-link">{isSpanish ? 'Todos los servicios' : 'Explore all services'}</LocalizedA>
           </div>
-          <div className="grid gap-5 md:grid-cols-3">
-            {services.map((service) => (
-              <LocalizedA href={'/services/' + service.slug} key={service.slug}
-                className="group overflow-hidden rounded-2xl border border-slate-700 bg-slate-950 transition-colors hover:border-amber-400">
-                <img src={service.img} srcSet={service.srcSet} sizes="(max-width: 767px) calc(100vw - 42px), (max-width: 1279px) 31vw, 410px" width={960} height={540} alt={isSpanish ? service.es : service.en} loading="lazy" decoding="async" className="aspect-[16/9] w-full object-cover" />
-                <div className="space-y-2 p-5">
-                  <h3 className="text-xl font-bold">{isSpanish ? service.es : service.en}</h3>
-                  <p className="min-h-[56px] text-base leading-6 text-slate-300">{isSpanish ? service.esDesc : service.enDesc}</p>
-                  <span className="inline-flex items-center gap-2 font-semibold text-amber-300">
-                    {isSpanish ? 'Ver servicio' : 'View service'} <ArrowRight className="h-4 w-4" />
-                  </span>
-                </div>
+          <div className="plt-service-menu">
+            {services.map(service => (
+              <LocalizedA href={'/services/' + service.slug} key={service.slug}>
+                <service.icon size={25} strokeWidth={1.6} aria-hidden="true" />
+                <h3>{isSpanish ? service.es : service.en}</h3>
+                <p>{isSpanish ? service.esDesc : service.enDesc}</p>
               </LocalizedA>
             ))}
           </div>
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-3 text-sm text-slate-300">
-            <span className="font-semibold">{isSpanish ? 'Opiniones reales publicadas en Google' : 'Real Google customer reviews'}</span>
-            <LocalizedA href="/reviews" className="font-semibold text-amber-300 underline underline-offset-4 hover:text-amber-200">
-              {isSpanish ? 'Ver opiniones' : 'Read reviews'}
-            </LocalizedA>
-          </div>
-          <div className="mt-7 text-center">
-            <LocalizedA href="/services" className="inline-flex min-h-[48px] items-center gap-2 rounded-xl border border-slate-600 px-5 py-3 text-base font-semibold text-white hover:border-amber-400">
-              {isSpanish ? 'Ver todos los servicios' : 'Explore all services'} <ArrowRight className="h-4 w-4" />
-            </LocalizedA>
-          </div>
+          <LocalizedA href="/reviews" className="mt-5 inline-flex min-h-11 items-center font-semibold text-[#644718] underline underline-offset-4">
+            {isSpanish ? 'Leer opiniones publicadas en Google' : 'Read Google customer reviews'}
+          </LocalizedA>
         </div>
       </section>
 
@@ -239,13 +218,21 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
 
       <ReviewCarousel compact />
 
-      <div className="mx-auto max-w-7xl px-5 pt-6">
-        <CompletedWorkLink />
-      </div>
+      <section className="plt-wrap py-12 sm:py-16" aria-labelledby="home-resources">
+        <h2 id="home-resources" className="text-2xl font-bold sm:text-3xl">{isSpanish ? 'Guías de cerrajería' : 'Locksmith guides'}</h2>
+        <div className="mt-3 flex flex-wrap gap-x-7">
+          <LocalizedA className="plt-text-link" href="/tips/vehicle-key-compatibility">{isSpanish ? 'Compatibilidad de llaves de auto' : 'Vehicle key compatibility'}</LocalizedA>
+          <LocalizedA className="plt-text-link" href="/tips/locksmith-pricing-factors">{isSpanish ? 'Factores que afectan el precio' : 'What affects locksmith pricing'}</LocalizedA>
+          <LocalizedA className="plt-text-link" href="/tips">{isSpanish ? 'Todas las guías' : 'All locksmith guides'}</LocalizedA>
+        </div>
+      </section>
 
       <section className="below-fold-section mx-auto max-w-7xl px-5 py-12 sm:py-16">
         <div className="grid items-center gap-8 md:grid-cols-2">
-          <img src={getServiceImage('lock-rekeying').src} srcSet={getServiceImage('lock-rekeying').srcSet} sizes="(max-width: 767px) 100vw, 50vw" width={960} height={720} alt={isSpanish ? 'Instalación de cerradura residencial' : 'Residential lock service'} loading="lazy" className="aspect-[4/3] w-full rounded-2xl object-cover" />
+          <figure>
+          <img src={getServiceImage('lock-rekeying').src} srcSet={getServiceImage('lock-rekeying').srcSet} sizes="(max-width: 767px) 100vw, 50vw" width={960} height={720} alt={isSpanish ? 'Ilustración de un servicio de cerradura residencial' : 'Illustration of residential lock service'} loading="lazy" className="aspect-[4/3] w-full rounded-2xl object-cover" />
+            <figcaption className="mt-2 text-sm text-slate-300">{isSpanish ? 'Imagen ilustrativa' : 'Illustrative image'}</figcaption>
+          </figure>
           <div className="space-y-4">
             <h2 className="font-heading text-2xl font-bold sm:text-4xl">{isSpanish ? 'Llámenos. Nosotros vamos.' : 'Call Us. We Come to You.'}</h2>
             <p className="text-base leading-7 text-slate-300">
@@ -276,7 +263,10 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
                 {isSpanish ? 'Ver ciudades atendidas' : 'View service areas'} <ArrowRight className="h-4 w-4" />
               </LocalizedA>
             </div>
-            <img src={getServiceImage('commercial-locksmith').src} srcSet={getServiceImage('commercial-locksmith').srcSet} sizes="(max-width: 767px) 100vw, 50vw" width={960} height={720} alt={isSpanish ? 'Equipo de servicio móvil de cerrajería' : 'Mobile locksmith team'} loading="lazy" className="aspect-[4/3] w-full rounded-2xl object-cover" />
+            <figure>
+          <img src={getServiceImage('commercial-locksmith').src} srcSet={getServiceImage('commercial-locksmith').srcSet} sizes="(max-width: 767px) 100vw, 50vw" width={960} height={720} alt={isSpanish ? 'Ilustración de un servicio de cerrajería móvil' : 'Illustration of mobile locksmith service'} loading="lazy" className="aspect-[4/3] w-full rounded-2xl object-cover" />
+            <figcaption className="mt-2 text-sm text-slate-300">{isSpanish ? 'Imagen ilustrativa' : 'Illustrative image'}</figcaption>
+          </figure>
           </div>
         </div>
       </section>

@@ -1,3 +1,4 @@
+import { completedJobImage, completedJobs } from '../data/completedWork';
 import { CompletedWorkLink } from '../components/CompletedWorkLink';
 import { ResourceLinks } from '../components/ResourceLinks';
 import { serviceResources } from '../data/editorialLinks';
@@ -76,6 +77,11 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
   const serviceFeatures = isSpanish && esData ? esData.features : service.features;
 
   const serviceImage = getServiceImage(service.slug);
+  const exampleId = service.slug === 'automotive-locksmith' ? 'nissan-key-fob'
+    : service.slug === 'commercial-locksmith' ? 'storefront-lock' : null;
+  const example = completedJobs.find(job => job.id === exampleId);
+  const exampleImage = example && completedJobImage(example);
+  const language = isSpanish ? 'es' : 'en';
   const searchMetadata = SERVICE_SEARCH_METADATA[service.slug];
 
   const trail: [string, string][] = [[t('nav.services'), '/services'], [serviceName, '/services/' + service.slug]];
@@ -96,16 +102,16 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
       />
 
 
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 space-y-12">
+      <div className="plt-wrap space-y-10">
         
         <Breadcrumbs trail={trail} />
 
         {/* Hero Section for Service */}
-        <div className="bg-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-10 relative overflow-hidden shadow-2xl">
+        <div className="plt-service-lead">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
             <div className="lg:col-span-7 space-y-4">
               <div className="flex items-center gap-3">
-                <span className="px-3 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold rounded-md uppercase tracking-wider">
+                <span className="plt-label">
                   {serviceBadge}
                 </span>
                 <span className="text-sm text-slate-400 leading-6">
@@ -140,24 +146,20 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
 
             {/* Service Photo */}
             <div className="lg:col-span-5">
-              <div className="rounded-2xl overflow-hidden border border-slate-800 shadow-xl relative group">
-                <img
-                  src={serviceImage.src}
-                  srcSet={serviceImage.srcSet}
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  width={960}
-                  height={640}
-                  alt={isSpanish ? serviceImage.esAlt : serviceImage.enAlt}
-                  className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-500"
-                  loading="eager"
-                  fetchPriority="high"
-                  decoding="async"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent pointer-events-none" />
-                <div className="absolute bottom-3 left-3 right-3 text-center bg-slate-950/90 py-1.5 px-3 rounded-lg border border-slate-800 text-[11px] text-amber-400 font-semibold">
-                  {isSpanish ? 'Cerrajería Móvil 24/7 · Broward, Miami-Dade y Palm Beach' : '24/7 Mobile Service · Broward, Miami-Dade & Palm Beach'}
-                </div>
-              </div>
+              {example && exampleImage ? (
+                <figure className="plt-service-image">
+                  <img {...exampleImage} sizes="(min-width: 1024px) 450px, calc(100vw - 40px)"
+                    alt={example[language].alt} loading="eager" fetchPriority="high" decoding="async" />
+                  <figcaption>{example[language].caption}</figcaption>
+                </figure>
+              ) : (
+                <figure>
+                  <img src={serviceImage.src} srcSet={serviceImage.srcSet} sizes="(max-width: 1024px) 95vw, 40vw"
+                  width={960} height={640} alt={isSpanish ? serviceImage.esAlt : serviceImage.enAlt}
+                    className="plt-service-picture" loading="eager" fetchPriority="high" decoding="async" />
+                  <figcaption className="mt-2 text-sm text-slate-300">{isSpanish ? 'Imagen ilustrativa' : 'Illustrative image'}</figcaption>
+                </figure>
+              )}
             </div>
           </div>
         </div>

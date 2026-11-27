@@ -10,7 +10,7 @@
 | IV | AEO, AIO, GEO and agentic browsing | See Phase IV implementation and verification |
 | V | Content and topical authority | See Phase V editorial scope |
 | VI | Advanced local SEO and verified completed-job evidence | See Phase VI local implementation |
-| VII | Premium design and user experience | Awaiting explicit approval |
+| VII | Premium design and user experience | See Phase VII design and validation |
 | VIII | Superior conversion optimization | Awaiting explicit approval |
 | IX | Enterprise security and reliability | Awaiting explicit approval |
 | X | Automated enterprise quality control | Awaiting explicit approval |
@@ -56,3 +56,7 @@ See [Phase V editorial inventory and release scope](phase-v-content.md).
 ## Phase VI
 
 See [local coverage and completed work](phase-vi-local.md).
+
+## Phase VII
+
+See [design and user experience](phase-vii-design.md).

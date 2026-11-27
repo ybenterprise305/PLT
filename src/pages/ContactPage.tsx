@@ -30,10 +30,10 @@ export function ContactPage() {
         keywords="contact locksmith South Florida, contacto cerrajero Sur de la Florida, emergency locksmith phone number, mobile locksmith dispatch, locksmith Fort Lauderdale phone, locksmith Miami contact"
       />
 
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 space-y-12">
+      <div className="plt-wrap space-y-10">
         
         {/* Header Hero */}
-        <div className="bg-slate-950 border border-slate-800 rounded-3xl p-8 sm:p-12 relative overflow-hidden">
+        <div className="plt-page-lead">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             <div className="lg:col-span-7 space-y-5">
@@ -85,18 +85,15 @@ export function ContactPage() {
               <div className="rounded-2xl overflow-hidden border border-slate-800 shadow-xl relative group">
                 <img
                   src={locksmithCrewImg}
-                  alt="Pro Locksmith Tech mobile service technician crew"
+                  alt={isSpanish ? 'Ilustración de un equipo de cerrajería móvil' : 'Illustrative mobile locksmith crew'}
                   className="w-full h-64 sm:h-80 object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                   decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
                 <div className="absolute bottom-3 left-3 right-3 text-center bg-slate-950/90 py-2 px-3 rounded-lg border border-slate-800">
-                  <span className="text-xs font-bold text-amber-400 block">
-                    {isSpanish ? 'Flota de Cerrajería Móvil 24/7' : '24/7 Mobile Locksmith Fleet'}
-                  </span>
-                  <span className="text-[11px] text-slate-300">
-                    {isSpanish ? 'Lista en Broward, Miami-Dade y Palm Beach' : 'Ready to roll across Broward, Miami-Dade & Palm Beach'}
+                  <span className="text-sm text-slate-200">
+                    {isSpanish ? 'Imagen ilustrativa' : 'Illustrative image'}
                   </span>
                 </div>
               </div>
@@ -166,7 +163,7 @@ export function ContactPage() {
               </p>
             </div>
             <div className="pt-2 text-xs font-semibold text-amber-400 flex items-center gap-1">
-              <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+              <span className="w-2 h-2 rounded-full bg-amber-400"></span>
               <span>{isSpanish ? 'Unidades móviles en servicio ahora' : 'Mobile vans on duty right now'}</span>
             </div>
           </div>
@@ -246,7 +243,7 @@ export function ContactPage() {
             {/* Right Urgent Call Box */}
             <div className="lg:col-span-5 bg-gradient-to-br from-slate-900 to-slate-950 border-2 border-amber-500/50 rounded-2xl p-6 sm:p-8 space-y-5 text-center shadow-2xl">
               <div className="w-14 h-14 rounded-2xl bg-amber-500 text-slate-950 flex items-center justify-center mx-auto shadow-lg shadow-amber-500/25">
-                <Phone className="w-7 h-7 fill-current animate-bounce" />
+                <Phone className="w-7 h-7 fill-current" />
               </div>
 
               <div className="space-y-1">

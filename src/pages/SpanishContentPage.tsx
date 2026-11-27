@@ -1,3 +1,4 @@
+import { completedJobImage, completedJobs } from '../data/completedWork';
 import { CompletedWorkLink } from '../components/CompletedWorkLink';
 import { ResourceLinks } from '../components/ResourceLinks';
 import { spanishDecisionResources } from '../data/editorialLinks';
@@ -56,20 +57,34 @@ export function SpanishContentPage({ path }: Props) {
     : [[title, '/services']];
   const showServiceTrail = path === '/services' || Boolean(service);
   const image = service ? getServiceImage(service.slug).src : homeVan.src;
+  const exampleId = service?.slug === 'automotive-locksmith' ? 'nissan-key-fob'
+    : service?.slug === 'commercial-locksmith' ? 'storefront-lock' : null;
+  const example = completedJobs.find(job => job.id === exampleId);
 
   return (
     <div className="min-h-screen bg-slate-950 pb-12 text-white">
       <SEOHead title={title + ' | Pro Locksmith Tech'} description={desc + ' Llame al ' + PHONE + '.'} canonicalPath={path} />
-      <section className="mx-auto max-w-6xl px-5 py-10 sm:py-16">
+      <section className="plt-wrap py-10 sm:py-14">
         {showServiceTrail && <div className="mb-5"><Breadcrumbs trail={serviceTrail} /></div>}
-        <div className="grid items-center gap-7 lg:grid-cols-2 lg:gap-12">
+        <div className="plt-service-lead grid items-center gap-7 lg:grid-cols-2 lg:gap-12">
           <div className="space-y-5">
             <p className="inline-flex items-center gap-2 text-sm font-semibold text-amber-300"><Clock className="h-4 w-4"/>Cerrajería móvil 24/7 · Sur de Florida</p>
             <h1 className="font-heading text-3xl font-extrabold leading-tight sm:text-5xl">{title}</h1>
             <p className="text-lg leading-8 text-slate-200">{desc}</p>
             {cta('spanish_page_hero_call')}
           </div>
-          <img src={image} srcSet={service ? getServiceImage(service.slug).srcSet : homeVan.srcSet('webp')} sizes="(max-width: 1024px) 100vw, 50vw" width={960} height={640} alt={service ? getServiceImage(service.slug).esAlt : 'Camioneta de cerrajería móvil'} className="aspect-[4/3] w-full rounded-2xl object-cover" loading="eager" fetchPriority="high" />
+          {example ? (
+            <figure className="plt-service-image">
+              <img {...completedJobImage(example)} sizes="(min-width: 1024px) 450px, calc(100vw - 40px)"
+                alt={example.es.alt} loading="eager" fetchPriority="high" decoding="async" />
+              <figcaption>{example.es.caption}</figcaption>
+            </figure>
+          ) : (
+            <figure>
+            <img src={image} srcSet={service ? getServiceImage(service.slug).srcSet : homeVan.srcSet('webp')} sizes="(max-width: 1024px) 100vw, 50vw" width={960} height={640} alt={service ? getServiceImage(service.slug).esAlt : 'Camioneta de cerrajería móvil'} className="aspect-[4/3] w-full rounded-2xl object-cover" loading="eager" fetchPriority="high" />
+              <figcaption className="mt-2 text-sm text-slate-300">Imagen ilustrativa</figcaption>
+            </figure>
+          )}
         </div>
       </section>
 

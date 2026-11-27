@@ -31,7 +31,7 @@ export function LocksmithTipsPage() {
   });
 
   return (
-    <div className="mx-auto max-w-6xl space-y-8 px-5 py-10 sm:px-8">
+    <div className="plt-wrap space-y-8 py-10">
       <SEOHead title={title} description={description} canonicalPath="/tips" />
       <Breadcrumbs trail={[[title, '/tips']]} />
       <header className="space-y-3">
