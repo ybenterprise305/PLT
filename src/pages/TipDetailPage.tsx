@@ -1,3 +1,4 @@
+import { CompletedWorkLink } from '../components/CompletedWorkLink';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { SEOHead } from '../components/SEOHead';
 import { LocalizedA } from '../components/LocalizedA';
@@ -80,6 +81,7 @@ export function TipDetailPage({ slug, onNavigate }: RouteProps) {
       </section>
       <ResourceLinks title={es ? 'Guías relacionadas' : 'Related resources'} links={related} />
       {guide.sources && <ResourceLinks title={es ? 'Fuentes de referencia' : 'Sources'} links={guide.sources} />}
+      <CompletedWorkLink topic={slug} />
     </article>
   );
 }

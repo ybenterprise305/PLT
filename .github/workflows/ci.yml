@@ -33,6 +33,7 @@ jobs:
           node scripts/check-seo.mjs
           node scripts/check-discovery.mjs
           node scripts/check-editorial.mjs
+          node scripts/check-local-content.mjs
       - name: Verify asset references and performance budgets
         run: node scripts/check-phase-i.mjs
       - name: Install browser for site checks

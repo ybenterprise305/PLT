@@ -1,3 +1,4 @@
+import { CompletedWorkLink } from '../components/CompletedWorkLink';
 import { ResourceLinks } from '../components/ResourceLinks';
 import { serviceResources } from '../data/editorialLinks';
 import { Breadcrumbs } from '../components/Breadcrumbs';
@@ -279,6 +280,13 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
             </LocalizedA>
           </section>
         )}
+
+        <div className="flex flex-wrap gap-x-6 gap-y-2">
+          <CompletedWorkLink topic={service.slug} />
+          <LocalizedA href="/service-areas" className="inline-flex min-h-11 items-center font-semibold text-amber-300 underline underline-offset-4">
+            {isSpanish ? 'Consulte nuestras áreas de servicio' : 'Find mobile locksmith coverage near you'}
+          </LocalizedA>
+        </div>
 
         {/* Relevant question-and-answer content; exactly matches FAQ structured data. */}
         <section className="rounded-2xl border border-slate-800 bg-slate-950 p-6 sm:p-8">

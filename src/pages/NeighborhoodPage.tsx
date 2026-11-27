@@ -1,5 +1,6 @@
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { getCityBySlug } from '../data/locationsData';
+import { getLocalGuide, getLocalHelp } from '../data/localServiceContent';
 import { NotFoundPage } from './NotFoundPage';
 import type { RouteProps } from '../routes';
 import { LocalizedA } from '../components/LocalizedA';
@@ -29,6 +30,10 @@ export function NeighborhoodPage({ slug, onNavigate }: RouteProps) {
 
 function NeighborhoodContent({ city, county, area }: Props) {
   const path = neighborhoodPath(city.slug, area.slug);
+  const guide = getLocalHelp(city.slug) && getLocalGuide(
+    area.service === 'automotive-locksmith' ? 'vehicle-key-compatibility'
+      : area.service === 'commercial-locksmith' ? 'business-key-handover'
+        : 'locksmith-pricing-factors', 'en');
 
   return (
     <article className="mx-auto max-w-4xl space-y-7 px-5 py-10 sm:py-14">
@@ -52,6 +57,7 @@ function NeighborhoodContent({ city, county, area }: Props) {
         <p className="leading-7 text-slate-300">{area.callNotes}</p>
         <p className="leading-7 text-slate-300">For this type of request, see <LocalizedA href={`/services/${area.service}`} className="text-amber-300 underline">{serviceLabels[area.service]}</LocalizedA>.</p>
       </section>
+      {guide && <p><LocalizedA href={guide[1]} className="text-amber-300 underline">{guide[0]}</LocalizedA></p>}
       <p><LocalizedA href={`/service-areas/${city.slug}`} className="text-amber-300 underline">See all {city.name} service information</LocalizedA></p>
     </article>
   );

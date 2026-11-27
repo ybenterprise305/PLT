@@ -22,6 +22,7 @@ interface RouteDefinition {
 const core: RouteDefinition[] = [
   { path: '/', page: 'HomePage', type: 'home', parent: null, source: 'HomePage', translate: true },
   { path: '/services', page: 'ServicesPage', type: 'directory', parent: '/', source: 'servicesData', translate: true },
+  { path: '/completed-work', page: 'CompletedWorkPage', type: 'directory', parent: '/', source: 'completedWork', translate: true },
   { path: '/service-areas', page: 'ServiceAreasPage', type: 'directory', parent: '/', source: 'locationsData', translate: true },
   { path: '/about', page: 'AboutPage', type: 'core', parent: '/', source: 'AboutPage', translate: true },
   { path: '/contact', page: 'ContactPage', type: 'core', parent: '/', source: 'ContactPage', translate: true },
@@ -65,7 +66,7 @@ export function getRouteRegistry() {
     const published = { ...route, language: 'en', indexable: true, sitemap: true, status: 200, canonical: SITE + canonicalSitePath(route.path), alternates };
     if (!route.translate) return [published];
     const parent = route.parent && localized.has(route.parent) ? es(route.parent) : route.parent;
-    const localizedPage = ['HomePage', 'LocksmithTipsPage', 'TipDetailPage'].includes(route.page) ? route.page : 'SpanishContentPage';
+    const localizedPage = ['HomePage', 'LocksmithTipsPage', 'TipDetailPage', 'LocationDetailPage', 'ServiceAreasPage', 'CompletedWorkPage'].includes(route.page) ? route.page : 'SpanishContentPage';
     return [published, {
       ...published, path: es(route.path), parent, language: 'es', canonical: SITE + canonicalSitePath(es(route.path)),
       page: localizedPage,

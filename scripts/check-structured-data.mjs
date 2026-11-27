@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const hierarchicalTypes = new Set(['service', 'county', 'city', 'neighborhood', 'article', 'guide']);
-const directoryTrails = new Set(['/services/', '/es/services/', '/service-areas/', '/es/service-areas/', '/blog/', '/tips/', '/es/tips/']);
+const directoryTrails = new Set(['/services/', '/es/services/', '/service-areas/', '/es/service-areas/', '/blog/', '/tips/', '/es/tips/', '/completed-work/', '/es/completed-work/']);
 const permittedTypes = new Set(['Organization', 'WebSite', 'BreadcrumbList', 'ListItem', 'Article', 'BlogPosting']);
 const clean = value => typeof value === 'string' ? value.replace(/\s+/g, ' ').trim() : '';
 

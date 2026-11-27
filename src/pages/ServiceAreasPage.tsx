@@ -1,337 +1,90 @@
+import { useState } from 'react';
 import { Breadcrumbs } from '../components/Breadcrumbs';
-import { homeVan } from '../assets/images/vanImages';
-import React, { useState, useMemo } from 'react';
-import { MapPin, Phone, ArrowRight, Navigation,  Search, CheckCircle2 } from 'lucide-react';
-import { COUNTIES_DATA, getAllCities } from '../data/locationsData';
+import { LocalizedA } from '../components/LocalizedA';
 import { SEOHead } from '../components/SEOHead';
-import { SouthFloridaMap } from '../components/SouthFloridaMap';
+import { PHONE, TEL } from '../config/business';
 import { useLanguage } from '../context/LanguageContext';
-import { SPANISH_COUNTIES } from '../data/spanishTranslations';
+import { countyServiceContent } from '../data/localServiceContent';
+import { COUNTIES_DATA } from '../data/locationsData';
+import { getNeighborhoods } from '../data/neighborhoods';
 import { trackPhoneClick } from '../utils/analytics';
 
-import { LocalizedA } from '../components/LocalizedA';
-interface ServiceAreasPageProps {
-  onNavigate: (path: string) => void;
-}
-
-export function ServiceAreasPage({ onNavigate }: ServiceAreasPageProps) {
-  const { isSpanish } = useLanguage();
-  const [selectedCountyFilter, setSelectedCountyFilter] = useState<string>('all');
-  const [searchQuery, setSearchQuery] = useState<string>('');
-  const allCities = useMemo(() => getAllCities(), []);
-
-  const filteredCities = useMemo(() => {
-    return allCities.filter(({ city, county }) => {
-      const matchesCounty = selectedCountyFilter === 'all' || county.slug === selectedCountyFilter;
-      if (!matchesCounty) return false;
-      if (!searchQuery.trim()) return true;
-
-      const query = searchQuery.toLowerCase().trim();
-      const nameMatch = city.name.toLowerCase().includes(query);
-      const countyMatch = county.name.toLowerCase().includes(query);
-      const zipMatch = city.zipCodes.some(zip => zip.includes(query));
-      const areaMatch = city.popularAreas.some(area => area.toLowerCase().includes(query));
-
-      return nameMatch || countyMatch || zipMatch || areaMatch;
-    });
-  }, [allCities, selectedCountyFilter, searchQuery]);
+export function ServiceAreasPage() {
+  const { language } = useLanguage();
+  const es = language === 'es';
+  const [filter, setFilter] = useState('');
+  const [query, setQuery] = useState('');
+  const term = query.trim().toLowerCase();
+  const groups = COUNTIES_DATA
+    .filter(county => !filter || county.slug === filter)
+    .map(county => ({
+      county,
+      areas: county.majorCities.filter(city => !term || [city.name, county.name, ...city.zipCodes, ...getNeighborhoods(city.slug).map(area => area.name)]
+        .some(name => name.toLowerCase().includes(term))).sort((a, b) => a.priorityTier - b.priorityTier),
+    }))
+    .filter(group => group.areas.length);
+  const count = groups.reduce((total, group) => total + group.areas.length, 0);
+  const title = es ? 'Áreas de cerrajería móvil en el sur de Florida' : 'South Florida locksmith service areas';
 
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 py-12">
-      <SEOHead
-        title={isSpanish 
-          ? "Áreas de Servicio de Cerrajería Móvil | Sur de la Florida | Pro Locksmith Tech"
-          : "Locksmith Service Areas | South Florida | Pro Locksmith Tech"}
-        description={isSpanish
-          ? "Pro Locksmith Tech atiende el Sur de la Florida con cerrajería móvil 24/7 en los condados de Broward, Miami-Dade y Palm Beach. Directorio de 37 ciudades con despacho rápido. Llame al +1 754-261-6528."
-          : "Pro Locksmith Tech serves South Florida with 24/7 mobile locksmith solutions across Broward, Miami-Dade, and Palm Beach counties. Interactive map and 37-city directory. Call +1 754-261-6528."}
-        canonicalPath="/service-areas"
-        keywords="locksmith South Florida, cerrajero South Florida, mobile locksmith South Florida, locksmith Broward County, locksmith Miami, locksmith Palm Beach County, emergency locksmith service areas"
-      />
+    <div className="mx-auto max-w-6xl space-y-8 px-5 py-10 sm:py-14">
+      <SEOHead title={title} canonicalPath="/service-areas"
+        description={es
+          ? 'Busque cerrajería móvil para autos, viviendas y negocios en localidades de Broward, Miami-Dade y Palm Beach. Consulte la cobertura por dirección.'
+          : 'Find mobile locksmith service for cars, homes and businesses in listed Broward, Miami-Dade and Palm Beach communities. Confirm coverage by address.'} />
+      <Breadcrumbs trail={[[es ? 'Áreas de servicio' : 'Service areas', '/service-areas']]} />
+      <section className="rounded-2xl border border-slate-800 bg-slate-950 p-6 sm:p-8">
+        <h1 className="font-heading text-3xl font-bold tracking-tight text-white sm:text-5xl">{title}</h1>
+        <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-300">{es
+          ? 'Vamos a su auto, vivienda o negocio en las localidades indicadas, con asistencia de emergencia las 24 horas. Llame con la dirección exacta para confirmar la disponibilidad.'
+          : 'We come to your vehicle, home or business in the listed communities, with 24/7 emergency assistance. Call with the exact service address to confirm availability.'}</p>
+        <LocalizedA href={TEL} onClick={() => trackPhoneClick({ ctaLocation: 'service_areas_hero_call', pagePath: es ? '/es/service-areas' : '/service-areas' })}
+          className="mt-5 inline-flex min-h-12 items-center rounded-xl bg-amber-400 px-5 py-3 font-bold text-slate-950 hover:bg-amber-300">
+          {es ? 'Llame al ' : 'Call '}{PHONE}
+        </LocalizedA>
+      </section>
 
-      {/* Hero Header */}
-      <section className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 mb-12">
-        <div className="mb-4"><Breadcrumbs trail={[['Service Areas', '/service-areas']]} /></div>
-        <div className="bg-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-10 relative overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            
-            <div className="lg:col-span-7 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold rounded-md uppercase tracking-wider">
-                <MapPin className="w-3.5 h-3.5" />
-                <span>{isSpanish ? 'Cobertura Móvil Dedicada' : 'Dedicated Mobile Coverage'}</span>
-              </div>
-
-              <h1 className="font-heading font-black text-3xl sm:text-5xl text-white tracking-tight leading-tight">
-                {isSpanish ? 'Áreas de Servicio de Cerrajería en el Sur de la Florida' : 'South Florida Locksmith Service Areas'}
-              </h1>
-
-              <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-                {isSpanish 
-                  ? 'Pro Locksmith Tech opera una flota dedicada de camionetas taller móviles de cerrajería en todo el Sur de la Florida. Llevamos aperturas de emergencia sin daños, cambio de combinación, llaves de auto y cerraduras comerciales directamente a su vehículo, casa o negocio.' 
-                  : 'Pro Locksmith Tech operates a dedicated fleet of fully equipped mobile locksmith vans covering South Florida. We bring non-destructive lockouts, lock rekeying, car key programming, and commercial security hardware directly to your curb, home, or business.'}
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-3 pt-2">
-                <LocalizedA
-                  href="tel:+17542616528"
-                  onClick={() => trackPhoneClick({ ctaLocation: 'service_areas_hero_call', pagePath: '/service-areas' })}
-                  className="inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm shadow-lg transition-transform hover:scale-[1.02]"
-                >
-                  <Phone className="w-4 h-4 fill-current" />
-                  <span>{isSpanish ? 'Llamar Ahora: (754) 261-6528' : 'Call Now: (754) 261-6528'}</span>
-                </LocalizedA>
-
-                
-              </div>
-            </div>
-
-            <div className="lg:col-span-5">
-              <div className="h-64 rounded-2xl overflow-hidden border border-slate-800 shadow-xl relative group">
-                <img
-                  src={homeVan.src}
-                  srcSet={homeVan.srcSet('webp')}
-                  sizes="(max-width: 1023px) calc(100vw - 80px), 460px"
-                  width={homeVan.width}
-                  height={homeVan.height}
-                  fetchPriority="high"
-                  alt="Locksmith van on service route in South Florida"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  loading="eager"
-                  decoding="async"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent pointer-events-none" />
-                <div className="absolute bottom-3 left-3 right-3 text-center bg-slate-950/90 py-1.5 px-3 rounded-lg border border-slate-800 text-[11px] text-amber-400 font-semibold">
-                  {isSpanish ? 'Taller Móvil Despachado Directamente a Sus Coordenadas' : 'Mobile Workshop Dispatched Directly to Your Coordinates'}
-                </div>
-              </div>
-            </div>
-          </div>
+      <section aria-labelledby="coverage-search-heading">
+        <h2 id="coverage-search-heading" className="font-heading text-2xl font-bold text-white">{es ? 'Busque una localidad' : 'Find your community'}</h2>
+        <div className="mt-4 grid gap-4 sm:grid-cols-2">
+          <label className="text-slate-200">
+            {es ? 'Localidad, vecindario o código postal' : 'Community, neighborhood or ZIP code'}
+            <input type="search" value={query} onChange={event => setQuery(event.target.value)}
+              className="mt-2 min-h-12 w-full rounded-lg border border-slate-600 bg-slate-950 px-4 text-white" />
+          </label>
+          <label className="text-slate-200">
+            {es ? 'Condado' : 'County'}
+            <select value={filter} onChange={event => setFilter(event.target.value)}
+              className="mt-2 min-h-12 w-full rounded-lg border border-slate-600 bg-slate-950 px-4 text-white">
+              <option value="">{es ? 'Todos los condados' : 'All counties'}</option>
+              {COUNTIES_DATA.map(county => <option key={county.slug} value={county.slug}>{county.name}</option>)}
+            </select>
+          </label>
         </div>
+        <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-300" aria-live="polite">
+          {es ? `${count} localidades. Confirme la disponibilidad en su dirección.` : `${count} communities. Confirm availability at your exact address.`}
+        </p>
       </section>
 
-      {/* INTERACTIVE SOUTH FLORIDA MAP */}
-      <section className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 mb-14">
-        <SouthFloridaMap
-          onSelectCity={(slug) => onNavigate(`/service-areas/${slug}`)}
-          title={isSpanish ? "Mapa Interactivo de Cobertura en el Sur de la Florida" : "Interactive South Florida Coverage Map"}
-          subtitle={isSpanish ? "Explore nuestro radio de despacho móvil activo en los condados de Palm Beach, Broward y Miami-Dade." : "Explore our active mobile locksmith dispatch radius across Palm Beach, Broward, and Miami-Dade counties."}
-        />
-      </section>
-
-      {/* Quick City Directory & County Selector */}
-      <section className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 mb-12">
-        <div className="bg-slate-950 border border-slate-800 rounded-2xl p-5 sm:p-7 shadow-md">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-5 border-b border-slate-800 pb-4">
-            <div>
-              <h2 className="text-lg font-heading font-black text-white">
-                {isSpanish ? 'Seleccione Su Ciudad Para Despacho Directo' : 'Select Your South Florida City for Direct Dispatch'}
-              </h2>
-              <p className="text-xs text-slate-400 mt-0.5">
-                {isSpanish ? 'Toque su localidad para ver detalles del servicio móvil o llamar de inmediato.' : 'Tap your local area below to view dedicated mobile locksmith details or call immediately.'}
-              </p>
-            </div>
-
-            {/* County Quick Filter Tabs */}
-            <div className="flex flex-wrap items-center gap-1.5 bg-slate-900 p-1.5 rounded-xl border border-slate-800">
-              <button
-                onClick={() => setSelectedCountyFilter('all')}
-                className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all cursor-pointer ${
-                  selectedCountyFilter === 'all'
-                    ? 'bg-amber-500 text-slate-950 shadow'
-                    : 'text-slate-300 hover:text-white hover:bg-slate-800'
-                }`}
-              >
-                {isSpanish ? `Todas las 37 Ciudades (${allCities.length})` : `All 37 Cities (${allCities.length})`}
-              </button>
-              <button
-                onClick={() => setSelectedCountyFilter('broward-county')}
-                className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all cursor-pointer ${
-                  selectedCountyFilter === 'broward-county'
-                    ? 'bg-amber-500 text-slate-950 shadow'
-                    : 'text-slate-300 hover:text-white hover:bg-slate-800'
-                }`}
-              >
-                Broward
-              </button>
-              <button
-                onClick={() => setSelectedCountyFilter('miami-dade-county')}
-                className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all cursor-pointer ${
-                  selectedCountyFilter === 'miami-dade-county'
-                    ? 'bg-amber-500 text-slate-950 shadow'
-                    : 'text-slate-300 hover:text-white hover:bg-slate-800'
-                }`}
-              >
-                Miami-Dade
-              </button>
-              <button
-                onClick={() => setSelectedCountyFilter('palm-beach-county')}
-                className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all cursor-pointer ${
-                  selectedCountyFilter === 'palm-beach-county'
-                    ? 'bg-amber-500 text-slate-950 shadow'
-                    : 'text-slate-300 hover:text-white hover:bg-slate-800'
-                }`}
-              >
-                Palm Beach
-              </button>
-            </div>
-          </div>
-
-          {/* Real-time City Search Bar */}
-          <div className="mb-5">
-            <div className="relative max-w-md">
-              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder={isSpanish ? "Buscar por ciudad o código postal (ej. Fort Lauderdale, 33301)..." : "Search by city, zip code, or area (e.g., Boca Raton, 33076)..."}
-                className="w-full bg-slate-900 border border-slate-800 rounded-xl pl-10 pr-4 py-3 sm:py-2.5 text-base sm:text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-amber-400 transition-colors min-h-[44px]"
-              />
-              {searchQuery && (
-                <button
-                  onClick={() => setSearchQuery('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-white cursor-pointer"
-                >
-                  ✕
-                </button>
-              )}
-            </div>
-            {searchQuery && (
-              <div className="text-[11px] text-slate-400 mt-2">
-                {isSpanish ? `Mostrando ${filteredCities.length} de ${allCities.length} ciudades` : `Showing ${filteredCities.length} of ${allCities.length} cities`}
-              </div>
-            )}
-          </div>
-
-          {/* Instant City Click Buttons */}
-          <div className="flex flex-wrap gap-2.5">
-            {filteredCities.map(({ city, county }) => (
-              <LocalizedA href={`/service-areas/${city.slug}`}
-                key={city.id}
-                className="group px-3.5 py-2 bg-slate-900 hover:bg-amber-500 text-slate-200 hover:text-slate-950 border border-slate-800 hover:border-amber-400 rounded-xl transition-all font-semibold text-xs flex items-center gap-1.5 cursor-pointer shadow-sm hover:scale-[1.02] text-center"
-              >
-                <MapPin className="w-3.5 h-3.5 text-amber-400 group-hover:text-slate-950 transition-colors" />
-                <span>{city.name}</span>
-                <span className="text-[10px] text-slate-400 group-hover:text-slate-900">({county.name.replace(' County', '')})</span>
-              </LocalizedA>
+      {groups.map(({ county, areas }) => (
+        <section className="rounded-2xl border border-slate-800 bg-slate-950 p-6 sm:p-8" key={county.slug}>
+          <h2 className="font-heading text-2xl font-bold text-white">
+            <LocalizedA href={'/service-areas/' + county.slug} className="text-amber-300 hover:underline">{county.name}</LocalizedA>
+          </h2>
+          <p className="mt-3 max-w-3xl leading-7 text-slate-300">{countyServiceContent[county.slug][language]}</p>
+          <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {areas.map(area => (
+              <li key={area.slug}><LocalizedA href={'/service-areas/' + area.slug}
+                className="flex min-h-12 items-center rounded-lg border border-slate-700 px-4 py-2 font-semibold text-amber-300 hover:border-amber-400">
+                {area.name}
+              </LocalizedA></li>
             ))}
-            {filteredCities.length === 0 && (
-              <div className="py-6 text-center w-full text-slate-400 text-xs">
-                {isSpanish ? 'No se encontraron ciudades que coincidan con la búsqueda.' : 'No cities matched your search query. Try another city name or zip code.'}
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* County by County Organization */}
-      <section className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 space-y-12">
-        {COUNTIES_DATA.map((county) => {
-          const spCounty = SPANISH_COUNTIES[county.slug];
-          const countyTitle = isSpanish && spCounty ? spCounty.name : county.fullName;
-          const countyOverview = isSpanish && spCounty ? spCounty.overview : county.overview;
-
-          return (
-            <div 
-              key={county.id} 
-              id={county.slug}
-              className="bg-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-xl"
-            >
-              {/* County Header */}
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-6 mb-6">
-                <div>
-                  <div className="text-xs font-bold text-amber-400 uppercase tracking-wider mb-1">
-                    {isSpanish ? 'Territorio del Sur de la Florida' : 'South Florida Territory'}
-                  </div>
-                  <h2 className="font-heading font-black text-2xl sm:text-3xl text-white">
-                    {countyTitle}
-                  </h2>
-                  <p className="text-xs text-slate-400 mt-1">
-                    {isSpanish ? 'Sede del Condado:' : 'County Seat:'} <span className="text-slate-300 font-semibold">{county.seat}</span> · {isSpanish ? 'Vías Principales:' : 'Key Corridors:'} {county.highways.join(', ')}
-                  </p>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <LocalizedA href={`/service-areas/${county.slug}`}
-                    className="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-amber-400 font-bold text-xs rounded-xl border border-slate-800 transition-colors flex items-center gap-1.5 cursor-pointer text-center"
-                  >
-                    <span>{isSpanish ? `Ver ${county.name}` : `${county.name} Overview`}</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </LocalizedA>
-                  <LocalizedA
-                    href="tel:+17542616528"
-                    onClick={() => trackPhoneClick({ ctaLocation: `service_areas_county_${county.slug}`, pagePath: '/service-areas' })}
-                    className="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs rounded-xl shadow transition-transform"
-                  >
-                    {isSpanish ? 'Llamar: (754) 261-6528' : 'Call (754) 261-6528'}
-                  </LocalizedA>
-                </div>
-              </div>
-
-              <p className="text-sm text-slate-300 leading-relaxed mb-8 max-w-4xl">
-                {countyOverview}
-              </p>
-
-              {/* Cities Grid under this County */}
-              <div>
-                <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4 flex items-center gap-2">
-                  <Navigation className="w-3.5 h-3.5 text-amber-400" />
-                  <span>{isSpanish ? `Ciudades Atendidas en el ${county.name}:` : `Cities Served in ${county.name} (Click for local details):`}</span>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                  {county.majorCities.map((city) => (
-                    <div
-                      key={city.id}
-                      className="bg-slate-900 border border-slate-800 hover:border-amber-500/40 rounded-2xl p-4 transition-all hover:-translate-y-0.5 group flex flex-col justify-between"
-                    >
-                      <div>
-                        <div className="flex items-center justify-between mb-2">
-                          <span className="font-heading font-bold text-base text-white group-hover:text-amber-400 transition-colors">
-                            {city.name}
-                          </span>
-                          <MapPin className="w-4 h-4 text-amber-400/80" />
-                        </div>
-
-                        <p className="text-xs text-slate-400 line-clamp-2 leading-relaxed mb-3">
-                          {isSpanish 
-                            ? `Cerrajería móvil 24 horas y auxilio vial en ${city.name}, FL.` 
-                            : city.customIntro}
-                        </p>
-
-                        <div className="text-[11px] text-slate-500 mb-4">
-                          {isSpanish ? 'Zonas:' : 'Key Areas:'} {city.popularAreas.slice(0, 2).join(', ')}
-                        </div>
-                      </div>
-
-                      <LocalizedA href={`/service-areas/${city.slug}`}
-                        className="w-full py-2 px-3 bg-slate-950 hover:bg-amber-500 text-slate-300 hover:text-slate-950 rounded-lg text-xs font-bold border border-slate-800 transition-colors flex items-center justify-center gap-1.5 cursor-pointer text-center"
-                      >
-                        <span>{isSpanish ? `Ver ${city.name}` : `Explore ${city.name}`}</span>
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </LocalizedA>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </section>
-
-      {/* Bottom Dispatch Notice */}
-      <section className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 mt-12">
-        <div className="bg-slate-950 border border-slate-800 rounded-2xl p-6 text-xs text-slate-400 leading-relaxed space-y-2">
-          <div className="font-bold text-amber-400 uppercase text-[11px] tracking-wider">
-            {isSpanish ? 'Modelo de Servicio Móvil' : 'Mobile Service Model'}
-          </div>
-          <p>
-            {isSpanish 
-              ? 'Pro Locksmith Tech brinda asistencia de cerrajería móvil a domicilio. Los técnicos viajan con camionetas totalmente equipadas directamente a su hogar, lugar de trabajo o vehículo varado. No se requiere acudir a tiendas físicas.' 
-              : 'Pro Locksmith Tech provides mobile on-site locksmith assistance. Technicians travel with fully equipped vans directly to your home, workplace, or stranded vehicle location. No physical retail visits are needed.'}
-          </p>
-        </div>
-      </section>
+          </ul>
+        </section>
+      ))}
+      {!count && <p className="text-slate-300">{es
+        ? 'No encontramos esa localidad. Llame para consultar la disponibilidad en su dirección.'
+        : 'That search did not match a listed community. Call to check availability at your address.'}</p>}
     </div>
   );
 }
