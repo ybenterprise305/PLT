@@ -80,7 +80,10 @@ export function SpanishContentPage({ path }: Props) {
               <figcaption>{example.es.caption}</figcaption>
             </figure>
           ) : (
-          <img src={image} srcSet={service ? getServiceImage(service.slug).srcSet : homeVan.srcSet('webp')} sizes="(max-width: 1024px) 100vw, 50vw" width={960} height={640} alt={service ? getServiceImage(service.slug).esAlt : 'Camioneta de cerrajería móvil'} className="aspect-[4/3] w-full rounded-2xl object-cover" loading="eager" fetchPriority="high" />
+            <figure>
+            <img src={image} srcSet={service ? getServiceImage(service.slug).srcSet : homeVan.srcSet('webp')} sizes="(max-width: 1024px) 100vw, 50vw" width={960} height={640} alt={service ? getServiceImage(service.slug).esAlt : 'Camioneta de cerrajería móvil'} className="aspect-[4/3] w-full rounded-2xl object-cover" loading="eager" fetchPriority="high" />
+              <figcaption className="mt-2 text-sm text-slate-300">Imagen ilustrativa</figcaption>
+            </figure>
           )}
         </div>
       </section>

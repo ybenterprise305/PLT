@@ -229,7 +229,10 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
 
       <section className="below-fold-section mx-auto max-w-7xl px-5 py-12 sm:py-16">
         <div className="grid items-center gap-8 md:grid-cols-2">
-          <img src={getServiceImage('lock-rekeying').src} srcSet={getServiceImage('lock-rekeying').srcSet} sizes="(max-width: 767px) 100vw, 50vw" width={960} height={720} alt={isSpanish ? 'Instalación de cerradura residencial' : 'Residential lock service'} loading="lazy" className="aspect-[4/3] w-full rounded-2xl object-cover" />
+          <figure>
+          <img src={getServiceImage('lock-rekeying').src} srcSet={getServiceImage('lock-rekeying').srcSet} sizes="(max-width: 767px) 100vw, 50vw" width={960} height={720} alt={isSpanish ? 'Ilustración de un servicio de cerradura residencial' : 'Illustration of residential lock service'} loading="lazy" className="aspect-[4/3] w-full rounded-2xl object-cover" />
+            <figcaption className="mt-2 text-sm text-slate-300">{isSpanish ? 'Imagen ilustrativa' : 'Illustrative image'}</figcaption>
+          </figure>
           <div className="space-y-4">
             <h2 className="font-heading text-2xl font-bold sm:text-4xl">{isSpanish ? 'Llámenos. Nosotros vamos.' : 'Call Us. We Come to You.'}</h2>
             <p className="text-base leading-7 text-slate-300">
@@ -260,7 +263,10 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
                 {isSpanish ? 'Ver ciudades atendidas' : 'View service areas'} <ArrowRight className="h-4 w-4" />
               </LocalizedA>
             </div>
-            <img src={getServiceImage('commercial-locksmith').src} srcSet={getServiceImage('commercial-locksmith').srcSet} sizes="(max-width: 767px) 100vw, 50vw" width={960} height={720} alt={isSpanish ? 'Equipo de servicio móvil de cerrajería' : 'Mobile locksmith team'} loading="lazy" className="aspect-[4/3] w-full rounded-2xl object-cover" />
+            <figure>
+          <img src={getServiceImage('commercial-locksmith').src} srcSet={getServiceImage('commercial-locksmith').srcSet} sizes="(max-width: 767px) 100vw, 50vw" width={960} height={720} alt={isSpanish ? 'Ilustración de un servicio de cerrajería móvil' : 'Illustration of mobile locksmith service'} loading="lazy" className="aspect-[4/3] w-full rounded-2xl object-cover" />
+            <figcaption className="mt-2 text-sm text-slate-300">{isSpanish ? 'Imagen ilustrativa' : 'Illustrative image'}</figcaption>
+          </figure>
           </div>
         </div>
       </section>

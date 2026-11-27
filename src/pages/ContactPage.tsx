@@ -85,18 +85,15 @@ export function ContactPage() {
               <div className="rounded-2xl overflow-hidden border border-slate-800 shadow-xl relative group">
                 <img
                   src={locksmithCrewImg}
-                  alt="Pro Locksmith Tech mobile service technician crew"
+                  alt={isSpanish ? 'Ilustración de un equipo de cerrajería móvil' : 'Illustrative mobile locksmith crew'}
                   className="w-full h-64 sm:h-80 object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                   decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
                 <div className="absolute bottom-3 left-3 right-3 text-center bg-slate-950/90 py-2 px-3 rounded-lg border border-slate-800">
-                  <span className="text-xs font-bold text-amber-400 block">
-                    {isSpanish ? 'Flota de Cerrajería Móvil 24/7' : '24/7 Mobile Locksmith Fleet'}
-                  </span>
-                  <span className="text-[11px] text-slate-300">
-                    {isSpanish ? 'Lista en Broward, Miami-Dade y Palm Beach' : 'Ready to roll across Broward, Miami-Dade & Palm Beach'}
+                  <span className="text-sm text-slate-200">
+                    {isSpanish ? 'Imagen ilustrativa' : 'Illustrative image'}
                   </span>
                 </div>
               </div>

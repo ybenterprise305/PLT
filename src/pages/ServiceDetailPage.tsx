@@ -153,9 +153,12 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
                   <figcaption>{example[language].caption}</figcaption>
                 </figure>
               ) : (
-                <img src={serviceImage.src} srcSet={serviceImage.srcSet} sizes="(max-width: 1024px) 95vw, 40vw"
+                <figure>
+                  <img src={serviceImage.src} srcSet={serviceImage.srcSet} sizes="(max-width: 1024px) 95vw, 40vw"
                   width={960} height={640} alt={isSpanish ? serviceImage.esAlt : serviceImage.enAlt}
-                  className="plt-service-picture" loading="eager" fetchPriority="high" decoding="async" />
+                    className="plt-service-picture" loading="eager" fetchPriority="high" decoding="async" />
+                  <figcaption className="mt-2 text-sm text-slate-300">{isSpanish ? 'Imagen ilustrativa' : 'Illustrative image'}</figcaption>
+                </figure>
               )}
             </div>
           </div>

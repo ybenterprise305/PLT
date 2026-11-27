@@ -97,14 +97,14 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
                   width={homeVan.width}
                   height={homeVan.height}
                   fetchPriority="high"
-                  alt="Pro Locksmith Tech mobile locksmith van"
+                  alt={isSpanish ? 'Ilustración de una camioneta de cerrajería móvil' : 'Illustrative mobile locksmith service van'}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="eager"
                   decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent pointer-events-none" />
                 <div className="absolute bottom-3 left-3 right-3 text-center bg-slate-950/90 py-1.5 px-3 rounded-lg border border-slate-800 text-[11px] text-amber-400 font-semibold">
-                  {isSpanish ? 'Unidades Móviles Equipadas en Todo el Sur de la Florida' : 'Equipped Mobile Van Units Across South Florida'}
+                  {isSpanish ? 'Imagen ilustrativa' : 'Illustrative image'}
                 </div>
               </div>
             </div>

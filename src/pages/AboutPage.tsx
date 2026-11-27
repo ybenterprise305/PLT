@@ -80,19 +80,23 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
               <div className="rounded-2xl overflow-hidden border border-slate-800 shadow-xl relative group">
                 <img
                   src={locksmithCrewImg}
-                  alt="Pro Locksmith Tech technicians crew"
+                  alt={isSpanish ? 'Ilustración de un equipo de cerrajería móvil' : 'Illustrative mobile locksmith crew'}
                   className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                   decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent pointer-events-none" />
                 <div className="absolute bottom-3 left-3 right-3 text-center bg-slate-950/90 py-1.5 px-3 rounded-lg border border-slate-800 text-xs text-amber-400 font-semibold">
-                  {isSpanish ? 'Técnicos Móviles Dedicados en el Sur de la Florida' : 'Dedicated Mobile Technicians Serving South Florida'}
+                  {isSpanish ? 'Imagen ilustrativa' : 'Illustrative image'}
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+        <LocalizedA href="/completed-work" className="plt-text-link">
+          {isSpanish ? 'Ver trabajos realizados por nuestros técnicos' : 'See work completed by our technicians'}
+        </LocalizedA>
 
         {/* Authentic public review, not a fabricated testimonial or aggregate rating. */}
         <section className="grid gap-6 rounded-2xl border border-amber-400/25 bg-slate-950 p-6 sm:p-8 lg:grid-cols-2 lg:items-center" aria-label="Customer feedback">
@@ -158,12 +162,13 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
           <div className="bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
             <img
               src={locksmithVanImg}
-              alt="Pro Locksmith Tech mobile van"
+              alt={isSpanish ? 'Ilustración de una camioneta de cerrajería' : 'Illustrative locksmith service van'}
               className="w-full h-64 object-cover"
               loading="lazy"
               decoding="async"
             />
             <div className="p-5">
+              <p className="mb-2 text-sm text-slate-300">{isSpanish ? 'Imagen ilustrativa' : 'Illustrative image'}</p>
               <h4 className="font-heading font-bold text-lg text-white">
                 {isSpanish ? 'Camionetas Móviles Equipadas' : 'Equipped Mobile Vans'}
               </h4>
@@ -178,12 +183,13 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
           <div className="bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
             <img
               src={techRekeyingImg}
-              alt="Technician at work rekeying cylinder"
+              alt={isSpanish ? 'Ilustración de un técnico trabajando con un cilindro' : 'Illustration of a technician working with a lock cylinder'}
               className="w-full h-64 object-cover"
               loading="lazy"
               decoding="async"
             />
             <div className="p-5">
+              <p className="mb-2 text-sm text-slate-300">{isSpanish ? 'Imagen ilustrativa' : 'Illustrative image'}</p>
               <h4 className="font-heading font-bold text-lg text-white">
                 {isSpanish ? 'Técnicos Capacitados' : 'Skilled Technicians'}
               </h4>
