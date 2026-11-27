@@ -73,7 +73,7 @@ export const SPANISH_SERVICES: Record<string, SpanishServiceTranslation> = {
     shortDescription: 'Apertura rápida y segura de vehículos sin rayar la pintura, los vidrios ni dañar las gomas.',
     fullDescription: 'Dejar las llaves adentro del carro puede ocurrirle a cualquiera. Pro Locksmith Tech utiliza cuñas de aire profesionales y herramientas de alcance largo especializadas que ingresan suavemente por el marco de la puerta para accionar el seguro sin doblar el metal ni romper empaques.',
     features: [
-      'Llegada móvil estimada en 15–25 minutos*',
+      'Llame para confirmar la disponibilidad de un técnico',
       'Se priorizan técnicas no destructivas cuando sea posible; no se garantiza la ausencia de daños',
       'Apertura de maleteros bloqueados',
       'Compatible con marcas americanas, asiáticas y europeas',

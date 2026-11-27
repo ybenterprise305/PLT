@@ -1,9 +1,12 @@
 import { build } from 'esbuild';
 import { mkdir, writeFile } from 'node:fs/promises';
+import { discoveryResource } from './discovery-resource.mjs';
 
 const { outputFiles } = await build({
   stdin: {
     contents: `
+      import * as business from './src/config/business';
+      export { business };
       export { getRouteRegistry, errorRoute, serviceRedirects } from './src/config/routeRegistry';
       import { SERVICES_DATA } from './src/data/servicesData';
       import { COUNTIES_DATA } from './src/data/locationsData';
@@ -25,7 +28,7 @@ const { outputFiles } = await build({
 });
 
 const encoded = Buffer.from(outputFiles[0].text).toString('base64');
-const { services, counties, getRouteRegistry, errorRoute, serviceRedirects } = await import(`data:text/javascript;base64,${encoded}`);
+const { business, services, counties, getRouteRegistry, errorRoute, serviceRedirects } = await import(`data:text/javascript;base64,${encoded}`);
 await mkdir('src/generated', { recursive: true });
 await writeFile('src/generated/navigation.ts',
   `// Generated from service and area data by scripts/generate-navigation.mjs.\nexport const services = ${JSON.stringify(services, null, 2)};\nexport const counties = ${JSON.stringify(counties, null, 2)};\n`);
@@ -40,3 +43,4 @@ export const translations = new Set<string>(${JSON.stringify(translations)});
 export const serviceRedirects: Record<string, string> = ${JSON.stringify(serviceRedirects)};
 `);
 await writeFile('src/generated/seoInventory.json', JSON.stringify({ pages: registry, errorRoute, serviceRedirects }, null, 2));
+await writeFile('src/generated/llms.txt', discoveryResource(registry, business));

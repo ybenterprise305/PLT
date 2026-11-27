@@ -130,18 +130,21 @@ export function TipDetailPage({ slug, onNavigate }: TipDetailPageProps) {
           </p>
         </header>
 
-        {/* =========================================================================
-            AEO / AIO DIRECT ANSWER CALLOUT BOX
-            Crafted for Google AI Overviews, Perplexity, Siri, & Featured Snippets
-            ========================================================================= */}
+        {/* Quick answer */}
         <section className="bg-gradient-to-br from-amber-500/15 via-slate-950 to-slate-950 border-2 border-amber-500/50 rounded-2xl p-6 sm:p-8 space-y-3 shadow-xl shadow-amber-500/5 relative overflow-hidden">
           <div className="flex items-center gap-2 text-amber-400 text-xs font-bold uppercase tracking-wider">
             <Sparkles className="w-4 h-4 fill-amber-400" />
-            <span>Direct Answer &amp; Quick AI Summary</span>
+            <span>Quick answer</span>
           </div>
           <p className="text-sm sm:text-base text-slate-100 font-medium leading-relaxed">
             {tip.quickAnswer}
           </p>
+          {tip.slug === 'transponder-car-key-programming-guide' && (
+            <LocalizedA href="/services/automotive-locksmith" className="inline-block text-sm font-semibold text-amber-300 underline">
+              Mobile automotive locksmith and key programming
+            </LocalizedA>
+          )}
+
           <div className="pt-2 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400 border-t border-slate-800/80">
             <span>Verified by Pro Locksmith Tech Field Technicians</span>
             <LocalizedA
@@ -266,7 +269,7 @@ export function TipDetailPage({ slug, onNavigate }: TipDetailPageProps) {
               <span>When to Stop DIY and Call a Mobile Locksmith</span>
             </h2>
             <p className="text-xs sm:text-sm text-slate-400">
-              Continuing to force a jammed lock or sheared key can double the repair cost. Contact mobile dispatch if:
+              Forcing a jammed lock or broken key can make repairs more involved. Contact mobile dispatch if:
             </p>
           </div>
 

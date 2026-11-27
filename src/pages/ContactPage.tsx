@@ -1,4 +1,5 @@
 import React from 'react';
+import { PAYMENT_METHODS, PHONE, TEL } from '../config/business';
 import { 
   Phone, 
   MapPin, 
@@ -28,8 +29,8 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
           ? "Contacto Pro Locksmith Tech | Despacho Móvil 24/7 Sur de la Florida"
           : "Contact Pro Locksmith Tech | 24/7 Mobile Dispatch South Florida"}
         description={isSpanish
-          ? "Llame al +1 754-261-6528 para despacho de cerrajería móvil 24/7 en Broward, Miami-Dade y Palm Beach. Vamos directamente a donde esté. Sin esperas ni formularios."
-          : "Call +1 754-261-6528 for 24/7 mobile locksmith dispatch across Broward, Miami-Dade, and Palm Beach counties. We come directly to you. No waiting, no forms."}
+          ? "Llame al +1 754-261-6528 para despacho de cerrajería móvil 24/7 en Broward, Miami-Dade y Palm Beach. Vamos directamente a donde esté."
+          : "Call +1 754-261-6528 for 24/7 mobile locksmith dispatch across Broward, Miami-Dade, and Palm Beach counties. We come directly to you."}
         canonicalPath="/contact"
         keywords="contact locksmith South Florida, contacto cerrajero Sur de la Florida, emergency locksmith phone number, mobile locksmith dispatch, locksmith Fort Lauderdale phone, locksmith Miami contact"
       />
@@ -64,7 +65,7 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
               {/* Direct Quick Action CTAs */}
               <div className="pt-2 flex flex-col sm:flex-row gap-3">
                 <LocalizedA
-                  href="tel:+17542616528"
+                  href={TEL}
                   className="inline-flex items-center justify-center gap-2.5 py-4 px-8 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 hover:from-amber-300 hover:to-amber-500 text-slate-950 font-black text-base uppercase tracking-wider shadow-lg shadow-amber-500/25 transition-transform hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <Phone className="w-5 h-5 fill-current" />
@@ -133,7 +134,7 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
                 {isSpanish ? 'Línea Directa de Despacho' : 'Direct Dispatch Line'}
               </div>
               <LocalizedA
-                href="tel:+17542616528"
+                href={TEL}
                 className="font-heading font-black text-xl text-white hover:text-amber-400 transition-colors block mt-1"
               >
                 +1 754-261-6528
@@ -144,7 +145,7 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
             </div>
             <div className="pt-2">
               <LocalizedA
-                href="tel:+17542616528"
+                href={TEL}
                 className="w-full py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase tracking-wider rounded-lg flex items-center justify-center gap-1.5 transition-colors"
               >
                 <Phone className="w-3.5 h-3.5 fill-current" />
@@ -207,7 +208,7 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
                     </strong>
                     <span className="text-xs text-slate-400">
                       {isSpanish ? 'Marque ' : 'Dial '}
-                      <LocalizedA href="tel:+17542616528" className="text-amber-400 underline font-bold">+1 754-261-6528</LocalizedA>. 
+                      <LocalizedA href={TEL} className="text-amber-400 underline font-bold">+1 754-261-6528</LocalizedA>.
                       {isSpanish ? ' Llame para solicitar servicio.' : ' Call to request service.'}
                     </span>
                   </div>
@@ -262,18 +263,18 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
                 </h3>
                 <p className="text-xs text-slate-400">
                   {isSpanish 
-                    ? 'Llame ahora para respuesta inmediata y despacho rápido.' 
-                    : 'Call now for immediate response time and prompt mobile dispatch.'}
+                    ? 'Llame para confirmar la disponibilidad de un técnico en su ubicación.'
+                    : 'Call to confirm technician availability for your location.'}
                 </p>
               </div>
 
               <div className="space-y-3 pt-2">
                 <LocalizedA
-                  href="tel:+17542616528"
+                  href={TEL}
                   className="w-full py-4 px-6 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 hover:from-amber-300 hover:to-amber-500 text-slate-950 font-black text-lg uppercase tracking-wider rounded-xl shadow-xl flex items-center justify-center gap-2.5 transition-transform hover:scale-105 active:scale-95"
                 >
                   <Phone className="w-5 h-5 fill-current" />
-                  <span>{isSpanish ? 'LLAMAR: +1 754-261-6528' : 'CALL: +1 754-261-6528'}</span>
+                  <span>{isSpanish ? 'Llamar' : 'Call'} {PHONE}</span>
                 </LocalizedA>
 
                 
@@ -281,13 +282,19 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
 
               <div className="pt-2 text-[11px] text-slate-400 border-t border-slate-800">
                 {isSpanish 
-                  ? 'Operando 24/7 en el Sur de la Florida · Llegada estimada 15–25 min*' 
-                  : 'Operating 24/7 across South Florida · Estimated mobile arrival 15–25 min*'}
+                  ? 'Servicio móvil las 24 horas en el sur de Florida'
+                  : '24/7 mobile service in South Florida'}
               </div>
-              <p className="mt-2 text-xs leading-5 text-slate-400">*{isSpanish ? 'Los tiempos de llegada son estimaciones, no garantías. Pueden variar según el tráfico, la ubicación y la disponibilidad.' : 'Arrival times are estimates, not guarantees. Traffic, location and availability may affect arrival.'} <LocalizedA href="/terms" className="underline">{isSpanish ? 'Condiciones' : 'Terms'}</LocalizedA></p>
+              <p className="mt-2 text-xs leading-5 text-slate-400">{isSpanish ? 'Los tiempos de llegada son estimaciones, no garantías. Pueden variar según el tráfico, la ubicación y la disponibilidad.' : 'Arrival times are estimates, not guarantees. Traffic, location and availability may affect arrival.'} <LocalizedA href="/terms" className="underline">{isSpanish ? 'Condiciones' : 'Terms'}</LocalizedA></p>
             </div>
           </div>
         </div>
+
+        <section className="rounded-2xl border border-slate-800 bg-slate-950 p-6" aria-labelledby="contact-payment">
+          <h2 id="contact-payment" className="font-heading text-xl font-bold text-white">Payment methods and pricing</h2>
+          <p className="mt-2 text-slate-300">Pro Locksmith Tech accepts {PAYMENT_METHODS.en}. Ask dispatch about any other payment method.</p>
+          <p className="mt-2 text-slate-300">Locksmith pricing depends on the service, the vehicle or lock, the parts needed, and the job location. Call {PHONE} to discuss pricing for your job.</p>
+        </section>
 
         {/* INTERACTIVE SOUTH FLORIDA MAP */}
         <div className="pt-4">
