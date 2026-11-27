@@ -49,6 +49,13 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
         keywords="emergency lockout service, residential locksmith, commercial locksmith, automotive locksmith, lock rekeying, lock repair, key duplication, locksmith South Florida, cerrajero South Florida"
       />
 
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://prolocksmith-tech.com/" },
+          { "@type": "ListItem", position: 2, name: "Services", item: "https://prolocksmith-tech.com/services/" }
+        ]
+      }) }} />
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 space-y-12">
         
         {/* Header Hero */}
