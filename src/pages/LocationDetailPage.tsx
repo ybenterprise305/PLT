@@ -50,10 +50,10 @@ export function LocationDetailPage({ slug, onNavigate }: RouteProps) {
   });
 
   return (
-    <div className="plt-wrap space-y-8 py-10 sm:py-14">
+    <div className="mx-auto max-w-6xl space-y-8 px-5 py-10 sm:py-14">
       <SEOHead title={title + ' | Pro Locksmith Tech'} description={description} canonicalPath={path} />
       <Breadcrumbs trail={trail} />
-      <section className="plt-page-lead" aria-labelledby="local-coverage-heading">
+      <section className={panel} aria-labelledby="local-coverage-heading">
         <h1 id="local-coverage-heading" className="font-heading text-3xl font-bold tracking-tight text-white sm:text-5xl">{title}</h1>
         <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-300">{intro}</p>
         <p className="mt-3 max-w-3xl text-base leading-7 text-slate-300">

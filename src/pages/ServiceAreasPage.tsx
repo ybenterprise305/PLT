@@ -27,13 +27,13 @@ export function ServiceAreasPage() {
   const title = es ? 'Áreas de cerrajería móvil en el sur de Florida' : 'South Florida locksmith service areas';
 
   return (
-    <div className="plt-wrap space-y-8 py-10 sm:py-14">
+    <div className="mx-auto max-w-6xl space-y-8 px-5 py-10 sm:py-14">
       <SEOHead title={title} canonicalPath="/service-areas"
         description={es
           ? 'Busque cerrajería móvil para autos, viviendas y negocios en localidades de Broward, Miami-Dade y Palm Beach. Consulte la cobertura por dirección.'
           : 'Find mobile locksmith service for cars, homes and businesses in listed Broward, Miami-Dade and Palm Beach communities. Confirm coverage by address.'} />
       <Breadcrumbs trail={[[es ? 'Áreas de servicio' : 'Service areas', '/service-areas']]} />
-      <section className="plt-page-lead">
+      <section className="rounded-2xl border border-slate-800 bg-slate-950 p-6 sm:p-8">
         <h1 className="font-heading text-3xl font-bold tracking-tight text-white sm:text-5xl">{title}</h1>
         <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-300">{es
           ? 'Vamos a su auto, vivienda o negocio en las localidades indicadas, con asistencia de emergencia las 24 horas. Llame con la dirección exacta para confirmar la disponibilidad.'

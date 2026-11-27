@@ -86,15 +86,16 @@ export default function App({ initialRoute }: { initialRoute: LoadedRoute }) {
         {/* Header with call-to-phone links, language toggle, and full phone number */}
         <Header
           currentPath={route.path}
+          onNavigate={navigate}
         />
 
         {/* Main Page Area with generous smartphone bottom clearance for the sticky call bar */}
-        <main id="main-content" tabIndex={-1} className={spanishContent ? "plt-main flex-1 pb-24 lg:pb-0" : "plt-main flex-1 pb-24 sm:pb-28 lg:pb-0 w-full"}>
+        <main id="main-content" tabIndex={-1} className={spanishContent ? "flex-1 pb-24 lg:pb-0" : "flex-1 pb-24 sm:pb-28 lg:pb-0 w-full"}>
           {content}
         </main>
 
         {/* Footer */}
-        <Footer />
+        <Footer onNavigate={navigate} />
 
         {/* Sticky Mobile Tap-To-Call Bottom Bar */}
         <MobileCallBar />

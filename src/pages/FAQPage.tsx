@@ -40,10 +40,10 @@ export function FAQPage({ onNavigate }: FAQPageProps) {
         keywords="locksmith FAQ, preguntas cerrajero, mobile locksmith questions, emergency locksmith South Florida, do locksmiths come to you, locksmith service areas"
       />
 
-      <div className="plt-wrap space-y-10">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 space-y-12">
         
         {/* Header Hero */}
-        <div className="plt-page-lead">
+        <div className="bg-slate-950 border border-slate-800 rounded-3xl p-8 sm:p-12 relative overflow-hidden">
           <div className="max-w-3xl space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold rounded-md uppercase tracking-wider">
               <HelpCircle className="w-3.5 h-3.5" />

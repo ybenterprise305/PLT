@@ -27,7 +27,7 @@ if (candidates.length !== 1) {
     `Expected exactly one built SSR entry in dist-server, found ${candidates.length}: ${candidates.join(', ')}`
   );
 }
-const { render, SITE } = await import(pathToFileURL(candidates[0]).href);
+const { render, SITE, homeVan } = await import(pathToFileURL(candidates[0]).href);
 
 const manifest = JSON.parse(fs.readFileSync(path.join(dist, '.vite/manifest.json'), 'utf8'));
 const sharedPreloads = new Set([...template.matchAll(/rel="modulepreload"[^>]*href="\/([^"]+)"/g)].map(match => match[1]));
@@ -92,6 +92,9 @@ for (const record of [...pages, errorRoute]) {
       .replace(/<link rel="canonical"[^>]*>\s*/g, '');
   } else {
     page = preloadRoute(page, moduleId);
+  }
+  if (route === '/' || route === '/es') {
+    page = page.replace('</head>', `  <link rel="preload" as="image" type="image/avif" href="${homeVan.avif}" imagesrcset="${homeVan.srcSet('avif')}" imagesizes="${homeVan.sizes}" fetchpriority="high" />\n  </head>`);
   }
   if (record.language === 'es') page = page.replace('<html lang="en">', '<html lang="es">');
   const out = route === '/404.html'

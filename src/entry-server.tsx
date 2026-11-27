@@ -2,6 +2,7 @@ import { renderToString } from 'react-dom/server';
 import App from './App';
 import { loadRoute } from './routes';
 import { headCollector } from './components/SEOHead';
+export { homeVan } from './assets/images/vanImages';
 export { SITE } from './config/business';
 
 export async function render(path: string) {
