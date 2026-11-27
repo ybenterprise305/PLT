@@ -62,7 +62,7 @@ export const BLOG_POSTS: BlogPost[] = [
           'There are two primary methods: accessing the factory key code tied to your vehicle identification number (VIN) through secure automotive databases, or using optical/mechanical decoders directly on the door lock or ignition wafer cylinder to read the unique bitting depths.'
         ],
         tips: [
-          'Have your vehicle registration, title, or insurance card along with government photo ID ready to verify ownership before work begins.',
+          'Call Pro Locksmith Tech to arrange on-site replacement and programming for your vehicle.',
           'Note down the 17-digit VIN located on your driver-side dashboard corner or driver-side door jamb sticker.',
           'Mobile service eliminates expensive flatbed towing fees and multi-day dealership scheduling delays.'
         ]
@@ -468,8 +468,8 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: '4 min read',
     author: 'Pro Locksmith Tech Dispatch Team',
     image: locksmithCrewImg,
-    metaDescription: 'What details to prepare before calling a mobile locksmith: exact address, vehicle year/make/model, lock brand, for rapid South Florida dispatch.',
-    quickAnswer: 'Before calling a mobile locksmith, prepare four key details: 1) Your exact location (cross streets, landmark, or GPS coordinates in South Florida); 2) The exact issue and hardware involved (vehicle year, make, model or residential lock brand); 3) Access instructions or relevant property details; and 4) Clear access to the vehicle or doorway.',
+    metaDescription: 'Need a locksmith in South Florida? Learn how to request same-day mobile locksmith service for car keys, lockouts and lock repairs.',
+    quickAnswer: 'Call Pro Locksmith Tech, tell us where you need service and describe the lock or key problem. Our team can help arrange a technician for same-day or emergency service throughout South Florida.',
     keywords: [
       'what information needed before calling locksmith',
       'calling mobile locksmith South Florida',
@@ -485,7 +485,7 @@ export const BLOG_POSTS: BlogPost[] = [
           'If you are in a large shopping plaza, apartment complex, or roadside highway shoulder in Broward, Miami-Dade, or Palm Beach County, provide the exact store name, parking section, or nearest intersecting cross street.'
         ],
         tips: [
-          'Have your 17-digit VIN and vehicle year, make, and model ready for automotive key calls.',
+          'Our automotive locksmiths carry a wide selection of keys and fobs for on-site cutting and programming.',
           'For residential and commercial calls, note the lock brand (Schlage, Kwikset, Yale, Medeco, Corbin Russwin) if stamped on the deadbolt face.'
         ]
       },

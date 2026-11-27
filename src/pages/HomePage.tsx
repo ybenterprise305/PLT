@@ -216,7 +216,7 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
             <div>
               <h3 className="text-lg font-bold text-white">{isSpanish ? '¿No está seguro si atendemos su ciudad?' : 'Not sure if we serve your area?'}</h3>
               <p className="mt-1 text-sm leading-6 text-slate-300">
-                {isSpanish ? 'Explore todas nuestras ciudades y áreas de servicio, o llámenos para confirmar la disponibilidad en su ubicación.' : 'See our complete list of cities and service areas, or give us a call to confirm availability at your location.'}
+                {isSpanish ? 'Explore nuestras áreas de servicio o llámenos para solicitar un cerrajero en su ubicación.' : 'Explore our South Florida service areas or call to request a locksmith at your location.'}
               </p>
             </div>
             <div className="flex w-full shrink-0 flex-col gap-3 sm:w-auto">
@@ -226,7 +226,7 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
               </LocalizedA>
               <LocalizedA href={TEL} onClick={() => call('homepage_south_florida_coverage_call')}
                 className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-amber-400 px-5 py-3 text-center font-extrabold text-slate-950 hover:bg-amber-300">
-                <Phone className="h-4 w-4" aria-hidden="true" />{isSpanish ? 'Llamar para confirmar disponibilidad' : 'Call to Confirm Availability'} · {PHONE}
+                <Phone className="h-4 w-4" aria-hidden="true" />{isSpanish ? 'Llamar para servicio el mismo día' : 'Call for Same-Day Service'} · {PHONE}
               </LocalizedA>
             </div>
           </div>

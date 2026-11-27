@@ -51,7 +51,7 @@ const copy: Record<string, { en: ServiceCopy; es: ServiceCopy; image: string; al
   "car-key-replacement": {
     "en": [
       "Need a new car key made?",
-      "Get a new car key cut and programmed at your vehicle. Our mobile vans carry keys, fobs, and programming equipment, even for jobs where every key is lost.",
+      "Get same-day car key replacement without a trip to the dealership. We carry car keys, transponder keys, remotes, smart keys and fobs for cutting and programming right at your vehicle.",
       [
         "Lost, broken, or spare car keys",
         "Transponder keys, remotes, and push-to-start fobs",
@@ -62,7 +62,7 @@ const copy: Record<string, { en: ServiceCopy; es: ServiceCopy; image: string; al
     ],
     "es": [
       "¿Necesita una llave nueva para su auto?",
-      "Cortamos y programamos una llave junto a su auto. Llevamos llaves, controles y equipos, incluso si perdió todas las llaves.",
+      "Obtenga una llave nueva el mismo día sin viajar al concesionario. Llevamos llaves con chip, controles y llaves inteligentes para corte y programación junto a su auto.",
       [
         "Llaves perdidas, rotas o de repuesto",
         "Llaves con chip y controles para arranque por botón",
@@ -138,7 +138,7 @@ const copy: Record<string, { en: ServiceCopy; es: ServiceCopy; image: string; al
   "commercial-locksmith": {
     "en": [
       "Mobile locksmith for your business",
-      "Get help getting back into a storefront or office, securing a door, or changing who has keys. Call our 24/7 dispatch team.",
+      "Keep your business secure and running with professional commercial locksmith service. We handle business lockouts, lock repairs, rekeying and replacement, with same-day and emergency service available.",
       [
         "Storefront, office, and business lockouts",
         "Commercial rekeying and lock replacement",
@@ -149,7 +149,7 @@ const copy: Record<string, { en: ServiceCopy; es: ServiceCopy; image: string; al
     ],
     "es": [
       "Cerrajería móvil para su negocio",
-      "Recupere el acceso a su oficina o local, asegure una puerta o cambie quién tiene llaves. Atendemos llamadas las 24 horas.",
+      "Proteja su negocio con cerrajería comercial profesional. Atendemos aperturas, reparaciones y cambios de cerraduras con servicio el mismo día y de emergencia.",
       [
         "Apertura de locales y oficinas",
         "Cambio de combinación y cerraduras comerciales",
@@ -494,11 +494,11 @@ const serviceDetails: Record<string, { en: [string, string][]; es: [string, stri
   'car-key-replacement': {
     en: [
       ['Can I get a new fob and an emergency blade?', 'Yes. We can supply and program compatible fobs and cut the emergency blade when the fob uses one.'],
-      ['What affects the price of a replacement car key?', 'The year, make, model, key type, and whether any working keys remain determine the parts and programming needed.'],
+      ['What affects the price of a replacement car key?', 'Pricing depends on the type of key and programming required. Call for an estimate and same-day service at your vehicle.'],
     ],
     es: [
       ['¿Pueden hacer un control remoto y una llave de emergencia?', 'Sí. Suministramos y programamos controles compatibles y cortamos la llave de emergencia cuando el control la usa.'],
-      ['¿Qué influye en el precio de una llave nueva?', 'El año, la marca, el modelo, el tipo de llave y si aún queda una llave funcional determinan las piezas y la programación necesarias.'],
+      ['¿Qué influye en el precio de una llave nueva?', 'El precio depende del tipo de llave y la programación necesaria. Llame para solicitar un presupuesto y servicio el mismo día.'],
     ],
   },
 };

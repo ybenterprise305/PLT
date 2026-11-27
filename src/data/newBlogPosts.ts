@@ -25,7 +25,7 @@ export const NEW_BLOG_POSTS: BlogPost[] = [
         'Keep your phone available. If the garage has poor reception, agree on a meeting point with dispatch before returning inside.'
       ] },
       { heading: 'Explain the key problem before dispatch', paragraphs: [
-        'Tell us whether the key is locked inside, missing, damaged or unresponsive. Share the year, make and model. Keep identification and proof that you are authorized to access the vehicle available. For a rented vehicle, check the rental company’s instructions before arranging work.'
+        'Call Pro Locksmith Tech for car lockouts, lost keys, damaged keys or unresponsive fobs. Our technicians offer same-day on-site key cutting and programming.'
       ] },
     ],
     relatedServices: [{ name: 'Vehicle lockouts and keys', slug: 'automotive-locksmith' }],
@@ -41,7 +41,7 @@ export const NEW_BLOG_POSTS: BlogPost[] = [
     readTime: '3 min read',
     author: 'Pro Locksmith Tech',
     image: carKeyProgImg,
-    metaDescription: 'Compare getting a spare car key with replacing your only lost key. Learn what vehicle details and working fobs to have ready for a mobile locksmith.',
+    metaDescription: 'Compare spare car keys and lost car key replacement. Get same-day key cutting and fob programming at your vehicle in South Florida.',
     keywords: ['spare car key', 'all car keys lost', 'mobile car key programming Broward'],
     quickAnswer: 'If you have a working car key, keep it and any other fobs available for the appointment. If every key is missing, tell the locksmith when you call. The year, make, model and starting system determine what kind of key can be supplied and programmed.',
     content: [
@@ -51,7 +51,7 @@ export const NEW_BLOG_POSTS: BlogPost[] = [
       ] },
       { heading: 'Explain when every working key is missing', paragraphs: [
         'Some vehicles can get a replacement on site without an original key. Compatibility depends on the specific vehicle and system. Give the exact model year, current vehicle location and whether you have an aftermarket remote or ignition.',
-        'Have identification and proof you are authorized to access the vehicle ready. If a key was stolen, ask whether the vehicle supports removing that key from its active electronic key list.'
+        'If a key was stolen, ask about replacement keys and whether the vehicle supports removing the missing key from its active electronic key list.'
       ] },
       { heading: 'Check the functions you need before the visit ends', paragraphs: [
         'Ask which functions the replacement supports. Depending on the vehicle and the key, this may include starting, remote lock and unlock, trunk release, or an emergency mechanical blade. Try the functions you requested and confirm that any original keys you kept still work as expected.'
