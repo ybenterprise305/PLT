@@ -247,7 +247,7 @@ export const SPANISH_FAQS = [
   {
     id: 'es-faq-1',
     question: '¿Ofrecen servicio de cerrajería móvil en el Sur de la Florida?',
-    answer: 'Sí. Pro Locksmith Tech es un servicio de cerrajería 100% móvil en el Sur de la Florida. Despachamos camionetas taller equipadas directo a su vehículo, casa o negocio en Coral Springs, Fort Lauderdale, Miami y Boca Raton. No requiere acudir a ninguna tienda física; resolvemos su problema en el lugar.'
+    answer: 'Sí. Desde el año 2000, Pro Locksmith Tech ofrece cerrajería automotriz, residencial y comercial las 24 horas en Miami-Dade, Broward y Palm Beach.'
   },
   {
     id: 'es-faq-2',
