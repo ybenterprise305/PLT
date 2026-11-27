@@ -12,6 +12,9 @@ const links = [
   ['Frequently asked questions', '/faq'],
   ['About Pro Locksmith Tech', '/about'],
   ['Locksmith guides', '/tips'],
+  ['Vehicle key compatibility', '/tips/vehicle-key-compatibility'],
+  ['Locksmith pricing factors', '/tips/locksmith-pricing-factors'],
+  ['Qué hacer si se queda sin acceso', '/es/tips/lockout-what-to-do'],
   ['Servicios de cerrajería en español', '/es/services'],
   ['Contacto y formas de pago', '/es/contact'],
 ];

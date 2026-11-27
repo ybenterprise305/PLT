@@ -1,3 +1,5 @@
+import { ResourceLinks } from '../components/ResourceLinks';
+import { serviceResources } from '../data/editorialLinks';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import React from 'react';
 import { 
@@ -218,6 +220,12 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
             </ul>
           </div>
         </div>
+
+        {serviceResources[service.slug] && (
+          <div className="my-8 rounded-xl border border-slate-700 bg-slate-950 p-5">
+            <ResourceLinks title="Customer guides" links={serviceResources[service.slug]} />
+          </div>
+        )}
 
         {/* Give high-intent visitors actionable preparation details, not fabricated prices or guarantees. */}
         {['automotive-locksmith', 'key-replacement', 'key-duplication', 'emergency-lockout-service', 'residential-locksmith', 'lock-rekeying'].includes(service.slug) && (

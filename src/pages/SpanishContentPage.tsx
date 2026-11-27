@@ -1,3 +1,5 @@
+import { ResourceLinks } from '../components/ResourceLinks';
+import { spanishDecisionResources } from '../data/editorialLinks';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { PAYMENT_METHODS, PHONE, TEL } from '../config/business';
 import React from 'react';
@@ -165,6 +167,12 @@ export function SpanishContentPage({ path }: Props) {
             </article>
           ))}
         </section>
+      )}
+
+      {(service || path === '/contact') && (
+        <div className="mx-auto max-w-4xl px-5 py-6">
+          <ResourceLinks title="Guías para clientes" links={spanishDecisionResources} />
+        </div>
       )}
 
       {path === '/contact' && (

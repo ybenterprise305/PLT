@@ -19,7 +19,7 @@ export const TRANSLATIONS: Translations = {
   'nav.whyChooseUs': { en: 'Why Choose Us', es: 'Por Qué Elegirnos' },
   'nav.faq': { en: 'FAQ', es: 'Preguntas Frecuentes' },
   'nav.blog': { en: 'Blog & Articles', es: 'Artículos (en inglés)' },
-  'nav.tips': { en: 'Locksmith Tips & Tricks', es: 'Consejos (en inglés)' },
+  'nav.tips': { en: 'Locksmith Guides', es: 'Guías de cerrajería' },
   'nav.callNow': { en: 'Call Now', es: 'Llamar Ahora' },
   'nav.call': { en: 'Call', es: 'Llamar' },
   'header.topBanner': { 

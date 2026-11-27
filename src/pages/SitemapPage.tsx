@@ -109,7 +109,7 @@ export function SitemapPage({ onNavigate }: SitemapPageProps) {
           <div className="flex items-center justify-between">
             <h2 className="font-heading font-bold text-xl text-white flex items-center gap-2">
               <Sparkles className="w-5 h-5 text-amber-400" />
-              <span>Locksmith Tips &amp; Tricks (AEO / AIO Field Guides)</span>
+              <span>Locksmith Guides</span>
             </h2>
             <LocalizedA href="/tips"
               className="text-xs text-amber-400 hover:underline font-semibold inline-block text-center"
@@ -120,12 +120,12 @@ export function SitemapPage({ onNavigate }: SitemapPageProps) {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
             {LOCKSMITH_TIPS_DATA.map((tip) => (
               <LocalizedA href={`/tips/${tip.slug}`}
-                key={tip.id}
+                key={tip.slug}
                 className="p-3 bg-slate-900 hover:bg-slate-850 rounded-xl text-left text-slate-200 hover:text-amber-400 border border-slate-800 flex items-center justify-between cursor-pointer group"
               >
                 <div>
                   <div className="font-semibold line-clamp-1 group-hover:text-amber-400">{tip.title}</div>
-                  <div className="text-[10px] text-amber-500/80 uppercase">{tip.category} · {tip.readTime}</div>
+                  <div className="text-[10px] text-amber-500/80 uppercase">{tip.category}</div>
                 </div>
                 <ChevronRight className="w-4 h-4 text-slate-500 shrink-0 ml-2 group-hover:text-amber-400" />
               </LocalizedA>

@@ -51,10 +51,11 @@ interface ArticleData {
   description: string;
   author?: string;
   datePublished?: string;
+  dateModified?: string;
   image?: string;
 }
 
-export function articleData({ type, path, language, headline, description, author, datePublished, image }: ArticleData) {
+export function articleData({ type, path, language, headline, description, author, datePublished, dateModified, image }: ArticleData) {
   const url = pageURL(path, language);
   return {
     '@type': type,
@@ -71,6 +72,7 @@ export function articleData({ type, path, language, headline, description, autho
       ...(author === BUSINESS_NAME ? { '@id': businessId, url: homeURL } : {}),
     } } : {}),
     ...(datePublished ? { datePublished } : {}),
+    ...(dateModified ? { dateModified } : {}),
     ...(image ? { image: new URL(image, SITE).href } : {}),
   };
 }

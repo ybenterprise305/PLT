@@ -14,7 +14,7 @@ export const SERVICES_DATA: LocksmithService[] = [
       'Automotive door & trunk unlocks',
       'Residential deadbolt & knob entry',
       'Commercial storefront & office unlocks',
-      'Non-destructive lock picking methods',
+      'Non-destructive entry when suitable',
       'Broken key extraction on-site'
     ],
     commonSituations: [
@@ -24,8 +24,8 @@ export const SERVICES_DATA: LocksmithService[] = [
       'Key snapped inside lock cylinder during turn attempt'
     ],
     techniquesAndTools: [
-      'Specialized tension wrenches and custom pick sets',
-      'Automotive air wedges and long-reach bypass tools',
+      'Tools selected for the lock and its condition',
+      'Equipment for authorized vehicle service',
       'Spiral broken key extractors and lubrication solvents'
     ]
   },
@@ -108,9 +108,9 @@ export const SERVICES_DATA: LocksmithService[] = [
       'Broken key blade lodged inside the door lock cylinder'
     ],
     techniquesAndTools: [
-      'Lishi precision picking and optical decoding tools for automotive keyways',
+      'Equipment for authorized key and lock service',
       'Computerized CNC automated key cutting calibrators',
-      'OBD-II diagnostic key programming tablets for modern immobilizer systems'
+      'Vehicle-specific diagnostic and programming equipment'
     ]
   },
   {
@@ -248,9 +248,9 @@ export const SERVICES_DATA: LocksmithService[] = [
       'Stolen purse containing keys and identification'
     ],
     techniquesAndTools: [
-      'Digital code cutting equipment and automotive key bitting decoders',
-      'Advanced OBD-II transponder programming computers',
-      'Impressioning files for hand-generating brass keys on legacy locksets'
+      'Equipment for cutting compatible replacement keys',
+      'Programming equipment for compatible vehicle systems',
+      'Equipment for assessing compatible mechanical keys'
     ]
   },
   {
