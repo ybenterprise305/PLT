@@ -1,3 +1,4 @@
+import { Breadcrumbs } from '../components/Breadcrumbs';
 import React, { useState } from 'react';
 import { 
   Phone, 
@@ -64,7 +65,7 @@ export function TipDetailPage({ slug, onNavigate }: TipDetailPageProps) {
     "@graph": [
       {
         "@type": "TechArticle",
-        "@id": `https://prolocksmith-tech.com/tips/${tip.slug}#article`,
+        "@id": `https://prolocksmith-tech.com/tips/${tip.slug}/#article`,
         "headline": tip.title,
         "description": tip.metaDescription,
         "author": {
@@ -80,12 +81,12 @@ export function TipDetailPage({ slug, onNavigate }: TipDetailPageProps) {
             "url": "https://prolocksmith-tech.com/icon-512.png"
           }
         },
-        "mainEntityOfPage": `https://prolocksmith-tech.com/tips/${tip.slug}`,
+        "mainEntityOfPage": `https://prolocksmith-tech.com/tips/${tip.slug}/`,
         "keywords": tip.keywords.join(', ')
       },
       {
         "@type": "HowTo",
-        "@id": `https://prolocksmith-tech.com/tips/${tip.slug}#howto`,
+        "@id": `https://prolocksmith-tech.com/tips/${tip.slug}/#howto`,
         "name": tip.title,
         "description": tip.summary,
         "step": tip.stepByStep.map((s) => ({
@@ -97,7 +98,7 @@ export function TipDetailPage({ slug, onNavigate }: TipDetailPageProps) {
       },
       {
         "@type": "FAQPage",
-        "@id": `https://prolocksmith-tech.com/tips/${tip.slug}#faq`,
+        "@id": `https://prolocksmith-tech.com/tips/${tip.slug}/#faq`,
         "mainEntity": tip.faqs.map((f) => ({
           "@type": "Question",
           "name": f.question,
@@ -142,28 +143,14 @@ export function TipDetailPage({ slug, onNavigate }: TipDetailPageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema([['Locksmith Tips', '/tips'], [tip.title, `/tips/${tip.slug}`]])),
+          __html: JSON.stringify({ '@context': 'https://schema.org', ...breadcrumbSchema([['Locksmith Tips', '/tips'], [tip.title, `/tips/${tip.slug}`]]) }),
         }}
       />
 
       {/* Breadcrumb & Navigation Bar */}
       <div className="bg-slate-950/80 border-b border-slate-800 py-3 px-4 sm:px-6 lg:px-10 xl:px-12 text-xs text-slate-400">
         <div className="max-w-[1200px] mx-auto flex items-center justify-between gap-4">
-          <div className="flex items-center gap-2 overflow-x-auto whitespace-nowrap">
-            <LocalizedA href="/" 
-              className="hover:text-amber-400 transition-colors inline-block text-center"
-            >
-              Home
-            </LocalizedA>
-            <span>/</span>
-            <LocalizedA href="/tips" 
-              className="hover:text-amber-400 transition-colors inline-block text-center"
-            >
-              Locksmith Tips
-            </LocalizedA>
-            <span>/</span>
-            <span className="text-slate-200 truncate max-w-[200px] sm:max-w-md">{tip.title}</span>
-          </div>
+          <Breadcrumbs trail={[['Locksmith Tips', '/tips'], [tip.title, `/tips/${tip.slug}`]]} />
 
           <LocalizedA href="/tips"
             className="hidden sm:inline-flex items-center gap-1.5 text-amber-400 hover:text-amber-300 font-semibold text-center"

@@ -254,6 +254,9 @@ export function Footer({ onNavigate }: FooterProps) {
             <LocalizedA href="/contact" className="hover:text-slate-300 transition-colors cursor-pointer inline-block text-center">
               {t('nav.contact')}
             </LocalizedA>
+            <LocalizedA href="/sitemap" className="hover:text-slate-300 transition-colors">
+              {isSpanish ? 'Mapa del sitio' : 'Sitemap'}
+            </LocalizedA>
             <LocalizedA href="/privacy" className="hover:text-slate-300 transition-colors cursor-pointer inline-block text-center">
               {isSpanish ? 'Privacidad' : 'Privacy'}
             </LocalizedA>

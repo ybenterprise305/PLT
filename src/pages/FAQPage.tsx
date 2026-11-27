@@ -107,9 +107,9 @@ export function FAQPage({ onNavigate }: FAQPageProps) {
               <Truck className="w-6 h-6" />
             </div>
             <div>
-              <h3 className="font-heading font-bold text-base sm:text-lg text-white">
+              <h2 className="font-heading font-bold text-base sm:text-lg text-white">
                 {isSpanish ? 'Cerrajería Móvil — Vamos a Donde Estés' : 'Mobile Locksmith Service — We Come to You'}
-              </h3>
+              </h2>
               <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl leading-relaxed">
                 {isSpanish 
                   ? 'Pro Locksmith Tech no opera una tienda comercial física para clientes. Todos los servicios se realizan directamente en el lugar: en su casa, vehículo o negocio por nuestras camionetas taller totalmente equipadas.' 

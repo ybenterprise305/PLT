@@ -14,7 +14,39 @@ interface SEOHeadProps {
 }
 
 /** Filled while pre-rendering at build time so the script can write each page's head tags. */
-export const headCollector: { current: SEOHeadProps | null } = { current: null };
+interface ResolvedHead {
+  title: string;
+  robots: string;
+  canonical: string | null;
+  meta: Record<string, string>;
+  alternates: [string, string][];
+}
+
+export const headCollector: { current: ResolvedHead | null } = { current: null };
+
+export function resolveHead(input: SEOHeadProps, language: 'en' | 'es', path: string): ResolvedHead {
+  const title = tidyTitle(input.title);
+  const description = tidyDescription(input.description);
+  const base = stripLocale(input.canonicalPath || path).replace(/\/+$/, '') || '/';
+  const translated = hasSpanishVersion(base);
+  const canonical = base === '/404.html' ? null : SITE + canonicalSitePath(language === 'es' && translated ? localizePath(base, 'es') : base);
+  const robots = input.noIndex || (language === 'es' && !translated) ? 'noindex, follow' : 'index, follow, max-image-preview:large';
+  const alternates: [string, string][] = translated ? [
+    ['en', SITE + canonicalSitePath(base)],
+    ['es', SITE + canonicalSitePath(localizePath(base, 'es'))],
+    ['x-default', SITE + canonicalSitePath(base)],
+  ] : [];
+  return {
+    title, robots, canonical,
+    alternates,
+    meta: {
+      description, robots,
+      'og:title': title, 'og:description': description, 'og:type': input.ogType || 'website',
+      'og:url': canonical || SITE + '/', 'twitter:title': title, 'twitter:description': description,
+      ...(input.keywords ? { keywords: input.keywords } : {}),
+    },
+  };
+}
 
 const TITLE_MAX = 60;
 const DESCRIPTION_MAX = 160;
@@ -42,80 +74,45 @@ export function tidyDescription(text: string): string {
   return cut.slice(0, cut.lastIndexOf(' ')) + '…';
 }
 
-export function SEOHead({
-  title,
-  description,
-  canonicalPath,
-  keywords,
-  ogType = 'website',
-  noIndex = false,
-}: SEOHeadProps) {
+export function SEOHead(input: SEOHeadProps) {
   const { language, path } = useLanguage();
-  title = tidyTitle(title);
-  description = tidyDescription(description);
-
-  // Which page this is (ignoring the language prefix) and where its canonical address is.
-  const basePath =
-    (canonicalPath ? (canonicalPath.startsWith('/') ? canonicalPath : '/' + canonicalPath) : stripLocale(path)).replace(/\/+$/, '') || '/';
-  const spanishVersionExists = hasSpanishVersion(basePath);
-  // Spanish pages are indexable only where the Spanish content is real; elsewhere they point at the English page.
-  const finalNoIndex = noIndex || (language === 'es' && !spanishVersionExists);
-  const finalCanonicalPath = canonicalSitePath(language === 'es' && spanishVersionExists ? localizePath(basePath, 'es') : basePath);
-
-  if (typeof window === 'undefined') {
-    headCollector.current = { title, description, canonicalPath: finalCanonicalPath, keywords, ogType, noIndex: finalNoIndex };
-  }
+  const { title, description, canonicalPath, keywords, ogType, noIndex } = input;
+  if (typeof window === 'undefined') headCollector.current = resolveHead(input, language, path);
 
   useEffect(() => {
-    const setTag = (selector: string, create: () => HTMLElement, attr: string, value: string) => {
-      let el = document.head.querySelector(selector) as HTMLElement | null;
-      if (!el) {
-        el = create();
-        document.head.appendChild(el);
+    const head = resolveHead({ title, description, canonicalPath, keywords, ogType, noIndex }, language, path);
+    document.title = head.title;
+    for (const [name, content] of Object.entries(head.meta)) {
+      const attribute = name.startsWith('og:') ? 'property' : 'name';
+      let tag = document.head.querySelector(`meta[${attribute}="${name}"]`);
+      if (!tag) {
+        tag = document.createElement('meta');
+        tag.setAttribute(attribute, name);
+        document.head.appendChild(tag);
       }
-      el.setAttribute(attr, value);
-    };
-    const meta = (key: 'name' | 'property', name: string) => () => {
-      const m = document.createElement('meta');
-      m.setAttribute(key, name);
-      return m;
-    };
-
-    const canonical = SITE + finalCanonicalPath;
-
-    document.title = title;
-    setTag('meta[name="description"]', meta('name', 'description'), 'content', description);
-    setTag('meta[name="robots"]', meta('name', 'robots'), 'content', finalNoIndex ? 'noindex, follow' : 'index, follow, max-image-preview:large');
-    setTag('link[rel="canonical"]', () => {
-      const l = document.createElement('link');
-      l.setAttribute('rel', 'canonical');
-      return l;
-    }, 'href', canonical);
-    setTag('meta[property="og:title"]', meta('property', 'og:title'), 'content', title);
-    setTag('meta[property="og:description"]', meta('property', 'og:description'), 'content', description);
-    setTag('meta[property="og:url"]', meta('property', 'og:url'), 'content', canonical);
-    setTag('meta[property="og:type"]', meta('property', 'og:type'), 'content', ogType);
-    setTag('meta[name="twitter:title"]', meta('name', 'twitter:title'), 'content', title);
-    setTag('meta[name="twitter:description"]', meta('name', 'twitter:description'), 'content', description);
-    if (keywords) setTag('meta[name="keywords"]', meta('name', 'keywords'), 'content', keywords);
-
-    // Tell search engines which address is the English and which the Spanish version of this page.
-    document.head.querySelectorAll('link[rel="alternate"][hreflang]').forEach((el) => el.remove());
-    if (spanishVersionExists) {
-      const alternates: [string, string][] = [
-        ['en', SITE + canonicalSitePath(basePath)],
-        ['es', SITE + canonicalSitePath(localizePath(basePath, 'es'))],
-        ['x-default', SITE + canonicalSitePath(basePath)],
-      ];
-      alternates.forEach(([lang, href]) => {
-        const l = document.createElement('link');
-        l.setAttribute('rel', 'alternate');
-        l.setAttribute('hreflang', lang);
-        l.setAttribute('href', href);
-        document.head.appendChild(l);
-      });
+      tag.setAttribute('content', content);
     }
-  }, [title, description, finalCanonicalPath, finalNoIndex, keywords, ogType, basePath, spanishVersionExists]);
+    if (!keywords) document.head.querySelector('meta[name="keywords"]')?.remove();
+    let canonical = document.head.querySelector('link[rel="canonical"]');
+    if (head.canonical) {
+      if (!canonical) {
+        canonical = document.createElement('link');
+        canonical.setAttribute('rel', 'canonical');
+        document.head.appendChild(canonical);
+      }
+      canonical.setAttribute('href', head.canonical);
+    } else {
+      canonical?.remove();
+    }
+    document.head.querySelectorAll('link[rel="alternate"][hreflang]').forEach(node => node.remove());
+    for (const [lang, href] of head.alternates) {
+      const link = document.createElement('link');
+      link.rel = 'alternate';
+      link.hreflang = lang;
+      link.href = href;
+      document.head.appendChild(link);
+    }
+  }, [title, description, canonicalPath, keywords, ogType, noIndex, language, path]);
 
   return null;
 }

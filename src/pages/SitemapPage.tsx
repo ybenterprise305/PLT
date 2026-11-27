@@ -5,7 +5,6 @@ import { COUNTIES_DATA } from '../data/locationsData';
 import { BLOG_POSTS } from '../data/blogData';
 import { SEOHead } from '../components/SEOHead';
 
-import { AD_CAMPAIGNS } from '../data/adLandingPagesData';
 import { LOCKSMITH_TIPS_DATA } from '../data/locksmithTipsData';
 import { Wrench, Sparkles } from 'lucide-react';
 
@@ -15,13 +14,12 @@ interface SitemapPageProps {
 }
 
 export function SitemapPage({ onNavigate }: SitemapPageProps) {
-  const adPages = AD_CAMPAIGNS;
 
   return (
     <div className="min-h-screen bg-slate-900 text-slate-100 py-12">
       <SEOHead
-        title="HTML Sitemap & SEO Directory | Pro Locksmith Tech"
-        description="Comprehensive index of all pages, locksmith services, South Florida city coverage, blogs, and ad landing pages for Pro Locksmith Tech. Call +1 754-261-6528."
+        title="Sitemap | Pro Locksmith Tech"
+        description="Browse Pro Locksmith Tech’s public pages, locksmith services, South Florida service areas, articles, and locksmith guides."
         keywords="Pro Locksmith Tech sitemap, website index, South Florida locksmith directory, blog index"
       />
 
@@ -37,7 +35,7 @@ export function SitemapPage({ onNavigate }: SitemapPageProps) {
             Pro Locksmith Tech Sitemap
           </h1>
           <p className="text-sm text-slate-400 mt-2">
-            Complete index of pages, services, blog articles, and dedicated advertising landing pages across South Florida.
+            Browse our locksmith services, South Florida service areas, articles and guides.
           </p>
         </div>
 
@@ -102,12 +100,7 @@ export function SitemapPage({ onNavigate }: SitemapPageProps) {
               <span>Locksmith Tips &amp; Tricks (/tips)</span>
               <ChevronRight className="w-4 h-4 text-amber-400" />
             </LocalizedA>
-            <LocalizedA href="/lp"
-              className="p-3 bg-slate-900 hover:bg-slate-850 rounded-xl text-left font-semibold text-amber-400 hover:text-amber-300 border border-amber-500/30 flex items-center justify-between cursor-pointer"
-            >
-              <span>Advertising Landing Pages Hub (/lp)</span>
-              <ChevronRight className="w-4 h-4 text-amber-400" />
-            </LocalizedA>
+
           </div>
         </div>
 
@@ -155,28 +148,6 @@ export function SitemapPage({ onNavigate }: SitemapPageProps) {
                 <div>
                   <div className="font-semibold line-clamp-1">{post.title}</div>
                   <div className="text-[10px] text-amber-400 uppercase">{post.category} · {post.readTime}</div>
-                </div>
-                <ChevronRight className="w-4 h-4 text-slate-500 shrink-0 ml-2" />
-              </LocalizedA>
-            ))}
-          </div>
-        </div>
-
-        {/* Section 3: Advertising Landing Pages */}
-        <div className="bg-slate-950 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-4">
-          <h2 className="font-heading font-bold text-xl text-white flex items-center gap-2">
-            <Megaphone className="w-5 h-5 text-amber-400" />
-            <span>Advertising Landing Pages (PPC Optimized, High CTA Density)</span>
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
-            {adPages.map((ad, idx) => (
-              <LocalizedA href={`/lp/${ad.slug}`}
-                key={idx}
-                className="p-3 bg-slate-900 hover:bg-slate-850 rounded-xl text-left text-slate-200 hover:text-amber-400 border border-slate-800 flex items-center justify-between cursor-pointer"
-              >
-                <div>
-                  <div className="font-semibold">{ad.name}</div>
-                  <div className="text-[10px] text-slate-400 font-mono">/lp/{ad.slug}</div>
                 </div>
                 <ChevronRight className="w-4 h-4 text-slate-500 shrink-0 ml-2" />
               </LocalizedA>

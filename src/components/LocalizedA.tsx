@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { localizePath } from '../utils/locale';
+import { canonicalLink, localizePath } from '../utils/locale';
 
 /**
  * A normal <a> that keeps Spanish visitors on the Spanish version (/es/...) of every
@@ -8,6 +8,6 @@ import { localizePath } from '../utils/locale';
  */
 export function LocalizedA({ href, ...rest }: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
   const { language } = useLanguage();
-  const finalHref = typeof href === 'string' ? localizePath(href, language) : href;
+  const finalHref = typeof href === 'string' ? canonicalLink(localizePath(canonicalLink(href), language)) : href;
   return <a href={finalHref} {...rest} />;
 }

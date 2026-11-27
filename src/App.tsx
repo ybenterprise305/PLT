@@ -3,7 +3,7 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { MobileCallBar } from './components/MobileCallBar';
 import { LanguageProvider, type Language } from './context/LanguageContext';
-import { isEsPath, localizePath, switchPath } from './utils/locale';
+import { canonicalLink, isEsPath, localizePath, switchPath } from './utils/locale';
 import { loadRoute, matchRoute, type LoadedRoute } from './routes';
 
 export default function App({ initialRoute }: { initialRoute: LoadedRoute }) {
@@ -28,13 +28,13 @@ export default function App({ initialRoute }: { initialRoute: LoadedRoute }) {
 
   const navigate = useCallback((href: string) => {
     const lang = isEsPath(window.location.pathname) ? 'es' : 'en';
-    const url = new URL(localizePath(href, lang), window.location.origin);
+    const url = new URL(canonicalLink(localizePath(canonicalLink(href), lang)), window.location.origin);
     openRoute(url, 'push', true);
   }, [openRoute]);
 
   const switchLanguage = useCallback((lang: Language) => {
     const here = window.location.pathname + window.location.search + window.location.hash;
-    const next = new URL(switchPath(here, lang), window.location.origin);
+    const next = new URL(canonicalLink(switchPath(here, lang)), window.location.origin);
     openRoute(next, 'push', false);
   }, [openRoute]);
 

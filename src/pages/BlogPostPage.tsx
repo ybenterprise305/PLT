@@ -1,3 +1,4 @@
+import { Breadcrumbs } from '../components/Breadcrumbs';
 import React from 'react';
 import { 
   ArrowLeft, 
@@ -58,7 +59,7 @@ export function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://prolocksmith-tech.com/blog/${post.slug}`
+      "@id": `https://prolocksmith-tech.com/blog/${post.slug}/`
     }
   };
 
@@ -78,15 +79,17 @@ export function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema([['Blog', '/blog'], [post.title, `/blog/${post.slug}`]])),
+          __html: JSON.stringify({ '@context': 'https://schema.org', ...breadcrumbSchema([['Blog', '/blog'], [post.title, `/blog/${post.slug}`]]) }),
         }}
       />
 
       {/* Main Container */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         
-        {/* Breadcrumb & Back Link */}
-        <div className="flex items-center justify-between gap-4 mb-8">
+        <Breadcrumbs trail={[['Blog', '/blog'], [post.title, `/blog/${post.slug}`]]} />
+
+        {/* Back Link */}
+        <div className="flex items-center justify-between gap-4 my-6">
           <LocalizedA href="/blog"
             className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-amber-400 hover:text-amber-300 transition-colors cursor-pointer text-center"
           >
@@ -150,9 +153,9 @@ export function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
               <Truck className="w-4 h-4" />
               <span>Need Immediate Locksmith Service?</span>
             </div>
-            <h3 className="font-heading font-black text-xl text-white">
+            <h2 className="font-heading font-black text-xl text-white">
               Locked Out Right Now? We Come to You 24/7.
-            </h3>
+            </h2>
             <p className="text-xs text-slate-300 max-w-md">
               Call our mobile dispatch hotline for prompt arrival in Broward, Miami-Dade, or Palm Beach County.
             </p>

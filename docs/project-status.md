@@ -4,8 +4,8 @@
 
 | Phase | Scope | State at this release |
 |---|---|---|
-| I | Elite technical engineering | Implementation and release candidate |
-| II | Advanced technical SEO | Awaiting explicit approval |
+| I | Elite technical engineering | Published and verified |
+| II | Advanced technical SEO | See Phase II implementation and verification |
 | III | Structured data and business entity authority | Awaiting explicit approval |
 | IV | AEO, AIO, GEO and agentic browsing | Awaiting explicit approval |
 | V | Content and topical authority | Awaiting explicit approval |
@@ -35,3 +35,7 @@
 ## Remaining dependencies
 
 Field data is still sparse. Remove no further attribution or analytics dependencies to chase a score. Broader content, canonical migrations, optional zone-level HTTPS/security policies, production consent work and full assisted accessibility testing belong to explicitly approved follow-up phases. Validate the reported production-only diagnostics separately from local Lighthouse. Do not send a synthetic production conversion.
+
+## Phase II
+
+See [Phase II technical SEO implementation](phase-ii-technical-seo.md) for the architecture, index policy, search-intent map and baseline issue register.

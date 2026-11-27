@@ -40,4 +40,5 @@ jobs:
           node scripts/serve-dist.mjs &
           sleep 5
           node scripts/check-site.mjs
+          node scripts/check-seo-browser.mjs
           node scripts/check-tracking.mjs

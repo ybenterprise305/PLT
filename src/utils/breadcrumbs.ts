@@ -1,15 +1,15 @@
 import { SITE } from '../config/business';
+import { canonicalLink, localizePath, type Lang } from './locale';
 
-/** Builds schema.org breadcrumb data: [[name, path], ...] from Home to the current page. */
-export function breadcrumbSchema(trail: [string, string][]) {
+export function breadcrumbSchema(trail: [string, string][], language: Lang = 'en') {
+  const home: [string, string] = [language === 'es' ? 'Inicio' : 'Home', '/'];
   return {
-    '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: [['Home', '/'] as [string, string], ...trail].map(([name, path], i) => ({
+    itemListElement: [home, ...trail].map(([name, path], i) => ({
       '@type': 'ListItem',
       position: i + 1,
       name,
-      item: SITE + path,
+      item: SITE + canonicalLink(localizePath(path, language)),
     })),
   };
 }

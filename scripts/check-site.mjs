@@ -82,17 +82,17 @@ for (const vp of viewports) {
     await page.keyboard.press('Escape');
     await drawer.waitFor({state:'detached',timeout:5000});
     await toggle.click({timeout:5000});
-    await page.locator('#mobile-site-navigation a[href="/services"]').click({timeout:5000});
-    await page.waitForURL('**/services',{timeout:5000});
+    await page.locator('#mobile-site-navigation a[href="/services/"]').click({timeout:5000});
+    await page.waitForURL('**/services/',{timeout:5000});
     if (await page.locator('#mobile-site-navigation').count()) failures.push('phone /: drawer remained open after route navigation');
     await page.goto(BASE + '/', { waitUntil: 'networkidle' });
   } catch (error) { failures.push('phone /: menu cannot be opened after scrolling: '+String(error).slice(0,200)); }
 
   await page.evaluate(() => { window.__plt_marker = 'same-page'; window.scrollTo(0, 0); });
-  const link = page.locator('a[href="/services"]:visible').first();
+  const link = page.locator('a[href="/services/"]:visible').first();
   if (await link.count()) {
     await link.click();
-    await page.waitForURL('**/services');
+    await page.waitForURL('**/services/');
     const marker = await page.evaluate(() => window.__plt_marker);
     if (marker !== 'same-page') failures.push('link click caused a full page reload instead of in-page navigation');
   } else {
@@ -131,12 +131,12 @@ for (const vp of viewports) {
   const page = await context.newPage();
   await page.goto(BASE + '/', { waitUntil: 'networkidle' });
   await page.locator('a[aria-label="Español (ES)"]:visible').first().click();
-  await page.waitForURL('**/es');
+  await page.waitForURL('**/es/');
   const lang = await page.evaluate(() => document.documentElement.lang);
   if (lang !== 'es') failures.push(`language switch: <html lang> is "${lang}" after switching to Spanish`);
-  const spanishLinks = await page.locator('a[href="/es/services"]:visible').count();
+  const spanishLinks = await page.locator('a[href="/es/services/"]:visible').count();
   if (spanishLinks < 1) failures.push('Spanish home page has no visible link to /es/services');
-  const englishLeak = await page.locator('main a[href="/services"]').count();
+  const englishLeak = await page.locator('main a[href="/services/"]').count();
   if (englishLeak > 0) failures.push(`Spanish home page still has ${englishLeak} links to the English /services page`);
   await page.locator('a[aria-label="English (EN)"]:visible').first().click();
   await page.waitForURL(BASE + '/');

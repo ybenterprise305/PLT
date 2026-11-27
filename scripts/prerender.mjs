@@ -27,7 +27,7 @@ if (candidates.length !== 1) {
     `Expected exactly one built SSR entry in dist-server, found ${candidates.length}: ${candidates.join(', ')}`
   );
 }
-const { render, getRoutes, getPaidAliases, SITE, homeVan, canonicalSitePath, hasSpanishVersion, localizePath, isEsPath, stripLocale } = await import(pathToFileURL(candidates[0]).href);
+const { render, SITE, homeVan } = await import(pathToFileURL(candidates[0]).href);
 
 const manifest = JSON.parse(fs.readFileSync(path.join(dist, '.vite/manifest.json'), 'utf8'));
 const sharedPreloads = new Set([...template.matchAll(/rel="modulepreload"[^>]*href="\/([^"]+)"/g)].map(match => match[1]));
@@ -55,37 +55,36 @@ function setMeta(html, attr, name, value) {
   return re.test(html) ? html.replace(re, tag) : html.replace('</head>', `  ${tag}\n  </head>`);
 }
 
-function withHead(html, route, head) {
-  if (!head) return html;
-  const canonical = SITE + canonicalSitePath(head.canonicalPath || route);
+function withHead(html, head) {
+  if (!head) throw new Error('Page did not provide SEO metadata');
   html = html.replace(/<title>[^<]*<\/title>/, `<title>${esc(head.title)}</title>`);
-  html = setMeta(html, 'name', 'description', head.description);
-  html = setMeta(html, 'name', 'robots', head.noIndex ? 'noindex, follow' : 'index, follow, max-image-preview:large');
-  html = setMeta(html, 'property', 'og:title', head.title);
-  html = setMeta(html, 'property', 'og:description', head.description);
-  html = setMeta(html, 'property', 'og:type', head.ogType || 'website');
-  html = setMeta(html, 'property', 'og:url', canonical);
-  html = setMeta(html, 'name', 'twitter:title', head.title);
-  html = setMeta(html, 'name', 'twitter:description', head.description);
-  if (head.keywords) html = setMeta(html, 'name', 'keywords', head.keywords);
-  html = html.replace(/<link rel="canonical"[^>]*>\s*/g, '');
-  let extra = `  <link rel="canonical" href="${esc(canonical)}" />\n`;
-  const base = stripLocale(route);
-  if (hasSpanishVersion(base)) {
-    extra += `  <link rel="alternate" hreflang="en" href="${SITE + canonicalSitePath(base)}" />\n`;
-    extra += `  <link rel="alternate" hreflang="es" href="${SITE + canonicalSitePath(localizePath(base, 'es'))}" />\n`;
-    extra += `  <link rel="alternate" hreflang="x-default" href="${SITE + canonicalSitePath(base)}" />\n`;
+  for (const [name, value] of Object.entries(head.meta)) {
+    html = setMeta(html, name.startsWith('og:') ? 'property' : 'name', name, value);
   }
-  return html.replace('</head>', extra + '  </head>');
+  html = html.replace(/<link rel="canonical"[^>]*>\s*/g, '');
+  const links = head.canonical ? [`  <link rel="canonical" href="${esc(head.canonical)}" />`] : [];
+  for (const [language, url] of head.alternates) {
+    links.push(`  <link rel="alternate" hreflang="${language}" href="${esc(url)}" />`);
+  }
+  return html.replace('</head>', links.join('\n') + '\n  </head>');
 }
 
-const routes = [...new Set(getRoutes())];
+const { pages, errorRoute, serviceRedirects } = JSON.parse(fs.readFileSync(path.join(root, 'src/generated/seoInventory.json'), 'utf8'));
+const headings = new Map();
 let count = 0;
-for (const route of [...routes, ...getPaidAliases(), '/404.html']) {
+for (const record of [...pages, errorRoute]) {
+  const route = record.path;
   const { html, head, moduleId } = await render(route);
   let page = template.replace('<div id="root"></div>', () => `<div id="root">${html}</div>`);
   if (page === template) throw new Error('Could not find <div id="root"></div> in dist/index.html');
-  page = withHead(page, route, head);
+  page = withHead(page, head);
+  if (head.canonical !== record.canonical || head.robots.startsWith('noindex') === record.indexable) {
+    throw new Error(`Render metadata disagrees with registry for ${route}`);
+  }
+  if (JSON.stringify(Object.fromEntries(head.alternates)) !== JSON.stringify(record.alternates || {})) {
+    throw new Error(`Render alternates disagree with registry for ${route}`);
+  }
+  headings.set(route, { title: head.title, description: head.meta.description, robots: head.robots });
   if (route === '/404.html') {
     // The same shared document can be returned under any missing URL without a hydration mismatch.
     page = page.replace(/<script type="module"[^>]*><\/script>\s*/g, '')
@@ -97,7 +96,7 @@ for (const route of [...routes, ...getPaidAliases(), '/404.html']) {
   if (route === '/' || route === '/es') {
     page = page.replace('</head>', `  <link rel="preload" as="image" type="image/avif" href="${homeVan.avif}" imagesrcset="${homeVan.srcSet('avif')}" imagesizes="${homeVan.sizes}" fetchpriority="high" />\n  </head>`);
   }
-  if (isEsPath(route)) page = page.replace('<html lang="en">', '<html lang="es">');
+  if (record.language === 'es') page = page.replace('<html lang="en">', '<html lang="es">');
   const out = route === '/404.html'
     ? path.join(dist, '404.html')
     : path.join(dist, route, 'index.html');
@@ -105,70 +104,28 @@ for (const route of [...routes, ...getPaidAliases(), '/404.html']) {
   fs.writeFileSync(out, page);
   count += 1;
 }
-console.log(`Pre-rendered ${count} documents (${routes.length} primary routes)`);
+console.log(`Pre-rendered ${count} documents`);
 
-// Sitemap: add the Spanish version of every page that has one, with language alternates.
-const sitemapPath = path.join(dist, 'sitemap.xml');
-if (fs.existsSync(sitemapPath)) {
-  let xml = fs.readFileSync(sitemapPath, 'utf8');
-  xml = xml.replace('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">');
-  const extraEntries = [];
-  xml = xml.replace(/<url>[\s\S]*?<\/url>/g, (block) => {
-    const loc = (block.match(/<loc>([^<]*)<\/loc>/) || [])[1];
-    if (!loc) return block;
-    const base = new URL(loc).pathname.replace(/\/+$/, '') || '/';
-    const en = SITE + canonicalSitePath(base);
-    block = block.replace(`<loc>${loc}</loc>`, `<loc>${en}</loc>`);
-    if (!hasSpanishVersion(base)) return block;
-    const es = SITE + canonicalSitePath(localizePath(base, 'es'));
-    const links = `\n    <xhtml:link rel="alternate" hreflang="en" href="${en}" />\n    <xhtml:link rel="alternate" hreflang="es" href="${es}" />\n    <xhtml:link rel="alternate" hreflang="x-default" href="${en}" />\n  `;
-    const lastmod = (block.match(/<lastmod>[^<]*<\/lastmod>/) || [''])[0];
-    extraEntries.push(`  <url>\n    <loc>${es}</loc>${lastmod}${links}</url>`);
-    return block.replace('</url>', links + '</url>');
-  });
-  const present = new Set([...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => new URL(match[1]).pathname.replace(/\/+$/, '')));
-  const newEnglishGuides = routes
-    .filter((route) => /^\/(?:blog\/[^/]+|service-areas\/[^/]+\/[^/]+)$/.test(route) && !present.has(route))
-    .map((route) => `  <url>\n    <loc>${SITE}${canonicalSitePath(route)}</loc>\n  </url>`);
-  xml = xml.replace('</urlset>', [...extraEntries, ...newEnglishGuides].join('\n') + '\n</urlset>');
-  fs.writeFileSync(sitemapPath, xml);
-  console.log(`Sitemap: added ${extraEntries.length} Spanish pages`);
-}
-
-
-// Guard against accidentally telling Google to exclude important organic pages.
-// Paid campaign landing pages deliberately use noindex and must stay out of the sitemap.
-const finalSitemap = path.join(dist, 'sitemap.xml');
-if (fs.existsSync(finalSitemap)) {
-  const xml = fs.readFileSync(finalSitemap, 'utf8');
-  const listedUrls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-  const issues = [];
-  for (const url of listedUrls) {
-    const pathname = new URL(url).pathname;
-    const output = pathname === '/' ? path.join(dist, 'index.html') : path.join(dist, pathname, 'index.html');
-    if (!fs.existsSync(output)) {
-      // Report missing prerendered pages without crashing a legitimate custom-route build.
-      console.warn('Sitemap URL has no prerendered HTML:', url);
-      continue;
-    }
-    const pageHtml = fs.readFileSync(output, 'utf8');
-    if (/<meta\s+name="robots"\s+content="[^"]*noindex/i.test(pageHtml)) {
-      issues.push(url);
-    }
+const xml = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'];
+for (const record of pages.filter(page => page.sitemap)) {
+  xml.push('  <url>', `    <loc>${esc(record.canonical)}</loc>`);
+  if (record.lastModified) xml.push(`    <lastmod>${record.lastModified}</lastmod>`);
+  for (const [language, url] of Object.entries(record.alternates || {})) {
+    xml.push(`    <xhtml:link rel="alternate" hreflang="${language}" href="${esc(url)}" />`);
   }
-  if (issues.length) throw new Error('Indexable sitemap URL(s) have noindex: ' + issues.join(', '));
-  const paidRoutes = routes.filter((route) => route.startsWith('/lp/'));
-  for (const paidRoute of paidRoutes) {
-    const output = path.join(dist, paidRoute, 'index.html');
-    if (!fs.existsSync(output)) throw new Error('Missing paid landing page: ' + paidRoute);
-    const html = fs.readFileSync(output, 'utf8');
-    if (!/<meta\s+name="robots"\s+content="[^"]*noindex/i.test(html)) {
-      throw new Error('Paid landing page is missing intentional noindex: ' + paidRoute);
-    }
-  }
-  console.log('Indexing guard passed: sitemap pages are indexable; PPC pages remain noindex.');
+  xml.push('  </url>');
 }
+xml.push('</urlset>', '');
+fs.writeFileSync(path.join(dist, 'sitemap.xml'), xml.join('\n'));
 
+const redirects = [['/lp', '/services/']];
+for (const [from, to] of Object.entries(serviceRedirects)) redirects.push(['/services/' + from, '/services/' + to + '/']);
+fs.writeFileSync(path.join(dist, '_redirects'), redirects.flatMap(([from, to]) => [`${from} ${to} 301`, `${from}/ ${to} 301`]).join('\n') + '\n');
+fs.writeFileSync(path.join(root, 'src/generated/build-seo-inventory.json'), JSON.stringify({
+  pages: [...pages, errorRoute].map(record => ({ ...record, ...headings.get(record.path), publication: 'published' })),
+  redirects,
+}, null, 2));
+if (!fs.readFileSync(path.join(dist, 'robots.txt'), 'utf8').includes(`Sitemap: ${SITE}/sitemap.xml`)) throw new Error('robots.txt must advertise the canonical sitemap');
 
 // Prevent blog-related service links from pointing to nonexistent service routes.
 const serviceSource = fs.readFileSync(path.join(root, 'src/data/servicesData.ts'), 'utf8');

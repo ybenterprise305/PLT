@@ -1,6 +1,6 @@
 import React from 'react';
 import { Globe } from 'lucide-react';
-import { canonicalSitePath, switchPath } from '../utils/locale';
+import { canonicalLink, switchPath } from '../utils/locale';
 import { useLanguage } from '../context/LanguageContext';
 
 interface LanguageToggleProps {
@@ -15,7 +15,7 @@ export function LanguageToggle({ variant = 'standard', className = '' }: Languag
     event.preventDefault();
     if (next !== language) setLanguage(next);
   };
-  const href = (next: 'en' | 'es') => canonicalSitePath(switchPath(path, next));
+  const href = (next: 'en' | 'es') => canonicalLink(switchPath(path, next));
 
   if (variant === 'compact') {
     return (
