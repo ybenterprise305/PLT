@@ -17,7 +17,7 @@ for(const name of names){
   const base=name.slice(0,-4);
   const sourceBytes=(await stat(src)).size;
   before+=sourceBytes;
-  for(const [width,tag,quality] of [[480,'480',66],[960,'960',70]]){
+  for(const [width,tag,quality] of [[360,'360',65],[480,'480',66],[720,'720',68],[960,'960',70]]){
     const dest=path.join(outputDir,`${base}-${tag}.webp`);
     await sharp(src,{limitInputPixels:30000000})
       .rotate()
@@ -27,7 +27,7 @@ for(const name of names){
     after+=(await stat(dest)).size;
   }
 }
-console.log('Optimized '+names.length+' service photos: '+(before/1048576).toFixed(1)+' MB originals -> '+(after/1048576).toFixed(1)+' MB total across both WebP sizes');
+console.log('Optimized '+names.length+' service photos: '+(before/1048576).toFixed(1)+' MB originals -> '+(after/1048576).toFixed(1)+' MB total across WebP sizes');
 
 /** The 15 distinct PPC scenes were created for this website as one lightweight atlas.
  * Crop a different photographed locksmith job for each campaign. Never claim these
@@ -65,10 +65,16 @@ console.log('Generated ' + ppcSlugs.length + ' distinct PPC photographic scenes,
 const hero=path.resolve('src/assets/images/locksmith_van_clean_1790360598992.webp');
 const heroDir=path.resolve('public/home-images');
 await mkdir(heroDir,{recursive:true});
-for (const [width,quality] of [[360,54],[480,55],[720,58],[960,62]]) {
+for (const [width,quality] of [[360,54],[480,55],[600,57],[720,58],[960,62]]) {
  const file=path.join(heroDir,'mobile-van-'+width+'.webp');
  await sharp(hero).rotate().resize({width,withoutEnlargement:true}).webp({quality,effort:6}).toFile(file);
  const avifFile=path.join(heroDir,'mobile-van-'+width+'.avif');
  await sharp(hero).rotate().resize({width,withoutEnlargement:true}).avif({quality:Math.max(36,quality-9),effort:5}).toFile(avifFile);
  console.log('Hero '+width+'px: WebP '+((await stat(file)).size/1024).toFixed(1)+' KiB, AVIF '+((await stat(avifFile)).size/1024).toFixed(1)+' KiB');
 }
+
+// Keep the original paid asset and derive a narrow variant from the same photograph.
+await sharp(path.join(ppcDir, 'car-lockout-lishi.webp'))
+  .resize({ width: 420, withoutEnlargement: true })
+  .webp({ quality: 72, effort: 5 })
+  .toFile(path.join(ppcDir, 'car-lockout-lishi-420.webp'));

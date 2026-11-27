@@ -1,4 +1,4 @@
-const SITE = 'https://prolocksmith-tech.com';
+import { SITE } from '../config/business';
 
 /** Builds schema.org breadcrumb data: [[name, path], ...] from Home to the current page. */
 export function breadcrumbSchema(trail: [string, string][]) {

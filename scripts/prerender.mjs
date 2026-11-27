@@ -27,9 +27,26 @@ if (candidates.length !== 1) {
     `Expected exactly one built SSR entry in dist-server, found ${candidates.length}: ${candidates.join(', ')}`
   );
 }
-const { render, getRoutes, canonicalSitePath, hasSpanishVersion, localizePath, isEsPath, stripLocale } = await import(pathToFileURL(candidates[0]).href);
+const { render, getRoutes, getPaidAliases, SITE, homeVan, canonicalSitePath, hasSpanishVersion, localizePath, isEsPath, stripLocale } = await import(pathToFileURL(candidates[0]).href);
 
-const SITE = 'https://prolocksmith-tech.com';
+const manifest = JSON.parse(fs.readFileSync(path.join(dist, '.vite/manifest.json'), 'utf8'));
+const sharedPreloads = new Set([...template.matchAll(/rel="modulepreload"[^>]*href="\/([^"]+)"/g)].map(match => match[1]));
+
+function preloadRoute(html, moduleId) {
+  const visited = new Set();
+  const files = new Set();
+  function visit(id) {
+    if (visited.has(id)) return;
+    visited.add(id);
+    const entry = manifest[id];
+    if (!entry) throw new Error(`Missing client module for ${id}`);
+    if (!sharedPreloads.has(entry.file)) files.add(entry.file);
+    for (const dependency of entry.imports ?? []) visit(dependency);
+  }
+  visit(moduleId);
+  const tags = [...files].map(file => `  <link rel="modulepreload" crossorigin href="/${file}" />`);
+  return html.replace('</head>', tags.join('\n') + '\n  </head>');
+}
 const esc = (v) => String(v).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 
 function setMeta(html, attr, name, value) {
@@ -64,21 +81,31 @@ function withHead(html, route, head) {
 
 const routes = [...new Set(getRoutes())];
 let count = 0;
-for (const route of routes) {
-  const { html, head } = render(route);
+for (const route of [...routes, ...getPaidAliases(), '/404.html']) {
+  const { html, head, moduleId } = await render(route);
   let page = template.replace('<div id="root"></div>', () => `<div id="root">${html}</div>`);
   if (page === template) throw new Error('Could not find <div id="root"></div> in dist/index.html');
   page = withHead(page, route, head);
+  if (route === '/404.html') {
+    // The same shared document can be returned under any missing URL without a hydration mismatch.
+    page = page.replace(/<script type="module"[^>]*><\/script>\s*/g, '')
+      .replace(/<link rel="modulepreload"[^>]*>\s*/g, '')
+      .replace(/<link rel="canonical"[^>]*>\s*/g, '');
+  } else {
+    page = preloadRoute(page, moduleId);
+  }
   if (route === '/' || route === '/es') {
-    page = page.replace('</head>', '  <link rel="preload" as="image" type="image/avif" href="/home-images/mobile-van-720.avif" imagesrcset="/home-images/mobile-van-360.avif 360w, /home-images/mobile-van-480.avif 480w, /home-images/mobile-van-720.avif 720w, /home-images/mobile-van-960.avif 960w" imagesizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1023px) calc(100vw - 40px), 50vw" fetchpriority="high" />\n  </head>');
+    page = page.replace('</head>', `  <link rel="preload" as="image" type="image/avif" href="${homeVan.avif}" imagesrcset="${homeVan.srcSet('avif')}" imagesizes="${homeVan.sizes}" fetchpriority="high" />\n  </head>`);
   }
   if (isEsPath(route)) page = page.replace('<html lang="en">', '<html lang="es">');
-  const out = route === '/' ? path.join(dist, 'index.html') : path.join(dist, route, 'index.html');
+  const out = route === '/404.html'
+    ? path.join(dist, '404.html')
+    : path.join(dist, route, 'index.html');
   fs.mkdirSync(path.dirname(out), { recursive: true });
   fs.writeFileSync(out, page);
   count += 1;
 }
-console.log(`Pre-rendered ${count} pages`);
+console.log(`Pre-rendered ${count} documents (${routes.length} primary routes)`);
 
 // Sitemap: add the Spanish version of every page that has one, with language alternates.
 const sitemapPath = path.join(dist, 'sitemap.xml');

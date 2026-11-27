@@ -1,3 +1,4 @@
+import { homeVan } from '../assets/images/vanImages';
 import React, { useState } from 'react';
 import { 
   KeyRound, 
@@ -9,7 +10,6 @@ import {
 } from 'lucide-react';
 import { SERVICES_DATA } from '../data/servicesData';
 import { SEOHead } from '../components/SEOHead';
-import { locksmithVanImg } from '../assets/images';
 import { getServiceImage } from '../assets/images/serviceImages';
 import { useLanguage } from '../context/LanguageContext';
 import { SPANISH_SERVICES } from '../data/spanishTranslations';
@@ -94,12 +94,17 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
 
             {/* Van Image */}
             <div className="lg:col-span-5">
-              <div className="rounded-2xl overflow-hidden border border-slate-800 shadow-xl relative group">
+              <div className="h-64 rounded-2xl overflow-hidden border border-slate-800 shadow-xl relative group">
                 <img
-                  src={locksmithVanImg}
+                  src={homeVan.src}
+                  srcSet={homeVan.srcSet('webp')}
+                  sizes="(max-width: 1023px) calc(100vw - 80px), 460px"
+                  width={homeVan.width}
+                  height={homeVan.height}
+                  fetchPriority="high"
                   alt="Pro Locksmith Tech mobile locksmith van"
-                  className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="eager"
                   decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent pointer-events-none" />
@@ -158,7 +163,7 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
                   <img
                     src={srvImage.src}
                     srcSet={srvImage.srcSet}
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    sizes="(max-width: 639px) calc(100vw - 34px), (max-width: 1023px) 45vw, (max-width: 1599px) 29vw, 463px"
                     width={960}
                     height={640}
                     alt={isSpanish ? srvImage.esAlt : srvImage.enAlt}

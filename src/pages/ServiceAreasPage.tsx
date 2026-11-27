@@ -1,9 +1,9 @@
+import { homeVan } from '../assets/images/vanImages';
 import React, { useState, useMemo } from 'react';
 import { MapPin, Phone, ArrowRight, Navigation,  Search, CheckCircle2 } from 'lucide-react';
 import { COUNTIES_DATA, getAllCities } from '../data/locationsData';
 import { SEOHead } from '../components/SEOHead';
 import { SouthFloridaMap } from '../components/SouthFloridaMap';
-import { locksmithVanImg } from '../assets/images';
 import { useLanguage } from '../context/LanguageContext';
 import { SPANISH_COUNTIES } from '../data/spanishTranslations';
 import { trackPhoneClick } from '../utils/analytics';
@@ -131,12 +131,17 @@ export function ServiceAreasPage({ onNavigate }: ServiceAreasPageProps) {
             </div>
 
             <div className="lg:col-span-5">
-              <div className="rounded-2xl overflow-hidden border border-slate-800 shadow-xl relative group">
+              <div className="h-64 rounded-2xl overflow-hidden border border-slate-800 shadow-xl relative group">
                 <img
-                  src={locksmithVanImg}
+                  src={homeVan.src}
+                  srcSet={homeVan.srcSet('webp')}
+                  sizes="(max-width: 1023px) calc(100vw - 80px), 460px"
+                  width={homeVan.width}
+                  height={homeVan.height}
+                  fetchPriority="high"
                   alt="Locksmith van on service route in South Florida"
-                  className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="eager"
                   decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent pointer-events-none" />

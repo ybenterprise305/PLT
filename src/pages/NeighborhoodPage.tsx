@@ -1,7 +1,10 @@
+import { getCityBySlug } from '../data/locationsData';
+import { NotFoundPage } from './NotFoundPage';
+import type { RouteProps } from '../routes';
 import { LocalizedA } from '../components/LocalizedA';
 import { SEOHead } from '../components/SEOHead';
 import type { Neighborhood } from '../data/neighborhoods';
-import { neighborhoodPath } from '../data/neighborhoods';
+import { getNeighborhoods, neighborhoodPath } from '../data/neighborhoods';
 import { trackPhoneClick } from '../utils/analytics';
 
 const serviceLabels = {
@@ -15,7 +18,14 @@ interface Props {
   area: Neighborhood;
 }
 
-export function NeighborhoodPage({ city, area }: Props) {
+export function NeighborhoodPage({ slug, onNavigate }: RouteProps) {
+  const [citySlug, areaSlug] = slug.split('/');
+  const city = getCityBySlug(citySlug)?.city;
+  const area = getNeighborhoods(citySlug).find(entry => entry.slug === areaSlug);
+  return city && area ? <NeighborhoodContent city={city} area={area} /> : <NotFoundPage onNavigate={onNavigate} />;
+}
+
+function NeighborhoodContent({ city, area }: Props) {
   const path = neighborhoodPath(city.slug, area.slug);
 
   return (

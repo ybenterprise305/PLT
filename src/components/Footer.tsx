@@ -1,12 +1,10 @@
+import { services, counties } from '../generated/navigation';
 import React from 'react';
 import { Phone, MapPin, Clock, ChevronRight, ShieldCheck, Truck } from 'lucide-react';
 import { Logo } from './Logo';
-import { SERVICES_DATA } from '../data/servicesData';
-import { COUNTIES_DATA } from '../data/locationsData';
 import { useLanguage } from '../context/LanguageContext';
 import { LanguageToggle } from './LanguageToggle';
 import { SocialLinks } from './SocialLinks';
-import { SPANISH_SERVICES, SPANISH_COUNTIES } from '../data/spanishTranslations';
 import { trackPhoneClick } from '../utils/analytics';
 
 import { LocalizedA } from './LocalizedA';
@@ -98,9 +96,9 @@ export function Footer({ onNavigate }: FooterProps) {
               {isSpanish ? 'Servicios Móviles' : 'Mobile Services'}
             </h2>
             <ul className="space-y-1.5 text-xs">
-              {SERVICES_DATA.slice(0, 8).map((srv) => {
+              {services.map((srv) => {
                 const displayName = isSpanish 
-                  ? (SPANISH_SERVICES[srv.slug]?.name || srv.name)
+                  ? srv.spanishName
                   : srv.name;
 
                 return (
@@ -130,9 +128,9 @@ export function Footer({ onNavigate }: FooterProps) {
               {isSpanish ? 'Áreas de Servicio' : 'Service Areas'}
             </h2>
             <div className="space-y-3 text-xs">
-              {COUNTIES_DATA.map((county) => {
+              {counties.map((county) => {
                 const countyName = isSpanish
-                  ? (SPANISH_COUNTIES[county.slug]?.name || county.name)
+                  ? county.spanishName
                   : county.name;
 
                 return (
@@ -144,7 +142,7 @@ export function Footer({ onNavigate }: FooterProps) {
                       <span>{countyName}</span>
                     </LocalizedA>
                     <div className="flex flex-wrap gap-x-2 gap-y-1 text-slate-300 pl-4">
-                      {county.majorCities.slice(0, 3).map((city) => (
+                      {county.majorCities.map((city) => (
                         <LocalizedA href={`/service-areas/${city.slug}`}
                           key={city.id}
                           className="hover:text-amber-300 transition-colors cursor-pointer inline-flex min-h-[28px] items-center text-center"
@@ -233,7 +231,7 @@ export function Footer({ onNavigate }: FooterProps) {
         <p className="mb-5 max-w-4xl text-xs leading-5 text-slate-400">*{isSpanish ? 'Los tiempos de llegada anunciados son solo estimaciones, no garantías. Pueden variar según el tráfico, la ubicación, el clima y la disponibilidad de técnicos.' : 'Advertised arrival times are estimates only, not guarantees. Actual arrival varies with traffic, location, weather and technician availability.'} <LocalizedA href="/terms" className="underline underline-offset-2 hover:text-slate-200">{isSpanish ? 'Consulte los términos' : 'See Terms of Service'}</LocalizedA>.</p>
 
         {/* Bottom Bar: Copyright, Language Switcher & Quick Navigation */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400">
           <div className="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
             <span>
               &copy; {new Date().getFullYear()} Pro Locksmith Tech. {t('footer.rights')}

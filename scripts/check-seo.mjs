@@ -35,8 +35,15 @@ for (const file of files) {
   if (isSpanishPage && !html.includes('<html lang="es">')) problems.push(`${page}: Spanish page is not marked lang="es"`);
   if (isSpanishPage && hreflangs.length !== 3) problems.push(`${page}: ${hreflangs.length} language-alternate links (need 3)`);
   if (isSpanishPage && /noindex/.test(html)) problems.push(`${page}: Spanish page is set to noindex`);
-  if (titles.has(title)) problems.push(`${page}: same title as ${titles.get(title)}`);
-  titles.set(title, page);
+  const paid = /^\/(?:lp|landing|ad)\//.test(page);
+  if (paid) {
+    const canonical = page.replace(/^\/(?:landing|ad)\//, '/lp/') + '/';
+    if (!html.includes('name="robots" content="noindex, follow"')) problems.push(`${page}: paid route must be noindex`);
+    if (!html.includes(`rel="canonical" href="https://prolocksmith-tech.com${canonical}"`)) problems.push(`${page}: paid route canonical does not match the campaign`);
+  } else {
+    if (titles.has(title)) problems.push(`${page}: same title as ${titles.get(title)}`);
+    titles.set(title, page);
+  }
 
   for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
     try { JSON.parse(m[1]); } catch { problems.push(`${page}: a structured-data block is not valid JSON`); }

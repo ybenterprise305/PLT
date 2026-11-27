@@ -1,90 +1,59 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
-import React, { useState, useEffect, useCallback } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { MobileCallBar } from './components/MobileCallBar';
-import { HomePage } from './pages/HomePage';
-import { ServicesPage } from './pages/ServicesPage';
-import { ServiceDetailPage } from './pages/ServiceDetailPage';
-import { ServiceAreasPage } from './pages/ServiceAreasPage';
-import { LocationDetailPage } from './pages/LocationDetailPage';
-import { NeighborhoodPage } from './pages/NeighborhoodPage';
-import { getCityBySlug } from './data/locationsData';
-import { getNeighborhoods } from './data/neighborhoods';
-import { AboutPage } from './pages/AboutPage';
-import { ReviewsPage } from './pages/ReviewsPage';
-import { ContactPage } from './pages/ContactPage';
-import { SitemapPage } from './pages/SitemapPage';
-import { FAQPage } from './pages/FAQPage';
-import { BlogListPage } from './pages/BlogListPage';
-import { BlogPostPage } from './pages/BlogPostPage';
-import { AdLandingPage } from './pages/AdLandingPage';
-import { SpanishContentPage } from './pages/SpanishContentPage';
-import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
-import { TermsPage } from './pages/TermsPage';
-import { LocksmithTipsPage } from './pages/LocksmithTipsPage';
-import { TipDetailPage } from './pages/TipDetailPage';
-import { NotFoundPage } from './pages/NotFoundPage';
 import { LanguageProvider, type Language } from './context/LanguageContext';
-import { isEsPath, stripLocale, localizePath, switchPath } from './utils/locale';
+import { isEsPath, localizePath, switchPath } from './utils/locale';
+import { loadRoute, matchRoute, type LoadedRoute } from './routes';
 
-import { LocalizedA } from './components/LocalizedA';
-interface AppProps {
-  /** Path to render. Used when pre-rendering at build time; in the browser the address bar decides. */
-  initialPath?: string;
-}
+export default function App({ initialRoute }: { initialRoute: LoadedRoute }) {
+  const [route, setRoute] = useState(initialRoute);
+  const navigation = useRef(0);
 
-export default function App({ initialPath }: AppProps) {
-  const [currentPath, setCurrentPath] = useState<string>(() => {
-    if (initialPath) return initialPath;
-    return (typeof window !== 'undefined' && window.location.pathname) || '/';
-  });
+  const openRoute = useCallback(async (url: URL, mode: 'push' | 'pop', scroll: boolean) => {
+    const id = ++navigation.current;
+    try {
+      const next = await loadRoute(url.pathname);
+      if (id !== navigation.current) return;
+      if (mode === 'push' && url.href !== window.location.href) {
+        window.history.pushState({}, '', url.href);
+      }
+      setRoute(next);
+      if (scroll) window.scrollTo({ top: 0, behavior: 'instant' });
+    } catch {
+      // The static document remains available when an older tab requests a retired chunk.
+      if (id === navigation.current) window.location.assign(url.href);
+    }
+  }, []);
 
   const navigate = useCallback((href: string) => {
-    // Spanish visitors stay on the Spanish version of pages that have one
     const lang = isEsPath(window.location.pathname) ? 'es' : 'en';
     const url = new URL(localizePath(href, lang), window.location.origin);
-    const next = url.pathname + url.search + url.hash;
-    const current = window.location.pathname + window.location.search + window.location.hash;
-    if (current !== next) {
-      window.history.pushState({}, '', next);
-    }
-    setCurrentPath(url.pathname);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, []);
+    openRoute(url, 'push', true);
+  }, [openRoute]);
 
   const switchLanguage = useCallback((lang: Language) => {
     const here = window.location.pathname + window.location.search + window.location.hash;
-    const next = switchPath(here, lang);
-    window.history.pushState({}, '', next);
-    setCurrentPath(new URL(next, window.location.origin).pathname);
-  }, []);
+    const next = new URL(switchPath(here, lang), window.location.origin);
+    openRoute(next, 'push', false);
+  }, [openRoute]);
 
   useEffect(() => {
-    const handlePopState = () => {
-      setCurrentPath(window.location.pathname || '/');
-    };
+    const handlePopState = () => openRoute(new URL(window.location.href), 'pop', false);
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
-  }, []);
+  }, [openRoute]);
 
-  // Real <LocalizedA href="/..."> links work without JavaScript (and for search engines); with
-  // JavaScript, this turns an ordinary click into a fast in-page navigation.
   useEffect(() => {
     const handleClick = (event: MouseEvent) => {
       if (event.defaultPrevented || event.button !== 0) return;
       if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-      const target = event.target as Element | null;
-      const anchor = target && 'closest' in target ? (target.closest('a[href]') as HTMLAnchorElement | null) : null;
-      if (!anchor) return;
-      if (anchor.target && anchor.target !== '_self') return;
-      if (anchor.hasAttribute('download')) return;
+      const anchor = (event.target as Element | null)?.closest?.('a[href]') as HTMLAnchorElement | null;
+      if (!anchor || (anchor.target && anchor.target !== '_self') || anchor.hasAttribute('download')) return;
       const href = anchor.getAttribute('href') || '';
       if (!href.startsWith('/') || href.startsWith('//')) return;
+      const pathname = new URL(href, location.origin).pathname;
+      if (pathname.includes('.') || matchRoute(pathname).name === 'NotFoundPage') return;
       event.preventDefault();
       navigate(href);
     };
@@ -92,102 +61,29 @@ export default function App({ initialPath }: AppProps) {
     return () => document.removeEventListener('click', handleClick);
   }, [navigate]);
 
-  // Route matching
-  const fullPath = currentPath.replace(/\/+$/, '') || '/';
-  const normalizedPath = stripLocale(fullPath); // '/es/services' is matched as '/services'
+  const { Component } = route;
+  const content = <Component key={route.fullPath} path={route.path} slug={route.slug} onNavigate={navigate} />;
+  const spanishContent = route.name === 'SpanishContentPage';
 
-  // Render full Spanish copy on every indexable /es page, not mixed English templates.
-  // Keep the bilingual homepage separate and let the shared layout translate its navigation.
-  if (isEsPath(fullPath) && normalizedPath !== '/' && (
-    ['/services', '/service-areas', '/about', '/contact', '/faq'].includes(normalizedPath) ||
-    normalizedPath.startsWith('/services/') || /^\/service-areas\/[^/]+$/.test(normalizedPath)
-  )) {
-    return (
-      <LanguageProvider path={fullPath} onSwitch={switchLanguage}>
-        <div className="flex min-h-screen w-full flex-col overflow-x-clip bg-slate-950 text-slate-100">
-          <Header currentPath={normalizedPath} onNavigate={navigate} />
-          <main className="flex-1 pb-24 lg:pb-0"><SpanishContentPage path={normalizedPath} /></main>
-          <Footer onNavigate={navigate} />
-          <MobileCallBar />
-        </div>
-      </LanguageProvider>
-    );
-  }
-
-
-  // Check for dedicated standalone Ad Landing Pages (/lp/:slug or /landing/:slug or /ad/:slug)
-  if (normalizedPath.startsWith('/lp/') || normalizedPath.startsWith('/landing/') || normalizedPath.startsWith('/ad/')) {
-    const slug = normalizedPath.replace(/^\/(lp|landing|ad)\//, '');
-    return (
-      <LanguageProvider path={fullPath} onSwitch={switchLanguage}>
-        <AdLandingPage slug={slug} onNavigate={navigate} />
-      </LanguageProvider>
-    );
-  }
-
-  let pageContent = null;
-
-  if (normalizedPath === '/') {
-    pageContent = <HomePage onNavigate={navigate} />;
-  } else if (normalizedPath === '/services') {
-    pageContent = <ServicesPage onNavigate={navigate} />;
-  } else if (normalizedPath.startsWith('/services/')) {
-    const slug = normalizedPath.replace('/services/', '');
-    pageContent = <ServiceDetailPage slug={slug} onNavigate={navigate} />;
-  } else if (normalizedPath === '/service-areas') {
-    pageContent = <ServiceAreasPage onNavigate={navigate} />;
-  } else if (normalizedPath.startsWith('/service-areas/')) {
-    const slug = normalizedPath.replace('/service-areas/', '');
-    const [citySlug, neighborhoodSlug, ...remaining] = slug.split('/');
-    if (neighborhoodSlug && remaining.length === 0) {
-      const city = getCityBySlug(citySlug)?.city;
-      const area = getNeighborhoods(citySlug).find((entry) => entry.slug === neighborhoodSlug);
-      pageContent = city && area && !isEsPath(fullPath)
-        ? <NeighborhoodPage city={city} area={area} />
-        : <NotFoundPage onNavigate={navigate} />;
-    } else {
-      pageContent = <LocationDetailPage slug={slug} onNavigate={navigate} />;
-    }
-  } else if (normalizedPath === '/blog') {
-    pageContent = <BlogListPage onNavigate={navigate} />;
-  } else if (normalizedPath.startsWith('/blog/')) {
-    const slug = normalizedPath.replace('/blog/', '');
-    pageContent = <BlogPostPage slug={slug} onNavigate={navigate} />;
-  } else if (normalizedPath === '/about') {
-    pageContent = <AboutPage onNavigate={navigate} />;
-  } else if (normalizedPath === '/reviews') {
-    pageContent = <ReviewsPage />;
-  } else if (normalizedPath === '/contact') {
-    pageContent = <ContactPage onNavigate={navigate} />;
-  } else if (normalizedPath === '/faq') {
-    pageContent = <FAQPage onNavigate={navigate} />;
-  } else if (normalizedPath === '/tips') {
-    pageContent = <LocksmithTipsPage onNavigate={navigate} />;
-  } else if (normalizedPath.startsWith('/tips/')) {
-    const slug = normalizedPath.replace('/tips/', '');
-    pageContent = <TipDetailPage slug={slug} onNavigate={navigate} />;
-  } else if (normalizedPath === '/privacy') {
-    pageContent = <PrivacyPolicyPage onNavigate={navigate} />;
-  } else if (normalizedPath === '/terms') {
-    pageContent = <TermsPage onNavigate={navigate} />;
-  } else if (normalizedPath === '/sitemap') {
-    pageContent = <SitemapPage onNavigate={navigate} />;
-  } else {
-    pageContent = <NotFoundPage onNavigate={navigate} />;
+  if (route.name === 'AdLandingPage') {
+    return <LanguageProvider path={route.fullPath} onSwitch={switchLanguage}>{content}</LanguageProvider>;
   }
 
   return (
-    <LanguageProvider path={fullPath} onSwitch={switchLanguage}>
-      <div className="flex flex-col min-h-screen bg-slate-900 text-slate-100 font-sans selection:bg-amber-500 selection:text-slate-950 overflow-x-clip w-full">
+    <LanguageProvider path={route.fullPath} onSwitch={switchLanguage}>
+      <div className={spanishContent
+        ? 'flex min-h-screen w-full flex-col overflow-x-clip bg-slate-950 text-slate-100'
+        : 'flex flex-col min-h-screen bg-slate-900 text-slate-100 font-sans selection:bg-amber-500 selection:text-slate-950 overflow-x-clip w-full'}>
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:bg-slate-950 focus:p-3 focus:text-white">{isEsPath(route.fullPath) ? "Ir al contenido" : "Skip to main content"}</a>
         {/* Header with call-to-phone links, language toggle, and full phone number */}
         <Header
-          currentPath={normalizedPath}
+          currentPath={route.path}
           onNavigate={navigate}
         />
 
         {/* Main Page Area with generous smartphone bottom clearance for the sticky call bar */}
-        <main className="flex-1 pb-24 sm:pb-28 lg:pb-0 w-full">
-          {pageContent}
+        <main id="main-content" className={spanishContent ? "flex-1 pb-24 lg:pb-0" : "flex-1 pb-24 sm:pb-28 lg:pb-0 w-full"}>
+          {content}
         </main>
 
         {/* Footer */}

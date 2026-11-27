@@ -152,14 +152,13 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
           : 'bg-slate-900 border-b border-slate-800'
       }`}>
         <div className="max-w-[1600px] mx-auto px-3 sm:px-6 lg:px-10 xl:px-12">
-          <div className="flex items-center justify-between h-16 sm:h-20">
+          <div className="flex items-center justify-between gap-1 h-16 sm:h-20">
             
             {/* Logo: Scaled properly for smartphone screens */}
             <LocalizedA href="/"
-              className="flex items-center text-left group focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 rounded-lg p-0.5 transition-opacity hover:opacity-95 shrink-0 cursor-pointer"
-              aria-label="Pro Locksmith Tech Home"
+              className="flex items-center text-left group focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 rounded-lg p-0.5 transition-opacity hover:opacity-95 min-w-0 cursor-pointer"
              onClick={() => setMobileMenuOpen(false)}>
-              <Logo size="md" textColor="light" />
+              <Logo size="md" textColor="light" compactHeader />
             </LocalizedA>
 
             {/* Desktop Navigation Links (ONLY 4 Main Links) */}
@@ -218,7 +217,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
             </div>
 
             {/* Mobile Actions: Clean, Non-Crowded Layout */}
-            <div className="flex items-center gap-1.5 sm:gap-2 lg:hidden">
+            <div className="flex shrink-0 items-center gap-1 sm:gap-2 lg:hidden">
               {/* Compact Language Toggle */}
               <LanguageToggle variant="compact" />
 
@@ -226,8 +225,8 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
               <LocalizedA
                 href="tel:+17542616528"
                 onClick={() => trackPhoneClick({ ctaLocation: 'header_mobile_top_btn', pagePath: currentPath })}
-                className="px-2.5 py-2 rounded-xl bg-amber-500 active:bg-amber-400 text-slate-950 font-black shadow-md flex items-center gap-1 text-xs uppercase cursor-pointer min-h-[40px]"
-                aria-label="Call Pro Locksmith Tech"
+                className="px-1.5 min-[360px]:px-2.5 py-2 rounded-xl bg-amber-500 active:bg-amber-400 text-slate-950 font-black shadow-md flex items-center gap-1 text-xs uppercase cursor-pointer min-h-[40px]"
+                aria-label={isSpanish ? "Llamar a Pro Locksmith Tech" : "Call Pro Locksmith Tech"}
               >
                 <Phone className="w-3.5 h-3.5 fill-current" />
                 <span>{t('nav.call')}</span>
@@ -236,7 +235,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
               {/* Hamburger Button with Accessible Touch Area */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="w-11 h-11 rounded-xl bg-slate-800 active:bg-slate-700 text-slate-200 hover:text-white flex items-center justify-center transition-colors focus:outline-none cursor-pointer"
+                className="w-10 min-[360px]:w-11 h-11 rounded-xl bg-slate-800 active:bg-slate-700 text-slate-200 hover:text-white flex items-center justify-center transition-colors focus-visible:outline-2 focus-visible:outline-amber-400 cursor-pointer"
                 aria-label={mobileMenuOpen ? (isSpanish ? 'Cerrar menú' : 'Close menu') : (isSpanish ? 'Abrir menú' : 'Open menu')}
                 aria-expanded={mobileMenuOpen}
                 aria-controls="mobile-site-navigation"

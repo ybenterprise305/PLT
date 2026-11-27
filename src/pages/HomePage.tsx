@@ -1,3 +1,5 @@
+import { homeVan } from '../assets/images/vanImages';
+import { PHONE, TEL } from '../config/business';
 import React from 'react';
 import { Phone, Car, Home, Building2, KeyRound, ArrowRight, Clock, MapPin, ShieldCheck } from 'lucide-react';
 import { SEOHead } from '../components/SEOHead';
@@ -8,8 +10,6 @@ import { trackPhoneClick } from '../utils/analytics';
 import { ReviewCarousel } from '../components/ReviewCarousel';
 
 interface HomePageProps { onNavigate: (path: string) => void; }
-const TEL = 'tel:+17542616528';
-const PHONE = '(754) 261-6528';
 
 const services = [
   { slug: 'automotive-locksmith', en: 'Car Lockouts & Keys', es: 'Apertura y llaves de autos', enDesc: 'Locked out or lost your keys? We come to your vehicle.', esDesc: '¿Quedó fuera de su auto o perdió sus llaves? Vamos hasta usted.', img: getServiceImage('automotive-locksmith').src, srcSet: getServiceImage('automotive-locksmith').srcSet, icon: Car },
@@ -58,8 +58,8 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
           </div>
           <div className="overflow-hidden rounded-3xl border border-slate-700 bg-slate-900 shadow-xl">
             <picture>
-              <source type="image/avif" srcSet="/home-images/mobile-van-360.avif 360w, /home-images/mobile-van-480.avif 480w, /home-images/mobile-van-720.avif 720w, /home-images/mobile-van-960.avif 960w" sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1023px) calc(100vw - 40px), 50vw" />
-              <img src="/home-images/mobile-van-720.webp" srcSet="/home-images/mobile-van-360.webp 360w, /home-images/mobile-van-480.webp 480w, /home-images/mobile-van-720.webp 720w, /home-images/mobile-van-960.webp 960w" sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1023px) calc(100vw - 40px), 50vw" width={960} height={720} alt={isSpanish ? 'Camioneta de servicio móvil con equipos de cerrajería' : 'Illustrative mobile locksmith service van with equipment'} className="aspect-[4/3] w-full object-cover" fetchPriority="high" loading="eager" decoding="sync" />
+              <source type="image/avif" srcSet={homeVan.srcSet('avif')} sizes={homeVan.sizes} />
+              <img src={homeVan.src} srcSet={homeVan.srcSet('webp')} sizes={homeVan.sizes} width={960} height={720} alt={isSpanish ? 'Camioneta de servicio móvil con equipos de cerrajería' : 'Illustrative mobile locksmith service van with equipment'} className="aspect-[4/3] w-full object-cover" fetchPriority="high" loading="eager" decoding="sync" />
             </picture>
           </div>
         </div>
@@ -75,7 +75,7 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
             {services.map((service) => (
               <LocalizedA href={'/services/' + service.slug} key={service.slug}
                 className="group overflow-hidden rounded-2xl border border-slate-700 bg-slate-950 transition-colors hover:border-amber-400">
-                <img src={service.img} srcSet={service.srcSet} sizes="(max-width: 767px) 100vw, 33vw" width={960} height={540} alt={isSpanish ? service.es : service.en} loading="lazy" decoding="async" className="aspect-[16/9] w-full object-cover" />
+                <img src={service.img} srcSet={service.srcSet} sizes="(max-width: 767px) calc(100vw - 42px), (max-width: 1279px) 31vw, 410px" width={960} height={540} alt={isSpanish ? service.es : service.en} loading="lazy" decoding="async" className="aspect-[16/9] w-full object-cover" />
                 <div className="space-y-2 p-5">
                   <h3 className="text-xl font-bold">{isSpanish ? service.es : service.en}</h3>
                   <p className="min-h-[56px] text-base leading-6 text-slate-300">{isSpanish ? service.esDesc : service.enDesc}</p>

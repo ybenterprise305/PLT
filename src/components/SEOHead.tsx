@@ -1,8 +1,8 @@
+import { SITE } from '../config/business';
 import { useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { canonicalSitePath, hasSpanishVersion, localizePath, stripLocale } from '../utils/locale';
 
-const SITE = 'https://prolocksmith-tech.com';
 
 interface SEOHeadProps {
   title: string;

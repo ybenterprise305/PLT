@@ -7,3 +7,9 @@ coverage/
 .env*
 !.env.example
 dist-server
+
+/src/generated/
+/public/home-images/
+/public/ppc-images/*-[0-9]*.webp
+/public/service-images/
+/.wrangler/
