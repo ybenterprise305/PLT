@@ -1,3 +1,4 @@
+import { Breadcrumbs } from '../components/Breadcrumbs';
 import React, { useState } from 'react';
 import { BookOpen, Clock, ArrowRight, Phone, Tag, ShieldCheck, Truck } from 'lucide-react';
 import { SEOHead } from '../components/SEOHead';
@@ -23,6 +24,7 @@ export function BlogListPage({ onNavigate }: BlogListPageProps) {
         description="Helpful guides and technical advice from Pro Locksmith Tech. Learn about car lockouts, key fob programming, rekeying vs replacement, and South Florida home security."
         keywords="locksmith blog, car lockout tips, rekeying guide, car key programming advice, South Florida locksmith tips, mobile locksmith blog"
       />
+      <div className="mx-auto max-w-7xl px-5 pb-3"><Breadcrumbs trail={[['Blog', '/blog']]} /></div>
 
       {/* Header Banner */}
       <section className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 mb-12">

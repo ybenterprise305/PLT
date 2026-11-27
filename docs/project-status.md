@@ -6,7 +6,7 @@
 |---|---|---|
 | I | Elite technical engineering | Published and verified |
 | II | Advanced technical SEO | See Phase II implementation and verification |
-| III | Structured data and business entity authority | Awaiting explicit approval |
+| III | Structured data and business entity authority | See Phase III implementation and verification |
 | IV | AEO, AIO, GEO and agentic browsing | Awaiting explicit approval |
 | V | Content and topical authority | Awaiting explicit approval |
 | VI | Advanced local SEO | Awaiting explicit approval |
@@ -39,3 +39,7 @@ Field data is still sparse. Remove no further attribution or analytics dependenc
 ## Phase II
 
 See [Phase II technical SEO implementation](phase-ii-technical-seo.md) for the architecture, index policy, search-intent map and baseline issue register.
+
+## Phase III
+
+See [Phase III structured data and business identity](phase-iii-structured-data.md) for the site entity, schema policy, validation and recovery instructions.

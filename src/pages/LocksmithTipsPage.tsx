@@ -1,3 +1,4 @@
+import { Breadcrumbs } from '../components/Breadcrumbs';
 import React, { useState } from 'react';
 import { 
   KeyRound, 
@@ -37,24 +38,6 @@ export function LocksmithTipsPage({ onNavigate }: LocksmithTipsPageProps) {
     return matchesCategory && matchesSearch;
   });
 
-  // Schema.org CollectionPage / ItemList
-  const tipsSchema = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Locksmith Tips, Tricks & Technical Guides | Pro Locksmith Tech",
-    "description": "Expert technical guides and troubleshooting tips for broken key extraction, transponder car key programming, sticking locks, and commercial door hardware in South Florida.",
-    "url": "https://prolocksmith-tech.com/tips",
-    "mainEntity": {
-      "@type": "ItemList",
-      "itemListElement": LOCKSMITH_TIPS_DATA.map((tip, idx) => ({
-        "@type": "ListItem",
-        "position": idx + 1,
-        "name": tip.title,
-        "url": `https://prolocksmith-tech.com/tips/${tip.slug}`
-      }))
-    }
-  };
-
   const getCategoryIcon = (category: string) => {
     switch (category) {
       case 'Automotive':
@@ -78,11 +61,8 @@ export function LocksmithTipsPage({ onNavigate }: LocksmithTipsPageProps) {
         keywords="locksmith tips and tricks, how to extract broken key, car key programming guide, sticky lock repair, smart lock dead battery, high security deadbolts, South Florida locksmith"
         canonicalPath="/tips"
       />
+      <div className="mx-auto max-w-7xl px-5 pb-3"><Breadcrumbs trail={[['Locksmith Tips', '/tips']]} /></div>
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(tipsSchema) }}
-      />
 
       {/* Header Banner */}
       <section className="relative bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 py-16 sm:py-20 border-b border-slate-800">

@@ -1,5 +1,4 @@
 import { Breadcrumbs } from '../components/Breadcrumbs';
-import { breadcrumbSchema } from '../utils/breadcrumbs';
 import React from 'react';
 import { 
   KeyRound, 
@@ -77,7 +76,6 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
   const searchMetadata = SERVICE_SEARCH_METADATA[service.slug];
 
   const trail: [string, string][] = [[t('nav.services'), '/services'], [serviceName, '/services/' + service.slug]];
-  const serviceBreadcrumbs = { '@context': 'https://schema.org', ...breadcrumbSchema(trail) };
 
   return (
     <div className="min-h-screen bg-slate-900 text-slate-100 py-10">
@@ -94,11 +92,6 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
         canonicalPath={`/services/${service.slug}`}
       />
 
-      {/* JSON-LD Schema Script */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceBreadcrumbs) }}
-      />
 
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 space-y-12">
         

@@ -1,3 +1,5 @@
+import { StructuredData } from '../components/StructuredData';
+import { articleData } from '../utils/structuredData';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import React, { useState } from 'react';
 import { 
@@ -20,7 +22,6 @@ import {
   Building2,
   KeyRound
 } from 'lucide-react';
-import { breadcrumbSchema } from '../utils/breadcrumbs';
 import { SEOHead } from '../components/SEOHead';
 import { LOCKSMITH_TIPS_DATA, LocksmithTip } from '../data/locksmithTipsData';
 
@@ -59,57 +60,6 @@ export function TipDetailPage({ slug, onNavigate }: TipDetailPageProps) {
     tip.relatedTipsSlugs.includes(t.slug)
   ).slice(0, 3);
 
-  // Schema.org HowTo & FAQPage structured data
-  const tipSchema = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "TechArticle",
-        "@id": `https://prolocksmith-tech.com/tips/${tip.slug}/#article`,
-        "headline": tip.title,
-        "description": tip.metaDescription,
-        "author": {
-          "@type": "Organization",
-          "name": "Pro Locksmith Tech",
-          "url": "https://prolocksmith-tech.com"
-        },
-        "publisher": {
-          "@type": "Organization",
-          "name": "Pro Locksmith Tech",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://prolocksmith-tech.com/icon-512.png"
-          }
-        },
-        "mainEntityOfPage": `https://prolocksmith-tech.com/tips/${tip.slug}/`,
-        "keywords": tip.keywords.join(', ')
-      },
-      {
-        "@type": "HowTo",
-        "@id": `https://prolocksmith-tech.com/tips/${tip.slug}/#howto`,
-        "name": tip.title,
-        "description": tip.summary,
-        "step": tip.stepByStep.map((s) => ({
-          "@type": "HowToStep",
-          "position": s.step,
-          "name": s.title,
-          "text": s.instruction
-        }))
-      },
-      {
-        "@type": "FAQPage",
-        "@id": `https://prolocksmith-tech.com/tips/${tip.slug}/#faq`,
-        "mainEntity": tip.faqs.map((f) => ({
-          "@type": "Question",
-          "name": f.question,
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": f.answer
-          }
-        }))
-      }
-    ]
-  };
 
   const getCategoryIcon = (category: string) => {
     switch (category) {
@@ -134,18 +84,10 @@ export function TipDetailPage({ slug, onNavigate }: TipDetailPageProps) {
         keywords={tip.keywords.join(', ')}
         canonicalPath={`/tips/${tip.slug}`}
       />
-
-      {/* JSON-LD Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(tipSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({ '@context': 'https://schema.org', ...breadcrumbSchema([['Locksmith Tips', '/tips'], [tip.title, `/tips/${tip.slug}`]]) }),
-        }}
-      />
+      <StructuredData data={articleData({
+        type: 'Article', path: `/tips/${tip.slug}`, language: 'en',
+        headline: tip.title, description: tip.summary,
+      })} />
 
       {/* Breadcrumb & Navigation Bar */}
       <div className="bg-slate-950/80 border-b border-slate-800 py-3 px-4 sm:px-6 lg:px-10 xl:px-12 text-xs text-slate-400">

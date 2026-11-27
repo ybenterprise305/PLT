@@ -1,5 +1,4 @@
 import { Breadcrumbs } from '../components/Breadcrumbs';
-import { breadcrumbSchema } from '../utils/breadcrumbs';
 import { PHONE, TEL } from '../config/business';
 import React from 'react';
 import { Phone, MapPin, ArrowRight, Clock, Car, Home, ShieldCheck } from 'lucide-react';
@@ -58,18 +57,15 @@ export function SpanishContentPage({ path }: Props) {
     : [[title, '/services']];
   const areaTrail: [string, string][] = cityMatch
     ? [['Áreas de servicio', '/service-areas'], [cityMatch.county.name, '/service-areas/' + cityMatch.county.slug], [title, path]]
-    : [['Áreas de servicio', '/service-areas'], [title, path]];
+    : path === '/service-areas' ? [[title, path]] : [['Áreas de servicio', '/service-areas'], [title, path]];
   const showServiceTrail = path === '/services' || Boolean(service);
   const image = service ? getServiceImage(service.slug).src : homeVan.src;
 
   return (
     <div className="min-h-screen bg-slate-950 pb-12 text-white">
       <SEOHead title={title + ' | Pro Locksmith Tech'} description={desc + ' Llame al ' + PHONE + '.'} canonicalPath={path} />
-      {showServiceTrail && (
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', ...breadcrumbSchema(serviceTrail, 'es') }) }} />
-      )}
       <section className="mx-auto max-w-6xl px-5 py-10 sm:py-16">
-        {(showServiceTrail || cityMatch || county) && <div className="mb-5"><Breadcrumbs trail={showServiceTrail ? serviceTrail : areaTrail} /></div>}
+        {(showServiceTrail || path === '/service-areas' || cityMatch || county) && <div className="mb-5"><Breadcrumbs trail={showServiceTrail ? serviceTrail : areaTrail} /></div>}
         <div className="grid items-center gap-7 lg:grid-cols-2 lg:gap-12">
           <div className="space-y-5">
             <p className="inline-flex items-center gap-2 text-sm font-semibold text-amber-300"><Clock className="h-4 w-4"/>Cerrajería móvil 24/7 · Sur de Florida</p>

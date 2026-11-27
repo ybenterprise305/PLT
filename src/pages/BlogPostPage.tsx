@@ -1,3 +1,5 @@
+import { StructuredData } from '../components/StructuredData';
+import { articleData } from '../utils/structuredData';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import React from 'react';
 import { 
@@ -18,7 +20,6 @@ import { SEOHead } from '../components/SEOHead';
 import { BLOG_POSTS } from '../data/blogData';
 import { trackPhoneClick } from '../utils/analytics';
 import { NotFoundPage } from './NotFoundPage';
-import { breadcrumbSchema } from '../utils/breadcrumbs';
 
 import { LocalizedA } from '../components/LocalizedA';
 interface BlogPostPageProps {
@@ -30,38 +31,13 @@ export function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
   const post = BLOG_POSTS.find(p => p.slug === slug);
   if (!post) return <NotFoundPage onNavigate={onNavigate} />;
 
+  const published = new Date(post.date + ' UTC').toISOString().slice(0, 10);
   const otherPosts = BLOG_POSTS.filter(p => p.slug !== post.slug);
   const relatedPosts = [
     ...otherPosts.filter(p => p.category === post.category),
     ...otherPosts.filter(p => p.category !== post.category),
   ].slice(0, 3);
 
-  // Schema.org BlogPosting Structured Data
-  const blogPostingSchema = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": post.title,
-    "description": post.metaDescription,
-    "image": post.image,
-    "datePublished": new Date(post.date + " UTC").toISOString().slice(0, 10),
-    "author": {
-      "@type": "Organization",
-      "name": "Pro Locksmith Tech",
-      "url": "https://prolocksmith-tech.com"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Pro Locksmith Tech",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://prolocksmith-tech.com/icon-512.png"
-      }
-    },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": `https://prolocksmith-tech.com/blog/${post.slug}/`
-    }
-  };
 
   return (
     <div className="min-h-screen bg-slate-900 text-slate-100 py-10">
@@ -71,17 +47,11 @@ export function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
         keywords={post.keywords.join(', ')}
         ogType="article"
       />
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({ '@context': 'https://schema.org', ...breadcrumbSchema([['Blog', '/blog'], [post.title, `/blog/${post.slug}`]]) }),
-        }}
-      />
+      <StructuredData data={articleData({
+        type: 'BlogPosting', path: `/blog/${post.slug}`, language: 'en',
+        headline: post.title, description: post.excerpt,
+        author: post.author, datePublished: published, image: post.image,
+      })} />
 
       {/* Main Container */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
@@ -111,7 +81,7 @@ export function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
           <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400 border-b border-slate-800 pb-6">
             <span className="flex items-center gap-1.5">
               <Calendar className="w-3.5 h-3.5 text-amber-400" />
-              <span>{post.date}</span>
+              <time dateTime={published}>{post.date}</time>
             </span>
             <span className="flex items-center gap-1.5">
               <Clock className="w-3.5 h-3.5 text-amber-400" />
@@ -119,7 +89,7 @@ export function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
             </span>
             <span className="flex items-center gap-1.5">
               <User className="w-3.5 h-3.5 text-amber-400" />
-              <span>{post.author}</span>
+              <span className="article-byline">{post.author}</span>
             </span>
             <span className="flex items-center gap-1.5 text-emerald-400 font-semibold">
               <Truck className="w-3.5 h-3.5" />
@@ -127,6 +97,8 @@ export function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
             </span>
           </div>
         </header>
+
+        <p className="mb-6 text-sm leading-relaxed text-slate-300">{post.excerpt}</p>
 
         {post.relatedAreas && (
           <nav aria-label="Related service areas" className="mb-6 flex flex-wrap items-center gap-3 text-sm">

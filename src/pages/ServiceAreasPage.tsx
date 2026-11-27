@@ -1,3 +1,4 @@
+import { Breadcrumbs } from '../components/Breadcrumbs';
 import { homeVan } from '../assets/images/vanImages';
 import React, { useState, useMemo } from 'react';
 import { MapPin, Phone, ArrowRight, Navigation,  Search, CheckCircle2 } from 'lucide-react';
@@ -35,47 +36,6 @@ export function ServiceAreasPage({ onNavigate }: ServiceAreasPageProps) {
     });
   }, [allCities, selectedCountyFilter, searchQuery]);
 
-  // Schema.org ItemList for Service Area Cities Index
-  const serviceAreasSchema = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": ["Locksmith", "LocalBusiness", "AutomotiveBusiness"],
-        "@id": "https://prolocksmith-tech.com/#locksmith",
-        "name": "Pro Locksmith Tech",
-        "url": "https://prolocksmith-tech.com/",
-        "telephone": "+1-754-261-6528",
-        "email": "prolocksmithtech@gmail.com",
-        "image": "https://prolocksmith-tech.com/icon-512.png",
-        "priceRange": "$$",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Coral Springs",
-          "addressRegion": "FL",
-          "postalCode": "33076",
-          "addressCountry": "US"
-        },
-        "description": "24/7 mobile locksmith dispatch covering 37 cities across Broward, Miami-Dade, and Palm Beach counties in South Florida.",
-        "areaServed": COUNTIES_DATA.map(county => ({
-          "@type": "AdministrativeArea",
-          "name": `${county.name}, Florida`
-        }))
-      },
-      {
-        "@type": "ItemList",
-        "@id": "https://prolocksmith-tech.com/service-areas#cities",
-        "name": "South Florida Mobile Locksmith Coverage Cities",
-        "numberOfItems": allCities.length,
-        "itemListElement": allCities.map(({ city }, index) => ({
-          "@type": "ListItem",
-          "position": index + 1,
-          "name": `Locksmith Services in ${city.name}, FL`,
-          "url": `https://prolocksmith-tech.com/service-areas/${city.slug}`
-        }))
-      }
-    ]
-  };
-
   return (
     <div className="min-h-screen bg-slate-900 text-slate-100 py-12">
       <SEOHead
@@ -89,14 +49,9 @@ export function ServiceAreasPage({ onNavigate }: ServiceAreasPageProps) {
         keywords="locksmith South Florida, cerrajero South Florida, mobile locksmith South Florida, locksmith Broward County, locksmith Miami, locksmith Palm Beach County, emergency locksmith service areas"
       />
 
-      {/* Structured Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceAreasSchema) }}
-      />
-
       {/* Hero Header */}
       <section className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 mb-12">
+        <div className="mb-4"><Breadcrumbs trail={[['Service Areas', '/service-areas']]} /></div>
         <div className="bg-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-10 relative overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             

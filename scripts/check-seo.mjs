@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { parse } from 'parse5';
+import { validateStructuredData } from './check-structured-data.mjs';
 
 const dist = path.resolve('dist');
 const { pages, redirects } = JSON.parse(fs.readFileSync('src/generated/build-seo-inventory.json', 'utf8'));
@@ -47,29 +48,6 @@ function noteDuplicate(map, value, field, pathname) {
   if (!value) return;
   if (map.has(value)) errors.push(`${pathname}: duplicate ${field} with ${map.get(value)}`);
   map.set(value, pathname);
-}
-
-function validateSchema(node, pathname) {
-  if (!node || typeof node !== 'object') return;
-  if (node['@type'] === 'BreadcrumbList') {
-    const trail = node.itemListElement;
-    if (!Array.isArray(trail) || trail.length < 2) errors.push(`${pathname}: incomplete breadcrumb structured data`);
-    for (const [index, crumb] of (trail || []).entries()) {
-      if (crumb.position !== index + 1 || !crumb.name || !crumb.item) {
-        errors.push(`${pathname}: invalid breadcrumb item ${index + 1}`);
-        continue;
-      }
-      const url = new URL(crumb.item, site);
-      if (url.origin !== site || !byPath.get(url.pathname)?.indexable || url.href !== byPath.get(url.pathname)?.canonical) {
-        errors.push(`${pathname}: breadcrumb uses a noncanonical destination ${crumb.item}`);
-      }
-    }
-  }
-  if (['BlogPosting', 'TechArticle'].includes(node['@type']) && node.mainEntityOfPage) {
-    const reference = typeof node.mainEntityOfPage === 'string' ? node.mainEntityOfPage : node.mainEntityOfPage['@id'];
-    if (reference !== byPath.get(pathname)?.canonical) errors.push(`${pathname}: article page reference is not canonical`);
-  }
-  for (const value of Object.values(node)) validateSchema(value, pathname);
 }
 
 if (byPath.size !== pages.length) errors.push('Duplicate registry paths');
@@ -134,10 +112,7 @@ for (const [pathname, page] of byPath) {
       errors.push(`${pathname}: nonreciprocal alternate ${url}`);
     }
   }
-  for (const node of document.filter(node => node.tagName === 'script' && attr(node, 'type') === 'application/ld+json')) {
-    try { validateSchema(JSON.parse(plain(node)), pathname); }
-    catch { errors.push(`${pathname}: invalid JSON-LD document`); }
-  }
+  const structuredData = validateStructuredData({ document, page, pathname, byPath, site, dist, elements, attr, plain, errors });
 
   if (page.indexable) {
     noteDuplicate(seenTitles, title[0], 'title', pathname);
@@ -173,7 +148,7 @@ for (const [pathname, page] of byPath) {
     }
   }
   graph.set(pathname, children);
-  inventory.push({ ...page, pathname, heading: plain(h1[0]), internalLinks: [...children].sort() });
+  inventory.push({ ...page, pathname, heading: plain(h1[0]), structuredData, internalLinks: [...children].sort() });
 }
 
 const seen = new Set();

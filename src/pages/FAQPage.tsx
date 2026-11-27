@@ -32,20 +32,6 @@ export function FAQPage({ onNavigate }: FAQPageProps) {
     setExpandedId(prev => prev === id ? null : id);
   };
 
-  // Structured Data Schema for FAQPage
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": (isSpanish ? SPANISH_FAQS : FAQ_DATA).map(item => ({
-      "@type": "Question",
-      "name": item.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.answer
-      }
-    }))
-  };
-
   return (
     <div className="min-h-screen bg-slate-900 text-slate-100 py-12">
       <SEOHead
@@ -57,12 +43,6 @@ export function FAQPage({ onNavigate }: FAQPageProps) {
           : "Common questions about our 24/7 mobile locksmith service across Broward, Miami-Dade, and Palm Beach counties. Learn how our on-site mobile dispatch works."}
         canonicalPath="/faq"
         keywords="locksmith FAQ, preguntas cerrajero, mobile locksmith questions, emergency locksmith South Florida, do locksmiths come to you, locksmith service areas"
-      />
-
-      {/* JSON-LD Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 space-y-12">
