@@ -2,8 +2,8 @@ import type { FAQItem } from './faqData';
 
 const questions: { en: FAQItem; es: Pick<FAQItem, 'question' | 'answer'> }[] = [
   {
-    en: { id: 'car-key-no-spare', category: 'automotive', question: 'Can I request a replacement car key if I have no spare?', answer: 'Yes. Some vehicles can get a replacement key at their location even when every working copy is missing. Tell us the year, make, model and how the car starts so we can confirm compatibility. Have identification and proof of authorization to access the vehicle available.' },
-    es: { question: '¿Puedo pedir una llave de auto si no tengo copia?', answer: 'Sí. En algunos vehículos se puede preparar una llave de reemplazo en el lugar aunque no quede ninguna copia. Indíquenos el año, la marca, el modelo y cómo arranca el auto para confirmar la compatibilidad. Tenga a mano su identificación y un comprobante de que tiene autorización para acceder al vehículo.' },
+    en: { id: 'car-key-no-spare', category: 'automotive', question: 'Can I request a replacement car key if I have no spare?', answer: 'Yes. Some vehicles can get a replacement key at their location even when every working copy is missing. Our technicians carry a wide range of replacement keys and fobs for on-site cutting and programming. Call to request same-day service.' },
+    es: { question: '¿Puedo pedir una llave de auto si no tengo copia?', answer: 'Sí. En algunos vehículos se puede preparar una llave de reemplazo en el lugar aunque no quede ninguna copia. Llevamos una amplia variedad de llaves y controles para corte y programación en el lugar. Llame para solicitar servicio el mismo día.' },
   },
   {
     en: { id: 'garage-vehicle-service', category: 'mobile', question: 'Can a mobile locksmith meet me in a condo or parking garage?', answer: 'Call to confirm access before dispatch. Give the building or garage name, entrance, parking level and location of the vehicle. Let us know about visitor check-in, valet-only access or a vehicle height limit.' },
