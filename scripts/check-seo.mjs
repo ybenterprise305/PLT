@@ -1,85 +1,216 @@
-// Checks every pre-rendered page for basic search-engine problems. Runs in CI after the build.
 import fs from 'node:fs';
 import path from 'node:path';
+import { parse } from 'parse5';
 
-function walk(dir) {
-  return fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) => {
-    const p = path.join(dir, e.name);
-    return e.isDirectory() ? walk(p) : e.name === 'index.html' ? [p] : [];
-  });
+const dist = path.resolve('dist');
+const { pages, redirects } = JSON.parse(fs.readFileSync('src/generated/build-seo-inventory.json', 'utf8'));
+const site = new URL(pages[0].canonical).origin;
+const sitemap = fs.readFileSync(path.join(dist, 'sitemap.xml'), 'utf8');
+const redirectFile = fs.readFileSync(path.join(dist, '_redirects'), 'utf8');
+const byPath = new Map(pages.map(page => [page.path === '/404.html' ? page.path : canonicalPath(page.path), page]));
+const indexable = pages.filter(page => page.indexable);
+const errors = [];
+const advisories = [];
+const graph = new Map();
+const inventory = [];
+const linkCounts = { links: 0, redirected: 0, broken: 0 };
+const seenTitles = new Map();
+const seenDescriptions = new Map();
+
+function canonicalPath(value) {
+  return value.replace(/\/+$/, '') + '/';
 }
 
-const files = walk('dist').filter((f) => !f.includes(`${path.sep}assets${path.sep}`));
-const problems = [];
-const titles = new Map();
-const decode = (v) => v.replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&#39;/g, "'").replace(/&amp;/g, '&');
-
-for (const file of files) {
-  const html = fs.readFileSync(file, 'utf8');
-  const page = '/' + path.relative('dist', path.dirname(file)).split(path.sep).join('/');
-  const title = decode((html.match(/<title>([^<]*)<\/title>/) || [])[1] || '');
-  const desc = decode((html.match(/<meta name="description" content="([^"]*)"/) || [])[1] || '');
-  const canonicals = html.match(/<link rel="canonical"/g) || [];
-  const h1s = html.match(/<h1[\s>]/g) || [];
-
-  // Call-only policy: no server-rendered customer SMS actions on any route.
-  if (/href=[\"']sms:/i.test(html)) problems.push(`${page}: SMS/text contact link found (call-only site)`);
-  if (!title) problems.push(`${page}: missing title`);
-  if (title.length > 60) problems.push(`${page}: title is ${title.length} characters (max 60): ${title}`);
-  if (!desc) problems.push(`${page}: missing description`);
-  if (desc.length > 160) problems.push(`${page}: description is ${desc.length} characters (max 160)`);
-  if (canonicals.length !== 1) problems.push(`${page}: ${canonicals.length} canonical tags (need exactly 1)`);
-  if (h1s.length !== 1) problems.push(`${page}: ${h1s.length} <h1> headings (need exactly 1)`);
-  const isSpanishPage = page === '/es' || page.startsWith('/es/');
-  const hreflangs = html.match(/<link rel="alternate" hreflang=/g) || [];
-  if (isSpanishPage && !html.includes('<html lang="es">')) problems.push(`${page}: Spanish page is not marked lang="es"`);
-  if (isSpanishPage && hreflangs.length !== 3) problems.push(`${page}: ${hreflangs.length} language-alternate links (need 3)`);
-  if (isSpanishPage && /noindex/.test(html)) problems.push(`${page}: Spanish page is set to noindex`);
-  const paid = /^\/(?:lp|landing|ad)\//.test(page);
-  if (paid) {
-    const canonical = page.replace(/^\/(?:landing|ad)\//, '/lp/') + '/';
-    if (!html.includes('name="robots" content="noindex, follow"')) problems.push(`${page}: paid route must be noindex`);
-    if (!html.includes(`rel="canonical" href="https://prolocksmith-tech.com${canonical}"`)) problems.push(`${page}: paid route canonical does not match the campaign`);
-  } else {
-    if (titles.has(title)) problems.push(`${page}: same title as ${titles.get(title)}`);
-    titles.set(title, page);
-  }
-
-  for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
-    try { JSON.parse(m[1]); } catch { problems.push(`${page}: a structured-data block is not valid JSON`); }
-  }
+function assetFile(urlPath) {
+  const file = path.resolve(dist, '.' + urlPath);
+  return file.startsWith(dist + path.sep) && fs.statSync(file, { throwIfNoEntry: false })?.isFile();
 }
 
-const home = fs.readFileSync('dist/index.html', 'utf8');
-if (!home.includes('"sameAs"')) problems.push('/: business schema has no sameAs');
+function getDocument(record) {
+  return record.status === 404 ? path.join(dist, '404.html') : path.join(dist, record.path, 'index.html');
+}
 
-const spanishCount = files.filter((f) => f.includes(`dist${path.sep}es${path.sep}`) || f === path.join('dist', 'es', 'index.html')).length;
-if (spanishCount < 30) problems.push(`only ${spanishCount} Spanish pages were built (expected 40+)`);
-const sitemap = fs.readFileSync('dist/sitemap.xml', 'utf8');
-if (!sitemap.includes('https://prolocksmith-tech.com/es/services') || !sitemap.includes('xhtml:link')) problems.push('sitemap.xml has no Spanish pages or language alternates');
+function elements(root) {
+  const result = [];
+  function walk(node) {
+    if (node.tagName) result.push(node);
+    node.childNodes?.forEach(walk);
+  }
+  walk(root);
+  return result;
+}
 
-// Ensure new trust content is rendered and old internal campaign hub is not exposed.
-const reviewsPage = path.join('dist', 'reviews', 'index.html');
-if (!fs.existsSync(reviewsPage)) problems.push('reviews page was not pre-rendered');
-else if (!fs.readFileSync(reviewsPage, 'utf8').includes('Roger Celler')) problems.push('reviews page is missing the verified review content');
-if (fs.existsSync(path.join('dist', 'lp', 'index.html'))) problems.push('public campaign hub is still pre-rendered');
-if (!sitemap.includes('https://prolocksmith-tech.com/reviews')) problems.push('reviews page is missing from sitemap');
-for (const match of sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)) {
-  const loc = new URL(match[1]);
-  const route = loc.pathname.replace(/\/$/, '') || '/';
-  const file = route === '/' ? path.join('dist', 'index.html') : path.join('dist', route, 'index.html');
-  if (!fs.existsSync(file)) problems.push(`sitemap includes missing page: ${route}`);
+const attr = (node, name) => node.attrs?.find(attribute => attribute.name === name)?.value;
+const plain = node => node?.value || node?.childNodes?.map(plain).join('') || '';
+
+function noteDuplicate(map, value, field, pathname) {
+  if (!value) return;
+  if (map.has(value)) errors.push(`${pathname}: duplicate ${field} with ${map.get(value)}`);
+  map.set(value, pathname);
+}
+
+function validateSchema(node, pathname) {
+  if (!node || typeof node !== 'object') return;
+  if (node['@type'] === 'BreadcrumbList') {
+    const trail = node.itemListElement;
+    if (!Array.isArray(trail) || trail.length < 2) errors.push(`${pathname}: incomplete breadcrumb structured data`);
+    for (const [index, crumb] of (trail || []).entries()) {
+      if (crumb.position !== index + 1 || !crumb.name || !crumb.item) {
+        errors.push(`${pathname}: invalid breadcrumb item ${index + 1}`);
+        continue;
+      }
+      const url = new URL(crumb.item, site);
+      if (url.origin !== site || !byPath.get(url.pathname)?.indexable || url.href !== byPath.get(url.pathname)?.canonical) {
+        errors.push(`${pathname}: breadcrumb uses a noncanonical destination ${crumb.item}`);
+      }
+    }
+  }
+  if (['BlogPosting', 'TechArticle'].includes(node['@type']) && node.mainEntityOfPage) {
+    const reference = typeof node.mainEntityOfPage === 'string' ? node.mainEntityOfPage : node.mainEntityOfPage['@id'];
+    if (reference !== byPath.get(pathname)?.canonical) errors.push(`${pathname}: article page reference is not canonical`);
+  }
+  for (const value of Object.values(node)) validateSchema(value, pathname);
+}
+
+if (byPath.size !== pages.length) errors.push('Duplicate registry paths');
+for (const [from, to] of redirects) {
+  if (!byPath.get(to)?.indexable || byPath.has(from) || byPath.has(canonicalPath(from))) errors.push(`Invalid redirect ${from} → ${to}`);
+  if (![from, canonicalPath(from)].every(source => redirectFile.includes(`${source} ${to} 301\n`))) errors.push(`Missing generated redirect for ${from}`);
+}
+
+for (const [pathname, page] of byPath) {
+  const file = getDocument(page);
+  if (!fs.existsSync(file)) {
+    errors.push(`Missing rendered document ${pathname}`);
+    continue;
+  }
+  const root = parse(fs.readFileSync(file, 'utf8'));
+  const document = elements(root);
+  const html = document.find(node => node.tagName === 'html');
+  const head = document.find(node => node.tagName === 'head');
+  const tags = elements(head);
+  const select = (name, key, value) => tags.filter(node => node.tagName === name && attr(node, key) === value);
+  const descriptor = (name, key = 'name') => select('meta', key, name);
+  const title = tags.filter(node => node.tagName === 'title').map(plain);
+  const meta = descriptor('description').map(node => attr(node, 'content'));
+  const robots = descriptor('robots').map(node => attr(node, 'content'));
+  const canonical = select('link', 'rel', 'canonical').map(node => attr(node, 'href'));
+  const alternates = tags.filter(node => node.tagName === 'link' && attr(node, 'hreflang') != null);
+  const alternateMap = Object.fromEntries(alternates.map(node => [attr(node, 'hreflang'), attr(node, 'href')]));
+  const h1 = document.filter(node => node.tagName === 'h1');
+  if (title.length !== 1 || title[0] !== page.title || !title[0]) errors.push(`${pathname}: invalid title`);
+  if (meta.length !== 1 || meta[0] !== page.description || !meta[0]) errors.push(`${pathname}: invalid description`);
+  if (robots.length !== 1 || robots[0] !== page.robots || robots[0]?.includes('noindex') === page.indexable) errors.push(`${pathname}: invalid robots directive`);
+  if (canonical.length !== (page.canonical ? 1 : 0) || (page.canonical && canonical[0] !== page.canonical)) errors.push(`${pathname}: invalid canonical`);
+  if (attr(html, 'lang') !== page.language) errors.push(`${pathname}: incorrect HTML language`);
+  if (h1.length !== 1 || !plain(h1[0]).trim()) errors.push(`${pathname}: missing or duplicate primary heading`);
+  const main = document.find(node => node.tagName === 'main');
+  if (!main) errors.push(`${pathname}: missing main landmark`);
   else {
-    const html = fs.readFileSync(file, 'utf8');
-    if (/<meta name="robots" content="noindex/.test(html)) problems.push(`sitemap includes noindex page: ${route}`);
-    if (!loc.pathname.endsWith('/')) problems.push(`sitemap URL misses its trailing slash: ${route}`);
-    if (!html.includes(`rel="canonical" href="${loc.href}"`)) problems.push(`sitemap and canonical disagree: ${route}`);
+    let previous = 1;
+    for (const heading of elements(main).filter(node => /^h[1-6]$/.test(node.tagName))) {
+      const level = Number(heading.tagName[1]);
+      if (level > previous + 1) advisories.push(`${pathname}: heading jumps from h${previous} to h${level} at "${plain(heading).trim()}"`);
+      previous = level;
+    }
   }
+  if (!document.some(node => node.tagName === 'a' && attr(node, 'href') === 'tel:+17542616528')) errors.push(`${pathname}: missing native phone link`);
+  if (document.some(node => attr(node, 'href')?.startsWith('sms:'))) errors.push(`${pathname}: unexpected SMS link`);
+  if (page.indexable && (page.canonical !== site + pathname || !page.sitemap)) errors.push(`${pathname}: indexable route is not a registered sitemap canonical`);
+
+  for (const [name, expected] of Object.entries({ 'og:title': title[0], 'og:description': meta[0], 'og:url': page.canonical || site + '/' })) {
+    const tags = descriptor(name, 'property');
+    if (tags.length !== 1 || attr(tags[0], 'content') !== expected) errors.push(`${pathname}: inconsistent ${name}`);
+  }
+  const sharingImage = descriptor('og:image', 'property')[0];
+  if (!sharingImage || !assetFile(new URL(attr(sharingImage, 'content'), site).pathname)) errors.push(`${pathname}: missing social-sharing image`);
+
+  const expectedAlternates = page.alternates || {};
+  if (alternates.length !== Object.keys(expectedAlternates).length || Object.entries(expectedAlternates).some(([lang, value]) => alternateMap[lang] !== value)) errors.push(`${pathname}: incorrect hreflang set`);
+  for (const [language, url] of Object.entries(alternateMap)) {
+    const u = new URL(url);
+    const partner = byPath.get(u.pathname);
+    if (!partner?.indexable || partner.canonical !== url || (language !== 'x-default' && partner.language !== language) || partner.alternates?.[page.language] !== page.canonical) {
+      errors.push(`${pathname}: nonreciprocal alternate ${url}`);
+    }
+  }
+  for (const node of document.filter(node => node.tagName === 'script' && attr(node, 'type') === 'application/ld+json')) {
+    try { validateSchema(JSON.parse(plain(node)), pathname); }
+    catch { errors.push(`${pathname}: invalid JSON-LD document`); }
+  }
+
+  if (page.indexable) {
+    noteDuplicate(seenTitles, title[0], 'title', pathname);
+    noteDuplicate(seenDescriptions, meta[0], 'description', pathname);
+  }
+  if (page.parent && !byPath.get(canonicalPath(page.parent))?.indexable) errors.push(`${pathname}: parent is missing from registry`);
+
+  const hrefs = new Set();
+  const children = new Set();
+  for (const node of document) {
+    if (node.tagName === 'img' && attr(node, 'alt') == null) errors.push(`${pathname}: missing image alt`);
+    const href = node.tagName === 'a' ? attr(node, 'href') : null;
+    if (!href || href.startsWith('#') || hrefs.has(href)) continue;
+    hrefs.add(href);
+    let target;
+    try { target = new URL(href, site + pathname); } catch { errors.push(`${pathname}: invalid link ${href}`); continue; }
+    if (!/^https?:$/.test(target.protocol)) continue;
+    const host = new URL(site).hostname;
+    if (target.hostname !== host && target.hostname !== 'www.' + host) continue;
+    if (target.origin !== site) {
+      errors.push(`${pathname}: internal link uses an alternate origin ${href}`);
+      linkCounts.redirected++;
+      continue;
+    }
+    linkCounts.links++;
+    if (byPath.has(target.pathname)) children.add(target.pathname);
+    else if (byPath.has(canonicalPath(target.pathname))) {
+      errors.push(`${pathname}: internal link redirects ${href}`);
+      linkCounts.redirected++;
+    } else if (!assetFile(target.pathname)) {
+      errors.push(`${pathname}: broken internal link ${href}`);
+      linkCounts.broken++;
+    }
+  }
+  graph.set(pathname, children);
+  inventory.push({ ...page, pathname, heading: plain(h1[0]), internalLinks: [...children].sort() });
 }
 
-console.log(`Checked ${files.length} pre-rendered pages (${spanishCount} Spanish)`);
-if (problems.length) {
-  console.error('SEO CHECK FAILED:\n- ' + problems.join('\n- '));
-  process.exit(1);
+const seen = new Set();
+for (const match of sitemap.matchAll(/<url>([\s\S]*?)<\/url>/g)) {
+  const loc = match[1].match(/<loc>([^<]+)<\/loc>/)?.[1];
+  if (!loc) { errors.push('Sitemap record without loc'); continue; }
+  const url = new URL(loc);
+  const target = byPath.get(url.pathname);
+  if (seen.has(loc)) errors.push(`Duplicate sitemap URL ${loc}`);
+  if (!target?.sitemap || !target.indexable || target.canonical !== loc) errors.push(`Unqualified sitemap URL ${loc}`);
+  seen.add(loc);
+  const alternates = Object.fromEntries([...match[1].matchAll(/<xhtml:link rel="alternate" hreflang="([^"]+)" href="([^"]+)"/g)].map(x => x.slice(1)));
+  if (JSON.stringify(alternates) !== JSON.stringify(target?.alternates || {})) errors.push(`Sitemap alternates disagree with HTML for ${loc}`);
 }
-console.log('SEO checks passed');
+for (const record of indexable) if (!seen.has(record.canonical)) errors.push(`Missing sitemap URL ${record.canonical}`);
+const robotsFile = fs.readFileSync(path.join(dist, 'robots.txt'), 'utf8');
+if (!robotsFile.includes(`Sitemap: ${site}/sitemap.xml`) || /^Disallow:\s*\S+/mi.test(robotsFile)) errors.push('Unexpected robots.txt variant');
+
+const reachable = new Set();
+const queue = ['/'];
+for (const target of queue) {
+  if (reachable.has(target)) continue;
+  reachable.add(target);
+  for (const child of graph.get(target) || []) if (byPath.get(child)?.indexable) queue.push(child);
+}
+const orphans = indexable.filter(page => !reachable.has(canonicalPath(page.path))).map(page => page.path);
+if (orphans.length) errors.push(`Orphaned indexable pages: ${orphans.join(', ')}`);
+const unexpectedFiles = fs.readdirSync(dist, { recursive: true })
+  .filter(file => file.endsWith('index.html')).filter(file => !byPath.has('/' + file.replace(/index\.html$/, '')));
+if (unexpectedFiles.length) errors.push(`Rendered pages missing from registry: ${unexpectedFiles.join(', ')}`);
+
+const summary = { documents: pages.length, indexable: indexable.length, sitemapEntries: seen.size,
+  translations: pages.filter(page => page.language === 'es').length, redirects: redirects.length, internalLinks: linkCounts,
+  orphaned: orphans.length, errors: errors.length, advisories: advisories.length };
+fs.writeFileSync('src/generated/technical-seo-report.json', JSON.stringify({ summary, errors, advisories, inventory }, null, 2));
+console.log(JSON.stringify(summary));
+if (errors.length) {
+  console.error(errors.slice(0, 35).join('\n'));
+  process.exitCode = 1;
+}

@@ -156,9 +156,9 @@ export function BlogListPage({ onNavigate }: BlogListPageProps) {
               <Truck className="w-4 h-4" />
               <span>Need Immediate Locksmith Service?</span>
             </div>
-            <h3 className="text-2xl sm:text-3xl font-heading font-black text-white">
+            <h2 className="text-2xl sm:text-3xl font-heading font-black text-white">
               Locked Out Right Now? We Come to You 24/7.
-            </h3>
+            </h2>
             <p className="text-xs sm:text-sm text-slate-300 max-w-xl">
               Don't wait for business hours. Pro Locksmith Tech provides fast on-site dispatch across Broward, Miami-Dade, and Palm Beach counties.
             </p>

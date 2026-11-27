@@ -1,3 +1,5 @@
+import { Breadcrumbs } from '../components/Breadcrumbs';
+import { breadcrumbSchema } from '../utils/breadcrumbs';
 import React from 'react';
 import { 
   MapPin, 
@@ -30,6 +32,7 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
     const { city, county } = cityMatch;
 
     // Comprehensive JSON-LD LocalBusiness + Breadcrumbs + FAQ Schema for AEO
+    const trail: [string, string][] = [['Service Areas', '/service-areas'], [county.name, '/service-areas/' + county.slug], [city.name, '/service-areas/' + city.slug]];
     const citySchema = {
       "@context": "https://schema.org",
       "@graph": [
@@ -104,16 +107,7 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
             }
           ]
         },
-        {
-          "@type": "BreadcrumbList",
-          "@id": `https://prolocksmith-tech.com/service-areas/${city.slug}#breadcrumb`,
-          "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://prolocksmith-tech.com/" },
-            { "@type": "ListItem", "position": 2, "name": "Service Areas", "item": "https://prolocksmith-tech.com/service-areas" },
-            { "@type": "ListItem", "position": 3, "name": county.name, "item": `https://prolocksmith-tech.com/service-areas/${county.slug}` },
-            { "@type": "ListItem", "position": 4, "name": city.name, "item": `https://prolocksmith-tech.com/service-areas/${city.slug}` }
-          ]
-        },
+        { ...breadcrumbSchema(trail), '@id': `https://prolocksmith-tech.com/service-areas/${city.slug}/#breadcrumb` },
       ]
     };
 
@@ -136,22 +130,7 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
 
         <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 space-y-12">
           
-          {/* Breadcrumbs */}
-          <div className="flex items-center gap-2 text-xs text-slate-400">
-            <LocalizedA href="/" className="hover:text-amber-400 transition-colors cursor-pointer inline-block text-center">
-              {isSpanish ? 'Inicio' : 'Home'}
-            </LocalizedA>
-            <span>/</span>
-            <LocalizedA href="/service-areas" className="hover:text-amber-400 transition-colors cursor-pointer inline-block text-center">
-              {isSpanish ? 'Áreas de Servicio' : 'Service Areas'}
-            </LocalizedA>
-            <span>/</span>
-            <LocalizedA href={`/service-areas/${county.slug}`} className="hover:text-amber-400 transition-colors cursor-pointer inline-block text-center">
-              {county.name}
-            </LocalizedA>
-            <span>/</span>
-            <span className="text-amber-400 font-semibold">{city.name}</span>
-          </div>
+          <Breadcrumbs trail={trail} />
 
           {/* City Hero */}
           <div className="bg-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-10 relative overflow-hidden">
@@ -210,10 +189,10 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
           {/* Highlights & Information */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-slate-950 border border-slate-800 rounded-2xl p-6">
-              <h3 className="font-heading font-bold text-lg text-white mb-3 flex items-center gap-2">
+              <h2 className="font-heading font-bold text-lg text-white mb-3 flex items-center gap-2">
                 <ShieldCheck className="w-5 h-5 text-amber-400" />
                 <span>{isSpanish ? `Servicios Destacados en ${city.name}` : `${city.name} Service Highlights`}</span>
-              </h3>
+              </h2>
               <ul className="space-y-2.5 text-xs text-slate-300">
                 {city.serviceHighlights.map((hl, i) => (
                   <li key={i} className="flex items-start gap-2">
@@ -326,9 +305,9 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
 
           {/* Neighboring Cities in County */}
           <div className="bg-slate-950 border border-slate-800 rounded-2xl p-6">
-            <h4 className="font-heading font-bold text-sm text-white mb-3 uppercase tracking-wider text-amber-400">
+            <h3 className="font-heading font-bold text-sm text-white mb-3 uppercase tracking-wider text-amber-400">
               {isSpanish ? `Otras Ciudades Atendidas en ${county.name}` : `Other Cities Served in ${county.name}`}
-            </h4>
+            </h3>
             <div className="flex flex-wrap gap-2">
               {county.majorCities
                 .filter(c => c.id !== city.id)
@@ -352,6 +331,7 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
     const spanishCounty = SPANISH_COUNTIES[county.slug];
 
     // County Schema for AEO
+    const trail: [string, string][] = [['Service Areas', '/service-areas'], [county.name, '/service-areas/' + county.slug]];
     const countySchema = {
       "@context": "https://schema.org",
       "@graph": [
@@ -379,15 +359,7 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
             }
           ],
         },
-        {
-          "@type": "BreadcrumbList",
-          "@id": `https://prolocksmith-tech.com/service-areas/${county.slug}#breadcrumb`,
-          "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://prolocksmith-tech.com/" },
-            { "@type": "ListItem", "position": 2, "name": "Service Areas", "item": "https://prolocksmith-tech.com/service-areas" },
-            { "@type": "ListItem", "position": 3, "name": county.name, "item": `https://prolocksmith-tech.com/service-areas/${county.slug}` }
-          ]
-        }
+        { ...breadcrumbSchema(trail), '@id': `https://prolocksmith-tech.com/service-areas/${county.slug}/#breadcrumb` }
       ]
     };
 
@@ -409,18 +381,7 @@ export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps
         />
 
         <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 space-y-12">
-          {/* Breadcrumbs */}
-          <div className="flex items-center gap-2 text-xs text-slate-400">
-            <LocalizedA href="/" className="hover:text-amber-400 transition-colors cursor-pointer inline-block text-center">
-              {isSpanish ? 'Inicio' : 'Home'}
-            </LocalizedA>
-            <span>/</span>
-            <LocalizedA href="/service-areas" className="hover:text-amber-400 transition-colors cursor-pointer inline-block text-center">
-              {isSpanish ? 'Áreas de Servicio' : 'Service Areas'}
-            </LocalizedA>
-            <span>/</span>
-            <span className="text-amber-400 font-semibold">{county.name}</span>
-          </div>
+          <Breadcrumbs trail={trail} />
 
           <div className="bg-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-10 relative overflow-hidden">
             <div className="max-w-3xl space-y-4">

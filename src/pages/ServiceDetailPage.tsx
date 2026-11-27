@@ -1,3 +1,5 @@
+import { Breadcrumbs } from '../components/Breadcrumbs';
+import { breadcrumbSchema } from '../utils/breadcrumbs';
 import React from 'react';
 import { 
   KeyRound, 
@@ -26,6 +28,20 @@ interface ServiceDetailPageProps {
   slug: string;
   onNavigate: (path: string) => void;
 }
+
+const SERVICE_SEARCH_METADATA: Record<string, { title?: string; description: string }> = {
+  'automotive-locksmith': {
+    description: '24/7 mobile automotive locksmith in South Florida. Car lockouts, replacement keys, key fob programming and ignition service at your vehicle.',
+  },
+  'key-replacement': {
+    title: 'Car Key Replacement in South Florida | Pro Locksmith Tech',
+    description: 'Lost your car keys? Get mobile key cutting and fob programming at your vehicle in South Florida. We also replace lost home and business keys.',
+  },
+  'emergency-lockout-service': {
+    title: '24/7 Car, Home & Business Lockouts | Pro Locksmith Tech',
+    description: 'Locked out of your car, home or business? Call Pro Locksmith Tech for 24/7 on-site lockout help across South Florida.',
+  },
+};
 
 export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) {
   const { t, isSpanish } = useLanguage();
@@ -58,27 +74,21 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
   const serviceFeatures = isSpanish && esData ? esData.features : service.features;
 
   const serviceImage = getServiceImage(service.slug);
+  const searchMetadata = SERVICE_SEARCH_METADATA[service.slug];
 
-  const serviceLocalBusinessSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: t('nav.home'), item: "https://prolocksmith-tech.com/" },
-      { "@type": "ListItem", position: 2, name: t('nav.services'), item: "https://prolocksmith-tech.com/services/" },
-      { "@type": "ListItem", position: 3, name: serviceName, item: `https://prolocksmith-tech.com/services/${service.slug}/` }
-    ]
-  };
+  const trail: [string, string][] = [[t('nav.services'), '/services'], [serviceName, '/services/' + service.slug]];
+  const serviceBreadcrumbs = { '@context': 'https://schema.org', ...breadcrumbSchema(trail) };
 
   return (
     <div className="min-h-screen bg-slate-900 text-slate-100 py-10">
       <SEOHead
         title={isSpanish 
           ? `${serviceName} en el Sur de la Florida | Cerrajería Móvil 24/7` 
-          : `${service.name} South Florida | Pro Locksmith Tech`
+          : searchMetadata?.title || `${service.name} South Florida | Pro Locksmith Tech`
         }
         description={isSpanish
           ? `${serviceName} en el Sur de la Florida. Despacho de cerrajería móvil 24/7 en Broward, Miami-Dade y Palm Beach. Llame al +1 754-261-6528.`
-          : `${service.name} in South Florida. 24/7 mobile locksmith dispatch across Broward, Miami-Dade & Palm Beach counties. Call +1 754-261-6528.`
+          : searchMetadata?.description || `${service.name} in South Florida. 24/7 mobile locksmith dispatch across Broward, Miami-Dade & Palm Beach counties. Call +1 754-261-6528.`
         }
         keywords={`${service.name}, ${serviceName}, cerrajero sur de la florida, mobile locksmith South Florida, emergency locksmith`}
         canonicalPath={`/services/${service.slug}`}
@@ -87,23 +97,12 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
       {/* JSON-LD Schema Script */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceLocalBusinessSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceBreadcrumbs) }}
       />
 
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 space-y-12">
         
-        {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-xs text-slate-400">
-          <LocalizedA href="/" className="hover:text-amber-400 transition-colors cursor-pointer inline-block text-center">
-            {t('nav.home')}
-          </LocalizedA>
-          <span>/</span>
-          <LocalizedA href="/services" className="hover:text-amber-400 transition-colors cursor-pointer inline-block text-center">
-            {t('nav.services')}
-          </LocalizedA>
-          <span>/</span>
-          <span className="text-amber-400 font-semibold">{serviceName}</span>
-        </div>
+        <Breadcrumbs trail={trail} />
 
         {/* Hero Section for Service */}
         <div className="bg-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-10 relative overflow-hidden shadow-2xl">

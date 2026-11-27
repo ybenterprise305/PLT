@@ -1,3 +1,5 @@
+import { Breadcrumbs } from '../components/Breadcrumbs';
+import { breadcrumbSchema } from '../utils/breadcrumbs';
 import { PHONE, TEL } from '../config/business';
 import React from 'react';
 import { Phone, MapPin, ArrowRight, Clock, Car, Home, ShieldCheck } from 'lucide-react';
@@ -51,22 +53,23 @@ export function SpanishContentPage({ path }: Props) {
   const info = sections[path];
   const title = service ? (details?.name || fallback?.name || 'Servicio de cerrajería') : cityMatch ? 'Cerrajero móvil en ' + cityMatch.city.name : county ? 'Cerrajería móvil en ' + county.name : info?.title || 'Cerrajería móvil';
   const desc = service ? (details?.shortDescription || fallback?.desc || 'Servicio de cerrajería móvil las 24 horas en el sur de Florida.') : cityMatch ? 'Servicio móvil de aperturas, llaves y cerraduras en ' + cityMatch.city.name + ', Florida.' : county ? 'Cerrajería móvil para autos, casas y negocios en ' + county.name + ', Florida.' : info?.desc || '';
+  const serviceTrail: [string, string][] = service
+    ? [['Servicios', '/services'], [title, path]]
+    : [[title, '/services']];
+  const areaTrail: [string, string][] = cityMatch
+    ? [['Áreas de servicio', '/service-areas'], [cityMatch.county.name, '/service-areas/' + cityMatch.county.slug], [title, path]]
+    : [['Áreas de servicio', '/service-areas'], [title, path]];
+  const showServiceTrail = path === '/services' || Boolean(service);
   const image = service ? getServiceImage(service.slug).src : homeVan.src;
 
   return (
     <div className="min-h-screen bg-slate-950 pb-12 text-white">
       <SEOHead title={title + ' | Pro Locksmith Tech'} description={desc + ' Llame al ' + PHONE + '.'} canonicalPath={path} />
-      {(path === '/services' || service) && (
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        "@context": "https://schema.org", "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Inicio", item: "https://prolocksmith-tech.com/es/" },
-          { "@type": "ListItem", position: 2, name: "Servicios", item: "https://prolocksmith-tech.com/es/services/" },
-          ...(service ? [{ "@type": "ListItem", position: 3, name: title, item: "https://prolocksmith-tech.com/es/services/" + service.slug + "/" }] : [])
-        ]
-      }) }} />
+      {showServiceTrail && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', ...breadcrumbSchema(serviceTrail, 'es') }) }} />
       )}
       <section className="mx-auto max-w-6xl px-5 py-10 sm:py-16">
+        {(showServiceTrail || cityMatch || county) && <div className="mb-5"><Breadcrumbs trail={showServiceTrail ? serviceTrail : areaTrail} /></div>}
         <div className="grid items-center gap-7 lg:grid-cols-2 lg:gap-12">
           <div className="space-y-5">
             <p className="inline-flex items-center gap-2 text-sm font-semibold text-amber-300"><Clock className="h-4 w-4"/>Cerrajería móvil 24/7 · Sur de Florida</p>
