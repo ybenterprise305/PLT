@@ -58,8 +58,8 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
 
               <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
                 {isSpanish 
-                  ? 'Pro Locksmith Tech es un servicio de cerrajería 100% móvil dedicado a atender el Sur de la Florida. Al no operar una tienda física abierta al público, llevamos camionetas taller totalmente equipadas directamente a su vehículo varado, residencia o comercio en los condados de Broward, Miami-Dade y Palm Beach.' 
-                  : 'Pro Locksmith Tech is a 100% mobile locksmith service dedicated to serving South Florida. Because we do not operate a customer-facing physical storefront, we bring fully equipped mobile workshop vans directly to your stranded vehicle, residence, or commercial business across Broward, Miami-Dade, and Palm Beach counties.'}
+                  ? 'Desde el año 2000, Pro Locksmith Tech ofrece servicios profesionales de cerrajería automotriz, residencial y comercial en Miami-Dade, Broward y Palm Beach. Nuestros técnicos acuden a su ubicación con servicio el mismo día y atención de emergencias las 24 horas.' 
+                  : 'Since 2000, Pro Locksmith Tech has provided professional automotive, residential and commercial locksmith services throughout South Florida, including Miami-Dade, Broward and Palm Beach counties. Our fully equipped technicians come to your location for same-day service and 24/7 locksmith emergencies.'}
               </p>
 
               <div className="pt-2 flex flex-col sm:flex-row gap-3">
