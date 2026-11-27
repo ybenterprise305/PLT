@@ -158,7 +158,7 @@ export function Footer({ onNavigate }: FooterProps) {
                 <LocalizedA href="/service-areas"
                   className="text-amber-400 hover:underline font-bold text-xs flex min-h-[28px] items-center gap-1 cursor-pointer text-center"
                 >
-                  <span>{isSpanish ? 'Mapa Interactivo (37 Ciudades)' : 'Interactive Map (37 Cities)'} &rarr;</span>
+                  <span>{isSpanish ? 'Directorio de áreas de servicio' : 'Service area directory'} &rarr;</span>
                 </LocalizedA>
               </div>
             </div>

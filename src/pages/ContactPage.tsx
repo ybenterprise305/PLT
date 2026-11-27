@@ -10,16 +10,11 @@ import {
 } from 'lucide-react';
 import { SEOHead } from '../components/SEOHead';
 import { Logo } from '../components/Logo';
-import { SouthFloridaMap } from '../components/SouthFloridaMap';
 import { locksmithCrewImg } from '../assets/images';
 import { useLanguage } from '../context/LanguageContext';
 
 import { LocalizedA } from '../components/LocalizedA';
-interface ContactPageProps {
-  onNavigate: (path: string) => void;
-}
-
-export function ContactPage({ onNavigate }: ContactPageProps) {
+export function ContactPage() {
   const { isSpanish } = useLanguage();
 
   return (
@@ -297,14 +292,6 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
         </section>
 
         {/* INTERACTIVE SOUTH FLORIDA MAP */}
-        <div className="pt-4">
-          <SouthFloridaMap
-            onSelectCity={(slug) => onNavigate(`/service-areas/${slug}`)}
-            title={isSpanish ? "Mapa de Despacho del Sur de la Florida" : "South Florida Dispatch Map"}
-            subtitle={isSpanish ? "Vea nuestra cobertura móvil activa en los condados de Broward, Miami-Dade y Palm Beach. Seleccione cualquier ciudad para abrir su página dedicada." : "View our active mobile locksmith coverage across Broward, Miami-Dade, and Palm Beach counties. Select any city to open its dedicated local page."}
-          />
-        </div>
-
         {/* Territory Overview */}
         <div className="bg-slate-950 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-4">
           <h3 className="font-heading font-bold text-xl text-white flex items-center gap-2">

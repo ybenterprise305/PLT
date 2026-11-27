@@ -53,8 +53,8 @@ export default function App({ initialRoute }: { initialRoute: LoadedRoute }) {
       if (!anchor || (anchor.target && anchor.target !== '_self') || anchor.hasAttribute('download')) return;
       const href = anchor.getAttribute('href') || '';
       if (!href.startsWith('/') || href.startsWith('//')) return;
-      const pathname = new URL(href, location.origin).pathname;
-      if (pathname.includes('.') || matchRoute(pathname).name === 'NotFoundPage') return;
+      const { pathname, hash } = new URL(href, location.origin);
+      if (hash || pathname.includes('.') || matchRoute(pathname).name === 'NotFoundPage') return;
       event.preventDefault();
       navigate(href);
     };

@@ -8,6 +8,8 @@ const links = [
   ['Emergency lockout service', '/services/emergency-lockout-service'],
   ['South Florida service areas', '/service-areas'],
   ['Coral Springs service coverage', '/service-areas/coral-springs'],
+  ['Completed locksmith work', '/completed-work'],
+  ['Áreas de cerrajería móvil en el sur de Florida', '/es/service-areas'],
   ['Contact, pricing factors and payment methods', '/contact'],
   ['Frequently asked questions', '/faq'],
   ['About Pro Locksmith Tech', '/about'],

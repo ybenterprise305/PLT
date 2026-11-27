@@ -1,346 +1,120 @@
 import { Breadcrumbs } from '../components/Breadcrumbs';
-import React from 'react';
-import { 
-  MapPin, 
-  Phone, 
-  Clock, 
-  ShieldCheck, 
-  CheckCircle2, 
-  ArrowRight,
-} from 'lucide-react';
-import { getCityBySlug, getCountyBySlug } from '../data/locationsData';
 import { CityLocalInformation } from '../components/CityLocalInformation';
-import { SEOHead } from '../components/SEOHead';
-import { locksmithVanImg } from '../assets/images';
-import { useLanguage } from '../context/LanguageContext';
-import { SPANISH_COUNTIES } from '../data/spanishTranslations';
-import { trackPhoneClick } from '../utils/analytics';
-
 import { LocalizedA } from '../components/LocalizedA';
-interface LocationDetailPageProps {
-  slug: string;
-  onNavigate: (path: string) => void;
-}
+import { SEOHead } from '../components/SEOHead';
+import { PHONE, TEL } from '../config/business';
+import { useLanguage } from '../context/LanguageContext';
+import { countyServiceContent, getLocalGuide, getLocalHelp, localServiceLabels, nearbyServiceAreas } from '../data/localServiceContent';
+import { getCityBySlug, getCountyBySlug } from '../data/locationsData';
+import type { RouteProps } from '../routes';
+import { trackPhoneClick } from '../utils/analytics';
+import { NotFoundPage } from './NotFoundPage';
 
-export function LocationDetailPage({ slug, onNavigate }: LocationDetailPageProps) {
-  const { isSpanish } = useLanguage();
+const cityServices = ['automotive-locksmith', 'residential-locksmith', 'commercial-locksmith', 'emergency-lockout-service'] as const;
+const linkStyle = 'inline-flex min-h-11 items-center rounded-lg border border-slate-700 px-4 py-2 text-amber-300 hover:border-amber-400';
+const panel = 'rounded-2xl border border-slate-800 bg-slate-950 p-6 sm:p-8';
+
+export function LocationDetailPage({ slug, onNavigate }: RouteProps) {
+  const { language } = useLanguage();
+  const es = language === 'es';
   const cityMatch = getCityBySlug(slug);
-  const countyMatch = getCountyBySlug(slug);
+  const county = cityMatch?.county ?? getCountyBySlug(slug);
+  if (!county) return <NotFoundPage onNavigate={onNavigate} />;
 
-  if (cityMatch) {
-    const { city, county } = cityMatch;
-
-    const trail: [string, string][] = [['Service Areas', '/service-areas'], [county.name, '/service-areas/' + county.slug], [city.name, '/service-areas/' + city.slug]];
-
-    return (
-      <div className="min-h-screen bg-slate-900 text-slate-100 py-10">
-        <SEOHead
-          title={isSpanish ? `Cerrajería Móvil 24/7 en ${city.name}, FL | Pro Locksmith Tech` : city.metaTitle}
-          description={isSpanish 
-            ? `¿Se quedó afuera de su auto, casa o negocio en ${city.name}? Pro Locksmith Tech brinda cerrajería móvil 24/7. Llegamos a su ubicación en ${city.name}. Llame al (754) 261-6528.` 
-            : city.metaDescription}
-          canonicalPath={`/service-areas/${city.slug}`}
-          keywords={`locksmith ${city.name}, cerrajero ${city.name}, emergency locksmith ${city.name}, mobile locksmith ${city.name}, locksmith ${county.name}, locksmith South Florida`}
-        />
-
-        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 space-y-12">
-          
-          <Breadcrumbs trail={trail} />
-
-          {/* City Hero */}
-          <div className="bg-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-10 relative overflow-hidden">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
-              <div className="lg:col-span-7 space-y-4">
-                <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold rounded-md uppercase tracking-wider">
-                  <MapPin className="w-3.5 h-3.5" />
-                  <span>{isSpanish ? `Servicio Móvil en ${city.name}, FL` : `Mobile Service in ${city.name}, FL`}</span>
-                </div>
-
-                <h1 className="font-heading font-black text-3xl sm:text-5xl text-white tracking-tight leading-tight">
-                  {isSpanish ? 'Servicios de Cerrajería en ' : 'Locksmith Services in '}
-                  <span className="text-amber-400">{city.name}</span>
-                </h1>
-
-                <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl">
-                  {isSpanish 
-                    ? `¿Necesita un cerrajero móvil en ${city.name}? Pro Locksmith Tech despacha unidades móviles de cerrajería directamente a su vehículo, casa o negocio. Atendemos aperturas de emergencia, cambio de cerraduras, rekeying y llaves de auto en el lugar.` 
-                    : city.customIntro}
-                </p>
-
-                {/* Direct Action Buttons */}
-                <div className="flex flex-col sm:flex-row gap-3 pt-3">
-                  <LocalizedA
-                    href="tel:+17542616528"
-                    onClick={() => trackPhoneClick({ ctaLocation: 'city_hero_call', pagePath: `/service-areas/${city.slug}` })}
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-3.5 px-6 min-h-[48px] rounded-xl bg-amber-500 hover:bg-amber-400 active:bg-amber-400 text-slate-950 font-black text-sm shadow-lg transition-transform hover:scale-[1.02] cursor-pointer"
-                  >
-                    <Phone className="w-4 h-4 fill-current" />
-                    <span>{isSpanish ? 'Llamar Ahora: (754) 261-6528' : 'Call Now: (754) 261-6528'}</span>
-                  </LocalizedA>
-
-                  
-                </div>
-              </div>
-
-              {/* Service Van Photo */}
-              <div className="lg:col-span-5">
-                <div className="rounded-2xl overflow-hidden border border-slate-800 shadow-xl relative group">
-                  <img
-                    src={locksmithVanImg}
-                    alt={`Locksmith service van in ${city.name}`}
-                    className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent pointer-events-none" />
-                  <div className="absolute bottom-3 left-3 right-3 text-center bg-slate-950/90 py-1.5 px-3 rounded-lg border border-slate-800 text-[11px] text-amber-400 font-bold">
-                    {isSpanish ? `Cobertura Móvil Activa · ${city.name}, FL` : `Active Mobile Coverage · ${city.name}, FL`}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Highlights & Information */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-slate-950 border border-slate-800 rounded-2xl p-6">
-              <h2 className="font-heading font-bold text-lg text-white mb-3 flex items-center gap-2">
-                <ShieldCheck className="w-5 h-5 text-amber-400" />
-                <span>{isSpanish ? `Servicios Destacados en ${city.name}` : `${city.name} Service Highlights`}</span>
-              </h2>
-              <ul className="space-y-2.5 text-xs text-slate-300">
-                {city.serviceHighlights.map((hl, i) => (
-                  <li key={i} className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
-                    <span>{hl}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="bg-slate-950 border border-slate-800 rounded-2xl p-6 space-y-3">
-              <h3 className="font-heading font-bold text-lg text-white flex items-center gap-2">
-                <Clock className="w-5 h-5 text-amber-400" />
-                <span>{isSpanish ? 'Modelo de Despacho Móvil 24/7' : '24/7 Mobile Dispatch Model'}</span>
-              </h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                {isSpanish 
-                  ? `Pro Locksmith Tech atiende a ${city.name} con camionetas taller móviles equipadas con duplicadoras de llaves, programadores de chips automotrices y cerraduras de repuesto.` 
-                  : `Pro Locksmith Tech serves ${city.name} through mobile workshop vans equipped with key duplication cutters, transponder programmers, and replacement locksets.`}
-              </p>
-              <div className="pt-2 text-xs text-slate-300">
-                <strong>{isSpanish ? 'Códigos Postales Atendidos:' : 'Serving Zip Codes:'}</strong> {city.zipCodes.join(', ')}
-              </div>
-              <div className="pt-2">
-                <LocalizedA
-                  href="tel:+17542616528"
-                  onClick={() => trackPhoneClick({ ctaLocation: 'city_sidebar_call', pagePath: `/service-areas/${city.slug}` })}
-                  className="w-full py-3.5 min-h-[48px] bg-amber-500 hover:bg-amber-400 active:bg-amber-400 text-slate-950 font-black text-xs sm:text-sm rounded-xl flex items-center justify-center gap-2 transition-colors cursor-pointer"
-                >
-                  <Phone className="w-4 h-4 fill-current" />
-                  <span>{isSpanish ? `Llamar a Técnico en ${city.name}: (754) 261-6528` : `Call ${city.name} Technician: +1 754-261-6528`}</span>
-                </LocalizedA>
-              </div>
-            </div>
-          </div>
-
-          {/* Clear links from each city page to the most useful real service pages. */}
-          <section className="bg-slate-950 border border-slate-800 rounded-2xl p-6" aria-label="Mobile locksmith services">
-            <h3 className="font-heading font-bold text-lg text-white mb-3">
-              {isSpanish ? `Servicios de cerrajería en ${city.name}` : `Mobile Locksmith Services in ${city.name}`}
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {[
-                { slug: 'automotive-locksmith', en: 'Automotive Locksmith', es: 'Cerrajería de Autos' },
-                { slug: 'emergency-lockout-service', en: 'Emergency Lockouts', es: 'Apertura de Emergencia' },
-                { slug: 'lock-rekeying', en: 'Lock Rekeying', es: 'Cambio de Combinación' },
-                { slug: 'lock-replacement', en: 'Lock Replacement', es: 'Reemplazo de Cerraduras' },
-              ].map((service) => (
-                <LocalizedA
-                  key={service.slug}
-                  href={`/services/${service.slug}`}
-                  className="inline-flex rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-xs text-amber-300 hover:bg-slate-800 hover:text-white"
-                >
-                  {isSpanish ? service.es : service.en}
-                </LocalizedA>
-              ))}
-            </div>
-          </section>
-
-          <CityLocalInformation city={city.name} slug={city.slug} spanish={isSpanish} />
-
-          {/* Useful customer instructions on the primary nearby service-area pages. */}
-          {['coral-springs', 'margate', 'coconut-creek', 'tamarac', 'pompano-beach'].includes(city.slug) && (
-            <section className="rounded-2xl border border-slate-800 bg-slate-950 p-6 sm:p-8" aria-labelledby="local-locksmith-next-steps">
-              <h2 id="local-locksmith-next-steps" className="font-heading text-2xl font-bold text-white">
-                {isSpanish ? `Cómo solicitar un cerrajero móvil en ${city.name}` : `How to Request a Mobile Locksmith in ${city.name}`}
-              </h2>
-              <p className="mt-3 text-base leading-7 text-slate-300">
-                {isSpanish
-                  ? `¿Necesita asistencia para un auto, vivienda o negocio en ${city.name}? Llame a Pro Locksmith Tech y describa el problema. Ofrecemos servicio en su ubicación el mismo día y atención de emergencias las 24 horas.`
-                  : `Need locksmith help at a vehicle, home or business in ${city.name}? Call Pro Locksmith Tech and describe the problem. We offer mobile locksmith service across South Florida and come directly to your location.`}
-              </p>
-              <ol className="mt-5 grid gap-3 sm:grid-cols-3">
-                {[
-                  {
-                    enTitle: 'Tell us your location',
-                    esTitle: 'Indique su ubicación',
-                    enBody: `Provide your location in ${city.name} and tell us whether you need car, residential or commercial locksmith service.`,
-                    esBody: `Indique su ubicación en ${city.name} y si necesita ayuda con un auto, vivienda o negocio.`
-                  },
-                  {
-                    enTitle: 'Describe the lock or key',
-                    esTitle: 'Describa la cerradura o llave',
-                    enBody: 'Tell us what locksmith service you need and we will help arrange a technician at your location.',
-                    esBody: 'Cuéntenos qué servicio necesita y coordinaremos la visita de un cerrajero.'
-                  },
-                  {
-                    enTitle: 'Confirm service details',
-                    esTitle: 'Confirme los detalles',
-                    enBody: 'Call to confirm technician availability and an estimated arrival time for your location.',
-                    esBody: 'Llame para confirmar la disponibilidad y el tiempo estimado de llegada a su ubicación.'
-                  },
-                ].map((step, index) => (
-                  <li key={index} className="rounded-xl border border-slate-700 bg-slate-900 p-4">
-                    <span className="mb-2 inline-flex h-7 w-7 items-center justify-center rounded-full bg-amber-400 text-sm font-bold text-slate-950">{index + 1}</span>
-                    <h3 className="font-bold text-white">{isSpanish ? step.esTitle : step.enTitle}</h3>
-                    <p className="mt-2 text-sm leading-6 text-slate-300">{isSpanish ? step.esBody : step.enBody}</p>
-                  </li>
-                ))}
-              </ol>
-              <LocalizedA
-                href="tel:+17542616528"
-                onClick={() => trackPhoneClick({ ctaLocation: 'city_steps_call', pagePath: `/service-areas/${city.slug}` })}
-                className="mt-6 inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-amber-400 px-6 py-3 text-base font-bold text-slate-950 hover:bg-amber-300 sm:w-auto">
-                <Phone className="h-5 w-5" aria-hidden="true" />
-                {isSpanish ? 'Llame al (754) 261-6528' : 'Call (754) 261-6528'}
-              </LocalizedA>
-            </section>
-          )}
-
-          {/* Neighboring Cities in County */}
-          <div className="bg-slate-950 border border-slate-800 rounded-2xl p-6">
-            <h3 className="font-heading font-bold text-sm text-white mb-3 uppercase tracking-wider text-amber-400">
-              {isSpanish ? `Otras Ciudades Atendidas en ${county.name}` : `Other Cities Served in ${county.name}`}
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {county.majorCities
-                .filter(c => c.id !== city.id)
-                .map(neighbor => (
-                  <LocalizedA href={`/service-areas/${neighbor.slug}`}
-                    key={neighbor.id}
-                    className="px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-amber-400 text-xs border border-slate-800 transition-colors cursor-pointer inline-block text-center"
-                  >
-                    {neighbor.name}
-                  </LocalizedA>
-                ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (countyMatch) {
-    const county = countyMatch;
-    const spanishCounty = SPANISH_COUNTIES[county.slug];
-
-    const trail: [string, string][] = [['Service Areas', '/service-areas'], [county.name, '/service-areas/' + county.slug]];
-
-    return (
-      <div className="min-h-screen bg-slate-900 text-slate-100 py-10">
-        <SEOHead
-          title={isSpanish ? `Cerrajería Móvil en el ${county.name}, FL | Pro Locksmith Tech` : county.metaTitle}
-          description={isSpanish 
-            ? `Cerrajería móvil 24 horas en el ${county.name}, Florida. Apertura de autos, cambio de cerraduras y llaves nuevas a domicilio. Llame al (754) 261-6528.` 
-            : county.metaDescription}
-          canonicalPath={`/service-areas/${county.slug}`}
-          keywords={`locksmith ${county.name}, cerrajero ${county.name}, emergency locksmith ${county.name}, mobile locksmith ${county.name}, locksmith South Florida`}
-        />
-
-        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 space-y-12">
-          <Breadcrumbs trail={trail} />
-
-          <div className="bg-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-10 relative overflow-hidden">
-            <div className="max-w-3xl space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold rounded-md uppercase tracking-wider">
-                <MapPin className="w-3.5 h-3.5" />
-                <span>{isSpanish ? 'Condado del Sur de la Florida' : 'South Florida County'}</span>
-              </div>
-
-              <h1 className="font-heading font-black text-3xl sm:text-5xl text-white tracking-tight leading-tight">
-                {isSpanish ? 'Servicios de Cerrajería en el ' : 'Locksmith Services in '}
-                <span className="text-amber-400">{spanishCounty ? spanishCounty.name : county.fullName}</span>
-              </h1>
-
-              <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-                {isSpanish && spanishCounty ? spanishCounty.overview : county.overview}
-              </p>
-
-              <div className="pt-3 flex flex-col sm:flex-row gap-3">
-                <LocalizedA
-                  href="tel:+17542616528"
-                  onClick={() => trackPhoneClick({ ctaLocation: 'county_hero_call', pagePath: `/service-areas/${county.slug}` })}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 py-3.5 px-6 min-h-[48px] rounded-xl bg-amber-500 hover:bg-amber-400 active:bg-amber-400 text-slate-950 font-black text-sm shadow-lg transition-transform hover:scale-[1.02] cursor-pointer"
-                >
-                  <Phone className="w-4 h-4 fill-current" />
-                  <span>{isSpanish ? `Llamar a Despacho de ${county.name}: (754) 261-6528` : `Call ${county.name} Dispatch: (754) 261-6528`}</span>
-                </LocalizedA>
-
-                
-              </div>
-            </div>
-          </div>
-
-          {/* Cities Directory for this County */}
-          <div className="space-y-6">
-            <h2 className="font-heading font-black text-2xl sm:text-3xl text-white">
-              {isSpanish ? `Ciudades Atendidas en el ${county.name}` : `Cities Served in ${county.name}`}
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {county.majorCities.map((city) => (
-                <div
-                  key={city.id}
-                  className="bg-slate-950 border border-slate-800 rounded-2xl p-5 hover:border-amber-500/40 transition-colors flex flex-col justify-between"
-                >
-                  <div>
-                    <h3 className="font-heading font-bold text-lg text-white mb-1">
-                      {city.name}
-                    </h3>
-                    <p className="text-xs text-slate-400 line-clamp-2 leading-relaxed mb-3">
-                      {isSpanish 
-                        ? `Cerrajería móvil 24 horas y apertura de autos en ${city.name}, FL.` 
-                        : city.customIntro}
-                    </p>
-                  </div>
-
-                  <LocalizedA href={`/service-areas/${city.slug}`}
-                    className="w-full py-2 px-3 bg-slate-900 hover:bg-amber-500 text-slate-300 hover:text-slate-950 rounded-lg text-xs font-bold border border-slate-800 transition-colors flex items-center justify-center gap-1.5 cursor-pointer text-center"
-                  >
-                    <span>{isSpanish ? `Ver ${city.name}` : `View ${city.name}`}</span>
-                    <ArrowRight className="w-3 h-3" />
-                  </LocalizedA>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  const city = cityMatch?.city;
+  const place = city?.name ?? county.name;
+  const path = '/service-areas/' + slug;
+  const title = es ? 'Cerrajero móvil en ' + place : 'Mobile locksmith in ' + place;
+  const intro = city
+    ? es
+      ? `Pro Locksmith Tech ofrece cerrajería móvil para autos, viviendas y negocios en ${place}. Vamos a su ubicación, con asistencia de emergencia las 24 horas.`
+      : `Pro Locksmith Tech comes to your vehicle, home or business in ${place}. Get help with keys, locks or an emergency lockout 24 hours a day.`
+    : countyServiceContent[slug][language];
+  const description = city ? (es
+    ? `Cerrajería móvil en ${place} para autos, viviendas y negocios. Consulte por llaves de auto, cerraduras o aperturas de emergencia las 24 horas.`
+    : `Mobile locksmith service in ${place}, Florida. Get help with car keys, home and business locks, or 24/7 emergency lockouts.`)
+    : (es
+      ? `Encuentre localidades de ${place} con cerrajería móvil para autos, viviendas y negocios. Consulte la cobertura y los servicios de Pro Locksmith Tech.`
+      : `Browse the communities served in ${place} and find mobile locksmith help for cars, homes and businesses from Pro Locksmith Tech.`);
+  const trail: [string, string][] = [
+    [es ? 'Áreas de servicio' : 'Service areas', '/service-areas'],
+    [county.name, '/service-areas/' + county.slug],
+  ];
+  if (city) trail.push([city.name, path]);
+  const help = city && getLocalHelp(city.slug);
+  const guide = getLocalGuide(help ? help.guide : 'locksmith-pricing-factors', language);
+  const lead = es ? 'spanish_city_call' : city ? 'city_hero_call' : 'county_hero_call';
+  const nearby = (nearbyServiceAreas[slug] || []).flatMap(areaSlug => {
+    const area = getCityBySlug(areaSlug)?.city;
+    return area ? [area] : [];
+  });
 
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 flex items-center justify-center p-6">
-      <div className="text-center max-w-md bg-slate-950 p-8 rounded-2xl border border-slate-800 space-y-4">
-        <h2 className="font-heading font-bold text-2xl text-white">
-          {isSpanish ? 'Ubicación No Encontrada' : 'Location Not Found'}
-        </h2>
-        <LocalizedA href="/service-areas"
-          className="px-6 py-2.5 bg-amber-500 text-slate-950 font-bold rounded-lg text-xs cursor-pointer inline-block text-center"
-        >
-          {isSpanish ? 'Ver Todas las Áreas de Servicio' : 'View All South Florida Service Areas'}
+    <div className="mx-auto max-w-6xl space-y-8 px-5 py-10 sm:py-14">
+      <SEOHead title={title + ' | Pro Locksmith Tech'} description={description} canonicalPath={path} />
+      <Breadcrumbs trail={trail} />
+      <section className={panel} aria-labelledby="local-coverage-heading">
+        <h1 id="local-coverage-heading" className="font-heading text-3xl font-bold tracking-tight text-white sm:text-5xl">{title}</h1>
+        <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-300">{intro}</p>
+        <p className="mt-3 max-w-3xl text-base leading-7 text-slate-300">
+          {es ? 'Llame con la dirección exacta para confirmar la disponibilidad y coordinar el servicio.' : 'Call with the exact service address so we can confirm availability and arrange a visit.'}
+        </p>
+        <LocalizedA href={TEL} onClick={() => trackPhoneClick({ ctaLocation: lead, pagePath: es ? '/es' + path : path })}
+          className="mt-5 inline-flex min-h-12 items-center rounded-xl bg-amber-400 px-5 py-3 font-bold text-slate-950 hover:bg-amber-300">
+          {es ? 'Llame al ' : 'Call '}{PHONE}
         </LocalizedA>
-      </div>
+      </section>
+
+      {city?.placeType === 'census-designated place' && (
+        <p className="max-w-3xl text-base leading-7 text-slate-300">
+          {es ? 'Kendall es una comunidad no incorporada del condado de Miami-Dade. Use la dirección del servicio al consultar por la cobertura.' : 'Kendall is an unincorporated community in Miami-Dade County. Use the actual service address when checking coverage.'}
+        </p>
+      )}
+
+      {help && <section className={panel}>
+        <h2 className="font-heading text-2xl font-bold text-white">{help.title[language]}</h2>
+        <p className="mt-3 max-w-3xl leading-7 text-slate-300">{help.detail[language]}</p>
+        <ul className="mt-4 flex flex-wrap gap-3">
+          <li><LocalizedA className={linkStyle} href={'/services/' + help.service}>{localServiceLabels[help.service][language]}</LocalizedA></li>
+          <li><LocalizedA className={linkStyle} href={guide[1]}>{guide[0]}</LocalizedA></li>
+        </ul>
+      </section>}
+
+      <section className={panel}>
+        <h2 className="font-heading text-2xl font-bold text-white">{es ? 'Encuentre el servicio que necesita' : 'Find the locksmith service you need'}</h2>
+        <ul className="mt-4 flex flex-wrap gap-3">
+          {cityServices.filter(service => service !== (help && help.service)).map(service => (
+            <li key={service}><LocalizedA className={linkStyle} href={'/services/' + service}>{localServiceLabels[service][language]}</LocalizedA></li>
+          ))}
+          {!help && <li><LocalizedA className={linkStyle} href={guide[1]}>{guide[0]}</LocalizedA></li>}
+        </ul>
+      </section>
+
+      {city && <CityLocalInformation city={city.name} slug={city.slug} spanish={es} />}
+
+      {nearby.length > 0 && <section className={panel}>
+        <h2 className="font-heading text-2xl font-bold text-white">{es ? 'Otras localidades cercanas' : 'Other nearby communities we serve'}</h2>
+        <ul className="mt-4 flex flex-wrap gap-3">
+          {nearby.map(area => <li key={area.slug}><LocalizedA className={linkStyle} href={'/service-areas/' + area.slug}>{area.name}</LocalizedA></li>)}
+        </ul>
+      </section>}
+
+      {city ? (
+        <p className="text-slate-300">
+          <LocalizedA className="font-semibold text-amber-300 underline" href={'/service-areas/' + county.slug}>
+            {es ? 'Ver otras localidades de ' : 'See more served communities in '}{county.name}
+          </LocalizedA>
+        </p>
+      ) : (
+        <section className={panel}>
+          <h2 className="font-heading text-2xl font-bold text-white">{es ? 'Localidades con servicio móvil' : 'Communities with mobile service'}</h2>
+          <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {[...county.majorCities].sort((a, b) => a.priorityTier - b.priorityTier).map(area => (
+              <li key={area.slug}><LocalizedA className={linkStyle + ' w-full'} href={'/service-areas/' + area.slug}>{area.name}</LocalizedA></li>
+            ))}
+          </ul>
+        </section>
+      )}
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import { CompletedWorkLink } from '../components/CompletedWorkLink';
 import { StructuredData } from '../components/StructuredData';
 import { siteIdentity } from '../utils/structuredData';
 import { homeVan } from '../assets/images/vanImages';
@@ -237,6 +238,10 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
       </section>
 
       <ReviewCarousel compact />
+
+      <div className="mx-auto max-w-7xl px-5 pt-6">
+        <CompletedWorkLink />
+      </div>
 
       <section className="below-fold-section mx-auto max-w-7xl px-5 py-12 sm:py-16">
         <div className="grid items-center gap-8 md:grid-cols-2">
