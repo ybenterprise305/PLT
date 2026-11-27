@@ -28,7 +28,7 @@ const core: RouteDefinition[] = [
   { path: '/faq', page: 'FAQPage', type: 'core', parent: '/', source: 'faqData', translate: true },
   { path: '/reviews', page: 'ReviewsPage', type: 'core', parent: '/', source: 'customerReviews' },
   { path: '/blog', page: 'BlogListPage', type: 'directory', parent: '/', source: 'blogData' },
-  { path: '/tips', page: 'LocksmithTipsPage', type: 'directory', parent: '/', source: 'locksmithTipsData' },
+  { path: '/tips', page: 'LocksmithTipsPage', type: 'directory', parent: '/', source: 'locksmithTipsData', translate: true },
   { path: '/sitemap', page: 'SitemapPage', type: 'directory', parent: '/', source: 'SitemapPage' },
   { path: '/privacy', page: 'PrivacyPolicyPage', type: 'legal', parent: '/', source: 'PrivacyPolicyPage' },
   { path: '/terms', page: 'TermsPage', type: 'legal', parent: '/', source: 'TermsPage' },
@@ -53,10 +53,10 @@ export function getRouteRegistry() {
     }
   }
   for (const post of BLOG_POSTS) {
-    english.push({ path: '/blog/' + post.slug, slug: post.slug, page: 'BlogPostPage', type: 'article', parent: '/blog', source: 'blogData', related: post.relatedServices?.map(ref => service(ref.slug)) });
+    english.push({ path: '/blog/' + post.slug, slug: post.slug, page: 'BlogPostPage', type: 'article', parent: '/blog', source: 'blogData', lastModified: post.dateModified, related: post.relatedServices?.map(ref => service(ref.slug)) });
   }
   for (const tip of LOCKSMITH_TIPS_DATA) {
-    english.push({ path: '/tips/' + tip.slug, slug: tip.slug, page: 'TipDetailPage', type: 'guide', parent: '/tips', source: 'locksmithTipsData' });
+    english.push({ path: '/tips/' + tip.slug, slug: tip.slug, page: 'TipDetailPage', type: 'guide', parent: '/tips', source: 'locksmithTipsData', translate: Boolean(tip.es), related: [tip.service[1], ...tip.related.map(link => link[1])] });
   }
 
   const localized = new Set(english.filter(route => route.translate).map(route => route.path));
@@ -65,10 +65,11 @@ export function getRouteRegistry() {
     const published = { ...route, language: 'en', indexable: true, sitemap: true, status: 200, canonical: SITE + canonicalSitePath(route.path), alternates };
     if (!route.translate) return [published];
     const parent = route.parent && localized.has(route.parent) ? es(route.parent) : route.parent;
+    const localizedPage = ['HomePage', 'LocksmithTipsPage', 'TipDetailPage'].includes(route.page) ? route.page : 'SpanishContentPage';
     return [published, {
       ...published, path: es(route.path), parent, language: 'es', canonical: SITE + canonicalSitePath(es(route.path)),
-      page: route.path === '/' ? route.page : 'SpanishContentPage',
-      source: route.path === '/' ? route.source : route.source + ' + SpanishContentPage',
+      page: localizedPage,
+      source: localizedPage === route.page ? route.source : route.source + ' + SpanishContentPage',
     }];
   });
 

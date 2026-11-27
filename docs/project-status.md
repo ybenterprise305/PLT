@@ -8,7 +8,7 @@
 | II | Advanced technical SEO | See Phase II implementation and verification |
 | III | Structured data and business entity authority | See Phase III implementation and verification |
 | IV | AEO, AIO, GEO and agentic browsing | See Phase IV implementation and verification |
-| V | Content and topical authority | Awaiting explicit approval |
+| V | Content and topical authority | See Phase V editorial scope |
 | VI | Advanced local SEO | Awaiting explicit approval |
 | VII | Premium design and user experience | Awaiting explicit approval |
 | VIII | Superior conversion optimization | Awaiting explicit approval |
@@ -47,3 +47,7 @@ See [Phase III structured data and business identity](phase-iii-structured-data.
 ## Phase IV
 
 See [Phase IV answer discovery and agentic browsing](phase-iv-discovery.md) for policy, implementation, validation and recovery.
+
+## Phase V
+
+See [Phase V editorial inventory and release scope](phase-v-content.md).

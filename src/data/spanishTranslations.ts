@@ -98,11 +98,11 @@ export const SPANISH_SERVICES: Record<string, SpanishServiceTranslation> = {
     name: 'Cambio de Combinación ',
     badge: 'Ahorro Inteligente',
     categoryName: 'Residencial',
-    shortDescription: 'Cambie las llaves de su casa o negocio manteniendo sus cerraduras actuales y ahorrando hasta un 70%.',
+    shortDescription: 'Cambie las llaves que operan sus cerraduras compatibles sin cambiar todo el equipo.',
     fullDescription: 'El cambio de combinación consiste en reemplazar los pines internos del cilindro para que las llaves antiguas dejen de funcionar y solo una llave nueva pueda abrirlo. Es la opción ideal al mudarse a una nueva casa, terminar contratos de alquiler o tras la salida de empleados.',
     features: [
       'Las llaves anteriores quedan totalmente inútiles',
-      'Ahorra hasta un 70% en comparación con comprar chapas nuevas',
+      'Conserve cerraduras compatibles que funcionen bien',
       'Unifique todas las puertas para que abran con una sola llave',
       'Corte de copias de llaves en el acto en la unidad móvil',
       'Servicio rápido para viviendas y edificios comerciales'
@@ -126,13 +126,13 @@ export const SPANISH_SERVICES: Record<string, SpanishServiceTranslation> = {
     name: 'Reemplazo de Llaves de Auto',
     badge: 'Llaves en el Acto',
     categoryName: 'Automotriz',
-    shortDescription: 'Elaboración de llaves nuevas de auto aunque haya perdido todas las copias originales.',
-    fullDescription: 'No gaste en grúas ni espere días en el concesionario. Nos trasladamos a donde esté su vehículo, decodificamos la cerradura, cortamos la hoja metálica por código y programamos el chip transponder directamente en el lugar.',
+    shortDescription: 'Reemplazo de llaves de auto según el vehículo y el tipo de llave.',
+    fullDescription: 'El servicio móvil puede incluir el corte de una llave y la programación de un control compatible. Confirme el vehículo, el tipo de llave y si perdió todas las copias para conocer las opciones.',
     features: [
       'Servicio cuando ha perdido todas las llaves (All Keys Lost)',
-      'Corte de alta precisión por código de fábrica',
+      'Corte de llaves compatibles',
       'Llaves tipo navaja, llaves tradicionales y controles remotos',
-      'Precios competitivos frente al concesionario',
+      'Consulte qué incluye el presupuesto',
       'Prueba completa de encendido y seguros antes de finalizar'
     ]
   },
@@ -141,12 +141,12 @@ export const SPANISH_SERVICES: Record<string, SpanishServiceTranslation> = {
     badge: 'Tecnología OBD',
     categoryName: 'Automotriz',
     shortDescription: 'Programación de controles remotos y llaves de proximidad con botón de arranque de arranque por botón.',
-    fullDescription: 'Programamos controles remotos, mandos de alarma y llaves de presencia  para una amplia variedad de modelos. Conectamos equipos diagnósticos certificados al puerto OBD-II de su vehículo para sincronizar el sistema inmovilizador de manera segura.',
+    fullDescription: 'La programación de controles compatibles depende de la configuración del vehículo. Confirme qué funciones necesita y si el servicio se puede realizar en el lugar.',
     features: [
       'Sincronización de sistemas arranque por botón',
-      'Borrado de llaves extraviadas de la memoria del auto',
-      'Controles OEM de alta durabilidad',
-      'Baterías nuevas incluidas y verificadas',
+      'Consulte las opciones si perdió una llave',
+      'Opciones de repuesto según el vehículo',
+      'Consulte las funciones incluidas en el servicio',
       'Sincronización de apertura remota de puertas y maletero'
     ]
   },

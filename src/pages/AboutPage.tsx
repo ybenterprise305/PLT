@@ -147,8 +147,8 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
             </h3>
             <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
               {isSpanish 
-                ? 'Taladrar una cerradura siempre debe ser el último recurso absoluto. Nuestros técnicos practican métodos avanzados de ganzuado, decodificación y bypass no destructivo para proteger sus cerraduras valiosas, marcos y pintura automotriz.' 
-                : 'Drilling a lock cylinder should always be an absolute last resort, not a shortcut. Our technicians practice specialized non-destructive picking, decoding, and bypass methods that protect your high-value locks, door frames, and automotive finishes.'}
+                ? 'Cuando es adecuado, se consideran métodos que ayuden a evitar daños innecesarios en la cerradura o la puerta. El método depende del estado del equipo.'
+                : 'When appropriate, we consider methods that help avoid unnecessary damage to the lock or door. The available approach depends on the condition of the hardware.'}
             </p>
           </div>
         </div>
@@ -189,8 +189,8 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
               </h4>
               <p className="text-xs text-slate-400 mt-1">
                 {isSpanish 
-                  ? 'Entrenados en métodos modernos de ganzuado, rekeying residencial y cerraduras resistentes al clima costero de Florida.' 
-                  : 'Trained in modern bypass methods, residential rekeying, and Florida-specific coastal security hardware.'}
+                  ? 'Servicio móvil para problemas de llaves y cerraduras de viviendas, negocios y autos.'
+                  : 'Mobile service for residential, commercial and automotive key and lock problems.'}
               </p>
             </div>
           </div>

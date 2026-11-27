@@ -1,3 +1,5 @@
+import { ResourceLinks } from '../components/ResourceLinks';
+import { topicResources } from '../data/editorialLinks';
 import { StructuredData } from '../components/StructuredData';
 import { articleData } from '../utils/structuredData';
 import { Breadcrumbs } from '../components/Breadcrumbs';
@@ -50,7 +52,7 @@ export function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
       <StructuredData data={articleData({
         type: 'BlogPosting', path: `/blog/${post.slug}`, language: 'en',
         headline: post.title, description: post.excerpt,
-        author: post.author, datePublished: published, image: post.image,
+        author: post.author, datePublished: published, dateModified: post.dateModified, image: post.image,
       })} />
 
       {/* Main Container */}
@@ -82,6 +84,7 @@ export function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
             <span className="flex items-center gap-1.5">
               <Calendar className="w-3.5 h-3.5 text-amber-400" />
               <time dateTime={published}>{post.date}</time>
+              {post.dateModified && <span> · Updated <time dateTime={post.dateModified}>{new Date(post.dateModified + 'T12:00:00Z').toLocaleDateString('en-US', { timeZone: 'UTC', month: 'long', day: 'numeric', year: 'numeric' })}</time></span>}
             </span>
             <span className="flex items-center gap-1.5">
               <Clock className="w-3.5 h-3.5 text-amber-400" />
@@ -113,10 +116,12 @@ export function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
         <div className="rounded-3xl overflow-hidden mb-10 border border-slate-800 aspect-[16/9] shadow-2xl bg-slate-950">
           <img
             src={post.image}
-            alt={post.title}
+            alt="Illustration accompanying this locksmith article"
             className="w-full h-full object-cover"
           />
         </div>
+
+        <p className="-mt-7 mb-8 text-xs text-slate-300">Illustrative image</p>
 
         {/* Urgent In-Article Callout Box */}
         <div className="bg-gradient-to-r from-amber-500/20 to-slate-950 border-2 border-amber-500/40 rounded-2xl p-6 sm:p-7 mb-10 shadow-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
@@ -147,7 +152,7 @@ export function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
         </div>
 
         {/* Direct Answer Block (AEO / Google AI Overview Optimized) */}
-        {post.quickAnswer && (
+        {post.quickAnswer && post.quickAnswer !== post.excerpt && (
           <div className="bg-amber-500/10 border-2 border-amber-500/60 rounded-2xl p-6 mb-10 shadow-lg">
             <div className="flex items-center gap-2 mb-2">
               <span className="p-1 rounded-md bg-amber-500 text-slate-950">
@@ -194,6 +199,11 @@ export function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
               )}
             </section>
           ))}
+        </div>
+
+        <div className="my-8 space-y-6">
+          <ResourceLinks title="Related guides" links={topicResources[post.category]} />
+          {post.sources && <ResourceLinks title="Sources" links={post.sources} />}
         </div>
 
         {/* Related Services Links */}

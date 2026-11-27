@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const hierarchicalTypes = new Set(['service', 'county', 'city', 'neighborhood', 'article', 'guide']);
-const directoryTrails = new Set(['/services/', '/es/services/', '/service-areas/', '/es/service-areas/', '/blog/', '/tips/']);
+const directoryTrails = new Set(['/services/', '/es/services/', '/service-areas/', '/es/service-areas/', '/blog/', '/tips/', '/es/tips/']);
 const permittedTypes = new Set(['Organization', 'WebSite', 'BreadcrumbList', 'ListItem', 'Article', 'BlogPosting']);
 const clean = value => typeof value === 'string' ? value.replace(/\s+/g, ' ').trim() : '';
 
@@ -119,6 +119,14 @@ export function validateStructuredData({ document, page, pathname, byPath, site,
         if (id(node) !== canonical + '#article' || node.url !== canonical || node.mainEntityOfPage !== canonical ||
             node.inLanguage !== page.language || id(node.publisher) !== businessId ||
             clean(node.headline) !== clean(plain(h1)) || !node.description || !visibleText.includes(clean(node.description))) issue('article identity or visible content is inconsistent');
+        if (node.dateModified) {
+          const revised = new Date(node.dateModified);
+          if (!/^\d{4}-\d{2}-\d{2}$/.test(node.dateModified) || Number.isNaN(revised.valueOf()) ||
+              revised.toISOString().slice(0, 10) !== node.dateModified || node.dateModified < (node.datePublished || '') ||
+              !visibleElements.some(el => el.tagName === 'time' && attr(el, 'datetime') === node.dateModified)) {
+            issue('article revision date is invalid or not visible');
+          }
+        }
         if (type(node) === 'BlogPosting') {
           const byline = visibleElements.find(element => attr(element, 'class') === 'article-byline');
           const time = visibleElements.find(element => element.tagName === 'time');
