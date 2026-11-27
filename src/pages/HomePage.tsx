@@ -43,7 +43,7 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
             <p className="max-w-xl text-base leading-7 text-slate-200 sm:text-lg">
               {isSpanish
                 ? 'Aperturas de autos y casas, llaves de auto, programación de controles y cambio de cerraduras. Servicio móvil en el sur de Florida, todos los días.'
-                : 'Car and home lockouts, replacement car keys, key fob programming and lock changes. Mobile service throughout South Florida, day or night.'}
+                : 'Serving South Florida since 2000. Get same-day car key replacement, on-site key fob programming, car and home lockouts, lock changes and more across Miami-Dade, Broward and Palm Beach counties.'}
             </p>
             <LocalizedA href={TEL} onClick={() => call('homepage_hero_call')}
               className="inline-flex min-h-[58px] w-full items-center justify-center gap-3 rounded-xl bg-amber-400 px-6 py-4 text-lg font-extrabold text-slate-950 shadow-lg hover:bg-amber-300 sm:w-auto">
@@ -104,7 +104,7 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
       <section className="border-y border-slate-800 bg-slate-950 py-12 sm:py-16" aria-labelledby="popular-locksmith-requests">
         <div className="mx-auto max-w-7xl px-5">
           <h2 id="popular-locksmith-requests" className="font-heading text-2xl font-bold sm:text-3xl">{isSpanish ? 'Servicios de cerrajería más solicitados' : 'Popular Locksmith Requests'}</h2>
-          <p className="mt-3 max-w-3xl text-base leading-7 text-slate-300">{isSpanish ? 'Servicio móvil disponible las 24 horas. Llame para confirmar cobertura, disponibilidad y precio para su trabajo.' : 'Our mobile locksmith team takes calls 24/7. Call to confirm service coverage, availability and an estimate for your specific job.'}</p>
+          <p className="mt-3 max-w-3xl text-base leading-7 text-slate-300">{isSpanish ? 'Servicio móvil disponible las 24 horas. Llame para confirmar cobertura, disponibilidad y precio para su trabajo.' : 'Need a locksmith today? Call our 24/7 team for same-day service, emergency assistance and an estimate for your job.'}</p>
           <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { href: '/services/automotive-locksmith', en: 'Car Lockouts & Replacement Keys', es: 'Apertura y llaves de auto' },
@@ -130,8 +130,8 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
               answer: isSpanish ? 'Sí. Pro Locksmith Tech recibe llamadas las 24 horas, los 7 días de la semana. La disponibilidad para su ubicación se confirma por teléfono.' : 'Yes. Pro Locksmith Tech accepts calls 24 hours a day, seven days a week. Call to confirm a technician is available for your location.'
             },
             {
-              question: isSpanish ? '¿Tienen una tienda abierta al público?' : 'Do you have a walk-in shop?',
-              answer: isSpanish ? 'No. Somos un servicio móvil y vamos hasta su vehículo, hogar o negocio.' : 'No. We are a mobile service-area business. We travel to your vehicle, home or business rather than operating a public storefront.'
+              question: isSpanish ? '¿Pueden acudir a mi ubicación?' : 'Can a locksmith come to my location?',
+              answer: isSpanish ? 'Sí. Nuestros cerrajeros acuden a su vehículo, hogar o negocio con servicio el mismo día y de emergencia.' : 'Yes. Our equipped locksmiths come directly to your location throughout South Florida, with same-day and emergency service available.'
             },
             {
               question: isSpanish ? '¿Qué información debo tener lista?' : 'What should I have ready when I call?',
