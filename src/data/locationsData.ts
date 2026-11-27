@@ -213,7 +213,7 @@ export const COUNTIES_DATA: CountyLocation[] = [
         popularAreas: ['Woodmont', 'Kings Point', 'Mainlands of Tamarac Lakes', 'Tamarac Town Center'],
         metaTitle: 'Locksmith Tamarac FL | 24/7 Mobile Lock Service | Pro Locksmith Tech',
         metaDescription: '24/7 Mobile locksmith serving Tamarac, FL. Fast response for house lockouts, deadbolt installs & car key replacements along Commercial Blvd. Call +1 754-261-6528.',
-        customIntro: 'Tamarac is an active central Broward municipality featuring master-planned communities like Woodmont and Kings Point alongside bustling retail plazas along Commercial Boulevard. Pro Locksmith Tech dispatches fully equipped mobile vans directly to your home or vehicle with estimated 15–25 minute arrival times* (not guaranteed; actual timing depends on location, traffic and technician availability).',
+        customIntro: 'Tamarac is an active central Broward municipality featuring master-planned communities like Woodmont and Kings Point alongside bustling retail plazas along Commercial Boulevard. Pro Locksmith Tech dispatches fully equipped mobile vans directly to your home or vehicle in Tamarac. Call to confirm technician availability for your location.',
         serviceHighlights: [
           'Residential home lock rekeying and deadbolt upgrades in Woodmont and Kings Point',
           'Fast emergency vehicle lockout dispatch along Commercial Boulevard and University Drive',

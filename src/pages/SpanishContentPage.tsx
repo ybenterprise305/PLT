@@ -1,5 +1,5 @@
 import { Breadcrumbs } from '../components/Breadcrumbs';
-import { PHONE, TEL } from '../config/business';
+import { PAYMENT_METHODS, PHONE, TEL } from '../config/business';
 import React from 'react';
 import { Phone, MapPin, ArrowRight, Clock, Car, Home, ShieldCheck } from 'lucide-react';
 import { CityLocalInformation } from '../components/CityLocalInformation';
@@ -164,6 +164,14 @@ export function SpanishContentPage({ path }: Props) {
               <h2 className="mb-2 text-lg font-bold">{item.question}</h2><p className="text-base leading-7 text-slate-300">{item.answer}</p>
             </article>
           ))}
+        </section>
+      )}
+
+      {path === '/contact' && (
+        <section className="mx-auto max-w-4xl space-y-3 px-5 py-6" aria-labelledby="contact-payment">
+          <h2 id="contact-payment" className="font-heading text-2xl font-bold">Formas de pago y precios</h2>
+          <p className="text-slate-300">Pro Locksmith Tech acepta {PAYMENT_METHODS.es}. Llámenos para consultar otras formas de pago.</p>
+          <p className="text-slate-300">El precio depende del servicio, el vehículo o la cerradura, las piezas necesarias y la ubicación. Llame al {PHONE} para consultar el precio de su servicio.</p>
         </section>
       )}
 

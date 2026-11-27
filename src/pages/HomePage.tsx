@@ -123,7 +123,7 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      {/* Concise, visible answers are useful to callers and machine-readable search systems. */}
+      {/* Answers to common questions before calling. */}
       <section className="mx-auto max-w-5xl px-5 py-12 sm:py-16" aria-labelledby="locksmith-quick-answers">
         <h2 id="locksmith-quick-answers" className="font-heading text-2xl font-bold sm:text-3xl">{isSpanish ? 'Preguntas antes de llamar' : 'Quick Answers Before You Call'}</h2>
         <div className="mt-6 grid gap-4 md:grid-cols-2">
@@ -137,8 +137,8 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
               answer: isSpanish ? 'Sí. Nuestros cerrajeros acuden a su vehículo, hogar o negocio con servicio el mismo día y de emergencia.' : 'Yes. Our equipped locksmiths come directly to your location throughout South Florida, with same-day and emergency service available.'
             },
             {
-              question: isSpanish ? '¿Qué información debo tener lista?' : 'What should I have ready when I call?',
-              answer: isSpanish ? 'Indique su ciudad y ubicación, el tipo de cerradura o vehículo y el servicio que necesita cuando llame.' : 'Have your city and location, lock or vehicle details, and the problem you need solved ready when you call.'
+              question: isSpanish ? '¿Pueden reemplazar una llave de auto perdida?' : 'Can you replace a lost car key?',
+              answer: isSpanish ? 'Sí. Pro Locksmith Tech corta llaves de reemplazo y programa controles compatibles en la ubicación de su auto. Llame para confirmar el servicio para su vehículo.' : 'Yes. Pro Locksmith Tech cuts replacement car keys and programs compatible key fobs at your vehicle. Call to confirm service for your vehicle.'
             },
             {
               question: isSpanish ? '¿Pueden abrir autos y cerraduras sin causar daños?' : 'Can you unlock cars and doors without causing damage?',

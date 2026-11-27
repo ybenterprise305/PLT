@@ -29,7 +29,9 @@ jobs:
           grep -q 'rel="canonical" href="https://prolocksmith-tech.com/services/"' dist/services/index.html
           grep -q 'noindex' dist/lp/car-lockout/index.html
       - name: SEO checks (titles, descriptions, canonicals, headings, structured data)
-        run: node scripts/check-seo.mjs
+        run: |
+          node scripts/check-seo.mjs
+          node scripts/check-discovery.mjs
       - name: Verify asset references and performance budgets
         run: node scripts/check-phase-i.mjs
       - name: Install browser for site checks
@@ -41,4 +43,5 @@ jobs:
           sleep 5
           node scripts/check-site.mjs
           node scripts/check-seo-browser.mjs
+          node scripts/check-agent-journeys.mjs
           node scripts/check-tracking.mjs

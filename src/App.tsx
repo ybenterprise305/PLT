@@ -9,6 +9,7 @@ import { loadRoute, matchRoute, type LoadedRoute } from './routes';
 export default function App({ initialRoute }: { initialRoute: LoadedRoute }) {
   const [route, setRoute] = useState(initialRoute);
   const navigation = useRef(0);
+  const previousPath = useRef(route.fullPath);
 
   const openRoute = useCallback(async (url: URL, mode: 'push' | 'pop', scroll: boolean) => {
     const id = ++navigation.current;
@@ -61,6 +62,13 @@ export default function App({ initialRoute }: { initialRoute: LoadedRoute }) {
     return () => document.removeEventListener('click', handleClick);
   }, [navigate]);
 
+  useEffect(() => {
+    if (previousPath.current !== route.fullPath) {
+      previousPath.current = route.fullPath;
+      document.getElementById('main-content')?.focus({ preventScroll: true });
+    }
+  }, [route.fullPath]);
+
   const { Component } = route;
   const content = <Component key={route.fullPath} path={route.path} slug={route.slug} onNavigate={navigate} />;
   const spanishContent = route.name === 'SpanishContentPage';
@@ -82,7 +90,7 @@ export default function App({ initialRoute }: { initialRoute: LoadedRoute }) {
         />
 
         {/* Main Page Area with generous smartphone bottom clearance for the sticky call bar */}
-        <main id="main-content" className={spanishContent ? "flex-1 pb-24 lg:pb-0" : "flex-1 pb-24 sm:pb-28 lg:pb-0 w-full"}>
+        <main id="main-content" tabIndex={-1} className={spanishContent ? "flex-1 pb-24 lg:pb-0" : "flex-1 pb-24 sm:pb-28 lg:pb-0 w-full"}>
           {content}
         </main>
 

@@ -137,3 +137,5 @@ if (invalidServiceSlugs.length) {
   throw new Error('Blog posts contain links to missing service URLs: ' + invalidServiceSlugs.join(', '));
 }
 console.log('Related service link check passed: all blog service links resolve to existing routes.');
+
+fs.copyFileSync(path.join(root, 'src/generated/llms.txt'), path.join(dist, 'llms.txt'));

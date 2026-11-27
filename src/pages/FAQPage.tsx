@@ -6,8 +6,7 @@ import {
   Truck, 
   
   ShieldAlert,
-  ArrowRight,
-  CheckCircle2
+  ArrowRight
 } from 'lucide-react';
 import { SEOHead } from '../components/SEOHead';
 import { FAQ_DATA } from '../data/faqData';
@@ -22,15 +21,11 @@ interface FAQPageProps {
 export function FAQPage({ onNavigate }: FAQPageProps) {
   const { isSpanish } = useLanguage();
   const [activeCategory, setActiveCategory] = useState<string>('all');
-  const [expandedId, setExpandedId] = useState<string | null>(FAQ_DATA[0].id);
 
   const currentFaqs = isSpanish 
     ? SPANISH_FAQS 
     : FAQ_DATA.filter(item => activeCategory === 'all' || item.category === activeCategory);
 
-  const toggleExpand = (id: string) => {
-    setExpandedId(prev => prev === id ? null : id);
-  };
 
   return (
     <div className="min-h-screen bg-slate-900 text-slate-100 py-12">
@@ -125,6 +120,8 @@ export function FAQPage({ onNavigate }: FAQPageProps) {
                 ].map(cat => (
                   <button
                     key={cat.id}
+                    type="button"
+                    aria-pressed={activeCategory === cat.id}
                     onClick={() => setActiveCategory(cat.id)}
                     className={`px-3 py-1.5 text-xs font-semibold rounded-lg border transition-all cursor-pointer ${
                       activeCategory === cat.id
@@ -143,59 +140,22 @@ export function FAQPage({ onNavigate }: FAQPageProps) {
         {/* Accordion Questions List */}
         <div className="space-y-3">
           {currentFaqs.length > 0 ? (
-            currentFaqs.map((faq) => {
-              const isOpen = expandedId === faq.id;
-              return (
-                <div
-                  key={faq.id}
-                  className={`bg-slate-950 border transition-all rounded-2xl overflow-hidden ${
-                    isOpen 
-                      ? 'border-amber-500/50 shadow-lg shadow-amber-500/5' 
-                      : 'border-slate-800 hover:border-slate-700'
-                  }`}
-                >
-                  <button
-                    onClick={() => toggleExpand(faq.id)}
-                    className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 cursor-pointer focus:outline-none"
-                    aria-expanded={isOpen}
-                    aria-controls={`answer-${faq.id}`}
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 text-xs font-bold ${
-                        isOpen ? 'bg-amber-500 text-slate-950' : 'bg-slate-800 text-slate-300'
-                      }`}>
-                        Q
-                      </div>
-                      <h2 className="font-heading font-bold text-base sm:text-lg text-white">
-                        {faq.question}
-                      </h2>
-                    </div>
-                    <ChevronDown className={`w-5 h-5 text-amber-400 shrink-0 transition-transform duration-200 ${
-                      isOpen ? 'rotate-180' : ''
-                    }`} />
-                  </button>
-
-                  <div hidden={!isOpen} id={`answer-${faq.id}`} className="px-5 sm:px-6 pb-6 pt-1 text-slate-300 text-sm sm:text-base leading-relaxed border-t border-slate-900">
-                      <div className="flex items-start gap-3">
-                        <CheckCircle2 className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
-                        <div>
-                          <p>{faq.answer}</p>
-                          <div className="pt-4 flex items-center gap-4 text-xs">
-                            <LocalizedA
-                              href="tel:+17542616528"
-                              className="text-amber-400 hover:underline font-bold inline-flex items-center gap-1"
-                            >
-                              <Phone className="w-3.5 h-3.5" />
-                              <span>{isSpanish ? 'Llamar Para Este Servicio' : 'Call For This Service'}</span>
-                            </LocalizedA>
-                            
-                          </div>
-                        </div>
-                      </div>
-                  </div>
+            currentFaqs.map((faq, index) => (
+              <details key={faq.id} open={index === 0} className="group overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 open:border-amber-500/50">
+                <summary className="cursor-pointer list-none p-5 focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-amber-400 sm:p-6">
+                  <h2 className="flex items-center justify-between gap-4 font-heading text-base font-bold text-white sm:text-lg">
+                    {faq.question}
+                    <ChevronDown aria-hidden="true" className="h-5 w-5 shrink-0 text-amber-400 group-open:rotate-180" />
+                  </h2>
+                </summary>
+                <div className="border-t border-slate-900 px-5 pb-6 pt-4 text-sm leading-relaxed text-slate-300 sm:px-6 sm:text-base">
+                  <p>{faq.answer}</p>
+                  <LocalizedA href="tel:+17542616528" className="mt-3 inline-flex min-h-11 items-center font-semibold text-amber-300 underline">
+                    {isSpanish ? 'Llamar para este servicio' : 'Call for this service'}
+                  </LocalizedA>
                 </div>
-              );
-            })
+              </details>
+            ))
           ) : (
             <div className="bg-slate-950 border border-slate-800 rounded-2xl p-12 text-center space-y-4">
               <ShieldAlert className="w-10 h-10 text-amber-400 mx-auto" />

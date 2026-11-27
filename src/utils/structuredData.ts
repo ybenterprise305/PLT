@@ -1,4 +1,4 @@
-import { BUSINESS_NAME, PHONE_E164, SITE } from '../config/business';
+import { BUSINESS_NAME, PHONE_E164, SERVICE_SINCE, SITE, VERIFIED_PROFILES } from '../config/business';
 import { canonicalLink, localizePath, type Lang } from './locale';
 
 const homeURL = SITE + '/';
@@ -13,15 +13,8 @@ export const siteIdentity = {
       url: homeURL,
       telephone: PHONE_E164,
       logo: SITE + '/icon-192.png',
-      description: 'Serving South Florida since 2000, Pro Locksmith Tech provides 24/7 mobile automotive, residential and commercial locksmith services.',
-      sameAs: [
-        'https://maps.google.com/maps?cid=16992150185739281311',
-        'https://nextdoor.com/pages/pro-locksmith-tech-coral-springs-fl/',
-        'https://www.yelp.com/biz/pro-locksmith-tech-coral-springs-2',
-        'https://www.facebook.com/people/Pro-Locksmith-Tech/61596007395772/',
-        'https://www.instagram.com/pro_locksmith_tech/',
-        'https://www.pinterest.com/prolocksmithtech/',
-      ],
+      description: `Serving South Florida since ${SERVICE_SINCE}, ${BUSINESS_NAME} provides 24/7 mobile automotive, residential and commercial locksmith services.`,
+      sameAs: VERIFIED_PROFILES.map(([, url]) => url),
     },
     {
       '@type': 'WebSite',

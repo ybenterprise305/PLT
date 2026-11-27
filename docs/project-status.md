@@ -7,7 +7,7 @@
 | I | Elite technical engineering | Published and verified |
 | II | Advanced technical SEO | See Phase II implementation and verification |
 | III | Structured data and business entity authority | See Phase III implementation and verification |
-| IV | AEO, AIO, GEO and agentic browsing | Awaiting explicit approval |
+| IV | AEO, AIO, GEO and agentic browsing | See Phase IV implementation and verification |
 | V | Content and topical authority | Awaiting explicit approval |
 | VI | Advanced local SEO | Awaiting explicit approval |
 | VII | Premium design and user experience | Awaiting explicit approval |
@@ -43,3 +43,7 @@ See [Phase II technical SEO implementation](phase-ii-technical-seo.md) for the a
 ## Phase III
 
 See [Phase III structured data and business identity](phase-iii-structured-data.md) for the site entity, schema policy, validation and recovery instructions.
+
+## Phase IV
+
+See [Phase IV answer discovery and agentic browsing](phase-iv-discovery.md) for policy, implementation, validation and recovery.

@@ -30,7 +30,13 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const navBarRef = useRef<HTMLDivElement>(null);
+  const drawerRef = useRef<HTMLDialogElement>(null);
   const [drawerTop, setDrawerTop] = useState(0);
+
+  const dismissMenu = () => {
+    drawerRef.current?.close();
+    setMobileMenuOpen(false);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,29 +46,21 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile drawer on route change or escape
-  const handleLinkClick = (path: string) => {
-    onNavigate(path);
-    setMobileMenuOpen(false);
-  };
-
   useEffect(() => {
-    if (!mobileMenuOpen) return;
+    const drawer = drawerRef.current;
+    if (!mobileMenuOpen || !drawer) return;
     const previousOverflow = document.body.style.overflow;
     const update = () => setDrawerTop(Math.max(0, Math.round(navBarRef.current?.getBoundingClientRect().bottom ?? 80)));
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setMobileMenuOpen(false);
-    };
     update();
     document.body.style.overflow = 'hidden';
     window.addEventListener('resize', update, { passive: true });
     window.addEventListener('orientationchange', update);
-    document.addEventListener('keydown', onKeyDown);
+    drawer.showModal();
     return () => {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener('resize', update);
       window.removeEventListener('orientationchange', update);
-      document.removeEventListener('keydown', onKeyDown);
+      drawer.close();
     };
   }, [mobileMenuOpen]);
 
@@ -109,7 +107,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
               </div>
               <div className="hidden md:flex items-center gap-1 text-slate-400 text-xs">
                 <MapPin className="w-3.5 h-3.5 text-amber-400" />
-                <span>{isSpanish ? 'Cerrajería Móvil en Todo el Sur de la Florida' : 'Serving All of South Florida'}</span>
+                <span>{isSpanish ? 'Cerrajería móvil en el sur de Florida' : 'Serving South Florida'}</span>
               </div>
             </div>
 
@@ -162,7 +160,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
             </LocalizedA>
 
             {/* Desktop Navigation Links (ONLY 4 Main Links) */}
-            <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
+            <nav aria-label={isSpanish ? 'Navegación principal' : 'Main navigation'} className="hidden lg:flex items-center gap-1 xl:gap-2">
               <LocalizedA href="/"
                 className={`px-4 py-2 text-sm font-semibold rounded-lg transition-colors cursor-pointer ${
                   currentPath === '/' 
@@ -234,7 +232,8 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
 
               {/* Hamburger Button with Accessible Touch Area */}
               <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                type="button"
+                onClick={() => setMobileMenuOpen(true)}
                 className="w-10 min-[360px]:w-11 h-11 rounded-xl bg-slate-800 active:bg-slate-700 text-slate-200 hover:text-white flex items-center justify-center transition-colors focus-visible:outline-2 focus-visible:outline-amber-400 cursor-pointer"
                 aria-label={mobileMenuOpen ? (isSpanish ? 'Cerrar menú' : 'Close menu') : (isSpanish ? 'Abrir menú' : 'Open menu')}
                 aria-expanded={mobileMenuOpen}
@@ -248,11 +247,21 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
 
         {/* 3. MOBILE NAVIGATION DRAWER (Full-screen overlay for effortless smartphone navigation) */}
         {mobileMenuOpen && typeof document !== 'undefined' && createPortal(
-          <> 
-            <button type="button" aria-label={isSpanish ? 'Cerrar menú' : 'Close navigation'} onClick={() => setMobileMenuOpen(false)} className="fixed inset-x-0 bottom-0 z-[79] bg-black/65 lg:hidden" style={{ top: drawerTop }} />
-            
-          <div id="mobile-site-navigation" role="dialog" aria-modal="true" aria-label={isSpanish ? "Menú del sitio" : "Site navigation"} style={{ top: drawerTop }} className="lg:hidden fixed inset-x-0 bottom-0 z-[80] bg-slate-950/98 backdrop-blur-xl border-t border-slate-800 overflow-y-auto px-4 py-5 flex flex-col justify-between">
-            
+          <dialog ref={drawerRef} id="mobile-site-navigation"
+            aria-labelledby="mobile-menu-title"
+            onCancel={event => { event.preventDefault(); dismissMenu(); }}
+            onClick={event => { if (event.target === event.currentTarget && event.clientY < drawerTop) dismissMenu(); }}
+            style={{ top: drawerTop, height: `calc(100dvh - ${drawerTop}px)` }}
+            className="fixed inset-x-0 m-0 w-full max-w-none max-h-none overflow-y-auto border-t border-slate-800 bg-slate-950 px-4 py-5 text-slate-100 backdrop:bg-black/65 open:flex open:flex-col open:justify-between lg:hidden">
+            <div className="mb-4 flex shrink-0 items-center justify-between">
+              <h2 id="mobile-menu-title" className="font-heading text-base font-bold">{isSpanish ? 'Menú del sitio' : 'Site navigation'}</h2>
+              <button type="button" onClick={dismissMenu}
+                className="rounded-lg p-3 text-amber-400 focus-visible:outline-2 focus-visible:outline-amber-400"
+                aria-label={isSpanish ? 'Cerrar menú' : 'Close menu'}>
+                <X aria-hidden="true" className="h-5 w-5" />
+              </button>
+            </div>
+
             <div className="space-y-5">
               {/* Language Switcher Bar in Drawer */}
               <div className="flex items-center justify-between p-3 rounded-xl bg-slate-900 border border-slate-800">
@@ -263,14 +272,14 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
               </div>
 
               {/* 4 Main Core Links with Large Finger-Friendly Touch Targets */}
-              <nav className="grid gap-2">
+              <nav aria-label={isSpanish ? 'Navegación principal' : 'Main navigation'} className="grid gap-2">
                 <LocalizedA href="/"
                   className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-bold transition-all cursor-pointer min-h-[50px] ${
                     currentPath === '/' 
                       ? 'text-slate-950 bg-amber-500 font-black shadow-lg shadow-amber-500/20' 
                       : 'text-slate-200 bg-slate-900 border border-slate-800 hover:bg-slate-850'
                   } text-center`}
-                 onClick={() => setMobileMenuOpen(false)}>
+                 onClick={dismissMenu}>
                   <span className="flex items-center gap-3">
                     <Home className="w-5 h-5" />
                     <span>{t('nav.home')}</span>
@@ -284,7 +293,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
                       ? 'text-slate-950 bg-amber-500 font-black shadow-lg shadow-amber-500/20' 
                       : 'text-slate-200 bg-slate-900 border border-slate-800 hover:bg-slate-850'
                   } text-center`}
-                 onClick={() => setMobileMenuOpen(false)}>
+                 onClick={dismissMenu}>
                   <span className="flex items-center gap-3">
                     <Wrench className="w-5 h-5" />
                     <span>{t('nav.services')}</span>
@@ -298,7 +307,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
                       ? 'text-slate-950 bg-amber-500 font-black shadow-lg shadow-amber-500/20' 
                       : 'text-slate-200 bg-slate-900 border border-slate-800 hover:bg-slate-850'
                   } text-center`}
-                 onClick={() => setMobileMenuOpen(false)}>
+                 onClick={dismissMenu}>
                   <span className="flex items-center gap-3">
                     <Navigation className="w-5 h-5" />
                     <span>{t('nav.serviceAreas')}</span>
@@ -312,7 +321,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
                       ? 'text-slate-950 bg-amber-500 font-black shadow-lg shadow-amber-500/20' 
                       : 'text-slate-200 bg-slate-900 border border-slate-800 hover:bg-slate-850'
                   } text-center`}
-                 onClick={() => setMobileMenuOpen(false)}>
+                 onClick={dismissMenu}>
                   <span className="flex items-center gap-3">
                     <Mail className="w-5 h-5" />
                     <span>{t('nav.contact')}</span>
@@ -361,8 +370,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
               
             </div>
 
-          </div>
-        </>, document.body)}
+          </dialog>, document.body)}
       </div>
     </header>
   );
