@@ -239,3 +239,7 @@ button, a {
   .plt-home-actions { display: grid; justify-items: start; }
   .plt-home-hero h1 { text-wrap: initial; }
 }
+@media (max-width: 63.999rem) {
+  .plt-header .plt-brand { flex: 0 1 auto; min-width: 0; }
+  .plt-header .plt-brand > div { max-width: 100%; }
+}
