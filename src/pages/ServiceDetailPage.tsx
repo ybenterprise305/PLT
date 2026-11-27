@@ -59,128 +59,13 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
 
   const serviceImage = getServiceImage(service.slug);
 
-  // =========================================================================
-  // COMPREHENSIVE JSON-LD LocalBusiness & Service Schema Markup for AEO & SEO
-  // =========================================================================
   const serviceLocalBusinessSchema = {
     "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": ["Locksmith", "LocalBusiness"],
-        "@id": "https://prolocksmith-tech.com/#locksmith",
-        "name": "Pro Locksmith Tech",
-        "legalName": "Pro Locksmith Tech LLC",
-        "url": "https://prolocksmith-tech.com/",
-        "logo": "https://prolocksmith-tech.com/icon-512.png",
-        "image": "https://prolocksmith-tech.com/icon-512.png",
-        "telephone": "+1-754-261-6528",
-        "email": "prolocksmithtech@gmail.com",
-                "paymentAccepted": "Cash, Credit Card, Debit Card, Mobile Pay",
-        "currenciesAccepted": "USD",
-        "description": service.fullDescription,
-        "serviceType": service.name,
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Coral Springs",
-          "addressRegion": "FL",
-          "postalCode": "33076",
-          "addressCountry": "US"
-        },
-        "areaServed": [
-          {
-            "@type": "AdministrativeArea",
-            "name": "Broward County, FL",
-            "containsPlace": [
-              { "@type": "City", "name": "Coral Springs" },
-              { "@type": "City", "name": "Fort Lauderdale" },
-              { "@type": "City", "name": "Hollywood" },
-              { "@type": "City", "name": "Pembroke Pines" },
-              { "@type": "City", "name": "Pompano Beach" }
-            ]
-          },
-          {
-            "@type": "AdministrativeArea",
-            "name": "Miami-Dade County, FL",
-            "containsPlace": [
-              { "@type": "City", "name": "Miami" },
-              { "@type": "City", "name": "Miami Beach" },
-              { "@type": "City", "name": "Hialeah" },
-              { "@type": "City", "name": "Doral" },
-              { "@type": "City", "name": "Coral Gables" }
-            ]
-          },
-          {
-            "@type": "AdministrativeArea",
-            "name": "Palm Beach County, FL",
-            "containsPlace": [
-              { "@type": "City", "name": "Boca Raton" },
-              { "@type": "City", "name": "West Palm Beach" },
-              { "@type": "City", "name": "Delray Beach" },
-              { "@type": "City", "name": "Boynton Beach" },
-              { "@type": "City", "name": "Jupiter" }
-            ]
-          }
-        ],
-        "openingHoursSpecification": [
-          {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-            "opens": "00:00",
-            "closes": "23:59"
-          }
-        ]
-      },
-      {
-        "@type": "Service",
-        "@id": `https://prolocksmith-tech.com/services/${service.slug}#service`,
-        "name": service.name,
-        "serviceType": `${service.category} locksmith`,
-        "description": service.fullDescription,
-        "provider": {
-          "@type": "Locksmith",
-          "name": "Pro Locksmith Tech",
-          "telephone": "+1-754-261-6528",
-          "url": "https://prolocksmith-tech.com"
-        },
-        "areaServed": [
-          { "@type": "AdministrativeArea", "name": "Broward County, FL" },
-          { "@type": "AdministrativeArea", "name": "Miami-Dade County, FL" },
-          { "@type": "AdministrativeArea", "name": "Palm Beach County, FL" }
-        ]
-
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://prolocksmith-tech.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Services",
-            "item": "https://prolocksmith-tech.com/services"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": service.name,
-            "item": `https://prolocksmith-tech.com/services/${service.slug}`
-          }
-        ]
-      },
-      {
-        "@type": "FAQPage",
-        "@id": `https://prolocksmith-tech.com/services/${service.slug}#faq`,
-        "mainEntity": serviceFaqs.map(item => ({
-          "@type": "Question",
-          "name": item.question,
-          "acceptedAnswer": { "@type": "Answer", "text": item.answer }
-        }))
-      }
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: t('nav.home'), item: "https://prolocksmith-tech.com/" },
+      { "@type": "ListItem", position: 2, name: t('nav.services'), item: "https://prolocksmith-tech.com/services/" },
+      { "@type": "ListItem", position: 3, name: serviceName, item: `https://prolocksmith-tech.com/services/${service.slug}/` }
     ]
   };
 
