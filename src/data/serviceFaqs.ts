@@ -11,7 +11,7 @@ const serviceFaqs: Record<string, ServiceFaq[]> = {
   'residential-locksmith': [
     {question:'What types of home locks can a mobile locksmith service?',answer:'Residential locksmith services include house lockouts, lock installation, repairs, replacement and rekeying. The right approach depends on the door, hardware and existing lock condition.'},
     {question:'Should I rekey my locks after moving into a home?',answer:'Rekeying can be a practical option when existing locks are in good condition and compatible. It changes which keys operate the locks without necessarily replacing all the hardware.'},
-    {question:'Do I need to bring my door lock into a shop?',answer:'No. Pro Locksmith Tech is a mobile-only locksmith service. Call to arrange service at your South Florida residence.'}
+    {question:'Can a locksmith come to my location?',answer:'Yes. Our equipped locksmiths come directly to your location throughout South Florida, with same-day and emergency service available.'}
   ],
   'commercial-locksmith': [
     {question:'Can you service locks at a storefront or office?',answer:'Pro Locksmith Tech offers mobile commercial locksmith services, including supported door locks, hardware and lock changes. Call to discuss the type of door and service required.'},
@@ -41,7 +41,7 @@ const serviceFaqs: Record<string, ServiceFaq[]> = {
   'key-duplication': [
     {question:'Can a locksmith copy a vehicle key?',answer:'Many conventional and compatible electronic vehicle keys can be duplicated, but some require special programming. Availability depends on the key and vehicle system.'},
     {question:'Can all types of keys be duplicated?',answer:'Not every key can be duplicated with the same equipment. Restricted or specialized designs and electronic systems may have additional requirements. Call with the type of key you need.'},
-    {question:'Do I have to visit a locksmith storefront?',answer:'Pro Locksmith Tech operates as a mobile locksmith service rather than a walk-in store. Contact us to discuss the key duplication service and your location.'}
+    {question:'Can a locksmith come to my location?',answer:'Yes. Our equipped locksmiths come directly to your location throughout South Florida, with same-day and emergency service available.'}
   ],
   'key-replacement': [
     {question:'What if I lost my only car key?',answer:'A mobile automotive locksmith may be able to create and program a compatible replacement without the original. The options vary by vehicle model, year and security system.'},
@@ -61,7 +61,7 @@ const serviceFaqs: Record<string, ServiceFaq[]> = {
   'emergency-locksmith-service': [
     {question:'What locksmith emergencies can you help with?',answer:'Common locksmith emergencies include car and home lockouts, lost keys, broken keys and malfunctioning locks. Pro Locksmith Tech offers mobile locksmith services across its South Florida coverage area.'},
     {question:'Is your locksmith service available at night?',answer:'Yes. Pro Locksmith Tech accepts locksmith service calls 24 hours a day, seven days a week. Call to confirm current availability at your location.'},
-    {question:'Do you have a walk-in locksmith location?',answer:'No. Pro Locksmith Tech is a mobile service-area business without a public walk-in storefront. Technicians travel to customer locations.'}
+    {question:'Can a locksmith come to my location?',answer:'Yes. Our equipped locksmiths come directly to your location throughout South Florida, with same-day and emergency service available.'}
   ]
 };
 export function getServiceFaqs(slug: string): ServiceFaq[] { return serviceFaqs[slug] || serviceFaqs['emergency-locksmith-service']; }
