@@ -166,7 +166,7 @@ export function ContactPage() {
               </p>
             </div>
             <div className="pt-2 text-xs font-semibold text-amber-400 flex items-center gap-1">
-              <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+              <span className="w-2 h-2 rounded-full bg-amber-400"></span>
               <span>{isSpanish ? 'Unidades móviles en servicio ahora' : 'Mobile vans on duty right now'}</span>
             </div>
           </div>
@@ -246,7 +246,7 @@ export function ContactPage() {
             {/* Right Urgent Call Box */}
             <div className="lg:col-span-5 bg-gradient-to-br from-slate-900 to-slate-950 border-2 border-amber-500/50 rounded-2xl p-6 sm:p-8 space-y-5 text-center shadow-2xl">
               <div className="w-14 h-14 rounded-2xl bg-amber-500 text-slate-950 flex items-center justify-center mx-auto shadow-lg shadow-amber-500/25">
-                <Phone className="w-7 h-7 fill-current animate-bounce" />
+                <Phone className="w-7 h-7 fill-current" />
               </div>
 
               <div className="space-y-1">
