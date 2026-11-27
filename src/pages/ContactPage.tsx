@@ -57,8 +57,8 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
 
               <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
                 {isSpanish 
-                  ? 'Comuníquese directamente con nuestro equipo de despacho de cerrajería móvil del Sur de la Florida. Al operar 100% como servicio a domicilio, nuestros técnicos viajan directamente a su vehículo, hogar o comercio en Broward, Miami-Dade y Palm Beach.' 
-                  : 'Connect directly with our South Florida mobile locksmith dispatch team. Because we operate 100% as an on-site mobile service, our technicians travel directly to your vehicle, home, or commercial facility across Broward, Miami-Dade, and Palm Beach counties.'}
+                  ? 'Llame a Pro Locksmith Tech para solicitar cerrajería automotriz, residencial o comercial en Miami-Dade, Broward y Palm Beach. Ofrecemos servicio el mismo día y atención de emergencias las 24 horas.' 
+                  : 'Need a locksmith in South Florida? Call Pro Locksmith Tech for professional automotive, residential or commercial service. Our technicians come to you throughout Miami-Dade, Broward and Palm Beach counties, with same-day and 24/7 emergency service available.'}
               </p>
 
               {/* Direct Quick Action CTAs */}
@@ -80,7 +80,7 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
                 </span>
 
                 <span>•</span>
-                <span>{isSpanish ? 'Servicio 100% Móvil — Vamos a Ti' : '100% Mobile Service — We Come to You'}</span>
+                <span>{isSpanish ? 'Servicio el mismo día y de emergencia' : 'Same-Day & Emergency Locksmith Service'}</span>
               </div>
             </div>
 
@@ -113,11 +113,11 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
           <Truck className="w-6 h-6 text-amber-400 shrink-0 mt-0.5" />
           <div className="text-xs sm:text-sm text-slate-300 leading-relaxed">
             <strong className="text-white font-bold block mb-1">
-              {isSpanish ? 'Aviso de Servicio Móvil — Vamos a Donde Estés:' : 'Mobile Service Notice — We Come to You:'}
+              {isSpanish ? 'Cerrajeros equipados — Servicio el mismo día' : 'Fully Equipped Locksmiths — Same-Day Service'}
             </strong>
             {isSpanish 
-              ? 'Pro Locksmith Tech opera estrictamente como un servicio de cerrajería móvil a domicilio. No disponemos de una tienda física donde los clientes dejen llaves o cerraduras. Nuestros técnicos se trasladan directamente a su ubicación en camionetas taller equipadas con máquinas de corte láser computarizadas, escáneres OBD de programación y cerraduras de repuesto.' 
-              : 'Pro Locksmith Tech operates strictly as an on-site mobile locksmith service. We do not have a customer-facing physical storefront where customers drop off locks or keys. Our technicians travel directly to your location in fully equipped mobile workshops stocked with computerized laser key cutting machines, OBD programming tablets, and commercial security hardware.'}
+              ? 'Reciba servicio profesional de cerrajería donde lo necesite. Nuestros técnicos llevan llaves de auto, controles, llaves inteligentes y cerraduras para realizar cortes, programación y reparaciones en el lugar. Llame para solicitar servicio el mismo día.' 
+              : 'Get professional locksmith service right where you need it. Our equipped technicians carry car keys, transponder keys, remotes, smart keys, key fobs and lock hardware for on-site key cutting, programming and repairs. Call to request same-day service.'}
           </div>
         </div>
 
