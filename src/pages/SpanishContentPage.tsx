@@ -57,6 +57,16 @@ export function SpanishContentPage({ path }: Props) {
   return (
     <div className="min-h-screen bg-slate-950 pb-12 text-white">
       <SEOHead title={title + ' | Pro Locksmith Tech'} description={desc + ' Llame al ' + PHONE + '.'} canonicalPath={path} />
+      {(path === '/services' || service) && (
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Inicio", item: "https://prolocksmith-tech.com/es/" },
+          { "@type": "ListItem", position: 2, name: "Servicios", item: "https://prolocksmith-tech.com/es/services/" },
+          ...(service ? [{ "@type": "ListItem", position: 3, name: title, item: "https://prolocksmith-tech.com/es/services/" + service.slug + "/" }] : [])
+        ]
+      }) }} />
+      )}
       <section className="mx-auto max-w-6xl px-5 py-10 sm:py-16">
         <div className="grid items-center gap-7 lg:grid-cols-2 lg:gap-12">
           <div className="space-y-5">
