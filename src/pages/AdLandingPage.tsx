@@ -1,3 +1,4 @@
+import { PHONE, TEL } from '../config/business';
 import React, { useEffect, useState } from 'react';
 import { ArrowRight, Check, ChevronDown, Clock, KeyRound, MapPin, Phone, Star } from 'lucide-react';
 import { SEOHead } from '../components/SEOHead';
@@ -14,8 +15,6 @@ interface AdLandingPageProps {
 
 type ServiceCopy = [headline: string, summary: string, services: string[], question: string, answer: string];
 
-const PHONE = '(754) 261-6528';
-const TEL = 'tel:+17542616528';
 const REVIEWS = 'https://maps.google.com/maps?cid=16992150185739281311';
 
 const copy: Record<string, { en: ServiceCopy; es: ServiceCopy; image: string; alt: [string, string] }> = {
@@ -591,8 +590,8 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
             </div>
             <div className="overflow-hidden rounded-3xl border border-slate-700 shadow-2xl shadow-black/25">
               <img src={item.image}
-                srcSet={isCarLockout ? undefined : `/ppc-images/${slug}-480.webp 480w, /ppc-images/${slug}-960.webp 960w`}
-                sizes="(max-width: 1023px) 100vw, 50vw"
+                srcSet={isCarLockout ? "/ppc-images/car-lockout-lishi-420.webp 420w, /ppc-images/car-lockout-lishi.webp 640w" : `/ppc-images/${slug}-480.webp 480w, /ppc-images/${slug}-960.webp 960w`}
+                sizes="(max-width: 1023px) calc(100vw - 32px), 540px"
                 width={isCarLockout ? 640 : 960} height={isCarLockout ? 427 : 660}
                 alt={item.alt[isSpanish ? 1 : 0]} className="aspect-[2/1] w-full object-cover lg:aspect-[16/11]"
                 fetchPriority="high" decoding="async" />

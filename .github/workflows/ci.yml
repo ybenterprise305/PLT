@@ -16,8 +16,8 @@ jobs:
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: package.json
-      - run: npm install --no-audit --no-fund
+          cache-dependency-path: package-lock.json
+      - run: npm ci --no-audit --no-fund
       - name: Type check
         run: npm run lint
       - name: Build
@@ -30,12 +30,14 @@ jobs:
           grep -q 'noindex' dist/lp/car-lockout/index.html
       - name: SEO checks (titles, descriptions, canonicals, headings, structured data)
         run: node scripts/check-seo.mjs
+      - name: Verify asset references and performance budgets
+        run: node scripts/check-phase-i.mjs
       - name: Install browser for site checks
         run: |
-          npm install --no-save --no-audit --no-fund playwright
           npx playwright install --with-deps chromium
       - name: Browser checks (phone, tablet, laptop)
         run: |
           node scripts/serve-dist.mjs &
           sleep 5
           node scripts/check-site.mjs
+          node scripts/check-tracking.mjs

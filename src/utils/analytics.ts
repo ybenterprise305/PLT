@@ -1,3 +1,4 @@
+import { PHONE_E164, PHONE as SEARCH_PHONE_DISPLAY } from '../config/business';
 /**
  * Pro Locksmith Tech - Conversion Analytics & Click-to-Call Tracking
  *
@@ -21,10 +22,8 @@ declare global {
   }
 }
 
-const PHONE_E164 = '+17542616528';
 const SEARCH_ADS_TAG = 'AW-18475105079';
 const SEARCH_WEBSITE_CALL_ACTION = SEARCH_ADS_TAG + '/qiWsCNj2jsAdELf2zulE';
-const SEARCH_PHONE_DISPLAY = '(754) 261-6528';
 const ATTRIBUTION_KEYS = ['gclid', 'gbraid', 'wbraid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'city'];
 const ATTRIBUTION_STORAGE_KEY = 'plt_attribution';
 const DEDUPE_WINDOW_MS = 1000;

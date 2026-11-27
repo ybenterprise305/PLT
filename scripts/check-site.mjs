@@ -4,16 +4,24 @@ import { chromium } from 'playwright';
 const BASE = process.env.BASE_URL || 'http://localhost:4173';
 const routes = ['/', '/services', '/services/emergency-lockout-service', '/service-areas', '/service-areas/boca-raton', '/contact', '/lp/car-lockout', '/blog', '/tips', '/about', '/reviews', '/faq', '/es', '/es/services', '/es/service-areas/boca-raton', '/es/contact'];
 const viewports = [
+  { name: 'small phone', width: 320, height: 720 },
   { name: 'phone', width: 390, height: 844 },
   { name: 'tablet', width: 768, height: 1024 },
   { name: 'laptop', width: 1280, height: 800 },
 ];
 
 const failures = [];
-const browser = await chromium.launch();
+const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_EXECUTABLE });
+
+async function localContext(options = {}) {
+  const context = await browser.newContext(options);
+  const origin = new URL(BASE).origin;
+  await context.route('**/*', route => new URL(route.request().url()).origin === origin ? route.continue() : route.abort());
+  return context;
+}
 
 for (const vp of viewports) {
-  const context = await browser.newContext({ viewport: { width: vp.width, height: vp.height } });
+  const context = await localContext({ viewport: { width: vp.width, height: vp.height } });
   for (const route of routes) {
     const page = await context.newPage();
     const errors = [];
@@ -30,6 +38,14 @@ for (const vp of viewports) {
     if (overflow > 1) failures.push(`${tag}: page scrolls sideways by ${overflow}px`);
 
     // Every public page (English, Spanish, organic or PPC) must offer phone calls only.
+    const clippedControls = await page.locator('header [aria-controls="mobile-site-navigation"]:visible').evaluateAll(nodes =>
+      nodes.some(node => {
+        const bounds = node.getBoundingClientRect();
+        return bounds.right > innerWidth || bounds.left < 0;
+      })
+    );
+    if (clippedControls) failures.push(`${tag}: menu control is clipped`);
+
     const smsLinks = await page.locator('a[href^="sms:"]').count();
     if (smsLinks) failures.push(`${tag}: found ${smsLinks} forbidden SMS/text buttons`);
     const liveCallLinks = await page.locator('a[href="tel:+17542616528"]').count();
@@ -45,7 +61,7 @@ for (const vp of viewports) {
 
 // Sticky header + in-page link navigation (no full reload) on the phone size
 {
-  const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const context = await localContext({ viewport: { width: 390, height: 844 } });
   const page = await context.newPage();
   await page.goto(BASE + '/', { waitUntil: 'networkidle' });
   await page.evaluate(() => window.scrollTo(0, 900));
@@ -87,7 +103,8 @@ for (const vp of viewports) {
 
 // Every campaign must have its own image URL and a working mobile call action.
 {
-  const page=await browser.newPage({viewport:{width:390,height:844}});
+  const context = await localContext({ viewport: { width: 390, height: 844 } });
+  const page = await context.newPage();
   const campaignSlugs=['car-lockout','car-key-replacement','house-lockout','lock-rekeying','commercial-locksmith','emergency-locksmith','smart-lock-installation','ignition-repair','broken-key-extraction','deadbolt-installation','lock-change','safe-lockout','storage-unit-lockout','car-key-fob-programming','lost-car-keys'];
   const seenImages=new Set();
   for (const slug of campaignSlugs) {
@@ -105,15 +122,15 @@ for (const vp of viewports) {
     if (await page.locator('a[href^="sms:"]').count()) failures.push(slug+': SMS option must not appear on PPC page');
     if (!await page.locator('main').textContent().then(x=>x?.includes('Google'))) failures.push(slug+': missing authentic Google review reference');
   }
-  await page.close();
+  await context.close();
 }
 
 // Language switch: English home -> Spanish home (URL changes, page language changes, links stay Spanish)
 {
-  const context = await browser.newContext({ viewport: { width: 1280, height: 800 } });
+  const context = await localContext({ viewport: { width: 1280, height: 800 } });
   const page = await context.newPage();
   await page.goto(BASE + '/', { waitUntil: 'networkidle' });
-  await page.locator('button[aria-label="Cambiar a Español"]:visible').first().click();
+  await page.locator('a[aria-label="Español (ES)"]:visible').first().click();
   await page.waitForURL('**/es');
   const lang = await page.evaluate(() => document.documentElement.lang);
   if (lang !== 'es') failures.push(`language switch: <html lang> is "${lang}" after switching to Spanish`);
@@ -121,7 +138,7 @@ for (const vp of viewports) {
   if (spanishLinks < 1) failures.push('Spanish home page has no visible link to /es/services');
   const englishLeak = await page.locator('main a[href="/services"]').count();
   if (englishLeak > 0) failures.push(`Spanish home page still has ${englishLeak} links to the English /services page`);
-  await page.locator('button[aria-label="Switch to English"]:visible').first().click();
+  await page.locator('a[aria-label="English (EN)"]:visible').first().click();
   await page.waitForURL(BASE + '/');
   await context.close();
 }

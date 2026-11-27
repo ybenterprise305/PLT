@@ -1,5 +1,8 @@
 import { renderToString } from 'react-dom/server';
 import App from './App';
+import { loadRoute, standalonePages, paidPrefixes } from './routes';
+export { homeVan } from './assets/images/vanImages';
+export { SITE } from './config/business';
 import { headCollector } from './components/SEOHead';
 import { SERVICES_DATA } from './data/servicesData';
 import { COUNTIES_DATA, getAllCities } from './data/locationsData';
@@ -13,18 +16,7 @@ export { canonicalSitePath, hasSpanishVersion, localizePath, isEsPath, stripLoca
 
 export function getRoutes(): string[] {
   const english = [
-    '/',
-    '/services',
-    '/service-areas',
-    '/about',
-    '/reviews',
-    '/contact',
-    '/faq',
-    '/blog',
-    '/tips',
-    '/sitemap',
-    '/privacy',
-    '/terms',
+    ...Object.keys(standalonePages),
     ...SERVICES_DATA.map((s) => `/services/${s.slug}`),
     ...COUNTIES_DATA.map((c) => `/service-areas/${c.slug}`),
     ...getAllCities().flatMap(({ city }) => [
@@ -40,8 +32,13 @@ export function getRoutes(): string[] {
   return [...english, ...spanish];
 }
 
-export function render(path: string) {
+export function getPaidAliases(): string[] {
+  return paidPrefixes.slice(1).flatMap(prefix => AD_CAMPAIGNS.map(ad => `/${prefix}/${ad.slug}`));
+}
+
+export async function render(path: string) {
+  const route = await loadRoute(path);
   headCollector.current = null;
-  const html = renderToString(<App initialPath={path} />);
-  return { html, head: headCollector.current };
+  const html = renderToString(<App initialRoute={route} />);
+  return { html, head: headCollector.current, moduleId: route.moduleId };
 }

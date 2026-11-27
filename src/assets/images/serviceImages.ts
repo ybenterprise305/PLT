@@ -9,80 +9,72 @@ export interface ServiceImage {
   esAlt: string;
 }
 
-export const SERVICE_IMAGES: Record<string, ServiceImage> = {
+export const SERVICE_IMAGES: Record<string, Omit<ServiceImage, 'srcSet'>> = {
   'emergency-lockout-service': {
     src: '/service-images/emergency-lockout-service-960.webp',
-    srcSet: '/service-images/emergency-lockout-service-480.webp 480w, /service-images/emergency-lockout-service-960.webp 960w',
     enAlt: 'Mobile locksmith assisting at a residential door during a lockout',
     esAlt: 'Cerrajero móvil ayudando junto a una puerta durante una apertura de emergencia',
   },
   'residential-locksmith': {
     src: '/service-images/residential-locksmith-960.webp',
-    srcSet: '/service-images/residential-locksmith-480.webp 480w, /service-images/residential-locksmith-960.webp 960w',
     enAlt: 'Locksmith technician working on a residential door lock',
     esAlt: 'Técnica de cerrajería trabajando en una cerradura residencial',
   },
   'commercial-locksmith': {
     src: '/service-images/commercial-locksmith-960.webp',
-    srcSet: '/service-images/commercial-locksmith-480.webp 480w, /service-images/commercial-locksmith-960.webp 960w',
     enAlt: 'Technician beside commercial door panic-bar hardware',
     esAlt: 'Técnica junto a una barra antipánico en una puerta comercial',
   },
   'automotive-locksmith': {
     src: '/service-images/automotive-locksmith-960.webp',
-    srcSet: '/service-images/automotive-locksmith-480.webp 480w, /service-images/automotive-locksmith-960.webp 960w',
     enAlt: 'Automotive locksmith preparing vehicle key programming equipment',
     esAlt: 'Cerrajero automotriz preparando equipo de programación de llaves',
   },
   'lock-repair': {
     src: '/service-images/lock-repair-960.webp',
-    srcSet: '/service-images/lock-repair-480.webp 480w, /service-images/lock-repair-960.webp 960w',
     enAlt: 'Technician examining door locks and repair hardware',
     esAlt: 'Técnica revisando cerraduras y piezas para su reparación',
   },
   'lock-replacement': {
     src: '/service-images/lock-replacement-960.webp',
-    srcSet: '/service-images/lock-replacement-480.webp 480w, /service-images/lock-replacement-960.webp 960w',
     enAlt: 'Technician working with a residential deadbolt lock',
     esAlt: 'Cerrajero trabajando con un cerrojo residencial',
   },
   'lock-rekeying': {
     src: '/service-images/lock-rekeying-960.webp',
-    srcSet: '/service-images/lock-rekeying-480.webp 480w, /service-images/lock-rekeying-960.webp 960w',
     enAlt: 'Locksmith showing lock components and rekeying tools at a home',
     esAlt: 'Técnica mostrando componentes de cerradura y herramientas para cambiar su combinación',
   },
   'key-duplication': {
     src: '/service-images/key-duplication-960.webp',
-    srcSet: '/service-images/key-duplication-480.webp 480w, /service-images/key-duplication-960.webp 960w',
     enAlt: 'Technician operating key cutting equipment inside a mobile locksmith workshop',
     esAlt: 'Técnica trabajando con una máquina de corte de llaves en una unidad móvil',
   },
   'key-replacement': {
     src: '/service-images/key-replacement-960.webp',
-    srcSet: '/service-images/key-replacement-480.webp 480w, /service-images/key-replacement-960.webp 960w',
     enAlt: 'Mobile automotive locksmith presenting replacement car keys beside a vehicle',
     esAlt: 'Cerrajero móvil entregando llaves de reemplazo junto a un vehículo',
   },
   'lock-installation': {
     src: '/service-images/lock-installation-960.webp',
-    srcSet: '/service-images/lock-installation-480.webp 480w, /service-images/lock-installation-960.webp 960w',
     enAlt: 'Technician presenting door lock installation hardware',
     esAlt: 'Técnica mostrando herrajes para instalar cerraduras',
   },
   'security-hardware': {
     src: '/service-images/security-hardware-960.webp',
-    srcSet: '/service-images/security-hardware-480.webp 480w, /service-images/security-hardware-960.webp 960w',
     enAlt: 'Commercial locksmith preparing door cylinder and security hardware',
     esAlt: 'Cerrajero comercial preparando un cilindro y herrajes de seguridad',
   },
   'emergency-locksmith-service': {
     src: '/service-images/emergency-locksmith-service-960.webp',
-    srcSet: '/service-images/emergency-locksmith-service-480.webp 480w, /service-images/emergency-locksmith-service-960.webp 960w',
     enAlt: 'Branded mobile locksmith service van in a South Florida neighborhood',
     esAlt: 'Camioneta de servicio móvil de cerrajería en el sur de Florida',
   },
 };
 export function getServiceImage(slug: string): ServiceImage {
-  return SERVICE_IMAGES[slug] ?? SERVICE_IMAGES['emergency-locksmith-service'];
+  const image = SERVICE_IMAGES[slug] ?? SERVICE_IMAGES['emergency-locksmith-service'];
+  const srcSet = [360, 480, 720, 960]
+    .map(width => image.src.replace('-960.webp', '-' + width + '.webp') + ' ' + width + 'w')
+    .join(', ');
+  return { ...image, srcSet };
 }
