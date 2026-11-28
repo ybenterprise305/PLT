@@ -76,6 +76,7 @@ const cases = [
     await dialog.waitFor({ state: 'hidden', timeout: 5000 });
     assert(await toggle.evaluate(node => document.activeElement === node));
     await toggle.press('Enter', { timeout: 5000 });
+    await page.locator('#mobile-site-navigation .plt-mobile-services summary').press('Enter', { timeout: 5000 });
     await follow(page, '/services/', '#mobile-site-navigation a');
     await page.waitForFunction(() => document.activeElement?.id === 'main-content', { timeout: 5000 });
   }, { mobile: true }],
