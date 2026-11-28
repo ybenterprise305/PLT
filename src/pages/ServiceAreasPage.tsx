@@ -36,14 +36,14 @@ export function ServiceAreasPage() {
     <div className="mx-auto max-w-6xl space-y-8 px-5 py-10 sm:py-14">
       <SEOHead title={title} canonicalPath="/service-areas"
         description={es
-          ? 'Busque cerrajería móvil para autos, viviendas y negocios en localidades de Broward, Miami-Dade y Palm Beach. Consulte la cobertura por dirección.'
-          : 'Find mobile locksmith service for cars, homes and businesses in listed Broward, Miami-Dade and Palm Beach communities. Confirm coverage by address.'} />
+          ? 'Encuentre nuestro servicio de cerrajería móvil para autos, viviendas y negocios en las comunidades que atendemos en Broward, Miami-Dade y Palm Beach.'
+          : 'Explore our mobile locksmith service for vehicles, homes and businesses in communities throughout Broward, Miami-Dade and Palm Beach.'} />
       <Breadcrumbs trail={[[es ? 'Áreas de servicio' : 'Service areas', '/service-areas']]} />
       <section className="rounded-2xl border border-slate-800 bg-slate-950 p-6 sm:p-8">
         <h1 className="font-heading text-3xl font-bold tracking-tight text-white sm:text-5xl">{title}</h1>
         <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-300">{es
-          ? 'Vamos a su auto, vivienda o negocio en las localidades indicadas, con asistencia de emergencia las 24 horas. Llámenos para confirmar la disponibilidad donde esté.'
-          : 'We come to your vehicle, home or business in the listed communities, with 24/7 emergency assistance. Call us to confirm availability where you are.'}</p>
+          ? 'Atendemos comunidades de Miami-Dade, Broward y Palm Beach. Vamos a su auto, vivienda o negocio con cerrajería móvil, servicio el mismo día y atención de emergencia las 24 horas.'
+          : 'We serve communities across Miami-Dade, Broward and Palm Beach. Our mobile locksmiths come to your vehicle, home or business, with same-day service and 24/7 emergency assistance.'}</p>
         <p className="mt-3 text-sm text-slate-300">{es ? `Aceptamos ${PAYMENT_METHODS.es}.` : `We accept ${PAYMENT_METHODS.en}.`}</p>
         <LocalizedA href={TEL} onClick={() => trackPhoneClick({ ctaLocation: 'service_areas_hero_call', pagePath: es ? '/es/service-areas' : '/service-areas' })}
           className="mt-5 inline-flex min-h-12 items-center rounded-xl bg-amber-400 px-5 py-3 font-bold text-slate-950 hover:bg-amber-300">
@@ -69,7 +69,7 @@ export function ServiceAreasPage() {
           </label>
         </div>
         <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-300" aria-live="polite">
-          {es ? `${count} localidades. Llámenos para consultar la disponibilidad del servicio.` : `${count} communities. Call for availability at your location.`}
+          {es ? `${count} localidades en nuestro directorio de servicio.` : `${count} communities in our service directory.`}
         </p>
       </section>
 
@@ -97,7 +97,7 @@ export function ServiceAreasPage() {
                 <span className="block font-semibold">{name}</span>
                 <LocalizedA href={TEL} onClick={() => trackPhoneClick({ ctaLocation: 'service_areas_availability_call', pagePath: es ? '/es/service-areas' : '/service-areas' })}
                   className="inline-flex min-h-11 items-center text-amber-300 underline">
-                  {es ? 'Llamar para consultar disponibilidad' : 'Call to check availability'}
+                  {es ? 'Llámenos para recibir servicio' : 'Call for locksmith service'}
                 </LocalizedA>
               </li>
             ))}
@@ -105,7 +105,7 @@ export function ServiceAreasPage() {
         </section>
       ))}
       {!count && <p className="text-slate-300">
-        {es ? 'Podemos ayudarle a consultar si hay un técnico disponible en su localidad. ' : 'Our team can help check technician availability where you are. '}
+        {es ? '¿No encuentra su localidad? Atendemos comunidades en todo el sur de Florida. ' : 'Don’t see your community listed? We serve communities throughout South Florida. '}
         <LocalizedA href={TEL} className="font-semibold text-amber-300 underline">
           {es ? 'Llame al ' : 'Call '}{PHONE}
         </LocalizedA>
