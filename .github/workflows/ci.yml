@@ -47,3 +47,4 @@ jobs:
           node scripts/check-seo-browser.mjs
           node scripts/check-agent-journeys.mjs
           node scripts/check-tracking.mjs
+          node scripts/check-phase-viii.mjs
