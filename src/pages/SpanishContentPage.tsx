@@ -55,7 +55,8 @@ export function SpanishContentPage({ path }: Props) {
     ? [['Servicios', '/services'], [title, path]]
     : [[title, '/services']];
   const showServiceTrail = path === '/services' || Boolean(service);
-  const image = service ? getServiceImage(service.slug).src : homeVan.src;
+  const serviceImage = service ? getServiceImage(service.slug) : undefined;
+  const commercial = service?.slug === 'commercial-locksmith';
 
   return (
     <div className="min-h-screen bg-slate-950 pb-12 text-white">
@@ -69,7 +70,13 @@ export function SpanishContentPage({ path }: Props) {
             <p className="text-lg leading-8 text-slate-200">{desc}</p>
             {cta('spanish_page_hero_call')}
           </div>
-          <img src={image} srcSet={service ? getServiceImage(service.slug).srcSet : homeVan.srcSet('webp')} sizes="(max-width: 1024px) 100vw, 50vw" width={960} height={640} alt={service ? getServiceImage(service.slug).esAlt : 'Camioneta de cerrajería móvil'} className="aspect-[4/3] w-full rounded-2xl object-cover" loading="eager" fetchPriority="high" />
+          <div className={commercial ? 'relative' : 'contents'}>
+            <img src={serviceImage?.src ?? homeVan.src} srcSet={serviceImage?.srcSet ?? homeVan.srcSet('webp')}
+              sizes={commercial ? '(min-width: 1152px) 532px, (min-width: 1024px) 46vw, calc(100vw - 2.5rem)' : '(max-width: 1024px) 100vw, 50vw'}
+              width={960} height={640} alt={serviceImage?.esAlt ?? 'Camioneta de cerrajería móvil'}
+              className="aspect-[4/3] w-full rounded-2xl object-cover" loading="eager" fetchPriority="high" />
+            {commercial && <span className="absolute left-3 top-3 rounded-md bg-slate-950 px-2 py-1 text-xs text-slate-200">Imagen ilustrativa</span>}
+          </div>
         </div>
       </section>
 
