@@ -69,7 +69,7 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      <section className="below-fold-section border-t border-slate-800 bg-slate-900/60 py-12 sm:py-16">
+      <section className="below-fold-section border-t border-slate-800 bg-slate-850 py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-5">
           <div className="mb-7 max-w-2xl">
             <p className="mb-2 text-sm font-bold uppercase tracking-wide text-amber-400">{isSpanish ? 'Nuestros servicios' : 'Our services'}</p>
@@ -160,7 +160,7 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
       </section>
 
       {/* All main South Florida cities served, organized by county and linking to full location pages. */}
-      <section className="border-t border-slate-800 bg-slate-900/60 py-12 sm:py-16" aria-labelledby="south-florida-locksmith-areas">
+      <section className="border-t border-slate-800 bg-slate-850 py-12 sm:py-16" aria-labelledby="south-florida-locksmith-areas">
         <div className="mx-auto max-w-7xl px-5">
           <h2 id="south-florida-locksmith-areas" className="font-heading text-2xl font-bold sm:text-3xl">
             {isSpanish ? 'Servicio de cerrajería móvil en todo el sur de Florida' : 'Mobile Locksmith Service Throughout South Florida'}

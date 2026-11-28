@@ -1,6 +1,6 @@
 import { PHONE, TEL } from '../config/business';
 import React, { useEffect, useState } from 'react';
-import { ArrowRight, Check, ChevronDown, Clock, KeyRound, MapPin, Phone, Star } from 'lucide-react';
+import { ArrowRight, Check, ChevronDown, Clock, MapPin, Phone, Star } from 'lucide-react';
 import { SEOHead } from '../components/SEOHead';
 import { NotFoundPage } from './NotFoundPage';
 import { LocalizedA } from '../components/LocalizedA';
@@ -551,7 +551,7 @@ export function AdLandingPage({ slug, onNavigate }: AdLandingPageProps) {
       <header className="border-b border-slate-800 border-t-2 border-t-amber-400">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
           <div className="flex items-center gap-2 font-heading text-base font-extrabold sm:text-lg">
-            <KeyRound className="h-6 w-6 shrink-0 text-amber-400" aria-hidden="true" />
+            <img src="/brand/pro-locksmith-tech-128.webp" width={24} height={24} alt="" className="h-6 w-6 shrink-0 rounded-sm" />
             <span>Pro Locksmith Tech</span>
           </div>
           <a href={phoneLink} onClick={() => trackCall('ppc_header_call')} aria-label={callLabel + ' ' + displayNumber}

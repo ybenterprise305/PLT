@@ -144,7 +144,7 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
                 <img
                   src={serviceImage.src}
                   srcSet={serviceImage.srcSet}
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  sizes={service.slug === 'commercial-locksmith' ? '(min-width: 1600px) 560px, (min-width: 1024px) 36vw, calc(100vw - 5rem)' : '(max-width: 1024px) 100vw, 50vw'}
                   width={960}
                   height={640}
                   alt={isSpanish ? serviceImage.esAlt : serviceImage.enAlt}
@@ -154,6 +154,11 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
                   decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent pointer-events-none" />
+                {service.slug === 'commercial-locksmith' && (
+                  <span className="absolute left-3 top-3 rounded-md bg-slate-950 px-2 py-1 text-xs text-slate-200">
+                    {isSpanish ? 'Imagen ilustrativa' : 'Illustrative image'}
+                  </span>
+                )}
                 <div className="absolute bottom-3 left-3 right-3 text-center bg-slate-950/90 py-1.5 px-3 rounded-lg border border-slate-800 text-[11px] text-amber-400 font-semibold">
                   {isSpanish ? 'Cerrajería Móvil 24/7 · Broward, Miami-Dade y Palm Beach' : '24/7 Mobile Service · Broward, Miami-Dade & Palm Beach'}
                 </div>

@@ -6,11 +6,6 @@ import {
   Menu, 
   X, 
   
-  Home,
-  Wrench,
-  Navigation,
-  Mail,
-  ChevronRight,
   ShieldCheck
 } from 'lucide-react';
 import { Logo } from './Logo';
@@ -67,7 +62,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
   useEffect(() => { setMobileMenuOpen(false); }, [currentPath]);
 
   return (
-    <header className="sticky top-0 z-[70] select-none bg-slate-950">
+    <header className="organic-header sticky top-0 z-[70] select-none bg-slate-950">
       
       {/* 1. TOP UTILITY BAR: Desktop gets full suite, mobile gets sleek single-line announcement */}
       <div className="bg-slate-950 text-slate-200 border-b border-slate-800/80">
@@ -160,9 +155,9 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
             </LocalizedA>
 
             {/* Desktop Navigation Links (ONLY 4 Main Links) */}
-            <nav aria-label={isSpanish ? 'Navegación principal' : 'Main navigation'} className="hidden lg:flex items-center gap-1 xl:gap-2">
+            <nav aria-label={isSpanish ? 'Navegación principal' : 'Main navigation'} className="hidden lg:flex shrink-0 items-center gap-0.5 xl:gap-1 whitespace-nowrap">
               <LocalizedA href="/"
-                className={`px-4 py-2 text-sm font-semibold rounded-lg transition-colors cursor-pointer ${
+                className={`px-2 xl:px-3 py-2 text-sm font-semibold rounded-lg transition-colors cursor-pointer ${
                   currentPath === '/' 
                     ? 'text-amber-400 bg-slate-800/90' 
                     : 'text-slate-200 hover:text-white hover:bg-slate-800/50'
@@ -172,7 +167,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
               </LocalizedA>
 
               <LocalizedA href="/services"
-                className={`px-4 py-2 text-sm font-semibold rounded-lg transition-colors cursor-pointer ${
+                className={`px-2 xl:px-3 py-2 text-sm font-semibold rounded-lg transition-colors cursor-pointer ${
                   currentPath.startsWith('/services') 
                     ? 'text-amber-400 bg-slate-800/90' 
                     : 'text-slate-200 hover:text-white hover:bg-slate-800/50'
@@ -182,7 +177,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
               </LocalizedA>
 
               <LocalizedA href="/service-areas"
-                className={`px-4 py-2 text-sm font-semibold rounded-lg transition-colors cursor-pointer ${
+                className={`px-2 xl:px-3 py-2 text-sm font-semibold rounded-lg transition-colors cursor-pointer ${
                   currentPath.startsWith('/service-areas') 
                     ? 'text-amber-400 bg-slate-800/90' 
                     : 'text-slate-200 hover:text-white hover:bg-slate-800/50'
@@ -191,8 +186,14 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
                 {t('nav.serviceAreas')}
               </LocalizedA>
 
+              <LocalizedA href="/completed-work/" className="rounded-lg px-2 py-2 text-sm font-semibold text-slate-200 hover:bg-slate-800/50 hover:text-white xl:px-3">
+                {isSpanish ? 'Trabajos' : 'Our work'}
+              </LocalizedA>
+              <LocalizedA href="/tips/" className="rounded-lg px-2 py-2 text-sm font-semibold text-slate-200 hover:bg-slate-800/50 hover:text-white xl:px-3">
+                {isSpanish ? 'Guías' : 'Guides'}
+              </LocalizedA>
               <LocalizedA href="/contact"
-                className={`px-4 py-2 text-sm font-semibold rounded-lg transition-colors cursor-pointer ${
+                className={`px-2 xl:px-3 py-2 text-sm font-semibold rounded-lg transition-colors cursor-pointer ${
                   currentPath === '/contact' 
                     ? 'text-amber-400 bg-slate-800/90' 
                     : 'text-slate-200 hover:text-white hover:bg-slate-800/50'
@@ -203,7 +204,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
             </nav>
 
             {/* Desktop Header CTA */}
-            <div className="hidden sm:flex items-center gap-3">
+            <div className="hidden lg:flex shrink-0 items-center gap-3">
               <LocalizedA
                 href="tel:+17542616528"
                 onClick={() => trackPhoneClick({ ctaLocation: 'header_main_btn', pagePath: currentPath })}
@@ -223,18 +224,18 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
               <LocalizedA
                 href="tel:+17542616528"
                 onClick={() => trackPhoneClick({ ctaLocation: 'header_mobile_top_btn', pagePath: currentPath })}
-                className="px-1.5 min-[360px]:px-2.5 py-2 rounded-xl bg-amber-500 active:bg-amber-400 text-slate-950 font-black shadow-md flex items-center gap-1 text-xs uppercase cursor-pointer min-h-[40px]"
+                className="justify-center min-w-11 px-1.5 min-[360px]:px-2.5 py-2 rounded-xl bg-amber-500 active:bg-amber-400 text-slate-950 font-black shadow-md flex items-center gap-1 text-xs uppercase cursor-pointer min-h-[44px]"
                 aria-label={isSpanish ? "Llamar a Pro Locksmith Tech" : "Call Pro Locksmith Tech"}
               >
                 <Phone className="w-3.5 h-3.5 fill-current" />
-                <span>{t('nav.call')}</span>
+                <span className="hidden min-[360px]:inline">{t('nav.call')}</span>
               </LocalizedA>
 
               {/* Hamburger Button with Accessible Touch Area */}
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(true)}
-                className="w-10 min-[360px]:w-11 h-11 rounded-xl bg-slate-800 active:bg-slate-700 text-slate-200 hover:text-white flex items-center justify-center transition-colors focus-visible:outline-2 focus-visible:outline-amber-400 cursor-pointer"
+                className="w-11 h-11 rounded-xl bg-slate-800 active:bg-slate-700 text-slate-200 hover:text-white flex items-center justify-center transition-colors focus-visible:outline-2 focus-visible:outline-amber-400 cursor-pointer"
                 aria-label={mobileMenuOpen ? (isSpanish ? 'Cerrar menú' : 'Close menu') : (isSpanish ? 'Abrir menú' : 'Open menu')}
                 aria-expanded={mobileMenuOpen}
                 aria-controls="mobile-site-navigation"
@@ -271,63 +272,53 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
                 <LanguageToggle variant="standard" />
               </div>
 
-              {/* 4 Main Core Links with Large Finger-Friendly Touch Targets */}
-              <nav aria-label={isSpanish ? 'Navegación principal' : 'Main navigation'} className="grid gap-2">
-                <LocalizedA href="/"
-                  className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-bold transition-all cursor-pointer min-h-[50px] ${
-                    currentPath === '/' 
-                      ? 'text-slate-950 bg-amber-500 font-black shadow-lg shadow-amber-500/20' 
-                      : 'text-slate-200 bg-slate-900 border border-slate-800 hover:bg-slate-850'
-                  } text-center`}
-                 onClick={dismissMenu}>
-                  <span className="flex items-center gap-3">
-                    <Home className="w-5 h-5" />
-                    <span>{t('nav.home')}</span>
-                  </span>
-                  <ChevronRight className="w-4 h-4 opacity-70" />
+              <nav aria-label={isSpanish ? 'Navegación principal' : 'Main navigation'} className="space-y-4">
+                <LocalizedA href="/" onClick={dismissMenu} aria-current={currentPath === '/' ? 'page' : undefined}
+                  className="flex min-h-11 items-center rounded-lg bg-slate-900 px-3 font-semibold hover:bg-slate-800">
+                  {t('nav.home')}
                 </LocalizedA>
-                
-                <LocalizedA href="/services"
-                  className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-bold transition-all cursor-pointer min-h-[50px] ${
-                    currentPath.startsWith('/services') 
-                      ? 'text-slate-950 bg-amber-500 font-black shadow-lg shadow-amber-500/20' 
-                      : 'text-slate-200 bg-slate-900 border border-slate-800 hover:bg-slate-850'
-                  } text-center`}
-                 onClick={dismissMenu}>
-                  <span className="flex items-center gap-3">
-                    <Wrench className="w-5 h-5" />
-                    <span>{t('nav.services')}</span>
-                  </span>
-                  <ChevronRight className="w-4 h-4 opacity-70" />
-                </LocalizedA>
-
-                <LocalizedA href="/service-areas"
-                  className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-bold transition-all cursor-pointer min-h-[50px] ${
-                    currentPath.startsWith('/service-areas') 
-                      ? 'text-slate-950 bg-amber-500 font-black shadow-lg shadow-amber-500/20' 
-                      : 'text-slate-200 bg-slate-900 border border-slate-800 hover:bg-slate-850'
-                  } text-center`}
-                 onClick={dismissMenu}>
-                  <span className="flex items-center gap-3">
-                    <Navigation className="w-5 h-5" />
-                    <span>{t('nav.serviceAreas')}</span>
-                  </span>
-                  <ChevronRight className="w-4 h-4 opacity-70" />
-                </LocalizedA>
-
-                <LocalizedA href="/contact"
-                  className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-bold transition-all cursor-pointer min-h-[50px] ${
-                    currentPath === '/contact' 
-                      ? 'text-slate-950 bg-amber-500 font-black shadow-lg shadow-amber-500/20' 
-                      : 'text-slate-200 bg-slate-900 border border-slate-800 hover:bg-slate-850'
-                  } text-center`}
-                 onClick={dismissMenu}>
-                  <span className="flex items-center gap-3">
-                    <Mail className="w-5 h-5" />
-                    <span>{t('nav.contact')}</span>
-                  </span>
-                  <ChevronRight className="w-4 h-4 opacity-70" />
-                </LocalizedA>
+                {[
+                  {
+                    title: t('nav.services'),
+                    links: [
+                      ['/services/', isSpanish ? 'Todos los servicios' : 'All services'],
+                      ['/services/automotive-locksmith/', isSpanish ? 'Automotriz' : 'Automotive'],
+                      ['/services/residential-locksmith/', isSpanish ? 'Residencial' : 'Residential'],
+                      ['/services/commercial-locksmith/', isSpanish ? 'Comercial' : 'Commercial'],
+                      ['/services/emergency-locksmith-service/', isSpanish ? 'Emergencias' : 'Emergency'],
+                    ],
+                  },
+                  {
+                    title: isSpanish ? 'Cobertura y recursos' : 'Coverage and resources',
+                    links: [
+                      ['/service-areas/', t('nav.serviceAreas')],
+                      ['/completed-work/', isSpanish ? 'Trabajos realizados' : 'Completed work'],
+                      ['/tips/', isSpanish ? 'Guías de cerrajería' : 'Locksmith guides'],
+                    ],
+                  },
+                  {
+                    title: isSpanish ? 'La empresa' : 'Company',
+                    links: [
+                      ['/about/', isSpanish ? 'Quiénes somos' : 'About us'],
+                      ['/contact/', t('nav.contact')],
+                    ],
+                  },
+                ].map(group => (
+                  <section key={group.title}>
+                    <h3 className="mb-1 text-sm font-bold text-amber-300">{group.title}</h3>
+                    <ul className="grid grid-cols-2 gap-1">
+                      {group.links.map(([href, label]) => (
+                        <li key={href}>
+                          <LocalizedA href={href} onClick={dismissMenu}
+                            aria-current={currentPath === href.slice(0, -1) ? 'page' : undefined}
+                            className="flex min-h-11 items-center rounded-lg bg-slate-900 px-3 py-1 text-sm font-semibold hover:bg-slate-800 aria-[current=page]:text-amber-300">
+                            {label}
+                          </LocalizedA>
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                ))}
               </nav>
 
               {/* Service Status Badge */}
@@ -364,7 +355,7 @@ export function Header({ currentPath, onNavigate }: HeaderProps) {
                 className="w-full py-4 px-4 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 text-slate-950 font-black text-sm uppercase rounded-xl flex items-center justify-center gap-2 shadow-xl shadow-amber-500/30 min-h-[50px] cursor-pointer"
               >
                 <Phone className="w-5 h-5 fill-current" />
-                <span>CALL NOW: (754) 261-6528</span>
+                <span>{isSpanish ? 'Llamar ahora' : 'Call now'}: (754) 261-6528</span>
               </LocalizedA>
 
               

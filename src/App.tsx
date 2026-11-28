@@ -90,7 +90,7 @@ export default function App({ initialRoute }: { initialRoute: LoadedRoute }) {
         />
 
         {/* Main Page Area with generous smartphone bottom clearance for the sticky call bar */}
-        <main id="main-content" tabIndex={-1} className={spanishContent ? "flex-1 pb-24 lg:pb-0" : "flex-1 pb-24 sm:pb-28 lg:pb-0 w-full"}>
+        <main id="main-content" tabIndex={-1} className={spanishContent ? "organic-content flex-1 pb-24 lg:pb-0" : "organic-content flex-1 pb-24 sm:pb-28 lg:pb-0 w-full"}>
           {content}
         </main>
 

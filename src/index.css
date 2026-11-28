@@ -89,3 +89,17 @@ button, a {
 @supports (content-visibility: auto) {
   .below-fold-section { content-visibility: auto; contain-intrinsic-size: auto 620px; }
 }
+
+/* Keep organic reading surfaces legible while preserving the existing geometry. */
+.organic-content :is(p, li).text-slate-400 {
+  color: var(--color-slate-300);
+}
+
+.organic-content :is(p, li, summary) a:not([class]) {
+  color: var(--color-amber-300);
+  text-underline-offset: 0.2em;
+}
+
+.organic-header {
+  font-family: system-ui, sans-serif;
+}
