@@ -1,3 +1,4 @@
+import { ServiceCallPanel } from '../components/ServiceCallPanel';
 import { CompletedWorkLink } from '../components/CompletedWorkLink';
 import { ResourceLinks } from '../components/ResourceLinks';
 import { spanishDecisionResources } from '../data/editorialLinks';
@@ -96,6 +97,12 @@ export function SpanishContentPage({ path }: Props) {
       )}
 
       {service?.slug === 'emergency-lockout-service' && <p className="mx-auto max-w-6xl px-5 text-base leading-7 text-amber-200">Cuando corresponde, nuestros técnicos pueden utilizar métodos de apertura no destructivos para ayudar a evitar daños innecesarios.</p>}
+
+      {service && (
+        <div className="mx-auto max-w-6xl px-5">
+          <ServiceCallPanel slug={service.slug} />
+        </div>
+      )}
 
       {service && (
         <section className="plt-paper mx-auto my-4 max-w-6xl rounded-xl border px-5 py-7 sm:px-8">

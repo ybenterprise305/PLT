@@ -71,3 +71,24 @@ All **45** paid URLs and **six** ad destinations remain protected, with original
 - Review screenshots/visual changes before owner approves a single publication.
 
 Any unperformed check must be labeled **pending**, not assumed passed. Do not publish automatically, and do not initiate Phase IX without authorization.
+
+## Completed development review
+
+The Spanish service routes use a separate template. Both templates now render the same service-specific decision panel, keeping the localized copy and CTA event label consistent on all 24 routes. The organic reviews page now opens with its heading, Google review context and a call link before the carousel. The mobile call bar has a Spanish accessible name and respects reduced motion. The existing English-only reviews URL and Spanish links to it remain valid.
+
+### Source map for the call-to-profit funnel
+
+| Stage | Source and minimum fields | Counting and validation |
+| --- | --- | --- |
+| Visit and phone intent | GA4. Date, session key when available in a permitted export, first landing path, session source/medium/campaign, device, language from path, event timestamp, and CTA label. | Count distinct eligible sessions and distinct sessions with a phone click. Preserve raw click count separately. Use session grain only with a dependable key. |
+| Connected call | Inbound call provider or Google Ads call detail where forwarding covered the call. Use opaque call ID, route/channel, start time, disposition and connected duration. | Deduplicate by provider call ID. Use the provider's answered/connected definition. Report missed calls and repeats separately. An Ads call conversion threshold is not the same as an answered call. |
+| Qualified lead | Dispatch disposition with opaque lead or ticket ID, provider call ID where carried through, qualification status/reason and timestamps. | Agree on a definition such as a genuine applicable request in the service area. Exclude spam, vendor calls and duplicates. |
+| Dispatch and completion | CRM. Opaque job ID, related lead ID, dispatched/booked/completed/cancelled status timestamps and service category. | Keep one row per job and a one-to-many relationship from a lead to jobs where applicable. Track cancellations and reassignment as outcomes. |
+| Revenue and contribution | Payment records. Opaque payment and job IDs, currency, collected net-of-refunds amount, parts, technician commission and direct fees. Aggregate spend by attributable source/date when available. | Reconcile refunds, split payments and fees. Report direct contribution separately from profit after overhead. Include attributable media costs once and state the allocation method. |
+
+Use the provider call ID carried into the dispatch record and the CRM job ID carried into payments as deterministic joins. Use a supported attribution identifier only if the phone system captures it and transfers it with permission. Standard calls to the shared public number cannot be assigned to an individual organic website click with the currently verified fields. Keep such calls in an unmatched bucket, or report aggregate channel trends with that limitation. Avoid joins on timestamps alone. Agree on timezone, attribution window and duplicate rules before comparing sources. Restrict any exports to operational IDs and aggregate counts, and exclude caller names, phone numbers, addresses, recordings and raw attribution IDs from the shared evidence.
+
+The connected GA4 website property reported 309 `session_start` events, 791 `page_view` events and 15 `phone_click` events from 8 reported users for October 31–November 27, 2026. These observations predate Phase VIII publication. They cannot be used to compute a click-session rate or treated as answered calls or sales. GA4 total revenue on the displayed event rows was $0.00, which is not a measure of collected locksmith revenue. No cross-system integration was implemented. See the handover evidence for the available reporting scope.
+
+Google Ads listed the six existing website destinations in its Landing pages report for November 21–27, 2026. The predefined Call Details report exposes routing and outcome fields but did not establish an all-channel answered-call total. No operational CRM or ledger access was available.
+The current website can emit an optional separate Ads conversion event on a phone click if its build-time target is configured. Any change to that action or its reporting role requires separate approval and a read-only inventory of existing Ads metrics first.
