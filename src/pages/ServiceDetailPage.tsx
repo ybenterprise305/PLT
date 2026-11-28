@@ -46,6 +46,57 @@ const SERVICE_SEARCH_METADATA: Record<string, { title?: string; description: str
   },
 };
 
+const SERVICE_CONVERSION_PROMISES: Record<string, { en: string; es: string }> = {
+  'automotive-locksmith': {
+    en: 'Locked out, missing your keys or dealing with a key fob problem? We bring mobile locksmith equipment to your vehicle.',
+    es: '¿No puede abrir su auto, perdió las llaves o tiene problemas con el control? Llevamos nuestro equipo de cerrajería hasta su vehículo.',
+  },
+  'key-replacement': {
+    en: 'Lost your only car key? We cut and program compatible replacements at your vehicle, often without a dealership visit.',
+    es: '¿Perdió la única llave de su auto? Cortamos y programamos reemplazos compatibles junto a su vehículo, sin necesidad de visitar el concesionario en muchos casos.',
+  },
+  'key-duplication': {
+    en: 'Need a spare key? Our mobile technicians can cut compatible duplicates and program supported vehicle keys on site.',
+    es: '¿Necesita una copia? Nuestros técnicos pueden cortar llaves compatibles y programar llaves de auto admitidas en el lugar.',
+  },
+  'emergency-lockout-service': {
+    en: 'Locked out of your car, home or business? Call our 24/7 dispatch team for mobile locksmith assistance.',
+    es: '¿Se quedó fuera de su auto, casa o negocio? Llame a nuestro equipo de despacho 24/7 para solicitar servicio móvil.',
+  },
+  'emergency-locksmith-service': {
+    en: 'A broken key, failed lock or unexpected lockout does not have to disrupt your day. Our mobile locksmith team is available 24/7.',
+    es: 'Una llave rota, una cerradura averiada o una apertura urgente no tiene por qué interrumpir su día. Nuestro equipo móvil atiende llamadas 24/7.',
+  },
+  'residential-locksmith': {
+    en: 'From house lockouts to rekeying and new deadbolts, our locksmiths bring the right tools to your door.',
+    es: 'Desde aperturas de viviendas hasta cambios de combinación y cerraduras nuevas, nuestros cerrajeros llevan el equipo hasta su puerta.',
+  },
+  'lock-rekeying': {
+    en: 'Moved, lost a key or need to change access? Rekeying compatible locks gives you new working keys without replacing every lock.',
+    es: '¿Se mudó, perdió una llave o necesita cambiar el acceso? Podemos cambiar la combinación de cerraduras compatibles sin reemplazarlas todas.',
+  },
+  'lock-repair': {
+    en: 'A sticking, loose or damaged lock may be repairable. We inspect the hardware at your location and explain your options.',
+    es: 'Una cerradura atascada, floja o dañada puede tener reparación. Revisamos el mecanismo en su ubicación y le explicamos las opciones.',
+  },
+  'lock-replacement': {
+    en: 'Need a new lock after wear, damage or a move? We install suitable replacement hardware at your property.',
+    es: '¿Necesita una cerradura nueva por desgaste, daño o una mudanza? Instalamos herrajes de reemplazo adecuados en su propiedad.',
+  },
+  'lock-installation': {
+    en: 'Upgrade your entry hardware without arranging a separate trip. We come to your home or business for on-site installation.',
+    es: 'Mejore las cerraduras de sus entradas sin desplazarse. Vamos a su casa o negocio para realizar la instalación.',
+  },
+  'security-hardware': {
+    en: 'Better hardware starts with the right fit. We assess compatible lock and door options at your location.',
+    es: 'Una buena instalación empieza por elegir los herrajes adecuados. Evaluamos opciones compatibles para sus puertas y cerraduras en su ubicación.',
+  },
+  'commercial-locksmith': {
+    en: 'Storefront door not securing, or business keys need changing? We help shops and offices with mobile lock repair, rekeying and installation.',
+    es: '¿La puerta de su negocio no cierra bien o necesita cambiar las llaves? Ayudamos a comercios y oficinas con reparaciones, cambios de combinación e instalaciones móviles.',
+  },
+};
+
 export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) {
   const { t, isSpanish } = useLanguage();
   const service = SERVICES_DATA.find(s => s.slug === slug);
@@ -77,6 +128,7 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
   const serviceFeatures = isSpanish && esData ? esData.features : service.features;
 
   const serviceImage = getServiceImage(service.slug);
+  const conversionMessage = SERVICE_CONVERSION_PROMISES[service.slug];
   const searchMetadata = SERVICE_SEARCH_METADATA[service.slug];
 
   const trail: [string, string][] = [[t('nav.services'), '/services'], [serviceName, '/services/' + service.slug]];
@@ -168,14 +220,43 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
           </div>
         </div>
 
+        <section className="rounded-2xl border border-amber-400/35 bg-slate-950 p-6 sm:p-8" aria-labelledby="service-direct-help">
+          <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
+            <div>
+              <h2 id="service-direct-help" className="font-heading text-xl font-bold text-white sm:text-2xl">
+                {isSpanish ? 'Soluciones de cerrajería en su ubicación' : 'Locksmith help where you need it'}
+              </h2>
+              <p className="mt-3 max-w-3xl text-base leading-7 text-slate-200">
+                {isSpanish ? conversionMessage?.es : conversionMessage?.en}
+              </p>
+              <p className="mt-3 text-sm leading-6 text-slate-300">
+                {isSpanish
+                  ? 'Servicio móvil el mismo día y atención de emergencia las 24 horas en Miami-Dade, Broward y Palm Beach.'
+                  : 'Same-day mobile service and 24/7 emergency assistance across Miami-Dade, Broward and Palm Beach.'}
+              </p>
+            </div>
+            <div className="flex flex-col gap-3">
+              <LocalizedA href="tel:+17542616528"
+                onClick={() => trackPhoneClick({ ctaLocation: 'service_benefit_call', pagePath: isSpanish ? `/es/services/${service.slug}` : `/services/${service.slug}`, serviceCategory: service.slug })}
+                className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-amber-400 px-6 py-3 font-extrabold text-slate-950 hover:bg-amber-300">
+                <Phone className="h-5 w-5" aria-hidden="true" />
+                {isSpanish ? 'Llamar para solicitar servicio' : 'Call for locksmith service'}
+              </LocalizedA>
+              <LocalizedA href="/reviews" className="min-h-11 text-center text-sm font-semibold text-amber-300 underline underline-offset-4">
+                {isSpanish ? 'Ver opiniones reales de clientes' : 'Read real customer reviews'}
+              </LocalizedA>
+            </div>
+          </div>
+        </section>
+
         <section className="plt-paper max-w-4xl mx-auto rounded-xl border p-6 sm:p-8">
-          <h2 className="font-heading text-xl sm:text-2xl font-bold text-white mb-3">About This Locksmith Service</h2>
+          <h2 className="font-heading text-xl sm:text-2xl font-bold text-white mb-3">{isSpanish ? 'Acerca de este servicio de cerrajería' : 'About This Locksmith Service'}</h2>
           <p className="text-base leading-8 text-slate-300">{serviceFullDesc}</p>
           <div className="mt-5 flex flex-wrap items-center gap-3 text-sm font-semibold text-amber-300">
-            <span className="inline-flex items-center gap-1.5"><Clock className="h-4 w-4" />24/7 availability</span>
-            <span className="inline-flex items-center gap-1.5"><MapPin className="h-4 w-4" />South Florida service area</span>
-            <span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-4 w-4" />Mobile service — we come to you</span>
-            <LocalizedA href="/reviews" className="underline underline-offset-4">Real Google customer reviews</LocalizedA>
+            <span className="inline-flex items-center gap-1.5"><Clock className="h-4 w-4" />{isSpanish ? 'Servicio 24/7' : '24/7 service'}</span>
+            <span className="inline-flex items-center gap-1.5"><MapPin className="h-4 w-4" />{isSpanish ? 'Servicio en el sur de Florida' : 'South Florida service area'}</span>
+            <span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-4 w-4" />{isSpanish ? 'Vamos a su ubicación' : 'We come to your location'}</span>
+            <LocalizedA href="/reviews" className="underline underline-offset-4">{isSpanish ? 'Opiniones reales en Google' : 'Real Google customer reviews'}</LocalizedA>
           </div>
         </section>
 
@@ -230,7 +311,7 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
 
         {serviceResources[service.slug] && (
           <div className="my-8 rounded-xl border border-slate-700 bg-slate-950 p-5">
-            <ResourceLinks title="Customer guides" links={serviceResources[service.slug]} />
+            <ResourceLinks title={isSpanish ? 'Guías para clientes' : 'Customer guides'} links={serviceResources[service.slug]} />
           </div>
         )}
 
@@ -251,8 +332,8 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
             </p>
             <p className="mt-3 text-sm leading-6 text-slate-300">
               {isSpanish
-                ? 'Pro Locksmith Tech presta servicio móvil las 24 horas. Llame para confirmar disponibilidad y tiempo estimado de llegada.'
-                : 'Pro Locksmith Tech accepts mobile service requests 24/7. Call to confirm availability and an estimated arrival time.'}
+                ? 'Pro Locksmith Tech ofrece servicio móvil las 24 horas. Llámenos para solicitar un técnico en su ubicación.'
+                : 'Our mobile locksmith team takes service requests 24/7. Call to arrange service at your location.'}
             </p>
             <p className="mt-3 text-sm leading-6 text-slate-300">
               {isSpanish ? `Aceptamos ${PAYMENT_METHODS.es}.` : `We accept ${PAYMENT_METHODS.en}.`}
@@ -299,8 +380,8 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
 
         {/* Relevant question-and-answer content; exactly matches FAQ structured data. */}
         <section className="rounded-2xl border border-slate-800 bg-slate-950 p-6 sm:p-8">
-          <h2 className="font-heading text-2xl font-bold text-white mb-2">Frequently Asked Questions About {service.name}</h2>
-          <p className="mb-6 text-base leading-7 text-slate-300">Clear answers to common questions about {service.name.toLowerCase()} in South Florida.</p>
+          <h2 className="font-heading text-2xl font-bold text-white mb-2">{isSpanish ? `Preguntas frecuentes sobre ${serviceName}` : `Frequently Asked Questions About ${service.name}`}</h2>
+          <p className="mb-6 text-base leading-7 text-slate-300">{isSpanish ? 'Respuestas sobre el servicio móvil de cerrajería que ofrecemos en el sur de Florida.' : `Clear answers to common questions about ${service.name.toLowerCase()} in South Florida.`}</p>
           <div className="space-y-4">
             {serviceFaqs.map((item, i) => <article className="rounded-xl border border-slate-800 bg-slate-900 p-5" key={i}>
               <h3 className="mb-2 text-lg font-bold text-white">{item.question}</h3>
@@ -317,7 +398,7 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
           <h3 className="font-heading font-black text-2xl text-white">
             {isSpanish 
               ? `Solicite ${serviceName} con Nuestro Cerrajero Móvil` 
-              : `Schedule ${service.name} with Our Mobile Technician`
+              : `Get ${service.name} at Your Location`
             }
           </h3>
           <p className="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto">
