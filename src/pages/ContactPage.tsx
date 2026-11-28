@@ -285,7 +285,7 @@ export function ContactPage() {
           </div>
         </div>
 
-        <section className="rounded-2xl border border-slate-800 bg-slate-950 p-6" aria-labelledby="contact-payment">
+        <section className="plt-paper rounded-xl border p-6" aria-labelledby="contact-payment">
           <h2 id="contact-payment" className="font-heading text-xl font-bold text-white">Payment methods and pricing</h2>
           <p className="mt-2 text-slate-300">Pro Locksmith Tech accepts {PAYMENT_METHODS.en}. Ask dispatch about any other payment method.</p>
           <p className="mt-2 text-slate-300">Locksmith pricing depends on the service, the vehicle or lock, the parts needed, and the job location. Call {PHONE} to discuss pricing for your job.</p>

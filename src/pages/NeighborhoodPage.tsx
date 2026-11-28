@@ -52,7 +52,7 @@ function NeighborhoodContent({ city, county, area }: Props) {
           Call (754) 261-6528
         </LocalizedA>
       </div>
-      <section className="space-y-3">
+      <section className="plt-paper space-y-3 rounded-xl border p-5 sm:p-6">
         <h2 className="font-heading text-2xl font-bold text-white">What to tell dispatch in {area.name}</h2>
         <p className="leading-7 text-slate-300">{area.callNotes}</p>
         <p className="leading-7 text-slate-300">For this type of request, see <LocalizedA href={`/services/${area.service}`} className="text-amber-300 underline">{serviceLabels[area.service]}</LocalizedA>.</p>

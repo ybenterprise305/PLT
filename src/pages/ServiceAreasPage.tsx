@@ -67,7 +67,7 @@ export function ServiceAreasPage() {
       </section>
 
       {groups.map(({ county, areas }) => (
-        <section className="rounded-2xl border border-slate-800 bg-slate-950 p-6 sm:p-8" key={county.slug}>
+        <section className="plt-paper rounded-xl border p-6 sm:p-8" key={county.slug}>
           <h2 className="font-heading text-2xl font-bold text-white">
             <LocalizedA href={'/service-areas/' + county.slug} className="text-amber-300 hover:underline">{county.name}</LocalizedA>
           </h2>

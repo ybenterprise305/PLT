@@ -1,7 +1,6 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { parse } from 'parse5';
-import sharp from 'sharp';
 
 const registry = JSON.parse(fs.readFileSync('src/generated/build-seo-inventory.json', 'utf8')).pages;
 const indexable = new Set(registry.filter(route => route.indexable).map(route => route.canonical));
@@ -31,12 +30,9 @@ for (const entry of editorial) {
   assert(links.some(href => /^\/(es\/)?(services\/|contact\/)/.test(href)), `${entry.path}: missing relevant service or contact link`);
 }
 
-for (const width of [320, 640]) {
-  const file = `dist/resource-images/car-key-fob-comparison-${width}.webp`;
-  const meta = await sharp(file).metadata();
-  assert.equal(meta.width, width);
-  assert.equal(meta.format, 'webp');
-  assert(!meta.exif && !meta.iptc && !meta.xmp && fs.statSync(file).size < 60000, `Unexpected metadata or size in ${file}`);
+for (const locale of ['', '/es']) {
+  const guide = read(locale + '/tips/vehicle-key-compatibility');
+  assert(!guide.includes('car-key-fob-comparison'), 'Rejected guide photograph is present');
 }
 
 console.log(`Verified initial editorial content on ${editorial.length} pages and directory links for ${guides.length} guides.`);

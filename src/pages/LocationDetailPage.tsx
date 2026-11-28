@@ -71,7 +71,7 @@ export function LocationDetailPage({ slug, onNavigate }: RouteProps) {
         </p>
       )}
 
-      {help && <section className={panel}>
+      {help && <section className={panel + ' plt-paper'}>
         <h2 className="font-heading text-2xl font-bold text-white">{help.title[language]}</h2>
         <p className="mt-3 max-w-3xl leading-7 text-slate-300">{help.detail[language]}</p>
         <ul className="mt-4 flex flex-wrap gap-3">

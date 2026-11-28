@@ -84,10 +84,7 @@ export default function App({ initialRoute }: { initialRoute: LoadedRoute }) {
         : 'flex flex-col min-h-screen bg-slate-900 text-slate-100 font-sans selection:bg-amber-500 selection:text-slate-950 overflow-x-clip w-full'}>
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:bg-slate-950 focus:p-3 focus:text-white">{isEsPath(route.fullPath) ? "Ir al contenido" : "Skip to main content"}</a>
         {/* Header with call-to-phone links, language toggle, and full phone number */}
-        <Header
-          currentPath={route.path}
-          onNavigate={navigate}
-        />
+        <Header currentPath={route.path} />
 
         {/* Main Page Area with generous smartphone bottom clearance for the sticky call bar */}
         <main id="main-content" tabIndex={-1} className={spanishContent ? "organic-content flex-1 pb-24 lg:pb-0" : "organic-content flex-1 pb-24 sm:pb-28 lg:pb-0 w-full"}>
@@ -95,7 +92,7 @@ export default function App({ initialRoute }: { initialRoute: LoadedRoute }) {
         </main>
 
         {/* Footer */}
-        <Footer onNavigate={navigate} />
+        <Footer />
 
         {/* Sticky Mobile Tap-To-Call Bottom Bar */}
         <MobileCallBar />

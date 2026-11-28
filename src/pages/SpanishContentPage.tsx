@@ -72,7 +72,7 @@ export function SpanishContentPage({ path }: Props) {
           </div>
           <div className={commercial ? 'relative' : 'contents'}>
             <img src={serviceImage?.src ?? homeVan.src} srcSet={serviceImage?.srcSet ?? homeVan.srcSet('webp')}
-              sizes={commercial ? '(min-width: 1152px) 532px, (min-width: 1024px) 46vw, calc(100vw - 2.5rem)' : '(max-width: 1024px) 100vw, 50vw'}
+              sizes={service ? '(min-width: 1152px) 532px, (min-width: 1024px) 46vw, calc(100vw - 2.5rem)' : '(max-width: 1024px) 100vw, 50vw'}
               width={960} height={640} alt={serviceImage?.esAlt ?? 'Camioneta de cerrajería móvil'}
               className="aspect-[4/3] w-full rounded-2xl object-cover" loading="eager" fetchPriority="high" />
             {commercial && <span className="absolute left-3 top-3 rounded-md bg-slate-950 px-2 py-1 text-xs text-slate-200">Imagen ilustrativa</span>}
@@ -98,12 +98,12 @@ export function SpanishContentPage({ path }: Props) {
       {service?.slug === 'emergency-lockout-service' && <p className="mx-auto max-w-6xl px-5 text-base leading-7 text-amber-200">Cuando corresponde, nuestros técnicos pueden utilizar métodos de apertura no destructivos para ayudar a evitar daños innecesarios.</p>}
 
       {service && (
-        <section className="mx-auto max-w-6xl px-5 py-7">
+        <section className="plt-paper mx-auto my-4 max-w-6xl rounded-xl border px-5 py-7 sm:px-8">
           <h2 className="mb-5 font-heading text-2xl font-bold">¿Cómo podemos ayudarle?</h2>
           <p className="mb-6 max-w-3xl text-base leading-8 text-slate-300">{details?.fullDescription || desc}</p>
           <div className="grid gap-4 md:grid-cols-2">
             {(details?.features || fallback?.features || []).map((feature, i) => (
-              <div key={i} className="flex gap-3 rounded-xl border border-slate-700 bg-slate-900 p-4 text-base"><ShieldCheck className="h-5 w-5 shrink-0 text-amber-400"/>{feature}</div>
+              <div key={i} className="flex gap-3 plt-paper-card rounded-xl border p-4 text-base"><ShieldCheck className="h-5 w-5 shrink-0 text-amber-400"/>{feature}</div>
             ))}
           </div>
           <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2">
@@ -117,9 +117,9 @@ export function SpanishContentPage({ path }: Props) {
       )}
 
       {path === '/faq' && (
-        <section className="mx-auto max-w-4xl space-y-4 px-5 py-5">
+        <section className="plt-paper mx-auto max-w-4xl space-y-4 rounded-xl border px-5 py-5">
           {SPANISH_FAQS.map((item,i) => (
-            <article className="rounded-xl border border-slate-700 bg-slate-900 p-5" key={item.id || i}>
+            <article className="plt-paper-card rounded-xl border p-5" key={item.id || i}>
               <h2 className="mb-2 text-lg font-bold">{item.question}</h2><p className="text-base leading-7 text-slate-300">{item.answer}</p>
             </article>
           ))}

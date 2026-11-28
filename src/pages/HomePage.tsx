@@ -60,7 +60,7 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
               <span className="flex items-center gap-2"><Clock className="h-4 w-4 text-amber-400" />{isSpanish ? '24/7 día y noche' : '24/7 day and night'}</span>
             </div>
           </div>
-          <div className="overflow-hidden rounded-3xl border border-slate-700 bg-slate-900 shadow-xl">
+          <div className="overflow-hidden rounded-3xl border border-slate-700 bg-slate-900 plt-hero-frame">
             <picture>
               <source type="image/avif" srcSet={homeVan.srcSet('avif')} sizes={homeVan.sizes} />
               <img src={homeVan.src} srcSet={homeVan.srcSet('webp')} sizes={homeVan.sizes} width={960} height={720} alt={isSpanish ? 'Camioneta de servicio móvil con equipos de cerrajería' : 'Illustrative mobile locksmith service van with equipment'} className="aspect-[4/3] w-full object-cover" fetchPriority="high" loading="eager" decoding="sync" />
@@ -69,7 +69,7 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      <section className="below-fold-section border-t border-slate-800 bg-slate-850 py-12 sm:py-16">
+      <section className="below-fold-section plt-paper border-t py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-5">
           <div className="mb-7 max-w-2xl">
             <p className="mb-2 text-sm font-bold uppercase tracking-wide text-amber-400">{isSpanish ? 'Nuestros servicios' : 'Our services'}</p>
@@ -78,7 +78,7 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
           <div className="grid gap-5 md:grid-cols-3">
             {services.map((service) => (
               <LocalizedA href={'/services/' + service.slug} key={service.slug}
-                className="group overflow-hidden rounded-2xl border border-slate-700 bg-slate-950 transition-colors hover:border-amber-400">
+                className="group plt-paper-card overflow-hidden rounded-xl border transition-colors hover:border-amber-400">
                 <img src={service.img} srcSet={service.srcSet} sizes="(max-width: 767px) calc(100vw - 42px), (max-width: 1279px) 31vw, 410px" width={960} height={540} alt={isSpanish ? service.es : service.en} loading="lazy" decoding="async" className="aspect-[16/9] w-full object-cover" />
                 <div className="space-y-2 p-5">
                   <h3 className="text-xl font-bold">{isSpanish ? service.es : service.en}</h3>
@@ -125,7 +125,8 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
       </section>
 
       {/* Answers to common questions before calling. */}
-      <section className="mx-auto max-w-5xl px-5 py-12 sm:py-16" aria-labelledby="locksmith-quick-answers">
+      <section className="plt-paper py-12 sm:py-16" aria-labelledby="locksmith-quick-answers">
+        <div className="mx-auto max-w-5xl px-5">
         <h2 id="locksmith-quick-answers" className="font-heading text-2xl font-bold sm:text-3xl">{isSpanish ? 'Preguntas antes de llamar' : 'Quick Answers Before You Call'}</h2>
         <div className="mt-6 grid gap-4 md:grid-cols-2">
           {[
@@ -146,7 +147,7 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
               answer: isSpanish ? 'Sí. Nuestros técnicos cuentan con herramientas profesionales y capacitación en técnicas de apertura no destructivas para ayudar a abrir vehículos y cerraduras sin causar daños innecesarios siempre que sea posible. El método adecuado depende del tipo y estado de la cerradura.' : 'Yes. Our trained locksmith technicians use professional tools and non-destructive entry techniques to help unlock cars and doors without unnecessary damage whenever possible. The appropriate method depends on the lock type and its condition.'
             }
           ].map(item => (
-            <article key={item.question} className="rounded-xl border border-slate-700 bg-slate-900 p-5">
+            <article key={item.question} className="plt-paper-card rounded-xl border p-5">
               <h3 className="text-lg font-bold text-white">{item.question}</h3>
               <p className="mt-2 text-base leading-7 text-slate-300">{item.answer}</p>
             </article>
@@ -157,10 +158,11 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
             <Phone className="h-5 w-5" aria-hidden="true" />{isSpanish ? 'Llamar ahora' : 'Call for Locksmith Help'} · {PHONE}
           </LocalizedA>
         </div>
+        </div>
       </section>
 
       {/* All main South Florida cities served, organized by county and linking to full location pages. */}
-      <section className="border-t border-slate-800 bg-slate-850 py-12 sm:py-16" aria-labelledby="south-florida-locksmith-areas">
+      <section className="border-t border-slate-800 bg-slate-900 py-12 sm:py-16" aria-labelledby="south-florida-locksmith-areas">
         <div className="mx-auto max-w-7xl px-5">
           <h2 id="south-florida-locksmith-areas" className="font-heading text-2xl font-bold sm:text-3xl">
             {isSpanish ? 'Servicio de cerrajería móvil en todo el sur de Florida' : 'Mobile Locksmith Service Throughout South Florida'}
@@ -201,7 +203,7 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
                 ]
               },
             ].map(county => (
-              <div key={county.en} className="rounded-2xl border border-slate-700 bg-slate-950 p-5">
+              <div key={county.en} className="plt-dark-panel rounded-xl border p-5">
                 <h3 className="mb-4 text-lg font-bold text-white">{isSpanish ? county.es : county.en}</h3>
                 <ul className="flex flex-wrap gap-2">
                   {county.cities.map(([slug, name]) => (
@@ -262,7 +264,7 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      <section className="below-fold-section border-y border-slate-800 bg-slate-900/60 py-12 sm:py-16">
+      <section className="below-fold-section plt-paper border-y py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-5">
           <div className="grid items-center gap-8 md:grid-cols-2">
             <div className="space-y-4">

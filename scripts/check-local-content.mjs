@@ -10,13 +10,13 @@ const { outputFiles } = await build({
       export { COUNTIES_DATA } from './src/data/locationsData';
       export { getNeighborhoods } from './src/data/neighborhoods';
       export { getLocalHelp, nearbyServiceAreas } from './src/data/localServiceContent';
-      export { completedJobs, completedJobImage, WORK_PATH } from './src/data/completedWork';
+      export { workExamples, workExampleImage, WORK_PATH } from './src/data/completedWork';
     `,
     resolveDir: process.cwd(),
   },
   bundle: true, platform: 'node', format: 'esm', write: false,
 });
-const { COUNTIES_DATA, getNeighborhoods, getLocalHelp, nearbyServiceAreas, completedJobs, completedJobImage, WORK_PATH } =
+const { COUNTIES_DATA, getNeighborhoods, getLocalHelp, nearbyServiceAreas, workExamples, workExampleImage, WORK_PATH } =
   await import('data:text/javascript;base64,' + Buffer.from(outputFiles[0].text).toString('base64'));
 
 const pages = JSON.parse(fs.readFileSync('src/generated/build-seo-inventory.json', 'utf8')).pages;
@@ -83,14 +83,15 @@ for (const locale of ['', '/es']) {
   }
 }
 
-assert.equal(completedJobs.length, 7);
-assert.equal(new Set(completedJobs.map(job => job.id)).size, completedJobs.length);
+assert.equal(workExamples.length, 4);
+assert.equal(new Set(workExamples.map(job => job.id)).size, workExamples.length);
 for (const locale of ['', '/es']) {
   const workPath = locale + WORK_PATH;
   const main = checkPublished(workPath, locale || '/');
-  assert.equal(main.filter(node => node.tagName === 'figure').length, completedJobs.length);
-  for (const job of completedJobs) {
-    const image = completedJobImage(job);
+  assert.equal(main.filter(node => node.tagName === 'img').length, workExamples.length);
+  assert(main.some(node => node.tagName === 'p' && /images illustrate|imágenes ilustran/i.test(text(node))), workPath);
+  for (const job of workExamples) {
+    const image = workExampleImage(job);
     const node = main.find(node => node.tagName === 'img' && attr(node, 'src') === image.src);
     assert(node && attr(node, 'alt') && attr(node, 'loading') === 'lazy');
     assert.equal(attr(node, 'width'), String(image.width));
@@ -100,8 +101,8 @@ for (const locale of ['', '/es']) {
     assert(hasLink(main, locale + '/services/' + job.service + '/'));
   }
 }
-for (const job of completedJobs) {
-  const image = completedJobImage(job);
+for (const job of workExamples) {
+  const image = workExampleImage(job);
   for (const variant of image.srcSet.split(', ')) {
     const [path, descriptor] = variant.split(' ');
     const file = 'dist' + path;
@@ -112,4 +113,12 @@ for (const job of completedJobs) {
     assert(!meta.exif && !meta.iptc && !meta.xmp && !meta.hasProfile && fs.statSync(file).size < 65000, path);
   }
 }
-console.log(`Verified ${routes.size - 2} geographic routes, ${cities.size} classified localities, and seven completed jobs in both languages.`);
+const rejected = /completed-work-images|car-key-fob-comparison-(320|640)\.webp/;
+const deploymentFiles = fs.readdirSync('dist', { recursive: true });
+for (const relative of deploymentFiles) {
+  assert(!rejected.test(relative), `Rejected asset remains in build: ${relative}`);
+  if (/\.(html|js|xml|json|txt)$/.test(relative) && fs.statSync('dist/' + relative).isFile()) {
+    assert(!rejected.test(fs.readFileSync('dist/' + relative, 'utf8')), `Rejected reference in ${relative}`);
+  }
+}
+console.log(`Verified ${routes.size - 2} geographic routes, ${cities.size} classified localities, and four authorized illustrated service categories in both languages.`);

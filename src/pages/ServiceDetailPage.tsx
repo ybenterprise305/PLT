@@ -101,7 +101,7 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
         <Breadcrumbs trail={trail} />
 
         {/* Hero Section for Service */}
-        <div className="bg-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-10 relative overflow-hidden shadow-2xl">
+        <div className="bg-slate-950 border border-slate-800 rounded-3xl plt-hero-frame p-6 sm:p-10 relative overflow-hidden shadow-2xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
             <div className="lg:col-span-7 space-y-4">
               <div className="flex items-center gap-3">
@@ -144,7 +144,7 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
                 <img
                   src={serviceImage.src}
                   srcSet={serviceImage.srcSet}
-                  sizes={service.slug === 'commercial-locksmith' ? '(min-width: 1600px) 560px, (min-width: 1024px) 36vw, calc(100vw - 5rem)' : '(max-width: 1024px) 100vw, 50vw'}
+                  sizes={'(min-width: 1600px) 560px, (min-width: 1024px) 36vw, calc(100vw - 5rem)'}
                   width={960}
                   height={640}
                   alt={isSpanish ? serviceImage.esAlt : serviceImage.enAlt}
@@ -167,7 +167,7 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
           </div>
         </div>
 
-        <section className="max-w-4xl mx-auto rounded-2xl border border-slate-800 bg-slate-950 p-6 sm:p-8">
+        <section className="plt-paper max-w-4xl mx-auto rounded-xl border p-6 sm:p-8">
           <h2 className="font-heading text-xl sm:text-2xl font-bold text-white mb-3">About This Locksmith Service</h2>
           <p className="text-base leading-8 text-slate-300">{serviceFullDesc}</p>
           <div className="mt-5 flex flex-wrap items-center gap-3 text-sm font-semibold text-amber-300">

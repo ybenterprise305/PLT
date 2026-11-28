@@ -25,7 +25,7 @@ export function TipDetailPage({ slug, onNavigate }: RouteProps) {
   const [serviceTitle, servicePath] = text.service;
 
   return (
-    <article className="mx-auto max-w-4xl space-y-9 px-5 py-10 sm:px-8">
+    <article className="plt-editorial mx-auto max-w-4xl space-y-9 px-5 py-10 sm:px-8">
       <SEOHead title={title} description={summary} canonicalPath={path} ogType="article" />
       <StructuredData data={articleData({ type: 'Article', path, language, headline: title, description: summary })} />
       <Breadcrumbs trail={[[es ? 'Guías de cerrajería' : 'Locksmith guides', '/tips'], [title, path]]} />
@@ -52,26 +52,13 @@ export function TipDetailPage({ slug, onNavigate }: RouteProps) {
           </table>
         </div>
       )}
-      {guide.slug === 'vehicle-key-compatibility' && (
-        <figure className="max-w-sm space-y-2">
-          <img src="/resource-images/car-key-fob-comparison-640.webp"
-            srcSet="/resource-images/car-key-fob-comparison-320.webp 320w, /resource-images/car-key-fob-comparison-640.webp 640w"
-            sizes="(max-width: 424px) calc(100vw - 40px), 384px" width={640} height={853}
-            loading="lazy" decoding="async" className="h-auto w-full rounded-xl"
-            alt={es ? 'Dos controles de auto con distintos diseños de botones, sostenidos juntos' : 'Two car remotes with different button layouts held side by side'} />
-          <figcaption className="text-sm text-slate-300">
-            {es ? 'La forma y los botones no confirman compatibilidad. Foto suministrada por Pro Locksmith Tech.'
-              : 'Shape and button layout do not establish compatibility. Photo supplied by Pro Locksmith Tech.'}
-          </figcaption>
-        </figure>
-      )}
       {sections.map(([heading, ...paragraphs]) => (
         <section className="space-y-3" key={heading}>
           <h2 className="font-heading text-xl font-bold text-white sm:text-2xl">{heading}</h2>
           {paragraphs.map(paragraph => <p className="leading-7 text-slate-200" key={paragraph}>{paragraph}</p>)}
         </section>
       ))}
-      <section className="space-y-3 rounded-xl border border-slate-700 bg-slate-950 p-5">
+      <section className="plt-paper space-y-3 rounded-xl border p-5">
         <h2 className="font-heading text-xl font-bold text-white">{es ? 'Servicio relacionado' : 'Related service'}</h2>
         <p><LocalizedA href={servicePath} className="text-amber-300 underline">{serviceTitle}</LocalizedA></p>
         <LocalizedA href={TEL} className="inline-flex min-h-11 items-center font-bold text-amber-300 underline"

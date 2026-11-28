@@ -171,7 +171,7 @@ export function BlogPostPage({ slug, onNavigate }: BlogPostPageProps) {
         {/* Article Body Content */}
         <div className="space-y-8 text-slate-200 leading-relaxed text-base sm:text-lg">
           {post.content.map((section, idx) => (
-            <section key={idx} className="space-y-4">
+            <section key={idx} className="space-y-4 border-t border-slate-700 pt-5">
               <h2 className="font-heading font-black text-2xl sm:text-3xl text-white pt-2 border-b border-slate-800/80 pb-2">
                 {section.heading}
               </h2>

@@ -95,7 +95,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
         </div>
 
         {/* Authentic public review, not a fabricated testimonial or aggregate rating. */}
-        <section className="grid gap-6 rounded-2xl border border-amber-400/25 bg-slate-950 p-6 sm:p-8 lg:grid-cols-2 lg:items-center" aria-label="Customer feedback">
+        <section className="plt-dark-panel grid gap-6 rounded-xl border p-6 sm:p-8 lg:grid-cols-2 lg:items-center" aria-label="Customer feedback">
           <div className="space-y-3">
             <p className="text-sm font-bold uppercase tracking-wide text-amber-300">{isSpanish ? 'Opinión de un cliente en Google' : 'From a real Google customer review'}</p>
             <blockquote className="text-base leading-8 text-slate-100">“Really happy with the service. Shawn made a new key for my 2022 Honda Accord and was very knowledgeable. The whole process was smooth and communication was excellent.”</blockquote>

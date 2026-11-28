@@ -76,7 +76,7 @@ export function FAQPage({ onNavigate }: FAQPageProps) {
         </div>
 
         {/* Mobile Service Reassurance Banner */}
-        <div className="bg-gradient-to-r from-amber-500/10 via-slate-950 to-slate-950 border border-amber-500/30 rounded-2xl p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="plt-paper border rounded-xl p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex items-start gap-4">
             <div className="w-12 h-12 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0 mt-0.5">
               <Truck className="w-6 h-6" />
