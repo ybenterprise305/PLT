@@ -69,6 +69,36 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
         </div>
       </section>
 
+      <section className="border-y border-amber-400/20 bg-slate-900 py-7 sm:py-9" aria-label={isSpanish ? 'Ventajas de nuestro servicio' : 'Why customers call us'}>
+        <div className="mx-auto grid max-w-7xl gap-5 px-5 sm:grid-cols-3 sm:gap-8">
+          {[
+            {
+              enTitle: 'Same-day mobile locksmith',
+              esTitle: 'Cerrajería móvil el mismo día',
+              enBody: 'We come to your car, home or business across South Florida.',
+              esBody: 'Vamos hasta su auto, hogar o negocio en el sur de Florida.',
+            },
+            {
+              enTitle: 'Car keys cut and programmed on site',
+              esTitle: 'Llaves de auto hechas en el lugar',
+              enBody: 'Lost-key replacements, compatible smart keys and key fobs.',
+              esBody: 'Reemplazos de llaves perdidas, controles y llaves inteligentes compatibles.',
+            },
+            {
+              enTitle: 'Call our team 24/7',
+              esTitle: 'Llámenos las 24 horas',
+              enBody: 'Emergency lockouts, rekeying, lock repair and business lock service.',
+              esBody: 'Aperturas urgentes, cambios de combinación, reparación y cerraduras comerciales.',
+            },
+          ].map(item => (
+            <div key={item.enTitle} className="border-l-2 border-amber-400/70 pl-4">
+              <h2 className="text-base font-bold text-white">{isSpanish ? item.esTitle : item.enTitle}</h2>
+              <p className="mt-1 text-sm leading-6 text-slate-300">{isSpanish ? item.esBody : item.enBody}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section className="below-fold-section plt-paper border-t py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-5">
           <div className="mb-7 max-w-2xl">
@@ -108,7 +138,7 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
       <section className="border-y border-slate-800 bg-slate-950 py-12 sm:py-16" aria-labelledby="popular-locksmith-requests">
         <div className="mx-auto max-w-7xl px-5">
           <h2 id="popular-locksmith-requests" className="font-heading text-2xl font-bold sm:text-3xl">{isSpanish ? 'Servicios de cerrajería más solicitados' : 'Popular Locksmith Requests'}</h2>
-          <p className="mt-3 max-w-3xl text-base leading-7 text-slate-300">{isSpanish ? 'Servicio móvil disponible las 24 horas. Llame para confirmar cobertura, disponibilidad y precio para su trabajo.' : 'Need a locksmith today? Call our 24/7 team for same-day service, emergency assistance and an estimate for your job.'}</p>
+          <p className="mt-3 max-w-3xl text-base leading-7 text-slate-300">{isSpanish ? '¿Necesita un cerrajero hoy? Llámenos para solicitar servicio móvil el mismo día, atención de emergencia y un presupuesto para su trabajo.' : 'Need a locksmith today? Call our 24/7 team for same-day service, emergency assistance and an estimate for your job.'}</p>
           <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { href: '/services/automotive-locksmith', en: 'Car Lockouts & Replacement Keys', es: 'Apertura y llaves de auto' },
@@ -132,7 +162,7 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
           {[
             {
               question: isSpanish ? '¿Atienden las 24 horas?' : 'Are you available 24/7?',
-              answer: isSpanish ? 'Sí. Pro Locksmith Tech recibe llamadas las 24 horas, los 7 días de la semana. La disponibilidad para su ubicación se confirma por teléfono.' : 'Yes. Pro Locksmith Tech accepts calls 24 hours a day, seven days a week. Call to confirm a technician is available for your location.'
+              answer: isSpanish ? 'Sí. Nuestro equipo de despacho recibe llamadas las 24 horas, los 7 días de la semana para coordinar un cerrajero móvil donde lo necesite.' : 'Yes. Our dispatch team answers calls 24 hours a day, seven days a week to arrange mobile locksmith service at your location.'
             },
             {
               question: isSpanish ? '¿Pueden acudir a mi ubicación?' : 'Can a locksmith come to my location?',
@@ -224,7 +254,7 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
           </div>
           <div className="mt-7 flex flex-col items-start gap-4 rounded-2xl border border-amber-400/30 bg-slate-950 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
             <div>
-              <h3 className="text-lg font-bold text-white">{isSpanish ? '¿No está seguro si atendemos su ciudad?' : 'Not sure if we serve your area?'}</h3>
+              <h3 className="text-lg font-bold text-white">{isSpanish ? 'Cerrajería móvil cerca de usted' : 'Mobile locksmiths near you'}</h3>
               <p className="mt-1 text-sm leading-6 text-slate-300">
                 {isSpanish ? 'Explore nuestras áreas de servicio o llámenos para solicitar un cerrajero en su ubicación.' : 'Explore our South Florida service areas or call to request a locksmith at your location.'}
               </p>
@@ -275,8 +305,8 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
               <h2 className="font-heading text-2xl font-bold sm:text-4xl">{isSpanish ? 'Servicio móvil en el sur de Florida' : 'Mobile Locksmiths Across South Florida'}</h2>
               <p className="text-base leading-7 text-slate-300">
                 {isSpanish
-                  ? 'Atendemos áreas de Broward, Miami-Dade y Palm Beach. Consulte las ciudades que cubrimos y llame para confirmar la disponibilidad en su ubicación.'
-                  : 'We serve areas across Broward, Miami-Dade and Palm Beach counties. Browse our city directory and call to confirm service at your location.'}
+                  ? 'Atendemos comunidades de Broward, Miami-Dade y Palm Beach. Explore nuestras ciudades de servicio y llámenos para recibir atención móvil en su ubicación.'
+                  : 'We serve communities across Broward, Miami-Dade and Palm Beach counties. Explore our city directory and call for mobile locksmith service at your location.'}
               </p>
               <LocalizedA href="/service-areas" className="inline-flex min-h-[48px] items-center gap-2 rounded-xl border border-amber-400/60 px-5 py-3 font-semibold text-amber-300 hover:bg-slate-800">
                 {isSpanish ? 'Ver ciudades atendidas' : 'View service areas'} <ArrowRight className="h-4 w-4" />
