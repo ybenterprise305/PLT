@@ -11,8 +11,6 @@ import { Logo } from './Logo';
 const navigation = [
   ['/service-areas', 'Service areas', 'Cobertura'],
   ['/completed-work', 'Our work', 'Trabajos'],
-  ['/tips', 'Guides', 'Guías'],
-  ['/about', 'About', 'Nosotros'],
   ['/contact', 'Contact', 'Contacto'],
 ] as const;
 
@@ -125,7 +123,7 @@ export function Header({ currentPath }: { currentPath: string }) {
               <div>{services.map(([href, en, es]) => <LocalizedA key={href} href={href} onClick={() => dismiss()}>{isSpanish ? es : en}</LocalizedA>)}</div>
             </section>
             <section>
-              <h3 className="plt-label">{isSpanish ? 'Cobertura y empresa' : 'Coverage and company'}</h3>
+              <h3 className="plt-label">{isSpanish ? 'Cobertura y contacto' : 'Coverage and contact'}</h3>
               <div>{links(true)}</div>
             </section>
           </nav>

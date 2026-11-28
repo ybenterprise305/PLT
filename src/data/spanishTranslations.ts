@@ -43,7 +43,7 @@ export const SPANISH_SERVICES: Record<string, SpanishServiceTranslation> = {
     badge: 'Seguridad Empresarial',
     categoryName: 'Comercial',
     shortDescription: 'Cerraduras comerciales, barras antipánico para salidas de emergencia y sistemas de llave maestra para empresas.',
-    fullDescription: 'Asegure su local comercial, almacén u oficina corporativa con soluciones móviles profesionales. Pro Locksmith Tech repara e instala cerraduras comerciales de embutir (cerraduras de embutir Adams Rite), barras de empuje antipánico que cumplen con el código de incendios de Florida (NFPA 101) y diseña sistemas de llave maestra para que los administradores controlen el acceso sin cargar pesados manojos de llaves.',
+    fullDescription: 'Vamos a comercios, oficinas y almacenes para reparar, instalar y cambiar la combinación de cerraduras compatibles. Trabajamos con cilindros comerciales, barras antipánico y sistemas de llave maestra. Un técnico puede revisar la puerta y explicarle las opciones.',
     features: [
       'Sistemas de llave maestra para edificios y oficinas',
       'Instalación y reparación de barras antipánico de salida',
@@ -57,7 +57,7 @@ export const SPANISH_SERVICES: Record<string, SpanishServiceTranslation> = {
     badge: 'Autos y Llaves',
     categoryName: 'Automotriz',
     shortDescription: 'Apertura de autos, corte de llaves láser en el lugar y programación de controles y chips transponder.',
-    fullDescription: 'Ahorre cientos de dólares en costos de grúa y largas esperas en los concesionarios. Pro Locksmith Tech es un taller de cerrajería automotriz sobre ruedas que llega directamente a su automóvil en cualquier estacionamiento, carretera o domicilio del Sur de la Florida. Cortamos llaves con corte láser y programamos llaves inteligentes de botón de arranque por botón en el acto mediante escáneres diagnósticos OBD-II.',
+    fullDescription: '¿Perdió la llave o se quedó fuera del auto? Pro Locksmith Tech va hasta su vehículo. Llevamos llaves tradicionales, llaves con chip, controles y llaves inteligentes para una amplia variedad de autos. Llámenos para solicitar corte y programación de llaves compatibles en el lugar, con opciones el mismo día.',
     features: [
       'Apertura urgente de autos sin rasguños',
       'Corte de llaves automotrices con maquinaria CNC láser',
@@ -127,7 +127,7 @@ export const SPANISH_SERVICES: Record<string, SpanishServiceTranslation> = {
     badge: 'Llaves en el Acto',
     categoryName: 'Automotriz',
     shortDescription: 'Reemplazo de llaves de auto según el vehículo y el tipo de llave.',
-    fullDescription: 'El servicio móvil puede incluir el corte de una llave y la programación de un control compatible. Confirme el vehículo, el tipo de llave y si perdió todas las copias para conocer las opciones.',
+    fullDescription: 'Podemos cortar y programar una llave compatible donde esté su vehículo. Nuestros técnicos llevan llaves y controles para una amplia variedad de autos. Llámenos si necesita una copia o si perdió todas las llaves.',
     features: [
       'Servicio cuando ha perdido todas las llaves (All Keys Lost)',
       'Corte de llaves compatibles',
@@ -141,7 +141,7 @@ export const SPANISH_SERVICES: Record<string, SpanishServiceTranslation> = {
     badge: 'Tecnología OBD',
     categoryName: 'Automotriz',
     shortDescription: 'Programación de controles remotos y llaves de proximidad con botón de arranque de arranque por botón.',
-    fullDescription: 'La programación de controles compatibles depende de la configuración del vehículo. Confirme qué funciones necesita y si el servicio se puede realizar en el lugar.',
+    fullDescription: 'Programamos controles compatibles en el lugar. Llámenos y nuestro equipo le explicará qué opciones hay para su vehículo, incluso si no queda una llave que funcione.',
     features: [
       'Sincronización de sistemas arranque por botón',
       'Consulte las opciones si perdió una llave',

@@ -65,7 +65,7 @@ export const SERVICES_DATA: LocksmithService[] = [
     badge: 'Business Protection',
     iconName: 'Building2',
     shortDescription: 'Comprehensive lock and physical security services for South Florida businesses, retail, and offices.',
-    fullDescription: 'Businesses require dependable, commercial-grade hardware designed for high-traffic access. Pro Locksmith Tech works with retail storefronts, corporate offices, warehouses, medical clinics, and management companies. We install, repair, and maintain commercial panic crash bars, Adams Rite storefront mortise locks, master key systems, and electronic access hardware that complies with local life safety codes.',
+    fullDescription: 'Pro Locksmith Tech comes to shops, offices, warehouses and managed properties for commercial lock repair, rekeying and installation. We work with compatible storefront cylinders, exit hardware and master key systems. A technician can assess the door and discuss practical options on site.',
     features: [
       'Commercial panic exit hardware & push bars',
       'Storefront glass door mortise cylinders & latch locks',
@@ -93,7 +93,7 @@ export const SERVICES_DATA: LocksmithService[] = [
     badge: 'Mobile Car Key Care',
     iconName: 'Car',
     shortDescription: 'Mobile car lockout, car key replacement, transponder chip programming, and ignition repair.',
-    fullDescription: 'When vehicle key issues leave you stranded in a parking lot, driveway, or highway rest stop, Pro Locksmith Tech brings the shop directly to your car. We service domestic, foreign, and commercial vehicles. Our mobile units carry a wide selection of car keys, transponder keys, remotes, key fobs and push-to-start smart keys, along with professional cutting and programming equipment. Get your replacement key cut and programmed on-site the same day.',
+    fullDescription: 'Locked out or missing your car key? Pro Locksmith Tech comes to the vehicle. We carry traditional car keys, transponder keys, remotes, fobs and push-to-start smart keys across vehicle makes and models. Call for same-day options for on-site cutting and programming.',
     features: [
       'Emergency car door and trunk opening using non-destructive methods when feasible; no damage-free result is guaranteed',
       'Transponder key cutting and chip programming',
@@ -205,7 +205,7 @@ export const SERVICES_DATA: LocksmithService[] = [
     badge: 'Precision Cutting',
     iconName: 'Copy',
     shortDescription: 'Accurate mobile key cutting for residential, commercial, automotive, and padlock keys.',
-    fullDescription: 'Hardware store automated kiosks often produce imprecise duplicate keys that catch, stick, or refuse to turn inside lock cylinders. Pro Locksmith Tech uses calibrated commercial key duplication machinery operated by skilled technicians right outside your location. We duplicate standard brass house keys, high-security laser vehicle keys, mailbox keys, and commercial office keys with micrometer accuracy.',
+    fullDescription: 'We come to you for spare house keys, compatible vehicle keys and supported commercial keys. Our technicians bring key-cutting equipment and can discuss a spare when you still have a working key or replacement when the last copy has been lost.',
     features: [
       'High-precision brass key copies cut right at your doorstep',
       'Car keys, chip keys, and high-security sidewinder keys',
@@ -233,7 +233,7 @@ export const SERVICES_DATA: LocksmithService[] = [
     badge: 'Origination & Creation',
     iconName: 'FileKey',
     shortDescription: 'Cutting and generating brand-new keys from scratch when all original keys are completely lost.',
-    fullDescription: 'If you have lost all original keys to your car, home, or commercial padlock, you do not need to tow your car to a dealership or demolish your front door. Pro Locksmith Tech performs key origination. We decode the internal wafers or pins of the lock cylinder to determine the exact factory cuts, cut a fresh key on-site, and program electronic chips or remotes directly on the spot.',
+    fullDescription: 'Lost your last key? Call Pro Locksmith Tech for mobile key replacement. We carry a wide range of car keys and fobs and bring cutting and programming equipment to the vehicle. We also make compatible replacement keys for supported home and business locks. Call for same-day options.',
     features: [
       'Key generation from scratch with zero working original keys present',
       'Automotive key origination by code or lock cylinder decoding',
@@ -317,7 +317,7 @@ export const SERVICES_DATA: LocksmithService[] = [
     badge: '24/7 Mobile Dispatch',
     iconName: 'Flame',
     shortDescription: 'Around-the-clock rapid response across South Florida for urgent lock and key emergencies.',
-    fullDescription: 'Emergencies do not check the clock. Whether you are stranded outside your car at 2 AM in Miami Beach, locked out of your apartment in Fort Lauderdale on a holiday, or dealing with an unsecured storefront door in West Palm Beach on a weekend, Pro Locksmith Tech operates a dedicated 24/7 mobile fleet ready to mobilize across South Florida with fully stocked locksmith vans.',
+    fullDescription: 'Locked out of your car or home, or dealing with a business door that will not secure? Call Pro Locksmith Tech any time. Our South Florida dispatch team can arrange mobile service at your location and discuss availability and your estimated arrival time.',
     features: [
       'True 24/7 mobile coverage — nights, weekends, and holidays',
       'Rapid emergency dispatch routing across South Florida corridors',

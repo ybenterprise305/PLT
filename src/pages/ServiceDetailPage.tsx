@@ -1,3 +1,4 @@
+import { PAYMENT_METHODS } from '../config/business';
 import { CompletedWorkLink } from '../components/CompletedWorkLink';
 import { ResourceLinks } from '../components/ResourceLinks';
 import { serviceResources } from '../data/editorialLinks';
@@ -233,25 +234,28 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
           </div>
         )}
 
-        {/* Give high-intent visitors actionable preparation details, not fabricated prices or guarantees. */}
+        {/* Explain the services technicians can perform on site. */}
         {['automotive-locksmith', 'key-replacement', 'key-duplication', 'emergency-lockout-service', 'residential-locksmith', 'lock-rekeying'].includes(service.slug) && (
-          <section className="rounded-2xl border border-slate-800 bg-slate-950 p-6 sm:p-8" aria-labelledby="before-calling-locksmith">
-            <h2 id="before-calling-locksmith" className="font-heading text-2xl font-bold text-white">
-              {isSpanish ? 'Información útil antes de llamar' : 'What to Know Before Calling'}
+          <section className="rounded-2xl border border-slate-800 bg-slate-950 p-6 sm:p-8" aria-labelledby="mobile-service-options">
+            <h2 id="mobile-service-options" className="font-heading text-2xl font-bold text-white">
+              {isSpanish ? 'Cómo podemos ayudarle en el lugar' : 'How We Can Help On Site'}
             </h2>
             <p className="mt-3 max-w-3xl text-base leading-7 text-slate-300">
               {['automotive-locksmith', 'key-replacement', 'key-duplication'].includes(service.slug)
                 ? (isSpanish
-                  ? 'Para consultar sobre llaves de auto o programación, tenga a mano la marca, modelo y año del vehículo. Indique si conserva alguna llave que funcione. '
-                  : 'For car key replacement, cutting or programming, have the vehicle make, model and year ready. Tell us whether any working key remains.')
+                  ? 'Nuestros técnicos llevan llaves, controles y equipo de programación hasta su auto. Podemos cortar una copia o fabricar una llave de reemplazo compatible aunque no tenga ninguna.'
+                  : 'We bring a wide range of car keys, fobs and programming equipment to your vehicle. We can cut a spare or make a compatible replacement even when every key is lost.')
                 : (isSpanish
-                  ? 'Indique su ciudad, tipo de puerta o cerradura y si el problema es una llave perdida, una cerradura dañada o una puerta cerrada. '
-                  : 'Tell us your city, door or lock type, and whether you have a lost key, damaged lock or lockout.')}
+                  ? 'Vamos hasta su puerta para aperturas, cambios de combinación y cerraduras dañadas. Un técnico puede revisar el problema en el lugar y explicarle sus opciones.'
+                  : 'We come to your door for lockouts, rekeying and damaged locks. A technician can assess the problem on site and explain your options.')}
             </p>
             <p className="mt-3 text-sm leading-6 text-slate-300">
               {isSpanish
                 ? 'Pro Locksmith Tech presta servicio móvil las 24 horas. Llame para confirmar disponibilidad y tiempo estimado de llegada.'
                 : 'Pro Locksmith Tech accepts mobile service requests 24/7. Call to confirm availability and an estimated arrival time.'}
+            </p>
+            <p className="mt-3 text-sm leading-6 text-slate-300">
+              {isSpanish ? `Aceptamos ${PAYMENT_METHODS.es}.` : `We accept ${PAYMENT_METHODS.en}.`}
             </p>
             {!isSpanish && ['automotive-locksmith', 'key-replacement', 'key-duplication'].includes(service.slug) && (
               <div className="mt-5 flex flex-wrap gap-3 text-sm font-semibold">

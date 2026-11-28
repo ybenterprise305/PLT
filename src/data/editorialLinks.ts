@@ -25,7 +25,7 @@ export const serviceResources: Record<string, readonly ResourceLink[]> = {
   'security-hardware': [['What to do when a smart lock battery dies', '/tips/smart-lock-dead-battery-override'], residential],
   'commercial-locksmith': topicResources.Commercial,
   'emergency-lockout-service': topicResources.Emergency,
-  'emergency-locksmith-service': [lockout, ['What to share when calling a locksmith', '/blog/what-information-needed-before-calling-mobile-locksmith']],
+  'emergency-locksmith-service': [lockout, ['How a mobile locksmith visit works', '/blog/what-information-needed-before-calling-mobile-locksmith']],
 };
 
 export const spanishDecisionResources: readonly ResourceLink[] = [

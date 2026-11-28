@@ -39,7 +39,7 @@ function NeighborhoodContent({ city, county, area }: Props) {
     <article className="mx-auto max-w-4xl space-y-7 px-5 py-10 sm:py-14">
       <SEOHead
         title={`Mobile Locksmith in ${area.name} | ${city.name}`}
-        description={`${area.name} in ${city.name}, FL. Local service information and what to have ready before you call Pro Locksmith Tech for mobile locksmith help.`}
+        description={`${area.name} in ${city.name}, FL. Mobile locksmith service from Pro Locksmith Tech for vehicle, home and business lock and key problems.`}
         canonicalPath={path}
       />
       <Breadcrumbs trail={[['Service areas', '/service-areas'], [county.name, `/service-areas/${county.slug}`], [city.name, `/service-areas/${city.slug}`], [area.name, path]]} />
@@ -53,8 +53,8 @@ function NeighborhoodContent({ city, county, area }: Props) {
         </LocalizedA>
       </div>
       <section className="plt-paper space-y-3 rounded-xl border p-5 sm:p-6">
-        <h2 className="font-heading text-2xl font-bold text-white">What to tell dispatch in {area.name}</h2>
-        <p className="leading-7 text-slate-300">{area.callNotes}</p>
+        <h2 className="font-heading text-2xl font-bold text-white">Mobile locksmith help in {area.name}</h2>
+        <p className="leading-7 text-slate-300">{area.serviceDetail}</p>
         <p className="leading-7 text-slate-300">For this type of request, see <LocalizedA href={`/services/${area.service}`} className="text-amber-300 underline">{serviceLabels[area.service]}</LocalizedA>.</p>
       </section>
       {guide && <p><LocalizedA href={guide[1]} className="text-amber-300 underline">{guide[0]}</LocalizedA></p>}

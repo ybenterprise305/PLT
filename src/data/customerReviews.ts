@@ -1,24 +1,19 @@
-/** Selected verbatim Google Business Profile reviews checked against the connected profile on November 14, 2026.
- * The reviewer-provided photo belongs to the specific Nick Manning review only.
- * All cards link to the original public Google Maps business profile.
- */
 export interface CustomerReview {
   author: string;
-  date: string;
+  date?: string;
   quote: string;
   category: string;
   stars: 5;
-  image?: string;
-  imageAlt?: string;
+  excerpt?: boolean;
 }
+// Public Google Maps profile displayed a 5.0 rating on November 28, 2026.
 export const GOOGLE_MAPS_REVIEWS_URL = 'https://maps.google.com/maps?cid=16992150185739281311';
 export const FEATURED_REVIEWS: CustomerReview[] = [
-  {
-    author: 'Nick Manning', date: 'November 11, 2026', stars: 5, category: 'Locksmith service',
-    quote: 'Shawn did a Great job. Quick service and very friendly. Some locksmiths get bad reps for ripping people off. Shawn will try and fix the problem the cheapest and most efficient way possible. I highly recommend keeping the company’s phone number in your contacts for an emergency.',
-    image: 'https://lh3.googleusercontent.com/grass-cs/AABkmLe-dYCB1WXlRs-QX9Znx5xl2FI-gUwHKSPa6Xij1oleRYQw6jlB6udrmu3RZ_crLIHvR0oQG4P72LB0ztjpgudEC2gbdZs4BMgcC4_VQYaR4bE8pndrFOieEIPz6php1CGJ9S17VDZpY2M=k-no',
-    imageAlt: 'Photo included with Nick Manning’s Google review'
-  },
+  { author: "Jacob Maman", stars: 5, category: "Vehicle lockout", quote: "Shawn answered quickly and came to help without making the situation stressful. Very professional.", excerpt: true },
+  { author: "Netanel Medina", stars: 5, category: "Home lockout", quote: "thank you very much for unlocking my house" },
+  { author: "Liad Mizrachi", stars: 5, category: "Customer service", quote: "Shawn was friendly, knowledgeable, and made sure everything was taken care of.", excerpt: true },
+  { author: "orgest gjyli", stars: 5, category: "Response time", quote: "Nice service very responsive" },
+  { author: "Mia Pesa", stars: 5, category: "Locksmith service", quote: "Fantastic service by Shawn 🤩" },
   {
     author: 'Roger Celler', date: 'November 13, 2026', stars: 5, category: 'Replacement car key',
     quote: 'Really happy with the service. Shawn made a new key for my 2022 Honda Accord and was very knowledgeable. The whole process was smooth and communication was excellent.'

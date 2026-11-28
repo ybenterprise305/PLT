@@ -119,8 +119,8 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
             </h3>
             <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
               {isSpanish 
-                ? 'Cuando se queda afuera de su carro en la I-95 o el pestillo de su negocio se daña en la noche, no puede llevar la puerta a un taller. Pro Locksmith Tech lleva el taller completo de cerrajería hasta su ubicación exacta en camionetas con duplicadoras, escáneres y repuestos.' 
-                : 'When you are locked out of your car on I-95 or your storefront door latch breaks at night, you cannot bring your door to a shop. Pro Locksmith Tech brings the full locksmith workshop to your exact location in equipped vans carrying key machines, diagnostic tablets, and inventory.'}
+                ? 'Pro Locksmith Tech lleva el taller hasta su vehículo, casa o negocio. Traemos duplicadoras, equipos de programación y repuestos para reparar cerraduras y hacer llaves compatibles en el lugar.'
+                : 'Pro Locksmith Tech brings the workshop to your vehicle, home or business. We carry key-cutting and programming equipment and a selection of parts for on-site lock repair and compatible replacement keys.'}
             </p>
           </div>
 

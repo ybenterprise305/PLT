@@ -2,7 +2,7 @@ import { CompletedWorkLink } from '../components/CompletedWorkLink';
 import { StructuredData } from '../components/StructuredData';
 import { siteIdentity } from '../utils/structuredData';
 import { homeVan } from '../assets/images/vanImages';
-import { PHONE, TEL } from '../config/business';
+import { PAYMENT_METHODS, PHONE, TEL } from '../config/business';
 import React from 'react';
 import { Phone, Car, Home, Building2, KeyRound, ArrowRight, Clock, MapPin, ShieldCheck } from 'lucide-react';
 import { SEOHead } from '../components/SEOHead';
@@ -127,7 +127,7 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
       {/* Answers to common questions before calling. */}
       <section className="plt-paper py-12 sm:py-16" aria-labelledby="locksmith-quick-answers">
         <div className="mx-auto max-w-5xl px-5">
-        <h2 id="locksmith-quick-answers" className="font-heading text-2xl font-bold sm:text-3xl">{isSpanish ? 'Preguntas antes de llamar' : 'Quick Answers Before You Call'}</h2>
+        <h2 id="locksmith-quick-answers" className="font-heading text-2xl font-bold sm:text-3xl">{isSpanish ? 'Preguntas frecuentes de cerrajería' : 'Common Locksmith Questions'}</h2>
         <div className="mt-6 grid gap-4 md:grid-cols-2">
           {[
             {
@@ -141,6 +141,10 @@ export function HomePage({ onNavigate: _onNavigate }: HomePageProps) {
             {
               question: isSpanish ? '¿Pueden reemplazar una llave de auto perdida?' : 'Can you replace a lost car key?',
               answer: isSpanish ? 'Sí. Pro Locksmith Tech corta llaves de reemplazo y programa controles compatibles en la ubicación de su auto. Llame para confirmar el servicio para su vehículo.' : 'Yes. Pro Locksmith Tech cuts replacement car keys and programs compatible key fobs at your vehicle. Call to confirm service for your vehicle.'
+            },
+            {
+              question: isSpanish ? '¿Cómo puedo pagar?' : 'How can I pay?',
+              answer: isSpanish ? `Aceptamos ${PAYMENT_METHODS.es}.` : `We accept ${PAYMENT_METHODS.en}.`,
             },
             {
               question: isSpanish ? '¿Pueden abrir autos y cerraduras sin causar daños?' : 'Can you unlock cars and doors without causing damage?',

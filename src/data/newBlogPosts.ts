@@ -6,27 +6,34 @@ export const NEW_BLOG_POSTS: BlogPost[] = [
     id: 'garage-locksmith',
     slug: 'mobile-locksmith-parking-garage-condo-south-florida',
     title: 'Calling a Mobile Locksmith to a Parking Garage',
-    excerpt: 'What to share when your vehicle is inside a condo, hotel or public parking garage in South Florida.',
+    excerpt: 'Mobile car lockout, key and fob help at condos, hotels and parking garages in South Florida.',
     category: 'Emergency',
     date: 'November 26, 2026',
     readTime: '3 min read',
     author: 'Pro Locksmith Tech',
     image: locksmithVanImg,
-    metaDescription: 'Need a mobile locksmith in a South Florida parking garage? Tell dispatch the entrance, level, vehicle location and access rules before arranging service.',
+    metaDescription: 'Locked out in a South Florida garage? Pro Locksmith Tech comes to your vehicle for lockouts, key replacement and fob programming.',
     keywords: ['mobile locksmith parking garage', 'condo car lockout', 'South Florida roadside locksmith'],
-    quickAnswer: 'A mobile locksmith may be able to meet you in a parking garage. Call with the garage name, entrance, level and parking space. Mention height limits, valet procedures or controlled access so dispatch can confirm whether the technician can reach you.',
+    quickAnswer: "We can come to your vehicle in a condo, hotel or public garage. Call Pro Locksmith Tech for a lockout, lost key or fob that stopped working.",
     content: [
-      { heading: 'Identify the entrance and the vehicle location', paragraphs: [
-        'A tower address can point to the lobby while its garage entrance is on a different street. Give the street or driveway used by vehicles and include the posted garage name. If the garage has several levels, report the level, aisle and space number.',
-        'In places such as Brickell, downtown Fort Lauderdale and downtown Boca Raton, a nearby landmark can help orient dispatch. Use it alongside the precise parking location. If you are on the phone away from your vehicle, say where you can meet.'
-      ] },
-      { heading: 'Check visitor rules with building staff', paragraphs: [
-        'Ask whether a service provider must sign in, use a separate entrance or park outside. If valet holds or moves the vehicle, ask staff where it is and who can authorize access. Check posted clearance and tell dispatch if ordinary vehicle access is limited.',
-        'Keep your phone available. If the garage has poor reception, agree on a meeting point with dispatch before returning inside.'
-      ] },
-      { heading: 'Explain the key problem before dispatch', paragraphs: [
-        'Call Pro Locksmith Tech for car lockouts, lost keys, damaged keys or unresponsive fobs. Our technicians offer same-day on-site key cutting and programming.'
-      ] },
+      {
+        heading: "Mobile locksmiths come to the garage",
+        paragraphs: [
+          "Our mobile team can help at garages, hotels, condos and other South Florida properties. Call us and our dispatch team can coordinate the visit so you can stay near your vehicle.",
+        ],
+      },
+      {
+        heading: "Opening the car or making a key",
+        paragraphs: [
+          "A key locked inside may only need vehicle entry. A lost or broken key can require a compatible new key, a cut blade and programming. We can explain which service can return the car to normal use.",
+        ],
+      },
+      {
+        heading: "On-site help in South Florida",
+        paragraphs: [
+          "From Brickell to downtown Boca Raton, our technicians can meet you where you are. Call Pro Locksmith Tech to ask about same-day service, including on-site key cutting and fob programming.",
+        ],
+      },
     ],
     relatedServices: [{ name: 'Vehicle lockouts and keys', slug: 'automotive-locksmith' }],
     relatedAreas: [{ name: 'Brickell', path: '/service-areas/miami/brickell' }, { name: 'Downtown Boca Raton', path: '/service-areas/boca-raton/downtown-boca-raton' }],
@@ -35,7 +42,7 @@ export const NEW_BLOG_POSTS: BlogPost[] = [
     id: 'replace-spare-fob',
     slug: 'spare-car-key-vs-all-keys-lost',
     title: 'Making a Spare Car Key vs. Replacing All Lost Keys',
-    excerpt: 'What changes when you still have a working key, and what to gather for mobile key cutting or programming.',
+    excerpt: 'How mobile service handles spare keys and replacements when every key is missing.',
     category: 'Automotive',
     date: 'November 26, 2026',
     readTime: '3 min read',
@@ -43,19 +50,26 @@ export const NEW_BLOG_POSTS: BlogPost[] = [
     image: carKeyProgImg,
     metaDescription: 'Compare spare car keys and lost car key replacement. Get same-day key cutting and fob programming at your vehicle in South Florida.',
     keywords: ['spare car key', 'all car keys lost', 'mobile car key programming Broward'],
-    quickAnswer: 'If you have a working car key, keep it and any other fobs available for the appointment. If every key is missing, tell the locksmith when you call. The year, make, model and starting system determine what kind of key can be supplied and programmed.',
+    quickAnswer: "We can make a spare or create a compatible replacement after every key is lost. Our technicians come to your vehicle for cutting and programming.",
     content: [
-      { heading: 'Describe the key and the way the car starts', paragraphs: [
-        'Tell us whether the car starts with a metal key, a fob and push button, or another system. A remote may unlock the doors while a separate chip or proximity signal allows the engine to start. A cut blade and a programmed fob solve different parts of the job.',
-        'For a spare, check which functions work on the key you still have. Bring any other keys you want to keep using and tell the technician about them before programming begins.'
-      ] },
-      { heading: 'Explain when every working key is missing', paragraphs: [
-        'Some vehicles can get a replacement on site without an original key. Compatibility depends on the specific vehicle and system. Give the exact model year, current vehicle location and whether you have an aftermarket remote or ignition.',
-        'If a key was stolen, ask about replacement keys and whether the vehicle supports removing the missing key from its active electronic key list.'
-      ] },
-      { heading: 'Check the functions you need before the visit ends', paragraphs: [
-        'Ask which functions the replacement supports. Depending on the vehicle and the key, this may include starting, remote lock and unlock, trunk release, or an emergency mechanical blade. Try the functions you requested and confirm that any original keys you kept still work as expected.'
-      ] },
+      {
+        heading: "What changes when no working key remains",
+        paragraphs: [
+          "A spare begins with a key that works. If all keys are missing, the technician identifies a compatible part through the car and its key system. A blade, electronic chip and proximity remote can require different work.",
+        ],
+      },
+      {
+        heading: "If the missing key was stolen",
+        paragraphs: [
+          "Some vehicles let a technician remove a missing electronic key from the active list during authorized service. We can explain whether your vehicle supports that option and what it changes.",
+        ],
+      },
+      {
+        heading: "Get cutting, programming and testing on site",
+        paragraphs: [
+          "Our technicians carry a wide selection of keys and fobs. We can cut a compatible blade, program it if needed and test starting and remote functions. Call to arrange mobile service across South Florida.",
+        ],
+      },
     ],
     relatedServices: [{ name: 'Car key replacement', slug: 'key-replacement' }, { name: 'Key duplication', slug: 'key-duplication' }],
     relatedAreas: [{ name: 'Coral Springs', path: '/service-areas/coral-springs' }, { name: 'Boca Raton', path: '/service-areas/boca-raton' }],
@@ -64,27 +78,34 @@ export const NEW_BLOG_POSTS: BlogPost[] = [
     id: 'storefront-door-trouble',
     slug: 'storefront-door-will-not-latch-or-lock',
     title: 'What to Check When a Storefront Door Will Not Lock',
-    excerpt: 'Help a commercial locksmith identify whether a door, latch, closer or cylinder needs attention.',
+    excerpt: 'See how we assess a door, latch, closer or cylinder during mobile commercial locksmith service.',
     category: 'Commercial',
     date: 'November 26, 2026',
     readTime: '3 min read',
     author: 'Pro Locksmith Tech',
     image: techRekeyingImg,
-    metaDescription: 'Storefront door will not latch or lock? Learn what to report about the door, key, closer and building access when calling a commercial locksmith.',
+    metaDescription: 'Storefront door will not latch or lock? See how a mobile commercial locksmith can assess the latch, lock, closer and door alignment on site.',
     keywords: ['storefront door will not lock', 'commercial door lock repair', 'mobile commercial locksmith South Florida'],
-    quickAnswer: 'Report whether the storefront door closes fully, whether the latch engages and whether the key turns. A door that will not close may need different work from one that closes but will not lock. If an exit cannot be used safely, notify building management immediately.',
+    quickAnswer: "If your business door will not latch or lock, call Pro Locksmith Tech. An on-site assessment can clarify whether the cylinder, latch, closer or alignment needs attention.",
     content: [
-      { heading: 'Observe the door in normal use', paragraphs: [
-        'Tell the technician whether the door drags, closes slowly, bounces back open or reaches the frame without latching. Note whether the issue affects one leaf of a paired door or the main entrance. Do not force a key or bolt that binds.',
-        'A closer controls how the door swings shut. A latch holds the door closed, and the cylinder is the part that accepts the key. Describing which behavior changed helps the technician understand what to inspect.'
-      ] },
-      { heading: 'Coordinate with the person responsible for the door', paragraphs: [
-        'For a leased storefront, involve the property manager if the entry or hardware is shared or managed by the building. For an affected exit, follow your property’s emergency procedures and keep the exit hardware in its intended operating condition.',
-        'Give dispatch the business and suite name, the affected entrance and a person authorized to meet the technician. If a loading or rear entrance is involved, identify it separately from the public door.'
-      ] },
-      { heading: 'Share the symptom and recent changes', paragraphs: [
-        'Recent door adjustment, new hardware or a key that stopped working are useful details. If the door looks damaged after attempted entry, tell management and report the visible condition when you call. Ask whether the technician can assess the existing hardware before you choose replacement.'
-      ] },
+      {
+        heading: "Why the door might fail to lock",
+        paragraphs: [
+          "The closer moves the door, the latch holds it shut and the cylinder accepts the key. Wear or misalignment can produce similar symptoms. A door that bounces open may need a different service from one that closes but will not lock.",
+        ],
+      },
+      {
+        heading: "Commercial door service at your location",
+        paragraphs: [
+          "Our mobile locksmiths assess mechanical hardware and discuss repairs or compatible replacements. We can help coordinate the visit and explain which components are involved, including doors with specialized exit hardware.",
+        ],
+      },
+      {
+        heading: "Keep the business operating",
+        paragraphs: [
+          "An on-site assessment can help avoid replacing working parts. Call Pro Locksmith Tech for an unreliable latch, damaged cylinder or lock that stopped turning. We can discuss urgent availability and what repair may involve.",
+        ],
+      },
     ],
     relatedServices: [{ name: 'Commercial locksmith service', slug: 'commercial-locksmith' }, { name: 'Lock repair', slug: 'lock-repair' }],
     relatedAreas: [{ name: 'Miracle Mile', path: '/service-areas/coral-gables/miracle-mile' }, { name: 'Pineapple Grove Arts District', path: '/service-areas/delray-beach/pineapple-grove-arts-district' }],
@@ -93,27 +114,34 @@ export const NEW_BLOG_POSTS: BlogPost[] = [
     id: 'condo-lock-change',
     slug: 'condo-lock-change-south-florida-checklist',
     title: 'Changing a Condo Door Lock in South Florida',
-    excerpt: 'A checklist for owners and renters before asking for a condo lock replacement or rekey.',
+    excerpt: 'On-site rekeying and lock replacement options for South Florida condo doors.',
     category: 'Residential',
     date: 'November 26, 2026',
     readTime: '3 min read',
     author: 'Pro Locksmith Tech',
     image: keyMachineImg,
-    metaDescription: 'Before changing a condo door lock, check who controls the door, building rules, hardware compatibility and visitor access for your locksmith.',
+    metaDescription: 'Compare condo lock replacement and rekeying. Pro Locksmith Tech offers mobile locksmith service at South Florida condos and apartments.',
     keywords: ['condo lock change', 'rekey condo door', 'South Florida condo locksmith'],
-    quickAnswer: 'Check with the owner or building manager before changing a condo lock. Confirm who controls the door, whether the building specifies approved hardware and how the technician can enter. If the existing lock works and is compatible, ask about rekeying it.',
+    quickAnswer: "Call us for condo door lock service. We come to the property and can explain when a compatible working lock can be rekeyed or when it makes sense to replace the hardware.",
     content: [
-      { heading: 'Confirm which door you can authorize work on', paragraphs: [
-        'A unit’s front door and a common entrance may have different people responsible for them. If you rent, check with the owner or property manager. If the issue is a lobby, service door or other common entrance, contact building management.',
-        'For a unit door, ask if the association has requirements for the visible hardware or an existing building key system. Share those requirements when you call so the technician can discuss suitable options.'
-      ] },
-      { heading: 'Describe the lock and why you want to change it', paragraphs: [
-        'A missing key, a key that sticks and a loose handle are different problems. If the hardware works and you want old keys to stop working, ask whether it can be rekeyed. Describe any visible wear, sticking or problems with the door meeting the frame.',
-        'Tell the locksmith if the door uses a keypad, a separate deadbolt or a managed access system. A clear description of the inside and outside hardware can help before the visit.'
-      ] },
-      { heading: 'Arrange visitor access ahead of time', paragraphs: [
-        'Share the building, tower and unit number. Ask the front desk whether vendors need to check in and where they should park. If a tenant or property manager will meet the technician, confirm who is authorized to approve the work.'
-      ] },
+      {
+        heading: "Rekeying a working condo door lock",
+        paragraphs: [
+          "When the lock works correctly and you only need old keys to stop opening it, a rekey can keep the lock in service. This can be practical after a move, rental turnover or missing key.",
+        ],
+      },
+      {
+        heading: "When installation or repair can help",
+        paragraphs: [
+          "A loose handle, stuck cylinder or damaged lock can require a different solution. We can assess the door and discuss a compatible replacement, such as a new deadbolt or keypad lock.",
+        ],
+      },
+      {
+        heading: "Mobile service for condos and apartments",
+        paragraphs: [
+          "Our technician comes to your property, including buildings with controlled access. Our team can help coordinate the visit and any requirements that apply to the door during service. Call for same-day availability.",
+        ],
+      },
     ],
     relatedServices: [{ name: 'Residential locksmith service', slug: 'residential-locksmith' }, { name: 'Lock rekeying', slug: 'lock-rekeying' }],
     relatedAreas: [{ name: 'Williams Island', path: '/service-areas/aventura/williams-island' }, { name: 'North Beach', path: '/service-areas/miami-beach/north-beach' }],

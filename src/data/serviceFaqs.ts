@@ -4,7 +4,7 @@
 export interface ServiceFaq { question: string; answer: string }
 const serviceFaqs: Record<string, ServiceFaq[]> = {
   'emergency-lockout-service': [
-    {question:'What should I do when I am locked out of my car or home?',answer:'Avoid forcing the lock or damaging your door. Call a mobile locksmith, explain whether you are locked out of a vehicle, home or business, and confirm availability for your location.'},
+    {question:'What should I do when I am locked out of my car or home?',answer:'Call Pro Locksmith Tech for mobile lockout service. Our technicians can come to your vehicle, home or business and assess the lock at the door.'},
     {question:'Can you come to my location for a lockout?',answer:'Pro Locksmith Tech is a mobile locksmith business serving areas of South Florida. Call (754) 261-6528 to discuss your location and the lockout service you need.'},
     {question:'Can a locksmith open a lock without damaging it?',answer:'Depending on the lock, its condition and the circumstances, a locksmith may be able to use non-destructive entry methods. The technician assesses the lock before choosing an appropriate approach.'}
   ],

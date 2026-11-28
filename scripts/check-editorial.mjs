@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import './check-commercial-copy.mjs';
 import { parse } from 'parse5';
 
 const registry = JSON.parse(fs.readFileSync('src/generated/build-seo-inventory.json', 'utf8')).pages;

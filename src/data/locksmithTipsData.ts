@@ -1,3 +1,4 @@
+import { PAYMENT_METHODS } from '../config/business';
 export type ResourceLink = readonly [label: string, href: string];
 
 interface GuideText {
@@ -16,9 +17,9 @@ export interface LocksmithGuide extends GuideText {
   es?: GuideText & { service: ResourceLink; related?: readonly ResourceLink[] };
 }
 
+const priceComparison: ResourceLink = ['Consumer Reports: car key replacement comparison', 'https://www.consumerreports.org/car-maintenance/how-to-replace-your-car-key-fob/'];
 const ford: ResourceLink = ['Ford owner manual: replacing a lost key or remote', 'https://www.fordservicecontent.com/Ford_Content/vdirsnet/OwnerManual/Home/Content?ProcUid=G2134031&Uid=G2309772&buildtype=web&countryCode=USA&div=f&languageCode=en&moidRef=G1405311&userMarket=USA&vFilteringEnabled=False&variantid=9379'];
 const toyota: ResourceLink = ['Toyota owner manuals and warranty information', 'https://www.toyota.com/owners/warranty-owners-manuals'];
-const nhtsa: ResourceLink = ['NHTSA guidance on children in locked vehicles', 'https://www.nhtsa.gov/campaign/heatstroke'];
 const rekey: ResourceLink = ['Schlage guidance on rekeying its locks', 'https://schlage-res.zendesk.com/hc/en-us/articles/39886333039636-Can-I-Rekey-My-Schlage-Lock'];
 const exits: ResourceLink = ['OSHA guidance on workplace exit routes', 'https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.36'];
 const fire: ResourceLink = ['Allegion: panic hardware and fire exit hardware', 'https://kc.allegion.com/kb/article/what-is-the-difference-between-panic-hardware-and-fire-exit-hardware/'];
@@ -34,8 +35,8 @@ export const LOCKSMITH_TIPS_DATA: LocksmithGuide[] = [
   {
     slug: 'vehicle-key-compatibility',
     title: 'How to identify a compatible car key or fob',
-    summary: 'A replacement key can match the vehicle’s shape and still fail to start it. Confirm the exact vehicle, key type and functions before buying a replacement.',
-    category: 'Automotive', service: keys, related: [auto, pricing, ['Spare key versus all keys lost', '/blog/spare-car-key-vs-all-keys-lost']], sources: [ford, toyota],
+    summary: 'A look-alike key may unlock a door and still fail to start the car. Pro Locksmith Tech can help identify the right replacement, cut it and program it at your vehicle.',
+    category: 'Automotive', service: keys, related: [auto, pricing, ['Spare key versus all keys lost', '/blog/spare-car-key-vs-all-keys-lost']], sources: [ford, toyota, priceComparison],
     comparison: {
       caption: 'What a replacement may need to do',
       columns: ['Key type', 'What to confirm'],
@@ -46,10 +47,10 @@ export const LOCKSMITH_TIPS_DATA: LocksmithGuide[] = [
       ],
     },
     sections: [
-      ['Start with the vehicle, not the listing', 'Use your owner’s manual for the exact model year and market. Record whether the vehicle uses a metal key or a start button, which buttons the original had and whether an original still starts the car. Online photos and matching buttons alone cannot establish a fit.'],
-      ['Diagnose a battery issue before buying a fob', 'If the fob works only at short range, check the owner’s manual for the battery type and approved replacement method. A fresh battery won’t fix a physically damaged remote or an incompatible replacement. If both working fobs fail in the same place, ask whether the issue may be with the vehicle.'],
-      ['Ask about the whole job', 'Ask whether the estimate includes the replacement, cutting if needed, recognition by the vehicle and a check of the advertised functions. Say if every key has been lost or the new fob was supplied by you. Keep ownership or authorization documentation ready if requested and share it only through the provider’s appropriate channel.'],
-      ['When a dealer or specialist may be appropriate', 'Some owner manuals direct owners to a dealer for a specific replacement or security-related procedure. Mobile service depends on the exact vehicle and part. The broad service coverage at Pro Locksmith Tech does not guarantee support for every module, imported key or replacement fob.'],
+      ['What makes a key compatible?', 'Identical-looking fobs can use different electronics. Our mobile team can check the blade, chip, buttons and starting system and explain which replacement works for your vehicle.'],
+      ['Does your fob need a battery or replacement?', 'A shorter range can indicate a weak battery. If the remote is damaged or the vehicle will not recognize it, we can assess the problem and explain the options before you buy another fob.'],
+      ['Cutting, programming and testing in one visit', 'Pro Locksmith Tech can supply a compatible replacement, cut its blade where applicable, program it and test the functions you need. Call even if every key is missing. We will guide you through the next steps.'],
+      ['A mobile alternative to a dealership trip', 'On-site cutting and programming can save an extra trip or tow. Consumer Reports documented a locksmith replacement that cost less than a local dealer quote. Savings vary by vehicle and key. Call us to discuss an on-site option.'],
     ],
     es: {
       title: 'Cómo saber qué llave o control es compatible con su auto',
@@ -62,10 +63,10 @@ export const LOCKSMITH_TIPS_DATA: LocksmithGuide[] = [
         ['Control remoto o de proximidad', 'Botones, apertura por proximidad, arranque y llave de emergencia, si aplica.'],
       ]},
       sections: [
-        ['Empiece por el manual del auto', 'Consulte el manual del año, modelo y mercado de su vehículo. Anote si se usa una llave metálica o un botón de arranque, qué botones tenía el control y si conserva una llave que funcione. Una foto parecida no confirma compatibilidad.'],
+        ['Qué hace compatible una llave', 'Dos controles que parecen iguales pueden usar circuitos distintos. Nuestro equipo móvil puede revisar el tipo de llave, el chip, los botones y el sistema de arranque para explicarle cuál le conviene.'],
         ['Revise la pila antes de comprar otro control', 'Si el alcance disminuyó, consulte el tipo de pila y las indicaciones del fabricante. Cambiarla no resolverá daños físicos ni hará compatible un control que no corresponde al auto. Si fallan dos controles, conviene revisar también el vehículo.'],
-        ['Pregunte qué incluye el presupuesto', 'Confirme si incluye el repuesto, el corte cuando corresponda, el reconocimiento por el auto y la prueba de las funciones que necesita. Avise si perdió todas las llaves o si compró el repuesto por su cuenta. Comparta pruebas de propiedad o autorización solo por el canal acordado si se las solicitan.'],
-        ['Cuándo consultar al concesionario', 'Algunos manuales remiten al concesionario para ciertos repuestos o procedimientos de seguridad. El servicio móvil depende del auto y del repuesto exactos. Llame para confirmar si se puede atender su caso en el lugar.'],
+        ['Corte, programación y prueba en una sola visita', 'Podemos suministrar un repuesto compatible, cortar la hoja si corresponde, programar el control y comprobar sus funciones. Llámenos aunque haya perdido todas las llaves. Le orientaremos desde el primer momento.'],
+        ['Una alternativa a llevar el auto al concesionario', 'El corte y la programación en el lugar pueden ahorrarle un viaje o una grúa. Consumer Reports documentó un caso en que el servicio de cerrajería costó menos que el presupuesto del concesionario. El ahorro depende del vehículo y la llave. Llámenos para consultar sus opciones.'],
       ],
     },
   },
@@ -80,9 +81,9 @@ export const LOCKSMITH_TIPS_DATA: LocksmithGuide[] = [
       ['Commercial door', 'Whether the fault is in the lock, the door alignment or another component, and who can assess any rated opening.'],
     ]},
     sections: [
-      ['Describe the exact problem', 'Tell the provider where service is needed and what you can observe. A key that will not turn, a door that will not latch and a lost key can call for different work. On a vehicle, the market, model year and key technology affect which part and programming may be needed.'],
-      ['Compare the same scope', 'Ask if the estimate includes any visit or diagnostic charge, parts, labor and any timing or location factor. Confirm whether it is a firm quote or an estimate pending inspection. If you get more than one estimate, check that each includes the same parts, functions and on-site work.'],
-      ['Confirm added work before it begins', 'A damaged lock, an incompatible supplied fob or a door alignment problem can change the scope. Ask the provider to explain any difference and confirm the revised price before authorizing extra work. Keep the receipt and confirm the accepted payment method.'],
+      ['What determines the estimate?', 'An opening, a key that will not turn and an all-keys-lost job involve different work. Hardware and the type of electronic key also affect the scope. Call and our team will help you understand what the job involves.'],
+      ['Understand what the service includes', 'Our team explains the expected work, the parts involved and what may depend on an on-site assessment. For a replacement car key, cutting the blade and programming the electronics are distinct steps that can be handled in one visit.'],
+      ['Confirm added work before it begins', `A damaged lock or incompatible fob can change the work involved. Our technician can explain those changes before starting any additional work. We accept ${PAYMENT_METHODS.en}.`],
     ],
     es: {
       title: 'Qué afecta el precio de un servicio de cerrajería',
@@ -95,69 +96,67 @@ export const LOCKSMITH_TIPS_DATA: LocksmithGuide[] = [
         ['Llave de auto', 'Si incluye el repuesto, corte, programación y prueba de funciones.'],
       ]},
       sections: [
-        ['Describa el problema', 'Indique su ubicación y lo que ocurre. Una llave que no gira, una puerta que no cierra y una llave perdida pueden requerir trabajos distintos. Para autos, identifique el modelo, el año y el tipo de llave si los conoce.'],
-        ['Compare el mismo trabajo', 'Pregunte si el presupuesto contempla visita o diagnóstico, mano de obra, piezas y cargos que dependan del horario o la ubicación. Confirme qué queda sujeto a la inspección. Revise que dos presupuestos incluyan las mismas funciones y piezas.'],
-        ['Confirme el trabajo adicional', 'Una cerradura dañada o un control incompatible puede cambiar el alcance. Pida que le expliquen el cambio y el nuevo total antes de autorizarlo. Confirme la forma de pago y guarde el recibo.'],
+        ['Qué determina el presupuesto', 'Una apertura, una llave que no gira y un reemplazo cuando se han perdido todas las copias requieren trabajos distintos. Al llamar, nuestro equipo le ayudará a entender qué servicio y componentes podrían hacer falta.'],
+        ['Qué incluye el servicio', 'Le explicamos el trabajo previsto y qué se confirma al revisar la cerradura o el vehículo. El corte de una llave y la programación del chip son pasos distintos que podemos realizar en la misma visita cuando corresponda.'],
+        ['Confirme el trabajo adicional', `Una cerradura dañada o un control incompatible puede cambiar el trabajo. Nuestro técnico puede explicarle los cambios antes de comenzar el trabajo adicional. Aceptamos ${PAYMENT_METHODS.es}.`],
       ],
     },
   },
   {
     slug: 'lockout-what-to-do', title: 'Locked out? How to decide what help you need',
-    summary: 'If a child, pet or person is in immediate danger, seek emergency help now. For a routine lockout, get to a safe place and describe the access problem.',
+    summary: 'Locked out of your car, home or business? Call Pro Locksmith Tech. We offer mobile help around the clock and can come to your location.',
     category: 'Emergency', service: urgent,
-    related: [['Vehicle lockout guidance', '/blog/what-to-do-when-locked-out-of-car'], ['Home lockout guidance', '/blog/what-to-do-when-locked-out-of-house'], pricing], sources: [nhtsa],
+    related: [['Vehicle lockout guidance', '/blog/what-to-do-when-locked-out-of-car'], ['Home lockout guidance', '/blog/what-to-do-when-locked-out-of-house'], pricing],
     sections: [
-      ['Put safety first', 'Call 911 if a child is alone in a locked vehicle, or a person or pet is in immediate danger. Follow the dispatcher’s instructions and do not wait for routine locksmith arrival. If you’re near moving traffic, move yourself to a safe place when you can do so safely.'],
-      ['Choose the right authorized contact', 'For a routine home or business lockout, consider a lawful spare-key holder, the property manager or whoever is authorized to give access. For a vehicle, roadside assistance or a mobile locksmith may be an option. If the key is lost or broken, say so because opening the door may not restore normal use.'],
-      ['Tell dispatch what changes the job', 'Give a safe meeting location, say what is locked and whether a key still works, and mention access restrictions such as a gated community or parking garage. Ask what authorization is needed, what is included in the estimate and whether a technician is available for that location.'],
-      ['Avoid turning access trouble into a repair', 'Do not force the key, pry the door or attempt to disable vehicle security. At a business, a door failing to latch or open from the inside is a different problem from keys left behind. Notify whoever is responsible for the building and follow its emergency procedures when exit access is affected.'],
+      ['Mobile help for a car, home or business lockout', 'Call Pro Locksmith Tech for a routine lockout. Our mobile team can assist at your vehicle, home or business. If the key was lost or broken, we can discuss restoring everyday access as well as opening the door.'],
+      ['How the mobile visit works', 'Call and tell us what happened. Our team will discuss availability, help coordinate a technician to your location and explain the next steps. We work at homes, businesses, parking garages and gated communities.'],
+      ['Opening the door and restoring access', 'A key left inside calls for a different solution from a broken key or a failed latch. Our technician can assess the lock and explain whether opening, repair or a replacement key will solve the problem.'],
     ],
     es: {
       title: 'Qué ayuda pedir si se queda sin acceso',
-      summary: 'Si hay un niño, una mascota o una persona en peligro inmediato, pida ayuda de emergencia. Si es una apertura de rutina, ubíquese en un lugar seguro y describa el problema.',
+      summary: '¿Se quedó fuera de su auto, vivienda o negocio? Llame a Pro Locksmith Tech. Ofrecemos atención móvil las 24 horas y vamos a su ubicación.',
       service: ['Aperturas de emergencia las 24 horas', '/services/emergency-lockout-service'],
       related: [['Factores que afectan el precio', '/tips/locksmith-pricing-factors'], ['Contacto de servicio móvil', '/contact']],
       sections: [
-        ['Primero, la seguridad', 'Llame al 911 si un niño está solo dentro de un vehículo cerrado, o si una persona o mascota corre peligro inmediato. Siga las indicaciones del operador y no espere la llegada de un cerrajero. Si está cerca del tráfico, póngase a salvo cuando pueda hacerlo sin riesgo.'],
-        ['Contacte a quien esté autorizado', 'Para un auto, puede consultar la asistencia en carretera o a un cerrajero móvil. Para una vivienda o un negocio, revise si alguien autorizado tiene una copia o si corresponde llamar a la administración. Avise si la llave se perdió o se rompió. Abrir la puerta no siempre devuelve el uso normal.'],
-        ['Explique dónde y qué pasó', 'Proporcione un lugar seguro de encuentro, indique qué está cerrado y si le queda una llave que funcione. Mencione restricciones de acceso al estacionamiento o edificio. Pregunte qué autorización se necesita, qué incluye el presupuesto y si hay servicio para su ubicación.'],
-        ['Evite forzar la puerta', 'No fuerce la llave ni haga palanca. Si una puerta de un negocio no permite salir normalmente, informe al responsable del edificio y siga el procedimiento de emergencia correspondiente.'],
+        ['Ayuda móvil para autos, viviendas y negocios', 'Si se quedó fuera de su vehículo, vivienda o negocio, llame a Pro Locksmith Tech. Si perdió la llave o se rompió, podemos orientarle para recuperar el acceso habitual además de abrir la puerta.'],
+        ['Cómo coordinamos la visita', 'Llámenos y cuéntenos qué pasó. Revisaremos la disponibilidad, coordinaremos un técnico y le explicaremos los siguientes pasos. Acudimos a viviendas, comercios, garajes y comunidades con acceso controlado.'],
+        ['Recupere el acceso a su propiedad', 'Una llave que quedó dentro, una llave rota y un pestillo averiado requieren soluciones distintas. Podemos revisar la cerradura para determinar si conviene abrirla, repararla o reemplazar la llave.'],
       ],
     },
   },
   {
     slug: 'rental-lock-changes',
     title: 'Changing locks at a rental property',
-    summary: 'Coordinate authorization and key handover before changing rental locks. The condition of the hardware and who may approve the work determine the next step.',
+    summary: 'Need to change access at a rental? Pro Locksmith Tech can come to the property and explain whether a rekey or a lock replacement suits the door.',
     category: 'Residential', service: home, related: [['Compare rekeying and replacement', '/blog/rekeying-vs-changing-locks-difference'], ['Residential lock rekeying', '/services/lock-rekeying']], sources: [rekey],
     sections: [
-      ['Confirm who can authorize the work', 'If you rent, contact the owner or property manager and review the lease before changing locks. For a managed or shared building, ask which doors are your responsibility. Keep approval in writing and ask how keys or managed credentials should be handed over.'],
-      ['Separate key control from hardware condition', 'If a compatible lock works correctly and the issue is who has a copy, rekeying may allow you to keep the hardware. If the lock will not operate reliably or the door does not latch, arrange an assessment before assuming that a new cylinder solves the problem. A shared or restricted system can require the building’s provider.'],
-      ['Make the handover explicit', 'Confirm which doors and keys are included, who receives them, and who should recover older keys. For a smart lock, ask the authorized account holder how to remove previous access using the manufacturer’s documented controls. Do not change the building’s common-door credentials.'],
-      ['When the problem is immediate', 'If entry is unsecured or a door cannot be used normally, notify management promptly. For immediate danger, seek emergency assistance. For a routine lock issue, ask about service availability and the work needed before approving changes.'],
+      ['Locksmith service at your rental', 'We come to rental homes, apartments and condos to help with rekeying, faulty locks and replacements. Call Pro Locksmith Tech to discuss the work. Our team can guide the necessary coordination during service.'],
+      ['Rekey a working lock or replace worn hardware', 'Rekeying changes which key opens a compatible working lock. If the lock binds or the door does not latch, our technician can assess whether repair, alignment or replacement will solve the issue.'],
+      ['Keys ready for the next handover', 'We can discuss compatible locks, the doors that need attention and the keys that will be needed after the work. A rekey can simplify a rental handover by keeping working hardware in place.'],
+      ['Same-day and emergency service available', 'If a door will not secure or a key is lost, call our mobile team. We can discuss an on-site repair or replacement and coordinate the visit. Emergency locksmith help is available around the clock.'],
     ],
   },
   {
     slug: 'business-key-handover',
     title: 'Business key handover and employee access changes',
-    summary: 'Start with who needs access to each door. Coordinate key returns, credential removal and any rekeying before changing hardware.',
+    summary: 'Pro Locksmith Tech helps businesses update access after staff or tenant changes with on-site rekeying, repair and lock replacement.',
     category: 'Commercial', service: business, related: [['Master-key system planning', '/tips/master-key-system-architecture'], ['Commercial door latching problems', '/tips/commercial-door-latch-alignment']], sources: [exits],
     sections: [
-      ['Make a private access inventory', 'List which doors each role needs, who approves access and who manages physical keys, fobs and codes. Record issued items securely and avoid publishing key codes, door schedules or master-key details. Include shared facilities and keys held by contractors.'],
-      ['Plan the handover around business hours', 'Collect issued physical keys and ask the system administrator to remove electronic credentials from authorized controls. If a physical key cannot be accounted for, consult the property manager and provider about the affected doors. Returning one key does not establish whether copies exist.'],
-      ['Decide between rekeying and maintenance', 'If working hardware is compatible, rekeying may make sense for a change in access. A worn lock, door alignment problem or specialized exit opening needs its own evaluation. Coordinate with the building owner if rights, keys or hardware are shared.'],
-      ['Protect normal exit access', 'Never block an exit or use a temporary lock to get around a hardware problem. If an exit, fire-rated opening or electronic interlock is involved, arrange qualified inspection and follow the building’s procedures and applicable requirements. This checklist is about planning and does not certify a specific opening.'],
+      ['Access for the people who need it', 'A staff change can affect employee entrances, offices and stockrooms differently. We help businesses plan which locks can share a key, which doors should stay separate and which users need new copies.'],
+      ['Plan work around business hours', 'Our mobile team can discuss a rekey or lock update that suits how your business operates. When keys go missing or staff changes, rekeying compatible cylinders can help restore control without changing working hardware.'],
+      ['Choose rekeying, repair or replacement', 'We can assess mechanical locks, existing keys and door hardware. Rekeying may suit a change in access, while a worn latch, sticking door or damaged cylinder may need a different repair.'],
+      ['Keep entrances usable during the work', 'Commercial doors use different components for entry, latching and exiting. We can discuss an order of work that keeps customer and staff access available and respects requirements for rated doors and exit hardware.'],
     ],
   },
   {
     slug: 'how-to-extract-broken-key',
     title: 'Broken key in a lock? What to do next',
-    summary: 'Stop turning or pushing the broken key. Identify whether the door is secured and whether the fragment is in a house lock, vehicle door or ignition.',
+    summary: 'A key broke in a door or ignition? Pro Locksmith Tech can come to you to assess the lock, remove the fragment and discuss replacement.',
     category: 'Emergency', service: urgent, related: [['Lock repair', '/services/lock-repair'], ['Key stuck or hard to turn in the ignition', '/tips/failing-car-ignition-symptoms']],
     sections: [
-      ['Avoid pushing the fragment farther in', 'Do not insert another key, use glue or keep turning the piece. Keep any loose part somewhere safe. If the door is already open and it is safe to leave it that way temporarily, avoid locking it until the problem is assessed.'],
-      ['Explain the condition before approving work', 'Say whether the lock was stiff before the key broke and whether you have a working spare. The fragment and the surrounding hardware may need separate attention. A replacement key alone will not resolve a lock that is damaged or binding.'],
-      ['Choose an appropriate service', 'For a car ignition, stop attempts to start the vehicle with a fragment in the lock. For a home or business, confirm who may authorize work on the door. Ask whether the estimate covers inspection, removal and any separate key or hardware work.'],
+      ['A broken key can jam the lock', 'Trying to turn or glue a broken key can make removal harder and damage the cylinder. Our mobile technician can examine the fragment and assess the hardware before recommending extraction or repair.'],
+      ['Check whether the lock needs repair too', 'A broken key can leave a fragment in the lock. The underlying issue might be wear in the key, cylinder or door alignment. Our technician can assess the problem and explain when a new key is enough.'],
+      ['Get mobile help for a broken key', 'We can assess broken keys in house locks, business doors and vehicle locks. Call us to discuss removal, lock condition and replacement options at your location.'],
     ],
   },
   {
@@ -166,9 +165,9 @@ export const LOCKSMITH_TIPS_DATA: LocksmithGuide[] = [
     summary: 'A transponder allows a compatible vehicle to recognize a key for starting. Remote lock buttons and the ability to start the car can fail independently.',
     category: 'Automotive', service: auto, related: [compatibility, ['What affects car key programming cost?', '/blog/how-much-does-car-key-programming-cost']], sources: [ford, toyota],
     sections: [
-      ['Separate cutting from recognition', 'In a vehicle with a transponder key, a correctly cut blade may turn in a lock without being recognized for starting. In other vehicles a smart fob is detected without inserting a blade. Check the manual for the exact vehicle rather than treating these systems as interchangeable.'],
-      ['Notice which function failed', 'Tell the technician whether the remote unlocks the door, whether the vehicle shows a key warning, and whether an authorized spare behaves differently. These symptoms can narrow the issue. They do not establish which part is defective.'],
-      ['Confirm service before buying a part', 'The required part and whether mobile programming is appropriate depend on the vehicle and existing keys. Some manufacturer procedures call for a dealer. Ask what the provider can confirm for your vehicle and which functions will be checked.'],
+      ['Separate cutting from recognition', 'In a vehicle with a transponder key, a correctly cut blade may turn in a lock without being recognized for starting. In other vehicles a smart fob is detected without inserting a blade. Our technician can determine the type of key the vehicle uses and identify suitable replacement options.'],
+      ['Door buttons and starting can fail separately', 'A fob that opens the doors can still fail to start the vehicle. Our technicians can check key recognition and remote functions and explain whether a replacement or programming fits the symptom.'],
+      ['Get the right transponder key on site', 'We can help identify a compatible chip and handle cutting and programming at your location where supported. Call before spending money on a look-alike key that may not work.'],
     ],
   },
   {
@@ -177,20 +176,20 @@ export const LOCKSMITH_TIPS_DATA: LocksmithGuide[] = [
     summary: 'A lock that operates with the door open but binds when it closes may indicate door or strike alignment rather than a bad key.',
     category: 'Residential', service: ['Lock repair', '/services/lock-repair'], related: [['When to rekey or replace a lock', '/blog/rekeying-vs-changing-locks-difference'], ['Deadbolt replacement considerations', '/tips/high-security-vs-standard-deadbolts']],
     sections: [
-      ['Observe the conditions safely', 'If you can operate the door normally, note whether the problem changes when the door is open or closed and whether a known working spare behaves the same. Avoid overtightening, forcing a turn or making adjustments to a door that is already unsecured.'],
-      ['Check maintenance instructions for that lock', 'Manufacturer guidance varies by model and finish. Avoid putting household oil, cleaners or other substances inside a lock without compatible maintenance guidance. Report visible wear, corrosion or damage, especially if the door will not latch.'],
-      ['Ask what needs repair', 'A locksmith can assess whether the issue is in the key, lock or door fit. Choosing replacement without checking alignment may leave the underlying problem unresolved. If the opening is shared or rated, contact the responsible building manager before changes.'],
+      ['Why a lock works with the door open', 'When the bolt turns easily with the door open but binds against the frame, the latch and strike may be out of alignment. A lock that binds in both positions may have a worn key or cylinder.'],
+      ['When corrosion and wear affect a lock', 'Outdoor hardware can corrode and moving parts can wear. We can assess whether cleaning or adjustment can restore normal operation, or whether the cylinder or latch should be replaced.'],
+      ['We can check the key, lock and door fit', 'Replacing a lock will do little if it binds against the frame. Our mobile technician can identify the source of the problem and explain whether alignment, repair or replacement is the better option.'],
     ],
   },
   {
     slug: 'smart-lock-dead-battery-override',
     title: 'What to do when a smart lock battery dies',
-    summary: 'Check the exact model’s owner instructions for its authorized backup access and battery requirements. Backup options vary widely between locks.',
+    summary: 'A dead smart lock battery can leave you outside. Pro Locksmith Tech comes to your door to help restore access and assess the lock.',
     category: 'Residential', service: ['Lock and security hardware service', '/services/security-hardware'], related: [home, ['Emergency lockout guidance', '/tips/lockout-what-to-do']],
     sections: [
-      ['Identify the model and authorized backup', 'Use the lock’s model information or your purchase record to find the manufacturer’s instructions. Some products use a backup key, while others offer a documented backup power option. Follow the manufacturer’s procedure for your model, and avoid applying an unapproved power source.'],
-      ['Coordinate access in a shared property', 'If the lock belongs to a rental, condo or employer, contact the person responsible for access before changing anything. A dead battery and a mechanical jam can look similar. Stop if a known authorized backup does not work normally.'],
-      ['Plan maintenance after access is restored', 'Use the recommended batteries and test the lock as the owner’s instructions describe. Ask other authorized users to confirm their normal access and store any manufacturer-provided backup in a secure, accessible place.'],
+      ['Battery failure and a jam can look alike', 'A keypad that stops responding may have a depleted battery. A keypad that still responds while the bolt sticks can point to a fit or hardware issue. Our technician can assess the lock at your door and explain the next step.'],
+      ['Get help when the lock still will not open', 'A dead battery and a mechanical jam can look similar. If your normal access is unavailable, Pro Locksmith Tech can come out and assess the lock. Our team will explain the next steps for the property.'],
+      ['Keep the lock working after the visit', 'Once access is restored, we can check whether battery service, bolt alignment or replacement is the right fix. If you want a new keypad lock, we can assess what will fit the existing door and explain how its normal access works.'],
     ],
   },
   {
@@ -199,42 +198,42 @@ export const LOCKSMITH_TIPS_DATA: LocksmithGuide[] = [
     summary: 'Consider the door, frame, hardware fit and who needs access. A lock label alone cannot establish the security of the complete opening.',
     category: 'Residential', service: ['Lock installation', '/services/lock-installation'], related: [['Rekeying or changing the locks', '/blog/rekeying-vs-changing-locks-difference'], home], sources: [rekey],
     sections: [
-      ['Evaluate the opening first', 'Ask about the condition of the door and frame, the existing hardware fit and whether the door can close and latch without pressure. Follow manufacturer specifications for dimensions and supported installation materials.'],
-      ['Define what you need to change', 'If the issue is who has keys, a compatible and working lock may be eligible for rekeying. For damaged hardware, accessibility needs or a change to electronic access, ask whether replacement or additional door work is needed. Check with the property manager for shared doors.'],
-      ['Budget for the actual work', 'Ask whether the estimate includes hardware, keys and any door or strike work. Consider how household users will enter and exit routinely and what authorized backup they will have. Avoid relying on a security guarantee from a product label.'],
+      ['The door and frame matter', 'A properly fitted deadbolt closes smoothly into the strike without pressure. A damaged or poorly aligned jamb can affect even high-quality hardware. Our technician can assess the entire opening before recommending a lock.'],
+      ['Rekey or replace the deadbolt?', 'A compatible deadbolt in good condition can often be rekeyed. Our technician can inspect the door and hardware and discuss replacement for damaged locks or upgrades such as keypad entry.'],
+      ['Understand the work at your door', 'We can explain the hardware, keys and any adjustment the installation requires. If you are deciding between a traditional key and a keypad, our technician can explain everyday use and compatible options.'],
     ],
   },
   {
     slug: 'commercial-door-latch-alignment',
     title: 'When a commercial door will not latch or close',
-    summary: 'A commercial door that will not close normally may have a door, frame, closer or lock problem. Affected exit or fire-rated openings need qualified evaluation.',
-    category: 'Commercial', service: business, related: [['Commercial door symptoms to report', '/blog/storefront-door-will-not-latch-or-lock'], ['Employee key handover checklist', '/tips/business-key-handover']], sources: [exits, fire],
+    summary: 'A commercial door that will not close may have a door, frame, closer or lock problem. We can assess the hardware at your business.',
+    category: 'Commercial', service: business, related: [['Commercial door lock repair', '/blog/storefront-door-will-not-latch-or-lock'], ['Employee key handover', '/tips/business-key-handover']], sources: [exits, fire],
     sections: [
-      ['Report the symptoms and affected opening', 'Note whether the problem occurs every time or only in certain conditions. Say whether people can exit normally, whether the door contacts the frame or whether the latch fails to engage. Record observations without testing from an unsafe position or blocking the opening.'],
-      ['Protect safe egress', 'Notify the building manager promptly when an exit does not work normally. Do not prop open or alter a fire door, add a temporary locking device, or adjust exit hardware to keep a door secured. The hardware and any applicable listing or local requirement need an appropriate evaluation.'],
-      ['Clarify who can handle the work', 'A locksmith may be able to assess the mechanical lock. Issues involving the door, closer, electronic controls or fire-rated assembly can require the building’s hardware or access-control specialist. Ask who handles each part before authorizing changes.'],
+      ['What makes a commercial door fail to latch?', 'A poorly aligned door, a worn latch and a failing closer can produce similar symptoms. Our mobile technician can assess the door and identify the mechanical hardware that needs attention.'],
+      ['Match the repair to the door hardware', 'A storefront latch, door closer and panic bar perform different jobs. We can assess compatibility and discuss repair or replacement options that preserve normal passage and the intended function of the door.'],
+      ['Commercial locksmith service on site', 'Pro Locksmith Tech can help assess mechanical locks and business door hardware. If the door has an exit or fire rating, our team can explain the appropriate scope without altering its safety function.'],
     ],
   },
   {
     slug: 'master-key-system-architecture',
     title: 'Planning a master-key system for a business',
-    summary: 'A master-key plan defines which authorized roles need which doors. Document access goals privately and ask a qualified provider about the existing system.',
-    category: 'Commercial', service: business, related: [['Business key handover checklist', '/tips/business-key-handover'], ['Commercial door latching problems', '/tips/commercial-door-latch-alignment']],
+    summary: 'A master-key plan gives authorized staff access to the doors they need. We can assess existing business locks and explain compatible options.',
+    category: 'Commercial', service: business, related: [['Business key handover', '/tips/business-key-handover'], ['Commercial door latching problems', '/tips/commercial-door-latch-alignment']],
     sections: [
       ['Begin with access roles', 'Separate day-to-day access, temporary access and emergency responsibilities. Limit broad access to people with a clear need and document who can approve changes. Keep any schedule that reveals the access hierarchy in a private record.'],
-      ['Review existing constraints', 'Ask whether doors are under a shared property system, whether keys are controlled through a specific provider and how future staff changes should be handled. An electronic credential system may work differently from a mechanical one. Do not assume the systems can be combined.'],
-      ['Plan for lost keys and turnover', 'Agree on who responds to loss, which holders must return keys and how you will review access periodically. Ask the provider about the consequences of losing a broadly authorized key before committing to the plan.'],
+      ['Work with compatible locks', 'Our team can assess which doors are part of a shared mechanical system and which use separate electronic credentials. Compatible cylinders may support a coordinated key plan while other entrances retain their own access.'],
+      ['Change access after a key goes missing', 'When a key opens several doors, replacing a single lock may leave other entrances affected. We can assess which cylinders need a rekey and explain which staff keys can remain in use after the change.'],
     ],
   },
   {
     slug: 'failing-car-ignition-symptoms',
     title: 'Car key will not turn or start the vehicle',
-    summary: 'A key that will not turn and a vehicle that will not start are different symptoms. Stop forcing the key and use the vehicle’s manual for the exact warning.',
+    summary: 'A key that will not turn and a vehicle that will not start are different symptoms. Our mobile technicians can assess key and ignition problems at the car.',
     category: 'Automotive', service: auto, related: [compatibility, ['Why a key may not turn', '/blog/why-wont-car-key-turn-in-ignition']], sources: [ford, toyota],
     sections: [
-      ['Describe the specific symptom', 'Tell the provider if the blade will not insert, the key rotates but the vehicle does not start, or a push-button system reports a key problem. If you have an authorized spare that can be used normally, note whether it shows the same behavior.'],
-      ['Consult the exact vehicle’s manual', 'Follow the manual for model-specific warnings, starting controls and basic checks. Avoid forcing the key, applying chemicals or trying to alter the ignition or security controls. Stop using the key if it is bent or beginning to crack.'],
-      ['Choose the appropriate next step', 'A mobile automotive locksmith may be an option for a physical key or lock issue. A battery, starting system, electronics or model-specific security concern may require roadside assistance, a repair shop or the dealership. Explain the symptoms before arranging service.'],
+      ['When the key will not turn or the car will not start', 'A key that will not insert or turn can indicate a blade or cylinder problem. If the key turns normally and the car will not start, the symptoms can point to a different system. We can help you understand what locksmith service may address.'],
+      ['Blade wear, cylinder wear and recognition faults', 'A worn blade may stop turning smoothly, while a cylinder can bind even with a good key. A key recognition fault can keep the engine from starting even when the blade turns. We can assess these differences at the vehicle.'],
+      ['On-site key and ignition help', 'Call Pro Locksmith Tech for a stuck key, worn ignition lock or key recognition problem. We can assess the key and lock at your vehicle and explain whether cutting, programming or ignition lock work makes sense.'],
     ],
   },
 ];

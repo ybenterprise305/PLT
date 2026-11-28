@@ -135,7 +135,7 @@ export function SpanishContentPage({ path }: Props) {
       {path === '/contact' && (
         <section className="mx-auto max-w-4xl space-y-3 px-5 py-6" aria-labelledby="contact-payment">
           <h2 id="contact-payment" className="font-heading text-2xl font-bold">Formas de pago y precios</h2>
-          <p className="text-slate-300">Pro Locksmith Tech acepta {PAYMENT_METHODS.es}. Llámenos para consultar otras formas de pago.</p>
+          <p className="text-slate-300">Aceptamos {PAYMENT_METHODS.es}.</p>
           <p className="text-slate-300">El precio depende del servicio, el vehículo o la cerradura, las piezas necesarias y la ubicación. Llame al {PHONE} para consultar el precio de su servicio.</p>
         </section>
       )}
@@ -144,7 +144,7 @@ export function SpanishContentPage({ path }: Props) {
         <section className="mx-auto max-w-4xl space-y-5 px-5 py-6">
           <h2 className="font-heading text-2xl font-bold">Cerrajería móvil para su tranquilidad</h2>
           <p className="text-base leading-8 text-slate-300">Ofrecemos servicios de cerrajería para vehículos, viviendas y comercios. Nuestro equipo se desplaza directamente a la ubicación del cliente. Estamos disponibles las 24 horas del día, todos los días del año.</p>
-          <p className="text-base leading-8 text-slate-300">No tenemos una tienda abierta al público. Para consultar disponibilidad y solicitar servicio, llámenos.</p>
+          <p className="text-base leading-8 text-slate-300">Vamos hasta su vehículo, casa o negocio. Llámenos para pedir servicio el mismo día o atención de emergencia.</p>
           {cta('spanish_company_call')}
         </section>
       )}
