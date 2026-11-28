@@ -37,14 +37,14 @@ export function ContactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             <div className="lg:col-span-7 space-y-5">
-              <div className="flex items-center gap-3">
-                <Logo size="lg" showText={false} />
-                <div>
-                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold rounded-md uppercase tracking-wider mb-2">
+              <div className="flex min-w-0 flex-col items-start gap-4 sm:flex-row sm:items-center">
+                <div className="shrink-0" aria-hidden="true"><Logo size="lg" showText={false} /></div>
+                <div className="min-w-0 w-full">
+                  <div className="inline-flex max-w-full items-center gap-2 rounded-md border border-amber-500/30 bg-amber-500/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-amber-400 mb-2">
                     <Phone className="w-3.5 h-3.5" />
                     <span>{isSpanish ? 'Despacho Móvil Directo 24/7' : 'Direct 24/7 Mobile Dispatch'}</span>
                   </div>
-                  <h1 className="font-heading font-black text-3xl sm:text-5xl text-white tracking-tight leading-tight">
+                  <h1 className="font-heading font-black text-3xl sm:text-5xl text-white tracking-tight leading-tight break-words">
                     {isSpanish ? 'Contacte a ' : 'Contact '}
                     <span className="text-amber-400">Pro Locksmith Tech</span>
                   </h1>
