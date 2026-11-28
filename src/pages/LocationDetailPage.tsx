@@ -35,7 +35,7 @@ export function LocationDetailPage({ slug, onNavigate }: RouteProps) {
     ? `Cerrajería móvil en ${place} para autos, viviendas y negocios. Consulte por llaves de auto, cerraduras o aperturas de emergencia las 24 horas.`
     : `Mobile locksmith service in ${place}, Florida. Get help with car keys, home and business locks, or 24/7 emergency lockouts.`)
     : (es
-      ? `Encuentre localidades de ${place} con cerrajería móvil para autos, viviendas y negocios. Consulte la cobertura y los servicios de Pro Locksmith Tech.`
+      ? `Encuentre localidades de ${place} con cerrajería móvil para autos, viviendas y negocios. Conozca los servicios móviles de Pro Locksmith Tech.`
       : `Browse the communities served in ${place} and find mobile locksmith help for cars, homes and businesses from Pro Locksmith Tech.`);
   const trail: [string, string][] = [
     [es ? 'Áreas de servicio' : 'Service areas', '/service-areas'],
@@ -115,14 +115,14 @@ export function LocationDetailPage({ slug, onNavigate }: RouteProps) {
             ))}
           </ul>
           <p className="mt-5 text-slate-200">{es
-            ? 'Ofrecemos servicio en otras comunidades dentro de nuestra zona de atención. Llámenos para consultar disponibilidad en su localidad.'
-            : 'We also visit communities within our service area that have no dedicated page. Call us to check availability at your location.'}</p>
+            ? 'También atendemos estas comunidades del condado con cerrajería móvil para autos, hogares y negocios. Llámenos para solicitar servicio.'
+            : 'We also serve these communities across the county with mobile locksmith service for vehicles, homes and businesses. Call us for service.'}</p>
           <details className="mt-4">
-            <summary className="cursor-pointer py-2 font-semibold text-amber-300">{es ? 'Más localidades para consultar' : 'More localities to check'}</summary>
+            <summary className="cursor-pointer py-2 font-semibold text-amber-300">{es ? 'Más comunidades que atendemos' : 'More communities we serve'}</summary>
             <ul className="mt-2 columns-2 gap-5 text-slate-200 sm:columns-3">
               {availabilityLocalities(county.slug).map(name => <li key={name} className="mb-2 break-inside-avoid">{name}</li>)}
             </ul>
-            <LocalizedA href={TEL} className={linkStyle}>{es ? 'Consultar disponibilidad · ' : 'Check availability · '}{PHONE}</LocalizedA>
+            <LocalizedA href={TEL} className={linkStyle}>{es ? 'Solicitar servicio · ' : 'Call for locksmith service · '}{PHONE}</LocalizedA>
           </details>
         </section>
       )}
