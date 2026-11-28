@@ -40,7 +40,7 @@ try {
       const clicks = await page.evaluate(() => window.pltConversionEvents.filter(args => args[1] === 'phone_click'));
       assert.equal(clicks.length, 1, `Duplicate/missing phone click at ${path}`);
       assert.equal(clicks[0][2].service_category, slug, `Incorrect service attribution at ${path}`);
-      assert.equal(clicks[0][2].page_path, path.replace(/\\/$/, ''), `Incorrect path attribution at ${path}`);
+      assert.equal(clicks[0][2].page_path, path.slice(0, -1), `Incorrect path attribution at ${path}`);
       serviceVisits++;
     }
     const home = await page.goto(base + (prefix || '/') + (prefix ? '/' : ''));
