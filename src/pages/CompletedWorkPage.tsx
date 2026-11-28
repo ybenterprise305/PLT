@@ -33,9 +33,16 @@ export function CompletedWorkPage() {
               <div className="space-y-2 p-5 sm:p-6">
                 <h2 className="font-heading text-xl font-bold sm:text-2xl">{heading}</h2>
                 <p className="text-base leading-7 text-slate-300">{summary}</p>
-                <LocalizedA href={'/services/' + example.service} className="inline-flex min-h-11 items-center gap-2 font-semibold text-amber-300 underline underline-offset-4">
-                  {es ? 'Ver servicio' : 'View service'} <ArrowRight size={16} aria-hidden="true" />
-                </LocalizedA>
+                <div className="flex flex-wrap gap-x-4">
+                  <LocalizedA href={'/services/' + example.service} className="inline-flex min-h-11 items-center gap-2 font-semibold text-amber-300 underline underline-offset-4">
+                    {es ? 'Ver servicio' : 'View service'} <ArrowRight size={16} aria-hidden="true" />
+                  </LocalizedA>
+                  {example.id === 'automotive' && (
+                    <LocalizedA href="/services/key-replacement" className="inline-flex min-h-11 items-center font-semibold text-amber-300 underline underline-offset-4">
+                      {es ? 'Reemplazo de llaves' : 'Key replacement'}
+                    </LocalizedA>
+                  )}
+                </div>
               </div>
             </li>
           );
