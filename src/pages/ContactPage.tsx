@@ -167,7 +167,7 @@ export function ContactPage() {
             </div>
             <div className="pt-2 text-xs font-semibold text-amber-400 flex items-center gap-1">
               <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-              <span>{isSpanish ? 'Unidades móviles en servicio ahora' : 'Mobile vans on duty right now'}</span>
+              <span>{isSpanish ? 'Despacho disponible las 24 horas' : '24/7 dispatch team available'}</span>
             </div>
           </div>
         </div>
@@ -178,7 +178,7 @@ export function ContactPage() {
             <div className="lg:col-span-7 space-y-5">
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold rounded-md uppercase tracking-wider">
                 <Zap className="w-3.5 h-3.5 fill-current" />
-                <span>{isSpanish ? 'Cero Formularios · Contacto Directo en Vivo' : 'Zero Forms · 100% Direct Live Contact'}</span>
+                <span>{isSpanish ? 'Llame directamente a nuestro equipo' : 'Call our dispatch team directly'}</span>
               </div>
 
               <h2 className="font-heading font-black text-2xl sm:text-4xl text-white tracking-tight">
