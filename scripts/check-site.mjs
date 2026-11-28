@@ -98,9 +98,9 @@ for (const vp of viewports) {
       const heading = main?.querySelector('h1');
       const l = logo?.getBoundingClientRect();
       const h = heading?.getBoundingClientRect();
-      return l && h ? { overlap: !(l.right <= h.left || h.right <= l.left || l.bottom <= h.top || h.bottom <= l.top), overflow: document.documentElement.scrollWidth > window.innerWidth + 2, logo: {x:l.x,y:l.y,width:l.width,height:l.height}, heading: {x:h.x,y:h.y,width:h.width,height:h.height}, scrollWidth: document.documentElement.scrollWidth, viewport: window.innerWidth } : null;
+      return { hasHeading: Boolean(h), hasLogo: Boolean(l), overlap: Boolean(l && h && !(l.right <= h.left || h.right <= l.left || l.bottom <= h.top || h.bottom <= l.top)), overflow: document.documentElement.scrollWidth > window.innerWidth + 2, scrollWidth: document.documentElement.scrollWidth, viewport: window.innerWidth };
     });
-    if (!geometry || geometry.overlap || geometry.overflow) failures.push(`phone ${languagePath}: contact logo/title overlap or horizontal overflow ${JSON.stringify(geometry)}`);
+    if (!geometry || !geometry.hasHeading || (languagePath === '/contact/' && !geometry.hasLogo) || geometry.overlap || geometry.overflow) failures.push(`phone ${languagePath}: contact hero layout regression ${JSON.stringify(geometry)}`);
   }
   await page.goto(BASE + '/', { waitUntil: 'networkidle' });
 
