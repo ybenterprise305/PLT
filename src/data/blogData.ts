@@ -39,11 +39,30 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: '2 min read',
     slug: "can-locksmith-make-car-key-without-original",
     title: "Replacing a car key without the original",
-    excerpt: "Some vehicles can get a replacement key without an original. Ask about the exact vehicle, supported functions and what to do when every working key is missing.",
+    excerpt: "Lost every copy? Learn how Pro Locksmith Tech comes to your vehicle to cut and program a compatible replacement without the original.",
     dateModified: "2026-11-27",
-    metaDescription: "Some vehicles can get a replacement key without an original. Ask about the exact vehicle, supported functions and what to do when every working key is missing.",
-    quickAnswer: "Some vehicles can get a replacement key without an original. Ask about the exact vehicle, supported functions and what to do when every working key is missing.",
-    content: [{"heading": "Why every key being lost matters", "paragraphs": ["A spare-key appointment starts with a working key to compare. When every key is missing, the provider needs to identify the system without using an existing key as a reference. A metal blade, a chip and a proximity fob can call for different parts and work. The exact model year, market and starting system matter."]}, {"heading": "Compare a mobile visit with a dealership", "paragraphs": ["Ask the mobile provider whether the part and programming can be handled at your location. The vehicle may need dealer or specialist service for some systems. If considering a dealer, ask what will be needed and whether the vehicle must be present. Confirm the transport plan before you commit to either option."]}, {"heading": "Confirm the replacement and the authorization", "paragraphs": ["Explain that you have no working key and ask what ownership or authorization information is required. Confirm the estimate covers the part and the functions you need, including starting and any remote buttons. If a key was stolen, ask whether missing electronic keys can be handled by the appropriate provider."]}],
+    metaDescription: "Lost every copy? Learn how Pro Locksmith Tech comes to your vehicle to cut and program a compatible replacement without the original.",
+    quickAnswer: "Yes, our mobile technicians can make a compatible replacement car key without the original for many vehicles. We can come to your car, cut the blade when needed, program the key and test it on site.",
+    content: [
+      {
+        heading: "How an all-keys-lost job differs from a spare",
+        paragraphs: [
+          "A spare starts with a working key. If every key is missing, our technician identifies the compatible replacement through the vehicle and its key system. Traditional blades, transponders and push-to-start remotes each have distinct requirements.",
+        ],
+      },
+      {
+        heading: "Why mobile replacement can save a trip",
+        paragraphs: [
+          "A mobile visit can eliminate a separate trip or tow. Cutting and programming are distinct parts of the job, and we can handle both at your vehicle when supported. That can save time and transport costs compared with taking the vehicle in.",
+        ],
+      },
+      {
+        heading: "What happens after you call",
+        paragraphs: [
+          "Call Pro Locksmith Tech to talk through your lost key. Our team can explain what the visit involves and arrange same-day service when available. We verify the replacement’s starting and remote functions with you after the work.",
+        ],
+      },
+    ],
     sources: [["Ford owner manual: replacing a lost key or remote", "https://www.fordservicecontent.com/Ford_Content/vdirsnet/OwnerManual/Home/Content?ProcUid=G2134031&Uid=G2309772&buildtype=web&countryCode=USA&div=f&languageCode=en&moidRef=G1405311&userMarket=USA&vFilteringEnabled=False&variantid=9379"], ["Toyota owner manual directory", "https://www.toyota.com/owners/warranty-owners-manuals"]],
     keywords: ["replacing a car key without the original"],
     relatedServices: [
@@ -61,11 +80,30 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: '2 min read',
     slug: "why-is-my-key-fob-not-working",
     title: "Why a car key fob stops working",
-    excerpt: "Start by separating weak range, unresponsive buttons and a starting warning. Each symptom points to different questions before you replace a fob.",
+    excerpt: "Is your key fob losing range or failing to respond? Learn what can cause the problem and when mobile fob replacement can help.",
     dateModified: "2026-11-27",
-    metaDescription: "Start by separating weak range, unresponsive buttons and a starting warning. Each symptom points to different questions before you replace a fob.",
-    quickAnswer: "Start by separating weak range, unresponsive buttons and a starting warning. Each symptom points to different questions before you replace a fob.",
-    content: [{"heading": "Identify which function is failing", "paragraphs": ["Note whether the remote works only close to the vehicle, a single button behaves differently, or the car still starts despite the remote not unlocking it. The remote and start authorization can behave independently. If an authorized spare works in the same location, record the difference."]}, {"heading": "Check the manual for the battery", "paragraphs": ["Look up the exact fob battery and replacement instructions for the vehicle. If the case is cracked, wet or damaged, a battery change may not be enough. If both fobs suddenly stop responding, consider whether the issue is on the vehicle side before buying new hardware."]}, {"heading": "Decide whether to repair, replace or seek diagnosis", "paragraphs": ["A replacement needs to match the features you use, including passive entry or starting where applicable. Let the provider know what changed, whether an original still works and whether you supplied an aftermarket part. Ask how the requested functions will be tested."]}],
+    metaDescription: "Is your key fob losing range or failing to respond? Learn what can cause the problem and when mobile fob replacement can help.",
+    quickAnswer: "If your fob has weak range, unresponsive buttons or a starting warning, we can help determine whether a battery, replacement or programming is the practical fix.",
+    content: [
+      {
+        heading: "Remote buttons and starting are separate",
+        paragraphs: [
+          "A fob can still start the vehicle even if the door buttons stop responding. Short range may point to a battery, while inconsistent buttons or physical damage may call for another part. Similar-looking remotes can use different electronics.",
+        ],
+      },
+      {
+        heading: "When a replacement makes sense",
+        paragraphs: [
+          "If the remote no longer works or the casing is damaged, Pro Locksmith Tech can assess compatibility at your vehicle. We carry a wide selection of remotes and smart keys and can discuss a repair or replacement based on the symptom.",
+        ],
+      },
+      {
+        heading: "On-site cutting and programming",
+        paragraphs: [
+          "Where supported, our mobile technician can cut the emergency blade, program the remote and test the functions you use. Call for same-day availability and keep the vehicle where it is while our team coordinates the visit.",
+        ],
+      },
+    ],
     sources: [["Ford owner manual: replacing a lost key or remote", "https://www.fordservicecontent.com/Ford_Content/vdirsnet/OwnerManual/Home/Content?ProcUid=G2134031&Uid=G2309772&buildtype=web&countryCode=USA&div=f&languageCode=en&moidRef=G1405311&userMarket=USA&vFilteringEnabled=False&variantid=9379"], ["Toyota owner manual directory", "https://www.toyota.com/owners/warranty-owners-manuals"]],
     keywords: ["why a car key fob stops working"],
     relatedServices: [
@@ -86,8 +124,27 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: "The cost depends on whether you need a part, blade cutting, programming or diagnosis, and whether an existing key still works.",
     dateModified: "2026-11-27",
     metaDescription: "The cost depends on whether you need a part, blade cutting, programming or diagnosis, and whether an existing key still works.",
-    quickAnswer: "The cost depends on whether you need a part, blade cutting, programming or diagnosis, and whether an existing key still works.",
-    content: [{"heading": "List the services you actually need", "paragraphs": ["If you have a working key and want a spare, the scope may be different from replacing every missing key. A compatible part, cutting a blade and enabling the vehicle to recognize the replacement are separate tasks. If the problem is a damaged original or a starting warning, diagnosis might be needed first."]}, {"heading": "Compare estimates on included work", "paragraphs": ["Ask whether the estimate covers the replacement itself, any on-site visit or diagnosis and verification of the functions you need. Confirm which functions are supported if you supply a fob yourself. A remote that unlocks the vehicle may still leave a separate starting problem."]}, {"heading": "Ask what could change after inspection", "paragraphs": ["The exact vehicle system, key availability, service location and unusual hardware can affect the scope. Ask the provider to explain any changes before additional work is approved. Discuss payment options at the same time. The estimate for your vehicle is more useful than a general average."]}],
+    quickAnswer: "The estimate depends on the part, blade cutting, programming and whether you want a spare or need to replace every missing key. Call us and we will explain what your service involves.",
+    content: [
+      {
+        heading: "The key and programming are separate parts",
+        paragraphs: [
+          "A conventional key may need only a cut, while a transponder or push-to-start remote can need both a compatible part and electronic programming. A replacement after every key is lost can take different work from duplicating a working key.",
+        ],
+      },
+      {
+        heading: "How on-site service helps",
+        paragraphs: [
+          "Pro Locksmith Tech can supply a wide selection of compatible keys and fobs and handle cutting and programming at your vehicle. That can save a separate trip or towing charge. The technician can confirm the work once the vehicle and key system are assessed.",
+        ],
+      },
+      {
+        heading: "Understand your estimate before work starts",
+        paragraphs: [
+          "Call us to talk through the problem. We can explain expected work and confirm changes before proceeding, including whether a blade, remote buttons or starting functions are part of the replacement. We accept convenient payment on site.",
+        ],
+      },
+    ],
     sources: [["Ford owner manual: replacing a lost key or remote", "https://www.fordservicecontent.com/Ford_Content/vdirsnet/OwnerManual/Home/Content?ProcUid=G2134031&Uid=G2309772&buildtype=web&countryCode=USA&div=f&languageCode=en&moidRef=G1405311&userMarket=USA&vFilteringEnabled=False&variantid=9379"]],
     keywords: ["car key programming cost factors"],
     relatedServices: [
@@ -108,8 +165,27 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: "Rekeying changes which keys operate a compatible lock. Replacement changes the hardware and may be suitable when a lock is damaged or your access needs change.",
     dateModified: "2026-11-27",
     metaDescription: "Rekeying changes which keys operate a compatible lock. Replacement changes the hardware and may be suitable when a lock is damaged or your access needs change.",
-    quickAnswer: "Rekeying changes which keys operate a compatible lock. Replacement changes the hardware and may be suitable when a lock is damaged or your access needs change.",
-    content: [{"heading": "When rekeying may fit", "paragraphs": ["If a lock works reliably and the concern is that someone may still have an old key, ask whether the existing cylinder can be rekeyed. The answer depends on hardware compatibility and whether any concerned doors share a managed system. Check who can authorize work before changing shared locks."]}, {"heading": "When replacement or repair may fit", "paragraphs": ["A worn or damaged lock, a different door fit or a desire for electronic access is a separate decision. If the door binds or does not latch, ask the provider to inspect the opening. A new lock may not fix an alignment issue. A working lock can also need replacement if it cannot support the required key arrangement."]}, {"heading": "Compare the complete scope", "paragraphs": ["Confirm which doors are affected, how many new keys are included and whether any existing lock or door components need work. After service, test authorized access and normal exit on every affected door."]}],
+    quickAnswer: "Rekeying changes which key operates a compatible working lock. Replacement changes the hardware, which can help when a lock is worn, damaged or due for an upgrade.",
+    content: [
+      {
+        heading: "When rekeying makes sense",
+        paragraphs: [
+          "If the lock still works and you want to retire an old key, rekeying a compatible cylinder can restore key control without replacing all the hardware. Several compatible locks may be able to use a single key.",
+        ],
+      },
+      {
+        heading: "When new hardware helps",
+        paragraphs: [
+          "A worn cylinder, damaged handle or a door that will not latch can need repair or replacement. If you want a keypad or a different deadbolt, our technician can assess the existing door and discuss a suitable option.",
+        ],
+      },
+      {
+        heading: "Get an on-site recommendation",
+        paragraphs: [
+          "We come to homes, rentals and businesses across South Florida. Call Pro Locksmith Tech and our team can help arrange a mobile visit. The technician can check the affected locks and explain the solution that fits.",
+        ],
+      },
+    ],
     sources: [["Schlage lock rekeying guidance", "https://schlage-res.zendesk.com/hc/en-us/articles/39886333039636-Can-I-Rekey-My-Schlage-Lock"]],
     keywords: ["rekeying vs. replacing locks"],
     relatedServices: [
@@ -127,12 +203,30 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: '2 min read',
     slug: "what-to-do-when-locked-out-of-car",
     title: "What to do when locked out of your car",
-    excerpt: "Get away from traffic, check for immediate danger and choose an authorized source of help. A lost key and a key locked inside require different decisions.",
+    excerpt: "Locked out of your car in South Florida? Pro Locksmith Tech comes to the vehicle for an opening or compatible replacement when the key is lost.",
     dateModified: "2026-11-27",
-    metaDescription: "Get away from traffic, check for immediate danger and choose an authorized source of help. A lost key and a key locked inside require different decisions.",
-    quickAnswer: "Get away from traffic, check for immediate danger and choose an authorized source of help. A lost key and a key locked inside require different decisions.",
-    content: [{"heading": "Respond to danger first", "paragraphs": ["If a child is alone in a locked car, call 911 immediately and follow the dispatcher. Do not wait for a locksmith when a person or animal is in immediate danger. If it is a routine lockout and the vehicle is near traffic, move to a safe place when you can."]}, {"heading": "Consider authorized options", "paragraphs": ["Check whether an authorized spare-key holder or roadside-assistance plan can help. If you call a mobile locksmith, say whether the key is inside, lost or broken. Entry alone may not restore use if the key is missing or damaged. Avoid prying or attempting to defeat the vehicle’s security."]}, {"heading": "Give a safe meeting point", "paragraphs": ["Identify the lot, garage level or roadside location and any entry restrictions. Ask what ownership or authorization documentation is needed. Confirm service availability and what the estimate includes before approving the work."]}],
-    sources: [["NHTSA guidance on children in locked cars", "https://www.nhtsa.gov/campaign/heatstroke"]],
+    metaDescription: "Locked out of your car in South Florida? Pro Locksmith Tech comes to the vehicle for an opening or compatible replacement when the key is lost.",
+    quickAnswer: "Locked your keys in the car or lost them altogether? Call Pro Locksmith Tech for 24-hour mobile help. We can meet you where the car is parked.",
+    content: [
+      {
+        heading: "Get help for a routine car lockout",
+        paragraphs: [
+          "Our mobile technicians come to parking lots, garages and gated properties. If the keys are inside the vehicle, an opening may be enough. If a key is lost or broken, we can discuss on-site replacement so you can resume using the vehicle.",
+        ],
+      },
+      {
+        heading: "Opening a door and replacing a key are different jobs",
+        paragraphs: [
+          "We assess the vehicle and lock before choosing an approach. A lost transponder key or proximity fob may require a compatible replacement as well as programming. Our team can explain those options when you call.",
+        ],
+      },
+      {
+        heading: "Request mobile service at your car",
+        paragraphs: [
+          "Call Pro Locksmith Tech to arrange an opening or replacement key. We can check same-day availability and explain what the technician can do at the vehicle, including on-site key cutting and programming when supported.",
+        ],
+      },
+    ],
     keywords: ["what to do when locked out of your car"],
     relatedServices: [
       { name: 'Car Lockouts', slug: 'emergency-lockout-service' },
@@ -149,11 +243,30 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: '2 min read',
     slug: "what-to-do-when-locked-out-of-house",
     title: "What to do when locked out of your home",
-    excerpt: "Get to a safe place, check for a lawful spare or a property manager and describe the lockout accurately when requesting help.",
+    excerpt: "Locked out of your house or apartment? Get mobile help opening the door, repairing a jammed lock or replacing a missing key.",
     dateModified: "2026-11-27",
-    metaDescription: "Get to a safe place, check for a lawful spare or a property manager and describe the lockout accurately when requesting help.",
-    quickAnswer: "Get to a safe place, check for a lawful spare or a property manager and describe the lockout accurately when requesting help.",
-    content: [{"heading": "Choose a safe and authorized way to get help", "paragraphs": ["Contact an occupant with a spare, the owner or the property manager when appropriate. For a routine lockout, do not climb, force a window or pry the door. If someone is in immediate danger, contact emergency services."]}, {"heading": "Distinguish a missing key from a lock fault", "paragraphs": ["A key left inside, a broken key and a lock that will not turn are different problems. Say which door is affected and whether the key was already sticking before you were locked out. Ask what evidence of authorization is needed before the visit."]}, {"heading": "Decide what should happen after entry", "paragraphs": ["If a key was lost, discuss whether the working lock can be rekeyed and which openings might be affected. If the door will not latch reliably, request an assessment of the lock and door fit. In a rental, coordinate any hardware changes and key handover with the owner."]}],
+    metaDescription: "Locked out of your house or apartment? Get mobile help opening the door, repairing a jammed lock or replacing a missing key.",
+    quickAnswer: "Call Pro Locksmith Tech if you are locked out of your house or apartment. We come directly to your location, with emergency service available 24 hours.",
+    content: [
+      {
+        heading: "A mobile technician comes to your door",
+        paragraphs: [
+          "Whether your keys are inside, missing or no longer turn in the lock, call us for on-site help. We serve houses, apartments and gated communities and can coordinate a visit with you directly.",
+        ],
+      },
+      {
+        heading: "When opening alone is not enough",
+        paragraphs: [
+          "A jammed bolt, a binding cylinder or damage to the door may need more than an opening. Our technician can assess the lock and explain when a repair, rekey or replacement can restore normal everyday access.",
+        ],
+      },
+      {
+        heading: "Call now and our team handles the next steps",
+        paragraphs: [
+          "Our dispatch team can discuss technician availability and arrange service. We can answer your questions about the visit and explain payment options. When the lock is compatible and in good condition, rekeying may be an option after a key goes missing.",
+        ],
+      },
+    ],
     sources: [["Schlage lock rekeying guidance", "https://schlage-res.zendesk.com/hc/en-us/articles/39886333039636-Can-I-Rekey-My-Schlage-Lock"]],
     keywords: ["what to do when locked out of your home"],
     relatedServices: [
@@ -174,8 +287,27 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: "Some smart keys can be replaced on site. Support depends on the vehicle, the part and whether any working key is available.",
     dateModified: "2026-11-27",
     metaDescription: "Some smart keys can be replaced on site. Support depends on the vehicle, the part and whether any working key is available.",
-    quickAnswer: "Some smart keys can be replaced on site. Support depends on the vehicle, the part and whether any working key is available.",
-    content: [{"heading": "Confirm the functions you use", "paragraphs": ["A smart key can support starting, passive door access, remote buttons and a mechanical emergency blade. The features on an online listing may not match what your vehicle can use. Check the vehicle handbook and specify the functions the replacement must support."]}, {"heading": "Ask for vehicle-specific confirmation", "paragraphs": ["Tell the provider whether one working key remains, whether the replacement was supplied separately and the model year and market. Use the manual for your car. Some procedures or replacements may be directed to a dealer or need specialist service."]}, {"heading": "Verify the agreed scope", "paragraphs": ["Confirm whether the estimate includes the replacement, any blade cutting, registration and testing. If your vehicle has an existing starting or warning problem, discuss diagnosis before buying a part. Have authorized keys available to check the functions you need."]}],
+    quickAnswer: "Yes, we program compatible push-to-start keys at the vehicle. Call Pro Locksmith Tech even if every working key is missing.",
+    content: [
+      {
+        heading: "What a smart key needs to do",
+        paragraphs: [
+          "A smart key can support starting, passive access, remote buttons and a mechanical emergency blade. Similar-looking remotes can use different components. Matching the functions and vehicle system is part of selecting the right replacement.",
+        ],
+      },
+      {
+        heading: "Programming where the vehicle is parked",
+        paragraphs: [
+          "Our mobile technicians work across vehicle makes and models and carry a wide selection of remotes. We can assess the starting system and explain compatible programming options, including replacement after every key is lost.",
+        ],
+      },
+      {
+        heading: "Test the replacement before the visit ends",
+        paragraphs: [
+          "The technician can check starting and the relevant remote functions with you after programming. Call us for help with an unresponsive remote, a spare smart key or a lost push-to-start key at your location.",
+        ],
+      },
+    ],
     sources: [["Ford owner manual: replacing a lost key or remote", "https://www.fordservicecontent.com/Ford_Content/vdirsnet/OwnerManual/Home/Content?ProcUid=G2134031&Uid=G2309772&buildtype=web&countryCode=USA&div=f&languageCode=en&moidRef=G1405311&userMarket=USA&vFilteringEnabled=False&variantid=9379"], ["Toyota owner manual directory", "https://www.toyota.com/owners/warranty-owners-manuals"]],
     keywords: ["can a locksmith replace a push-to-start key?"],
     relatedServices: [
@@ -196,8 +328,27 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: "Review the doors and keys you received after moving. Rekeying may help regain key control if the existing locks are compatible and in good condition.",
     dateModified: "2026-11-27",
     metaDescription: "Review the doors and keys you received after moving. Rekeying may help regain key control if the existing locks are compatible and in good condition.",
-    quickAnswer: "Review the doors and keys you received after moving. Rekeying may help regain key control if the existing locks are compatible and in good condition.",
-    content: [{"heading": "Inventory the doors and relevant keys", "paragraphs": ["Identify every exterior door and determine who can authorize changes. Account for spare keys, contractor keys and any entry managed by an association or landlord. For shared doors, check with the responsible property manager before requesting changes."]}, {"heading": "Separate access changes from repairs", "paragraphs": ["Ask whether the existing locks can be rekeyed if they work properly and you only need to change who has access. A jammed lock, loose bolt or door that does not close properly needs a separate assessment. Incompatible or damaged hardware may need a different approach."]}, {"heading": "Plan the handover", "paragraphs": ["Agree on how many keys are needed and how to distribute them to authorized users. After the service, check every affected door from both sides as appropriate. If you use a smart lock, consult the manufacturer about authorized account and credential changes."]}],
+    quickAnswer: "If your new home has compatible locks that work smoothly, rekeying can make old keys stop working and let you keep the existing hardware.",
+    content: [
+      {
+        heading: "Regain control of the keys",
+        paragraphs: [
+          "Rekeying changes which key operates a compatible cylinder. It is useful after a move, a rental turnover or when copies are unaccounted for. Where the hardware matches, one key may be able to operate several locks.",
+        ],
+      },
+      {
+        heading: "Decide which doors need hardware work",
+        paragraphs: [
+          "A sticking cylinder, loose bolt or door that will not close can need separate attention. Our technician can assess working locks for rekeying and explain when repair or replacement is the better fit.",
+        ],
+      },
+      {
+        heading: "Plan a mobile visit after a move",
+        paragraphs: [
+          "Call Pro Locksmith Tech for residential lock service on site. Our team can help coordinate the visit and discuss the doors and keys with you during service, including how to hand over any new keys.",
+        ],
+      },
+    ],
     sources: [["Schlage lock rekeying guidance", "https://schlage-res.zendesk.com/hc/en-us/articles/39886333039636-Can-I-Rekey-My-Schlage-Lock"]],
     keywords: ["rekeying locks after moving into a home"],
     relatedServices: [
@@ -215,11 +366,30 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: '2 min read',
     slug: "why-wont-car-key-turn-in-ignition",
     title: "Why a car key may not turn in the ignition",
-    excerpt: "A key that will not turn is different from a key that turns while the vehicle will not start. Avoid forcing it and describe the exact symptom.",
+    excerpt: "Car key will not turn in the ignition? See how a mobile technician can assess a worn key, a binding cylinder or another ignition fault at the vehicle.",
     dateModified: "2026-11-27",
-    metaDescription: "A key that will not turn is different from a key that turns while the vehicle will not start. Avoid forcing it and describe the exact symptom.",
-    quickAnswer: "A key that will not turn is different from a key that turns while the vehicle will not start. Avoid forcing it and describe the exact symptom.",
-    content: [{"heading": "Observe what happens without forcing the key", "paragraphs": ["Note whether the blade is bent, it will not fully insert, or it inserts and stops before normal rotation. If you have a working authorized spare that can be used normally, say whether it behaves the same. Do not use extra leverage or keep trying if the key feels like it may break."]}, {"heading": "Read the model-specific warning", "paragraphs": ["Use the owner’s manual when you see a dashboard warning or the ignition control behaves unexpectedly. A non-start with normal rotation may be a different problem from a physical lock fault. Do not insert cleaners or tools into the ignition."]}, {"heading": "Choose between key, vehicle and emergency service", "paragraphs": ["A physical key or lock issue may be appropriate for a mobile automotive locksmith. A starting system or electrical fault may require roadside assistance, a repair shop or a dealership. Tell the provider which symptom you saw before arranging the visit."]}],
+    metaDescription: "Car key will not turn in the ignition? See how a mobile technician can assess a worn key, a binding cylinder or another ignition fault at the vehicle.",
+    quickAnswer: "Call Pro Locksmith Tech for a key that will not enter or turn, a stuck ignition lock or a key recognition problem. Our technicians can assess it at your location.",
+    content: [
+      {
+        heading: "Why an ignition key might stop turning",
+        paragraphs: [
+          "A worn blade, a binding cylinder or a fault in the ignition lock can produce similar symptoms. Applying extra force can break the blade and turn an intermittent problem into a stuck fragment.",
+        ],
+      },
+      {
+        heading: "Separate a lock problem from a starting symptom",
+        paragraphs: [
+          "A key that turns normally but will not start the car can point to electronics or a different system. We can assess whether a worn key, recognition issue or mechanical ignition lock is contributing to the problem.",
+        ],
+      },
+      {
+        heading: "Get ignition and key service where the car sits",
+        paragraphs: [
+          "Pro Locksmith Tech offers mobile automotive locksmith service. We can explain options for a worn key, lock repair or a compatible replacement before you decide how to proceed. Call to ask about same-day availability.",
+        ],
+      },
+    ],
     sources: [["Ford owner manual: replacing a lost key or remote", "https://www.fordservicecontent.com/Ford_Content/vdirsnet/OwnerManual/Home/Content?ProcUid=G2134031&Uid=G2309772&buildtype=web&countryCode=USA&div=f&languageCode=en&moidRef=G1405311&userMarket=USA&vFilteringEnabled=False&variantid=9379"], ["Toyota owner manual directory", "https://www.toyota.com/owners/warranty-owners-manuals"]],
     keywords: ["why a car key may not turn in the ignition"],
     relatedServices: [
@@ -236,12 +406,31 @@ export const BLOG_POSTS: BlogPost[] = [
     image: locksmithCrewImg,
     readTime: '2 min read',
     slug: "what-information-needed-before-calling-mobile-locksmith",
-    title: "What to share when you call a locksmith",
-    excerpt: "Start with your location, what is locked or damaged, and whether you still have a working key. Ask what will affect the estimate before work begins.",
+    title: "How a mobile locksmith visit works",
+    excerpt: "Learn how Pro Locksmith Tech dispatches a mobile technician for openings, replacement keys and lock repairs at cars, homes and businesses.",
     dateModified: "2026-11-27",
-    metaDescription: "Start with your location, what is locked or damaged, and whether you still have a working key. Ask what will affect the estimate before work begins.",
-    quickAnswer: "Start with your location, what is locked or damaged, and whether you still have a working key. Ask what will affect the estimate before work begins.",
-    content: [{"heading": "Describe the symptom and location", "paragraphs": ["For a vehicle, identify the year and model if known, say how it starts and whether every key is missing. For a door, explain whether the key is missing, broken or hard to turn, or whether the door does not latch. Identify a safe meeting place and any building or garage access restrictions."]}, {"heading": "Arrange lawful authorization", "paragraphs": ["If you are a tenant, employee or property manager, confirm who may approve the service. Ask the provider about any proof needed for the vehicle or property. Share documents only when needed and through the agreed channel. Do not put addresses, key codes or ownership documents in a public post."]}, {"heading": "Confirm availability and included work", "paragraphs": ["Ask whether service is available for your location, what the initial estimate includes, and how changes are approved. Confirm acceptable payment methods. If someone is in danger, prioritize emergency help before arranging routine lock service."]}],
+    metaDescription: "Learn how Pro Locksmith Tech dispatches a mobile technician for openings, replacement keys and lock repairs at cars, homes and businesses.",
+    quickAnswer: "Call Pro Locksmith Tech and our dispatch team will help identify the right service and arrange a technician at your location.",
+    content: [
+      {
+        heading: "Tell us what happened in your own words",
+        paragraphs: [
+          "A missing car key, locked door and latch that will not catch call for different work. Our team can help identify the right service without making you diagnose the lock yourself.",
+        ],
+      },
+      {
+        heading: "What you can expect during the call",
+        paragraphs: [
+          "We can discuss availability in your area and explain what the mobile visit may involve. Once a technician sees the vehicle or hardware, they can explain the options and the expected scope before work begins.",
+        ],
+      },
+      {
+        heading: "Convenient help at your location",
+        paragraphs: [
+          "Pro Locksmith Tech comes to homes, rental units, vehicles and businesses across our South Florida service area. Same-day and emergency service are available. We accept cash, cards and popular on-site payment methods.",
+        ],
+      },
+    ],
     keywords: ["what to share when you call a locksmith"],
     relatedServices: [
       { name: 'Emergency Lockouts', slug: 'emergency-lockout-service' },

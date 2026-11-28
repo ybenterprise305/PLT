@@ -5,6 +5,7 @@ import { SEOHead } from '../components/SEOHead';
 import { PHONE, TEL } from '../config/business';
 import { useLanguage } from '../context/LanguageContext';
 import { countyServiceContent, getLocalGuide, getLocalHelp, localServiceLabels, nearbyServiceAreas } from '../data/localServiceContent';
+import { availabilityLocalities } from '../data/coverageLookup';
 import { getCityBySlug, getCountyBySlug } from '../data/locationsData';
 import type { RouteProps } from '../routes';
 import { trackPhoneClick } from '../utils/analytics';
@@ -34,7 +35,7 @@ export function LocationDetailPage({ slug, onNavigate }: RouteProps) {
     ? `Cerrajería móvil en ${place} para autos, viviendas y negocios. Consulte por llaves de auto, cerraduras o aperturas de emergencia las 24 horas.`
     : `Mobile locksmith service in ${place}, Florida. Get help with car keys, home and business locks, or 24/7 emergency lockouts.`)
     : (es
-      ? `Encuentre localidades de ${place} con cerrajería móvil para autos, viviendas y negocios. Consulte la cobertura y los servicios de Pro Locksmith Tech.`
+      ? `Encuentre localidades de ${place} con cerrajería móvil para autos, viviendas y negocios. Conozca los servicios móviles de Pro Locksmith Tech.`
       : `Browse the communities served in ${place} and find mobile locksmith help for cars, homes and businesses from Pro Locksmith Tech.`);
   const trail: [string, string][] = [
     [es ? 'Áreas de servicio' : 'Service areas', '/service-areas'],
@@ -57,7 +58,7 @@ export function LocationDetailPage({ slug, onNavigate }: RouteProps) {
         <h1 id="local-coverage-heading" className="font-heading text-3xl font-bold tracking-tight text-white sm:text-5xl">{title}</h1>
         <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-300">{intro}</p>
         <p className="mt-3 max-w-3xl text-base leading-7 text-slate-300">
-          {es ? 'Llame con la dirección exacta para confirmar la disponibilidad y coordinar el servicio.' : 'Call with the exact service address so we can confirm availability and arrange a visit.'}
+          {es ? 'Llámenos y nuestro equipo le ayudará a coordinar el servicio en su ubicación.' : 'Call and our team will help you schedule mobile service at your location.'}
         </p>
         <LocalizedA href={TEL} onClick={() => trackPhoneClick({ ctaLocation: lead, pagePath: es ? '/es' + path : path })}
           className="mt-5 inline-flex min-h-12 items-center rounded-xl bg-amber-400 px-5 py-3 font-bold text-slate-950 hover:bg-amber-300">
@@ -67,11 +68,11 @@ export function LocationDetailPage({ slug, onNavigate }: RouteProps) {
 
       {city?.placeType === 'census-designated place' && (
         <p className="max-w-3xl text-base leading-7 text-slate-300">
-          {es ? 'Kendall es una comunidad no incorporada del condado de Miami-Dade. Use la dirección del servicio al consultar por la cobertura.' : 'Kendall is an unincorporated community in Miami-Dade County. Use the actual service address when checking coverage.'}
+          {es ? 'Kendall es una comunidad no incorporada del condado de Miami-Dade.' : 'Kendall is an unincorporated community in Miami-Dade County.'}
         </p>
       )}
 
-      {help && <section className={panel}>
+      {help && <section className={panel + ' plt-paper'}>
         <h2 className="font-heading text-2xl font-bold text-white">{help.title[language]}</h2>
         <p className="mt-3 max-w-3xl leading-7 text-slate-300">{help.detail[language]}</p>
         <ul className="mt-4 flex flex-wrap gap-3">
@@ -113,6 +114,16 @@ export function LocationDetailPage({ slug, onNavigate }: RouteProps) {
               <li key={area.slug}><LocalizedA className={linkStyle + ' w-full'} href={'/service-areas/' + area.slug}>{area.name}</LocalizedA></li>
             ))}
           </ul>
+          <p className="mt-5 text-slate-200">{es
+            ? 'También atendemos estas comunidades del condado con cerrajería móvil para autos, hogares y negocios. Llámenos para solicitar servicio.'
+            : 'We also serve these communities across the county with mobile locksmith service for vehicles, homes and businesses. Call us for service.'}</p>
+          <details className="mt-4">
+            <summary className="cursor-pointer py-2 font-semibold text-amber-300">{es ? 'Más comunidades que atendemos' : 'More communities we serve'}</summary>
+            <ul className="mt-2 columns-2 gap-5 text-slate-200 sm:columns-3">
+              {availabilityLocalities(county.slug).map(name => <li key={name} className="mb-2 break-inside-avoid">{name}</li>)}
+            </ul>
+            <LocalizedA href={TEL} className={linkStyle}>{es ? 'Solicitar servicio · ' : 'Call for locksmith service · '}{PHONE}</LocalizedA>
+          </details>
         </section>
       )}
     </div>

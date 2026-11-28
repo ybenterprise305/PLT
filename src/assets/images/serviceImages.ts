@@ -21,9 +21,9 @@ export const SERVICE_IMAGES: Record<string, Omit<ServiceImage, 'srcSet'>> = {
     esAlt: 'Técnica de cerrajería trabajando en una cerradura residencial',
   },
   'commercial-locksmith': {
-    src: '/service-images/commercial-locksmith-960.webp',
-    enAlt: 'Technician beside commercial door panic-bar hardware',
-    esAlt: 'Técnica junto a una barra antipánico en una puerta comercial',
+    src: '/brand/glass-door-service-960.webp',
+    enAlt: 'Illustration of a locksmith servicing a glass commercial door',
+    esAlt: 'Ilustración de un cerrajero trabajando en una puerta comercial de vidrio',
   },
   'automotive-locksmith': {
     src: '/service-images/automotive-locksmith-960.webp',

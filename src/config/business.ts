@@ -6,9 +6,11 @@ export const TEL = `tel:${PHONE_E164}`;
 
 export const SERVICE_SINCE = 2000;
 export const PAYMENT_METHODS = {
-  en: 'cash, credit and debit cards, Zelle, and Venmo',
-  es: 'efectivo, tarjetas de crédito y débito, Zelle y Venmo',
+  en: 'cash, credit and debit cards, Zelle, Venmo, Cash App and more',
+  es: 'efectivo, tarjetas de crédito y débito, Zelle, Venmo, Cash App y otros métodos de pago',
 };
+export const X_PROFILE = 'https://x.com/Pro_Locksmith_T';
+
 export const VERIFIED_PROFILES = [
   ['Google Maps', 'https://maps.google.com/maps?cid=16992150185739281311'],
   ['Nextdoor', 'https://nextdoor.com/pages/pro-locksmith-tech-coral-springs-fl/'],
@@ -16,4 +18,5 @@ export const VERIFIED_PROFILES = [
   ['Facebook', 'https://www.facebook.com/people/Pro-Locksmith-Tech/61596007395772/'],
   ['Instagram', 'https://www.instagram.com/pro_locksmith_tech/'],
   ['Pinterest', 'https://www.pinterest.com/prolocksmithtech/'],
+  ['X (Twitter)', X_PROFILE],
 ] as const;

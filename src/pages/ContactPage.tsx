@@ -188,7 +188,7 @@ export function ContactPage() {
               <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
                 {isSpanish 
                   ? 'Cuando se queda con las llaves encerradas en su carro, no puede entrar a su casa o tiene un cerrojo roto, nunca debería tener que esperar horas a que le respondan un formulario web. Por eso en Pro Locksmith Tech no hay formularios: usted se comunica directamente con nuestra línea de despacho en segundos.' 
-                  : 'When you are stranded with keys locked in your car, unable to get inside your house, or facing a broken deadbolt, you should never have to wait hours for an email form response. That is why Pro Locksmith Tech has zero forms—you connect directly with our active dispatch line in seconds.'}
+                  : 'Locked out of a car or home, or dealing with a broken deadbolt? Call Pro Locksmith Tech to speak with our dispatch team and request a mobile technician.'}
               </p>
 
               {/* 3 Step Dispatch Guide */}
@@ -215,12 +215,12 @@ export function ContactPage() {
                   </div>
                   <div>
                     <strong className="text-white text-sm block">
-                      {isSpanish ? 'Indique Su Ubicación y Problema con la Llave' : 'Tell Us Your Location & Lock/Key Situation'}
+                      {isSpanish ? 'Hable con nuestro equipo' : 'Talk with our dispatch team'}
                     </strong>
                     <span className="text-xs text-slate-400">
                       {isSpanish 
-                        ? 'Indique su dirección en Broward, Miami-Dade o Palm Beach y el modelo de vehículo o tipo de puerta.' 
-                        : 'Provide your address or cross-streets in Broward, Miami-Dade, or Palm Beach and vehicle/door details.'}
+                        ? 'Nuestro equipo le ayudará a elegir el servicio para su auto, casa o negocio en Broward, Miami-Dade o Palm Beach.'
+                        : 'Our team can talk through the help you need at your car, home or business in Broward, Miami-Dade or Palm Beach.'}
                     </span>
                   </div>
                 </div>
@@ -285,9 +285,9 @@ export function ContactPage() {
           </div>
         </div>
 
-        <section className="rounded-2xl border border-slate-800 bg-slate-950 p-6" aria-labelledby="contact-payment">
+        <section className="plt-paper rounded-xl border p-6" aria-labelledby="contact-payment">
           <h2 id="contact-payment" className="font-heading text-xl font-bold text-white">Payment methods and pricing</h2>
-          <p className="mt-2 text-slate-300">Pro Locksmith Tech accepts {PAYMENT_METHODS.en}. Ask dispatch about any other payment method.</p>
+          <p className="mt-2 text-slate-300">We accept {PAYMENT_METHODS.en}.</p>
           <p className="mt-2 text-slate-300">Locksmith pricing depends on the service, the vehicle or lock, the parts needed, and the job location. Call {PHONE} to discuss pricing for your job.</p>
         </section>
 

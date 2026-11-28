@@ -12,7 +12,7 @@ export const siteIdentity = {
       name: BUSINESS_NAME,
       url: homeURL,
       telephone: PHONE_E164,
-      logo: SITE + '/icon-192.png',
+      logo: SITE + '/brand/pro-locksmith-tech-512.png',
       description: `Serving South Florida since ${SERVICE_SINCE}, ${BUSINESS_NAME} provides 24/7 mobile automotive, residential and commercial locksmith services.`,
       sameAs: VERIFIED_PROFILES.map(([, url]) => url),
     },

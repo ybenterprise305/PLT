@@ -18,7 +18,7 @@ export const FAQ_DATA: FAQItem[] = [
     id: 'how-fast-arrival',
     category: 'emergency',
     question: 'How fast can a mobile locksmith arrive at my location?',
-    answer: 'Arrival depends on your exact location, traffic and technician availability. Call (754) 261-6528 with your address and the service you need so we can discuss availability and an estimated arrival.'
+    answer: 'Arrival depends on your exact location, traffic and technician availability. Call (754) 261-6528 to check availability and get an estimated arrival time.'
   },
   {
     id: 'car-lockout-help',
@@ -60,7 +60,7 @@ export const FAQ_DATA: FAQItem[] = [
     id: 'how-to-request',
     category: 'general',
     question: 'How do I request an immediate mobile locksmith?',
-    answer: 'To request immediate mobile service, call our direct 24/7 dispatch phone line at +1 (754) 261-6528 and tell our dispatcher your location and what service you need. Our team can discuss availability and service details during your call.'
+    answer: 'To request immediate mobile service, call our direct 24/7 dispatch phone line at +1 (754) 261-6528 to request help. Our team can discuss availability and service options and connect you with a mobile technician.'
   },
   ...ADDITIONAL_FAQS,
 ];

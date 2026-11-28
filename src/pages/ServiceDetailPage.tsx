@@ -1,3 +1,4 @@
+import { PAYMENT_METHODS } from '../config/business';
 import { CompletedWorkLink } from '../components/CompletedWorkLink';
 import { ResourceLinks } from '../components/ResourceLinks';
 import { serviceResources } from '../data/editorialLinks';
@@ -101,7 +102,7 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
         <Breadcrumbs trail={trail} />
 
         {/* Hero Section for Service */}
-        <div className="bg-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-10 relative overflow-hidden shadow-2xl">
+        <div className="bg-slate-950 border border-slate-800 rounded-3xl plt-hero-frame p-6 sm:p-10 relative overflow-hidden shadow-2xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
             <div className="lg:col-span-7 space-y-4">
               <div className="flex items-center gap-3">
@@ -144,7 +145,7 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
                 <img
                   src={serviceImage.src}
                   srcSet={serviceImage.srcSet}
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  sizes={'(min-width: 1600px) 560px, (min-width: 1024px) 36vw, calc(100vw - 5rem)'}
                   width={960}
                   height={640}
                   alt={isSpanish ? serviceImage.esAlt : serviceImage.enAlt}
@@ -154,6 +155,11 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
                   decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent pointer-events-none" />
+                {service.slug === 'commercial-locksmith' && (
+                  <span className="absolute left-3 top-3 rounded-md bg-slate-950 px-2 py-1 text-xs text-slate-200">
+                    {isSpanish ? 'Imagen ilustrativa' : 'Illustrative image'}
+                  </span>
+                )}
                 <div className="absolute bottom-3 left-3 right-3 text-center bg-slate-950/90 py-1.5 px-3 rounded-lg border border-slate-800 text-[11px] text-amber-400 font-semibold">
                   {isSpanish ? 'Cerrajería Móvil 24/7 · Broward, Miami-Dade y Palm Beach' : '24/7 Mobile Service · Broward, Miami-Dade & Palm Beach'}
                 </div>
@@ -162,7 +168,7 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
           </div>
         </div>
 
-        <section className="max-w-4xl mx-auto rounded-2xl border border-slate-800 bg-slate-950 p-6 sm:p-8">
+        <section className="plt-paper max-w-4xl mx-auto rounded-xl border p-6 sm:p-8">
           <h2 className="font-heading text-xl sm:text-2xl font-bold text-white mb-3">About This Locksmith Service</h2>
           <p className="text-base leading-8 text-slate-300">{serviceFullDesc}</p>
           <div className="mt-5 flex flex-wrap items-center gap-3 text-sm font-semibold text-amber-300">
@@ -228,25 +234,28 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
           </div>
         )}
 
-        {/* Give high-intent visitors actionable preparation details, not fabricated prices or guarantees. */}
+        {/* Explain the services technicians can perform on site. */}
         {['automotive-locksmith', 'key-replacement', 'key-duplication', 'emergency-lockout-service', 'residential-locksmith', 'lock-rekeying'].includes(service.slug) && (
-          <section className="rounded-2xl border border-slate-800 bg-slate-950 p-6 sm:p-8" aria-labelledby="before-calling-locksmith">
-            <h2 id="before-calling-locksmith" className="font-heading text-2xl font-bold text-white">
-              {isSpanish ? 'Información útil antes de llamar' : 'What to Know Before Calling'}
+          <section className="rounded-2xl border border-slate-800 bg-slate-950 p-6 sm:p-8" aria-labelledby="mobile-service-options">
+            <h2 id="mobile-service-options" className="font-heading text-2xl font-bold text-white">
+              {isSpanish ? 'Cómo podemos ayudarle en el lugar' : 'How We Can Help On Site'}
             </h2>
             <p className="mt-3 max-w-3xl text-base leading-7 text-slate-300">
               {['automotive-locksmith', 'key-replacement', 'key-duplication'].includes(service.slug)
                 ? (isSpanish
-                  ? 'Para consultar sobre llaves de auto o programación, tenga a mano la marca, modelo y año del vehículo. Indique si conserva alguna llave que funcione. '
-                  : 'For car key replacement, cutting or programming, have the vehicle make, model and year ready. Tell us whether any working key remains.')
+                  ? 'Nuestros técnicos llevan llaves, controles y equipo de programación hasta su auto. Podemos cortar una copia o fabricar una llave de reemplazo compatible aunque no tenga ninguna.'
+                  : 'We bring a wide range of car keys, fobs and programming equipment to your vehicle. We can cut a spare or make a compatible replacement even when every key is lost.')
                 : (isSpanish
-                  ? 'Indique su ciudad, tipo de puerta o cerradura y si el problema es una llave perdida, una cerradura dañada o una puerta cerrada. '
-                  : 'Tell us your city, door or lock type, and whether you have a lost key, damaged lock or lockout.')}
+                  ? 'Vamos hasta su puerta para aperturas, cambios de combinación y cerraduras dañadas. Un técnico puede revisar el problema en el lugar y explicarle sus opciones.'
+                  : 'We come to your door for lockouts, rekeying and damaged locks. A technician can assess the problem on site and explain your options.')}
             </p>
             <p className="mt-3 text-sm leading-6 text-slate-300">
               {isSpanish
                 ? 'Pro Locksmith Tech presta servicio móvil las 24 horas. Llame para confirmar disponibilidad y tiempo estimado de llegada.'
                 : 'Pro Locksmith Tech accepts mobile service requests 24/7. Call to confirm availability and an estimated arrival time.'}
+            </p>
+            <p className="mt-3 text-sm leading-6 text-slate-300">
+              {isSpanish ? `Aceptamos ${PAYMENT_METHODS.es}.` : `We accept ${PAYMENT_METHODS.en}.`}
             </p>
             {!isSpanish && ['automotive-locksmith', 'key-replacement', 'key-duplication'].includes(service.slug) && (
               <div className="mt-5 flex flex-wrap gap-3 text-sm font-semibold">

@@ -57,8 +57,8 @@ export function FAQPage({ onNavigate }: FAQPageProps) {
 
             <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
               {isSpanish 
-                ? 'Información clara y real sobre cómo opera nuestro servicio de cerrajería móvil 24/7 en el Sur de la Florida. Como operamos exclusivamente de forma móvil, vamos directamente a donde usted esté.' 
-                : 'Find clear, factual information about how our 24/7 mobile locksmith service operates across South Florida. Because we operate exclusively as a mobile service, we come directly to you.'}
+                ? 'Resolvemos problemas de llaves y cerraduras en su auto, casa o negocio. Llámenos a cualquier hora para pedir un cerrajero móvil en el sur de Florida.'
+                : 'Get answers about on-site key and lock service at your car, home or business. Call our South Florida dispatch team any time for emergency or same-day help.'}
             </p>
 
             <div className="pt-2 flex flex-wrap gap-3">
@@ -76,7 +76,7 @@ export function FAQPage({ onNavigate }: FAQPageProps) {
         </div>
 
         {/* Mobile Service Reassurance Banner */}
-        <div className="bg-gradient-to-r from-amber-500/10 via-slate-950 to-slate-950 border border-amber-500/30 rounded-2xl p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="plt-paper border rounded-xl p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex items-start gap-4">
             <div className="w-12 h-12 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0 mt-0.5">
               <Truck className="w-6 h-6" />
@@ -87,8 +87,8 @@ export function FAQPage({ onNavigate }: FAQPageProps) {
               </h2>
               <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl leading-relaxed">
                 {isSpanish 
-                  ? 'Pro Locksmith Tech no opera una tienda comercial física para clientes. Todos los servicios se realizan directamente en el lugar: en su casa, vehículo o negocio por nuestras camionetas taller totalmente equipadas.' 
-                  : 'Pro Locksmith Tech does not operate a walk-in retail storefront. All services are performed directly on-site at your home, vehicle, or business by our fully equipped mobile workshop units.'}
+                  ? 'Nuestro taller móvil va hasta su casa, auto o negocio. Llevamos equipo de corte y programación de llaves, además de cerraduras y herramientas para trabajar en el lugar.'
+                  : 'Our mobile workshop comes to your home, vehicle or business. We bring key-cutting and programming equipment and carry hardware for on-site lock service.'}
               </p>
             </div>
           </div>
