@@ -82,11 +82,27 @@ for (const vp of viewports) {
     await page.keyboard.press('Escape');
     await drawer.waitFor({state:'detached',timeout:5000});
     await toggle.click({timeout:5000});
+    const serviceDisclosure = page.locator('#mobile-site-navigation .plt-mobile-services summary');
+    await serviceDisclosure.click({timeout:5000});
     await page.locator('#mobile-site-navigation a[href="/services/"]').click({timeout:5000});
     await page.waitForURL('**/services/',{timeout:5000});
     if (await page.locator('#mobile-site-navigation').count()) failures.push('phone /: drawer remained open after route navigation');
     await page.goto(BASE + '/', { waitUntil: 'networkidle' });
   } catch (error) { failures.push('phone /: menu cannot be opened after scrolling: '+String(error).slice(0,200)); }
+
+  for (const languagePath of ['/contact/', '/es/contact/']) {
+    await page.goto(BASE + languagePath, { waitUntil: 'networkidle' });
+    const geometry = await page.evaluate(() => {
+      const main = document.querySelector('main');
+      const logo = main?.querySelector('img[src*="pro-locksmith-tech-128.webp"]');
+      const heading = main?.querySelector('h1');
+      const l = logo?.getBoundingClientRect();
+      const h = heading?.getBoundingClientRect();
+      return { hasHeading: Boolean(h), hasLogo: Boolean(l), overlap: Boolean(l && h && !(l.right <= h.left || h.right <= l.left || l.bottom <= h.top || h.bottom <= l.top)), overflow: document.documentElement.scrollWidth > window.innerWidth + 2, scrollWidth: document.documentElement.scrollWidth, viewport: window.innerWidth };
+    });
+    if (!geometry || !geometry.hasHeading || (languagePath === '/contact/' && !geometry.hasLogo) || geometry.overlap || geometry.overflow) failures.push(`phone ${languagePath}: contact hero layout regression ${JSON.stringify(geometry)}`);
+  }
+  await page.goto(BASE + '/', { waitUntil: 'networkidle' });
 
   await page.evaluate(() => { window.__plt_marker = 'same-page'; window.scrollTo(0, 0); });
   const link = page.locator('a[href="/services/"]:visible').first();

@@ -1,3 +1,4 @@
+import { ServiceCallPanel } from '../components/ServiceCallPanel';
 import { PAYMENT_METHODS } from '../config/business';
 import { CompletedWorkLink } from '../components/CompletedWorkLink';
 import { ResourceLinks } from '../components/ResourceLinks';
@@ -168,14 +169,16 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
           </div>
         </div>
 
+        <ServiceCallPanel slug={service.slug} />
+
         <section className="plt-paper max-w-4xl mx-auto rounded-xl border p-6 sm:p-8">
-          <h2 className="font-heading text-xl sm:text-2xl font-bold text-white mb-3">About This Locksmith Service</h2>
+          <h2 className="font-heading text-xl sm:text-2xl font-bold text-white mb-3">{isSpanish ? 'Acerca de este servicio de cerrajería' : 'About This Locksmith Service'}</h2>
           <p className="text-base leading-8 text-slate-300">{serviceFullDesc}</p>
           <div className="mt-5 flex flex-wrap items-center gap-3 text-sm font-semibold text-amber-300">
-            <span className="inline-flex items-center gap-1.5"><Clock className="h-4 w-4" />24/7 availability</span>
-            <span className="inline-flex items-center gap-1.5"><MapPin className="h-4 w-4" />South Florida service area</span>
-            <span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-4 w-4" />Mobile service — we come to you</span>
-            <LocalizedA href="/reviews" className="underline underline-offset-4">Real Google customer reviews</LocalizedA>
+            <span className="inline-flex items-center gap-1.5"><Clock className="h-4 w-4" />{isSpanish ? 'Servicio 24/7' : '24/7 service'}</span>
+            <span className="inline-flex items-center gap-1.5"><MapPin className="h-4 w-4" />{isSpanish ? 'Servicio en el sur de Florida' : 'South Florida service area'}</span>
+            <span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-4 w-4" />{isSpanish ? 'Vamos a su ubicación' : 'We come to your location'}</span>
+            <LocalizedA href="/reviews" className="underline underline-offset-4">{isSpanish ? 'Opiniones reales en Google' : 'Real Google customer reviews'}</LocalizedA>
           </div>
         </section>
 
@@ -230,7 +233,7 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
 
         {serviceResources[service.slug] && (
           <div className="my-8 rounded-xl border border-slate-700 bg-slate-950 p-5">
-            <ResourceLinks title="Customer guides" links={serviceResources[service.slug]} />
+            <ResourceLinks title={isSpanish ? 'Guías para clientes' : 'Customer guides'} links={serviceResources[service.slug]} />
           </div>
         )}
 
@@ -251,8 +254,8 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
             </p>
             <p className="mt-3 text-sm leading-6 text-slate-300">
               {isSpanish
-                ? 'Pro Locksmith Tech presta servicio móvil las 24 horas. Llame para confirmar disponibilidad y tiempo estimado de llegada.'
-                : 'Pro Locksmith Tech accepts mobile service requests 24/7. Call to confirm availability and an estimated arrival time.'}
+                ? 'Pro Locksmith Tech ofrece servicio móvil las 24 horas. Llámenos para solicitar un técnico en su ubicación.'
+                : 'Our mobile locksmith team takes service requests 24/7. Call to arrange service at your location.'}
             </p>
             <p className="mt-3 text-sm leading-6 text-slate-300">
               {isSpanish ? `Aceptamos ${PAYMENT_METHODS.es}.` : `We accept ${PAYMENT_METHODS.en}.`}
@@ -299,8 +302,8 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
 
         {/* Relevant question-and-answer content; exactly matches FAQ structured data. */}
         <section className="rounded-2xl border border-slate-800 bg-slate-950 p-6 sm:p-8">
-          <h2 className="font-heading text-2xl font-bold text-white mb-2">Frequently Asked Questions About {service.name}</h2>
-          <p className="mb-6 text-base leading-7 text-slate-300">Clear answers to common questions about {service.name.toLowerCase()} in South Florida.</p>
+          <h2 className="font-heading text-2xl font-bold text-white mb-2">{isSpanish ? `Preguntas frecuentes sobre ${serviceName}` : `Frequently Asked Questions About ${service.name}`}</h2>
+          <p className="mb-6 text-base leading-7 text-slate-300">{isSpanish ? 'Respuestas sobre el servicio móvil de cerrajería que ofrecemos en el sur de Florida.' : `Clear answers to common questions about ${service.name.toLowerCase()} in South Florida.`}</p>
           <div className="space-y-4">
             {serviceFaqs.map((item, i) => <article className="rounded-xl border border-slate-800 bg-slate-900 p-5" key={i}>
               <h3 className="mb-2 text-lg font-bold text-white">{item.question}</h3>
@@ -317,7 +320,7 @@ export function ServiceDetailPage({ slug, onNavigate }: ServiceDetailPageProps) 
           <h3 className="font-heading font-black text-2xl text-white">
             {isSpanish 
               ? `Solicite ${serviceName} con Nuestro Cerrajero Móvil` 
-              : `Schedule ${service.name} with Our Mobile Technician`
+              : `Get ${service.name} at Your Location`
             }
           </h3>
           <p className="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto">

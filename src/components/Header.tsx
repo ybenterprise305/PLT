@@ -118,16 +118,22 @@ export function Header({ currentPath }: { currentPath: string }) {
             </button>
           </div>
           <nav aria-label={label} className="plt-drawer-nav">
-            <section>
-              <h3 className="plt-label">{isSpanish ? 'Servicios' : 'Services'}</h3>
-              <div>{services.map(([href, en, es]) => <LocalizedA key={href} href={href} onClick={() => dismiss()}>{isSpanish ? es : en}</LocalizedA>)}</div>
-            </section>
-            <section>
-              <h3 className="plt-label">{isSpanish ? 'Cobertura y contacto' : 'Coverage and contact'}</h3>
-              <div>{links(true)}</div>
-            </section>
+            <details className="plt-mobile-services">
+              <summary>
+                <span>{isSpanish ? 'Servicios' : 'Services'}</span>
+                <ChevronDown size={19} aria-hidden="true" />
+              </summary>
+              <div className="plt-mobile-services-links">
+                {services.map(([href, en, es]) => (
+                  <LocalizedA key={href} href={href}
+                    aria-current={currentPath === href || currentPath === href + '/' ? 'page' : undefined}
+                    onClick={() => dismiss()}>{isSpanish ? es : en}</LocalizedA>
+                ))}
+              </div>
+            </details>
+            <div className="plt-mobile-primary-links">{links(true)}</div>
           </nav>
-          <LocalizedA href={TEL} className="plt-cta mt-5" onClick={() => track('header_drawer_call_btn')}>
+          <LocalizedA href={TEL} className="plt-cta plt-drawer-call" onClick={() => track('header_drawer_call_btn')}>
             <Phone size={17} aria-hidden="true" /> {isSpanish ? 'Llamar al' : 'Call'} {PHONE}
           </LocalizedA>
         </dialog>, document.body)}

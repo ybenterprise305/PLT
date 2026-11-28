@@ -10,8 +10,8 @@
 | IV | AEO, AIO, GEO and agentic browsing | See Phase IV implementation and verification |
 | V | Content and topical authority | See Phase V editorial scope |
 | VI | Advanced local SEO and verified completed-job evidence | See Phase VI local implementation |
-| VII | Premium design and user experience | Awaiting explicit approval |
-| VIII | Superior conversion optimization | Awaiting explicit approval |
+| VII | Premium design and user experience | Approved Phase VII-B merged into main via PR #35 (commit 4012500); confirm Cloudflare release independently |
+| VIII | Superior conversion optimization | In development on optimization/phase-viii-conversion; no production publication |
 | IX | Enterprise security and reliability | Awaiting explicit approval |
 | X | Automated enterprise quality control | Awaiting explicit approval |
 | XI | External authority and competitive intelligence | Awaiting explicit approval |
@@ -56,3 +56,7 @@ See [Phase V editorial inventory and release scope](phase-v-content.md).
 ## Phase VI
 
 See [local coverage and completed work](phase-vi-local.md).
+
+## Phase VIII (in development)
+
+See [Phase VIII conversion optimization and acceptance gates](phase-viii-conversion.md). Changes remain in a draft feature branch; owner will supply PageSpeed Insights measurements. No live tracking, CRM, advertising or LSA account changes are authorized by this phase's work here.
